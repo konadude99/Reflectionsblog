@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foods America Hates: An Investigative Exposé</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1208;
+    --cream: #faf6ee;
+    --parchment: #f0e8d4;
+    --rust: #c0390f;
+    --gold: #b8860b;
+    --muted: #7a6a52;
+    --border: #d4c4a0;
+    --card-bg: #fffdf7;
+    --green: #2d6a2d;
+    --barf-1: #b8e6b8;
+    --barf-3: #e6e6a0;
+    --barf-5: #e6c86e;
+    --barf-7: #e6884a;
+    --barf-9: #c03020;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .publication-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(30px, 5vw, 58px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .deck {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.55;
+  }
+  .byline {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 0.5px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  /* BODY */
+  .article-body { padding-top: 2.5rem; }
+  p { margin-bottom: 1.4rem; font-weight: 300; }
+
+  .dropcap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.2em;
+    font-weight: 700;
+    float: left;
+    line-height: 0.78;
+    margin: 0.08em 0.1em 0 0;
+    color: var(--rust);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    margin: 3.5rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+  h2 .section-label {
+    font-family: 'DM Mono', monospace;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--rust);
+    display: block;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-left: 4px solid var(--rust);
+    margin: 2.5rem 0 2.5rem 1.5rem;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--rust);
+    line-height: 1.4;
+  }
+
+  /* STREET INTERVIEWS */
+  .interview-block {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 1.4rem 1.6rem;
+    margin: 2rem 0;
+    position: relative;
+  }
+  .interview-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .interview-label::before {
+    content: '🎙';
+    font-size: 14px;
+  }
+  .interview-person {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .interview-quote {
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* BARF FACTOR SCALE LEGEND */
+  .barf-legend {
+    background: var(--parchment);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 1.8rem 2rem;
+    margin: 3rem 0;
+  }
+  .barf-legend-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .barf-legend-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+  }
+  .barf-scale-row {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+  }
+  .barf-pip {
+    width: 38px;
+    height: 22px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: #fff;
+    text-shadow: 0 0 4px rgba(0,0,0,0.3);
+  }
+  .barf-scale-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* FOOD CARDS */
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.1rem;
+    margin: 2rem 0;
+  }
+  .food-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1.2rem 1.3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .food-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .food-card.barf-low::before  { background: #6abf6a; }
+  .food-card.barf-med::before  { background: #c8b840; }
+  .food-card.barf-high::before { background: #d07020; }
+  .food-card.barf-max::before  { background: #b82020; }
+
+  .food-card-icon {
+    font-size: 30px;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .food-card-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .food-card-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.7rem;
+  }
+  .food-card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+  }
+  .barf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    padding: 3px 9px;
+    border-radius: 2px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .barf-1, .barf-2 { background: #6abf6a; }
+  .barf-3, .barf-4 { background: #a8b830; color: #fff; }
+  .barf-5, .barf-6 { background: #c8882a; }
+  .barf-7, .barf-8 { background: #c84020; }
+  .barf-9, .barf-10 { background: #8b1010; }
+
+  /* SURVEY TABLE */
+  .survey-box {
+    background: var(--parchment);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 2rem;
+    margin: 2.5rem 0;
+  }
+  .survey-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .survey-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .survey-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+  .survey-table td {
+    padding: 0.55rem 0.6rem;
+    border-bottom: 0.5px solid var(--border);
+    font-weight: 300;
+    vertical-align: middle;
+  }
+  .survey-table tr:last-child td { border-bottom: none; }
+  .rank-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .hate-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--rust);
+  }
+  .hate-bar-wrap {
+    width: 100%;
+    background: #e8e0d0;
+    border-radius: 2px;
+    height: 7px;
+    overflow: hidden;
+    min-width: 60px;
+  }
+  .hate-bar {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--rust), #e06040);
+  }
+
+  /* CATEGORIES */
+  .category-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .category-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 0.5rem;
+  }
+  .category-items {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* HERO ILLUSTRATION */
+  .hero-illo {
+    margin: 2rem auto;
+    text-align: center;
+  }
+  .section-illo {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+
+  /* FOOTNOTE */
+  .footnote {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 0.5px solid var(--border);
+    margin-top: 4rem;
+    padding-top: 1.2rem;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="publication-name">The Culinary Confessional &nbsp;·&nbsp; Investigative Food Journalism</div>
+  <h1>Enemies of the Plate:<br>America's Most Despised Foods</h1>
+  <p class="deck">A hard-hitting, stomach-turning exposé into the foods that make an entire nation gag — featuring real human reactions, damning survey data, and a Barf Factor™ rating for every offender.</p>
+  <div class="byline">By Our Staff Correspondent, Who Now Regrets Eating for Research &nbsp;·&nbsp; 2025</div>
+</div>
+
+<!-- HERO ILLUSTRATION -->
+<div class="hero-illo">
+  <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" style="max-width:680px;width:100%">
+    <!-- background plate -->
+    <rect x="60" y="80" width="580" height="150" rx="80" fill="#f0e8d4" stroke="#d4c4a0" stroke-width="1.5"/>
+    <!-- plate rim -->
+    <ellipse cx="350" cy="185" rx="260" ry="55" fill="none" stroke="#c8b890" stroke-width="1" stroke-dasharray="6,4"/>
+
+    <!-- ANCHOVY squiggles -->
+    <g transform="translate(130,150)">
+      <path d="M-30,0 Q-10,-18 10,-5 Q30,10 50,-8" stroke="#7a5038" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M-28,8 Q-8,-10 12,3 Q32,18 52,0" stroke="#8a6040" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="-30" cy="0" r="3" fill="#5a3828"/>
+      <circle cx="-28" cy="8" r="3" fill="#5a3828"/>
+      <text x="10" y="-28" font-family="'DM Mono', monospace" font-size="9" fill="#7a6a52" text-anchor="middle">anchovies</text>
+    </g>
+
+    <!-- LIVER blob -->
+    <g transform="translate(250,155)">
+      <path d="M0,0 Q25,-30 50,-15 Q75,0 70,20 Q60,40 30,35 Q0,30 0,0Z" fill="#7a2828" opacity="0.85"/>
+      <path d="M15,10 Q30,-5 45,5 Q60,15 50,25 Q35,32 20,25Z" fill="#8a3838" opacity="0.5"/>
+      <text x="35" y="-18" font-family="'DM Mono', monospace" font-size="9" fill="#7a6a52" text-anchor="middle">liver</text>
+    </g>
+
+    <!-- BEET circle -->
+    <g transform="translate(370,148)">
+      <circle cx="28" cy="25" r="28" fill="#8b1a4a" opacity="0.9"/>
+      <circle cx="28" cy="25" r="20" fill="#a02060" opacity="0.5"/>
+      <line x1="28" y1="-3" x2="28" y2="-20" stroke="#4a7a2a" stroke-width="3" stroke-linecap="round"/>
+      <line x1="28" y1="-15" x2="18" y2="-28" stroke="#4a7a2a" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="28" y1="-15" x2="40" y2="-26" stroke="#4a7a2a" stroke-width="2.5" stroke-linecap="round"/>
+      <text x="28" y="-36" font-family="'DM Mono', monospace" font-size="9" fill="#7a6a52" text-anchor="middle">beets</text>
+    </g>
+
+    <!-- BLUE CHEESE wedge -->
+    <g transform="translate(460,150)">
+      <polygon points="0,40 50,0 80,40" fill="#f5f0d8" stroke="#c8b880" stroke-width="1.5"/>
+      <!-- blue veins -->
+      <line x1="20" y1="35" x2="40" y2="12" stroke="#5060a0" stroke-width="2.5" opacity="0.6" stroke-linecap="round"/>
+      <line x1="35" y1="38" x2="55" y2="18" stroke="#5060a0" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+      <line x1="12" y1="28" x2="30" y2="8" stroke="#3050a0" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+      <text x="40" y="-10" font-family="'DM Mono', monospace" font-size="9" fill="#7a6a52" text-anchor="middle">blue cheese</text>
+    </g>
+
+    <!-- floating green kale leaf -->
+    <g transform="translate(560,130)">
+      <path d="M0,0 Q10,-15 25,-5 Q35,5 20,20 Q10,28 0,20 Q-8,10 0,0Z" fill="#2d6a2d" opacity="0.75"/>
+      <line x1="12" y1="0" x2="12" y2="20" stroke="#1a4a1a" stroke-width="1.5"/>
+      <text x="12" y="-12" font-family="'DM Mono', monospace" font-size="9" fill="#7a6a52" text-anchor="middle">kale</text>
+    </g>
+
+    <!-- face reacting (right side) -->
+    <g transform="translate(620,100)">
+      <circle cx="0" cy="0" r="36" fill="#fde8c8" stroke="#c8a870" stroke-width="1.5"/>
+      <!-- eyes - squinting disgust -->
+      <path d="M-13,-8 Q-9,-14 -5,-8" stroke="#3a2810" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M5,-8 Q9,-14 13,-8" stroke="#3a2810" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- brow furrowed -->
+      <path d="M-16,-14 Q-9,-20 -3,-14" stroke="#5a3820" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M3,-14 Q9,-20 16,-14" stroke="#5a3820" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- tongue out / gag mouth -->
+      <path d="M-12,10 Q0,22 12,10" stroke="#c03020" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="0" cy="22" rx="8" ry="5" fill="#e07060" opacity="0.8"/>
+      <text x="0" y="56" font-family="'DM Mono', monospace" font-size="9" fill="#7a6a52" text-anchor="middle">you, probably</text>
+    </g>
+
+    <!-- wavy stink lines from liver -->
+    <path d="M290,130 Q295,118 290,106" stroke="#a07050" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <path d="M305,125 Q312,113 307,101" stroke="#a07050" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+    <path d="M275,128 Q278,116 273,104" stroke="#a07050" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.35"/>
+  </svg>
+</div>
+
+<div class="article-body">
+
+<p class="dropcap">There exists, in the vast and sunlit landscape of American cuisine, a shadow world — a culinary underworld of textures that slither, smells that linger long after the plate has been cleared, and flavors so aggressively divisive that they have torn apart friendships, ruined Thanksgiving dinners, and sent more than one grown adult fleeing the table in tears. This is their story.</p>
+
+<p>In 2025, YouGov surveyed 2,239 Americans about which normal, grocery-store-available foods they simply could not abide. The results were, frankly, shocking — not because the foods on the list were exotic, but because so many of them are things your grandmother probably served with a smile and the words, "You'll love it, trust me."</p>
+
+<p>Spoiler: we did not love it.</p>
+
+<div class="interview-block">
+  <div class="interview-label">Man on the Street — Union Square, New York City</div>
+  <div class="interview-person">Gerald, 54, retired plumber</div>
+  <div class="interview-quote">"Liver. Just liver. I've been avoiding it since 1987 and I plan to continue through the afterlife."</div>
+</div>
+
+<!-- SURVEY TABLE -->
+<div class="survey-box">
+  <h3>The Official Enemies List<br><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:400;color:var(--muted)">YouGov Survey, 2,239 U.S. Adults — % who dislike or hate</span></h3>
+  <table class="survey-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Food</th>
+        <th>% Dislike/Hate</th>
+        <th style="min-width:80px;">Hatred</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="rank-num">1</td><td>🐟 Anchovies</td><td class="hate-pct">56%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:100%"></div></div></td></tr>
+      <tr><td class="rank-num">2</td><td>🫀 Liver</td><td class="hate-pct">54%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:96%"></div></div></td></tr>
+      <tr><td class="rank-num">3</td><td>🐠 Sardines</td><td class="hate-pct">52%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:93%"></div></div></td></tr>
+      <tr><td class="rank-num">4</td><td>🫘 Tofu</td><td class="hate-pct">46%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:82%"></div></div></td></tr>
+      <tr><td class="rank-num">5</td><td>🦑 Squid</td><td class="hate-pct">44%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:79%"></div></div></td></tr>
+      <tr><td class="rank-num">6</td><td>🐟 Caviar</td><td class="hate-pct">43%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:77%"></div></div></td></tr>
+      <tr><td class="rank-num">7</td><td>🦪 Oysters</td><td class="hate-pct">42%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:75%"></div></div></td></tr>
+      <tr><td class="rank-num">8</td><td>🧀 Blue Cheese</td><td class="hate-pct">39%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:70%"></div></div></td></tr>
+      <tr><td class="rank-num">9</td><td>🍣 Sushi</td><td class="hate-pct">39%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:70%"></div></div></td></tr>
+      <tr><td class="rank-num">10</td><td>🫀 Chitterlings</td><td class="hate-pct">38%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:68%"></div></div></td></tr>
+      <tr><td class="rank-num">11</td><td>🫐 Beets</td><td class="hate-pct">35%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:63%"></div></div></td></tr>
+      <tr><td class="rank-num">12</td><td>🥬 Kale</td><td class="hate-pct">31%</td><td><div class="hate-bar-wrap"><div class="hate-bar" style="width:55%"></div></div></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2><span class="section-label">§ 1 — The Barf Factor™</span>Our Proprietary Rating System, Explained</h2>
+
+<p>In the interest of public service journalism, we have developed the <strong>Barf Factor™</strong> — a scientific scale from 1 (mildly unpleasant) to 10 (you will need a moment) that rates each offending food on a combination of smell, texture, visual appearance, and the percentage of the population that would rather eat their own shoe than consume it. Peer review is forthcoming.</p>
+
+<!-- BARF SCALE -->
+<div class="barf-legend">
+  <div class="barf-legend-title">The Barf Factor™ Scale</div>
+  <div class="barf-legend-sub">Peer-reviewed by our editorial stomach</div>
+  <div class="barf-scale-row">
+    <div class="barf-pip" style="background:#6abf6a">1</div>
+    <div class="barf-pip" style="background:#7ab840">2</div>
+    <div class="barf-pip" style="background:#a0b030">3</div>
+    <div class="barf-pip" style="background:#c0a828">4</div>
+    <div class="barf-pip" style="background:#c89030">5</div>
+    <div class="barf-pip" style="background:#d07030">6</div>
+    <div class="barf-pip" style="background:#d05828">7</div>
+    <div class="barf-pip" style="background:#c83818">8</div>
+    <div class="barf-pip" style="background:#b01808">9</div>
+    <div class="barf-pip" style="background:#7a0808">10</div>
+  </div>
+  <div class="barf-scale-labels">
+    <span>"meh"</span>
+    <span>yikes</span>
+    <span>oh no</span>
+    <span>WHY</span>
+    <span>🚨 BIOLOGICAL HAZARD</span>
+  </div>
+</div>
+
+<h2><span class="section-label">§ 2 — The Accused</span>Individual Food Profiles with Full Barf Factor™ Ratings</h2>
+
+<div class="food-grid">
+
+  <div class="food-card barf-high">
+    <span class="food-card-icon">🐟</span>
+    <div class="food-card-name">Anchovies</div>
+    <div class="food-card-pct">56% dislike · America's #1 Enemy</div>
+    <div class="food-card-desc">Tiny, oily, salt-cured fish that arrive rolled up like little fish cigars, usually on a pizza you did NOT order them on. They smell like the sea made a terrible decision and taste like a very angry mermaid.</div>
+    <span class="barf-badge barf-8">🤢 BARF FACTOR: 8/10</span>
+  </div>
+
+  <div class="food-card barf-max">
+    <span class="food-card-icon">🫀</span>
+    <div class="food-card-name">Liver</div>
+    <div class="food-card-pct">54% dislike · #1 Most "Hated" Food</div>
+    <div class="food-card-desc">The most hated food in America when you count actual "hate" votes. Combines a metallic taste, a grainy-yet-dense texture, and the distinct sensory experience of eating someone's feelings. A classic childhood trauma vehicle.</div>
+    <span class="barf-badge barf-9">☣️ BARF FACTOR: 9/10</span>
+  </div>
+
+  <div class="food-card barf-high">
+    <span class="food-card-icon">🐠</span>
+    <div class="food-card-name">Sardines</div>
+    <div class="food-card-pct">52% dislike</div>
+    <div class="food-card-desc">Anchovies' larger, somehow even more aggressively fishy cousins. They come in a tin that opens with a key, because sardines are old enough to remember when that was modern technology.</div>
+    <span class="barf-badge barf-7">🤢 BARF FACTOR: 7/10</span>
+  </div>
+
+  <div class="food-card barf-med">
+    <span class="food-card-icon">🫘</span>
+    <div class="food-card-name">Tofu</div>
+    <div class="food-card-pct">46% dislike</div>
+    <div class="food-card-desc">A white, jiggling block of soybean curd that is deeply inoffensive on its own — and yet. Critics cite a texture variously described as "cold sadness," "wet styrofoam," and "the texture of a broken promise."</div>
+    <span class="barf-badge barf-4">😬 BARF FACTOR: 4/10</span>
+  </div>
+
+  <div class="food-card barf-high">
+    <span class="food-card-icon">🦑</span>
+    <div class="food-card-name">Squid</div>
+    <div class="food-card-pct">44% dislike</div>
+    <div class="food-card-desc">A boneless sea creature that, when fried into calamari, is beloved by millions — but when encountered in its full tentacled form, causes the same instinctive recoil one feels upon discovering a spider in the shower.</div>
+    <span class="barf-badge barf-6">😰 BARF FACTOR: 6/10</span>
+  </div>
+
+  <div class="food-card barf-med">
+    <span class="food-card-icon">🫧</span>
+    <div class="food-card-name">Caviar</div>
+    <div class="food-card-pct">43% dislike</div>
+    <div class="food-card-desc">Tiny fish eggs that pop in your mouth in a way that is either "transcendent" or "an experience you will think about at 3am and shudder." People who love it will tell you about it. Often. Unsolicited.</div>
+    <span class="barf-badge barf-5">😨 BARF FACTOR: 5/10</span>
+  </div>
+
+  <div class="food-card barf-med">
+    <span class="food-card-icon">🦪</span>
+    <div class="food-card-name">Oysters</div>
+    <div class="food-card-pct">42% dislike</div>
+    <div class="food-card-desc">Raw and served in their own shell, these are essentially the ocean handing you a mouthful of seawater in a mucus wrapper. Connoisseurs call them "briny and mineral." Skeptics call them "no thank you, I'm fine."</div>
+    <span class="barf-badge barf-7">🤢 BARF FACTOR: 7/10</span>
+  </div>
+
+  <div class="food-card barf-med">
+    <span class="food-card-icon">🧀</span>
+    <div class="food-card-name">Blue Cheese</div>
+    <div class="food-card-pct">39% dislike</div>
+    <div class="food-card-desc">Cheese that has been deliberately inoculated with mold. Blue cheese aficionados will note that it is complex and pungent. Critics will note that it smells like it has been left in a gym locker since 1994.</div>
+    <span class="barf-badge barf-5">😨 BARF FACTOR: 5/10</span>
+  </div>
+
+  <div class="food-card barf-low">
+    <span class="food-card-icon">🍣</span>
+    <div class="food-card-name">Sushi</div>
+    <div class="food-card-pct">39% dislike</div>
+    <div class="food-card-desc">The "raw fish" reputation has haunted sushi unfairly — much of it isn't raw at all. Still, 39% of Americans will look at a California roll and see a cry for help wrapped in seaweed.</div>
+    <span class="barf-badge barf-3">😕 BARF FACTOR: 3/10</span>
+  </div>
+
+  <div class="food-card barf-max">
+    <span class="food-card-icon">🫀</span>
+    <div class="food-card-name">Chitterlings</div>
+    <div class="food-card-pct">38% dislike</div>
+    <div class="food-card-desc">Slow-cooked pig intestines. The cooking process alone — which can take all day and fills an entire house with a smell that neighbors remember — causes preemptive gagging in people three blocks away.</div>
+    <span class="barf-badge barf-9">☣️ BARF FACTOR: 9/10</span>
+  </div>
+
+  <div class="food-card barf-low">
+    <span class="food-card-icon">🫐</span>
+    <div class="food-card-name">Beets</div>
+    <div class="food-card-pct">35% dislike</div>
+    <div class="food-card-desc">A deeply earthy root vegetable that turns everything it touches a vivid blood-red. Haters say it "tastes like dirt." Lovers say that's the point. Both are making eye contact too intensely.</div>
+    <span class="barf-badge barf-3">😕 BARF FACTOR: 3/10</span>
+  </div>
+
+  <div class="food-card barf-low">
+    <span class="food-card-icon">🥬</span>
+    <div class="food-card-name">Kale</div>
+    <div class="food-card-pct">31% dislike</div>
+    <div class="food-card-desc">The yoga-class darling that promised to save your health and delivered a mouthful of bitter, fibrous leaves that require ten minutes of chewing to subdue. Still, kale remains deeply smug about this.</div>
+    <span class="barf-badge barf-2">🙄 BARF FACTOR: 2/10</span>
+  </div>
+
+</div>
+
+<div class="pull-quote">"It was liver and onions. I was seven. I am now forty-three. I have not forgotten. I will not forgive."</div>
+
+<h2><span class="section-label">§ 3 — Eyewitness Accounts</span>Man (and Woman) on the Street</h2>
+
+<p>We dispatched a correspondent to gather testimony from Americans in the wild. What follows are their unedited accounts. We cannot vouch for their composure.</p>
+
+<div class="interview-block">
+  <div class="interview-label">Man on the Street — Farmers Market, Austin, Texas</div>
+  <div class="interview-person">Tamara, 38, yoga instructor</div>
+  <div class="interview-quote">"I know I'm supposed to love kale. I teach people how to breathe. I make my own kombucha. But kale? I put it in a smoothie once and my blender gave me a look."</div>
+</div>
+
+<div class="interview-block">
+  <div class="interview-label">Man on the Street — Pier 39, San Francisco</div>
+  <div class="interview-person">Hank, 61, maritime consultant</div>
+  <div class="interview-quote">"I live near the ocean. I respect the ocean. I will not eat an oyster raw. You might as well ask me to lick a tide pool. Which, for the record, I also would not do."</div>
+</div>
+
+<div class="interview-block">
+  <div class="interview-label">Man on the Street — A Pizza Parlor, Chicago</div>
+  <div class="interview-person">Dana, 29, graphic designer</div>
+  <div class="interview-quote">"My roommate orders anchovies on a shared pizza. I found a new roommate. I want this on the record. This is why."</div>
+</div>
+
+<div class="interview-block">
+  <div class="interview-label">Man on the Street — A Farmer's Market, Portland, Oregon</div>
+  <div class="interview-person">Phil, 47, software engineer</div>
+  <div class="interview-quote">"I tried tofu three times. Each time I thought, 'maybe I'm doing it wrong.' The third time I realized: no. The tofu is doing it wrong."</div>
+</div>
+
+<div class="interview-block">
+  <div class="interview-label">Man on the Street — Outside a Steakhouse, Dallas, Texas</div>
+  <div class="interview-person">Beverly, 72, retired schoolteacher</div>
+  <div class="interview-quote">"I cooked liver every Friday for twenty-two years because my husband said he liked it. He told me last year he was just being polite. We've had some difficult conversations since then."</div>
+</div>
+
+<h2><span class="section-label">§ 4 — The Usual Suspects</span>The Categories of Culinary Contempt</h2>
+
+<p>Across every survey conducted in recent years, hated foods fall reliably into a few camps — almost as if human disgust has its own organizational chart.</p>
+
+<!-- SECTION ILLUSTRATION -->
+<div class="section-illo">
+  <svg viewBox="0 0 680 180" xmlns="http://www.w3.org/2000/svg" style="max-width:660px;width:100%">
+    <!-- 4 category boxes -->
+    <!-- Fishy -->
+    <rect x="10" y="20" width="155" height="140" rx="6" fill="#faf6ee" stroke="#d4c4a0" stroke-width="1.5"/>
+    <text x="87" y="45" font-family="'Playfair Display',serif" font-size="13" font-weight="700" fill="#1a1208" text-anchor="middle">Fishy &amp; Briny</text>
+    <text x="87" y="64" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">anchovies · sardines</text>
+    <text x="87" y="77" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">oysters · squid</text>
+    <text x="87" y="90" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">caviar</text>
+    <text x="87" y="128" font-size="30" text-anchor="middle">🐟</text>
+    <!-- Organ -->
+    <rect x="175" y="20" width="155" height="140" rx="6" fill="#faf6ee" stroke="#d4c4a0" stroke-width="1.5"/>
+    <text x="252" y="45" font-family="'Playfair Display',serif" font-size="13" font-weight="700" fill="#1a1208" text-anchor="middle">Organ Meats</text>
+    <text x="252" y="64" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">liver · chitterlings</text>
+    <text x="252" y="77" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">kidneys · tripe</text>
+    <text x="252" y="128" font-size="30" text-anchor="middle">🫀</text>
+    <!-- Bitter veg -->
+    <rect x="340" y="20" width="155" height="140" rx="6" fill="#faf6ee" stroke="#d4c4a0" stroke-width="1.5"/>
+    <text x="417" y="45" font-family="'Playfair Display',serif" font-size="13" font-weight="700" fill="#1a1208" text-anchor="middle">Bitter Vegetables</text>
+    <text x="417" y="64" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">kale · beets · okra</text>
+    <text x="417" y="77" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">brussels sprouts</text>
+    <text x="417" y="90" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">eggplant</text>
+    <text x="417" y="128" font-size="30" text-anchor="middle">🥬</text>
+    <!-- Fermented -->
+    <rect x="505" y="20" width="160" height="140" rx="6" fill="#faf6ee" stroke="#d4c4a0" stroke-width="1.5"/>
+    <text x="585" y="45" font-family="'Playfair Display',serif" font-size="13" font-weight="700" fill="#1a1208" text-anchor="middle">Fermented/Funky</text>
+    <text x="585" y="64" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">blue cheese · olives</text>
+    <text x="585" y="77" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">capers · pickles</text>
+    <text x="585" y="90" font-family="'DM Mono',monospace" font-size="9" fill="#7a6a52" text-anchor="middle">black licorice</text>
+    <text x="585" y="128" font-size="30" text-anchor="middle">🧀</text>
+  </svg>
+</div>
+
+<p><strong>Fishy and briny foods</strong> top every list, punished for their smell, their saltiness, and their habit of tasting exactly like you fell into the sea. <strong>Organ meats</strong> combine metallic flavors, dense textures, and what researchers delicately call "childhood dinner trauma." <strong>Bitter vegetables</strong> are hated by those genetically predisposed to detect certain bitter compounds more intensely — yes, this is a real thing, and it's why some people are completely unbothered by Brussels sprouts while others act like they've been asked to eat a pine cone. And <strong>fermented and funky foods</strong> — the blue cheeses, the capers, the olives — split opinion straight down the middle. People who love them experience a rich complexity; people who hate them experience someone accidentally left the food out too long.</p>
+
+<div class="interview-block">
+  <div class="interview-label">Man on the Street — Outside Whole Foods, Boston</div>
+  <div class="interview-person">Marcus, 33, finance professional</div>
+  <div class="interview-quote">"Look, I eat well. I know blue cheese is 'sophisticated.' But when I open it in the office fridge, three colleagues have filed HR complaints. That's not sophistication. That's a hazmat situation."</div>
+</div>
+
+<h2><span class="section-label">§ 5 — Honorary Mention</span>The Rhubarb Situation</h2>
+
+<p>Rhubarb — a stringy, aggressively tart stalk that botanically speaking is a vegetable but culturally insists on being served as pie — does not quite crack the top-ten hated foods in national surveys. This is less because people like it, and more because most people have simply chosen not to think about it.</p>
+
+<p>It has, however, all the hallmarks of a deeply suspicious food: it is fibrous, it requires industrial quantities of sugar to be edible, and the leaves are actually <em>poisonous</em>, which seems like relevant information that rhubarb should have led with.</p>
+
+<div class="interview-block">
+  <div class="interview-label">Man on the Street — A Farmers Market, Vermont</div>
+  <div class="interview-person">Janet, 58, librarian</div>
+  <div class="interview-quote">"I don't dislike rhubarb, exactly. I just think of it as nature's way of saying 'you really needed that sugar, not me.' The plant is just a delivery vehicle for sugar. It's honest about it. I respect that."</div>
+</div>
+
+<h2><span class="section-label">§ 6 — Conclusions</span>What This All Means for Humanity</h2>
+
+<p>After extensive field research, several man-on-the-street interviews, and one regrettable anchovy tasting session in the office, we can report the following findings:</p>
+
+<p><strong>First:</strong> Liver is objectively, statistically, the single most <em>hated</em> food in America — not just the most disliked, but the most actively loathed, with 40% of Americans saying they hate it with specific, personal intensity. It has earned this distinction through decades of unwavering commitment to metallic flavor and traumatic school-night dinners.</p>
+
+<p><strong>Second:</strong> Anchovies are the most widely <em>disliked</em> food, meaning more people have an opinion about them — almost certainly because someone keeps putting them on the pizza.</p>
+
+<p><strong>Third:</strong> The categories of hated food have remained remarkably consistent across surveys and across decades. We as a species have apparently always recoiled from things that smell strongly of the sea, have been exposed to controlled rot, or once constituted the inside of an animal. This is, some would argue, wisdom.</p>
+
+<p>And finally: if you are someone who genuinely loves liver, chitterlings, and anchovies on your oyster-topped blue cheese pizza — first, we respect you. Second, please do not tell us. We're still recovering from the research phase.</p>
+
+<div class="pull-quote">"There are no bad foods. Just foods that most people will not eat for any amount of money."</div>
+
+</div><!-- /article-body -->
+
+<div class="footnote">
+  <strong>Sources:</strong> YouGov U.S. Survey, 2025 (n=2,239 U.S. adult citizens); Instacart/Harris Poll Survey, 2023. Barf Factor™ ratings are proprietary editorial assessments and should not be used to make dietary decisions. All street interview subjects are composites representing genuine documented opinions. The editors confirm that no anchovies were consumed willingly during the production of this article.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's Behind Door No. 47 — The Strangest Finds in Abandoned Storage Units</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root {
+  --paper: #f5f0e8;
+  --newsprint: #e8e0ce;
+  --ink: #12100e;
+  --red: #c0240c;
+  --gold: #c8900a;
+  --blue: #1a3a6e;
+  --muted: #6a5f4a;
+  --border: #c8b898;
+  --card: #fdfaf3;
+  --green: #1e5c2e;
+  --purple: #4a1a6e;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  text-align: center;
+  padding: 2.5rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(22px,4vw,38px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(44px, 9.5vw, 102px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--red);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 620px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ── BODY ── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 230px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--red);
+}
+
+/* ── SECTION HEADINGS ── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0 0.3rem;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ── PULL QUOTE ── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 27px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--red); }
+
+/* ── FIND CARDS ── */
+.find-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--red);
+  padding: 1.1rem 1.3rem 1rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+.find-card.gold-left { border-left-color: var(--gold); }
+.find-card.green-left { border-left-color: var(--green); }
+.find-card.purple-left { border-left-color: var(--purple); }
+.find-card.blue-left { border-left-color: var(--blue); }
+
+.fc-icon {
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.fc-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+.fc-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.fc-body {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+.fc-verdict {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  border-top: 0.5px solid var(--border);
+  margin-top: 0.7rem;
+  padding-top: 0.5rem;
+  font-style: italic;
+}
+
+/* ── SIDEBAR ── */
+.sidebar-box {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1.2rem 1.1rem 1.1rem;
+  margin-bottom: 1.6rem;
+}
+.sidebar-box h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.07em;
+  color: var(--gold);
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.1;
+}
+.sidebar-box p {
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #e0d8c8;
+  margin-bottom: 0.8rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
+.sidebar-stat .big-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 60px;
+  line-height: 1;
+  color: var(--red);
+  display: block;
+}
+.sidebar-stat .big-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-top: 0.3rem;
+  line-height: 1.4;
+}
+
+.sidebar-quote {
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  padding: 0.9rem 0.3rem;
+  margin-bottom: 1.4rem;
+}
+.sidebar-quote p {
+  font-size: 14.5px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+.sidebar-quote .attr {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-style: normal;
+  display: block;
+}
+
+/* ── ODDITY SCALE ── */
+.oddity-scale {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.4rem;
+}
+.oddity-scale h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+.scale-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.55rem;
+}
+.scale-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  width: 70px;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+.scale-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--newsprint);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.scale-fill {
+  height: 100%;
+  background: var(--red);
+  border-radius: 1px;
+}
+.scale-fill.gold { background: var(--gold); }
+.scale-fill.green { background: var(--green); }
+.scale-fill.blue { background: var(--blue); }
+.scale-fill.purple { background: var(--purple); }
+.scale-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  color: var(--ink);
+  width: 16px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── TIER TABLE ── */
+.tier-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  margin: 1.5rem 0 2rem;
+}
+.tier-table th {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 2px solid var(--ink);
+}
+.tier-table td {
+  padding: 0.55rem 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  font-weight: 300;
+  vertical-align: top;
+}
+.tier-table tr:last-child td { border-bottom: none; }
+.tier-table .tier-badge {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  display: inline-block;
+}
+.tier-badge.cinematic { background: var(--gold); color: #fff; }
+.tier-badge.horrifying { background: var(--red); color: #fff; }
+.tier-badge.chaotic { background: var(--blue); color: #fff; }
+.tier-badge.poignant { background: var(--green); color: #fff; }
+
+/* ── ORNAMENTS ── */
+.ornament {
+  text-align: center;
+  font-size: 20px;
+  color: var(--border);
+  margin: 2.5rem 0;
+  letter-spacing: 0.6em;
+}
+.rule-double {
+  border: none;
+  border-top: 3px double var(--ink);
+  margin: 2.5rem 0;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1.2rem;
+  margin-top: 3rem;
+  line-height: 1.9;
+}
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* ── BREAKOUT BOX ── */
+.breakout {
+  background: var(--newsprint);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.3rem 1.5rem;
+  margin: 2.5rem 0;
+}
+.breakout h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.6rem;
+  color: var(--ink);
+}
+.breakout p {
+  font-size: 15px;
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════ MASTHEAD ══════════════ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span>The Peculiar Gazette</span>
+    <span class="pub-name">Gazette</span>
+    <span>Vol. XII · No. 7 · Miscellany &amp; Mayhem</span>
+  </div>
+  <p class="kicker">Storage Wars · Abandoned Units · Believe It or Not</p>
+  <h1>What's Behind<br><em>Door No. 47</em></h1>
+  <p class="deck">A field guide to the strangest, most inexplicable, and occasionally illegal things ever found in abandoned storage units — with the caveat that this is a genre saturated in tall tales, and we are not here to ruin the magic.</p>
+  <div class="byline-row">By Staff · The Peculiar Gazette · Special Investigation Into Other People's Abandoned Stuff</div>
+</div>
+
+<!-- ══════════════ BODY ══════════════ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">Somewhere in America right now, a stranger is standing in front of a locked storage unit they just bought at auction for $75, a flashlight in one hand, a creeping sense of either dread or euphoria in the other. They don't know what's inside. Nobody does. The previous tenant stopped paying rent, the facility sent notices, nobody answered, and now here we are: this person, that padlock, and whatever is waiting in the dark.</p>
+
+    <p>This is the essential promise of the storage unit auction — the industrial-park lottery, the corrugated-steel mystery box. And occasionally, just occasionally, the mystery box contains something that would stop a reasonable person cold. A submarine car. Forty-two snakes. A teddy bear full of cash. A person, or at least the remains of one.</p>
+
+    <p>What follows is a catalogue of the finest, strangest, most jaw-dropping finds ever reported from abandoned storage units. Credibility varies. Documentation varies more. The entertainment value, however, is consistent throughout.</p>
+
+    <div class="pull">
+      THE INDUSTRIAL-PARK LOTTERY:<br>
+      <span>You PAY $75. You GET a submarine.</span><br>
+      (Occasionally.)
+    </div>
+
+    <!-- SECTION 1: THE BOND CAR -->
+    <h2><span class="cat">Most Cinematic Find · 1989</span>The Lotus That Could Breathe Underwater</h2>
+
+    <p>There is a hierarchy of storage unit finds, and at its apex sits a single object: the white Lotus Esprit submarine car from the 1977 James Bond film <em>The Spy Who Loved Me.</em> A Long Island couple reportedly paid about $100 for an unclaimed unit in 1989 and found it inside, apparently not knowing what they had. They used it as a storage shed for years — which is, if you think about it, a perfect use for a submarine car.</p>
+
+    <p>In 2013, the car went to auction and sold for just under $1 million. The buyer was Elon Musk. He had reportedly wanted it since childhood. This is the most documentable, most cinematic, most perfectly structured story in the entire genre: $100 in, $997,000 out, and a submarine in the middle. It happened once. It will never happen again. But it did happen, and that is enough.</p>
+
+    <div class="find-card gold-left">
+      <div class="fc-icon">🚗💧</div>
+      <div class="fc-title">The James Bond Lotus Esprit</div>
+      <span class="fc-tag">Long Island, NY · ~1989 · Verified via auction records</span>
+      <p class="fc-body">A fully functional submarine car — modified for the film to actually submerge — sat in a rented storage unit for years before its owner realized what they had. It was used, in the interim, as extra storage space. The car was sealed. The car was fine. The car sold for $997,000. The $100 purchase price still stands as the greatest return on investment in storage auction history.</p>
+      <div class="fc-verdict">Verdict: The one that started it all. The standard by which all other finds are judged and found slightly wanting.</div>
+    </div>
+
+    <!-- SECTION 2: REMAINS -->
+    <h2><span class="cat">Most Disturbing Category · Ongoing</span>The Human Remains Section (Somebody Has to Write It)</h2>
+
+    <p>Let us dispense with this one directly. Human remains have been found in storage units. This is documented, recurring, and deeply unsettling. Urns of cremated ashes appear with some regularity — sometimes one, sometimes several, sometimes what appears to be an entire family's collected dead, packed in boxes and left behind when the rent stopped. Whether this reflects grief, neglect, financial crisis, or some unknowable combination of the three is not for us to say.</p>
+
+    <p>In 2022, a woman who won a storage unit at online auction reported finding not only cremated remains but a human fetus among the contents. This is the kind of sentence that stops a reader cold, and properly so. There is no whimsy available here. We note it, we acknowledge it, and we move on — because the alternative is sitting with it, and that seems like more than any of us signed up for today.</p>
+
+    <div class="find-card">
+      <div class="fc-icon">⚱️</div>
+      <div class="fc-title">Urns. Many Urns.</div>
+      <span class="fc-tag">Various Locations · Various Years · Recurring</span>
+      <p class="fc-body">The storage unit as accidental mausoleum. The reasons people leave their loved ones' ashes in rented units — and then stop paying the rent — are presumably varied and private. The units, once opened, offer no explanation. Just the urns, and the silence, and the question you can't quite bring yourself to ask.</p>
+      <div class="fc-verdict">Verdict: The strangest category, and the only one with no punchline. Move along.</div>
+    </div>
+
+    <!-- SECTION 3: ALIVE ANIMALS -->
+    <h2><span class="cat">Live Animals · California (Naturally)</span>Things That Were Alive and Should Not Have Been There</h2>
+
+    <p>One of the more reliably reported subcategories of strange storage finds involves animals — specifically, animals that had no business living in a 10-by-10 climate-controlled box on the edge of a parking lot, and yet were doing so anyway.</p>
+
+    <p>A California storage unit was reportedly found to contain a live alligator, connected to a broader situation involving drugs and firearms that had, by that point, become significantly less interesting than the alligator. The alligator was, by all accounts, fine. It had opinions about being found.</p>
+
+    <div class="find-card blue-left">
+      <div class="fc-icon">🐊</div>
+      <div class="fc-title">One Live Alligator (California)</div>
+      <span class="fc-tag">California · Year Disputed · Reported Broadly</span>
+      <p class="fc-body">The alligator was allegedly connected to a drugs-and-firearms situation, which is either the most on-brand or most off-brand detail imaginable depending on your frame of reference. Authorities reportedly discovered it alongside the other contraband. The alligator reportedly did not understand why this was a problem.</p>
+      <div class="fc-verdict">Verdict: "America has outdone itself again" is a legitimate response here.</div>
+    </div>
+
+    <div class="find-card blue-left">
+      <div class="fc-icon">🐍🐍🐍</div>
+      <div class="fc-title">42 Ball Pythons (Also California)</div>
+      <span class="fc-tag">California · Reported · Multiple Sources</span>
+      <p class="fc-body">Forty-two ball pythons, kept in a storage unit, presumably by someone who had run out of room at home or had never had a home and had always intended for a storage unit to serve as a reptile warehouse. Ball pythons are not dangerous. Forty-two of them in a 10-by-10 storage unit is a different kind of problem entirely — one that is logistical, ethical, and deeply hard to explain to the facility manager.</p>
+      <div class="fc-verdict">Verdict: If you like snakes, "forgotten reptile warehouse" is still not the storage-auction dream.</div>
+    </div>
+
+    <div class="breakout">
+      <h3>The California Problem</h3>
+      <p>It should be noted that a disproportionate number of live-animal storage unit stories originate in California. This may reflect population density, reporting patterns, the state's outsized role in the national storage unit market, or something deeper and more philosophical about the California condition. We have no data. We have a pattern. We present it without comment.</p>
+    </div>
+
+    <!-- SECTION 4: WEAPONS + EXPLOSIVES -->
+    <h2><span class="cat">Please Call Authorities · Various</span>Things That Explode, Or Could</h2>
+
+    <p>Somewhere between "legally ambiguous" and "evacuate the building," there is a category of storage unit finds that consists of weapons, ordnance, and explosive devices of unclear vintage and stability. Buyers have reported finding grenades. Antique military hardware. Firearms in various states of legality. Stacks of ammunition. Items for which the correct response is, according to every emergency management professional who has ever been interviewed about this: put it down, back away, and call the police.</p>
+
+    <p>The incorrect response — the one that is tempting, the one that people occasionally attempt — is to assess its auction value. This is inadvisable. The grenade does not care about your investment horizon.</p>
+
+    <div class="find-card">
+      <div class="fc-icon">💣</div>
+      <div class="fc-title">Live Ordnance, Grenades, Antique Weapons</div>
+      <span class="fc-tag">Various States · Recurrent · Police Involved</span>
+      <p class="fc-body">The number of storage units that have yielded genuinely dangerous military hardware is nonzero and possibly higher than most people would find comfortable to contemplate. The items range from antique but operable weapons to grenades whose status as "live" or "inert" is a question best answered by a bomb disposal technician and not by the person holding them in a parking lot.</p>
+      <div class="fc-verdict">Verdict: Back away slowly. Call someone with a robot arm and a blast suit. This is not negotiable.</div>
+    </div>
+
+    <!-- SECTION 5: CASH -->
+    <h2><span class="cat">Financial Irregularity · Various</span>The Bear Full of Money</h2>
+
+    <p>In the taxonomy of storage unit legends, the teddy bear full of cash holds a special place — it is the find that contains within it the purest version of the dream. You pay $10 for a storage unit. Inside is a teddy bear. Inside the teddy bear: $300,000 in cash. The story is less clinically documented than the Bond car, but it endures because it is the exact story people want to be true.</p>
+
+    <p>Cash has also been found in less whimsical containers — bags, suitcases, safes, and in one case a functional ATM machine that had been stolen and stored, presumably while someone figured out what to do next. They apparently never figured it out.</p>
+
+    <div class="find-card green-left">
+      <div class="fc-icon">🧸💵</div>
+      <div class="fc-title">A Teddy Bear Containing $300,000</div>
+      <span class="fc-tag">Exact Location Disputed · Story Widely Circulated · Documentation Thin</span>
+      <p class="fc-body">A $10 storage unit purchase. A stuffed animal. Approximately $300,000 in cash inside the stuffed animal. The story lacks the evidentiary trail of the Bond car. The story does not care. The story does not need your documentary standards. The story needs only one thing: to be exactly the kind of thing that could happen, which it is. That is enough.</p>
+      <div class="fc-verdict">Verdict: Possibly true. Certainly perfect. We're going with it.</div>
+    </div>
+
+    <div class="pull">
+      THE CORRECT RESPONSE<br>
+      <span>TO A STOLEN ATM:</span><br>
+      Is not "I wonder what it's worth."
+    </div>
+
+    <!-- SECTION 6: CELEBRITY -->
+    <h2><span class="cat">Famous People's Stuff · Documented</span>The Burt Reynolds Files</h2>
+
+    <p>Celebrity memorabilia has a way of dispersing after death — through estate sales, through gifting, through donation, and through the particular entropy that sets in when a famous person's possessions outlast their owner's organizational capacity. Burt Reynolds, who died in 2018, left behind a collection large enough that items have been turning up at auction ever since: screen-worn costumes, signed photographs, personal effects, trophies, props from his films, clothing, and objects that raise the question of what, exactly, counts as memorabilia when you're Burt Reynolds and your whole life was a kind of performance.</p>
+
+    <p>The storage unit connection is a common vector for this kind of dispersal. Somebody stored something, somebody forgot it, somebody found it, and now it is on eBay. This is the circle of celebrity-adjacent life.</p>
+
+    <div class="find-card purple-left">
+      <div class="fc-icon">🎬⭐</div>
+      <div class="fc-title">Celebrity Memorabilia Hoards</div>
+      <span class="fc-tag">Burt Reynolds · Various Others · Post-Mortem Dispersal</span>
+      <p class="fc-body">Screen-worn clothing. Signed awards. Props. Personal objects. The famous person's life, itemized and boxed, slowly becoming someone else's auction find. Burt Reynolds memorabilia has appeared through multiple channels over the years. The storage unit is not always the vector, but it is a known one — and there is something melancholy and strange about the idea of a star's legacy sitting in a corrugated metal box, waiting for someone to come and put a price on it.</p>
+      <div class="fc-verdict">Verdict: Less bizarre than reptiles. Stranger in the "why was this left behind?" sense.</div>
+    </div>
+
+    <!-- SECTION 7: DESIGNER GOODS -->
+    <h2><span class="cat">Retail Therapy Gone Wrong · Portland, OR</span>$410 In, $70,000 Out</h2>
+
+    <p>A Portland reseller reportedly paid $410 for a storage unit and found inside: hundreds of pairs of high-end shoes, fur coats, and designer clothing estimated to be worth approximately $70,000. This is, by any measure, an excellent outcome. It is also deeply mysterious — designer clothing worth $70,000 does not walk into a storage unit by itself, and someone presumably noticed it was missing. The unit provided no answers. The unit never does.</p>
+
+    <div class="find-card gold-left">
+      <div class="fc-icon">👠🧥</div>
+      <div class="fc-title">$70,000 in Designer Clothing</div>
+      <span class="fc-tag">Portland, OR · Reseller Discovery · Reported</span>
+      <p class="fc-body">Fur coats. Hundreds of pairs of designer shoes. An estimated $70,000 in high-end fashion, stored in a unit that cost $410 to acquire at auction. The backstory is unknown. The provenance is unclear. The shoes fit, or they don't. This is not a question the buyer stopped to ask for long.</p>
+      <div class="fc-verdict">Verdict: Second-best return on investment in storage unit history. The Bond car is still number one.</div>
+    </div>
+
+    <!-- SECTION 8: WEIRD COLLECTIONS -->
+    <h2><span class="cat">Inexplicable Obsessions · Various</span>10,000 Rubber Ducks and Other Very Specific Commitments</h2>
+
+    <p>Perhaps the most fundamentally human category of storage unit find is not the valuables, not the contraband, not even the remains — it is the collection. The evidence of a single person's very specific, very sustained fixation with one type of object, pursued across years or decades, and then abandoned to a storage unit that eventually went unclaimed.</p>
+
+    <p>Thousands of rubber ducks. Every issue of a single magazine for sixty years. A full-scale working pipe organ. A room-sized model train layout, assembled inside the unit. A knight's complete suit of armor. Dozens of antique prosthetic limbs. Hundreds of clown suits. A life-size replica of the Batmobile. Thousands and thousands of golf balls. The teddy bear collection that stretched the entire length of one wall and wrapped around two others. These are not inventories. These are portraits of people.</p>
+
+    <div class="find-card">
+      <div class="fc-icon">🦆🦆🦆</div>
+      <div class="fc-title">The Rubber Duck Hoard (≈10,000)</div>
+      <span class="fc-tag">Location Various · Collectors Abound</span>
+      <p class="fc-body">Someone bought 10,000 rubber ducks. Presumably over time. Presumably with intention. And then rented a storage unit, filled it with 10,000 rubber ducks, and at some point stopped paying the rent — leaving behind an army of small yellow birds in permanent, silent formation. The next buyer opened the unit and confronted an unimaginable quantity of cheerful waterfowl staring back at them. We hope they kept at least one.</p>
+      <div class="fc-verdict">Verdict: Chaotic. Harmless. A portrait of a person we would have liked to meet.</div>
+    </div>
+
+    <div class="find-card">
+      <div class="fc-icon">🎠🚂</div>
+      <div class="fc-title">A Room-Sized Model Train Layout</div>
+      <span class="fc-tag">Multiple Reports · Assembled In Situ</span>
+      <p class="fc-body">Not a boxed model train set. Not the components of a model train layout. A complete, assembled, room-sized model train landscape, built inside the unit — hills, tunnels, stations, tiny figures, the whole enterprise — and then left there when the rent stopped. Whether the trains still ran is not recorded. We would like to believe they did.</p>
+      <div class="fc-verdict">Verdict: Someone built a world and then left it. This is either the saddest or most romantic find in the list. Possibly both.</div>
+    </div>
+
+    <div class="find-card">
+      <div class="fc-icon">🤡🤡</div>
+      <div class="fc-title">Hundreds of Clown Suits</div>
+      <span class="fc-tag">Various Reports · Context Absent</span>
+      <p class="fc-body">Hundreds of them. Full clown suits, presumably with accessories. The question of whether this represented a professional clown's career inventory, a themed collector's life's work, or something else entirely is unanswerable. The suits are just there, in the dark, waiting. They are not doing anything. They are simply clown suits. In their quantity, they become something else.</p>
+      <div class="fc-verdict">Verdict: Terrifying without any effort. Context would not help here. Context might make it worse.</div>
+    </div>
+
+    <!-- CONCLUSION -->
+    <h2><span class="cat">Final Thoughts</span>What It All Means, and Why It Doesn't</h2>
+
+    <p>The storage unit is, when you think about it, a peculiar institution. It is rented space for the overflow of life — the things that don't fit in the house, the things we're not ready to throw away, the things we'll deal with later. "Later" does not always come. Rent stops being paid. Lives move on, fall apart, or simply end. And someone else's overflow becomes, eventually, a mystery box in a parking lot auction.</p>
+
+    <p>What distinguishes the strangest finds is not their weirdness in isolation — a submarine car is just a car, a rubber duck is just a duck — but the inexplicable gap between the object and the context. Why was the Lotus Esprit in a Long Island storage unit? Why were there 42 ball pythons? Why did someone build a model train world and then walk away from it? The storage unit answers none of these questions. It just holds the evidence that the questions exist.</p>
+
+    <p>The most cinematic find is the Bond car. The most horrifying category is human remains. The most quintessentially human is the collection — the evidence of a single obsession, pursued faithfully across years, and then released into the mystery-box economy of a storage auction at $75 a pop.</p>
+
+    <p>Someone is standing in front of a locked unit right now. They don't know what's inside. It's probably furniture. It might be nothing at all. But somewhere in the vast corrugated-metal archipelago of American self-storage, a door is about to open onto something no one was expecting. That door is always about to open. This is the promise. This is the whole thing.</p>
+
+    <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <div class="footer">
+      <p>Documentation varies. The Bond car is verified. The teddy bear is a great story. The alligator reportedly had no comment.</p>
+      <p>The 42 ball pythons were rehomed. The clown suits have not been accounted for. This is fine. Everything is fine.</p>
+      <p>If you find something that requires a bomb disposal team: do not evaluate it for resale value first. This has been stated before. It will be stated again.</p>
+      <p>© The Peculiar Gazette · All storage units investigated to the extent investigation was survivable · No rubber ducks were harmed</p>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-stat">
+      <span class="big-num">$100</span>
+      <span class="big-label">Purchase price of the unit containing a $997,000 James Bond submarine car</span>
+    </div>
+
+    <div class="sidebar-stat">
+      <span class="big-num">42</span>
+      <span class="big-label">Ball pythons found in a single California storage unit. All reportedly alive.</span>
+    </div>
+
+    <div class="sidebar-quote">
+      <p>"The storage unit is the American mystery box. You pay your entry fee, you lift the door, and you find out what kind of story you're in."</p>
+      <span class="attr">— The Peculiar Gazette · Staff Observation</span>
+    </div>
+
+    <div class="oddity-scale">
+      <h4>The Oddity Scale™</h4>
+      <div class="scale-row">
+        <span class="scale-label">Bond Car</span>
+        <div class="scale-bar"><div class="scale-fill gold" style="width:100%"></div></div>
+        <span class="scale-val">10</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">Alligator</span>
+        <div class="scale-bar"><div class="scale-fill blue" style="width:88%"></div></div>
+        <span class="scale-val">9</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">42 Pythons</span>
+        <div class="scale-bar"><div class="scale-fill blue" style="width:82%"></div></div>
+        <span class="scale-val">8</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">Cash Bear</span>
+        <div class="scale-bar"><div class="scale-fill gold" style="width:88%"></div></div>
+        <span class="scale-val">9</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">10K Ducks</span>
+        <div class="scale-bar"><div class="scale-fill green" style="width:75%"></div></div>
+        <span class="scale-val">7</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">Clown Suits</span>
+        <div class="scale-bar"><div class="scale-fill" style="width:80%"></div></div>
+        <span class="scale-val">8</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">Live Grenade</span>
+        <div class="scale-bar"><div class="scale-fill" style="width:95%"></div></div>
+        <span class="scale-val">10</span>
+      </div>
+      <div class="scale-row">
+        <span class="scale-label">Train Layout</span>
+        <div class="scale-bar"><div class="scale-fill green" style="width:70%"></div></div>
+        <span class="scale-val">7</span>
+      </div>
+    </div>
+
+    <div class="sidebar-box">
+      <h3>The Credibility Spectrum</h3>
+      <p><strong style="color:var(--gold)">Fully Documented</strong> — The James Bond Lotus Esprit. Auction records exist. Elon Musk confirmed the purchase. The car is real. The $100 is real.</p>
+      <p><strong style="color:#e0d8c8">Well Reported</strong> — The 42 ball pythons, the designer clothing haul, various weapons finds. Police or auction records support most details.</p>
+      <p><strong style="color:#aaa">Plausible Legend</strong> — The teddy bear full of $300,000. Widely cited. Thinly sourced. Structurally perfect. Believed.</p>
+      <p><strong style="color:#777">Eternal Mystery</strong> — The 10,000 rubber ducks, the clown suits, the model train world. Reported. Unverified. Too good not to include.</p>
+    </div>
+
+    <div class="sidebar-stat">
+      <span class="big-num">$410</span>
+      <span class="big-label">Cost of the Portland unit containing ~$70,000 in designer clothing and shoes</span>
+    </div>
+
+    <div class="sidebar-quote">
+      <p>"The most fundamentally human category is not the valuables or the contraband. It is the collection."</p>
+      <span class="attr">— From the main article, just above</span>
+    </div>
+
+    <!-- TAXONOMY TABLE -->
+    <table class="tier-table" style="font-size:12px;">
+      <thead>
+        <tr>
+          <th>Find</th>
+          <th>Tier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bond Lotus</td>
+          <td><span class="tier-badge cinematic">Cinematic</span></td>
+        </tr>
+        <tr>
+          <td>Human remains</td>
+          <td><span class="tier-badge horrifying">Horrifying</span></td>
+        </tr>
+        <tr>
+          <td>Live alligator</td>
+          <td><span class="tier-badge chaotic">Chaotic</span></td>
+        </tr>
+        <tr>
+          <td>42 pythons</td>
+          <td><span class="tier-badge chaotic">Chaotic</span></td>
+        </tr>
+        <tr>
+          <td>Cash-stuffed bear</td>
+          <td><span class="tier-badge cinematic">Cinematic</span></td>
+        </tr>
+        <tr>
+          <td>10,000 ducks</td>
+          <td><span class="tier-badge poignant">Poignant</span></td>
+        </tr>
+        <tr>
+          <td>Clown suits (×hundreds)</td>
+          <td><span class="tier-badge horrifying">Horrifying</span></td>
+        </tr>
+        <tr>
+          <td>Live grenade</td>
+          <td><span class="tier-badge chaotic">Chaotic</span></td>
+        </tr>
+        <tr>
+          <td>Model train world</td>
+          <td><span class="tier-badge poignant">Poignant</span></td>
+        </tr>
+        <tr>
+          <td>Designer clothing</td>
+          <td><span class="tier-badge cinematic">Cinematic</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article -->
+
+</body>
+</html>

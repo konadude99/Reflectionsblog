@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 1st Annual Crypt & Quill Poetry Invitational</title>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Abril+Fatface&family=Lora:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #f5f0e8;
+    --marrow: #e8dfc8;
+    --grave: #1a1a2e;
+    --moss: #2d4a3e;
+    --rust: #c0392b;
+    --gold: #d4a017;
+    --moonlight: #b8c9e8;
+    --dark-text: #1a1a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--grave);
+    color: var(--bone);
+    font-family: 'Lora', Georgia, serif;
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, rgba(45, 74, 62, 0.3) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(26, 26, 46, 0.8) 0%, transparent 50%),
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px);
+  }
+
+  /* STARS */
+  .stars {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0;
+    background-image: 
+      radial-gradient(1px 1px at 10% 15%, white 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 5%, white 0%, transparent 100%),
+      radial-gradient(1px 1px at 40% 20%, white 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 8%, white 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 18%, white 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 3%, white 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 25%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 35%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 45%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 12%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 30% 30%, rgba(184,201,232,0.8) 0%, transparent 100%),
+      radial-gradient(2px 2px at 75% 10%, rgba(184,201,232,0.6) 0%, transparent 100%);
+  }
+
+  .content-wrapper {
+    position: relative; z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* HEADER */
+  .site-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+  }
+
+  .site-header::before {
+    content: '💀';
+    font-size: 4rem;
+    display: block;
+    animation: rattle 2s ease-in-out infinite;
+  }
+
+  @keyframes rattle {
+    0%, 100% { transform: rotate(-5deg); }
+    25% { transform: rotate(5deg) translateY(-4px); }
+    50% { transform: rotate(-3deg); }
+    75% { transform: rotate(4deg) translateY(-2px); }
+  }
+
+  .site-tag {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Creepster', cursive;
+    font-size: clamp(2.4rem, 7vw, 5rem);
+    line-height: 1.05;
+    color: var(--bone);
+    text-shadow: 0 0 40px rgba(212, 160, 23, 0.4), 3px 3px 0 rgba(0,0,0,0.5);
+    letter-spacing: 0.02em;
+  }
+
+  .subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--moonlight);
+    font-size: 1.1rem;
+    margin-top: 12px;
+    opacity: 0.85;
+  }
+
+  .byline {
+    margin-top: 20px;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--marrow);
+    opacity: 0.6;
+  }
+
+  /* DIVIDER */
+  .bone-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 40px 0;
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 1.2rem;
+  }
+  .bone-divider::before, .bone-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  /* INTRO SECTION */
+  .intro-box {
+    background: rgba(245, 240, 232, 0.06);
+    border: 1px solid rgba(212, 160, 23, 0.25);
+    border-radius: 4px;
+    padding: 32px 36px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .intro-box::before {
+    content: '"';
+    position: absolute;
+    top: -20px; left: 16px;
+    font-size: 10rem;
+    color: var(--gold);
+    opacity: 0.07;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .intro-box p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--marrow);
+  }
+  .intro-box p + p { margin-top: 16px; }
+
+  /* JUDGES PANEL */
+  .judges {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 36px 0;
+  }
+  .judge-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,201,232,0.15);
+    border-radius: 4px;
+    padding: 20px 16px;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .judge-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(212, 160, 23, 0.4);
+  }
+  .judge-emoji { font-size: 2.2rem; display: block; margin-bottom: 8px; }
+  .judge-name {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .judge-desc {
+    font-size: 0.8rem;
+    color: var(--moonlight);
+    opacity: 0.75;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* POEM CARDS */
+  .poem-entry {
+    margin-bottom: 64px;
+    position: relative;
+  }
+
+  .entry-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .medal {
+    font-size: 2.8rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 8px rgba(212,160,23,0.5));
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .entry-meta { flex: 1; }
+  .entry-number {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .entry-title {
+    font-family: 'Abril Fatface', serif;
+    font-size: 1.7rem;
+    color: var(--bone);
+    line-height: 1.2;
+    margin: 4px 0 6px;
+  }
+  .entry-author {
+    font-style: italic;
+    color: var(--moonlight);
+    font-size: 0.88rem;
+    opacity: 0.8;
+  }
+
+  .poem-card {
+    background: rgba(245, 240, 232, 0.05);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    border-radius: 0 4px 4px 0;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--marrow);
+    white-space: pre-line;
+    position: relative;
+  }
+  .poem-card.shakespeare {
+    border-left-color: var(--moonlight);
+    background: rgba(184,201,232,0.06);
+  }
+  .poem-card.irish {
+    border-left-color: #4caf50;
+    background: rgba(76,175,80,0.05);
+  }
+  .poem-card.presley {
+    border-left-color: var(--rust);
+    background: rgba(192,57,43,0.06);
+  }
+
+  /* COMMENTARY BOX */
+  .commentary {
+    margin-top: 20px;
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(212,160,23,0.2);
+    border-radius: 4px;
+  }
+  .commentary-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 10px;
+  }
+  .commentary p {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--moonlight);
+    font-style: italic;
+  }
+
+  /* SCORE CARD */
+  .score-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .score-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--bone);
+    opacity: 0.5;
+    width: 130px;
+    flex-shrink: 0;
+  }
+  .score-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .score-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--gold), #f0c040);
+    transition: width 1s ease;
+  }
+  .score-num {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.75rem;
+    color: var(--gold);
+    width: 30px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* CEMETERY VISUAL */
+  .cemetery-scene {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 3rem;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .graveyard-art {
+    font-size: 0.85rem;
+    font-family: monospace;
+    color: var(--moss);
+    text-align: center;
+    opacity: 0.4;
+    line-height: 1.3;
+    margin: 20px 0;
+  }
+
+  /* WINNER BANNER */
+  .winner-banner {
+    text-align: center;
+    padding: 48px 24px;
+    margin: 48px 0;
+    background: radial-gradient(ellipse at center, rgba(212,160,23,0.12) 0%, transparent 70%);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .winner-banner::before, .winner-banner::after {
+    content: '🦴';
+    position: absolute;
+    font-size: 5rem;
+    opacity: 0.06;
+  }
+  .winner-banner::before { top: -10px; left: -10px; transform: rotate(-20deg); }
+  .winner-banner::after { bottom: -10px; right: -10px; transform: rotate(20deg); }
+  .winner-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .winner-name {
+    font-family: 'Creepster', cursive;
+    font-size: 2.5rem;
+    color: var(--bone);
+    text-shadow: 0 0 20px rgba(212,160,23,0.5);
+  }
+  .winner-note {
+    font-style: italic;
+    color: var(--moonlight);
+    font-size: 0.9rem;
+    margin-top: 12px;
+    opacity: 0.8;
+  }
+
+  /* FOOTER */
+  .site-footer {
+    text-align: center;
+    padding: 40px 0;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--bone);
+    opacity: 0.3;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* SECTION HEADING */
+  .section-heading {
+    font-family: 'Creepster', cursive;
+    font-size: 1.8rem;
+    color: var(--bone);
+    margin-bottom: 24px;
+    text-align: center;
+    opacity: 0.85;
+  }
+
+  /* HIGHLIGHT CALLOUT */
+  .fun-fact {
+    background: rgba(192,57,43,0.1);
+    border: 1px solid rgba(192,57,43,0.3);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 24px 0;
+    font-size: 0.88rem;
+    color: var(--marrow);
+    line-height: 1.7;
+  }
+  .fun-fact strong {
+    color: var(--rust);
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 600px) {
+    .judges { grid-template-columns: 1fr; }
+    .entry-header { flex-direction: column; gap: 10px; }
+    .medal { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div class="content-wrapper">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-tag">Established Midnight, Halloween Eve · Est. 2024</div>
+    <h1>The 1st Annual<br>Crypt &amp; Quill<br>Poetry Invitational</h1>
+    <p class="subtitle">Where the dead find their voice — and really won't shut up about it</p>
+    <p class="byline">Reported live from Plot 7, Section C · Our correspondent was slightly decomposed</p>
+  </header>
+
+  <div class="bone-divider">💀 ✦ 💀 ✦ 💀</div>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>It began, as all great literary movements do, with a noise complaint. Specifically, a rattling. Specifically, from underground. The graveyard committee of Whispering Pines Memorial Park had long tolerated the restless dead — a bump here, a phosphorescent glow there — but when six separate tombs began producing what can only be described as <em>competitive creative output</em>, something had to be done.</p>
+
+    <p>Thus was born the <strong>1st Annual Crypt &amp; Quill Poetry Invitational</strong>, the world's first (and let's be honest, only) literary competition in which 100% of contestants are skeletons, 0% of contestants have functioning lungs with which to perform spoken word, and the prize is a solid-gold femur trophy that the winner cannot feel, grip, or display in any meaningful way. Truly, art for art's sake.</p>
+
+    <p>Below, our esteemed panel of decomposed critics weighs in on each entry. Grab a shovel, pour yourself something murky, and enjoy the finest poetry to emerge from beneath the earth this century. Possibly any century.</p>
+  </div>
+
+  <!-- JUDGES PANEL -->
+  <h2 class="section-heading">⚰️ Meet the Judges ⚰️</h2>
+  <div class="judges">
+    <div class="judge-card">
+      <span class="judge-emoji">💀</span>
+      <div class="judge-name">Lord Reginald Bonsworth III</div>
+      <div class="judge-desc">Former Poet Laureate of the Eastern Crypt. Has been dead for 340 years and acts like it.</div>
+    </div>
+    <div class="judge-card">
+      <span class="judge-emoji">🪦</span>
+      <div class="judge-name">Madame Ossifère</div>
+      <div class="judge-desc">Expert in post-mortem versification. Runs a very popular subterranean poetry journal called <em>The Hollow Quarterly.</em></div>
+    </div>
+    <div class="judge-card">
+      <span class="judge-emoji">🦴</span>
+      <div class="judge-name">Professor Xyloph</div>
+      <div class="judge-desc">Self-taught. Uses his own ribcage as a percussion instrument during dramatic readings. Controversial, but effective.</div>
+    </div>
+  </div>
+
+  <div class="bone-divider">🦴 ✦ 🦴</div>
+
+  <!-- POEM 1 -->
+  <div class="poem-entry">
+    <div class="entry-header">
+      <div class="medal" style="animation-delay:0s">🏆</div>
+      <div class="entry-meta">
+        <div class="entry-number">Entry No. 001</div>
+        <div class="entry-title">The Midnight Itch</div>
+        <div class="entry-author">by Anonymous — though everyone suspects Gerald from Plot 12</div>
+      </div>
+    </div>
+
+    <div class="poem-card">I've rattled every rib tonight, this coffin's far too tight,
+The worms are dull conversationalists, the dirt lacks wit or bite.
+I tried to nap for centuries — what a tedious mistake —
+There's only so much "rest in peace" a skeleton can take.
+
+So I tap my femur thoughtfully and hum a hollow tune,
+And dream of dancing wildly in the chilly midnight moon.
+If someone hears me knocking, do be kind — just set me free!
+I've done my time in silence. Now these bones would like to flee.</div>
+
+    <div class="commentary">
+      <div class="commentary-label">🎙️ Judge's Commentary</div>
+      <p>"Magnificent. The phrase 'worms are dull conversationalists' is the most accurate thing written in any century. We gave this poem top marks, then immediately questioned whether worms heard us and began composing a rebuttal." — Lord Bonsworth</p>
+    </div>
+
+    <div class="score-row">
+      <div class="score-label">Bone-chilling Imagery</div>
+      <div class="score-bar"><div class="score-fill" style="width:95%"></div></div>
+      <div class="score-num">9.5</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Existential Dread</div>
+      <div class="score-bar"><div class="score-fill" style="width:90%"></div></div>
+      <div class="score-num">9.0</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Relatable Suffering</div>
+      <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
+      <div class="score-num">10</div>
+    </div>
+  </div>
+
+  <!-- POEM 2 -->
+  <div class="poem-entry">
+    <div class="entry-header">
+      <div class="medal" style="animation-delay:0.3s">🏅</div>
+      <div class="entry-meta">
+        <div class="entry-number">Entry No. 002</div>
+        <div class="entry-title">Calcium Bliss</div>
+        <div class="entry-author">by Countess Vera Deadwick — "a romance in two stanzas"</div>
+      </div>
+    </div>
+
+    <div class="poem-card">I miss the pink bloom of your cheek's velvet glow,
+Back when we had pulses and muscles in tow.
+Now you are ivory, polished and spare,
+With a permanent grin and a lack of real hair.
+
+But why should I pine for a lip or a blush,
+In this graveyard silence, this hollowed-out hush?
+Come lean in your skull for a calcium bliss,
+And click-clack your jaw in a tooth-to-tooth kiss.</div>
+
+    <div class="commentary">
+      <div class="commentary-label">🎙️ Judge's Commentary</div>
+      <p>"The most genuinely romantic poem submitted. 'Click-clack your jaw in a tooth-to-tooth kiss' made Madame Ossifère clutch what remains of her chest. Three of the judges wept. The fourth doesn't have tear ducts anymore, which he felt was relevant to mention." — Panel Consensus</p>
+    </div>
+
+    <div class="fun-fact">
+      <strong>🚨 Controversy Alert</strong>
+      Several audience members protested that "a permanent grin and a lack of real hair" was a targeted attack on Judge Bonsworth personally. Bonsworth denied this, then grinned permanently, which didn't help his case.
+    </div>
+
+    <div class="score-row">
+      <div class="score-label">Romantic Yearning</div>
+      <div class="score-bar"><div class="score-fill" style="width:98%"></div></div>
+      <div class="score-num">9.8</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Dental Accuracy</div>
+      <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
+      <div class="score-num">10</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Will Make You Call Your Ex</div>
+      <div class="score-bar"><div class="score-fill" style="width:70%"></div></div>
+      <div class="score-num">7.0</div>
+    </div>
+  </div>
+
+  <!-- POEM 3 -->
+  <div class="poem-entry">
+    <div class="entry-header">
+      <div class="medal" style="animation-delay:0.6s">🥉</div>
+      <div class="entry-meta">
+        <div class="entry-number">Entry No. 003</div>
+        <div class="entry-title">The Restless Rattle</div>
+        <div class="entry-author">by B. Knees — "an insomniac's complaint"</div>
+      </div>
+    </div>
+
+    <div class="poem-card">I've rattled every rib tonight and clicked every toe,
+With nowhere to dance and nowhere to go.
+The worms are all snoring, the beetles are deep,
+But my knobby old kneecaps refuse any sleep.
+
+I'll pop up the lid with a creak and a clink,
+To find a nice puddle for a cool, muddy drink.
+I'm tired of the silence, the dark, and the pine,
+I've got a wild itch in my calcium spine!</div>
+
+    <div class="commentary">
+      <div class="commentary-label">🎙️ Judge's Commentary</div>
+      <p>"A classic. Raw. Unfiltered. Desperately in need of hydration. 'A wild itch in my calcium spine' was immediately adopted as the official motto of the competition and is being embroidered on zero tote bags because none of the judges have hands that work properly." — Professor Xyloph</p>
+    </div>
+
+    <div class="score-row">
+      <div class="score-label">Vertebral Authenticity</div>
+      <div class="score-bar"><div class="score-fill" style="width:88%"></div></div>
+      <div class="score-num">8.8</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Beetle Representation</div>
+      <div class="score-bar"><div class="score-fill" style="width:75%"></div></div>
+      <div class="score-num">7.5</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Hydration Awareness</div>
+      <div class="score-bar"><div class="score-fill" style="width:20%"></div></div>
+      <div class="score-num">2.0</div>
+    </div>
+  </div>
+
+  <div class="cemetery-scene">🌑 🪦 🌿 🪦 🌑</div>
+
+  <!-- POEM 4 -->
+  <div class="poem-entry">
+    <div class="entry-header">
+      <div class="medal" style="animation-delay:0.9s">👑</div>
+      <div class="entry-meta">
+        <div class="entry-number">Entry No. 004 — SPECIAL CATEGORY: Literary Homage</div>
+        <div class="entry-title">Shall I Compare Thee to a Marble Tomb?</div>
+        <div class="entry-author">by The Shakespearian Skeleton — "submitted in iambic pentameter as God intended"</div>
+      </div>
+    </div>
+
+    <div class="poem-card shakespeare">Shall I compare thee to a marble tomb?
+Thou art more polished and more pearly white.
+Rough winds do shake the lilies where they bloom,
+And burial lease hath all too short a night.
+
+Sometime too hot the sun of living glows,
+And often is his golden skin-tone shed;
+And every fair from fleshy fairness goes,
+By time or nature's hand, among the dead.
+
+But thy eternal structure shall not fade,
+Nor lose possession of that toothy grin;
+Nor shall Death brag thou wand'rest in his shade,
+When in eternal dust thou art tucked in.
+
+So long as rats can crawl or sockets see,
+So long lives this, and this gives life to thee.</div>
+
+    <div class="commentary">
+      <div class="commentary-label">🎙️ Judge's Commentary</div>
+      <p>"Shakespeare's estate has been notified. They are deceased and therefore unavailable for comment. We award full marks for audacity, perfect marks for scansion, and a special bonus mark for 'tucked in,' which is somehow both tender and deeply unsettling. The line 'So long as rats can crawl or sockets see' will haunt us. It will haunt all of us." — Unanimous Panel</p>
+    </div>
+
+    <div class="fun-fact">
+      <strong>📜 Fun Fact</strong>
+      This skeleton reportedly rehearsed for 200 years before submitting. Judges noted the polish. The skeleton noted it had literally nothing else to do.
+    </div>
+
+    <div class="score-row">
+      <div class="score-label">Bard-Level Audacity</div>
+      <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
+      <div class="score-num">10</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Iambic Pentameter</div>
+      <div class="score-bar"><div class="score-fill" style="width:97%"></div></div>
+      <div class="score-num">9.7</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Copyright Concerns</div>
+      <div class="score-bar"><div class="score-fill" style="width:85%"></div></div>
+      <div class="score-num">8.5</div>
+    </div>
+  </div>
+
+  <!-- POEM 5 -->
+  <div class="poem-entry">
+    <div class="entry-header">
+      <div class="medal" style="animation-delay:1.2s">🍀</div>
+      <div class="entry-meta">
+        <div class="entry-number">Entry No. 005 — SPECIAL CATEGORY: Limerick</div>
+        <div class="entry-title">A Thirsty Old Skeleton, Mick</div>
+        <div class="entry-author">by An Irish Skeleton — "submitted from a pub in County Cork, somehow"</div>
+      </div>
+    </div>
+
+    <div class="poem-card irish">A thirsty old skeleton, Mick,
+Downed a glass of the Jameson quick.
+     But it splashed through his ribs,
+     Like the spills from small bibs,
+'Tis a bone-dry and terrible trick!</div>
+
+    <div class="commentary">
+      <div class="commentary-label">🎙️ Judge's Commentary</div>
+      <p>"Five lines. Perfect. An entire tragedy in limerick form. The physics of this poem were independently verified: whiskey does, in fact, pass straight through a ribcage. This was tested. We lost a very good Jameson. Professor Xyloph is still upset about it." — Lord Bonsworth, wiping nothing from his eye socket</p>
+    </div>
+
+    <div class="fun-fact">
+      <strong>🍺 Editor's Note</strong>
+      Mick attempted to claim the physical trophy at the end of the evening. He then watched it fall through his fingers. He has requested the prize be converted to Jameson. The committee is considering it.
+    </div>
+
+    <div class="score-row">
+      <div class="score-label">Comedic Economy</div>
+      <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
+      <div class="score-num">10</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Structural Integrity</div>
+      <div class="score-bar"><div class="score-fill" style="width:30%"></div></div>
+      <div class="score-num">3.0</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Irish Authenticity</div>
+      <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
+      <div class="score-num">10</div>
+    </div>
+  </div>
+
+  <!-- POEM 6 -->
+  <div class="poem-entry">
+    <div class="entry-header">
+      <div class="medal" style="animation-delay:1.5s">🎸</div>
+      <div class="entry-meta">
+        <div class="entry-number">Entry No. 006 — SPECIAL CATEGORY: Rock & Roll</div>
+        <div class="entry-title">Ain't Nothin' But a Bone-Bag</div>
+        <div class="entry-author">by A Presley Poet — submitted with full hip gyration, which was audible</div>
+      </div>
+    </div>
+
+    <div class="poem-card presley">You ain't nothin' but a bone-bag,
+Rattlin' all the time!
+You ain't nothin' but a bone-bag,
+Rattlin' all the time!
+Well, you ain't never caught a beetle,
+And you ain't no friend of mine.
+
+When they said you was high-class,
+Well, that was just a lie.
+Yeah, they said you was high-class,
+Well, that was just a lie.
+'Cause you ain't got no muscle,
+And you ain't got no eye!</div>
+
+    <div class="commentary">
+      <div class="commentary-label">🎙️ Judge's Commentary</div>
+      <p>"We were not prepared. No one was prepared. The contestant entered the judging crypt doing what can only be described as a pelvis rotation with 30% fewer parts than the original choreography required. 'You ain't never caught a beetle' is a devastating diss in skeleton society, equivalent to calling someone uncultured. Minus two points for making Madame Ossifère spit out her grave water laughing. Plus twelve points for the same reason." — Unanimous Standing Ovation (none of them could stand, but the spirit was there)</p>
+    </div>
+
+    <div class="score-row">
+      <div class="score-label">Rock & Roll Energy</div>
+      <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
+      <div class="score-num">10</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Beetle-Catching Record</div>
+      <div class="score-bar"><div class="score-fill" style="width:0%"></div></div>
+      <div class="score-num">0.0</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">General Chaos</div>
+      <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
+      <div class="score-num">10</div>
+    </div>
+  </div>
+
+  <!-- POEM 7 -->
+  <div class="poem-entry">
+    <div class="entry-header">
+      <div class="medal" style="animation-delay:1.8s">🔍</div>
+      <div class="entry-meta">
+        <div class="entry-number">Entry No. 007</div>
+        <div class="entry-title">I've Misplaced My Head</div>
+        <div class="entry-author">by Unknown — literally, the author could not be located</div>
+      </div>
+    </div>
+
+    <div class="poem-card">I'm feeling quite drafty above my top vert,
+And stumbling blindly is starting to hurt.
+I've patted the moss and I've felt every stone,
+But I can't find my roundest and brainiest bone.
+
+I bumped into marble and tripped on a root,
+Quite literally "losing my mind" to boot.
+Oh, where did I leave it? The crypt or the shed?
+It's so hard to think when you've misplaced your head!</div>
+
+    <div class="commentary">
+      <div class="commentary-label">🎙️ Judge's Commentary</div>
+      <p>"Our investigators searched the crypt, the shed, three adjacent plots, and what turned out to be a badger den. The head was eventually located behind the stone angel on Row 4. The angel refused to comment. This poem wins the special award for Most Autobiographical Entry, as the author was, for the entire judging period, living proof of its central thesis." — Security Report, filed simultaneously with judging notes</p>
+    </div>
+
+    <div class="fun-fact">
+      <strong>🧠 Medical Note</strong>
+      Despite lacking a brain, the author demonstrated remarkable problem-solving ability by eventually reattaching their skull and immediately forgetting where they'd put it again. The judges felt this showed genuine artistic commitment to the theme.
+    </div>
+
+    <div class="score-row">
+      <div class="score-label">Literal Accuracy</div>
+      <div class="score-bar"><div class="score-fill" style="width:100%"></div></div>
+      <div class="score-num">10</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Navigational Skill</div>
+      <div class="score-bar"><div class="score-fill" style="width:5%"></div></div>
+      <div class="score-num">0.5</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">Pun Density</div>
+      <div class="score-bar"><div class="score-fill" style="width:92%"></div></div>
+      <div class="score-num">9.2</div>
+    </div>
+  </div>
+
+  <div class="bone-divider">💀 ✦ 🏆 ✦ 💀</div>
+
+  <!-- WINNER -->
+  <div class="winner-banner">
+    <div class="winner-label">🦴 Grand Champion · Crypt &amp; Quill 2024 🦴</div>
+    <div class="winner-name">"The Midnight Itch"</div>
+    <div class="winner-note">by the skeleton from Plot 12 who we're 90% sure is Gerald</div>
+    <br>
+    <p style="font-style:italic; color:var(--moonlight); font-size:0.88rem; opacity:0.8; max-width:500px; margin:0 auto; line-height:1.7;">
+      The panel unanimously agreed that "there's only so much 'rest in peace' a skeleton can take" is the defining sentence of the undead literary renaissance. The gold femur trophy has been presented. Gerald immediately dropped it into his own grave. It is now considered a permanent installation.
+    </p>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="intro-box" style="margin-top:48px">
+    <p>The 2nd Annual Crypt &amp; Quill Poetry Invitational is scheduled for next Halloween, assuming everyone can find their various parts. Entry forms are available at the groundskeeper's hut. The groundskeeper does not know about the competition and has asked that everyone stop leaving parchment under his door at 3am.</p>
+
+    <p>If you are a skeleton reading this: we see you. We hear you rattling. Your suffering has been documented, your poetry has been judged, and your longing for a cool, muddy drink has been recognized by an international panel of your equally decomposed peers. Keep writing. Keep rattling. The worms may be sleeping, but literature never sleeps.</p>
+
+    <p style="text-align:center; margin-top:20px; opacity:0.6; font-style:italic; font-size:0.9rem;">...unless it's been buried for 300 years, in which case, fair enough.</p>
+  </div>
+
+  <div class="graveyard-art">
+    🌿🪦🌿   🌿🪦🌿   🌿🪦🌿
+     R.I.P.   R.I.P.   R.I.P.
+    (briefly)  (mostly) (trying)
+  </div>
+
+  <footer class="site-footer">
+    <p>The Crypt &amp; Quill Review · Whispering Pines Memorial Park · Est. Midnight, Halloween Eve</p>
+    <p style="margin-top:8px">No skeletons were harmed in the making of this blog. Several were mildly inconvenienced.</p>
+    <p style="margin-top:8px">💀 · 🦴 · 💀 · 🦴 · 💀</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

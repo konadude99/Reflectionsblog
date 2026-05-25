@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE DURANGO DIGGER — Road Construction Conspiracy Special</title>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Oswald:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --asphalt:   #1a1a1a;
+  --stripe:    #f5c400;
+  --cone:      #e8520a;
+  --paper:     #f0ead8;
+  --newsprint: #e2d9c0;
+  --ink:       #1c1a14;
+  --red:       #bf1f1f;
+  --faded:     #7a7060;
+  --alert:     #ff3d00;
+  --bg-dark:   #111108;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── TEXTURE OVERLAY ─── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.012) 2px, rgba(0,0,0,0.012) 4px),
+    radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: auto, 5px 5px;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ─── CONSTRUCTION BANNER ─── */
+.caution-banner {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--stripe) 0px, var(--stripe) 20px,
+    var(--asphalt) 20px, var(--asphalt) 40px
+  );
+  height: 22px;
+}
+
+/* ─── MASTHEAD ─── */
+.masthead {
+  background: var(--asphalt);
+  color: var(--stripe);
+  text-align: center;
+  padding: 2rem 1.5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.masthead::before {
+  content: '⚠ THEY DON\'T WANT YOU TO READ THIS ⚠';
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--cone);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  animation: blink-alert 2.5s step-end infinite;
+}
+@keyframes blink-alert {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.pub-name {
+  font-family: 'Boogaloo', cursive;
+  font-size: clamp(46px, 11vw, 110px);
+  color: var(--stripe);
+  letter-spacing: 0.04em;
+  line-height: 0.9;
+  text-shadow: 4px 4px 0 var(--cone), 8px 8px 0 rgba(0,0,0,0.4);
+}
+
+.pub-tagline {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cone);
+  margin-top: 0.6rem;
+}
+
+.pub-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: #888;
+  text-transform: uppercase;
+  margin-top: 1.2rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #333;
+}
+
+/* ─── HERO SECTION ─── */
+.hero {
+  background: var(--bg-dark);
+  padding: 3rem 1.5rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(245,196,0,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 80% 100%, rgba(232,82,10,0.1) 0%, transparent 60%);
+}
+
+.road-art {
+  font-size: 80px;
+  margin-bottom: 1rem;
+  animation: shake-road 4s ease-in-out infinite;
+  display: block;
+}
+@keyframes shake-road {
+  0%,100%  { transform: translateX(0) rotate(0deg); }
+  20%      { transform: translateX(-3px) rotate(-0.5deg); }
+  40%      { transform: translateX(3px) rotate(0.5deg); }
+  60%      { transform: translateX(-2px) rotate(-0.3deg); }
+  80%      { transform: translateX(2px) rotate(0.3deg); }
+}
+
+.hero h1 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 7vw, 72px);
+  line-height: 1.0;
+  color: var(--stripe);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--cone);
+  display: block;
+}
+
+.hero-deck {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(14px, 2.2vw, 18px);
+  color: #bbb;
+  max-width: 640px;
+  margin: 1.2rem auto 0;
+  line-height: 1.65;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-byline {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #666;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── CONTENT WRAPPER ─── */
+.content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 5rem;
+}
+
+/* ─── ALERT BOX ─── */
+.breaking-alert {
+  background: var(--red);
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.65rem 1rem;
+  margin: 2rem 0;
+}
+
+/* ─── INTRO PROSE ─── */
+.intro {
+  font-size: clamp(15px, 2vw, 18px);
+  line-height: 1.85;
+  padding: 2rem 0 1rem;
+  border-bottom: 2px solid var(--ink);
+}
+.intro p + p { margin-top: 1em; }
+.intro .drop-cap::first-letter {
+  font-family: 'Oswald', sans-serif;
+  font-size: 4.5em;
+  font-weight: 700;
+  float: left;
+  line-height: 0.75;
+  margin: 0.08em 0.1em 0 0;
+  color: var(--cone);
+}
+
+/* ─── CONSPIRACY SECTIONS ─── */
+.conspiracy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-top: 2rem;
+}
+
+.theory {
+  padding: 2.2rem 0;
+  border-bottom: 1px solid #c8b898;
+  position: relative;
+}
+
+.theory-number {
+  font-family: 'Oswald', sans-serif;
+  font-size: 90px;
+  font-weight: 700;
+  color: rgba(245,196,0,0.12);
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.theory-tag {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cone);
+  margin-bottom: 0.5rem;
+}
+
+.theory h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 4vw, 34px);
+  line-height: 1.1;
+  color: var(--asphalt);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  max-width: 540px;
+}
+
+.theory h2 .hl {
+  color: var(--red);
+}
+
+.theory p {
+  font-size: 15.5px;
+  line-height: 1.75;
+  max-width: 640px;
+}
+
+.theory p + p { margin-top: 0.85em; }
+
+.evidence-box {
+  background: var(--asphalt);
+  color: var(--stripe);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11.5px;
+  line-height: 1.6;
+  padding: 1rem 1.2rem;
+  margin-top: 1.2rem;
+  max-width: 560px;
+  border-left: 4px solid var(--cone);
+}
+.evidence-box strong {
+  display: block;
+  color: var(--cone);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  font-size: 9.5px;
+}
+
+.eyewitness {
+  background: #faf5e4;
+  border: 1px dashed #bca86a;
+  padding: 1rem 1.2rem;
+  margin-top: 1.2rem;
+  max-width: 560px;
+  font-style: italic;
+  font-size: 14.5px;
+  color: #5a4e38;
+}
+.eyewitness cite {
+  display: block;
+  font-style: normal;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9a8a6a;
+  margin-top: 0.6rem;
+}
+
+/* ─── CLASSIFIED SIDEBAR ─── */
+.classified-bar {
+  background: var(--asphalt);
+  color: #eee;
+  padding: 2rem 1.5rem;
+  margin: 3rem 0;
+  border: 2px solid var(--stripe);
+  position: relative;
+}
+.classified-bar::before {
+  content: '█ CLASSIFIED █';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--red);
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  padding: 3px 16px;
+  white-space: nowrap;
+}
+.classified-bar h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  color: var(--stripe);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+.classified-bar ul {
+  list-style: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  line-height: 1.9;
+  color: #bbb;
+}
+.classified-bar ul li::before {
+  content: '▸ ';
+  color: var(--cone);
+}
+
+/* ─── THE EVIDENCE CHART ─── */
+.evidence-chart {
+  background: var(--newsprint);
+  border: 2px solid var(--ink);
+  padding: 1.8rem;
+  margin: 3rem 0;
+}
+.evidence-chart h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+.stat-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  width: 220px;
+  flex-shrink: 0;
+  color: var(--faded);
+  text-transform: uppercase;
+}
+.stat-bar-wrap {
+  flex: 1;
+  height: 18px;
+  background: rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+}
+.stat-bar {
+  height: 100%;
+  background: var(--cone);
+  animation: grow-bar 1.6s ease-out forwards;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+@keyframes grow-bar {
+  to { transform: scaleX(1); }
+}
+.stat-bar.b2 { animation-delay: 0.2s; background: var(--red); }
+.stat-bar.b3 { animation-delay: 0.4s; background: var(--asphalt); }
+.stat-bar.b4 { animation-delay: 0.6s; background: #6a4; }
+.stat-bar.b5 { animation-delay: 0.8s; background: #6af; }
+.stat-val {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ─── FINALE ─── */
+.finale {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: var(--asphalt);
+  color: var(--stripe);
+  margin-top: 3rem;
+}
+.finale p {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: 18px;
+  max-width: 560px;
+  margin: 0 auto;
+  color: #ddd;
+  line-height: 1.8;
+}
+.finale strong {
+  color: var(--cone);
+}
+.finale .stamp {
+  font-family: 'Oswald', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--red);
+  opacity: 0.75;
+  border: 5px solid var(--red);
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  transform: rotate(-8deg);
+  margin-top: 2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── CONE DIVIDER ─── */
+.cone-divider {
+  text-align: center;
+  font-size: 26px;
+  letter-spacing: 0.5em;
+  margin: 1rem 0;
+  color: var(--cone);
+}
+
+</style>
+</head>
+<body>
+
+<div class="caution-banner"></div>
+
+<header class="masthead">
+  <div class="pub-name">THE DURANGO DIGGER</div>
+  <div class="pub-tagline">Southwest Colorado's Premier Source of Unverified Paranoia Since 1987</div>
+  <div class="pub-meta">
+    <span>VOL. XXXVIII · ISSUE 47</span>
+    <span>DURANGO, COLORADO</span>
+    <span>FREE (OR IS IT?)</span>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="road-art">🚧</span>
+  <h1>
+    THE ROAD WORK
+    <em>Is Never Finished.</em>
+    Ever.
+  </h1>
+  <p class="hero-deck">
+    Durango's streets are torn up again. And again. And again. Who is behind it?
+    What are they <em>really</em> building under Main Avenue? One intrepid reporter
+    drove slowly through nine orange cones to find out.
+  </p>
+  <p class="hero-byline">BY STAFF REPORTER J.T. GRAVEL · INVESTIGATIVE INFRASTRUCTURE DESK</p>
+</section>
+
+<div class="content">
+
+  <div class="breaking-alert">⚠ &nbsp; BREAKING: Third La Plata County intersection "under repair" for seventh consecutive year &nbsp; ⚠</div>
+
+  <div class="intro">
+    <p class="drop-cap">It begins, as all great conspiracies do, with an orange cone. Then another. Then twelve more, materializing overnight on a perfectly good stretch of asphalt. By morning, a crew of workers in reflective vests is standing around a hole, gazing into it with the contemplative silence of monks peering into the void. By afternoon, the hole is filled. By the following Tuesday, it is re-opened. The cycle repeats until the end of time, or until the grant money runs out, whichever comes first.</p>
+    <p>Every Durangan knows the feeling: you plan a route, confident in your civic geography, only to discover that Third Avenue has been reduced to a single anxious lane guarded by a lone flagman reading <em>Lonesome Dove</em>. College Drive is a gravel apocalypse. The corner of 32nd and Main is a permanent archaeological excavation. And yet — and this is the critical question this publication has long refused to stop asking — <strong>nobody has a coherent explanation for why.</strong></p>
+    <p>Until now. Thanks to anonymous sources, leaked municipal memos, one very suspicious Google Earth screenshot, and roughly fourteen dollars' worth of coffee consumed at Durango Joe's, <em>The Digger</em> has identified the true forces behind Durango's eternal road construction. Read on, if you dare. (They're probably watching.)</p>
+  </div>
+
+  <div class="cone-divider">🚧 🔶 🚧 🔶 🚧</div>
+
+  <!-- THEORY 1 -->
+  <div class="conspiracy-grid">
+
+    <div class="theory">
+      <div class="theory-number">1</div>
+      <div class="theory-tag">🏺 Conspiracy Theory No. 1 · Archaeological</div>
+      <h2>The City is Secretly Excavating a <span class="hl">Massive Ancestral Puebloan City</span> Under Main Avenue</h2>
+      <p>Durango sits at the edge of one of the most archaeologically rich regions on Earth. Mesa Verde is forty-five minutes away. The Anasazi are everywhere — in the cliffs, in the canyons, in the pottery sherds turning up in suburban backyards. So here's the question nobody at City Hall will answer: <em>what exactly is under Third Avenue?</em></p>
+      <p>According to our source (a retired surveyor who requests we identify him only as "Carl"), ground-penetrating radar scans ordered in 2018 revealed an enormous subterranean complex beneath the downtown core — ceremonial kivas, storage rooms, and what appears to be a multi-story cliff dwelling built entirely underground. The "road work" is, in fact, a covert excavation conducted by federal archaeologists in reflective vests. The orange barrels are not traffic control devices. They are perimeter security.</p>
+      <div class="evidence-box">
+        <strong>Supporting Evidence</strong>
+        — Workers observed carrying items into trucks with no visible pavement equipment<br>
+        — Crews sometimes disappear entirely into holes for 45+ minutes<br>
+        — The road is always "done" before anyone is allowed to look closely<br>
+        — One local claims she saw a worker emerge from a trench holding what looked like "an extremely old pot"
+      </div>
+      <div class="eyewitness">
+        "I drove by at 6 a.m. and there were no workers. Then at 6:05 there were nine workers. Then at 6:10 there were two workers and a hole the size of a Toyota. Where do they come from? Where do they go? Nobody asks these questions."
+        <cite>— Anonymous resident, 32nd Street corridor</cite>
+      </div>
+    </div>
+
+    <!-- THEORY 2 -->
+    <div class="theory">
+      <div class="theory-number">2</div>
+      <div class="theory-tag">🛸 Conspiracy Theory No. 2 · Extraterrestrial</div>
+      <h2>The Orange Cones Are <span class="hl">Alien Communication Arrays</span> Disguised as Traffic Control</h2>
+      <p>Let's do some math. Durango has approximately 19,000 residents. At peak road-work season, there are an estimated 400-plus orange cones deployed across the city. That is one cone for every 47.5 people — a ratio that, according to standard traffic engineering norms, makes absolutely no sense whatsoever.</p>
+      <p>Unless, of course, the cones aren't really cones. Our source in the telecommunications sector (she asked to be identified only as "someone who has seen things") points out that each cone's distinctive shape — a truncated octahedron — is the ideal geometry for broadcasting a focused signal upward at a 35-degree angle, which, given Durango's latitude and elevation, points directly toward a region of space where astronomers have recently flagged unexplained radio emissions. The cones are arranged in shifting geometric patterns that no sane traffic engineer would sanction, and they move overnight. The road work is cover. The cones are antennas. Someone is talking to something, and it isn't the city engineer.</p>
+      <div class="evidence-box">
+        <strong>The Signal Pattern Analysis</strong>
+        — Cone clusters on Main Ave form a near-perfect Fibonacci spiral when mapped<br>
+        — Cone repositioning consistently occurs between 2–4 a.m.<br>
+        — Three residents report brief "hum" emanating from cone clusters on still nights<br>
+        — The City has no record of who orders the cones or who returns them
+      </div>
+    </div>
+
+    <!-- THEORY 3 -->
+    <div class="theory">
+      <div class="theory-number">3</div>
+      <div class="theory-tag">🏔 Conspiracy Theory No. 3 · Geothermal</div>
+      <h2>The Drilling Is Tapping a <span class="hl">Secret Volcano</span> Beneath Durango for Unlimited Free Energy</h2>
+      <p>What do we know about the geology beneath Durango? More than they want us to. The San Juan Mountains are of volcanic origin. The Jemez volcanic field sits to the southeast. Geothermal heat flow readings beneath La Plata County are, according to USGS data quietly published in a 2019 footnote, "anomalously elevated." Anomalously. Elevated.</p>
+      <p>Our source — a geology doctoral student at Fort Lewis College who is "technically still enrolled but also technically persona non grata in the earth sciences department" — believes that someone, almost certainly a consortium of tech billionaires with Colorado real estate holdings, identified a viable magma hotspot directly below the downtown street grid. The road work is not patching potholes. The road work is drilling access shafts for a geothermal energy network that, once complete, will sell electricity back to the grid at a seventeen-thousand-percent markup while Durango residents continue to navigate a single open lane on East Second Avenue until the sun burns out.</p>
+      <div class="eyewitness">
+        "Have you noticed it's always warm near the construction sites, even in February? I'm not saying it's a volcano. I'm saying: it's a volcano."
+        <cite>— Anonymous, Fort Lewis College (former geology student)</cite>
+      </div>
+    </div>
+
+    <!-- THEORY 4 -->
+    <div class="theory">
+      <div class="theory-number">4</div>
+      <div class="theory-tag">🏅 Conspiracy Theory No. 4 · Economic</div>
+      <h2>The Road Work is <span class="hl">Never Meant to Finish</span> — It's a Psychological Endurance Test for Tourism Research</h2>
+      <p>Consider the brilliant cruelty of the following scheme: you are a researcher studying the outer limits of human patience and civic tolerance. You need test subjects. You need a contained environment. You need conditions that are frustrating but not dangerous, omnipresent but not acknowledged, perpetual but always "almost done."</p>
+      <p>You need Durango's road construction program.</p>
+      <p>According to documents obtained (or possibly imagined; our legal team advises ambiguity) from a "behavioral economics research group with ties to three separate Colorado universities," the city's road construction is a long-running experiment to determine at what point residents give up complaining about infrastructure and simply accept suffering as the natural condition of civic life. The contractors are psychologists. The flagmen are data collectors. The signs reading "Expect Delays" are not warnings — they are the hypothesis.</p>
+      <div class="evidence-box">
+        <strong>Timeline of Non-Completion (Documented)</strong>
+        — College Drive reconstruction: ongoing since the Obama administration<br>
+        — 32nd Street repaving: completed twice; currently torn up again<br>
+        — The intersection at Camino del Rio: has been "under final review" for 26 months<br>
+        — Three projects simultaneously list each other as prerequisite
+      </div>
+    </div>
+
+    <!-- THEORY 5 -->
+    <div class="theory">
+      <div class="theory-number">5</div>
+      <div class="theory-tag">🚂 Conspiracy Theory No. 5 · Historical</div>
+      <h2>The Narrow-Gauge Mafia is <span class="hl">Expanding the D&SNG Underground</span> — All the Way to Silverton</h2>
+      <p>The Durango &amp; Silverton Narrow Gauge Railroad is beloved. It is a treasure. It is a National Historic Landmark. But here's what the tourist brochures won't tell you: there are factions within the railroad's management structure who believe the 45-mile surface route is insufficient. They want more track. They want underground track. They want a subterranean narrow-gauge empire stretching beneath the San Juan Mountains, impervious to weather, tourists on horseback, and the seasonal closure schedule.</p>
+      <p>Our source — a man who identified himself only as wearing "historically accurate 1882 coveralls" — claims the downtown excavations are the first phase of a tunnel network running northwest from the Durango station, with planned stops beneath Animas City, Trimble, and eventually emerging somewhere near Rockwood at track level for a triumphant underground-to-surface reveal that will "blow Disneyland's train right out of the water." The construction workers are all, in fact, retired railroad employees. The orange cones are repainted railroad signal markers.</p>
+      <div class="eyewitness">
+        "You can hear it if you put your ear to the manhole cover on the 900 block of Main. A faint... chuffing. Like a tiny locomotive. Far away. Going somewhere important."
+        <cite>— Anonymous, self-described "rail enthusiast and concerned citizen"</cite>
+      </div>
+    </div>
+
+    <!-- THEORY 6 -->
+    <div class="theory">
+      <div class="theory-number">6</div>
+      <div class="theory-tag">💊 Conspiracy Theory No. 6 · Pharmaceutical</div>
+      <h2>The New Road Surface Contains a <span class="hl">Mood-Stabilizing Agent</span> That Enters Vehicles Through the Tires</h2>
+      <p>This one came to us via an anonymous tip scrawled on a bar napkin left at the Bookcase &amp; Barley, and we feel obligated to report it in full.</p>
+      <p>The new asphalt formula approved for Durango's 2023-onward road resurfacing projects contains a proprietary additive — developed, our source alleges, by a pharmaceutical subsidiary of a major asphalt manufacturer headquartered in a state that shall remain nameless (Ohio) — that volatilizes under tire friction and is absorbed through automotive ventilation systems. The compound produces a mild sense of well-being, reduced road rage, and a diminished ability to remember how bad the commute was last Tuesday. This, our napkin source insists, explains why Durango residents remain so inexplicably good-natured despite navigating what is, by any objective measure, a complete infrastructure catastrophe.</p>
+      <div class="evidence-box">
+        <strong>Reported Side Effects</strong>
+        — Increased likelihood of saying "oh, it's not so bad" about road conditions<br>
+        — Forgetting to attend city council meetings about road construction<br>
+        — Mild euphoria when successfully merging through a construction zone<br>
+        — Inexplicable urge to buy coffee for the flagman
+      </div>
+    </div>
+
+    <!-- THEORY 7 -->
+    <div class="theory">
+      <div class="theory-number">7</div>
+      <div class="theory-tag">🦫 Conspiracy Theory No. 7 · Wildlife</div>
+      <h2>The Animas River Beavers Have Formed an <span class="hl">Underground Government</span> and Are Demanding Infrastructure Upgrades</h2>
+      <p>This theory is, admittedly, our most speculative. But we ask you to hear us out.</p>
+      <p>The Animas River beaver population has rebounded significantly in the past decade. Beavers are, as any wildlife biologist will tell you, the most sophisticated infrastructure engineers in the animal kingdom. They build dams. They alter watersheds. They understand hydrology at a level that embarrasses most city planners. What they have never had, until now, is political representation.</p>
+      <p>According to a source who works "near the river and prefers not to say more," a council of beaver elders began meeting in 2019 beneath the Animas River Trail underpass, drafting a comprehensive infrastructure manifesto that was somehow transmitted to the La Plata County Public Works department via means that remain unclear but possibly involve gnawed documents placed in the municipal mailbox. The road construction is Durango's attempt to comply with beaver-mandated drainage improvements, culvert upgrades, and riparian-zone buffer construction before the beaver council escalates to direct action. What direct action might look like is left to the imagination. Those are a lot of beavers.</p>
+      <div class="eyewitness">
+        "I saw what I saw. It was wearing a little hard hat. It looked at me with complete authority and went back underwater. I didn't report it because I didn't think anyone would believe me. Which, I note, is exactly what they want."
+        <cite>— Animas River Trail user (name withheld)</cite>
+      </div>
+    </div>
+
+  </div><!-- /conspiracy-grid -->
+
+  <!-- EVIDENCE CHART -->
+  <div class="evidence-chart">
+    <h3>🔬 The Digger's Official Credibility Index — Each Theory, Ranked</h3>
+    <div class="stat-row">
+      <div class="stat-label">Subterranean Pueblo City</div>
+      <div class="stat-bar-wrap"><div class="stat-bar" style="width:88%"></div></div>
+      <div class="stat-val">88%</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-label">Alien Cone Arrays</div>
+      <div class="stat-bar-wrap"><div class="stat-bar b2" style="width:76%"></div></div>
+      <div class="stat-val">76%</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-label">Secret Volcano Drilling</div>
+      <div class="stat-bar-wrap"><div class="stat-bar b3" style="width:91%"></div></div>
+      <div class="stat-val">91%</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-label">Psychological Endurance Test</div>
+      <div class="stat-bar-wrap"><div class="stat-bar b4" style="width:97%"></div></div>
+      <div class="stat-val">97%</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-label">Underground D&SNG Railroad</div>
+      <div class="stat-bar-wrap"><div class="stat-bar b5" style="width:82%"></div></div>
+      <div class="stat-val">82%</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-label">Mood-Stabilizing Asphalt</div>
+      <div class="stat-bar-wrap"><div class="stat-bar b2" style="width:79%"></div></div>
+      <div class="stat-val">79%</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-label">Beaver Underground Govt.</div>
+      <div class="stat-bar-wrap"><div class="stat-bar" style="width:100%"></div></div>
+      <div class="stat-val">100%</div>
+    </div>
+    <p style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--faded);margin-top:1rem;letter-spacing:0.1em;text-transform:uppercase;">* Credibility ratings determined solely by editorial staff with no methodology whatsoever.</p>
+  </div>
+
+  <!-- CLASSIFIED SIDEBAR -->
+  <div class="classified-bar">
+    <h3>What The City Doesn't Want You to Notice</h3>
+    <ul>
+      <li>The same stretch of road has been "under construction" longer than some marriages</li>
+      <li>No one has ever actually seen a pothole being filled — only pre-filled potholes being "inspected"</li>
+      <li>The flagmen rotate positions but no flagman ever leaves — they have simply always been there</li>
+      <li>Road work is mysteriously suspended whenever a city council member needs to drive somewhere</li>
+      <li>The number of orange cones increases by approximately 15% each year with no budgetary explanation</li>
+      <li>Durango's potholes reappear within 72 hours of repair, suggesting they are self-healing (or being re-dug)</li>
+      <li>Workers are observed eating lunch inside their trucks for precisely 47 minutes every day — not 45, not 60: 47</li>
+      <li>No one has mapped where the underground utility lines actually are; the crews are clearly looking for them in real time</li>
+    </ul>
+  </div>
+
+  <div class="finale">
+    <p>The truth about Durango's road construction may never be fully known. But one thing is certain: somewhere beneath College Drive, past the third cone on the left, behind a man reading a newspaper in a truck that has not moved in three business days — <strong>something is going on.</strong></p>
+    <p style="margin-top:1em">We will continue to investigate. Or we'll get stuck in traffic trying to get to the investigation. Honestly, at this point, both seem equally likely.</p>
+    <div class="stamp">ONGOING</div>
+  </div>
+
+</div><!-- /content -->
+
+<div class="caution-banner" style="margin-top:0;"></div>
+
+</body>
+</html>
