@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drive-In Theaters: America's Glorious Automotive Cinema Circus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night: #0b0c1a;
+      --deep: #12142a;
+      --screen-glow: #e8f4ff;
+      --gold: #f5c842;
+      --orange: #f07d3a;
+      --red: #e03a3a;
+      --teal: #3ac9b0;
+      --pink: #f03a88;
+      --cream: #fdf6e3;
+      --text: #e8e0d0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--night);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── STARFIELD ── */
+    .starfield {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+    }
+    @keyframes twinkle { from { opacity: .15; } to { opacity: .9; } }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem 6rem;
+      overflow: hidden;
+    }
+
+    /* Ground / landscape silhouette */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 160px;
+      background: var(--deep);
+      clip-path: polygon(0 100%, 0 55%, 4% 48%, 8% 55%, 12% 40%, 17% 55%, 22% 50%, 27% 60%, 30% 45%, 35% 58%, 40% 40%, 44% 52%, 48% 44%, 52% 52%, 56% 48%, 60% 55%, 65% 42%, 70% 55%, 75% 48%, 80% 58%, 84% 50%, 88% 55%, 92% 44%, 96% 52%, 100% 48%, 100% 100%);
+    }
+
+    /* Cars silhouette row */
+    .cars-row {
+      position: absolute;
+      bottom: 30px;
+      left: 0; right: 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      padding: 0 2rem;
+      z-index: 2;
+    }
+
+    .car-svg { width: 90px; opacity: 0.75; }
+    .car-svg:nth-child(even) { width: 70px; opacity: 0.5; }
+
+    /* Big screen graphic */
+    .big-screen {
+      position: relative;
+      width: min(700px, 90vw);
+      margin-bottom: 2.5rem;
+    }
+    .screen-frame {
+      background: #1a1d3a;
+      border: 6px solid #3a3d6a;
+      border-radius: 6px;
+      padding: 1rem;
+      box-shadow:
+        0 0 40px rgba(232,244,255,0.15),
+        0 0 100px rgba(232,244,255,0.05),
+        inset 0 0 30px rgba(100,120,200,0.1);
+    }
+    .screen-inner {
+      background: radial-gradient(ellipse at center, #1e2a5a 0%, #0b0e20 70%);
+      border-radius: 3px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .screen-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px
+      );
+    }
+    .screen-legs {
+      width: 6px;
+      height: 40px;
+      background: #3a3d6a;
+      margin: 0 auto;
+    }
+    .screen-base {
+      height: 8px;
+      width: 120px;
+      background: #3a3d6a;
+      margin: 0 auto;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .kicker {
+      font-family: 'Syne Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 40px rgba(245,200,66,0.4);
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(232,224,208,0.7);
+      font-style: italic;
+      animation: fadeUp 1s ease both;
+    }
+
+    .pole {
+      position: absolute;
+      bottom: 160px;
+      width: 3px;
+      background: #3a3d6a;
+    }
+    .speaker-box {
+      width: 22px;
+      height: 18px;
+      background: #3a3d6a;
+      border-radius: 2px;
+      position: absolute;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── CONTENT WRAPPER ── */
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem 6rem;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3.5rem 0 2rem;
+    }
+    .divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+    .divider-icon {
+      font-size: 1.5rem;
+      animation: spin 8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── SECTION HEADERS ── */
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
+    }
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--orange);
+      margin: 2rem 0 0.75rem;
+    }
+
+    p { margin-bottom: 1.25rem; }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      border-left: 4px solid var(--gold);
+      background: rgba(245,200,66,0.07);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 8px 8px 0;
+      margin: 2rem 0;
+      font-style: italic;
+      color: var(--cream);
+    }
+
+    .callout-teal {
+      border-color: var(--teal);
+      background: rgba(58,201,176,0.07);
+    }
+    .callout-pink {
+      border-color: var(--pink);
+      background: rgba(240,58,136,0.07);
+    }
+    .callout-red {
+      border-color: var(--red);
+      background: rgba(224,58,58,0.07);
+    }
+
+    /* ── FUN FACT CARDS ── */
+    .fun-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+    .fact-card {
+      background: var(--deep);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .fact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+    .fact-card::before {
+      content: attr(data-emoji);
+      position: absolute;
+      top: -0.5rem; right: 0.5rem;
+      font-size: 3rem;
+      opacity: 0.15;
+    }
+    .fact-card h4 {
+      font-family: 'Syne Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .fact-card p { margin: 0; font-size: 0.95rem; }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      position: relative;
+      margin: 2.5rem 0;
+      padding-left: 2.5rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.55rem;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--teal));
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .tl-dot {
+      position: absolute;
+      left: -2.15rem;
+      top: 0.3rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--night);
+      box-shadow: 0 0 10px rgba(245,200,66,0.5);
+    }
+    .tl-year {
+      font-family: 'Syne Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+    }
+    .tl-item p { margin: 0; font-size: 0.95rem; }
+
+    /* ── STAT HIGHLIGHT ── */
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .stat-box {
+      flex: 1;
+      min-width: 160px;
+      background: var(--deep);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--gold);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(232,224,208,0.6);
+      font-family: 'Syne Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── SURVIVAL TYPES ── */
+    .survival-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+    .survival-card {
+      background: var(--deep);
+      border-radius: 12px;
+      padding: 1.75rem 1.25rem;
+      border-top: 4px solid var(--gold);
+      transition: transform 0.2s;
+    }
+    .survival-card:nth-child(2) { border-color: var(--teal); }
+    .survival-card:nth-child(3) { border-color: var(--pink); }
+    .survival-card:hover { transform: translateY(-3px); }
+    .survival-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .survival-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .survival-card:nth-child(2) h4 { color: var(--teal); }
+    .survival-card:nth-child(3) h4 { color: var(--pink); }
+    .survival-card p { margin: 0; font-size: 0.9rem; color: rgba(232,224,208,0.75); }
+
+    /* ── RULES BOX ── */
+    .rules-box {
+      background: linear-gradient(135deg, #1a1030 0%, #0e1428 100%);
+      border: 1px solid rgba(240,58,136,0.3);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .rules-box h3 { color: var(--pink); margin-top: 0; }
+    .rules-list { list-style: none; }
+    .rules-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.95rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .rules-list li:last-child { border: none; }
+    .rules-list .bullet { color: var(--pink); flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: rgba(232,224,208,0.4);
+      font-size: 0.85rem;
+    }
+    footer em { color: var(--gold); font-style: normal; }
+
+    /* ── MARQUEE ── */
+    .marquee-wrapper {
+      overflow: hidden;
+      background: var(--gold);
+      padding: 0.5rem 0;
+      margin: 3rem 0;
+      transform: rotate(-1deg);
+      position: relative;
+      z-index: 1;
+    }
+    .marquee-track {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+    }
+    .marquee-track span {
+      color: var(--night);
+      font-family: 'Syne Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0 2rem;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── INLINE HIGHLIGHT ── */
+    mark {
+      background: rgba(245,200,66,0.2);
+      color: var(--gold);
+      padding: 0 0.2em;
+      border-radius: 2px;
+    }
+
+    em.big {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1em;
+      color: var(--cream);
+      font-style: italic;
+    }
+
+    a { color: var(--teal); text-decoration: none; border-bottom: 1px dashed var(--teal); }
+    a:hover { color: var(--gold); border-color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- ── STARS ── -->
+<div class="starfield" id="stars"></div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="big-screen">
+    <div class="screen-frame">
+      <div class="screen-inner">
+        <p class="kicker">Now Showing · Est. 1933</p>
+        <h1>Honk If You<br>Love Cinema</h1>
+        <p class="subtitle">A Completely Unauthorized Love Letter to America's Glorious<br>Automotive Cinema Circus</p>
+      </div>
+    </div>
+    <div class="screen-legs"></div>
+    <div class="screen-base"></div>
+  </div>
+
+  <!-- Speaker poles -->
+  <div style="position:absolute;bottom:158px;left:15%;width:3px;height:60px;background:#3a3d6a;"></div>
+  <div style="position:absolute;bottom:208px;left:15%;width:22px;height:18px;background:#3a3d6a;border-radius:2px;transform:translateX(-10px);"></div>
+
+  <div style="position:absolute;bottom:158px;right:15%;width:3px;height:60px;background:#3a3d6a;"></div>
+  <div style="position:absolute;bottom:208px;right:15%;width:22px;height:18px;background:#3a3d6a;border-radius:2px;transform:translateX(-10px);"></div>
+
+  <!-- Car silhouettes -->
+  <div class="cars-row">
+    <!-- Car 1 -->
+    <svg class="car-svg" viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="25" width="100" height="18" rx="4" fill="#1e2240"/>
+      <path d="M25 25 C28 12 38 8 55 8 C72 8 80 12 88 25Z" fill="#1e2240"/>
+      <circle cx="30" cy="43" r="7" fill="#0b0c1a" stroke="#3a3d6a" stroke-width="2"/>
+      <circle cx="90" cy="43" r="7" fill="#0b0c1a" stroke="#3a3d6a" stroke-width="2"/>
+      <rect x="85" y="22" width="18" height="6" rx="1" fill="#f5c842" opacity="0.6"/>
+      <rect x="85" y="28" width="18" height="3" rx="1" fill="#f07d3a" opacity="0.4"/>
+    </svg>
+    <!-- Car 2 (smaller, bg) -->
+    <svg class="car-svg" style="width:65px;opacity:0.4;" viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="25" width="100" height="18" rx="4" fill="#161830"/>
+      <path d="M20 25 C24 10 38 6 58 6 C78 6 90 10 95 25Z" fill="#161830"/>
+      <circle cx="28" cy="43" r="7" fill="#0b0c1a" stroke="#2a2d5a" stroke-width="2"/>
+      <circle cx="92" cy="43" r="7" fill="#0b0c1a" stroke="#2a2d5a" stroke-width="2"/>
+    </svg>
+    <!-- Car 3 -->
+    <svg class="car-svg" style="width:110px;" viewBox="0 0 140 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="28" width="130" height="20" rx="5" fill="#1e2240"/>
+      <path d="M22 28 C26 10 42 6 65 6 C90 6 108 10 115 28Z" fill="#1e2240"/>
+      <circle cx="32" cy="48" r="7" fill="#0b0c1a" stroke="#3a3d6a" stroke-width="2"/>
+      <circle cx="108" cy="48" r="7" fill="#0b0c1a" stroke="#3a3d6a" stroke-width="2"/>
+      <rect x="2" y="32" width="14" height="5" rx="1" fill="#f5c842" opacity="0.7"/>
+    </svg>
+    <!-- Car 4 -->
+    <svg class="car-svg" style="width:75px;opacity:0.5;" viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="25" width="100" height="18" rx="4" fill="#161830"/>
+      <path d="M28 25 C32 12 44 8 60 8 C76 8 86 12 92 25Z" fill="#161830"/>
+      <circle cx="32" cy="43" r="7" fill="#0b0c1a" stroke="#2a2d5a" stroke-width="2"/>
+      <circle cx="88" cy="43" r="7" fill="#0b0c1a" stroke="#2a2d5a" stroke-width="2"/>
+      <rect x="88" y="26" width="14" height="4" rx="1" fill="#f5c842" opacity="0.5"/>
+    </svg>
+    <!-- Car 5 -->
+    <svg class="car-svg" viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="25" width="100" height="18" rx="4" fill="#1e2240"/>
+      <path d="M18 25 C22 11 36 7 58 7 C80 7 95 11 100 25Z" fill="#1e2240"/>
+      <circle cx="27" cy="43" r="7" fill="#0b0c1a" stroke="#3a3d6a" stroke-width="2"/>
+      <circle cx="93" cy="43" r="7" fill="#0b0c1a" stroke="#3a3d6a" stroke-width="2"/>
+      <rect x="88" y="22" width="18" height="6" rx="1" fill="#f5c842" opacity="0.6"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-wrapper">
+  <div class="marquee-track">
+    <span>🎬 Now Serving Popcorn · No Heels On Asphalt · Honk Once For Yes · Passion Pit Adjacent ·</span>
+    <span>🎬 Mosquitoes Included · Trunk Riders Not Welcome · Speaker Theft Prohibited · Double Feature Tonight ·</span>
+    <span>🎬 Now Serving Popcorn · No Heels On Asphalt · Honk Once For Yes · Passion Pit Adjacent ·</span>
+    <span>🎬 Mosquitoes Included · Trunk Riders Not Welcome · Speaker Theft Prohibited · Double Feature Tonight ·</span>
+  </div>
+</div>
+
+<!-- ── ARTICLE BODY ── -->
+<div class="content">
+
+  <p>Somewhere in New Jersey in 1933, a man named Richard Hollingshead nailed a screen to some trees in his backyard, plopped a projector on his car hood, and pointed it at the darkness. His mother found indoor theater seats uncomfortable. His solution: <em class="big">don't go inside</em>. Build the theater around the car. Let everyone stay exactly where they are.</p>
+
+  <p>And thus, one of the most magnificently American ideas in the history of entertainment was born—not from corporate vision boards or Silicon Valley pivots, but from a son's maternal devotion and a backyard full of questionable engineering decisions.</p>
+
+  <div class="callout">
+    <strong>The First Drive-In, By the Numbers:</strong> One determined son. One uncomfortable mother. One projector balanced on a car hood. Several radios behind windshields. An unknowable quantity of bugs.
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon">🌙</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <h2>From Backyard to Bonanza: A Brief and Magnificent Rise</h2>
+
+  <p>Hollingshead's patent turned into a national obsession. Drive-ins spread like kudzu across the American landscape through the 1940s and 50s, perfectly timed with two forces of nature: <mark>postwar car ownership</mark> and <mark>suburban expansion</mark>. America had cars. America had land. America had an itch it desperately needed to scratch, and that itch was: <em>watching movies while sitting in a 1957 Chevrolet eating a hot dog.</em></p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <span class="stat-num">4,000+</span>
+      <span class="stat-label">Drive-ins at peak (late 1950s)</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">~300</span>
+      <span class="stat-label">Still operating today</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">2,500</span>
+      <span class="stat-label">Cars at NY's largest drive-in</span>
+    </div>
+  </div>
+
+  <p>At its peak, the drive-in wasn't a novelty—it was <em>infrastructure</em>. The All-Weather Drive-In in Copiague, New York, could hold over 2,500 cars. That's essentially a temporary city of idling engines and popcorn. A city with one movie theater and absolutely no parking problems, because every single resident <em>was</em> a parking spot.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-year">1933</p>
+      <p>Richard Hollingshead patents the drive-in. His mother's back is, presumably, very pleased.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-year">Late 1940s</p>
+      <p>Drive-ins boom across America. Teenagers discover they are very interested in "watching films" in parked cars.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-year">Late 1950s</p>
+      <p>Peak drive-in. 4,000+ across the U.S. The golden age of asphalt cinema. High heels are everywhere. So is soft asphalt. Problems ensue.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-year">1970s</p>
+      <p>Attendance drops. Some drive-ins pivot to adult films. Passing motorists on the highway develop complicated feelings.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <p class="tl-year">2020</p>
+      <p>COVID hits. Drive-ins, uniquely positioned for socially distanced entertainment, experience a sudden and glorious comeback. Nobody saw this coming. Everyone should have seen this coming.</p>
+    </div>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon" style="animation:none;">🪲</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <h2>The Operational Chaos Nobody Warned You About</h2>
+
+  <p>Running a drive-in theater looks, from the outside, deceptively simple: put up a screen, show a movie, collect money. The reality was a rich tapestry of operational nightmares that could only exist in a venue where the audience arrives in several tons of automobile each night.</p>
+
+  <div class="fun-facts">
+    <div class="fact-card" data-emoji="👠">
+      <h4>The Heel Problem</h4>
+      <p>In summer heat, women walking to concession stands would sink into soft asphalt in high heels. Some theaters handed out wooden boards. Others just quietly rethought their entire surface material.</p>
+    </div>
+    <div class="fact-card" data-emoji="🦟">
+      <h4>Mosquito Warfare</h4>
+      <p>In the South and Midwest, drive-ins waged perpetual insect warfare. Pre-show fogging systems sprayed insecticide across the lot. Patrons watched cinema through a haze of bug spray and existential dread.</p>
+    </div>
+    <div class="fact-card" data-emoji="📻">
+      <h4>The Speaker Heist Era</h4>
+      <p>Those little metal speakers clipped to car windows? People stole them. Constantly. Compulsively. Theaters had to chain them to poles. It remains one of history's most inexplicable theft epidemics.</p>
+    </div>
+    <div class="fact-card" data-emoji="🚗">
+      <h4>Trunk Stowaways</h4>
+      <p>Some theaters charged per car. Teenagers, being teenagers, crammed absurd numbers of people into trunks to save money. Employees began checking trunks. The discoveries were, we can only assume, varied.</p>
+    </div>
+    <div class="fact-card" data-emoji="☀️">
+      <h4>Daylight Disaster</h4>
+      <p>Some operators tried daytime screenings with bigger projectors. The result: washed-out images, squinting audiences, and the discovery that sunlight is, in fact, undefeated. The experiments mostly stopped.</p>
+    </div>
+    <div class="fact-card" data-emoji="🦝">
+      <h4>Wildlife Concessions</h4>
+      <p>Raccoons, seagulls, and other opportunists discovered that drive-in concession areas were essentially open buffets. The negotiated détente between theaters and local fauna remains unwritten but universally respected.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-teal">
+    <strong>Fun Fact:</strong> Drive-ins didn't really make money on tickets. Film distributors took enormous cuts. The real profit? Concessions. This is why bringing your own food was treated roughly on par with grand theft auto.
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon" style="animation:none;">💘</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <h2>The "Passion Pit": A Name That Required Zero Explanation</h2>
+
+  <p>By the 1950s and 60s, drive-ins had acquired a nickname: <mark>the passion pit</mark>. It was not subtle. It required no footnotes. Everyone immediately understood exactly what it meant and exactly what was being referred to.</p>
+
+  <p>Local police occasionally swept lots with flashlights, in what must have been an extraordinarily awkward beat to be assigned. Some theaters tried to combat the phenomenon by angling the little metal speakers outward so employees could monitor whether cars were, in fact, watching the movie. They were often not watching the movie.</p>
+
+  <p>And yet—simultaneously—families also loved drive-ins, for entirely different but equally practical reasons:</p>
+
+  <div class="callout callout-pink">
+    <strong>The Great Dual Nature of the Drive-In:</strong> For teenagers, it was privacy. For parents, it was logistics. Kids could play on the playgrounds directly beneath the giant screen until dark, then fall asleep in the backseat while parents watched the film in peace. Nobody had to be quiet. Babies could cry. It was, functionally, the most humane cinema experience ever devised.
+  </div>
+
+  <p>Drive-ins succeeded because they did something truly radical: they <em>reduced behavioral friction</em>. You didn't have to shush your children, hide your snacks, or pretend you weren't constantly shifting in an increasingly uncomfortable seat. You sat in your car, in your own climate, with your own food, surrounded by your own mess. Cinema, finally, as God intended.</p>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon" style="animation:none;">📉</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <h2>The Long Slide Into Darkness (And Not the Fun Kind)</h2>
+
+  <p>Television gets blamed for killing the drive-in. This is roughly like blaming a single raindrop for a flood. Yes, it contributed. But the drive-in's decline was a multi-instrument symphony of unfortunate economics.</p>
+
+  <h3>The Land Problem</h3>
+  <p>Drive-ins require enormous plots of land. As suburban land values rose, operators faced a simple, merciless equation: <em class="big">the land is worth more than the business sitting on it.</em> Selling to a developer for a shopping center? Suddenly a lot more appealing than another summer of mosquito fogging and speaker theft prevention.</p>
+
+  <h3>The Idle Asset Problem</h3>
+  <p>Unlike indoor theaters, which can run films morning through night 365 days a year, drive-ins sit completely dark and idle all day. Every sunny afternoon is a plot of expensive land generating exactly zero revenue. Business schools have a term for this. It is not flattering.</p>
+
+  <h3>The Digital Upgrade Problem</h3>
+  <p>When the film industry switched to digital projection in the 2000s and 2010s, the cost of upgrading each screen ran between <mark>$70,000 and $100,000</mark>. For small, family-run drive-ins operating on thin seasonal margins, this was often simply the end of the road.</p>
+
+  <h3>Everything Else</h3>
+  <p>Cable TV. VHS. DVD. Streaming. The entire home entertainment revolution, one relentless format at a time, chipping away at the novelty. And in cold climates, seasonal operations meant operators had four good months to make twelve months of profit. The math, as they say, does not math.</p>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon" style="animation:none;">🌟</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <h2>The Survivors: A Field Guide to Drive-Ins Still Standing</h2>
+
+  <p>The few hundred drive-ins still operating fall into beautifully distinct personality types, each having evolved a unique strategy for not dying. Observe:</p>
+
+  <div class="survival-grid">
+    <div class="survival-card">
+      <div class="icon">🕰️</div>
+      <h4>The Traditionalists</h4>
+      <p>Places like Mesa Drive-In in Pueblo, Colorado—simple, community-focused, largely unchanged from 1955. Their competitive advantage is being aggressively, defiantly normal. And it works.</p>
+    </div>
+    <div class="survival-card">
+      <div class="icon">🍺</div>
+      <h4>The Reinventors</h4>
+      <p>The Coyote Drive-In in Fort Worth added food trucks, craft bars, and lawn seating. The movie is almost beside the point. It's now a social venue that happens to also show films. Clever.</p>
+    </div>
+    <div class="survival-card">
+      <div class="icon">🎞️</div>
+      <h4>The Purists</h4>
+      <p>Pennsylvania's Mahoning Drive-In shows only 35mm film prints. It has become a pilgrimage site for cinephiles who consider digital projection a form of moral failure.</p>
+    </div>
+  </div>
+
+  <h3>And Then There Are the Wonderfully Eccentric Ones</h3>
+
+  <div class="rules-box">
+    <h3>🪖 Bengies Drive-In, Maryland: Rules Are Law</h3>
+    <ul class="rules-list">
+      <li><span class="bullet">→</span> Bengies operates with near-military precision. The rules are extensive, specific, and non-negotiable.</li>
+      <li><span class="bullet">→</span> Triple features are standard. You will watch all three films. There is no alternative.</li>
+      <li><span class="bullet">→</span> Outside food policies are enforced with the enthusiasm of a border crossing.</li>
+      <li><span class="bullet">→</span> The result is a genuinely beloved institution. Turns out people appreciate knowing exactly where they stand.</li>
+    </ul>
+  </div>
+
+  <p>Then there's <strong>Mission Tiki</strong> in Montclair, California, which leans fully into tropical kitsch—tiki torches, themed decorations, the general vibe that you're watching a movie at a luau. And <strong>Wellfleet Drive-In</strong> in Massachusetts doubles as a flea market, occasionally combined with wildlife encounters, because apparently this is what "differentiation" looks like on Cape Cod.</p>
+
+  <p>And let us not forget <strong>Shankweiler's Drive-In</strong> in Pennsylvania, which claims to be the oldest operating drive-in in America—open since 1934. It has been operating for over ninety years. Whatever they're doing, it works.</p>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon" style="animation:none;">🦠</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <h2>COVID's Accidental Gift to Drive-In Cinema</h2>
+
+  <p>In early 2020, as the world shut down and indoor gatherings became a public health hazard, someone had a realization: <em class="big">we have hundreds of venues where people watch movies from inside their own private sealed metal boxes</em>.</p>
+
+  <p>Drive-ins surged. Events were held in drive-in parking lots. Church services were broadcast from drive-in speakers. Concert livestreams flickered across drive-in screens. The format that had been slowly dying for fifty years suddenly proved itself uniquely suited to a global pandemic—a sentence that belongs in the lexicon of history's most unexpected plot twists.</p>
+
+  <div class="callout">
+    "The drive-in was designed for exactly this situation," said nobody in 1933, because in 1933 there was no situation like this. And yet, here we were.
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon" style="animation:none;">🎬</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <h2>Why, After Everything, We Still Love Them</h2>
+
+  <p>The drive-in theater survives not because it's the most efficient way to watch a film—it is demonstrably, comically not—but because it offers something modern cinema cannot replicate:</p>
+
+  <p>Night air. Dashboard glow. The distant, slightly tinny sound of a movie playing through a speaker clipped to your window. Stars overhead. Popcorn that you may or may not have smuggled in your coat. The peculiar communal intimacy of a thousand people in separate cars all watching the same screen, each in their own world, each briefly part of something larger.</p>
+
+  <p>It is, improbably, both the most private and the most communal entertainment experience available. You are alone together. You are watching as a crowd but feeling it alone. This is not a thing indoor theaters do, or streaming, or anything else in the entertainment universe.</p>
+
+  <div class="callout callout-teal">
+    Drive-ins didn't fail because people stopped loving them. They failed because land got expensive, technology changed, and their social role was replaced. What remains is something filtered and true—surviving only where it can differentiate, modernize, or simply operate where the economics permit. They are, in that sense, not relics. They're case studies in the extraordinary stubborn persistence of a genuinely good idea.
+  </div>
+
+  <p>Richard Hollingshead nailed a screen to some trees for his mother.</p>
+
+  <p>Ninety years later, people are still parking their cars in fields and looking at the dark in the best possible way.</p>
+
+  <p>Some ideas, it turns out, just have very good bones.</p>
+
+  <!-- Near You -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-icon" style="animation:none;">🏔️</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <h2>Colorado Still Has Drive-Ins (Yes, Really)</h2>
+
+  <p>If you're in the Mountain West and feeling the urge to participate in this great American tradition, you're in luck:</p>
+
+  <div class="fun-facts">
+    <div class="fact-card" data-emoji="⭐">
+      <h4>Mesa Drive-In · Pueblo, CO</h4>
+      <p>One of the last classic-style drive-ins in Colorado. Old-school, community-focused, and still standing after all these years.</p>
+    </div>
+    <div class="fact-card" data-emoji="⭐">
+      <h4>Holiday Twin Drive-In · Fort Collins, CO</h4>
+      <p>Twin screens. Classic experience. Because sometimes one movie simply isn't enough for an evening in your car.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p style="font-size:1.5rem;margin-bottom:0.5rem;">🎬</p>
+  <p>Written with love, mild nostalgia, and deeply conflicted feelings about the speaker theft epidemic.</p>
+  <p style="margin-top:0.5rem;">Sources: Brainstorming notes on drive-in theaters & <em>The Strange and Surprisingly Resilient World of American Drive-In Theaters</em></p>
+  <p style="margin-top:1rem; font-size:0.75rem;">No high heels were harmed in the making of this article. We cannot say the same for the asphalt.</p>
+</footer>
+
+<script>
+  // Generate starfield
+  const field = document.getElementById('stars');
+  for (let i = 0; i < 200; i++) {
+    const s = document.createElement('div');
+    s.classList.add('star');
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      width:${size}px;
+      height:${size}px;
+      --d:${(Math.random()*4+1.5).toFixed(1)}s;
+      animation-delay:${(Math.random()*5).toFixed(1)}s;
+      opacity:${Math.random()*0.5+0.1};
+    `;
+    field.appendChild(s);
+  }
+</script>
+
+</body>
+</html>

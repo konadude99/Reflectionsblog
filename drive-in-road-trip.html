@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Great American Drive-In Road Trip</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400;0,600;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper:    #f5edd8;
+      --aged:     #e8d9bc;
+      --brown:    #3d2b1f;
+      --rust:     #b84c2a;
+      --amber:    #d4891a;
+      --forest:   #2d5a3d;
+      --sky:      #3a6b8a;
+      --cream:    #fdf8f0;
+      --ink:      #1e150e;
+      --faded:    #7a6552;
+      --stamp-red: #c0392b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--aged);
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      color: var(--ink);
+      font-family: 'Lora', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── PAPER TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 28px,
+        rgba(61,43,31,0.025) 28px,
+        rgba(61,43,31,0.025) 29px
+      );
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--paper);
+      border-bottom: 6px double var(--brown);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* vintage corner ornaments */
+    .hero::before, .hero::after {
+      content: '✦';
+      position: absolute;
+      font-size: 2rem;
+      color: var(--amber);
+      opacity: 0.4;
+    }
+    .hero::before { top: 1.5rem; left: 2rem; }
+    .hero::after  { bottom: 1.5rem; right: 2rem; }
+
+    .series-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--faded);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .series-label::before, .series-label::after {
+      content: '—';
+      color: var(--amber);
+    }
+
+    h1 {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      color: var(--rust);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      text-shadow: 3px 3px 0 rgba(184,76,42,0.15);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--faded);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* postcard stamp */
+    .stamp {
+      display: inline-block;
+      border: 3px solid var(--stamp-red);
+      padding: 0.5rem 1rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--stamp-red);
+      transform: rotate(-2deg);
+      opacity: 0.85;
+      margin-top: 0.5rem;
+    }
+
+    /* ── ROUTE MAP SVG ── */
+    .map-section {
+      background: var(--cream);
+      border-top: 3px solid var(--brown);
+      border-bottom: 3px solid var(--brown);
+      padding: 2.5rem 1rem;
+      overflow-x: auto;
+    }
+    .map-container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .map-title {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--faded);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    h2 {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--rust);
+      margin: 3rem 0 1rem;
+      line-height: 1.1;
+    }
+
+    h3 {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin: 2.5rem 0 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px dashed var(--amber);
+    }
+
+    p { margin-bottom: 1.25rem; }
+
+    em.road { font-style: italic; color: var(--rust); }
+    strong { color: var(--brown); }
+
+    mark {
+      background: rgba(212,137,26,0.2);
+      color: var(--brown);
+      padding: 0 0.15em;
+    }
+
+    /* ── STOP CARDS ── */
+    .stop-card {
+      background: var(--paper);
+      border: 1px solid rgba(61,43,31,0.2);
+      border-left: 5px solid var(--rust);
+      border-radius: 2px;
+      padding: 1.5rem 1.75rem;
+      margin: 1.75rem 0;
+      position: relative;
+      box-shadow: 3px 3px 0 rgba(61,43,31,0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .stop-card:hover {
+      transform: translateX(3px);
+      box-shadow: 5px 5px 0 rgba(61,43,31,0.12);
+    }
+    .stop-card:nth-child(even) { border-left-color: var(--forest); }
+    .stop-card:nth-child(3n)   { border-left-color: var(--sky); }
+
+    .stop-number {
+      position: absolute;
+      top: -14px; left: 1.25rem;
+      background: var(--rust);
+      color: white;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+    .stop-card:nth-child(even) .stop-number { background: var(--forest); }
+    .stop-card:nth-child(3n)   .stop-number { background: var(--sky); }
+
+    .stop-name {
+      font-family: 'Abril Fatface', serif;
+      font-size: 1.4rem;
+      color: var(--brown);
+      margin-bottom: 0.2rem;
+      line-height: 1.2;
+    }
+    .stop-location {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.75rem;
+      color: var(--faded);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .stop-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.85rem;
+    }
+    .tag {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid;
+      border-radius: 2px;
+    }
+    .tag-classic { border-color: var(--amber); color: var(--amber); }
+    .tag-modern  { border-color: var(--sky); color: var(--sky); }
+    .tag-purist  { border-color: var(--forest); color: var(--forest); }
+    .tag-cult    { border-color: var(--rust); color: var(--rust); }
+    .tag-historic{ border-color: var(--brown); color: var(--brown); }
+
+    .stop-card p { margin: 0; font-size: 0.95rem; color: var(--faded); line-height: 1.6; }
+    .stop-card .why {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed rgba(61,43,31,0.15);
+      font-style: italic;
+      color: var(--brown);
+    }
+
+    /* ── LEG HEADER ── */
+    .leg-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3.5rem 0 0.25rem;
+    }
+    .leg-num {
+      font-family: 'Abril Fatface', serif;
+      font-size: 3rem;
+      color: rgba(184,76,42,0.15);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .leg-info {}
+    .leg-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .leg-title {
+      font-family: 'Abril Fatface', serif;
+      font-size: 1.5rem;
+      color: var(--brown);
+      line-height: 1.1;
+    }
+    .leg-tone {
+      font-style: italic;
+      color: var(--faded);
+      font-size: 0.9rem;
+    }
+    .leg-rule {
+      border: none;
+      border-top: 2px solid rgba(61,43,31,0.12);
+      margin: 0.5rem 0 1.5rem;
+    }
+
+    /* ── SIDEBAR CALLOUT ── */
+    .pullquote {
+      float: right;
+      width: 260px;
+      margin: 0 0 1.5rem 2rem;
+      padding: 1.25rem;
+      background: var(--paper);
+      border-top: 3px solid var(--rust);
+      border-bottom: 1px solid var(--rust);
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--brown);
+      line-height: 1.5;
+      box-shadow: 3px 3px 0 rgba(61,43,31,0.07);
+    }
+    .pullquote cite {
+      display: block;
+      font-style: normal;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--faded);
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .pullquote { float: none; width: 100%; margin: 1.5rem 0; }
+    }
+
+    /* ── GEAR BOX ── */
+    .gear-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .gear-item {
+      background: var(--paper);
+      border: 1px solid rgba(61,43,31,0.15);
+      border-radius: 2px;
+      padding: 1.25rem;
+      box-shadow: 2px 2px 0 rgba(61,43,31,0.06);
+    }
+    .gear-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .gear-item h4 {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 0.35rem;
+    }
+    .gear-item p { margin: 0; font-size: 0.88rem; color: var(--faded); line-height: 1.5; }
+
+    /* ── RULES STRIP ── */
+    .rules-strip {
+      background: var(--brown);
+      color: var(--paper);
+      padding: 2rem 2rem;
+      margin: 2.5rem -1.5rem;
+      font-family: 'Courier Prime', monospace;
+    }
+    .rules-strip h3 {
+      color: var(--amber);
+      border-color: var(--amber);
+      margin-top: 0;
+    }
+    .rules-strip ul { list-style: none; }
+    .rules-strip li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 0.85rem;
+      display: flex;
+      gap: 0.75rem;
+      color: rgba(245,237,216,0.85);
+    }
+    .rules-strip li:last-child { border: none; }
+    .rules-strip .arrow { color: var(--amber); flex-shrink: 0; }
+
+    /* ── EVOLUTION TABLE ── */
+    .evo-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.9rem;
+      background: var(--paper);
+      box-shadow: 3px 3px 0 rgba(61,43,31,0.08);
+    }
+    .evo-table th {
+      background: var(--brown);
+      color: var(--paper);
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    .evo-table td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid rgba(61,43,31,0.1);
+      vertical-align: top;
+      line-height: 1.4;
+    }
+    .evo-table tr:last-child td { border: none; }
+    .evo-table tr:hover td { background: rgba(212,137,26,0.05); }
+    .model { font-weight: 600; color: var(--rust); }
+
+    /* ── MILEAGE TICKER ── */
+    .ticker-bar {
+      background: var(--brown);
+      color: var(--amber);
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      color: var(--aged);
+      text-align: center;
+      padding: 3rem 1.5rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    footer .series {
+      color: var(--amber);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    footer p { color: rgba(232,217,188,0.6); margin: 0.3rem 0; }
+
+    /* ── HORIZONTAL RULE ── */
+    .ornament {
+      text-align: center;
+      color: var(--amber);
+      font-size: 1.2rem;
+      letter-spacing: 1em;
+      margin: 2.5rem 0;
+      opacity: 0.5;
+    }
+
+    /* ── INTRO DROPCAP ── */
+    .dropcap::first-letter {
+      float: left;
+      font-family: 'Abril Fatface', serif;
+      font-size: 4.5rem;
+      line-height: 0.75;
+      color: var(--rust);
+      padding: 0.1em 0.1em 0 0;
+    }
+
+    /* ── COMPANION NOTE ── */
+    .companion-note {
+      background: var(--paper);
+      border: 1px dashed var(--amber);
+      padding: 1rem 1.5rem;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8rem;
+      color: var(--faded);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .companion-note .note-icon { font-size: 1.25rem; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ── TICKER ── -->
+<div class="ticker-bar">
+  <span>🚗 TOTAL ROUTE: ~4,200 MILES</span>
+  <span>🎬 11 DRIVE-INS · 7 LEGS</span>
+  <span>🌙 10–14 NIGHTS</span>
+  <span>☀️ BEST WINDOW: MAY–SEPTEMBER</span>
+</div>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <p class="series-label">Companion Piece · Part Two of Two</p>
+  <h1>The Great American<br>Drive-In Road Trip</h1>
+  <p class="hero-sub">A deliberately structured journey across 4,200 miles of blacktop, nostalgia, and surprisingly strict parking lot rules</p>
+  <div class="stamp">Durango, CO → Cape Cod, MA</div>
+</header>
+
+<!-- ── ROUTE MAP ── -->
+<div class="map-section">
+  <p class="map-title">◆ The Route — Southwest to Northeast ◆</p>
+  <div class="map-container">
+    <svg viewBox="0 0 860 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+      <!-- Background paper -->
+      <rect width="860" height="340" fill="#fdf8f0" rx="4"/>
+
+      <!-- Subtle state grid lines -->
+      <line x1="0" y1="170" x2="860" y2="170" stroke="#e8d9bc" stroke-width="1" stroke-dasharray="4,6"/>
+      <line x1="430" y1="0" x2="430" y2="340" stroke="#e8d9bc" stroke-width="1" stroke-dasharray="4,6"/>
+
+      <!-- Rough US outline (simplified) -->
+      <path d="M60,80 L820,80 L820,260 L700,280 L600,270 L500,280 L400,275 L300,280 L200,270 L100,265 L60,250 Z"
+            fill="none" stroke="#c8b89a" stroke-width="1.5" stroke-dasharray="3,5" opacity="0.5"/>
+
+      <!-- ROUTE LINE with dashes -->
+      <!-- Durango → Farmington → Buena Vista → Fort Collins → Fort Worth → Lubbock → Carthage → Gibson City → Baraboo → Lehighton → Orefield → Baltimore → Cape Cod -->
+      <polyline
+        points="128,198 145,210 170,175 215,130 340,205 305,230 455,200 530,145 500,115 685,150 700,155 720,148 780,135"
+        fill="none"
+        stroke="#b84c2a"
+        stroke-width="2.5"
+        stroke-dasharray="8,5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+      <!-- Arrow at end -->
+      <polygon points="780,135 770,128 770,142" fill="#b84c2a"/>
+
+      <!-- STOP MARKERS -->
+      <!-- 1: Farmington NM -->
+      <circle cx="145" cy="210" r="7" fill="#d4891a" stroke="white" stroke-width="2"/>
+      <text x="148" y="228" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">1 · Farmington, NM</text>
+
+      <!-- 2: Buena Vista CO -->
+      <circle cx="170" cy="175" r="7" fill="#d4891a" stroke="white" stroke-width="2"/>
+      <text x="128" y="165" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">2 · Buena Vista, CO</text>
+
+      <!-- 3: Fort Collins CO -->
+      <circle cx="215" cy="130" r="7" fill="#d4891a" stroke="white" stroke-width="2"/>
+      <text x="218" y="125" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">3 · Fort Collins, CO</text>
+
+      <!-- Durango start marker -->
+      <circle cx="128" cy="198" r="9" fill="#2d5a3d" stroke="white" stroke-width="2"/>
+      <text x="75" y="193" font-family="Courier Prime, monospace" font-size="9" fill="#2d5a3d" font-weight="bold">START</text>
+      <text x="68" y="204" font-family="Courier Prime, monospace" font-size="9" fill="#2d5a3d">Durango, CO</text>
+
+      <!-- 4: Fort Worth TX -->
+      <circle cx="340" cy="205" r="7" fill="#b84c2a" stroke="white" stroke-width="2"/>
+      <text x="343" y="218" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">4 · Fort Worth, TX</text>
+
+      <!-- 5: Lubbock TX -->
+      <circle cx="305" cy="230" r="7" fill="#b84c2a" stroke="white" stroke-width="2"/>
+      <text x="260" y="245" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">5 · Lubbock, TX</text>
+
+      <!-- 6: Carthage MO -->
+      <circle cx="455" cy="200" r="7" fill="#3a6b8a" stroke="white" stroke-width="2"/>
+      <text x="458" y="215" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">6 · Carthage, MO</text>
+
+      <!-- 7: Gibson City IL -->
+      <circle cx="530" cy="145" r="7" fill="#2d5a3d" stroke="white" stroke-width="2"/>
+      <text x="533" y="140" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">7 · Gibson City, IL</text>
+
+      <!-- 8: Baraboo WI (optional) -->
+      <circle cx="500" cy="115" r="6" fill="#2d5a3d" stroke="white" stroke-width="1.5" stroke-dasharray="2,2"/>
+      <text x="503" y="110" font-family="Courier Prime, monospace" font-size="9" fill="#7a6552">8* · Baraboo, WI</text>
+
+      <!-- 9: Lehighton PA -->
+      <circle cx="685" cy="150" r="7" fill="#b84c2a" stroke="white" stroke-width="2"/>
+      <text x="688" y="145" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">9 · Lehighton, PA</text>
+
+      <!-- 10: Orefield PA -->
+      <circle cx="700" cy="155" r="7" fill="#b84c2a" stroke="white" stroke-width="2"/>
+      <text x="703" y="170" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">10 · Orefield, PA</text>
+
+      <!-- 11: Baltimore MD -->
+      <circle cx="720" cy="148" r="7" fill="#3a6b8a" stroke="white" stroke-width="2"/>
+      <text x="710" y="138" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">11 · Baltimore, MD</text>
+
+      <!-- 12: Cape Cod MA -->
+      <circle cx="780" cy="135" r="9" fill="#2d5a3d" stroke="white" stroke-width="2"/>
+      <text x="785" y="125" font-family="Courier Prime, monospace" font-size="9" fill="#2d5a3d" font-weight="bold">FINISH</text>
+      <text x="783" y="153" font-family="Courier Prime, monospace" font-size="9" fill="#2d5a3d">Cape Cod, MA</text>
+
+      <!-- Legend -->
+      <rect x="20" y="270" width="230" height="62" rx="3" fill="white" opacity="0.7"/>
+      <circle cx="38" cy="286" r="5" fill="#d4891a"/>
+      <text x="48" y="290" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">Classic / Warm-Up</text>
+      <circle cx="38" cy="302" r="5" fill="#b84c2a"/>
+      <text x="48" y="306" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">Key Stop</text>
+      <circle cx="38" cy="318" r="5" fill="#2d5a3d"/>
+      <text x="48" y="322" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">Essential / Finish</text>
+      <circle cx="148" cy="286" r="5" fill="#3a6b8a"/>
+      <text x="158" y="290" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">Americana / Nostalgia</text>
+      <circle cx="148" cy="302" r="5" fill="#2d5a3d" stroke="#7a6552" stroke-width="1" stroke-dasharray="2,2"/>
+      <text x="158" y="306" font-family="Courier Prime, monospace" font-size="9" fill="#7a6552">Optional stop</text>
+
+      <!-- Compass rose -->
+      <g transform="translate(820,290)">
+        <circle r="16" fill="white" opacity="0.7"/>
+        <text x="0" y="-8" text-anchor="middle" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">N</text>
+        <text x="0" y="14" text-anchor="middle" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">S</text>
+        <text x="10" y="3" text-anchor="middle" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">E</text>
+        <text x="-10" y="3" text-anchor="middle" font-family="Courier Prime, monospace" font-size="9" fill="#3d2b1f">W</text>
+        <line x1="0" y1="-13" x2="0" y2="13" stroke="#b84c2a" stroke-width="1"/>
+        <line x1="-13" y1="0" x2="13" y2="0" stroke="#3d2b1f" stroke-width="0.8"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- ── BODY ── -->
+<div class="content">
+
+  <div class="companion-note">
+    <span class="note-icon">📎</span>
+    <span>This is the companion piece to <em>Honk If You Love Cinema</em> — a history and love letter to American drive-in theaters. That article explains why drive-ins exist. This one tells you how to go see the survivors yourself.</span>
+  </div>
+
+  <p class="dropcap">Here is the thing about planning a drive-in road trip: you cannot plan it like a normal road trip. You cannot draw a line on a map, calculate mileage, and book hotels. Drive-ins run on <em class="road">dusk, not distance</em>. They open when the sky darkens and close when the last credits roll. Many are only alive Thursday through Sunday. Rain can cancel an entire evening. The whole enterprise must be organized around one thing: <strong>the night.</strong></p>
+
+  <p>What follows is a route across eleven surviving drive-ins — from the high desert of New Mexico to the salt air of Cape Cod — structured to trace something larger than just the theaters themselves. You're watching the entire evolution of an American institution in real time, state by state, parking lot by parking lot.</p>
+
+  <div class="pullquote">
+    "You're not just visiting theaters. You're watching an idea evolve across geography, economics, and time."
+    <cite>— From the trip notes</cite>
+  </div>
+
+  <p>Start in Durango. Head southwest into New Mexico. Arc through Texas, cut northeast across Route 66, grind through the Midwest core, and finally arrive in Pennsylvania and Maryland — where the most obsessive, most peculiar, most genuinely unforgettable drive-in experiences in America quietly await. Cape Cod is there if you still have gas in the tank and wonder in your heart.</p>
+
+  <p>It is approximately 4,200 miles. Plan for 10 to 14 nights. Bring bug spray.</p>
+
+  <!-- ══════════════════════ LEG 1 ══════════════════════ -->
+  <div class="leg-header">
+    <div class="leg-num">I</div>
+    <div class="leg-info">
+      <div class="leg-label">Leg One · Colorado &amp; New Mexico</div>
+      <div class="leg-title">The High Desert Warm-Up</div>
+      <div class="leg-tone">Authentic. Stripped-down. Old-school.</div>
+    </div>
+  </div>
+  <hr class="leg-rule">
+
+  <p>You start here not because New Mexico has the most impressive drive-ins — it doesn't — but because it has the most <em>honest</em> ones. No food trucks, no curated playlists, no Instagram lighting. Just a big screen, a field of gravel, the dark, and the sky. This is the baseline. This is what a drive-in actually was for most of its life.</p>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 1</div>
+    <div class="stop-name">Sky Vu Drive-In</div>
+    <div class="stop-location">📍 Farmington, New Mexico</div>
+    <div class="stop-tags">
+      <span class="tag tag-classic">Classic</span>
+      <span class="tag tag-historic">Old-School</span>
+    </div>
+    <p>No frills. Local crowd. The parking lot smells like dust and the concession stand sells hot dogs in the way that hot dogs were always meant to be sold: under fluorescent lights, by someone who has been doing this for twenty years.</p>
+    <p class="why">Why it matters: This is your calibration stop. Everything you see after this will be measured against it. You need to know what unadorned actually looks like before you encounter the reinventors.</p>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 2</div>
+    <div class="stop-name">Comanche Drive-In</div>
+    <div class="stop-location">📍 Buena Vista, Colorado</div>
+    <div class="stop-tags">
+      <span class="tag tag-classic">Classic</span>
+    </div>
+    <p>Set against the Collegiate Peaks. On a clear night, you'll watch a movie with 14,000-foot mountains as your backdrop, which is either awe-inspiring or deeply distracting depending on your temperament. The air at altitude has a particular clarity that makes the screen glow differently.</p>
+    <p class="why">Why it matters: Geography transforms the drive-in experience. The same format, the same screen, the same popcorn — and yet completely different because of <em>where</em> you are. The first of many lessons this trip will teach.</p>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 3</div>
+    <div class="stop-name">Holiday Twin Drive-In</div>
+    <div class="stop-location">📍 Fort Collins, Colorado</div>
+    <div class="stop-tags">
+      <span class="tag tag-classic">Classic</span>
+    </div>
+    <p>Twin screens. Stronger community vibe. A more polished operation than Farmington, but not yet the reinvented model coming in Texas. Think of it as the middle ground — a drive-in that has evolved slightly without abandoning its original character.</p>
+    <p class="why">Why it matters: You'll notice the difference between a drive-in that has adapted and one that hasn't, and realize neither answer is wrong. The trip is already teaching you nuance.</p>
+  </div>
+
+  <!-- ══════════════════════ LEG 2 ══════════════════════ -->
+  <div class="leg-header">
+    <div class="leg-num">II</div>
+    <div class="leg-info">
+      <div class="leg-label">Leg Two · Texas</div>
+      <div class="leg-title">The Reinvention Corridor</div>
+      <div class="leg-tone">Modernized. Social. Hospitality-first.</div>
+    </div>
+  </div>
+  <hr class="leg-rule">
+
+  <p>Texas figured something out that most drive-ins didn't: the movie is not the product. <em class="road">The night out is the product.</em> Film is just the anchor around which a social experience is organized. Once you accept this, everything else follows — food trucks, craft beer, lawn chairs, lawn games. The drive-in becomes something closer to an outdoor festival that happens to be showing a Spielberg film.</p>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 4</div>
+    <div class="stop-name">Coyote Drive-In</div>
+    <div class="stop-location">📍 Fort Worth, Texas</div>
+    <div class="stop-tags">
+      <span class="tag tag-modern">Modern</span>
+      <span class="tag tag-cult">Social-First</span>
+    </div>
+    <p>Food trucks. A proper bar. Lawn seating. You can watch from your car, or you can spread a blanket on the grass and eat tacos while a film plays above you. The staff look like they work at a good restaurant, not a 1957 snack bar. The movie is almost beside the point — but it's a remarkably pleasant beside-the-point.</p>
+    <p class="why">Why it matters: This is what the future of the drive-in almost certainly looks like. If the model survives at scale, it will be because someone kept doing exactly this. It works. Frustratingly, magnificently, it works.</p>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 5</div>
+    <div class="stop-name">Stars &amp; Stripes Drive-In</div>
+    <div class="stop-location">📍 Lubbock or New Braunfels, Texas</div>
+    <div class="stop-tags">
+      <span class="tag tag-classic">Traditional</span>
+      <span class="tag tag-modern">Upgraded</span>
+    </div>
+    <p>Retro branding, but operationally sharp. Family-focused. Clean. Well-run. A drive-in that has invested in the experience without abandoning what made drive-ins worth visiting in the first place. A useful contrast with Coyote — same state, different philosophy, both alive.</p>
+    <p class="why">Why it matters: Two Texas drive-ins, two viable survival strategies. One reinvented. One refined. Neither nostalgic in a sad way.</p>
+  </div>
+
+  <!-- ══════════════════════ LEG 3 ══════════════════════ -->
+  <div class="leg-header">
+    <div class="leg-num">III</div>
+    <div class="leg-info">
+      <div class="leg-label">Leg Three · Missouri</div>
+      <div class="leg-title">The Route 66 Nostalgia Spine</div>
+      <div class="leg-tone">Americana. Preservation. Memory.</div>
+    </div>
+  </div>
+  <hr class="leg-rule">
+
+  <p>Route 66 has always been less a road than a <em>myth you can drive on</em>. The 66 Drive-In in Carthage fits directly into that tradition — a place where the past is not merely preserved but actively <em>inhabited</em>. This leg is about context as much as cinema. Stop at the roadside diners. Read the historical markers. Let the Americana accumulate.</p>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 6</div>
+    <div class="stop-name">66 Drive-In</div>
+    <div class="stop-location">📍 Carthage, Missouri</div>
+    <div class="stop-tags">
+      <span class="tag tag-historic">Historic</span>
+      <span class="tag tag-classic">Americana</span>
+    </div>
+    <p>It feels frozen in time in exactly the way that something must intend to feel frozen in time — because the alternative was being bulldozed. The Route 66 branding is not cynical; it's honest. This place knows what it is and wears it without embarrassment.</p>
+    <p class="why">Why it matters: Some drive-ins survive by modernizing. This one survives by refusing to. Understanding both strategies is the whole point of the trip.</p>
+  </div>
+
+  <!-- ══════════════════════ LEG 4 ══════════════════════ -->
+  <div class="leg-header">
+    <div class="leg-num">IV</div>
+    <div class="leg-info">
+      <div class="leg-label">Leg Four · Illinois &amp; Wisconsin</div>
+      <div class="leg-title">The Midwest Core</div>
+      <div class="leg-tone">Where the model still simply works.</div>
+    </div>
+  </div>
+  <hr class="leg-rule">
+
+  <p>If you want to understand why drive-ins in the Midwest outlasted drive-ins on the coasts, you need only look at a real estate map. Land in Gibson City, Illinois is not what land in Los Angeles is. The fundamental economics that killed drive-ins everywhere else — the land-is-worth-more-than-the-business calculation — simply didn't apply here. What you find instead are drive-ins that have been running for decades because <strong>the numbers actually work</strong>.</p>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 7</div>
+    <div class="stop-name">Harvest Moon Twin Drive-In</div>
+    <div class="stop-location">📍 Gibson City, Illinois</div>
+    <div class="stop-tags">
+      <span class="tag tag-classic">Community</span>
+    </div>
+    <p>Families. Regulars. People who have been coming here for twenty, thirty, forty years. Kids who are now bringing their own kids. This is the drive-in as community infrastructure — not a novelty, not a destination, just the thing you do on a summer Friday night in Gibson City, Illinois, because that's what you've always done.</p>
+    <p class="why">Why it matters: The economic sweet spot of the surviving drive-in: low land cost, loyal audience, low overhead, genuine local identity. This is the model that doesn't require reinvention to survive.</p>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 8 ★ Optional</div>
+    <div class="stop-name">Skyline Drive-In</div>
+    <div class="stop-location">📍 Baraboo, Wisconsin</div>
+    <div class="stop-tags">
+      <span class="tag tag-classic">Rustic</span>
+    </div>
+    <p>More rustic, further north, slightly more unpredictable. Worth adding if your schedule allows. Baraboo is also home to the Ringling Brothers Circus museum, which gives the detour a pleasing "things that are genuinely American and slightly improbable" coherence.</p>
+    <p class="why">Optional, but adds welcome variation before the intensity of the Pennsylvania leg.</p>
+  </div>
+
+  <!-- ══════════════════════ LEG 5 ══════════════════════ -->
+  <div class="leg-header">
+    <div class="leg-num">V</div>
+    <div class="leg-info">
+      <div class="leg-label">Leg Five · Pennsylvania</div>
+      <div class="leg-title">The Purist Pilgrimages</div>
+      <div class="leg-tone">Obsession. Cinephile energy. Living history.</div>
+    </div>
+  </div>
+  <hr class="leg-rule">
+
+  <p>Pennsylvania is where the drive-in trip becomes a <em class="road">pilgrimage</em>. These two stops are not merely interesting — they are genuinely, historically significant. One operates as a shrine to analog cinema. The other has been open since 1934. Between them, they represent something the other stops on this route do not: the drive-in not as an adapted business, but as an act of <strong>will</strong>.</p>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 9</div>
+    <div class="stop-name">Mahoning Drive-In</div>
+    <div class="stop-location">📍 Lehighton, Pennsylvania</div>
+    <div class="stop-tags">
+      <span class="tag tag-purist">35mm Only</span>
+      <span class="tag tag-cult">Cult Destination</span>
+    </div>
+    <p>The Mahoning shows only 35mm film prints. Not as an affectation or a marketing hook, but because the people who run it believe digital projection is a form of moral compromise. Themed weekends draw cinephiles from across the country — horror marathons, blaxploitation double bills, spaghetti westerns. The crowds are passionate in the way that only people who have driven four hours for a specific film print can be passionate.</p>
+    <p class="why">Why it matters: You're sitting in a field watching film grain flicker on a screen while people around you weep quietly about the fact that this still exists. It is, genuinely, a little moving.</p>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 10</div>
+    <div class="stop-name">Shankweiler's Drive-In</div>
+    <div class="stop-location">📍 Orefield, Pennsylvania</div>
+    <div class="stop-tags">
+      <span class="tag tag-historic">Est. 1934</span>
+      <span class="tag tag-purist">Oldest Operating</span>
+    </div>
+    <p>Open since 1934. Claims to be the oldest operating drive-in in America. It has been running continuously for over ninety years, which means it has survived: World War II, television, the VCR, the DVD, streaming, a pandemic, and the digital projection crisis. Whatever they are doing, it is clearly correct.</p>
+    <p class="why">Why it matters: You are sitting inside living history. Richard Hollingshead patented the drive-in in 1933. Shankweiler's opened the following year. Do the math.</p>
+  </div>
+
+  <!-- ══════════════════════ LEG 6 ══════════════════════ -->
+  <div class="leg-header">
+    <div class="leg-num">VI</div>
+    <div class="leg-info">
+      <div class="leg-label">Leg Six · Maryland</div>
+      <div class="leg-title">The Rules &amp; Ritual Experience</div>
+      <div class="leg-tone">Structured. Intense. Almost ceremonial.</div>
+    </div>
+  </div>
+  <hr class="leg-rule">
+
+  <p>Bengies Drive-In in Baltimore County is unlike any other venue on this list. It operates with a level of procedural discipline that is either maddening or deeply comforting, depending on your relationship with authority. The rules are extensive. The enforcement is consistent. The triple features are long. You will arrive at a specific time. You will park in a specific way. You will watch all three films.</p>
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 11</div>
+    <div class="stop-name">Bengies Drive-In</div>
+    <div class="stop-location">📍 Baltimore County, Maryland</div>
+    <div class="stop-tags">
+      <span class="tag tag-cult">Triple Features</span>
+      <span class="tag tag-historic">Legendary</span>
+    </div>
+    <p>The rules are posted. The rules are enforced. There will be a pre-show announcement reminding you of the rules. You will not honk your horn casually. You will tune to the correct frequency. You will not leave early. And somehow — inexplicably, entirely against expectations — it all works. The ritual creates a strange collective focus that most outdoor events lack entirely.</p>
+    <p class="why">Why it's unforgettable: Bengies turns moviegoing into a controlled ceremony. It is polarizing and magnificent and completely unlike anywhere else. Budget your entire evening. You will be there for a while.</p>
+  </div>
+
+  <!-- ══════════════════════ LEG 7 ══════════════════════ -->
+  <div class="leg-header">
+    <div class="leg-num">VII</div>
+    <div class="leg-info">
+      <div class="leg-label">Leg Seven · Massachusetts</div>
+      <div class="leg-title">The Optional Coastal Finish</div>
+      <div class="leg-tone">Atmospheric. Chaotic. Fittingly unpredictable.</div>
+    </div>
+  </div>
+  <hr class="leg-rule">
+
+  <div class="stop-card">
+    <div class="stop-number">Stop 12</div>
+    <div class="stop-name">Wellfleet Drive-In</div>
+    <div class="stop-location">📍 Cape Cod, Massachusetts</div>
+    <div class="stop-tags">
+      <span class="tag tag-modern">Hybrid Venue</span>
+      <span class="tag tag-cult">Flea Market + Cinema</span>
+    </div>
+    <p>By day, a flea market. By night, a drive-in theater. The parking lot smells of salt air and aged vinyl records. Raccoons patrol the perimeter. The movies start when the sun drops into the Atlantic. It is a fittingly chaotic, fittingly American, fittingly wonderful way to end a trip that began in the high desert of New Mexico approximately 4,200 miles and a dozen epiphanies ago.</p>
+    <p class="why">Why it's the right ending: Every drive-in on this route had a clear identity, a clear model, a clear reason for surviving. Wellfleet is the exception that proves the rule — surviving through sheer atmospheric weirdness. You need that to feel complete.</p>
+  </div>
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <!-- ══════════════════════ EVOLUTION TABLE ══════════════════════ -->
+  <h2>What You're Actually Watching</h2>
+  <p>By the time you reach Cape Cod, you'll have observed three distinct survival models — the whole evolutionary history of the drive-in, laid out across American geography:</p>
+
+  <table class="evo-table">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>What It Is</th>
+        <th>Where You Saw It</th>
+        <th>Why It Survives</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="model">The Original</span></td>
+        <td>Simple, local, functional. No reinvention.</td>
+        <td>Farmington NM, Gibson City IL</td>
+        <td>Low land cost + loyal community = working economics.</td>
+      </tr>
+      <tr>
+        <td><span class="model">The Adapted</span></td>
+        <td>Social, experience-driven. Film as anchor, not product.</td>
+        <td>Fort Worth TX, Cape Cod MA</td>
+        <td>Hospitality model replaces theater model. Profitable.</td>
+      </tr>
+      <tr>
+        <td><span class="model">The Preserved</span></td>
+        <td>Historical and niche. Survival through specificity.</td>
+        <td>Lehighton PA, Orefield PA</td>
+        <td>Cult audience travels for what can't be found elsewhere.</td>
+      </tr>
+      <tr>
+        <td><span class="model">The Ceremonial</span></td>
+        <td>Rules, ritual, total commitment. Love it or leave it.</td>
+        <td>Baltimore County MD</td>
+        <td>Strong identity creates fierce loyalty and repeat attendance.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ══════════════════════ EXECUTION ══════════════════════ -->
+  <h2>How to Actually Execute This Trip</h2>
+
+  <h3>Think in Nights, Not Miles</h3>
+  <p>Drive-ins start at dusk — roughly 8:30 to 10 PM depending on the season and latitude. Your day's driving ends early enough to arrive, orient yourself, and get settled before showtime. This is not a trip where you drive eight hours and then watch a movie. Plan two to three hours of driving on screening days, maximum.</p>
+
+  <h3>Check Schedules Religiously</h3>
+  <p>Most surviving drive-ins operate <mark>Thursday through Sunday only</mark>. Programming changes weekly. Some have specific events — horror marathons at Mahoning, for instance — that require booking far in advance. Check websites before finalizing each leg. Build your nights around confirmed showtimes, not the other way around.</p>
+
+  <h3>Weather Is a First-Class Risk</h3>
+  <p>Rain can cancel a screening entirely. Fog degrades the image. In the South and Midwest, summer thunderstorms materialize from clear skies in forty minutes. Build at least two or three slack nights into your itinerary — extra days you can absorb without cascading delays. Consider them insurance, not padding.</p>
+
+  <!-- RULES STRIP -->
+  <div class="rules-strip">
+    <h3>⚙ Bengies Rule: Plan Your Entire Evening Around Stop 11</h3>
+    <ul>
+      <li><span class="arrow">→</span> Triple features run until approximately 2 AM. This is not an exaggeration.</li>
+      <li><span class="arrow">→</span> Arrive at the stated time. The rules are posted and the staff take them seriously.</li>
+      <li><span class="arrow">→</span> Do not honk your horn recreationally. You will regret this.</li>
+      <li><span class="arrow">→</span> The concession stand is the primary revenue source. Act accordingly.</li>
+      <li><span class="arrow">→</span> Book a nearby hotel in advance. You will not want to drive far at 2 AM.</li>
+    </ul>
+  </div>
+
+  <h3>Bring the Right Gear</h3>
+  <div class="gear-grid">
+    <div class="gear-item">
+      <div class="gear-icon">📻</div>
+      <h4>Portable Radio</h4>
+      <p>Modern drive-ins broadcast audio via FM. A portable radio lets you sit outside the car without losing sound.</p>
+    </div>
+    <div class="gear-item">
+      <div class="gear-icon">🧣</div>
+      <h4>Blankets &amp; Layers</h4>
+      <p>Even in summer, evenings cool down. Especially true in Colorado and the high desert. Non-negotiable.</p>
+    </div>
+    <div class="gear-item">
+      <div class="gear-icon">🪑</div>
+      <h4>Camp Chairs</h4>
+      <p>Essential for hybrid venues like Coyote in Fort Worth where lawn seating is part of the experience.</p>
+    </div>
+    <div class="gear-item">
+      <div class="gear-icon">🦟</div>
+      <h4>Bug Spray</h4>
+      <p>The Midwest and the South. Enough said. Bring the industrial grade. The mosquitoes are not joking.</p>
+    </div>
+    <div class="gear-item">
+      <div class="gear-icon">🍿</div>
+      <h4>Cash</h4>
+      <p>Many drive-ins are cash-only at the concession stand. The concession stand is how they stay alive. Use it.</p>
+    </div>
+    <div class="gear-item">
+      <div class="gear-icon">📖</div>
+      <h4>Patience</h4>
+      <p>Things start late. Things get rained out. Programming changes. This is not a failure mode. This is the experience.</p>
+    </div>
+  </div>
+
+  <h3>Embrace the Variability</h3>
+  <p>Some stops on this route will feel polished. Others will feel like they are held together by habit and stubbornness and a deeply felt conviction that someone has to keep doing this. Both are correct. The contrast between a Coyote Drive-In night — food trucks, string lights, craft beer — and a Mahoning Drive-In night — 35mm grain, folding chairs, a crowd of people who drove three hours for a specific horror film — is not a design flaw in the itinerary. It <em class="road">is</em> the itinerary.</p>
+
+  <div class="ornament">✦ ✦ ✦</div>
+
+  <h2>A Final Observation</h2>
+
+  <p>A drive-in road trip is, on its surface, a trip to watch movies in parking lots. Underneath that, it is something considerably more interesting: a tour of how a business model adapts — or refuses to — under decades of compounding pressure.</p>
+
+  <p>You'll visit places that survived by modernizing without shame, places that survived by refusing to change at all, and places that survived by becoming so specific, so niche, so <em>themselves</em>, that no competitor could replicate them. You'll find communities where the drive-in is still just the thing you do on Friday night, and communities where the drive-in is a destination that people travel across the country to reach.</p>
+
+  <p>Every one of them is right. Every one of them found a different answer to the same question.</p>
+
+  <p>You leave Durango wondering if drive-ins are nostalgia or something still genuinely alive. You arrive at Cape Cod knowing the answer: <strong>both, depending on which parking lot you're sitting in.</strong></p>
+
+  <p style="margin-top:2rem; font-style:italic; color:var(--faded);">Start planning around the May–September window. Check operating schedules before you leave. The Mahoning books up for special events. Bengies does not care if you arrive late — you simply will not be admitted. And please, for the love of everything, bring the bug spray.</p>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p class="series">◆ Drive-In Series · Part Two of Two ◆</p>
+  <p>Companion to: <em style="color:var(--amber);">Honk If You Love Cinema</em> — A History of American Drive-In Theaters</p>
+  <p style="margin-top:1rem;">Route: Durango, CO → Farmington, NM → Buena Vista, CO → Fort Collins, CO → Fort Worth, TX → Lubbock, TX → Carthage, MO → Gibson City, IL → Lehighton, PA → Orefield, PA → Baltimore County, MD → Cape Cod, MA</p>
+  <p style="margin-top:1rem;">Approximate mileage: 4,200 · Recommended duration: 10–14 nights · Best window: May–September</p>
+  <p style="margin-top:1.5rem; font-size:0.7rem; opacity:0.5;">All operating hours, admission policies, and schedules subject to change. Verify before traveling. The raccoons at Wellfleet operate on their own schedule entirely.</p>
+</footer>
+
+</body>
+</html>
