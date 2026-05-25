@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Modern Miracle of Commercial Air Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky:      #1B6CA8;
+    --sky-lt:   #3A8FCC;
+    --cloud:    #F0F7FF;
+    --cream:    #FDF8EF;
+    --navy:     #0D2340;
+    --yellow:   #F5C842;
+    --orange:   #E8651A;
+    --red:      #C42B2B;
+    --teal:     #1A8C7A;
+    --white:    #FFFFFF;
+    --ink:      #1A1A2E;
+    --ltblue:   #D6EAF8;
+    --midblue:  #5BA3D0;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Nunito', sans-serif; font-weight: 400; line-height: 1.7; overflow-x: hidden; }
+
+  .hero { background: linear-gradient(170deg, var(--navy) 0%, var(--sky) 55%, var(--sky-lt) 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem 6rem; position: relative; overflow: hidden; }
+  .cloud { position: absolute; background: rgba(255,255,255,0.1); border-radius: 50px; filter: blur(2px); }
+  .cloud::before, .cloud::after { content:''; position:absolute; background: inherit; border-radius: 50%; }
+  .c1 { width:180px; height:50px; top:18%; left:5%; animation: drift1 22s ease-in-out infinite; }
+  .c1::before { width:90px; height:70px; top:-35px; left:20px; }
+  .c1::after  { width:70px; height:55px; top:-25px; left:80px; }
+  .c2 { width:260px; height:65px; top:35%; right:4%; animation: drift2 28s ease-in-out infinite; opacity:0.07; }
+  .c2::before { width:120px; height:90px; top:-45px; left:30px; }
+  .c2::after  { width:100px; height:70px; top:-30px; left:130px; }
+  .c3 { width:140px; height:40px; top:65%; left:12%; animation: drift1 18s ease-in-out infinite reverse; opacity:0.06; }
+  .c3::before { width:70px; height:55px; top:-28px; left:15px; }
+  @keyframes drift1 { 0%,100%{transform:translateX(0) translateY(0)} 50%{transform:translateX(15px) translateY(-8px)} }
+  @keyframes drift2 { 0%,100%{transform:translateX(0)} 50%{transform:translateX(-20px)} }
+
+  .stars { position:absolute; top:0;left:0;right:0;height:40%; background-image: radial-gradient(1px 1px at 10% 12%,rgba(255,255,255,0.7) 0%,transparent 100%), radial-gradient(1px 1px at 28% 6%,rgba(255,255,255,0.5) 0%,transparent 100%), radial-gradient(1px 1px at 55% 18%,rgba(255,255,255,0.4) 0%,transparent 100%), radial-gradient(1px 1px at 72% 5%,rgba(255,255,255,0.6) 0%,transparent 100%), radial-gradient(1px 1px at 88% 14%,rgba(255,255,255,0.5) 0%,transparent 100%); pointer-events:none; }
+
+  .hero-plane { position:absolute; top:20%; right:7%; animation: fly 18s ease-in-out infinite; opacity:0.15; }
+  @keyframes fly { 0%,100%{transform:translateY(0) rotate(-3deg)} 50%{transform:translateY(-16px) rotate(-1deg)} }
+
+  .hero-badge { display:inline-block; background:var(--yellow); color:var(--navy); font-family:'Righteous',cursive; font-size:0.7rem; letter-spacing:0.22em; text-transform:uppercase; padding:0.45rem 1.4rem; border-radius:2px; margin-bottom:2rem; animation:fadeUp 0.8s ease both; }
+  .hero h1 { font-family:'Righteous',cursive; font-size:clamp(3rem,9vw,7.5rem); color:var(--white); line-height:1; text-transform:uppercase; letter-spacing:0.02em; animation:fadeUp 0.9s 0.1s ease both; text-shadow:0 4px 30px rgba(0,0,0,0.3); }
+  .hero h1 .gold { color:var(--yellow); }
+  .hero-sub { font-family:'Special Elite',cursive; font-size:clamp(0.95rem,2.2vw,1.25rem); color:rgba(255,255,255,0.7); max-width:560px; margin:1.4rem auto 0; animation:fadeUp 1s 0.2s ease both; line-height:1.65; }
+  .ticket-row { display:flex; gap:1rem; margin-top:2.8rem; flex-wrap:wrap; justify-content:center; animation:fadeUp 1s 0.35s ease both; }
+  .ticket-chip { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); color:var(--white); font-family:'Special Elite',cursive; font-size:0.75rem; letter-spacing:0.08em; padding:0.4rem 0.9rem; border-radius:2px; backdrop-filter:blur(4px); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+  .boarding-pass-wrap { max-width:820px; margin:5rem auto 0; padding:0 2rem; }
+  .boarding-pass { background:var(--white); border:2px solid var(--navy); border-radius:6px; display:grid; grid-template-columns:1fr auto 140px; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,0.1); }
+  .bp-main { padding:2rem; border-right:2px dashed #ccc; }
+  .bp-label { font-family:'Special Elite',cursive; font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sky); margin-bottom:0.3rem; }
+  .bp-route { font-family:'Righteous',cursive; font-size:2.8rem; line-height:1; color:var(--navy); letter-spacing:0.05em; }
+  .bp-arrow { color:var(--yellow); font-size:2rem; margin:0 0.5rem; }
+  .bp-meta { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-top:1.2rem; }
+  .bp-field .label { font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:#aaa; }
+  .bp-field .value { font-family:'Special Elite',cursive; font-size:0.9rem; color:var(--navy); }
+  .bp-middle { display:flex; align-items:center; justify-content:center; padding:1.5rem 1rem; border-right:2px dashed #ccc; }
+  .bp-stub { background:var(--sky); padding:1.5rem 1rem; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; }
+  .bp-stub .seat-num { font-family:'Righteous',cursive; font-size:2rem; color:var(--white); line-height:1; }
+  .bp-stub .seat-label { font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.65); }
+  .bp-stub .grp { background:var(--yellow); color:var(--navy); font-family:'Righteous',cursive; font-size:0.75rem; letter-spacing:0.1em; padding:0.25rem 0.6rem; margin-top:0.3rem; }
+
+  .bp-intro-text { margin-top:2.5rem; font-size:1.1rem; color:#333; text-align:center; }
+  .bp-intro-text .kicker { font-family:'Righteous',cursive; font-size:clamp(1.6rem,3.5vw,2.4rem); color:var(--sky); display:block; margin:1rem 0; line-height:1.2; }
+
+  .section-header { background:var(--navy); color:var(--white); padding:1rem 2rem; max-width:1060px; margin:4rem auto 0; display:flex; align-items:center; gap:1rem; }
+  .section-header span { font-family:'Righteous',cursive; font-size:1rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--yellow); }
+  .sh-line { flex:1; height:1px; background:rgba(255,255,255,0.2); }
+
+  .grid { max-width:1060px; margin:1.5rem auto 0; padding:0 2rem 2rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; }
+  .card { background:var(--white); border-radius:6px; overflow:hidden; box-shadow:0 3px 20px rgba(0,0,0,0.07); transition:transform 0.2s ease,box-shadow 0.2s ease; border-top:5px solid var(--sky); display:flex; flex-direction:column; }
+  .card:hover { transform:translateY(-5px); box-shadow:0 14px 40px rgba(0,0,0,0.12); }
+  .card.teal   { border-color:var(--teal); }
+  .card.yellow { border-color:var(--yellow); }
+  .card.orange { border-color:var(--orange); }
+  .card.red    { border-color:var(--red); }
+  .card.navy   { border-color:var(--navy); }
+
+  .card-head { padding:1.5rem 1.5rem 0; display:flex; align-items:flex-start; gap:1rem; }
+  .card-icon { width:52px; height:52px; border-radius:50%; background:var(--ltblue); display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; }
+  .card.teal   .card-icon { background:#D5F0EB; }
+  .card.yellow .card-icon { background:#FEF8E1; }
+  .card.orange .card-icon { background:#FDE9D9; }
+  .card.red    .card-icon { background:#FDDADA; }
+  .card-num { font-family:'Special Elite',cursive; font-size:0.62rem; letter-spacing:0.15em; color:#bbb; text-transform:uppercase; margin-bottom:0.2rem; }
+  .card-title { font-family:'Righteous',cursive; font-size:1.08rem; color:var(--navy); line-height:1.25; text-transform:uppercase; letter-spacing:0.02em; }
+
+  .card-body { padding:1rem 1.5rem 1.5rem; font-size:0.92rem; color:#333; flex:1; display:flex; flex-direction:column; gap:0.6rem; }
+  .card-body em { font-style:italic; color:var(--sky); font-weight:600; }
+  .card.teal .card-body em { color:var(--teal); }
+  .card.orange .card-body em { color:var(--orange); }
+  .card.red .card-body em { color:var(--red); }
+  .card.yellow .card-body em { color:#8a6b00; }
+
+  .sound-effect { font-family:'Righteous',cursive; font-size:1.6rem; color:var(--navy); letter-spacing:0.05em; line-height:1.2; margin:0.3rem 0; }
+
+  .pill-row { display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.3rem; }
+  .pill { font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.2rem 0.65rem; border-radius:20px; background:var(--ltblue); color:var(--sky); }
+  .card.teal   .pill { background:#D5F0EB; color:var(--teal); }
+  .card.yellow .pill { background:#FEF8E1; color:#8a6b00; }
+  .card.orange .pill { background:#FDE9D9; color:var(--orange); }
+  .card.red    .pill { background:#FDDADA; color:var(--red); }
+  .card.navy   .pill { background:#D6E4F0; color:var(--navy); }
+
+  .card-verdict { padding:0.8rem 1.5rem; background:var(--cloud); border-top:1px solid #e8f0f8; font-family:'Special Elite',cursive; font-size:0.75rem; color:var(--sky); font-style:italic; margin-top:auto; }
+  .card.teal   .card-verdict { color:var(--teal); }
+  .card.orange .card-verdict { color:var(--orange); }
+  .card.red    .card-verdict { color:var(--red); }
+  .card.navy   .card-verdict { color:var(--navy); }
+
+  .safety-card { max-width:900px; margin:4rem auto; padding:0 2rem; }
+  .safety-inner { background:var(--white); border:3px solid var(--navy); border-radius:4px; padding:2.5rem; position:relative; overflow:hidden; }
+  .safety-inner::before { content:'SAFETY CARD'; position:absolute; top:14px; right:20px; font-family:'Righteous',cursive; font-size:0.65rem; letter-spacing:0.22em; color:var(--sky); opacity:0.3; }
+  .safety-title { font-family:'Righteous',cursive; font-size:1.5rem; color:var(--navy); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:1.5rem; display:flex; align-items:center; gap:0.8rem; }
+  .safety-title::after { content:''; flex:1; height:2px; background:linear-gradient(90deg,var(--sky),transparent); }
+  .safety-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:1.2rem; }
+  .safety-item { text-align:center; padding:1.2rem 0.8rem; border:1.5px solid var(--ltblue); border-radius:4px; background:var(--cloud); }
+  .safety-item .si-icon { font-size:2.2rem; margin-bottom:0.5rem; }
+  .safety-item .si-label { font-family:'Righteous',cursive; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy); margin-bottom:0.3rem; }
+  .safety-item .si-note { font-size:0.75rem; font-style:italic; color:#888; }
+
+  .alt-chart { max-width:860px; margin:4rem auto; padding:0 2rem; }
+  .alt-chart-inner { background:var(--navy); border-radius:8px; padding:2.5rem; color:var(--white); }
+  .chart-title { font-family:'Righteous',cursive; font-size:1.5rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--yellow); margin-bottom:0.4rem; }
+  .chart-sub { font-family:'Special Elite',cursive; font-size:0.75rem; color:rgba(255,255,255,0.4); margin-bottom:2rem; letter-spacing:0.08em; }
+  .bar-row { display:grid; grid-template-columns:200px 1fr 60px; align-items:center; gap:1rem; margin-bottom:1rem; }
+  .bar-label { font-size:0.82rem; font-weight:600; text-align:right; color:rgba(255,255,255,0.8); line-height:1.3; }
+  .bar-track { background:rgba(255,255,255,0.08); height:22px; border-radius:2px; overflow:hidden; }
+  .bar-fill { height:100%; border-radius:2px; }
+  .bar-fill.bsky    { background:linear-gradient(90deg,var(--sky-lt),var(--midblue)); }
+  .bar-fill.byellow { background:linear-gradient(90deg,var(--yellow),#f0a800); }
+  .bar-fill.borange { background:linear-gradient(90deg,var(--orange),#c44f10); }
+  .bar-fill.bred    { background:repeating-linear-gradient(-45deg,var(--red),var(--red) 6px,#8b1a1a 6px,#8b1a1a 12px); }
+  .bar-fill.bteal   { background:linear-gradient(90deg,#1A8C7A,#12665a); }
+  .bar-val { font-family:'Righteous',cursive; font-size:0.85rem; color:var(--yellow); text-align:center; }
+  .chart-legend { display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:1.5rem; padding-top:1.2rem; border-top:1px solid rgba(255,255,255,0.1); }
+  .legend-item { display:flex; align-items:center; gap:0.4rem; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.45); }
+  .legend-dot { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+
+  .closing { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); color:var(--white); text-align:center; padding:6rem 2rem; position:relative; overflow:hidden; }
+  .closing-inner { position:relative; z-index:1; max-width:660px; margin:0 auto; }
+  .closing h2 { font-family:'Righteous',cursive; font-size:clamp(2rem,5vw,3.8rem); text-transform:uppercase; letter-spacing:0.04em; line-height:1.1; color:var(--yellow); margin-bottom:1.4rem; }
+  .closing p { font-size:1.1rem; opacity:0.85; margin-bottom:1rem; font-weight:300; }
+  .closing .magic { font-family:'Special Elite',cursive; font-size:1.15rem; color:var(--yellow); opacity:1; margin-top:1.5rem; font-style:italic; }
+  .pretzel { font-size:3rem; display:block; margin:1rem auto 0; animation:bounce 3s ease-in-out infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+  footer { background:var(--navy); color:rgba(255,255,255,0.3); text-align:center; padding:1.4rem; font-family:'Special Elite',cursive; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; }
+
+  @media(max-width:660px){
+    .boarding-pass{grid-template-columns:1fr}
+    .bp-middle,.bp-stub{display:none}
+    .bp-main{border-right:none}
+    .bar-row{grid-template-columns:120px 1fr 44px}
+    .bar-label{font-size:0.7rem}
+    .safety-grid{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="stars"></div>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+
+  <div class="hero-plane">
+    <svg width="220" height="90" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="110" cy="45" rx="98" ry="18" fill="white"/>
+      <path d="M208 45 Q225 45 218 38 L195 35 Z" fill="white"/>
+      <path d="M18 45 L8 18 L28 38 Z" fill="white"/>
+      <path d="M80 45 L140 10 L145 45 Z" fill="white"/>
+      <path d="M80 45 L140 80 L145 45 Z" fill="white" opacity="0.7"/>
+      <ellipse cx="120" cy="56" rx="18" ry="7" fill="rgba(255,255,255,0.4)"/>
+      <circle cx="155" cy="41" r="4" fill="rgba(27,108,168,0.5)"/>
+      <circle cx="170" cy="40" r="4" fill="rgba(27,108,168,0.5)"/>
+      <circle cx="185" cy="39" r="4" fill="rgba(27,108,168,0.5)"/>
+      <circle cx="140" cy="42" r="4" fill="rgba(27,108,168,0.5)"/>
+    </svg>
+  </div>
+
+  <div class="hero-badge">&#9992; Investigative Report &middot; Economy Class Edition</div>
+  <h1>The Modern<br><span class="gold">Miracle</span><br>of Air Travel</h1>
+  <p class="hero-sub">Or: How Humanity Conquered Gravity but Lost the Ability to Board in an Orderly Fashion</p>
+  <div class="ticket-row">
+    <span class="ticket-chip">&#9992; Gate B14</span>
+    <span class="ticket-chip">&#9203; Boarding: Chaotic</span>
+    <span class="ticket-chip">&#128186; Seat: Middle</span>
+    <span class="ticket-chip">&#129408; Meal: Tiny Pretzels</span>
+    <span class="ticket-chip">&#9729; Alt: 35,000 ft</span>
+  </div>
+</header>
+
+<section class="boarding-pass-wrap">
+  <div class="boarding-pass">
+    <div class="bp-main">
+      <div class="bp-label">Boarding Pass &middot; Non-Refundable &middot; Obviously</div>
+      <div class="bp-route">
+        <span>HMN</span>
+        <span class="bp-arrow">&rarr;</span>
+        <span>CHO</span>
+      </div>
+      <div class="bp-meta">
+        <div class="bp-field"><div class="label">Passenger</div><div class="value">Average Traveler</div></div>
+        <div class="bp-field"><div class="label">Flight</div><div class="value">Barely On Time</div></div>
+        <div class="bp-field"><div class="label">Class</div><div class="value">Economy (Obviously)</div></div>
+      </div>
+    </div>
+    <div class="bp-middle">
+      <svg width="32" height="120" viewBox="0 0 32 120"><line x1="16" y1="0" x2="16" y2="120" stroke="#ddd" stroke-width="2" stroke-dasharray="6 4"/></svg>
+    </div>
+    <div class="bp-stub">
+      <div class="seat-label">Seat</div>
+      <div class="seat-num">14B</div>
+      <div class="seat-label">Middle. Sorry.</div>
+      <div class="grp">Group 8</div>
+    </div>
+  </div>
+  <div class="bp-intro-text">
+    <p>Commercial flying is one of mankind's greatest achievements &mdash; soaring across continents in a pressurized aluminum tube, sipping tomato juice for reasons no scientist has fully explained.</p>
+    <span class="kicker">And yet&hellip;<br>it feels like a group project designed by raccoons.</span>
+    <p>Here is a complete field report from the cabin.</p>
+  </div>
+</section>
+
+<div class="section-header">
+  <div class="sh-line"></div>
+  <span>&#9992; Filed Complaints &mdash; Economy Cabin</span>
+  <div class="sh-line"></div>
+</div>
+
+<div class="grid">
+
+  <div class="card navy">
+    <div class="card-head">
+      <div class="card-icon">&#129523;</div>
+      <div>
+        <div class="card-num">Incident 01 &middot; Overhead Division</div>
+        <div class="card-title">The Overhead Bin Colonizer</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>He boards in Group 7 carrying luggage designed for an Antarctic expedition. He wedges his giant roller bag above <em>your</em> seat using techniques borrowed from industrial concrete packing.</p>
+      <p>Then walks 19 rows backward to his actual seat. Retrieving your bag now requires upper-body strength, emotional resilience, and a Sherpa.</p>
+      <div class="pill-row">
+        <span class="pill">Group 7</span>
+        <span class="pill">Antarctic Scale</span>
+        <span class="pill">Sherpa Required</span>
+      </div>
+    </div>
+    <div class="card-verdict">&rarr; The overhead bin is now international territorial warfare.</div>
+  </div>
+
+  <div class="card red">
+    <div class="card-head">
+      <div class="card-icon">&#128249;</div>
+      <div>
+        <div class="card-num">Incident 02 &middot; Lumbar Region</div>
+        <div class="card-title">The Tiny Seat-Kicking Demolition Crew</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Somewhere behind you sits a child whose legs are powered by pistons from a 1974 oil rig.</p>
+      <div class="sound-effect">THUMP.<br>THUMP.<br>THUMP.</div>
+      <p>At first you assume turbulence. No &mdash; it is little <em>Brayden</em> practicing mixed martial arts against your lumbar spine. The parent smiles weakly while doing absolutely nothing.</p>
+      <div class="pill-row">
+        <span class="pill">MMA Certified</span>
+        <span class="pill">Oil-Rig Pistons</span>
+        <span class="pill">Parent: Offline</span>
+      </div>
+    </div>
+    <div class="card-verdict">&rarr; "Kids will be kids." Ma'am, your child is recreating the Battle of Gettysburg on 14B.</div>
+  </div>
+
+  <div class="card teal">
+    <div class="card-head">
+      <div class="card-icon">&#128172;</div>
+      <div>
+        <div class="card-num">Incident 03 &middot; Cabin Acoustics</div>
+        <div class="card-title">The Captive Conversationalist</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>This person spots you wearing headphones, typing furiously, or visibly asleep &mdash; and interprets all of this as: <em>"Please tell me about your nephew's landscaping startup."</em></p>
+      <p>Subtle signals fail entirely. By landing you know their cholesterol numbers, cryptocurrency opinions, and why the Marriott in Tulsa <em>"used to be better before management changed."</em></p>
+      <div class="pill-row">
+        <span class="pill">Headphones Ignored</span>
+        <span class="pill">Tulsa Marriott Intel</span>
+        <span class="pill">Cholesterol Data</span>
+      </div>
+    </div>
+    <div class="card-verdict">&rarr; You never learn their name. They never notice.</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="card-head">
+      <div class="card-icon">&#127903;</div>
+      <div>
+        <div class="card-num">Incident 04 &middot; Gate B14</div>
+        <div class="card-title">The Boarding Group Opportunists</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Airlines now have approximately 47 boarding groups including Priority Sapphire Elite Plus, Emotional Support Ferrets, and <em>"Group 9: People We Secretly Regret Selling Tickets To."</em></p>
+      <p>Yet half the plane stands up when Group 1 is called &mdash; holding passes that clearly say GROUP 8 &mdash; approaching with the confidence of medieval conquerors. The scanner beeps. They look <em>shocked. SHOCKED.</em></p>
+      <div class="pill-row">
+        <span class="pill">47 Groups</span>
+        <span class="pill">Medieval Confidence</span>
+        <span class="pill">Beep of Shame</span>
+      </div>
+    </div>
+    <div class="card-verdict">&rarr; "Oh! I didn't realize." Sir, your boarding pass is practically a cry for help.</div>
+  </div>
+
+  <div class="card orange">
+    <div class="card-head">
+      <div class="card-icon">&#128186;</div>
+      <div>
+        <div class="card-num">Incident 05 &middot; Kneecap Report</div>
+        <div class="card-title">The Recliner Extremist</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>One moment you're sipping ginger ale. The next, seat 22B launches backward into your kneecaps like <em>a tactical assault device.</em></p>
+      <p>Your laptop screen now exists at a 14-degree angle known only to submarine engineers. The recliner sleeps peacefully, folded nearly into your ribcage like a travel hammock.</p>
+      <div class="pill-row">
+        <span class="pill">14&deg; Laptop Angle</span>
+        <span class="pill">Submarine Math</span>
+        <span class="pill">Recliner: Asleep</span>
+      </div>
+    </div>
+    <div class="card-verdict">&rarr; They reclined with the moral restraint of a collapsing oak tree.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon">&#129471;</div>
+      <div>
+        <div class="card-num">Incident 06 &middot; Armrest Region</div>
+        <div class="card-title">The Barefoot Wanderer</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>At some point one passenger decides: <em>"What if this airplane were also my living room?"</em></p>
+      <p>Shoes come off. Socks disappear. Soon a bare foot emerges beside your armrest like a pale woodland creature seeking sunlight.</p>
+      <p>No one knows why this happens. No one wants to know why this happens.</p>
+      <div class="pill-row">
+        <span class="pill">Shoes: Gone</span>
+        <span class="pill">Woodland Creature</span>
+        <span class="pill">Seeking Sunlight</span>
+      </div>
+    </div>
+    <div class="card-verdict">&rarr; The mystery is a gift. Do not investigate it.</div>
+  </div>
+
+  <div class="card teal">
+    <div class="card-head">
+      <div class="card-icon">&#128679;</div>
+      <div>
+        <div class="card-num">Incident 07 &middot; Doorway Division</div>
+        <div class="card-title">The Boarding Door Traffic Cone</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>This traveler reaches the aircraft doorway &mdash; the narrowest, most congested point imaginable &mdash; and suddenly remembers every major life decision. They stop completely.</p>
+      <p>Now they must check seat numbers, reorganize snacks, text three people, and <em>perhaps refinance a mortgage.</em></p>
+      <div class="pill-row">
+        <span class="pill">94 People Behind</span>
+        <span class="pill">Mortgage Pending</span>
+        <span class="pill">Snack Crisis</span>
+      </div>
+    </div>
+    <div class="card-verdict">&rarr; 94 passengers stack up like shopping carts at a supermarket apocalypse.</div>
+  </div>
+
+  <div class="card navy">
+    <div class="card-head">
+      <div class="card-icon">&#128170;</div>
+      <div>
+        <div class="card-num">Incident 08 &middot; International Law</div>
+        <div class="card-title">The Armrest Treaty Violator</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Experts agree: window gets one armrest, aisle gets one armrest, middle seat gets both &mdash; <em>because existence has already punished them enough.</em></p>
+      <p>Yet one traveler expands outward like a gas under pressure. One elbow occupies your territory. Their leg drifts across the border. Your personal space becomes a historical memory.</p>
+      <div class="pill-row">
+        <span class="pill">Treaty: Violated</span>
+        <span class="pill">Diagonal By Hour 3</span>
+        <span class="pill">Gas Under Pressure</span>
+      </div>
+    </div>
+    <div class="card-verdict">&rarr; By hour three, you're sitting like a folded lawn chair.</div>
+  </div>
+
+  <div class="card red">
+    <div class="card-head">
+      <div class="card-icon">&#127939;</div>
+      <div>
+        <div class="card-num">Incident 09 &middot; Runway Protocol</div>
+        <div class="card-title">The Descent Stampede</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>The instant the plane touches the runway, half the passengers leap up as though the aircraft is <em>sinking into the Atlantic.</em></p>
+      <p>The seatbelt sign remains on. The plane is moving at 40 mph. Yet people are opening bins, dragging luggage sideways, and standing bent double like aggressive meerkats. Nobody exits for 14 more minutes. But they stand anyway. <em>Because hope springs eternal.</em></p>
+      <div class="pill-row">
+        <span class="pill">Sign Still On</span>
+        <span class="pill">Meerkat Posture</span>
+        <span class="pill">14 Min Wait</span>
+      </div>
+    </div>
+    <div class="card-verdict">&rarr; They stood. They waited. They would stand again.</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="card-head">
+      <div class="card-icon">&#127908;</div>
+      <div>
+        <div class="card-num">Incident 10 &middot; The Final Boss</div>
+        <div class="card-title">The Baggage Carousel Psychological Experiment</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Passengers gather around the carousel &mdash; aviation's final emotional challenge. Every suitcase looks vaguely familiar. People stare at luggage like <em>art critics evaluating modern sculpture.</em></p>
+      <p>You spot your bag. No &mdash; different ribbon. Another bag. No &mdash; different zipper. Eventually your suitcase arrives damaged in a fascinating new way, suggesting it spent the flight <em>participating in a rodeo.</em></p>
+      <div class="pill-row">
+        <span class="pill">False Alarm x3</span>
+        <span class="pill">Art Critic Mode</span>
+        <span class="pill">Rodeo Survivor</span>
+      </div>
+    </div>
+    <div class="card-verdict">&rarr; It's your bag. It has been to places you have not.</div>
+  </div>
+
+</div>
+
+<section class="safety-card">
+  <div class="safety-inner">
+    <div class="safety-title">&#9992; In-Flight Survival Guide</div>
+    <div class="safety-grid">
+      <div class="safety-item"><div class="si-icon">&#129523;</div><div class="si-label">Bin Space</div><div class="si-note">Claim early. Defend with eye contact.</div></div>
+      <div class="safety-item"><div class="si-icon">&#127911;</div><div class="si-label">Headphones</div><div class="si-note">Not a deterrent. Merely decoration.</div></div>
+      <div class="safety-item"><div class="si-icon">&#128186;</div><div class="si-label">Middle Seat</div><div class="si-note">Both armrests. This is your only right.</div></div>
+      <div class="safety-item"><div class="si-icon">&#129471;</div><div class="si-label">Bare Feet</div><div class="si-note">Do not engage. Do not look down.</div></div>
+      <div class="safety-item"><div class="si-icon">&#129307;</div><div class="si-label">Upon Landing</div><div class="si-note">Stand if you must. Nothing will change.</div></div>
+      <div class="safety-item"><div class="si-icon">&#127908;</div><div class="si-label">Your Luggage</div><div class="si-note">It will be last. Prepare emotionally.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-chart">
+  <div class="alt-chart-inner">
+    <div class="chart-title">Passenger Misery Index</div>
+    <div class="chart-sub">// Official Measurements &middot; Economy Class &middot; Seat 14B //</div>
+    <div class="bar-row"><div class="bar-label">Seat-Kicking Child</div><div class="bar-track"><div class="bar-fill bred" style="width:97%"></div></div><div class="bar-val">97%</div></div>
+    <div class="bar-row"><div class="bar-label">Recliner Extremist</div><div class="bar-track"><div class="bar-fill bred" style="width:94%"></div></div><div class="bar-val">94%</div></div>
+    <div class="bar-row"><div class="bar-label">No Bin Space Left</div><div class="bar-track"><div class="bar-fill borange" style="width:88%"></div></div><div class="bar-val">88%</div></div>
+    <div class="bar-row"><div class="bar-label">Captive Conversation</div><div class="bar-track"><div class="bar-fill borange" style="width:82%"></div></div><div class="bar-val">82%</div></div>
+    <div class="bar-row"><div class="bar-label">Doorway Traffic Cone</div><div class="bar-track"><div class="bar-fill byellow" style="width:76%"></div></div><div class="bar-val">76%</div></div>
+    <div class="bar-row"><div class="bar-label">Armrest Treaty Breach</div><div class="bar-track"><div class="bar-fill byellow" style="width:71%"></div></div><div class="bar-val">71%</div></div>
+    <div class="bar-row"><div class="bar-label">Descent Stampede</div><div class="bar-track"><div class="bar-fill bsky" style="width:65%"></div></div><div class="bar-val">65%</div></div>
+    <div class="bar-row"><div class="bar-label">Barefoot Wanderer</div><div class="bar-track"><div class="bar-fill bteal" style="width:58%"></div></div><div class="bar-val">58%</div></div>
+    <div class="bar-row"><div class="bar-label">Tiny Pretzels Only</div><div class="bar-track"><div class="bar-fill bsky" style="width:43%"></div></div><div class="bar-val">43%</div></div>
+    <div class="chart-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> Critical</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div> Severe</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div> Elevated</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--sky-lt)"></div> Moderate</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div> Bizarre</div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="closing-inner">
+    <h2>And Yet We Keep Flying</h2>
+    <p>Commercial flying combines miraculous engineering, advanced logistics, and the social dynamics of a crowded elevator during a power outage.</p>
+    <p>Despite the screaming toddlers, the overhead-bin warlords, and the barefoot philosophers of Row 18&hellip;</p>
+    <p class="magic">&hellip;there's still something magical about hurtling through the sky in a chair while eating tiny pretzels at 35,000 feet.</p>
+    <span class="pretzel">&#129408;</span>
+  </div>
+</section>
+
+<footer>The Modern Miracle of Commercial Air Travel &nbsp;&middot;&nbsp; Economy Class Edition &nbsp;&middot;&nbsp; Seat 14B &nbsp;&middot;&nbsp; Group 8 &nbsp;&middot;&nbsp; No Overhead Space Remaining</footer>
+
+</body>
+</html>
