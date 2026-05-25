@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Your Favorite Fruit Says About You</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #FFFDF5;
+    --ink:        #1A1208;
+    --mid:        #5A4A2A;
+    --border:     rgba(90,74,42,0.15);
+
+    /* fruit-inspired accent palette */
+    --apple:      #D94F3A;
+    --apple-lt:   #FDECEA;
+    --banana:     #F5C842;
+    --banana-lt:  #FFFBE8;
+    --orange:     #E07828;
+    --orange-lt:  #FEF4EA;
+    --berry:      #8B3A8B;
+    --berry-lt:   #F8EEF8;
+    --green:      #2E8B57;
+    --green-lt:   #EDF7F1;
+    --teal:       #1A8878;
+    --teal-lt:    #E8F6F4;
+    --rose:       #C0395A;
+    --rose-lt:    #FDEEF2;
+    --blue:       #3A6DB5;
+    --blue-lt:    #EDF2FC;
+    --plum:       #5C2D6E;
+    --plum-lt:    #F2EAF7;
+    --gold:       #C8960A;
+    --gold-lt:    #FFF8E1;
+    --sage:       #5A7A4A;
+    --sage-lt:    #EFF6EB;
+    --coral:      #D94A2A;
+    --coral-lt:   #FDECEA;
+    --indigo:     #3D3A8C;
+    --indigo-lt:  #EEEDF9;
+    --crimson:    #9B1E1E;
+    --crimson-lt: #FCEAEA;
+    --lime:       #5A9A1A;
+    --lime-lt:    #F2FAE8;
+    --amber:      #B86A10;
+    --amber-lt:   #FEF3E2;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN TEXTURE ── */
+  body::after {
+    content:''; position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events:none; z-index:9999; opacity:0.25;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* polka-dot fruit pattern bg */
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 15% 25%, rgba(229,120,40,0.12) 60px, transparent 60px),
+      radial-gradient(circle at 80% 15%, rgba(139,58,139,0.10) 45px, transparent 45px),
+      radial-gradient(circle at 55% 80%, rgba(46,139,87,0.10) 70px, transparent 70px),
+      radial-gradient(circle at 90% 60%, rgba(192,57,90,0.10) 50px, transparent 50px),
+      radial-gradient(circle at 10% 75%, rgba(245,200,66,0.10) 55px, transparent 55px),
+      radial-gradient(circle at 35% 50%, rgba(26,136,120,0.08) 40px, transparent 40px);
+    pointer-events:none;
+  }
+
+  .hero-eyebrow {
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem; letter-spacing:0.4em; text-transform:uppercase;
+    color:rgba(245,200,66,0.75);
+    margin-bottom:1.6rem;
+    animation: riseIn 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family:'Fredoka One', cursive;
+    font-size: clamp(2.8rem, 9vw, 7rem);
+    color:#fff;
+    line-height:1.05;
+    margin-bottom:1.2rem;
+    animation: riseIn 0.9s 0.12s ease both;
+  }
+  .hero h1 .fruit-word {
+    display:inline-block;
+    background: linear-gradient(135deg, #F5C842, #E07828, #D94F3A);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+
+  .hero-sub {
+    font-size:clamp(1rem, 2vw, 1.25rem);
+    color:rgba(255,255,255,0.6);
+    max-width:600px; margin:0 auto 2.5rem;
+    font-style:italic;
+    animation: riseIn 1s 0.25s ease both;
+  }
+
+  .disclaimer {
+    display:inline-block;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:2rem;
+    padding:0.5rem 1.4rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:rgba(255,255,255,0.45);
+    animation: riseIn 1s 0.38s ease both;
+  }
+
+  /* ── FRUIT EMOJI MARQUEE ── */
+  .marquee-wrap {
+    background:var(--banana);
+    overflow:hidden;
+    padding:0.75rem 0;
+    white-space:nowrap;
+  }
+  .marquee-track {
+    display:inline-block;
+    animation: scroll 28s linear infinite;
+  }
+  .marquee-track span {
+    font-size:1.5rem;
+    margin:0 0.6rem;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    max-width:720px; margin:0 auto;
+    padding:4rem 2rem 2rem;
+    text-align:center;
+  }
+  .intro p {
+    font-size:clamp(1rem, 1.8vw, 1.15rem);
+    color:var(--mid);
+    line-height:1.85;
+    margin-bottom:1rem;
+  }
+  .intro .big-statement {
+    font-family:'Fredoka One', cursive;
+    font-size:clamp(1.4rem,3vw,2rem);
+    color:var(--ink);
+    margin:1.5rem 0;
+    line-height:1.3;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    max-width:900px; margin:4rem auto 0;
+    padding:0 2rem;
+    display:flex; align-items:center; gap:1rem;
+  }
+  .section-header::after {
+    content:''; flex:1; height:2px;
+    background:linear-gradient(to right, currentColor, transparent);
+    opacity:0.2;
+  }
+  .section-title {
+    font-family:'Fredoka One', cursive;
+    font-size:clamp(1.2rem,2.5vw,1.6rem);
+    white-space:nowrap;
+  }
+
+  /* ── FRUIT GRID ── */
+  .grid {
+    max-width:1100px; margin:0 auto;
+    padding:2rem 1.5rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap:1.25rem;
+  }
+
+  /* ── FRUIT CARD ── */
+  .card {
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:1.5rem 1.6rem 1.4rem;
+    position:relative;
+    box-shadow:0 2px 10px rgba(26,18,8,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow:hidden;
+  }
+  .card:hover {
+    transform:translateY(-4px);
+    box-shadow:0 10px 28px rgba(26,18,8,0.12);
+  }
+
+  /* colored top stripe */
+  .card::before {
+    content:'';
+    position:absolute; top:0; left:0; right:0;
+    height:4px;
+    background:var(--accent);
+    border-radius:12px 12px 0 0;
+  }
+
+  /* colored bg tint */
+  .card-inner {
+    border-radius:8px;
+    background:var(--accent-lt);
+    padding:0.9rem 1rem 0.8rem;
+    margin-bottom:1rem;
+    display:flex; align-items:center; gap:0.9rem;
+  }
+  .card-emoji {
+    font-size:2.6rem;
+    line-height:1;
+    flex-shrink:0;
+  }
+  .card-name {
+    font-family:'Fredoka One', cursive;
+    font-size:1.55rem;
+    color:var(--accent);
+    line-height:1.1;
+  }
+  .card-tag {
+    font-family:'Space Mono', monospace;
+    font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--accent);
+    opacity:0.65;
+    margin-top:0.15rem;
+  }
+  .card p {
+    font-size:0.97rem;
+    color:var(--ink);
+    line-height:1.7;
+  }
+  /* verdict line */
+  .verdict {
+    margin-top:0.9rem;
+    padding-top:0.9rem;
+    border-top:1px solid rgba(90,74,42,0.1);
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    color:var(--accent);
+    font-style:italic;
+  }
+  .verdict::before { content:'🔍 VERDICT: '; opacity:0.7; font-style:normal; }
+
+  /* accent classes */
+  .c-apple    { --accent:var(--apple);   --accent-lt:var(--apple-lt);   }
+  .c-banana   { --accent:var(--banana);  --accent-lt:var(--banana-lt);  }
+  .c-orange   { --accent:var(--orange);  --accent-lt:var(--orange-lt);  }
+  .c-berry    { --accent:var(--berry);   --accent-lt:var(--berry-lt);   }
+  .c-green    { --accent:var(--green);   --accent-lt:var(--green-lt);   }
+  .c-teal     { --accent:var(--teal);    --accent-lt:var(--teal-lt);    }
+  .c-rose     { --accent:var(--rose);    --accent-lt:var(--rose-lt);    }
+  .c-blue     { --accent:var(--blue);    --accent-lt:var(--blue-lt);    }
+  .c-plum     { --accent:var(--plum);    --accent-lt:var(--plum-lt);    }
+  .c-gold     { --accent:var(--gold);    --accent-lt:var(--gold-lt);    }
+  .c-sage     { --accent:var(--sage);    --accent-lt:var(--sage-lt);    }
+  .c-indigo   { --accent:var(--indigo);  --accent-lt:var(--indigo-lt);  }
+  .c-crimson  { --accent:var(--crimson); --accent-lt:var(--crimson-lt); }
+  .c-lime     { --accent:var(--lime);    --accent-lt:var(--lime-lt);    }
+  .c-amber    { --accent:var(--amber);   --accent-lt:var(--amber-lt);   }
+  .c-coral    { --accent:var(--coral);   --accent-lt:var(--coral-lt);   }
+
+  /* ── WIDE CARD (full width) ── */
+  .card-wide {
+    grid-column: 1 / -1;
+    display:flex; gap:1.5rem; align-items:flex-start;
+  }
+  .card-wide .card-inner { flex-direction:column; align-items:center; text-align:center; min-width:140px; flex-shrink:0; }
+  .card-wide .card-emoji { font-size:3.5rem; }
+  .card-wide .card-body { flex:1; }
+  .card-wide .card-body p { font-size:1rem; line-height:1.75; margin-bottom:0; }
+  @media(max-width:600px) { .card-wide { flex-direction:column; } }
+
+  /* ── PULLQUOTE ── */
+  .pullquote-wrap {
+    max-width:900px; margin:3rem auto;
+    padding:0 2rem;
+  }
+  .pullquote {
+    background:var(--ink);
+    border-radius:12px;
+    padding:2.5rem 3rem;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .pullquote::before {
+    content:'"';
+    position:absolute; top:-0.5rem; left:1rem;
+    font-family:'Fredoka One', cursive;
+    font-size:12rem; line-height:1;
+    color:rgba(245,200,66,0.08);
+    pointer-events:none;
+  }
+  .pullquote p {
+    font-family:'Fredoka One', cursive;
+    font-size:clamp(1.2rem,3vw,1.8rem);
+    color:#fff;
+    line-height:1.4;
+    position:relative;
+  }
+  .pullquote cite {
+    display:block; margin-top:1rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+    color:rgba(245,200,66,0.6);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display:flex; align-items:center; justify-content:center;
+    gap:0.8rem; padding:1rem 2rem;
+    font-size:1.3rem;
+  }
+  .divider::before, .divider::after {
+    content:''; flex:1; max-width:120px; height:1px;
+    background:var(--border);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--ink);
+    color:rgba(255,255,255,0.4);
+    text-align:center;
+    padding:3rem 2rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem; letter-spacing:0.2em; text-transform:uppercase;
+    line-height:2;
+  }
+  footer strong { color:var(--banana); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes riseIn {
+    from { opacity:0; transform:translateY(18px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes scroll {
+    from { transform:translateX(0); }
+    to   { transform:translateX(-50%); }
+  }
+
+  mark {
+    background:rgba(245,200,66,0.35);
+    padding:0 3px; border-radius:3px; color:inherit;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-eyebrow">An Entirely Unscientific Personality Analysis</div>
+  <h1>What Your <span class="fruit-word">Favorite Fruit</span><br>Says About You</h1>
+  <p class="hero-sub">A rigorous psychological study conducted using zero peer review, maximum confidence, and one very opinionated pomegranate.</p>
+  <span class="disclaimer">⚠ Not Science. Absolutely Accurate.</span>
+</header>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>🍎</span><span>🍌</span><span>🍊</span><span>🍓</span><span>🫐</span><span>🍇</span><span>🍉</span><span>🍍</span><span>🥭</span><span>🍑</span><span>🍐</span><span>🍒</span><span>🍋</span><span>🍈</span><span>🥝</span><span>🍅</span><span>🥥</span><span>🍏</span><span>🍌</span><span>🍊</span><span>🫐</span><span>🍇</span><span>🍉</span><span>🍍</span><span>🥭</span><span>🍑</span><span>🍐</span><span>🍒</span><span>🍋</span><span>🍈</span><span>🥝</span><span>🍅</span><span>🥥</span><span>🍎</span><span>🍌</span><span>🍊</span><span>🍓</span><span>🫐</span><span>🍇</span><span>🍉</span><span>🍍</span><span>🥭</span><span>🍑</span><span>🍐</span><span>🍒</span><span>🍋</span><span>🍈</span><span>🥝</span><span>🍅</span><span>🥥</span>
+    <span>🍎</span><span>🍌</span><span>🍊</span><span>🍓</span><span>🫐</span><span>🍇</span><span>🍉</span><span>🍍</span><span>🥭</span><span>🍑</span><span>🍐</span><span>🍒</span><span>🍋</span><span>🍈</span><span>🥝</span><span>🍅</span><span>🥥</span><span>🍏</span><span>🍌</span><span>🍊</span><span>🫐</span><span>🍇</span><span>🍉</span><span>🍍</span><span>🥭</span><span>🍑</span><span>🍐</span><span>🍒</span><span>🍋</span><span>🍈</span><span>🥝</span><span>🍅</span><span>🥥</span><span>🍎</span><span>🍌</span><span>🍊</span><span>🍓</span><span>🫐</span><span>🍇</span><span>🍉</span><span>🍍</span><span>🥭</span><span>🍑</span><span>🍐</span><span>🍒</span><span>🍋</span><span>🍈</span><span>🥝</span><span>🍅</span><span>🥥</span>
+  </div>
+</div>
+
+<!-- ── INTRO ── -->
+<section class="intro">
+  <p>Personality tests come and go. Myers-Briggs, enneagrams, "which Hogwarts house are you" — all fine, all deeply unscientific, all taken with enormous seriousness at dinner parties. But none of them ask the one question that cuts straight to the soul:</p>
+  <div class="big-statement">What is your favorite fruit?</div>
+  <p>This is not science, which is <em>exactly</em> why it is reliable. Science has a nasty habit of introducing nuance, controlling for variables, and refusing to call you out for being a Grapefruit Person. We have no such restrictions here. Read on, find your fruit, and prepare to feel seen in ways your therapist hasn't managed yet.</p>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 1: THE CLASSICS
+════════════════════════════════════════ -->
+<div class="section-header" style="color:var(--apple);">
+  <span class="section-title">🏆 The Classics</span>
+</div>
+
+<div class="grid">
+
+  <div class="card c-apple">
+    <div class="card-inner">
+      <div class="card-emoji">🍎</div>
+      <div>
+        <div class="card-name">Apple</div>
+        <div class="card-tag">The Reliable One</div>
+      </div>
+    </div>
+    <p>You are dependable, organized, and almost certainly own a reusable water bottle with a motivational phrase on it. You say things like "Let's circle back" even when talking to your dog. Your calendar has color-coded categories, including one labeled "Miscellaneous" that you refuse to let get too large. Secretly, you believe that most of life's problems could be solved with a better checklist. You are not wrong, but you are also not invited to the spontaneous road trip.</p>
+    <div class="verdict">Highly functional. Possibly insufferable at IKEA.</div>
+  </div>
+
+  <div class="card c-banana">
+    <div class="card-inner">
+      <div class="card-emoji">🍌</div>
+      <div>
+        <div class="card-name">Banana</div>
+        <div class="card-tag">The Optimist</div>
+      </div>
+    </div>
+    <p>You are optimistic, flexible, and always exactly three days away from either peak ripeness or total emotional collapse — with no discernible middle ground. You believe life should be simple, portable, and slightly curved. You are the person who says "it'll work out" and is annoying because it usually does. You have strong feelings about whether bananas belong in smoothies (yes) and in fruit salad (no, and how dare you).</p>
+    <div class="verdict">Endlessly cheerful. Occasionally turns to mush under pressure.</div>
+  </div>
+
+  <div class="card c-orange">
+    <div class="card-inner">
+      <div class="card-emoji">🍊</div>
+      <div>
+        <div class="card-name">Orange</div>
+        <div class="card-tag">The Social One</div>
+      </div>
+    </div>
+    <p>You are cheerful, social, and genuinely willing to do work for your happiness — which makes you rare and slightly confusing to people who prefer their joy pre-packaged. You understand that the good things in life sometimes require peeling, sectioning, and accepting that you will get juice on your sleeve, and you're fine with that. You are the person who actually follows through on group chat plans. Everyone is relieved when you show up.</p>
+    <div class="verdict">Bright, warm, and slightly sticky. The life of every gathering.</div>
+  </div>
+
+  <div class="card c-rose">
+    <div class="card-inner">
+      <div class="card-emoji">🍓</div>
+      <div>
+        <div class="card-name">Strawberry</div>
+        <div class="card-tag">The Romantic</div>
+      </div>
+    </div>
+    <p>You are romantic, nostalgic, and likely to use the word "darling" without irony. You enjoy farmers markets, handwritten notes, and spending seventeen minutes making a smoothie look photogenic before drinking it. You believe whipped cream is a lifestyle choice, not a topping. You have opinions about which season is the most atmospheric and you are not afraid to share them. You are delightful. You are also <em>a lot</em>.</p>
+    <div class="verdict">Sweet, beautiful, and deeply invested in the aesthetic of everything.</div>
+  </div>
+
+  <div class="card c-blue">
+    <div class="card-inner">
+      <div class="card-emoji">🫐</div>
+      <div>
+        <div class="card-name">Blueberry</div>
+        <div class="card-tag">The Quietly Competent One</div>
+      </div>
+    </div>
+    <p>You are quietly competent and do not need attention — but somehow you improve everything you're added to, which is the most powerful personality type of all. You are the person people trust with their houseplants when they travel, their passwords when they're locked out, and their emotional nuance when everyone else is being loud about simpler things. You are antioxidant-rich in a spiritual sense. You probably have excellent skin and a genuinely interesting podcast recommendation.</p>
+    <div class="verdict">Underestimated by everyone. Correct about most things.</div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-inner">
+      <div class="card-emoji">🍇</div>
+      <div>
+        <div class="card-name">Grape</div>
+        <div class="card-tag">The Options Person</div>
+      </div>
+    </div>
+    <p>You are easygoing, snack-oriented, and suspiciously skilled at avoiding commitment. You like options. Green or red? Seedless or seeded? Fresh or frozen? Wine? Raisins? Jam? <em>You contain multitudes.</em> You are the person who hasn't quite decided where they want to live, what they want to do with their life, or what they want to order — but they're very relaxed about it, which is somehow charming rather than frustrating. For now.</p>
+    <div class="verdict">Delightful in any form. Commitment: pending.</div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-inner">
+      <div class="card-emoji">🍉</div>
+      <div>
+        <div class="card-name">Watermelon</div>
+        <div class="card-tag">The Big Energy Friend</div>
+      </div>
+    </div>
+    <p>You are fun, generous, and physically impossible to eat neatly — which is fine because you've never been that worried about neat. You bring big, unstoppable summer energy and believe most of life's problems can be meaningfully improved by a picnic, a porch, a paper plate, and sufficient quantities of people you like. You are the one who actually buys the whole watermelon instead of the pre-cut container, and everyone at the party is deeply grateful.</p>
+    <div class="verdict">Maximum fun. Minimum fuss. Seeds negotiable.</div>
+  </div>
+
+  <div class="card c-amber">
+    <div class="card-inner">
+      <div class="card-emoji">🍍</div>
+      <div>
+        <div class="card-name">Pineapple</div>
+        <div class="card-tag">The Main Character</div>
+      </div>
+    </div>
+    <p>You are bold, dramatic, and arrive everywhere with main-character energy and a complete willingness to be controversial — see: the pizza debate, which you have <em>opinions</em> about and will defend to your last breath. You are sweet, sharp, and genuinely complicated to get close to, which you have decided is a feature, not a bug. You may own sunglasses that make a statement. The statement is "I have arrived and I am not apologizing for it."</p>
+    <div class="verdict">Divisive. Magnetic. Probably right about the pizza thing.</div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- ── PULLQUOTE 1 ── -->
+<div class="pullquote-wrap">
+  <div class="pullquote">
+    <p>This is not science, which is exactly why it is reliable. Science refuses to call you out for being a Grapefruit Person.</p>
+    <cite>— The Fruit Psychology Institute (Not Real)</cite>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 2: STONE FRUITS & TROPICAL
+════════════════════════════════════════ -->
+<div class="section-header" style="color:var(--amber);">
+  <span class="section-title">🍑 Stone Fruits &amp; Tropical Souls</span>
+</div>
+
+<div class="grid">
+
+  <div class="card c-amber">
+    <div class="card-inner">
+      <div class="card-emoji">🥭</div>
+      <div>
+        <div class="card-name">Mango</div>
+        <div class="card-tag">The Glamorous Chaotic</div>
+      </div>
+    </div>
+    <p>You are sensual, warm, and slightly chaotic in a way that people describe as glamorous when they like you and "a lot" when they've had a long week. You believe life is meant to be juicy, messy, and eaten over the sink at midnight with no witnesses. You have a richness to you — in flavor, in personality, in the number of things happening in your life at any given moment. You are not for everyone, but for those who get it, you are <em>everything.</em></p>
+    <div class="verdict">Tropical, intense, and worth every sticky moment.</div>
+  </div>
+
+  <div class="card c-rose">
+    <div class="card-inner">
+      <div class="card-emoji">🍑</div>
+      <div>
+        <div class="card-name">Peach</div>
+        <div class="card-tag">The Charming One</div>
+      </div>
+    </div>
+    <p>You are charming, affectionate, and maybe a little high-maintenance — but in the specific way that people forgive instantly because you're just so lovely about it. You bruise easily, physically and emotionally, but you've learned to make vulnerability look absolutely delicious. You are the person who makes "I need help" sound like a gift rather than a complaint. Everyone you know has a soft spot for you that they're slightly embarrassed about.</p>
+    <div class="verdict">Soft, warm, and genuinely irresistible. Also: fuzzy, but we say that affectionately.</div>
+  </div>
+
+  <div class="card c-sage">
+    <div class="card-inner">
+      <div class="card-emoji">🍐</div>
+      <div>
+        <div class="card-name">Pear</div>
+        <div class="card-tag">The Elegant Enigma</div>
+      </div>
+    </div>
+    <p>You are elegant, thoughtful, and slightly mysterious in a way that keeps people interested but mildly frustrated. You are either perfectly available and emotionally ripe for approximately nine minutes, or completely unavailable in a way that is impossible to predict or prepare for. You have excellent taste, a distinctive silhouette, and a life philosophy that other people can't quite articulate but vaguely aspire to. You pair well with cheese, which you already knew.</p>
+    <div class="verdict">Refined, elusive, and briefly perfect. Catch them if you can.</div>
+  </div>
+
+  <div class="card c-crimson">
+    <div class="card-inner">
+      <div class="card-emoji">🍒</div>
+      <div>
+        <div class="card-name">Cherry</div>
+        <div class="card-tag">The Intense One</div>
+      </div>
+    </div>
+    <p>You are playful, intense, and almost certainly in possession of several excellent stories you have been specifically advised not to tell at family gatherings — but you will. You look sweet, charming, innocent even. There is, however, a tiny pit of danger in there, and people who know you well are both charmed and slightly wary. You are the person who makes a thing feel like an <em>event.</em> Life is more interesting with you in it and occasionally more chaotic.</p>
+    <div class="verdict">Sweet exterior. Surprising interior. Always comes in pairs.</div>
+  </div>
+
+  <div class="card c-plum">
+    <div class="card-inner">
+      <div class="card-emoji">🍑</div>
+      <div>
+        <div class="card-name">Plum</div>
+        <div class="card-tag">The Sensitive Thinker</div>
+      </div>
+    </div>
+    <p>You are deep, sensitive, and almost certainly composing a novel in your head while nodding politely during meetings. You have a rich interior life and a relationship with ripeness that your friends describe as "complicated" and you describe as "precise." You feel things profoundly and express them beautifully, usually once they've had time to ferment into something worthy. You probably love autumn in a way that isn't performative. You really, genuinely love autumn.</p>
+    <div class="verdict">Rich, layered, and worth the wait. Requires patience.</div>
+  </div>
+
+  <div class="card c-amber">
+    <div class="card-inner">
+      <div class="card-emoji">🍑</div>
+      <div>
+        <div class="card-name">Apricot</div>
+        <div class="card-tag">The Underrated Gem</div>
+      </div>
+    </div>
+    <p>You are gentle, refined, and chronically underrated — something you have made a quiet peace with, mostly. You do not need applause. You would simply like to be recognized before someone reaches past you for the peaches again, which happens more than you'd care to admit. You are subtler than your louder neighbors, more nuanced than first impressions suggest, and genuinely excellent when given the chance. The people who discover you tend to become devoted. There just aren't enough of them.</p>
+    <div class="verdict">Elegant, gentle, and criminally overlooked. Their loss.</div>
+  </div>
+
+  <div class="card c-rose">
+    <div class="card-inner">
+      <div class="card-emoji">🍑</div>
+      <div>
+        <div class="card-name">Nectarine</div>
+        <div class="card-tag">The No-Nonsense Peach</div>
+      </div>
+    </div>
+    <p>You are a peach who has had enough of the fuzz. Smooth, direct, and ever so slightly superior about it — which you consider simply efficient. You have streamlined your life in ways other people describe as "ruthless" and you describe as "obvious." You skip the small talk, skip the ambiguity, and skip the part where everyone pretends they don't know what's happening. You are the person who sends the text other people draft and delete seventeen times. Remarkably refreshing.</p>
+    <div class="verdict">A peach who upgraded. Excellent in every application.</div>
+  </div>
+
+  <div class="card c-orange">
+    <div class="card-inner">
+      <div class="card-emoji">🍊</div>
+      <div>
+        <div class="card-name">Tangerine</div>
+        <div class="card-tag">Orange's Fun Cousin</div>
+      </div>
+    </div>
+    <p>You are Orange's fun younger cousin — easier to peel, easier to like, and suspiciously good at making ordinary Tuesday afternoons feel like recess. You have all the warmth and cheerfulness of your citrus family without the effort required. You are the person who makes things feel effortless, which is deceptive, because you're actually working quite hard — you've just decided the work shouldn't show. Everyone leaves your company feeling inexplicably lighter.</p>
+    <div class="verdict">All the sunshine, half the work. Secretly everyone's favorite.</div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- ═══════════════════════════════════════
+     SECTION 3: THE CITRUS FAMILY
+════════════════════════════════════════ -->
+<div class="section-header" style="color:var(--lime);">
+  <span class="section-title">🍋 The Citrus Family (A Study in Tartness)</span>
+</div>
+
+<div class="grid">
+
+  <div class="card c-banana">
+    <div class="card-inner">
+      <div class="card-emoji">🍋</div>
+      <div>
+        <div class="card-name">Lemon</div>
+        <div class="card-tag">The Honest One</div>
+      </div>
+    </div>
+    <p>You are sharp, honest, and absolutely not here to be anyone's cupcake. You make everything around you brighter and more interesting, but you also make people wince slightly when they're not prepared for the full truth — which you deliver cleanly, directly, and without apology. You believe clarity is a form of kindness. Your friends know that asking your opinion means receiving your actual opinion, and they've decided this is either brave or masochistic depending on the day.</p>
+    <div class="verdict">Bracingly honest. Essential. Goes with everything except complacency.</div>
+  </div>
+
+  <div class="card c-lime">
+    <div class="card-inner">
+      <div class="card-emoji">🍈</div>
+      <div>
+        <div class="card-name">Lime</div>
+        <div class="card-tag">Lemon's Sarcastic Sibling</div>
+      </div>
+    </div>
+    <p>You are the life of the party, but in a more sarcastic outfit than Lemon. You believe in zest, in timing, and in the dramatic improvement of beverages — and most situations. You are funnier than Lemon and you both know it, which Lemon accepts with dignity and not a small amount of irritation. You bring the same essential sharpness but with an edge that reads as wit rather than warning. People quote things you've said without always knowing they're quoting you. This is how you prefer it.</p>
+    <div class="verdict">Sharper than expected. Better in everything. Quietly smug about it.</div>
+  </div>
+
+  <div class="card c-sage">
+    <div class="card-inner">
+      <div class="card-emoji">🍋</div>
+      <div>
+        <div class="card-name">Grapefruit</div>
+        <div class="card-tag">The Sophisticated Curmudgeon</div>
+      </div>
+    </div>
+    <p>You are sophisticated, complicated, and mildly bitter in a way you call "refreshing" — which is accurate and also a little bit of a defense mechanism, which is fine. You have strong opinions about breakfast, about medication interactions, about films in which nothing much happens but everyone is deeply unhappy in a beautifully lit way. You are an acquired taste. You know this. You have made peace with the fact that the right people will acquire it, and the others weren't really your people anyway.</p>
+    <div class="verdict">An acquired taste. For the right palate, irreplaceable.</div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 4: THE BERRIES & MELONS
+════════════════════════════════════════ -->
+<div class="section-header" style="color:var(--berry);">
+  <span class="section-title">🍓 The Berries &amp; The Melons</span>
+</div>
+
+<div class="grid">
+
+  <div class="card c-rose">
+    <div class="card-inner">
+      <div class="card-emoji">🫐</div>
+      <div>
+        <div class="card-name">Raspberry</div>
+        <div class="card-tag">The Artistic Soul</div>
+      </div>
+    </div>
+    <p>You are intense, artistic, and prone to saying "I'm fine" in a tone of voice that communicates a rich and complex inner weather system that is very much <em>not fine</em>. You are delicate, expensive, and somehow worth every bit of the trouble — not that anyone keeps score, but everyone knows the math. You have strong feelings about texture, about light, about the precise way a moment should feel. You are the person who makes a playlist with forty-seven songs for a forty-minute drive. It's the right forty-seven songs.</p>
+    <div class="verdict">Intense, exquisite, and occasionally a lot. Always worth it.</div>
+  </div>
+
+  <div class="card c-indigo">
+    <div class="card-inner">
+      <div class="card-emoji">🍇</div>
+      <div>
+        <div class="card-name">Blackberry</div>
+        <div class="card-tag">The Moody Poet</div>
+      </div>
+    </div>
+    <p>You are moody, poetic, and probably own a jacket that genuinely looks better in fog — which is not a boast but a fact you have quietly verified. You like long walks, complicated coffee orders that take three sentences to explain, and the art of making simple things feel mythic. You don't seek drama, but you do seem to arrive in interesting weather. Your Instagram, if you have one, is impeccably curated and slightly melancholy. People find it oddly comforting.</p>
+    <div class="verdict">Dark, beautiful, and genuinely wild. Best appreciated in mood lighting.</div>
+  </div>
+
+  <div class="card c-orange">
+    <div class="card-inner">
+      <div class="card-emoji">🍈</div>
+      <div>
+        <div class="card-name">Cantaloupe</div>
+        <div class="card-tag">The Reliable Filler</div>
+      </div>
+    </div>
+    <p>You are pleasant, practical, and frequently found near breakfast buffets through no particular fault of your own. You do not seek the spotlight, have no interest in being divisive, and consider "dependable" a perfectly good compliment, which it is. You are the person who shows up on time, brings the right thing, and doesn't make it weird. You may not be anyone's first choice in an abstract sense, but in a concrete, actual, real-world sense, you are reliably there, which turns out to matter more than people admit.</p>
+    <div class="verdict">Underappreciated stalwart. The fruit salad would be nothing without you.</div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-inner">
+      <div class="card-emoji">🍈</div>
+      <div>
+        <div class="card-name">Honeydew</div>
+        <div class="card-tag">The Misunderstood One</div>
+      </div>
+    </div>
+    <p>You are profoundly misunderstood, and you have the bad hotel breakfast buffet to thank for it. People underestimate you constantly based on watery, flavorless experiences that were not your fault and did not represent your true character. Deep down, you are waiting — with remarkable patience and quiet dignity — for someone to encounter you at your peak and realize what they've been dismissing. A good honeydew is a revelation. You are a good honeydew. The world just hasn't caught up yet.</p>
+    <div class="verdict">Wronged by mediocre buffets. Waiting to be properly appreciated.</div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-inner">
+      <div class="card-emoji">🥝</div>
+      <div>
+        <div class="card-name">Kiwi</div>
+        <div class="card-tag">The Quirky Delight</div>
+      </div>
+    </div>
+    <p>You are quirky, charming, and dramatically more interesting than people expect when they first encounter you. Your exterior says "small, slightly fuzzy, what even is this" — and your interior says "confetti with nutritional value." People underestimate you at their peril, because beneath the unassuming exterior is something genuinely vivid and complex. You are the person who seemed quiet in the first five minutes and then turned out to be the most interesting person in the room. Happens every time. You're used to it.</p>
+    <div class="verdict">Don't judge by the outside. The inside is extraordinary.</div>
+  </div>
+
+</div>
+
+<!-- ── PULLQUOTE 2 ── -->
+<div class="pullquote-wrap">
+  <div class="pullquote">
+    <p>A good honeydew is a revelation. You are a good honeydew. The world just hasn't caught up yet.</p>
+    <cite>— Fruit Psychology Quarterly, Vol. IV</cite>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 5: THE DEBATABLES
+════════════════════════════════════════ -->
+<div class="section-header" style="color:var(--sage);">
+  <span class="section-title">🥑 The Debatables (Technically Fruits, Like You)</span>
+</div>
+
+<div class="grid">
+
+  <div class="card c-green">
+    <div class="card-inner">
+      <div class="card-emoji">🥥</div>
+      <div>
+        <div class="card-name">Coconut</div>
+        <div class="card-tag">The Self-Sufficient One</div>
+      </div>
+    </div>
+    <p>You are tough on the outside, genuinely sweet on the inside, and difficult to access without the right tools and a moderate amount of commitment — all of which you consider a fair arrangement. You enjoy beaches, self-sufficiency, and making people work slightly for emotional intimacy, which you tell yourself is protection but is also just a little bit of theater. Once people get through, they find something warm and nourishing and worth the effort. The question is always whether they'll bother. The right ones do.</p>
+    <div class="verdict">Hard to crack. Worth every attempt.</div>
+  </div>
+
+  <div class="card c-sage">
+    <div class="card-inner">
+      <div class="card-emoji">🥑</div>
+      <div>
+        <div class="card-name">Avocado</div>
+        <div class="card-tag">The Trendy One</div>
+      </div>
+    </div>
+    <p>You insist you are a fruit, which tells us everything we need to know. You are trendy, soft-centered, and have made decisions at brunch that were financially reckless but photographically inspired. You believe toast is a canvas and that rent is, at its core, a social construct worth questioning. You are on the right side of most conversations and the wrong side of most budgets. Your houseplants are thriving. Your savings account has complicated feelings about you.</p>
+    <div class="verdict">Photogenic. Pricey. Genuinely delicious. No regrets.</div>
+  </div>
+
+  <div class="card c-apple">
+    <div class="card-inner">
+      <div class="card-emoji">🍅</div>
+      <div>
+        <div class="card-name">Tomato</div>
+        <div class="card-tag">The Contrarian</div>
+      </div>
+    </div>
+    <p>You are here, first and foremost, to start an argument. You enjoy technical correctness, savory drama, and calmly correcting people at dinner parties with a smile that suggests you've been waiting for this moment for some time. You are the fruit equivalent of "Well, <em>actually—</em>" You are not wrong. You are often exhausting. The two are not mutually exclusive. Your friends love you, are slightly afraid of you, and always double-check their facts before talking to you. You consider this a compliment.</p>
+    <div class="verdict">Technically right. Socially brave. Botanically vindicated.</div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 6: THE SOPHISTICATED
+════════════════════════════════════════ -->
+<div class="section-header" style="color:var(--plum);">
+  <span class="section-title">🫐 The Sophisticated Ones</span>
+</div>
+
+<div class="grid">
+
+  <div class="card c-crimson">
+    <div class="card-inner">
+      <div class="card-emoji">🍓</div>
+      <div>
+        <div class="card-name">Pomegranate</div>
+        <div class="card-tag">The Commitment Test</div>
+      </div>
+    </div>
+    <p>You are complex, intense, and require significant effort — which has helpfully filtered out everyone who wasn't serious about you, leaving only a devoted inner circle who consider you indispensable. You are less a fruit than a personality test that also happens to have antioxidants. People either avoid the whole enterprise entirely or become utterly devoted. There is no casual pomegranate relationship. You know this. You have stopped apologizing for it. The seeds are the point.</p>
+    <div class="verdict">Not for the faint of heart. Absolutely worth it for those who try.</div>
+  </div>
+
+  <div class="card c-amber">
+    <div class="card-inner">
+      <div class="card-emoji">🫐</div>
+      <div>
+        <div class="card-name">Fig</div>
+        <div class="card-tag">The Old Soul</div>
+      </div>
+    </div>
+    <p>You are old-soul elegant. You like linen, ceramics, quiet music, and making people feel subtly underdressed at brunch without saying a word — just through the energy of simply existing in your corner. You have, at least once, said some variation of "This would pair beautifully with goat cheese" and you meant it completely and without irony. You are timeless, complex, and not available at most gas stations, which you consider broadly correct. Not everything needs to be accessible.</p>
+    <div class="verdict">Ancient, refined, and quietly intimidating. Perfect with cheese.</div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-inner">
+      <div class="card-emoji">🍇</div>
+      <div>
+        <div class="card-name">Date</div>
+        <div class="card-tag">The Quietly Powerful</div>
+      </div>
+    </div>
+    <p>You are sweet, dense, ancient, and surprisingly powerful in a way people keep underestimating until they've had a date or a conversation with you. You appear modest — small, unassuming, largely beige — but you are basically caramel wearing a very understated disguise. You have substance where others have flash. Your resume, your bookshelves, and your opinions are all significantly more impressive than your first impression suggests. You're fine with this. You've always played a long game.</p>
+    <div class="verdict">Modest packaging. Extraordinary interior. Powerfully sweet.</div>
+  </div>
+
+  <div class="card c-crimson">
+    <div class="card-inner">
+      <div class="card-emoji">🍒</div>
+      <div>
+        <div class="card-name">Cranberry</div>
+        <div class="card-tag">The Resilient One</div>
+      </div>
+    </div>
+    <p>You are tart, resilient, and have an almost supernatural ability to thrive under pressure — particularly during the holidays, when you do your absolute best work while everyone else is having a crisis about the gravy. You have no patience for people who call you "too much," because you've learned that "too much" is usually code for "too real," and being real is not something you plan to stop doing. You are honest. You are bracing. You belong on the table at every important gathering.</p>
+    <div class="verdict">Tart, necessary, and at their best when it really counts.</div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 7: THE EXOTIC ARRIVALS
+════════════════════════════════════════ -->
+<div class="section-header" style="color:var(--teal);">
+  <span class="section-title">🐉 The Exotic Arrivals</span>
+</div>
+
+<div class="grid">
+
+  <div class="card c-rose">
+    <div class="card-inner">
+      <div class="card-emoji">🐉</div>
+      <div>
+        <div class="card-name">Dragon Fruit</div>
+        <div class="card-tag">The Visual Masterpiece</div>
+      </div>
+    </div>
+    <p>You are visually stunning, mildly mysterious, and perhaps — if we're being honest, which we agreed to be — slightly less intense than your branding suggests. You look like you know secrets. You are wearing the secrets. The secrets are mostly just that you know where the good smoothie place is, but the aesthetic carries enormous weight and you've leaned into it wisely. People photograph you before engaging with you, which you've learned is just your life now. You have made peace with being decorative and delicious.</p>
+    <div class="verdict">Breathtaking to look at. More than you'd expect. Less than the myth.</div>
+  </div>
+
+  <div class="card c-berry">
+    <div class="card-inner">
+      <div class="card-emoji">🌺</div>
+      <div>
+        <div class="card-name">Passion Fruit</div>
+        <div class="card-tag">The Dramatic Romantic</div>
+      </div>
+    </div>
+    <p>You are dramatic, romantic, and physically impossible to ignore — which you have mixed feelings about, roughly 60% positive. You have strong feelings, strong flavors, and strong opinions about lighting, which you believe is not negotiable and is in fact the foundation of any good environment. You are wrinkled outside and explosively gorgeous within, which is either a metaphor for aging gracefully or just a factual description of a passion fruit. Possibly both. You're fine with both.</p>
+    <div class="verdict">Intense in every dimension. Glorious on the inside. Dramatic by design.</div>
+  </div>
+
+  <div class="card c-amber">
+    <div class="card-inner">
+      <div class="card-emoji">🌿</div>
+      <div>
+        <div class="card-name">Papaya</div>
+        <div class="card-tag">The Philosophical Tropical</div>
+      </div>
+    </div>
+    <p>You are tropical, philosophical, and mildly medicinal in a way that is actually quite good for everyone, whether or not they asked. You believe strongly that digestion is important — metaphorically and literally — and that life should be slower, warmer, and considerably more orange than most people allow. You have traveled somewhere that changed you. You came back with a linen shirt, a new relationship with time, and opinions about enzymes that you deploy at appropriate moments. People find you soothing. Also: correct.</p>
+    <div class="verdict">Warm, wise, and gently insistent about your own good ideas.</div>
+  </div>
+
+  <div class="card c-plum">
+    <div class="card-inner">
+      <div class="card-emoji">🍬</div>
+      <div>
+        <div class="card-name">Lychee</div>
+        <div class="card-tag">The Perfumed Enigma</div>
+      </div>
+    </div>
+    <p>You are delicate, intriguing, and possibly too fancy for this room — a possibility you are aware of and have decided is the room's problem. You have a perfume-like presence that people notice the moment you arrive and remember long after you've gone. Your social calendar is full in ways no one fully understands, including you, but it seems to work. You require careful handling, exist beautifully on the inside, and have strong preferences about temperature and context. You are, in the best way, an experience.</p>
+    <div class="verdict">Rare, fragrant, and genuinely unforgettable.</div>
+  </div>
+
+  <div class="card c-gold">
+    <div class="card-inner">
+      <div class="card-emoji">⭐</div>
+      <div>
+        <div class="card-name">Starfruit</div>
+        <div class="card-tag">The Decorator</div>
+      </div>
+    </div>
+    <p>You are whimsical, decorative, and if you're being transparent, possibly more invested in presentation than in substance — but you've decided that presentation is substance, actually, and you stand by that. You make salads look like they've had professional development. You make fruit platters feel like art installations. You are the person whose email signature, business card, and voice memo all feel considered. People remember you. That was always the goal. That was always enough.</p>
+    <div class="verdict">Stunning. Decorative. Presentation as a philosophy of life.</div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-inner">
+      <div class="card-emoji">🌿</div>
+      <div>
+        <div class="card-name">Jackfruit</div>
+        <div class="card-tag">The Maximalist Project</div>
+      </div>
+    </div>
+    <p>You are ambitious, maximalist, and frankly, a little bit exhausting — which you accept because the results are always spectacular. You don't enter a room; you <em>arrive</em>, as a project, complete with subtext, implications, and at least three things happening simultaneously that other people will need to catch up on. You are fruit, meat substitute, and personality disorder all at once, which is impressive and also why not everyone can commit to you. The ones who do discover something genuinely extraordinary. Worth every minute of the prep work.</p>
+    <div class="verdict">Ambitious, magnificent, and slightly overwhelming. Worth it.</div>
+  </div>
+
+  <div class="card c-indigo">
+    <div class="card-inner">
+      <div class="card-emoji">🍂</div>
+      <div>
+        <div class="card-name">Persimmon</div>
+        <div class="card-tag">The Precise Perfectionist</div>
+      </div>
+    </div>
+    <p>You are patient, particular, and deeply rewarding once the timing is absolutely, precisely right — which must be respected, or there will be consequences that are described only as "an unpleasant puckering sensation" in fruit terms and something significantly more emotionally complicated in human terms. You cannot be rushed. You cannot be approached casually. You have a specific window of perfection and you would appreciate it if people would schedule themselves accordingly. Those who learn your rhythm find you extraordinary.</p>
+    <div class="verdict">Perfect when approached correctly. Unforgiving when not. Spectacular either way.</div>
+  </div>
+
+  <div class="card c-lime">
+    <div class="card-inner">
+      <div class="card-emoji">🌟</div>
+      <div>
+        <div class="card-name">Guava</div>
+        <div class="card-tag">The Vivid Surprise</div>
+      </div>
+    </div>
+    <p>You are bright, bold, and full of surprises — specifically the kind that reveal themselves slowly and turn out to be significantly better than the outside suggested. You probably have excellent, borderline-adventurous taste in music, and a refrigerator full of things that other people can't identify but are delicious. You exist just outside mainstream awareness, which suits you, because the people who find you tend to tell everyone they know. You are a discovery. You are always being discovered. You are always worth discovering.</p>
+    <div class="verdict">Bold, bright, and always better than expected. A genuine find.</div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- ═══════════════════════════════════════
+     THE WILD CARD
+════════════════════════════════════════ -->
+<div class="section-header" style="color:var(--mid);">
+  <span class="section-title">🎲 The Wild Card</span>
+</div>
+
+<div class="grid">
+  <div class="card card-wide c-gold" style="grid-column: 1 / -1;">
+    <div class="card-inner">
+      <div class="card-emoji">🍹</div>
+      <div>
+        <div class="card-name">Fruit Cocktail</div>
+        <div class="card-tag">The Diplomatic Non-Answer</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>You have refused to choose, which is either charmingly inclusive or emotionally avoidant — and you suspect it might be both, and you're comfortable sitting with that. You believe everyone deserves a chance, including the suspicious pale cubes that nobody can fully identify but that have somehow made it into every fruit cocktail can since 1948. You are not indecisive; you are a coalition builder. You are not avoiding commitment; you are appreciating diversity. You are telling yourself these things and they are, at least partially, true. You make a very good mediator, an excellent party guest, and a genuinely frustrating person to buy a birthday cake for.</p>
+      <div class="verdict">Inclusive. Diplomatic. Probably avoiding the question. We respect it.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CLOSING ── -->
+<div class="pullquote-wrap" style="margin-top:3rem;">
+  <div class="pullquote">
+    <p>Whatever your fruit, you are exactly the right amount of sweet, tart, exotic, or suspicious. The fruit bowl of humanity needs all of you.</p>
+    <cite>— The Fruit Psychology Institute (Still Not Real)</cite>
+  </div>
+</div>
+
+<div style="max-width:720px; margin:0 auto; padding:3rem 2rem; text-align:center;">
+  <p style="font-size:1.05rem; color:var(--mid); line-height:1.85; font-style:italic;">
+    Remember: these profiles are <mark>100% accurate</mark> and backed by absolutely no scientific evidence whatsoever. If you disagree with your fruit's description, that's very on-brand for your fruit. If you agree completely, same. The fruit never lies — it simply waits to be understood.
+  </p>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <strong>What Your Favorite Fruit Says About You</strong><br>
+  A Completely Unscientific Personality Study &bull; All Fruits Represented &bull; No Produce Was Harmed<br><br>
+  Disclaimer: If you are a Persimmon Person who approached this article at the wrong stage of ripeness, we apologize for the puckering sensation.
+</footer>
+
+</body>
+</html>

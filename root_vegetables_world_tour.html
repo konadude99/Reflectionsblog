@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dirty, Weird & Wonderful: A Root Vegetable World Tour</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@400;700;900&family=Caveat:wght@500;700&display=swap');
+
+  :root {
+    --soil: #4a2f1a;
+    --earth: #7c4f2a;
+    --tan: #d4a76a;
+    --cream: #fdf8f0;
+    --leaf: #5a8c3a;
+    --root-orange: #d4621a;
+    --root-purple: #7b3f8c;
+    --root-red: #b83030;
+    --ink: #1e1408;
+    --mid: #6b4e2a;
+    --light: #ede0cc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  /* ── HEADER ── */
+  .hero {
+    background: var(--soil);
+    padding: 3.5rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "🥕 🌿 🥔 🌿 🥕 🌿 🥔 🌿 🥕 🌿 🥔 🌿 🥕 🌿 🥔";
+    display: block;
+    font-size: 1.2rem;
+    opacity: 0.2;
+    letter-spacing: 0.5em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero .kicker {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(2rem, 5.5vw, 4rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 span { color: var(--tan); }
+
+  .hero .deck {
+    font-size: 1.05rem;
+    color: #ccbba0;
+    max-width: 600px;
+    margin: 0 auto;
+    font-style: italic;
+  }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* ── SECTION HEADERS ── */
+  h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--soil);
+    margin: 3rem 0 0.8rem;
+    line-height: 1.2;
+  }
+
+  h2 .emoji-prefix { margin-right: 0.4rem; }
+
+  h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--earth);
+    margin: 2rem 0 0.5rem;
+  }
+
+  p { margin-bottom: 1.2rem; }
+
+  em { font-style: italic; color: var(--mid); }
+  strong { font-weight: 700; }
+
+  a { color: var(--leaf); }
+
+  /* ── FUN BOXES ── */
+  .fun-box {
+    border-left: 5px solid var(--root-orange);
+    background: #fff8ee;
+    border-radius: 0 8px 8px 0;
+    padding: 1.2rem 1.4rem;
+    margin: 1.8rem 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .fun-box.purple { border-left-color: var(--root-purple); background: #f8f0ff; }
+  .fun-box.red { border-left-color: var(--root-red); background: #fff0f0; }
+  .fun-box.green { border-left-color: var(--leaf); background: #f0f8ee; }
+
+  .fun-box .label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: var(--root-orange);
+  }
+  .fun-box.purple .label { color: var(--root-purple); }
+  .fun-box.red .label { color: var(--root-red); }
+  .fun-box.green .label { color: var(--leaf); }
+
+  /* ── PULL QUOTE ── */
+  .pull {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--soil);
+    text-align: center;
+    border-top: 3px solid var(--tan);
+    border-bottom: 3px solid var(--tan);
+    padding: 1.2rem 1rem;
+    margin: 2.5rem 0;
+    line-height: 1.3;
+  }
+
+  /* ── VEGGIE CARDS ── */
+  .veggie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .veggie-card {
+    background: white;
+    border: 1.5px solid var(--light);
+    border-radius: 10px;
+    padding: 1.2rem;
+    position: relative;
+  }
+
+  .veggie-card .veg-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+
+  .veggie-card .veg-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--soil);
+    margin-bottom: 0.3rem;
+  }
+
+  .veggie-card .veg-aka {
+    font-size: 0.75rem;
+    color: var(--mid);
+    font-style: italic;
+    margin-bottom: 0.6rem;
+  }
+
+  .veggie-card p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #3a2a18;
+  }
+
+  .veggie-card .veg-tag {
+    display: inline-block;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 0.7rem;
+    background: var(--light);
+    color: var(--earth);
+  }
+
+  /* ── FUN FACT STRIP ── */
+  .fact-strip {
+    background: var(--soil);
+    color: var(--cream);
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    margin: 2.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .fact-strip .strip-label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 0.6rem;
+  }
+
+  .fact-strip p { margin: 0; color: #e0d0bc; line-height: 1.7; }
+
+  /* ── DIVIDER ── */
+  .root-divider {
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 0.35;
+    margin: 2.5rem 0;
+    letter-spacing: 0.8em;
+  }
+
+  /* ── WEIRD RECIPE BOX ── */
+  .recipe-box {
+    border: 2px dashed var(--tan);
+    border-radius: 10px;
+    padding: 1.4rem 1.6rem;
+    margin: 2rem 0;
+    background: #fffdf7;
+  }
+
+  .recipe-box .recipe-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: var(--soil);
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+  }
+
+  .recipe-box ul {
+    padding-left: 1.3rem;
+    font-size: 0.9rem;
+    color: var(--mid);
+    line-height: 1.9;
+    margin-bottom: 0.8rem;
+  }
+
+  .recipe-box .warning {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--root-red);
+    letter-spacing: 0.03em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--soil);
+    text-align: center;
+    color: var(--tan);
+    padding: 1.8rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="kicker">A Vegetable Adventure Nobody Asked For</p>
+  <h1>Dirty, Weird &amp; <span>Wonderful</span>:<br>A Root Vegetable World Tour</h1>
+  <p class="deck">A loving, slightly unhinged journey through the subterranean superfoods, absurd folklore, and gastrointestinal calamities that roots have inflicted on humanity since the dawn of dirt.</p>
+</div>
+
+<div class="container">
+
+  <p>Let us begin with an uncomfortable truth: most of the food that has kept humanity alive for ten thousand years is ugly. Knobby, mud-caked, malformed, sometimes smelling faintly of a compost heap — and yet, root vegetables have quietly underpinned every great civilization, every winter survival story, and approximately one hundred percent of all truly excellent soups.</p>
+
+  <p>They lurk underground, biding their time, asking nothing. No fancy presentation. No social media presence. Just a quiet, dirty, unyielding excellence. This is their story. Or at least, the weirder parts of it.</p>
+
+  <div class="root-divider">🥕 ✦ 🥔 ✦ 🌱</div>
+
+  <!-- SECTION 1 -->
+  <h2><span class="emoji-prefix">🌍</span> The Rogues' Gallery: Unusual Roots Around the World</h2>
+
+  <p>You think you know root vegetables? You know carrots, potatoes, and the turnip your grandmother boiled into submission every Christmas. But the root world is far stranger, more colorful, and occasionally more dangerous than you've been led to believe. Allow us to make introductions.</p>
+
+  <div class="veggie-grid">
+
+    <div class="veggie-card">
+      <span class="veg-icon">🤷</span>
+      <div class="veg-name">Celeriac</div>
+      <div class="veg-aka">aka "Knob Celery," "Turnip-Rooted Celery," or "That Thing"</div>
+      <p>Celeriac looks like a brain that gave up halfway through. It is, without question, the most aesthetically challenged vegetable in the Northern Hemisphere. And yet it tastes divinely of celery and potato's love child. Europeans have been quietly enjoying this gnarled horror for centuries while the rest of the world stares at it in confused supermarkets.</p>
+      <span class="veg-tag">🏆 Ugliest Root Award</span>
+    </div>
+
+    <div class="veggie-card">
+      <span class="veg-icon">🦪</span>
+      <div class="veg-name">Salsify / Scorzonera</div>
+      <div class="veg-aka">aka "The Oyster Plant"</div>
+      <p>A long, pale root that looks exactly like a stick you'd find in a car park — yet, when cooked, it tastes uncannily like oysters. Nature, as ever, enjoying a private joke. Scorzonera is the black-skinned cousin. Both are deeply unphotogenic. Both are quietly magnificent. They have been growing in European gardens since the 1600s, confused and underappreciated.</p>
+      <span class="veg-tag">Most Misleading Flavor</span>
+    </div>
+
+    <div class="veggie-card">
+      <span class="veg-icon">🌈</span>
+      <div class="veg-name">Oca</div>
+      <div class="veg-aka">aka "New Zealand Yam," Oxalis tuberosa</div>
+      <p>Native to the Andes, oca comes in pink, purple, red, yellow, and white — it looks like someone left Easter eggs in the garden. Thrives in terrible soil at altitude, which is the hallmark of any truly resilient vegetable. It has a pleasant sourness that fades when you let it sun for a few days. Practically unknown outside South America and New Zealand, which is baffling.</p>
+      <span class="veg-tag">Best Dressed Root</span>
+    </div>
+
+    <div class="veggie-card">
+      <span class="veg-icon">💨</span>
+      <div class="veg-name">Jerusalem Artichoke</div>
+      <div class="veg-aka">aka "Sunchoke" or — significantly — "Fartichoke"</div>
+      <p>Not from Jerusalem. Not an artichoke. A sunflower relative whose name is a garbled translation of the Italian <em>girasole</em>. Wildly delicious. Wildly gaseous. The inulin inside it cannot be digested by humans, so your intestinal bacteria throw a party instead — and they are not quiet guests. We will return to this subject.</p>
+      <span class="veg-tag">⚠️ Social Risk Level: High</span>
+    </div>
+
+    <div class="veggie-card">
+      <span class="veg-icon">🫘</span>
+      <div class="veg-name">Jicama</div>
+      <div class="veg-aka">aka "Mexican Yam Bean" or "Mexican Potato"</div>
+      <p>Crunchy, juicy, slightly sweet — like a water chestnut crossed with an apple. Common throughout Mexico, Central America, and Southeast Asia; baffling to most Europeans. The skin is mildly toxic. The interior is delightful. Raw slices with chili and lime are one of humanity's better ideas. Also: it's technically a legume growing underground. Identity issues abound.</p>
+      <span class="veg-tag">Most Confused About Itself</span>
+    </div>
+
+    <div class="veggie-card">
+      <span class="veg-icon">🌀</span>
+      <div class="veg-name">Chinese Artichoke</div>
+      <div class="veg-aka">aka Stachys affinis</div>
+      <p>Small, white, spiraled like a tiny alien seashell. A member of the mint family — which means if you plant it, it will quietly colonize your entire garden and refuse to leave. Nutty, slightly crunchy, delicious roasted or pickled. Japanese cuisine prizes it. Your average supermarket has never heard of it. The spirals are doing something geometrically important that no one has explained.</p>
+      <span class="veg-tag">Most Architecturally Ambitious</span>
+    </div>
+
+    <div class="veggie-card">
+      <span class="veg-icon">☠️</span>
+      <div class="veg-name">Cassava</div>
+      <div class="veg-aka">aka Yuca, Manioc, Tapioca</div>
+      <p>Feeds over half a billion people. Third largest source of food carbohydrates in the tropics. Also contains cyanide. The bitter variety contains enough to cause serious harm if prepared incorrectly, which is why traditional processing methods — grating, pressing, fermenting, heating — are so important. Dried cassava powder is tapioca. You have probably eaten a dessert made from something that used to contain poison. Bon appétit.</p>
+      <span class="veg-tag">Most Casually Dangerous</span>
+    </div>
+
+    <div class="veggie-card">
+      <span class="veg-icon">🟠</span>
+      <div class="veg-name">Daikon Radish</div>
+      <div class="veg-aka">aka Giant White Radish</div>
+      <p>Up to 18 inches long. Popular across East and Southeast Asia in everything from salads to pickles to soups. Can also, in enthusiastic gardening circles, be planted as a "tillage radish" to loosen compacted soil — then left to rot underground as fertilizer. It is both food and farming infrastructure. The multitasking champion of the vegetable world.</p>
+      <span class="veg-tag">Most Versatile Existence</span>
+    </div>
+
+  </div>
+
+  <div class="root-divider">🥕 ✦ 🥔 ✦ 🌱</div>
+
+  <!-- SECTION 2: MANDRAKE -->
+  <h2><span class="emoji-prefix">😱</span> The Mandrake: History's Most Dramatic Root</h2>
+
+  <p>If root vegetables had a rock star — a genuinely unhinged, delusional, legendary rock star — it would be the mandrake. No other vegetable has been so thoroughly entangled in witchcraft, murder, sex, ancient medicine, and Harry Potter.</p>
+
+  <p>The mandrake (<em>Mandragora officinarum</em>) is a Mediterranean plant whose thick, forked root occasionally resembles human legs. And this was absolutely all the medieval mind needed to go completely off the rails.</p>
+
+  <div class="fun-box purple">
+    <div class="label">📜 Ancient Belief</div>
+    <strong>The Scream of Death.</strong> According to centuries of European folklore, when a mandrake was pulled from the ground, it emitted an ear-splitting shriek that would kill anyone who heard it. The solution? Tie a hungry dog to the root with a rope, step well back, throw a piece of meat — and let the dog yank it out. The dog would then die. The mandrake-hunter would plug their ears, unplug them once the screaming stopped, and proceed with their day, unbothered by the fact that they had just committed dog murder for a root. This method was solemnly documented by the Roman physician Dioscorides in the first century AD, among others.
+  </div>
+
+  <p>Medieval vendors, never ones to miss a business opportunity, reportedly carved ordinary roots into more convincingly human-shaped mandrakes, inserted grain seeds into carved "hair" follicles, and reburied them so the grain would sprout as a convincing beard. They would then sell these botanical puppets to "sterile women wishing to have children" at extortionate prices. If this strikes you as fraud, you are more ethically advanced than the 13th century.</p>
+
+  <div class="fun-box red">
+    <div class="label">💊 Medical Uses (Questionable)</div>
+    The mandrake <em>does</em> contain real pharmacological compounds — scopolamine, atropine, hyoscyamine — which are powerful alkaloids. Dioscorides recommended "a winecupful" of mandrake root boiled in wine as an anesthetic before surgery. The Greek enchantress Circe used it (in the Odyssey) to turn Odysseus's crew into swine. The Arabs developed a "sleeping sponge" soaked in mandrake juice that was the primary anesthetic in European surgery until the invention of ether. It was also the medieval Viagra, a fertility cure, a protection against evil spirits, and Aphrodite's preferred accessory. The Dutch called it <em>pisduiveltje</em> — "little piss devil." The plant contained multitudes.
+  </div>
+
+  <div class="pull">"The root shrieked, the dog died, the alchemist got rich.<br>It was basically a 13th-century startup."</div>
+
+  <!-- SECTION 3: CARROTS -->
+  <h2><span class="emoji-prefix">🥕</span> The Orange Carrot Is a Political Statement</h2>
+
+  <p>Here is a fact that will quietly rearrange how you think about breakfast: <strong>carrots were not originally orange.</strong> Wild carrots were white or pale yellow. Early cultivated carrots — going back some 5,000 years to ancient Persia and Afghanistan — were purple. Deep, gorgeous purple. There were also yellow and red ones.</p>
+
+  <p>Then the Dutch got involved, and now all carrots are orange.</p>
+
+  <p>In the 16th and 17th centuries, Dutch farmers engaged in aggressive selective breeding of yellow and purple carrot varieties. The orange carrot was sweeter, more productive, more uniform, and (whether patriotically intended or not) the exact color of the House of Orange-Nassau — the ruling Dutch royal family, champions of Dutch independence from Spain.</p>
+
+  <div class="fun-box green">
+    <div class="label">👑 The Royal Root Theory</div>
+    The charming story that Dutch farmers cultivated orange carrots specifically to honor William of Orange is, according to the Carrot Museum (yes, there is a Carrot Museum, in Skipton, England), probably not true. There is no documentary evidence. It's possible the color just tasted better and grew more reliably. But here's the delightful kicker: at certain points during the political turmoil of the era, <strong>orange carrots were reportedly banned from Dutch markets</strong> as the fortunes of the Orange dynasty waxed and waned. The carrot was a political vegetable. It was radicalized. It had an agenda.
+  </div>
+
+  <p>And the carrot myth doesn't stop there. During World War II, the British Royal Air Force developed a new radar technology that allowed pilots to detect German bombers at night before they reached the English Channel. Not wanting the Germans to know about the radar, the RAF spread a disinformation campaign claiming their pilots' extraordinary night vision was due to eating large quantities of carrots. The Germans may or may not have believed this. The British public certainly did. "Carrots help you see in the dark" — a pure wartime lie, invented by an air force to protect a military secret — became one of the most persistent food myths of the 20th century and is still repeated today by parents forcing carrots on uncooperative children.</p>
+
+  <div class="fact-strip">
+    <div class="strip-label">🕵️ Carrot Myth-Busting</div>
+    <p>Carrots <em>do</em> contain beta-carotene, which the body converts to Vitamin A. Severe Vitamin A deficiency can cause night blindness. But eating more carrots than needed provides zero extra night-vision capability. Eating carrots does not give you superhuman vision. It never did. The Royal Air Force lied. Grandmothers have been repeating the lie ever since. The carrot, as ever, said nothing and just sat there being orange.</p>
+  </div>
+
+  <!-- SECTION 4: FARTICHOKE -->
+  <h2><span class="emoji-prefix">💨</span> The Jerusalem Fartichoke: A Love Story</h2>
+
+  <p>Let us discuss, with the seriousness it deserves, the Jerusalem artichoke's singular contribution to human social history.</p>
+
+  <p>The Jerusalem artichoke (<em>Helianthus tuberosus</em>) is not from Jerusalem. It is not an artichoke. It is a relative of the sunflower, native to North America, whose Italian name — <em>girasole</em> (sunflower) — was phonetically garbled into "Jerusalem" somewhere around the 17th century by the kind of inattentive linguists who also gave us "avocado" from the Aztec word for testicle. Samuel de Champlain brought it to France in 1616, where it was known as <em>artichauts de Canada</em> (Canadian artichoke) or <em>poires de terre</em> (earth pears).</p>
+
+  <p>The French loved it. Europe loved it. And then they ate enough of it to discover the issue.</p>
+
+  <div class="fun-box">
+    <div class="label">💨 The Science of the Situation</div>
+    <strong>Inulin.</strong> That's the culprit. Jerusalem artichokes are so densely packed with inulin — a complex fructose-based carbohydrate — that they have a higher percentage of it by weight than almost any other vegetable. Humans cannot digest inulin. Instead, it travels intact to the lower intestines, where gut bacteria encounter it with great enthusiasm and produce methane. A <em>great deal</em> of methane. Food writer Harold McGee devoted an entire chapter of his book to this. Chef René Redzepi of Noma has called it "irresponsible" to serve Jerusalem artichokes raw. One blogger grew a surprise bumper crop, ate them roasted, and "couldn't leave the house for two days." The British, ever reliable in these matters, simply named them <em>fartichokes</em> and moved on.
+  </div>
+
+  <p>The solutions are many and mostly elaborate. Boil them in lemon juice. Pickle them with lactobacillus bacteria (which consume the inulin for you — the gas escapes harmlessly into the jar, rather than into a dinner party). Slow-cook for 12–24 hours at 93°C. Build up tolerance gradually over weeks. Or simply accept your fate, eat the sunchokes, and apologize in advance.</p>
+
+  <div class="root-divider">🥕 ✦ 🥔 ✦ 🌱</div>
+
+  <!-- SECTION 5: WEIRD RECIPES -->
+  <h2><span class="emoji-prefix">🍽️</span> Weird Recipes That Actually Exist</h2>
+
+  <p>Root vegetables have appeared in some genuinely bewildering preparations throughout culinary history. Here, a sampling for the adventurous or the reckless.</p>
+
+  <div class="recipe-box">
+    <div class="recipe-title">🍹 Taro Bubble Tea (Very Purple, Very Confusing)</div>
+    <ul>
+      <li>Taro root, which is starchy, earthy, and must be cooked (raw taro will harm you)</li>
+      <li>Milk, sugar, ice, and terrifyingly large tapioca pearls made from cassava starch</li>
+      <li>Blend everything until purple. Serve with a straw wide enough to inhale the pearls</li>
+      <li>Contemplate that you are drinking a root vegetable smoothie with root vegetable balls</li>
+    </ul>
+    <p class="warning">⚠️ Note: "Taro flavor" in commercial bubble tea often contains no actual taro. You may be drinking purple vanilla. Authenticity varies.</p>
+  </div>
+
+  <div class="recipe-box">
+    <div class="recipe-title">☕ Jerusalem Artichoke Coffee (Yes, Really)</div>
+    <ul>
+      <li>Roast Jerusalem artichoke tubers until very dark</li>
+      <li>Grind and brew like coffee</li>
+      <li>Produce a caffeine-free, nutty, slightly sweet beverage that has been used as a coffee substitute since the 19th century</li>
+      <li>Experience no flatulence because the roasting changes the inulin structure. Probably.</li>
+    </ul>
+    <p class="warning">⚠️ Still technically a fartichoke. Proceed with measured optimism.</p>
+  </div>
+
+  <div class="recipe-box">
+    <div class="recipe-title">🥒 Scorzonera Fritters (Oyster Plant, No Oysters Required)</div>
+    <ul>
+      <li>Peel scorzonera (black-skinned salsify) immediately — it oxidizes faster than your patience</li>
+      <li>Parboil in salted water with lemon juice until just tender</li>
+      <li>Dip in light tempura batter; fry until golden</li>
+      <li>Serve to unsuspecting guests who will ask "What is this? It tastes like oysters?" and look mildly alarmed when you explain it is a stick you found in the garden</li>
+    </ul>
+    <p class="warning">⚠️ Scorzonera contains a milky sap that will stain everything. Wear old clothes.</p>
+  </div>
+
+  <div class="recipe-box">
+    <div class="recipe-title">🌮 Jicama with Chili, Lime & Tajín</div>
+    <ul>
+      <li>Peel jicama, slice into batons</li>
+      <li>Squeeze lime generously. Dust with Tajín (chili-lime salt). Optionally: more chili</li>
+      <li>That's it. This is sold from carts in Mexico City and is one of humanity's better ideas</li>
+      <li>No cooking required. No sophisticated technique. Just a tuber, an acid, and spice</li>
+    </ul>
+    <p class="warning">⚠️ Warning: Impossible to stop eating. Not actually a warning.</p>
+  </div>
+
+  <div class="root-divider">🥕 ✦ 🥔 ✦ 🌱</div>
+
+  <!-- SECTION 6: JOKES -->
+  <h2><span class="emoji-prefix">🍺</span> A Root Vegetable Walks Into a Bar&hellip;</h2>
+
+  <p>Every culture processes difficult truths through humor. The following jokes represent humanity&rsquo;s attempt to come to terms with its complicated relationship with underground produce.</p>
+
+  <div style="border-top:4px solid #c8913a;border-bottom:4px solid #c8913a;margin:2rem 0;">
+
+    <div style="padding:1rem 1.4rem;background:#fffdf0;border-bottom:1px solid #ede0cc;">
+      <span style="font-family:'Nunito',sans-serif;font-weight:900;color:#4a2f1a;">A root vegetable walked into a bar&hellip;</span>
+      The bartender said, &ldquo;What&rsquo;ll it be?&rdquo; He said, &ldquo;Anything but a Bloody Mary. I&rsquo;ve seen what happens to tomatoes.&rdquo;
+    </div>
+
+    <div style="padding:1rem 1.4rem;background:#f5ead5;border-bottom:1px solid #ede0cc;">
+      <span style="font-family:'Nunito',sans-serif;font-weight:900;color:#4a2f1a;">A root vegetable walked into a bar&hellip;</span>
+      Bartender says, &ldquo;We don&rsquo;t serve your kind here.&rdquo; The vegetable replies, &ldquo;That&rsquo;s fine&mdash;I&rsquo;m just here to turnip the atmosphere.&rdquo;
+    </div>
+
+    <div style="padding:1rem 1.4rem;background:#fffdf0;border-bottom:1px solid #ede0cc;">
+      <span style="font-family:'Nunito',sans-serif;font-weight:900;color:#4a2f1a;">A root vegetable walked into a bar&hellip;</span>
+      Ordered a drink and a side of fries. Bartender said, &ldquo;Isn&rsquo;t that a little&hellip; self-destructive?&rdquo; The vegetable shrugged, &ldquo;Hey, we all have our roots to confront.&rdquo;
+    </div>
+
+    <div style="padding:1rem 1.4rem;background:#f5ead5;border-bottom:1px solid #ede0cc;">
+      <span style="font-family:'Nunito',sans-serif;font-weight:900;color:#4a2f1a;">A root vegetable walked into a bar&hellip;</span>
+      The bartender said, &ldquo;Cash or card?&rdquo; It said, &ldquo;Neither&mdash;I&rsquo;m on a strictly underground economy.&rdquo;
+    </div>
+
+    <div style="padding:1rem 1.4rem;background:#fffdf0;border-bottom:1px solid #ede0cc;">
+      <span style="font-family:'Nunito',sans-serif;font-weight:900;color:#4a2f1a;">A root vegetable walked into a bar&hellip;</span>
+      Saw a knife on the counter and froze. Bartender said, &ldquo;Relax, that&rsquo;s just for limes.&rdquo; The vegetable whispered, &ldquo;That&rsquo;s what they said about onions.&rdquo;
+    </div>
+
+    <div style="padding:1rem 1.4rem;background:#f5ead5;border-bottom:1px solid #ede0cc;">
+      <span style="font-family:'Nunito',sans-serif;font-weight:900;color:#4a2f1a;">A root vegetable walked into a bar&hellip;</span>
+      Bartender said, &ldquo;You look a little dirty.&rdquo; It replied, &ldquo;I&rsquo;m not dirty&mdash;I&rsquo;m just well grounded.&rdquo;
+    </div>
+
+    <div style="padding:1rem 1.4rem;background:#fffdf0;">
+      <span style="font-family:'Nunito',sans-serif;font-weight:900;color:#4a2f1a;">A root vegetable walked into a bar&hellip;</span>
+      Bartender asked, &ldquo;What&rsquo;s your poison?&rdquo; It said, &ldquo;Anything but peeler shots&mdash;I lost a cousin that way.&rdquo;
+    </div>
+
+  </div>
+
+  <div class="root-divider">🥕 ✦ 🥔 ✦ 🌱</div>
+
+  <!-- SECTION 7: CARTOONS / POP CULTURE -->
+  <h2><span class="emoji-prefix">🎨</span> Root Vegetables in Pop Culture: A Brief and Chaotic History</h2>
+
+  <p>Root vegetables have, against all reasonable expectations, generated a surprising amount of culture.</p>
+
+  <h3>Harry Potter's Screaming Mandrakes</h3>
+  <p>J.K. Rowling immortalized the mandrake myth in <em>Harry Potter and the Chamber of Secrets</em>, where first-year Herbology students don earmuffs and repot screaming baby mandrakes. The magical plants' cry is fatal to adults; a juvenile mandrake merely knocks you out. It is, frankly, one of the more botanically accurate things in the series, insofar as the <em>folklore</em> was historically real, even if the root vegetables were not actually screaming.</p>
+
+  <h3>The World Carrot Museum</h3>
+  <p>This is not a joke. The World Carrot Museum exists, curated by a retired British civil servant named John Stolarczyk, who has been collecting carrot-related objects, artifacts, and lore for decades. It moved online — the internet being better suited to extensive carrot scholarship than physical premises in Skipton — but its archives are magnificent and inexhaustible. There is a section on carrot art. There is a section on carrot misconceptions. There is a section on carrot music. It is, without question, the most committed vegetable museum on the internet.</p>
+
+  <h3>Bugs Bunny's Root Vegetable Propaganda</h3>
+  <p>Bugs Bunny's iconic relationship with carrots — chomping them horizontally as punctuation — was modeled, according to animators, on Clark Gable eating an apple in the 1934 film <em>It Happened One Night</em>. There's a delicious irony that Hollywood's glamor translated directly into decades of free advertising for the carrot industry. Bugs was, effectively, the most successful carrot influencer in history.</p>
+
+  <div class="fun-box green">
+    <div class="label">🎬 Film & Literature Roots (Pun Intended)</div>
+    <ul style="padding-left: 1.2rem; line-height: 2;">
+      <li><strong>The Turnip Giant</strong> — a classic English folk tale about a village man who grows a turnip so enormous it requires the whole community to pull it out. Exists in approximately forty cultural variants across Europe and Asia.</li>
+      <li><strong>Blackadder Goes Forth</strong> — features a running joke about Baldrick's "turnip" as both a vegetable and a term of affection. British comedy has an unusual affinity for root vegetables as shorthand for dullness.</li>
+      <li><strong>Roald Dahl's James and the Giant Peach</strong> — technically a stone fruit, but the logic of oversized vegetables in children's literature owes something to the enormous turnip tradition.</li>
+    </ul>
+  </div>
+
+  <div class="root-divider">🥕 ✦ 🥔 ✦ 🌱</div>
+
+  <!-- SECTION 7: CONCLUSION -->
+  <h2><span class="emoji-prefix">🌱</span> In Defense of the Humble Root</h2>
+
+  <p>They have fed empires. They have been worshipped, banned, feared, and accused of screaming. They have been sold as aphrodisiacs, used as anesthetics, brewed into beverages, served as political statements, and accused — not entirely unfairly — of antisocial behavior at dinner parties.</p>
+
+  <p>Root vegetables will outlast us. They grow in thin soil, cold soil, poor soil, high-altitude soil, and soil that would defeat anything else. They store through winter without complaint. They ask for almost nothing. They give back enormously.</p>
+
+  <p>Next time you pull a knobby, mud-caked, slightly alarming root from the earth, take a moment to appreciate that you're participating in one of humanity's oldest, strangest, and most sustaining traditions. Then cook it properly before eating it, because some of them contain cyanide.</p>
+
+  <div class="pull">"The carrot was orange because of politics.<br>The artichoke was named after Jerusalem by accident.<br>The mandrake killed dogs.<br>Plants, frankly, contain multitudes."</div>
+
+  <div class="fact-strip">
+    <div class="strip-label">📚 Final Fun Facts</div>
+    <p>🥕 The world carrot crop weighs 42 million tonnes annually. China grows 44% of them. All of those carrots are orange because of Dutch breeding programs in the 17th century. Every single one.<br><br>
+    🥔 There are approximately 4,000 varieties of potato, most of them native to the Andes. We grow maybe a dozen commercially. We are leaving approximately 3,988 interesting potatoes on the table.<br><br>
+    🌿 Taro has been cultivated for at least 10,000 years, making it one of the oldest crops in human history. It predates writing. It predates cities. It predates your ability to be surprised by this fact.<br><br>
+    💨 The Jerusalem artichoke's alternative name, "sunchoke," was invented in the 1960s specifically to distance the vegetable from its flatulence reputation. It didn't entirely work.</p>
+  </div>
+
+</div>
+
+<footer>
+  Dirty, Weird &amp; Wonderful: A Root Vegetable World Tour &nbsp;·&nbsp; No mandrakes were harmed in the writing of this article &nbsp;·&nbsp; Dogs: please be cautious
+</footer>
+
+</body>
+</html>

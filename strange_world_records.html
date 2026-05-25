@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World's Worst World Records — Nobody Wants These</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root {
+  --paper: #f5f0e8;
+  --newsprint: #e8e0ce;
+  --ink: #12100e;
+  --red: #c0240c;
+  --gold: #c8900a;
+  --blue: #1a3a6e;
+  --muted: #6a5f4a;
+  --border: #c8b898;
+  --card: #fdfaf3;
+  --green: #1e5c2e;
+  --col-good: #1e5c2e;
+  --col-mid: #8b6000;
+  --col-bad: #c0240c;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ───── MASTHEAD ───── */
+.masthead {
+  text-align: center;
+  padding: 2.5rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(22px,4vw,38px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(48px, 10vw, 108px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--red);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ───── BODY ───── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 230px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--red);
+}
+
+/* ───── SECTION HEADINGS ───── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0 0.3rem;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ───── PULL QUOTE ───── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--red); }
+
+/* ───── RECORD CARDS ───── */
+.record-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--red);
+  padding: 1.1rem 1.3rem 1rem;
+  margin-bottom: 1.1rem;
+  position: relative;
+}
+.record-card .rc-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  line-height: 1;
+  color: var(--newsprint);
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+.record-card .rc-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+  line-height: 1.15;
+}
+.record-card .rc-holder {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.55rem;
+}
+.record-card .rc-body {
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--ink);
+  margin-bottom: 0.7rem;
+}
+.record-card .rc-fact {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.45;
+  border-left: 2px solid var(--border);
+  padding-left: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+/* ───── E/R SCORE PILLS ───── */
+.er-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+.er-pill {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px 2px;
+  border-radius: 2px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.pill-effort { background: #dde8f0; color: var(--blue); }
+.pill-regret-low { background: #ddf0e0; color: var(--green); }
+.pill-regret-mid { background: #fdf0d0; color: var(--col-mid); }
+.pill-regret-high { background: #fde0da; color: var(--red); }
+
+/* The E/R meter bar */
+.er-bars {
+  margin-top: 0.55rem;
+}
+.er-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 4px;
+}
+.er-bar-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  min-width: 40px;
+}
+.er-bar-track {
+  flex: 1;
+  height: 7px;
+  background: var(--newsprint);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.er-bar-fill {
+  height: 100%;
+  border-radius: 1px;
+}
+.fill-effort { background: var(--blue); }
+.fill-regret { background: var(--red); }
+.er-bar-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  min-width: 16px;
+  text-align: right;
+}
+
+/* ───── SIDEBAR ELEMENTS ───── */
+.sidebar-box {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid #444;
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #d8d0c0;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-box2 {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-box2 .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+/* ───── THE BIG INDEX TABLE ───── */
+.index-section {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2.5rem 2rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.index-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.index-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #8a7a60;
+  margin-bottom: 2rem;
+}
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1px;
+  background: #333;
+  border: 1px solid #333;
+}
+.index-cell {
+  background: #1c1a16;
+  padding: 0.9rem 1rem;
+}
+.ic-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: #e8e0cc;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+.ic-holder {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7a6a52;
+  margin-bottom: 0.6rem;
+}
+.ic-bars { display: flex; flex-direction: column; gap: 3px; }
+.ic-bar-row { display: flex; align-items: center; gap: 5px; }
+.ic-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 7.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #7a6a52;
+  min-width: 38px;
+}
+.ic-track {
+  flex: 1;
+  height: 5px;
+  background: #333;
+  border-radius: 1px;
+  overflow: hidden;
+}
+.ic-fill-e { background: #4a7ab5; height: 100%; border-radius: 1px; }
+.ic-fill-r { background: #c0240c; height: 100%; border-radius: 1px; }
+.ic-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  color: #7a6a52;
+  min-width: 12px;
+  text-align: right;
+}
+.ic-verdict {
+  font-size: 11px;
+  font-style: italic;
+  color: #6a5a40;
+  margin-top: 0.45rem;
+  line-height: 1.35;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-weight: 300;
+}
+
+/* ───── SVG ILLUSTRATIONS ───── */
+.illo-wrap {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.illo-caption {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+/* ───── ORNAMENT ───── */
+.ornament {
+  text-align: center;
+  color: var(--border);
+  font-size: 18px;
+  letter-spacing: 0.6em;
+  margin: 2rem 0;
+  font-family: 'Space Mono', monospace;
+}
+
+/* ───── FOOTER ───── */
+.footer {
+  border-top: 2px double var(--ink);
+  padding-top: 1.2rem;
+  margin-top: 4rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  line-height: 2.2;
+}
+
+/* ───── RESPONSIVE ───── */
+@media (max-width: 620px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .index-section { margin: 3rem -1.2rem; width: calc(100% + 2.4rem); }
+  h1 { font-size: 58px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ MASTHEAD ═══════════════════════ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span>Vol. MMXXVI &nbsp;·&nbsp; Special Records Issue</span>
+    <span class="pub-name">The Peculiar Gazette</span>
+    <span>Est. Whenever This Started &nbsp;·&nbsp; Price: Your Dignity</span>
+  </div>
+  <p class="kicker">Guinness World Records &nbsp;·&nbsp; Special Investigation &nbsp;·&nbsp; "Why, Though?"</p>
+  <h1>WORLD'S <em>WORST</em><br>WORLD RECORDS</h1>
+  <p class="deck">An authoritative survey of humanity's strangest achievements — and the perfectly rational people who want absolutely nothing to do with them.</p>
+  <p class="byline-row">By Our Correspondent Who Regrets Everything &nbsp;·&nbsp; Illustrated by Alarmed Bystanders &nbsp;·&nbsp; Scored on the Effort vs. Regret Index™</p>
+</div>
+
+<!-- ═══════════════════════ ARTICLE BODY ═══════════════════════ -->
+<div class="article">
+<div class="main-col">
+
+<p class="dropcap">Every year, Guinness World Records publishes a thick, glossy book celebrating the finest achievements of the human race. There is Usain Bolt, defying physics. There are the tallest buildings, the deepest dives, the fastest machines. And then, wedged somewhere between the record for the world's largest rubber band ball and a Turkish man squirting milk from his eye across three meters of open air, there are <em>these</em> records. The ones nobody asked for. The ones nobody wants. The ones that have stood for decades — not because they are impossible to beat, but because a functional adult looks at them and says, quietly, <em>no.</em></p>
+
+<p>This is their story. These are their holders. And this is the Effort vs. Regret Index™ — the only scale honest enough to capture what each of these records truly costs.</p>
+
+<div class="pull">
+  "IF YOU CAN MEASURE IT,<br>SOMEONE WILL<span style="color:var(--red)"> OPTIMIZE IT.</span><br>THAT'S THE PROBLEM."
+</div>
+
+<!-- SVG: Illustrated person being stung by bees -->
+<div class="illo-wrap">
+<svg width="100%" viewBox="0 0 680 220" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Illustration of a man covered in bees, looking calm but regretful</title>
+  <desc>A stick-figure illustration of the world's strangest record attempts</desc>
+  <!-- Background stripes -->
+  <rect width="680" height="220" fill="#f5f0e8"/>
+  <rect x="0" y="180" width="680" height="40" fill="#e8e0ce"/>
+  <!-- "stage" line -->
+  <line x1="60" y1="182" x2="620" y2="182" stroke="#c8b898" stroke-width="1"/>
+
+  <!-- Figure 1: Bee man -->
+  <g transform="translate(100,50)">
+    <!-- body -->
+    <ellipse cx="30" cy="95" rx="22" ry="35" fill="#c8b898" opacity="0.5"/>
+    <!-- head -->
+    <circle cx="30" cy="40" r="24" fill="#f0e0c0" stroke="#12100e" stroke-width="1.5"/>
+    <!-- eyes: weary -->
+    <line x1="22" y1="38" x2="26" y2="42" stroke="#12100e" stroke-width="1.5"/>
+    <line x1="26" y1="38" x2="22" y2="42" stroke="#12100e" stroke-width="1.5"/>
+    <line x1="34" y1="38" x2="38" y2="42" stroke="#12100e" stroke-width="1.5"/>
+    <line x1="38" y1="38" x2="34" y2="42" stroke="#12100e" stroke-width="1.5"/>
+    <!-- sad mouth -->
+    <path d="M 22 52 Q 30 47 38 52" fill="none" stroke="#12100e" stroke-width="1.2"/>
+    <!-- arms -->
+    <line x1="8" y1="90" x2="-10" y2="120" stroke="#12100e" stroke-width="2"/>
+    <line x1="52" y1="90" x2="70" y2="120" stroke="#12100e" stroke-width="2"/>
+    <!-- legs -->
+    <line x1="18" y1="128" x2="12" y2="175" stroke="#12100e" stroke-width="2"/>
+    <line x1="42" y1="128" x2="48" y2="175" stroke="#12100e" stroke-width="2"/>
+    <!-- bees! scattered around body -->
+    <g fill="#c8900a" stroke="#12100e" stroke-width="0.5" font-size="14">
+      <text x="-18" y="70">🐝</text>
+      <text x="55" y="60">🐝</text>
+      <text x="10" y="20">🐝</text>
+      <text x="45" y="25">🐝</text>
+      <text x="-5" y="105">🐝</text>
+      <text x="55" y="100">🐝</text>
+      <text x="20" y="125">🐝</text>
+      <text x="-15" y="38">🐝</text>
+      <text x="60" y="130">🐝</text>
+      <text x="30" y="10">🐝</text>
+    </g>
+    <!-- label -->
+    <text x="30" y="197" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" fill="#6a5f4a" letter-spacing="0.1em">2,443 STINGS</text>
+  </g>
+
+  <!-- Figure 2: T-shirt man -->
+  <g transform="translate(280,45)">
+    <ellipse cx="38" cy="105" rx="38" ry="40" fill="#c8b898" opacity="0.35"/>
+    <ellipse cx="38" cy="95" rx="30" ry="32" fill="#c8b898" opacity="0.35"/>
+    <circle cx="38" cy="40" r="24" fill="#f0e0c0" stroke="#12100e" stroke-width="1.5"/>
+    <!-- sweating face -->
+    <circle cx="30" cy="38" r="3" fill="#12100e"/>
+    <circle cx="46" cy="38" r="3" fill="#12100e"/>
+    <path d="M 28 51 Q 38 58 48 51" fill="none" stroke="#12100e" stroke-width="1.2"/>
+    <!-- sweat drops -->
+    <ellipse cx="54" cy="30" rx="3" ry="5" fill="#a0c8e0" opacity="0.8"/>
+    <ellipse cx="60" cy="42" rx="2.5" ry="4" fill="#a0c8e0" opacity="0.8"/>
+    <!-- shirt layers -->
+    <rect x="8" y="65" width="60" height="55" rx="3" fill="#c0240c" opacity="0.7" stroke="#12100e" stroke-width="0.5"/>
+    <rect x="10" y="68" width="56" height="50" rx="3" fill="#1a3a6e" opacity="0.7" stroke="#12100e" stroke-width="0.5"/>
+    <rect x="12" y="71" width="52" height="46" rx="3" fill="#1e5c2e" opacity="0.7" stroke="#12100e" stroke-width="0.5"/>
+    <rect x="14" y="74" width="48" height="42" rx="3" fill="#c8900a" opacity="0.7" stroke="#12100e" stroke-width="0.5"/>
+    <rect x="16" y="77" width="44" height="38" rx="3" fill="#c8b898" opacity="0.7" stroke="#12100e" stroke-width="0.5"/>
+    <!-- legs -->
+    <line x1="28" y1="118" x2="22" y2="175" stroke="#12100e" stroke-width="2"/>
+    <line x1="48" y1="118" x2="54" y2="175" stroke="#12100e" stroke-width="2"/>
+    <text x="38" y="197" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" fill="#6a5f4a" letter-spacing="0.1em">260 T-SHIRTS</text>
+  </g>
+
+  <!-- Figure 3: Spoons man -->
+  <g transform="translate(480,55)">
+    <circle cx="40" cy="40" r="24" fill="#f0e0c0" stroke="#12100e" stroke-width="1.5"/>
+    <!-- calm face -->
+    <circle cx="33" cy="38" r="2.5" fill="#12100e"/>
+    <circle cx="47" cy="38" r="2.5" fill="#12100e"/>
+    <path d="M 32 50 Q 40 55 48 50" fill="none" stroke="#12100e" stroke-width="1.2"/>
+    <!-- body -->
+    <line x1="40" y1="64" x2="40" y2="130" stroke="#12100e" stroke-width="2"/>
+    <line x1="40" y1="80" x2="15" y2="110" stroke="#12100e" stroke-width="2"/>
+    <line x1="40" y1="80" x2="65" y2="110" stroke="#12100e" stroke-width="2"/>
+    <line x1="40" y1="130" x2="28" y2="175" stroke="#12100e" stroke-width="2"/>
+    <line x1="40" y1="130" x2="52" y2="175" stroke="#12100e" stroke-width="2"/>
+    <!-- spoons (simplified ellipse + line) -->
+    <g stroke="#12100e" stroke-width="1" fill="none">
+      <!-- spoon on nose -->
+      <ellipse cx="40" cy="24" rx="5" ry="7" fill="#d0d0d0" stroke="#12100e" stroke-width="1"/>
+      <line x1="40" y1="17" x2="40" y2="8"/>
+      <!-- spoons on arms and body -->
+      <ellipse cx="5" cy="118" rx="5" ry="7" fill="#d0d0d0" transform="rotate(-40 5 118)"/>
+      <ellipse cx="72" cy="105" rx="5" ry="7" fill="#d0d0d0" transform="rotate(30 72 105)"/>
+      <ellipse cx="25" cy="95" rx="4" ry="6" fill="#d0d0d0" transform="rotate(-20 25 95)"/>
+      <ellipse cx="55" cy="90" rx="4" ry="6" fill="#d0d0d0" transform="rotate(15 55 90)"/>
+      <ellipse cx="40" cy="105" rx="4" ry="6" fill="#d0d0d0"/>
+      <ellipse cx="30" cy="60" rx="4" ry="6" fill="#d0d0d0" transform="rotate(-30 30 60)"/>
+      <ellipse cx="50" cy="62" rx="4" ry="6" fill="#d0d0d0" transform="rotate(25 50 62)"/>
+    </g>
+    <text x="40" y="197" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" fill="#6a5f4a" letter-spacing="0.1em">79 SPOONS</text>
+  </g>
+
+  <!-- title strip -->
+  <rect x="0" y="0" width="680" height="18" fill="#12100e"/>
+  <text x="340" y="12.5" text-anchor="middle" font-family="Space Mono, monospace" font-size="8.5" fill="#c8900a" letter-spacing="0.2em">ILLUSTRATED FIELD GUIDE TO RECORDS NO ONE WANTS</text>
+</svg>
+<p class="illo-caption">Actual record holders, depicted with sympathy and mild concern</p>
+</div>
+
+<!-- ═══ SECTION 1 ═══ -->
+<h2><span class="cat">Category I &nbsp;·&nbsp; Endurance</span>Why Would You Live Like This?</h2>
+
+<p>The endurance category of unwanted records is defined by a specific quality: the attempt is indistinguishable from punishment. These are not feats of athleticism. They are feats of stubbornness, desperation, or, in one remarkable Iowa case, bad luck with a large pig.</p>
+
+<!-- Charles Osborne -->
+<div class="record-card">
+  <span class="rc-num">01</span>
+  <p class="rc-title">Longest Sustained Case of Hiccups</p>
+  <p class="rc-holder">Charles Osborne &nbsp;·&nbsp; Anthon, Iowa, USA &nbsp;·&nbsp; 1922–1990</p>
+  <p class="rc-body">In 1922, Charles Osborne dropped a 350-pound hog he was preparing to butcher, fell, and ruptured a small blood vessel in his brain stem — the very vessel that tells the body to stop hiccupping. He hiccuped between 20 and 40 times per minute for the next 68 years. He appeared on Johnny Carson. He appeared in the Guinness Book of World Records. He married twice and fathered eight children. His hiccups stopped in 1990 for no documented reason. He died the following year. Neither event has ever been explained.</p>
+  <p class="rc-fact">Record: 68 years &nbsp;·&nbsp; Estimated count: 430 million hiccups &nbsp;·&nbsp; Friends once fired a shotgun directly behind him. The hiccups were unimpressed.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:5%"></div></div>
+      <span class="er-bar-val">0</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:100%"></div></div>
+      <span class="er-bar-val">10</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 0 — You can't train for this</span>
+    <span class="er-pill pill-regret-high">Regret: 10 — 68 years. 68 years.</span>
+  </div>
+</div>
+
+<!-- Randy Gardner -->
+<div class="record-card">
+  <span class="rc-num">02</span>
+  <p class="rc-title">Longest Time Without Sleep</p>
+  <p class="rc-holder">Randy Gardner &nbsp;·&nbsp; USA &nbsp;·&nbsp; 1964 &nbsp;·&nbsp; No Longer Officially Sanctioned</p>
+  <p class="rc-body">In 1964, seventeen-year-old Randy Gardner stayed awake for 11 days and 25 minutes for a science fair project. By day four he couldn't focus his eyes. By day eleven he was experiencing hallucinations and scoring poorly on cognitive tests while still technically conscious. He then slept for 14 hours and reportedly recovered. Guinness no longer recognizes attempts in this category because, as they put it with admirable restraint, it's "medically reckless." The record stands, uncontested, because anyone who tries to beat it by day five is no longer a reliable narrator of their own experience.</p>
+  <p class="rc-fact">Record: 264 hours, 25 minutes &nbsp;·&nbsp; Current status: Historically documented, mercifully unchallenged</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:100%"></div></div>
+      <span class="er-bar-val">10</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:100%"></div></div>
+      <span class="er-bar-val">10</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 10 — Cognitive breakdown as sport</span>
+    <span class="er-pill pill-regret-high">Regret: 10 — Officially too dangerous to retry</span>
+  </div>
+</div>
+
+<!-- Buried alive -->
+<div class="record-card">
+  <span class="rc-num">03</span>
+  <p class="rc-title">Longest Time Buried Alive (With Air Supply)</p>
+  <p class="rc-holder">Various Claimants &nbsp;·&nbsp; Not Formally Standardized &nbsp;·&nbsp; Requires a Coffin and Courage of Dubious Origin</p>
+  <p class="rc-body">The category requires lying in a box underground — typically with a breathing tube and no other entertainment — for as long as possible. Ten days has been reported. The psychological strain is described by participants as "considerable," which is the most understated phrase in the history of record-keeping. One must admire the commitment. One must also wonder why no one simply recommends a hotel and a book.</p>
+  <p class="rc-fact">Effort vs. Regret: High both ways. The regret begins at the planning stage.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:90%"></div></div>
+      <span class="er-bar-val">9</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:90%"></div></div>
+      <span class="er-bar-val">9</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 9 — Existential claustrophobia</span>
+    <span class="er-pill pill-regret-high">Regret: 9 — You rehearsed your own funeral</span>
+  </div>
+</div>
+
+<div class="ornament">— ✦ —</div>
+
+<!-- ═══ SECTION 2 ═══ -->
+<h2><span class="cat">Category II &nbsp;·&nbsp; Pain & Physical Extremes</span>The Body as a Terrible Idea</h2>
+
+<p>These records share a core philosophical position: the human body is capable of absorbing more punishment than it should, and some people would like to quantify exactly how much. Their findings are, uniformly, "more than anyone wanted to know."</p>
+
+<!-- Bee stings -->
+<div class="record-card">
+  <span class="rc-num">04</span>
+  <p class="rc-title">Most Bee Stings Endured in a Single Session</p>
+  <p class="rc-holder">Michael Smith &nbsp;·&nbsp; USA &nbsp;·&nbsp; Approx. 2,443 Stings &nbsp;·&nbsp; Counted. Individually. By Hand.</p>
+  <p class="rc-body">Michael Smith, a beekeeper, reportedly allowed himself to be stung 2,443 times in a controlled session. He was, by his own account, in significant pain. He was also a professional beekeeper with years of tolerance-building, which represents a training regimen that most people would not describe as a training regimen so much as "a series of extremely clear warning signs." The record is not actively pursued. This is correct.</p>
+  <p class="rc-fact">For context: the average person goes into anaphylactic shock at a fraction of this number. Michael Smith is not average. Michael Smith is something else entirely.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:80%"></div></div>
+      <span class="er-bar-val">8</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:100%"></div></div>
+      <span class="er-bar-val">10</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 8 — Years of bee tolerance, somehow</span>
+    <span class="er-pill pill-regret-high">Regret: 10 — 2,443 times</span>
+  </div>
+</div>
+
+<!-- Wim Hof -->
+<div class="record-card">
+  <span class="rc-num">05</span>
+  <p class="rc-title">Longest Full-Body Contact With Ice</p>
+  <p class="rc-holder">Wim Hof &nbsp;·&nbsp; Netherlands &nbsp;·&nbsp; "The Iceman" &nbsp;·&nbsp; 1hr 53min (2008)</p>
+  <p class="rc-body">Wim Hof is a man who has spent decades training his body to withstand conditions that would kill most people, and who looks, throughout his ice-bath record attempts, as if he is mildly contemplating what to have for lunch. He has climbed Mount Everest in shorts. He is not a normal person. His record involves standing in full-body ice immersion for nearly two hours, smiling. The smiling is the part that lingers.</p>
+  <p class="rc-fact">Record: 1 hour, 53 minutes &nbsp;·&nbsp; Core temperature: maintained by sheer force of will, apparently &nbsp;·&nbsp; Number of people who have tried to replicate this in their bathtubs: many &nbsp;·&nbsp; Number who succeeded: fewer.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:90%"></div></div>
+      <span class="er-bar-val">9</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:70%"></div></div>
+      <span class="er-bar-val">7</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 9 — Decades of training, not a shortcut</span>
+    <span class="er-pill pill-regret-mid">Regret: 7 — He seems fine. Disturbingly fine.</span>
+  </div>
+</div>
+
+<!-- Piercings -->
+<div class="record-card">
+  <span class="rc-num">06</span>
+  <p class="rc-title">Most Body Piercings in a Single Session</p>
+  <p class="rc-holder">Elaine Davidson &nbsp;·&nbsp; Brazil/UK &nbsp;·&nbsp; Thousands Over a Career &nbsp;·&nbsp; Hundreds in Single Sessions</p>
+  <p class="rc-body">Elaine Davidson holds multiple records in this domain, having accumulated thousands of piercings across her lifetime with a commitment that is either deeply admirable or deeply alarming depending on your relationship with needles. The single-session record involves hundreds of piercings administered over the course of a day, which requires both a very tolerant nervous system and a very patient piercer. The record exists. It will continue to exist. Very few people are calling to challenge it.</p>
+  <p class="rc-fact">The logistical complexity alone — scheduling, equipment, aftercare — makes this record a project management challenge with unusual deliverables.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:80%"></div></div>
+      <span class="er-bar-val">8</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:80%"></div></div>
+      <span class="er-bar-val">8</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 8 — Physical and logistical commitment</span>
+    <span class="er-pill pill-regret-high">Regret: 8 — Permanent, in multiple senses</span>
+  </div>
+</div>
+
+<div class="ornament">— ✦ —</div>
+
+<!-- ═══ SECTION 3 ═══ -->
+<h2><span class="cat">Category III &nbsp;·&nbsp; Competitive Eating</span>Records That Defeat Their Own Purpose</h2>
+
+<p>Competitive eating occupies a special position in the taxonomy of unwanted records: it is both widely known and somehow getting more alarming the more you know about it. Joey Chestnut has eaten 76 hot dogs in ten minutes. This sentence is true. It will remain true. Please sit with it for a moment.</p>
+
+<!-- Joey Chestnut -->
+<div class="record-card">
+  <span class="rc-num">07</span>
+  <p class="rc-title">Most Hot Dogs Eaten in 10 Minutes</p>
+  <p class="rc-holder">Joey Chestnut &nbsp;·&nbsp; USA &nbsp;·&nbsp; 76 Hot Dogs (2021) &nbsp;·&nbsp; Nathan's Famous Fourth of July Contest</p>
+  <p class="rc-body">Joey Chestnut is, by any athletic measure, an elite performer: he trains, he has a methodology, he has broken his own record multiple times. He is also a man who has eaten 76 hot dogs in ten minutes, which means he averaged one hot dog roughly every eight seconds, including buns. The training for competitive eating involves deliberate stomach stretching, controlled fasting, and water-dunking the buns to reduce chewing time. This is the biography of a person who has chosen an exceptional path.</p>
+  <p class="rc-fact">The regret score is mitigated slightly by the fact that Joey Chestnut appears to have no regret at all, which is a form of mastery.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:90%"></div></div>
+      <span class="er-bar-val">9</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:60%"></div></div>
+      <span class="er-bar-val">6</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 9 — Stomach: genuinely bioengineered</span>
+    <span class="er-pill pill-regret-mid">Regret: 6 — He's fine. We're not.</span>
+  </div>
+</div>
+
+<!-- Garlic -->
+<div class="record-card">
+  <span class="rc-num">08</span>
+  <p class="rc-title">Most Garlic Cloves Eaten in One Minute</p>
+  <p class="rc-holder">Patrick Bertoletti &nbsp;·&nbsp; USA &nbsp;·&nbsp; 36 Cloves (2012)</p>
+  <p class="rc-body">Patrick Bertoletti, a professional competitive eater who holds dozens of records across categories, consumed 36 raw garlic cloves in 60 seconds. The immediate experience is described as intense. The aftermath is less a record than a consequence — social, olfactory, and gastrointestinal — that extends several days beyond the attempt itself. The regret here is not the eating. The regret is the Tuesday after.</p>
+  <p class="rc-fact">36 cloves in 60 seconds. That's a clove every 1.7 seconds. The smell, by scientific estimate, would be detectable from the next room for approximately 72 hours. The record stands. No one is coming for it with enthusiasm.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:60%"></div></div>
+      <span class="er-bar-val">6</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:90%"></div></div>
+      <span class="er-bar-val">9</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 6 — Less effort than aftermath</span>
+    <span class="er-pill pill-regret-high">Regret: 9 — The regret has a 72-hour half-life</span>
+  </div>
+</div>
+
+<!-- Ketchup -->
+<div class="record-card">
+  <span class="rc-num">09</span>
+  <p class="rc-title">Fastest Time to Drink a Bottle of Ketchup</p>
+  <p class="rc-holder">Multiple Informal Claimants &nbsp;·&nbsp; Approx. 20–30 Seconds &nbsp;·&nbsp; Contested &nbsp;·&nbsp; Not Coveted</p>
+  <p class="rc-body">A bottle of ketchup, consumed as quickly as possible. The challenge here is not difficulty — it is simply unpleasant. There is no skill that transfers. There is no training montage. There is only a bottle of ketchup, and then the decision, and then the bottle of ketchup is gone, and then you think about what you've done.</p>
+  <p class="rc-fact">Effort vs. Regret score is uniquely asymmetric: minimal effort, maximal regret. The perfect inverse of an achievement.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:30%"></div></div>
+      <span class="er-bar-val">3</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:90%"></div></div>
+      <span class="er-bar-val">9</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 3 — Trivially easy to attempt</span>
+    <span class="er-pill pill-regret-high">Regret: 9 — Why, though. Why.</span>
+  </div>
+</div>
+
+<div class="ornament">— ✦ —</div>
+
+<!-- ═══ SECTION 4 ═══ -->
+<h2><span class="cat">Category IV &nbsp;·&nbsp; Niche Excellence</span>Skills With No Second Application</h2>
+
+<p>There exists a category of world record that demands genuine skill — dexterity, precision, practice — and delivers, in return, a skill that has absolutely no application anywhere else in life. These are the records that represent hundreds of hours of training toward a single purpose that the trainer cannot then put on a résumé.</p>
+
+<!-- Socks -->
+<div class="record-card">
+  <span class="rc-num">10</span>
+  <p class="rc-title">Most Socks Put on One Foot in 30 Seconds</p>
+  <p class="rc-holder">Silvio Sabba &nbsp;·&nbsp; Italy &nbsp;·&nbsp; 28 Socks (Approx.) &nbsp;·&nbsp; Serial Record-Holder Across Absurd Categories</p>
+  <p class="rc-body">Silvio Sabba is a man who holds dozens of Guinness records across remarkably specific categories — he has made a genuine career of niche optimization. Twenty-eight socks on a single foot in thirty seconds requires rapid sequential pulling, spatial awareness for sock positioning, and a foot that is increasingly unrecognizable as a foot. He is very good at this. This is genuinely true. No one knows what to do with that information.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:50%"></div></div>
+      <span class="er-bar-val">5</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:50%"></div></div>
+      <span class="er-bar-val">5</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 5 — Real skill, zero transferability</span>
+    <span class="er-pill pill-regret-mid">Regret: 5 — Balanced. Fine. Odd.</span>
+  </div>
+</div>
+
+<!-- Baked beans -->
+<div class="record-card">
+  <span class="rc-num">11</span>
+  <p class="rc-title">Fastest Time to Move Baked Beans Using Only a Straw</p>
+  <p class="rc-holder">Leah Shutkever &nbsp;·&nbsp; UK &nbsp;·&nbsp; Multiple Food-Transfer Speed Records &nbsp;·&nbsp; Very Focused Person</p>
+  <p class="rc-body">Leah Shutkever holds a remarkable number of speed records involving the precise transfer of food items from one container to another using implements that were not designed for the purpose. Baked beans via straw represents the intersection of suction, precision, bean physics, and a commitment to excellence in a domain that no career counselor has ever suggested. The beans are moved. The record is set. The room is quiet.</p>
+  <p class="rc-fact">The thing that makes this record elegant in its futility: it requires genuine skill. You must be good at this. You must practice. And the skill you practice is moving baked beans with a straw.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:60%"></div></div>
+      <span class="er-bar-val">6</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:70%"></div></div>
+      <span class="er-bar-val">7</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 6 — Yes, you must practice this</span>
+    <span class="er-pill pill-regret-mid">Regret: 7 — The skill is the regret</span>
+  </div>
+</div>
+
+<!-- T-shirts -->
+<div class="record-card">
+  <span class="rc-num">12</span>
+  <p class="rc-title">Most T-Shirts Worn Simultaneously</p>
+  <p class="rc-holder">Ted Hastings &nbsp;·&nbsp; Canada &nbsp;·&nbsp; 260 T-Shirts (2019)</p>
+  <p class="rc-body">Ted Hastings wore 260 T-shirts at the same time. Not layered fashionably — stacked, serially, until he was a fabric-based structure roughly twice his original circumference, unable to move his arms at anything approaching a normal angle, sweating in a way that the human body was not designed to sweat. The shirts go on one at a time. The logistics of finding 260 T-shirts in descending size order are not trivial. The dignity calculus is unusual. The world record stands.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:70%"></div></div>
+      <span class="er-bar-val">7</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:60%"></div></div>
+      <span class="er-bar-val">6</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 7 — Sourcing 260 shirts is real work</span>
+    <span class="er-pill pill-regret-mid">Regret: 6 — Warm. Very warm. Possibly proud.</span>
+  </div>
+</div>
+
+<div class="ornament">— ✦ —</div>
+
+<!-- ═══ SECTION 5 ═══ -->
+<h2><span class="cat">Category V &nbsp;·&nbsp; High Dignity Risk</span>Records You Can't Explain at Dinner</h2>
+
+<p>The final category is defined not by physical extremity but by social consequences. These records are, in isolation, remarkable. In context — at a first date, in a job interview, at a parent-teacher conference — they represent a disclosure that lands somewhere between "interesting" and "alarming."</p>
+
+<!-- Burp -->
+<div class="record-card">
+  <span class="rc-num">13</span>
+  <p class="rc-title">Loudest Burp (Measured)</p>
+  <p class="rc-holder">Paul Hunn &nbsp;·&nbsp; UK &nbsp;·&nbsp; 109.9 Decibels</p>
+  <p class="rc-body">Paul Hunn's world-record burp registered 109.9 decibels — roughly equivalent to a chainsaw, a pneumatic drill, or the front row of a rock concert. This is not a noise the human body is expected to produce voluntarily. Paul Hunn produces it voluntarily. He has held the record multiple times. He has appeared on television to demonstrate it. He is, by his own account, not bothered by any of this, which is a psychological state that deserves its own study.</p>
+  <p class="rc-fact">109.9 dB. For reference, sustained exposure above 85 dB causes hearing damage. The record-setting burp is not sustained, but it is memorable.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:30%"></div></div>
+      <span class="er-bar-val">3</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:80%"></div></div>
+      <span class="er-bar-val">8</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 3 — Low barrier. High ceiling.</span>
+    <span class="er-pill pill-regret-high">Regret: 8 — Socially irreversible</span>
+  </div>
+</div>
+
+<!-- Spoons -->
+<div class="record-card">
+  <span class="rc-num">14</span>
+  <p class="rc-title">Most Spoons Balanced on the Human Body</p>
+  <p class="rc-holder">Dalibor Jablanovic &nbsp;·&nbsp; Serbia &nbsp;·&nbsp; 79 Spoons (2016)</p>
+  <p class="rc-body">Seventy-nine spoons. Balanced simultaneously on various surfaces of the human body — face, arms, hands, head, torso — using the slight stickiness of skin as the adhesive force. Dalibor Jablanovic achieved this using a combination of stillness, patience, and a relationship with cutlery that few people have pursued. The spoons are placed. They hold. A photo is taken. A record is entered. The spoons are then removed. The world continues.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:40%"></div></div>
+      <span class="er-bar-val">4</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:60%"></div></div>
+      <span class="er-bar-val">6</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 4 — Gentle. Still. Strange.</span>
+    <span class="er-pill pill-regret-mid">Regret: 6 — Explaining it is the hard part</span>
+  </div>
+</div>
+
+<!-- Eye milk -->
+<div class="record-card">
+  <span class="rc-num">15</span>
+  <p class="rc-title">Farthest Distance Milk Squirted from the Eye</p>
+  <p class="rc-holder">Ilker Yilmaz &nbsp;·&nbsp; Turkey &nbsp;·&nbsp; 2.79 Meters (2004)</p>
+  <p class="rc-body">Ilker Yilmaz snorts milk through his nose and expels it through his tear ducts, which he can do because he has a patent nasolacrimal duct connection — an anatomical quirk that the vast majority of humans do not share, and for which most of them are grateful. 2.79 meters. Nearly nine feet. Through the eye. With milk. This is the record that most efficiently encapsulates the spirit of this entire article: it requires a rare ability, genuine practice, produces an outcome of no practical value, and the face of every witness tells the complete story of its Regret Score without any further explanation required.</p>
+  <p class="rc-fact">The Regret Score here is technically a 10 but psychologically scores approximately 14 on a 10-point scale. It is in a category by itself. The category is called "no."</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:60%"></div></div>
+      <span class="er-bar-val">6</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:100%"></div></div>
+      <span class="er-bar-val">10*</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 6 — Rare anatomy + practice</span>
+    <span class="er-pill pill-regret-high">Regret: 10 — *Technically 14</span>
+  </div>
+</div>
+
+<!-- Ashrita Furman -->
+<div class="record-card">
+  <span class="rc-num">16</span>
+  <p class="rc-title">Most Guinness World Records Held by One Person</p>
+  <p class="rc-holder">Ashrita Furman &nbsp;·&nbsp; USA &nbsp;·&nbsp; 200+ Records Over Career &nbsp;·&nbsp; Has Made Weird His Entire Personality</p>
+  <p class="rc-body">Ashrita Furman deserves special mention as the person who discovered the only rational strategy in this space: instead of holding one strange record, hold all of them. He has balanced lawnmowers on his chin, hopped on a pogo stick up Mount Fuji, and broken records on every continent. His approach converts individual absurdity into a career of absurdity, which is a genuine philosophical achievement. He is the Wim Hof of pointlessness, and that is a compliment.</p>
+  <p class="rc-fact">Effort: 8 / Regret: 2 — The only record-holder who has solved the regret problem by reframing the entire enterprise.</p>
+  <div class="er-bars">
+    <div class="er-bar-row">
+      <span class="er-bar-label">Effort</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-effort" style="width:80%"></div></div>
+      <span class="er-bar-val">8</span>
+    </div>
+    <div class="er-bar-row">
+      <span class="er-bar-label">Regret</span>
+      <div class="er-bar-track"><div class="er-bar-fill fill-regret" style="width:20%"></div></div>
+      <span class="er-bar-val">2</span>
+    </div>
+  </div>
+  <div class="er-row">
+    <span class="er-pill pill-effort">Effort: 8 — Chin strength alone is a career</span>
+    <span class="er-pill pill-regret-low">Regret: 2 — He's built an identity. It works.</span>
+  </div>
+</div>
+
+</div><!-- end main-col -->
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<div class="side-col">
+
+  <div style="position:sticky;top:1.5rem;">
+
+  <div class="sidebar-box">
+    <p class="sb-title">The "No One Wants This" Criteria</p>
+    <p>A record qualifies for this taxonomy if it:</p>
+    <p>① Involves pain, risk, or long-term discomfort</p>
+    <p>② Has no transferable skill value</p>
+    <p>③ Carries high embarrassment with low prestige payoff</p>
+    <p>④ Requires extreme specialization for a trivial outcome</p>
+    <p>The sweet spot: <em>hard to do + unpleasant + unimpressive to normal people.</em></p>
+  </div>
+
+  <div class="sidebar-box2">
+    <p class="sb-title">Why These Records Persist</p>
+    <p><strong>Low competition barrier:</strong> If no one else wants to try it, you're automatically the best in the world.</p>
+    <p><strong>Quantifiable absurdity:</strong> If you can measure it, someone will optimize it. This is a law of nature.</p>
+    <p><strong>Attention economics:</strong> The stranger the record, the further it travels.</p>
+    <p><strong>Edge-of-feasibility appeal:</strong> Some people are simply drawn to extremes that others instinctively flee.</p>
+  </div>
+
+  <!-- Mini SVG illustration: the index quadrant -->
+  <div style="margin-bottom:1.5rem;">
+    <svg width="100%" viewBox="0 0 220 200" role="img" xmlns="http://www.w3.org/2000/svg">
+      <title>Effort vs Regret quadrant diagram</title>
+      <desc>A quadrant showing effort on the x-axis and regret on the y-axis, with records plotted across four zones</desc>
+      <rect width="220" height="200" fill="#fdfaf3"/>
+      <rect x="0" y="0" width="220" height="22" fill="#12100e"/>
+      <text x="110" y="14.5" text-anchor="middle" font-family="Space Mono, monospace" font-size="7.5" fill="#c8900a" letter-spacing="0.15em">EFFORT VS. REGRET MAP</text>
+      <!-- axes -->
+      <line x1="20" y1="170" x2="210" y2="170" stroke="#c8b898" stroke-width="0.5"/>
+      <line x1="20" y1="30" x2="20" y2="170" stroke="#c8b898" stroke-width="0.5"/>
+      <!-- quadrant fill -->
+      <rect x="20" y="100" width="95" height="70" fill="#ddf0e0" opacity="0.5"/>
+      <rect x="115" y="30" width="95" height="70" fill="#fde0da" opacity="0.5"/>
+      <rect x="20" y="30" width="95" height="70" fill="#fdf0d0" opacity="0.4"/>
+      <rect x="115" y="100" width="95" height="70" fill="#fde0da" opacity="0.7"/>
+      <!-- axis labels -->
+      <text x="115" y="185" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="#6a5f4a" letter-spacing="0.08em">EFFORT →</text>
+      <text x="10" y="100" text-anchor="middle" font-family="Space Mono, monospace" font-size="7" fill="#6a5f4a" letter-spacing="0.08em" transform="rotate(-90 10 100)">REGRET →</text>
+      <!-- quadrant labels -->
+      <text x="68" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#8b6000">LOW EFFORT</text>
+      <text x="68" y="57" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#8b6000">HIGH REGRET</text>
+      <text x="163" y="48" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#a0200a">HIGH EFFORT</text>
+      <text x="163" y="57" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#a0200a">HIGH REGRET</text>
+      <text x="68" y="140" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#1e5c2e">LOW EFFORT</text>
+      <text x="68" y="149" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#1e5c2e">LOW REGRET</text>
+      <text x="163" y="140" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#1a3a6e">HIGH EFFORT</text>
+      <text x="163" y="149" text-anchor="middle" font-family="Space Mono, monospace" font-size="6.5" fill="#1a3a6e">LOW REGRET</text>
+      <!-- Plot points: effort x, regret y, mapped to 20..210, 170..30 -->
+      <!-- Eye milk E6 R10 → x=20+6/10*190=134, y=170-10/10*140=30 -->
+      <circle cx="134" cy="32" r="4" fill="#c0240c"/>
+      <text x="138" y="36" font-family="Space Mono,monospace" font-size="6" fill="#c0240c">Eye milk</text>
+      <!-- Sleep E10 R10 → x=210 y=30 -->
+      <circle cx="208" cy="32" r="4" fill="#c0240c"/>
+      <text x="190" y="44" font-family="Space Mono,monospace" font-size="6" fill="#c0240c">Sleep depriv.</text>
+      <!-- Ketchup E3 R9 → x=77, y=44 -->
+      <circle cx="77" cy="44" r="4" fill="#c05000"/>
+      <text x="82" y="48" font-family="Space Mono,monospace" font-size="6" fill="#c05000">Ketchup</text>
+      <!-- Bee stings E8 R10 → x=172 y=30 -->
+      <circle cx="172" cy="32" r="4" fill="#c0240c"/>
+      <text x="148" y="44" font-family="Space Mono,monospace" font-size="6" fill="#c0240c">Bee stings</text>
+      <!-- Burp E3 R8 → x=77 y=58 -->
+      <circle cx="77" cy="58" r="4" fill="#c05000"/>
+      <text x="82" y="62" font-family="Space Mono,monospace" font-size="6" fill="#c05000">Burp</text>
+      <!-- Garlic E6 R9 → x=134 y=44 -->
+      <circle cx="134" cy="44" r="4" fill="#c0240c"/>
+      <text x="114" y="56" font-family="Space Mono,monospace" font-size="6" fill="#c0240c">Garlic</text>
+      <!-- Hot dogs E9 R6 → x=191 y=86 -->
+      <circle cx="191" cy="86" r="4" fill="#8b3000"/>
+      <text x="168" y="98" font-family="Space Mono,monospace" font-size="6" fill="#8b3000">Hot dogs</text>
+      <!-- Socks E5 R5 → x=115 y=100 -->
+      <circle cx="115" cy="100" r="4" fill="#6a5f4a"/>
+      <text x="118" y="104" font-family="Space Mono,monospace" font-size="6" fill="#6a5f4a">Socks</text>
+      <!-- Ashrita E8 R2 → x=172 y=142 -->
+      <circle cx="172" cy="142" r="4" fill="#1a3a6e"/>
+      <text x="148" y="154" font-family="Space Mono,monospace" font-size="6" fill="#1a3a6e">Ashrita</text>
+      <!-- Wim Hof E9 R7 → x=191 y=72 -->
+      <circle cx="191" cy="72" r="4" fill="#c05000"/>
+      <text x="170" y="84" font-family="Space Mono,monospace" font-size="6" fill="#c05000">Wim Hof</text>
+    </svg>
+    <p style="font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:0.1em;text-transform:uppercase;color:#6a5f4a;text-align:center;margin-top:0.3rem;">Upper right = avoid at all costs</p>
+  </div>
+
+  <div class="sidebar-box2">
+    <p class="sb-title">Ashrita Furman's Strategy</p>
+    <p>The only rational approach to this entire enterprise: hold so many strange records that the strangeness becomes a coherent identity. 200+ records. Every continent. The lawnmower chin-balance is not weird in isolation — it is a data point in a career.</p>
+    <p>This is, genuinely, the move.</p>
+  </div>
+
+  </div><!-- end sticky -->
+</div><!-- end side-col -->
+</div><!-- end article grid -->
+
+<!-- ═══════════════ FULL-WIDTH INDEX ═══════════════ -->
+<div class="index-section">
+  <p class="index-title">The Effort vs. Regret Index™</p>
+  <p class="index-sub">Complete Rankings &nbsp;·&nbsp; All 16 Records &nbsp;·&nbsp; Scored 1–10 Each Axis &nbsp;·&nbsp; Endorsed by No One</p>
+  <div class="index-grid">
+
+    <div class="index-cell">
+      <p class="ic-name">68-Year Hiccups</p>
+      <p class="ic-holder">Charles Osborne · Iowa, USA</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:0%"></div></div><span class="ic-val">0</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:100%"></div></div><span class="ic-val">10</span></div>
+      </div>
+      <p class="ic-verdict">Cannot train for this. Cannot stop it. The pig started it. Hiccuped 430 million times.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">Longest Sleeplessness</p>
+      <p class="ic-holder">Randy Gardner · USA · 1964</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:100%"></div></div><span class="ic-val">10</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:100%"></div></div><span class="ic-val">10</span></div>
+      </div>
+      <p class="ic-verdict">Maximum both ways. Officially too dangerous to attempt. Record stands by default.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">Buried Alive</p>
+      <p class="ic-holder">Various claimants · ~10 days</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:90%"></div></div><span class="ic-val">9</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:90%"></div></div><span class="ic-val">9</span></div>
+      </div>
+      <p class="ic-verdict">Rehearsed one's own funeral. Underground, voluntarily. For ten days.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">2,443 Bee Stings</p>
+      <p class="ic-holder">Michael Smith · USA</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:80%"></div></div><span class="ic-val">8</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:100%"></div></div><span class="ic-val">10</span></div>
+      </div>
+      <p class="ic-verdict">Years of tolerance building. All of it for 2,443 stings. Which he counted.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">Ice Immersion</p>
+      <p class="ic-holder">Wim Hof · Netherlands · 1h53m</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:90%"></div></div><span class="ic-val">9</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:70%"></div></div><span class="ic-val">7</span></div>
+      </div>
+      <p class="ic-verdict">Smiling throughout. This is the unsettling part.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">Most Body Piercings</p>
+      <p class="ic-holder">Elaine Davidson · Brazil/UK</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:80%"></div></div><span class="ic-val">8</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:80%"></div></div><span class="ic-val">8</span></div>
+      </div>
+      <p class="ic-verdict">Permanent in every sense. Logistically complex. Hundreds of needles.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">76 Hot Dogs</p>
+      <p class="ic-holder">Joey Chestnut · USA · 2021</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:90%"></div></div><span class="ic-val">9</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:60%"></div></div><span class="ic-val">6</span></div>
+      </div>
+      <p class="ic-verdict">Genuinely elite. One hot dog every 8 seconds. He feels fine about this.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">36 Garlic Cloves</p>
+      <p class="ic-holder">Patrick Bertoletti · USA · 2012</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:60%"></div></div><span class="ic-val">6</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:90%"></div></div><span class="ic-val">9</span></div>
+      </div>
+      <p class="ic-verdict">The regret arrives Tuesday. It has a 72-hour half-life.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">Bottle of Ketchup</p>
+      <p class="ic-holder">Multiple claimants · ~25 seconds</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:30%"></div></div><span class="ic-val">3</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:90%"></div></div><span class="ic-val">9</span></div>
+      </div>
+      <p class="ic-verdict">No training. No skill. Just a bottle of ketchup and a decision you cannot un-make.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">28 Socks, One Foot</p>
+      <p class="ic-holder">Silvio Sabba · Italy · 30 sec</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:50%"></div></div><span class="ic-val">5</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:50%"></div></div><span class="ic-val">5</span></div>
+      </div>
+      <p class="ic-verdict">Balanced. Niche. Silvio has made peace with this. He holds dozens of these.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">Baked Beans, Straw</p>
+      <p class="ic-holder">Leah Shutkever · UK</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:60%"></div></div><span class="ic-val">6</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:70%"></div></div><span class="ic-val">7</span></div>
+      </div>
+      <p class="ic-verdict">The skill is the regret. You practiced this. You became good at it.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">260 T-Shirts</p>
+      <p class="ic-holder">Ted Hastings · Canada · 2019</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:70%"></div></div><span class="ic-val">7</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:60%"></div></div><span class="ic-val">6</span></div>
+      </div>
+      <p class="ic-verdict">Sourcing 260 descending shirts: logistics. Wearing them: hotter than the sun.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">Loudest Burp</p>
+      <p class="ic-holder">Paul Hunn · UK · 109.9 dB</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:30%"></div></div><span class="ic-val">3</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:80%"></div></div><span class="ic-val">8</span></div>
+      </div>
+      <p class="ic-verdict">109.9 dB. Chainsaw-level. Paul is not bothered. This is its own achievement.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">79 Spoons on Body</p>
+      <p class="ic-holder">Dalibor Jablanovic · Serbia · 2016</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:40%"></div></div><span class="ic-val">4</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:60%"></div></div><span class="ic-val">6</span></div>
+      </div>
+      <p class="ic-verdict">Stillness. Patience. A very specific relationship with cutlery.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">Eye Milk · 2.79m</p>
+      <p class="ic-holder">Ilker Yilmaz · Turkey · 2004</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:60%"></div></div><span class="ic-val">6</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:100%"></div></div><span class="ic-val">10*</span></div>
+      </div>
+      <p class="ic-verdict">Scores technically 10, psychologically 14. The asterisk is load-bearing.</p>
+    </div>
+
+    <div class="index-cell">
+      <p class="ic-name">Most Records Ever</p>
+      <p class="ic-holder">Ashrita Furman · USA · 200+</p>
+      <div class="ic-bars">
+        <div class="ic-bar-row"><span class="ic-label">Effort</span><div class="ic-track"><div class="ic-fill-e" style="width:80%"></div></div><span class="ic-val">8</span></div>
+        <div class="ic-bar-row"><span class="ic-label">Regret</span><div class="ic-track"><div class="ic-fill-r" style="width:20%"></div></div><span class="ic-val">2</span></div>
+      </div>
+      <p class="ic-verdict">The only person who cracked the code: make weird your entire identity. Brilliant.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ CONCLUSION ═══════════════ -->
+<div style="max-width:860px;margin:0 auto;padding:0 1.2rem;">
+
+<h2><span class="cat">Conclusion</span>What It All Means, and Why It Doesn't</h2>
+
+<p>There is a pattern in all of this. The records nobody wants to break tend to cluster in three zones: biological extremes (sleep, pain, temperature), digestive overreach (hot dogs, garlic, ketchup), and socially irreversible acts (the burp, the eye, the spoons). What unites them is a simple equation: <em>the cost of the attempt exceeds any conceivable reward.</em></p>
+
+<p>And yet — and this is the thing — someone did it. Someone, at some point, looked at a bottle of ketchup and thought: <em>quickly.</em> Someone trained their stomach for months to eat 76 hot dogs in ten minutes. Someone stood in ice for two hours, smiling. Someone counted 2,443 stings. Charles Osborne spent 68 years hiccuping and somehow managed to get married, raise children, and appear on national television, which is more than some people do without hiccupping at all.</p>
+
+<p>The Effort vs. Regret Index™ reveals something unexpected: the records with the highest combined scores are not the ones held with pride — they are the ones that simply cannot be beaten because the attempt is its own punishment. The sleep deprivation record. The bee sting record. The eye milk record, sitting alone in its own category, scoring 10 on a 10-point scale and approximately 14 in practice.</p>
+
+<div class="pull">
+  THE SWEET SPOT:<br><span style="color:var(--red)">HARD TO DO +<br>UNPLEASANT +</span><br>UNIMPRESSIVE TO NORMAL PEOPLE
+</div>
+
+<p>Ashrita Furman, with his 200+ records and his lawnmower chin and his pogo stick up Mount Fuji, is the only person who has found the correct answer: if you're going to be the best in the world at something strange, be the best in the world at being strange. Make it the whole thing. Don't hold one weird record — hold all of them, until the weirdness becomes a career, an identity, a Wikipedia page, and a quiet dignity that no amount of bee stings or ketchup bottles can touch.</p>
+
+<p>Everyone else is just a person who, one day, made a decision. The record reflects that decision forever. The Guinness Book is, among other things, a monument to choices that seemed reasonable in the moment.</p>
+
+<p>We honor them. We will not be joining them. Thank you.</p>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>The Effort vs. Regret Index™ is not a medical instrument, a financial product, or a reason to call your doctor.</p>
+  <p>Charles Osborne · 1894–1991 · 430,000,000 hiccups · two marriages · eight children · not a world record he sought</p>
+  <p>Ilker Yilmaz's 2.79 meters stands. No challengers have been identified. This is correct.</p>
+  <p>© The Peculiar Gazette · All records verified to the extent records like these can be verified · No beans were harmed</p>
+</div>
+
+</div>
+
+</body>
+</html>

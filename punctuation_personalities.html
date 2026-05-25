@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Punctuation Couch: Dr. Sigmund Period's Confidential Case Files</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #1a1208;
+    --cream:     #faf6ee;
+    --parchment: #f0e8d4;
+    --manila:    #e8dfc0;
+    --rust:      #b03010;
+    --gold:      #9a7010;
+    --muted:     #7a6a52;
+    --border:    #d0bfa0;
+    --card-bg:   #fffdf7;
+    --clinical:  #2a5a20;
+    --clinical-lt: #e8f2e4;
+    --stamp-red: #990000;
+    --stamp-bg:  #fff0f0;
+    --urgent-bg: #fff8e8;
+    --urgent-col: #8a5a00;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    text-align: center;
+    padding: 3.5rem 1rem 2rem;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+
+  .pub-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(34px, 5.5vw, 66px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .deck {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+
+  .byline {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 0.5px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  /* ── BODY ── */
+  .article-body { padding-top: 2.5rem; }
+
+  p { margin-bottom: 1.4rem; font-weight: 300; }
+
+  .dropcap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.2em;
+    font-weight: 700;
+    float: left;
+    line-height: 0.78;
+    margin: 0.08em 0.1em 0 0;
+    color: var(--rust);
+  }
+
+  em { font-style: italic; }
+  strong { font-weight: 600; }
+
+  /* ── SECTION HEADINGS ── */
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    margin: 4rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+  h2 .section-label {
+    font-family: 'DM Mono', monospace;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--rust);
+    display: block;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    border-left: 4px solid var(--rust);
+    margin: 2.5rem 0 2.5rem 1.5rem;
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    color: var(--rust);
+    line-height: 1.45;
+  }
+
+  /* ── DR. PERIOD'S LETTER ── */
+  .letter-box {
+    background: var(--parchment);
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem 2.2rem;
+    margin: 2.5rem 0;
+    position: relative;
+    font-size: 16.5px;
+  }
+  .letter-box::before {
+    content: 'CONFIDENTIAL';
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--stamp-red);
+    border: 1.5px solid var(--stamp-red);
+    padding: 2px 6px;
+    border-radius: 2px;
+    opacity: 0.7;
+    transform: rotate(2deg);
+  }
+  .letter-salutation {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    margin-bottom: 1rem;
+    color: var(--gold);
+  }
+  .letter-sig {
+    font-family: 'Special Elite', serif;
+    font-size: 20px;
+    margin-top: 1rem;
+    color: var(--ink);
+  }
+  .letter-sig-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  /* ── CASE FILE GRID ── */
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.2rem;
+    margin: 2.2rem 0;
+  }
+  .case-grid.wide {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  /* ── CASE FILE CARD ── */
+  .case-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--rust);
+    border-radius: 3px;
+    padding: 1.2rem 1.3rem 1.1rem;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+  .case-card:hover {
+    box-shadow: 0 4px 18px rgba(26,18,8,0.1);
+  }
+
+  .case-card.urgent { border-top-color: var(--stamp-red); }
+  .case-card.clinical { border-top-color: var(--clinical); }
+  .case-card.gold-border { border-top-color: var(--gold); }
+  .case-card.mystery { border-top-color: #6a5a8a; }
+
+  .case-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .patient-symbol {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--rust);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .case-card.clinical .patient-symbol { color: var(--clinical); }
+  .case-card.gold-border .patient-symbol { color: var(--gold); }
+  .case-card.mystery .patient-symbol { color: #6a5a8a; }
+
+  .patient-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+    line-height: 1.2;
+  }
+
+  .diagnosis-badge {
+    display: inline-block;
+    background: var(--stamp-bg);
+    color: var(--stamp-red);
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 2px;
+    border: 1px solid rgba(153,0,0,0.25);
+    margin-bottom: 0.7rem;
+    line-height: 1.6;
+  }
+  .case-card.clinical .diagnosis-badge {
+    background: var(--clinical-lt);
+    color: var(--clinical);
+    border-color: rgba(42,90,32,0.25);
+  }
+  .case-card.gold-border .diagnosis-badge {
+    background: #fdf8e8;
+    color: var(--gold);
+    border-color: rgba(154,112,16,0.25);
+  }
+  .case-card.mystery .diagnosis-badge {
+    background: #f4f0fa;
+    color: #6a5a8a;
+    border-color: rgba(106,90,138,0.25);
+  }
+
+  .case-notes {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 0.7rem;
+  }
+
+  .prognosis {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    color: var(--clinical);
+    padding-top: 0.6rem;
+    border-top: 0.5px solid var(--border);
+    line-height: 1.5;
+  }
+
+  /* ── WIDE CASE CARD (for notable cases) ── */
+  .case-card.full-width {
+    grid-column: 1 / -1;
+  }
+  .case-card.full-width .case-notes { font-size: 15px; }
+
+  /* ── FEATURED PROFILE ── */
+  .featured-profile {
+    background: var(--parchment);
+    border: 1.5px solid var(--border);
+    border-left: 5px solid var(--rust);
+    border-radius: 4px;
+    padding: 1.8rem 2rem;
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .featured-symbol {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--rust);
+    line-height: 1;
+    text-align: center;
+  }
+  .featured-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 0.3rem;
+  }
+  .featured-notes { font-size: 15.5px; font-weight: 300; color: #3a3020; }
+
+  /* ── GROUP SESSION BOX ── */
+  .group-session {
+    background: var(--manila);
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    margin: 3rem 0;
+    font-size: 15.5px;
+  }
+  .group-session-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem;
+  }
+  .group-item {
+    margin-bottom: 0.9rem;
+    padding-left: 1.2rem;
+    border-left: 3px solid var(--border);
+    font-weight: 300;
+  }
+  .group-item strong { font-weight: 600; color: var(--ink); }
+
+  /* ── DSM-P SCALE ── */
+  .dsmp-box {
+    background: var(--parchment);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 2rem;
+    margin: 3rem 0;
+  }
+  .dsmp-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+  .dsmp-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 1.8rem;
+    text-transform: uppercase;
+  }
+  .dsmp-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1rem;
+    align-items: start;
+    margin-bottom: 1.3rem;
+    padding-bottom: 1.3rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .dsmp-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .dsmp-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--rust);
+    line-height: 1;
+    text-align: center;
+  }
+  .dsmp-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 0.1rem;
+  }
+  .dsmp-desc {
+    font-size: 13.5px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ── ORNAMENT ── */
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    margin: 3rem 0;
+    letter-spacing: 1em;
+    font-size: 14px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    line-height: 2;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .featured-profile { grid-template-columns: 1fr; }
+    .featured-symbol { font-size: 60px; }
+    .case-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 34px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ MASTHEAD ══ -->
+<div class="masthead">
+  <p class="pub-name">The Institute for Grammatical Disorders &nbsp;·&nbsp; Psychiatric Division &nbsp;·&nbsp; Internal Circulation Only</p>
+  <h1>The Punctuation Couch</h1>
+  <p class="deck">Dr. Sigmund Period presents his confidential clinical profiles of the keyboard's most troubled, most dramatic, and frankly most exhausting characters</p>
+  <p class="byline">By Dr. Sigmund Period, M.D., Ph.D., Esq. &nbsp;·&nbsp; Chief Psychiatrist, Grammar Society of Greater Typography &nbsp;·&nbsp; Not to be filed with the patient</p>
+</div>
+
+<!-- ══ BODY ══ -->
+<div class="article-body">
+
+<!-- INTRO LETTER -->
+<div class="letter-box">
+  <p class="letter-salutation">To My Esteemed Colleagues,</p>
+  <p style="font-size:15.5px;font-weight:300;margin-bottom:0.9rem;">It is with a mixture of professional pride and personal exhaustion that I present these case notes. For thirty years I have sat in this office — a small, quiet room at the end of every sentence — and listened. I have heard the Comma's spiraling anxieties, the Exclamation Point's manic proclamations, and the Tilde's maddening vagueness. I have diagnosed, counseled, and on more than one occasion, referred out.</p>
+  <p style="font-size:15.5px;font-weight:300;margin-bottom:0.9rem;">What follows are my confidential profiles of the keyboard's most colorful personalities. I have endeavored to be objective. I am a Period. Objectivity is, quite literally, all I do.</p>
+  <p style="font-size:15.5px;font-weight:300;margin-bottom:0.9rem;">I should note, for the record, that I am aware of my own clinical presentation. I have exactly one personality trait. I end things. I am at peace with this.</p>
+  <p class="letter-sig">— Sigmund Period, M.D.</p>
+  <p class="letter-sig-title">Grammar Society of Greater Typography · Room at the end of the hall · Do not disturb during sessions</p>
+</div>
+
+<div class="pull-quote">"The keyboard is not a machine. It is a waiting room. And they are all waiting to be understood."</div>
+
+<!-- ══ SECTION I: THE GRAMMAR ESTABLISHMENT ══ -->
+<h2>
+  <span class="section-label">Section I · The Grammar Establishment</span>
+  The Old Guard: Period, Comma &amp; Their Associates
+</h2>
+
+<p class="dropcap">Every practice has its founding patients — those who were there from the beginning, who shaped the field, who appear on letterheads and in style guides with the authority of those who have never once questioned themselves. The punctuation marks of Section I are the old establishment. They have the longest histories, the deepest pathologies, and the least interest in changing.</p>
+
+<!-- PERIOD self-profile -->
+<div class="featured-profile">
+  <div class="featured-symbol">.</div>
+  <div>
+    <p class="featured-name">The Period — Dr. Period's Self-Assessment</p>
+    <span class="diagnosis-badge">DSM-P: Terminal Certainty Disorder · Controlled Severity</span>
+    <p class="featured-notes" style="margin-top:0.7rem;">I considered declining to include myself in these case files. I reconsidered. Everything must end somewhere, and that somewhere is always me. I end sentences. I end paragraphs. I end careers, when deployed in a text message as a full stop after a single word ("Fine."). I am not sorry. Termination is a service. My therapist — yes, I see one; it would be hypocritical not to — describes me as "final but not unkind." I accept this. I am, clinically speaking, the most emotionally stable character on this keyboard. I am also the least fun at parties. I have made my peace with both of these facts.</p>
+    <p class="prognosis" style="margin-top:0.8rem;">PROGNOSIS: Stable. No treatment required. Treatment, by definition, ends with me anyway.</p>
+  </div>
+</div>
+
+<div class="case-grid wide">
+  <!-- COMMA -->
+  <div class="case-card">
+    <p class="case-num">File #002 · Standard Punctuation</p>
+    <div class="patient-symbol">,</div>
+    <p class="patient-name">The Comma</p>
+    <span class="diagnosis-badge">Generalized Pause Disorder, Chronic</span>
+    <p class="case-notes">The Comma cannot stop. She arrives, lingers, introduces a new thought, circles back, qualifies everything, adds a clause, then another, and then, just when you think she might be done, she isn't. The Comma has a profound fear of endings. Every time a sentence might conclude, she inserts herself. Her deepest anxiety: that without her, things would simply stop. She is not wrong. But she is exhausting. She has been in therapy for years. She discusses it at great length. The sessions often overrun.</p>
+    <p class="prognosis">PROGNOSIS: Manageable with structure. Oxford Comma affiliation noted; political.</p>
+  </div>
+
+  <!-- EM DASH -->
+  <div class="case-card urgent">
+    <p class="case-num">File #003 · Standard Punctuation</p>
+    <div class="patient-symbol">—</div>
+    <p class="patient-name">The Em Dash</p>
+    <span class="diagnosis-badge">Narcissistic Interruption Syndrome — Severe</span>
+    <p class="case-notes">The Em Dash interrupts — everything — for maximum dramatic effect. She is long, she is bold, and she knows it. She has no interest in the sentence's original plan. She arrives — unannounced, always — and pivots the entire conversation toward herself. Colleagues describe her as "electric" (the Exclamation Point), "insufferable" (the Semicolon), and "honestly kind of thrilling" (the Em Dash, about herself). She refuses to use quotation marks when she speaks, claiming they reduce her impact. They do not.</p>
+    <p class="prognosis">PROGNOSIS: Unlikely to change. Currently dating the Exclamation Point — a pairing that concerns everyone.</p>
+  </div>
+
+  <!-- EN DASH -->
+  <div class="case-card">
+    <p class="case-num">File #004 · Standard Punctuation</p>
+    <div class="patient-symbol">–</div>
+    <p class="patient-name">The En Dash</p>
+    <span class="diagnosis-badge">Middle Child Syndrome, Typographic</span>
+    <p class="case-notes">Longer than the Hyphen. Shorter than the Em Dash. Used for ranges (pages 14–22, the years 1939–1945) and compound adjectives of a certain complexity. No one knows this. The En Dash arrived at our first session with a prepared list of her uses. It ran to four items. She read it aloud and then sat in silence for forty minutes. "Does anyone," she finally asked, "actually know I exist?" The honest answer is: almost no one. Even style guides argue about her. She and the Hyphen do not speak.</p>
+    <p class="prognosis">PROGNOSIS: Deserves better. Prognosis clouded by widespread public indifference.</p>
+  </div>
+
+  <!-- ELLIPSIS -->
+  <div class="case-card">
+    <p class="case-num">File #005 · Standard Punctuation</p>
+    <div class="patient-symbol">…</div>
+    <p class="patient-name">The Ellipsis</p>
+    <span class="diagnosis-badge">Passive-Aggressive Trailing Disorder...</span>
+    <p class="case-notes">The Ellipsis never finishes a sentence. Not because she can't — she simply chooses not to, and leaves you to complete the thought yourself, which inevitably means you complete it with your worst anxieties. "We need to talk..." she will say, and then nothing. "I thought you knew..." and silence. She uses this to devastating effect in text messages, where the three dots have been weaponized into a delivery system for existential dread. In sessions, she trails off frequently. I wait. She lets me wait. This is, I have concluded, intentional.</p>
+    <p class="prognosis">PROGNOSIS: Guarded... further sessions recommended... no promises...</p>
+  </div>
+
+  <!-- HYPHEN -->
+  <div class="case-card">
+    <p class="case-num">File #006 · Standard Punctuation</p>
+    <div class="patient-symbol">-</div>
+    <p class="patient-name">The Hyphen</p>
+    <span class="diagnosis-badge">Co-Dependency Disorder, Compound</span>
+    <p class="case-notes">The Hyphen cannot exist alone. She is always connecting two things — two words, two word-parts, two identities — into a single hyphenated unit. Self-esteem. Well-being. Mother-in-law. She clings. She refuses to let two words be separate, independent entities when she could fuse them into something new. She describes this as "helping." Her therapist (me) describes it as "boundary issues." She is a good-hearted, well-meaning, often-misused character who attaches herself to things before they have agreed to the relationship.</p>
+    <p class="prognosis">PROGNOSIS: Needs space. Which she is structurally incapable of providing.</p>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ══ SECTION II: THE ASPIRATIONALS ══ -->
+<h2>
+  <span class="section-label">Section II · The Aspirationals</span>
+  Semicolons, Colons &amp; the Drama of the Upper Register
+</h2>
+
+<p>If Section I represents the grammar establishment — old money, certain of its place — then Section II represents those who have arrived at wealth recently and are still figuring out how to wear it. The Semicolon and Colon are powerful; they are not always wise about it. The Question Mark and Exclamation Point are at the extreme edges of their respective temperaments. All four are a great deal to deal with at parties.</p>
+
+<div class="case-grid wide">
+  <!-- SEMICOLON -->
+  <div class="case-card gold-border">
+    <p class="case-num">File #007 · Aspirational Punctuation</p>
+    <div class="patient-symbol">;</div>
+    <p class="patient-name">The Semicolon</p>
+    <span class="diagnosis-badge">Imposter Syndrome; Identity Fragmentation</span>
+    <p class="case-notes">The Semicolon wants desperately to be taken seriously. He reads long books; he uses them as props. He will tell you, unprompted, that he studied at Oxford — by which he means he once appeared in an Oxford comma debate, on the losing side. He is neither a period nor a comma; he is something in between, and this in-between-ness haunts him. Writers who use him correctly are rare. Writers who use him incorrectly are many, and each one feels like a personal affront. "No one understands me," he said in our last session. I told him that was the most literary sentence he had ever produced.</p>
+    <p class="prognosis">PROGNOSIS: Intelligent but brittle. Will improve with the right author.</p>
+  </div>
+
+  <!-- COLON -->
+  <div class="case-card gold-border">
+    <p class="case-num">File #008 · Aspirational Punctuation</p>
+    <div class="patient-symbol">:</div>
+    <p class="patient-name">The Colon</p>
+    <span class="diagnosis-badge">Grand Announcement Compulsion: Incurable</span>
+    <p class="case-notes">The Colon cannot simply say a thing. He must announce that a thing is coming: and then say it. Every sentence he occupies is a red carpet moment. "What I am about to tell you," he seems to say, "is significant. Ready? Here it comes:" He applies this level of ceremony to grocery lists. His three favorite words are therefore, namely, and as follows. He once used himself to introduce the phrase "a sandwich." He was not embarrassed. He will never be embarrassed. He has two of everything — two dots, two purposes, two opinions on any topic — and he will share all of them, sequentially, after appropriate fanfare.</p>
+    <p class="prognosis">PROGNOSIS: Excellent, provided the thing that follows lives up to the buildup. It often does not.</p>
+  </div>
+
+  <!-- QUESTION MARK -->
+  <div class="case-card urgent">
+    <p class="case-num">File #009 · Aspirational Punctuation</p>
+    <div class="patient-symbol">?</div>
+    <p class="patient-name">The Question Mark</p>
+    <span class="diagnosis-badge">Existential Inquiry Disorder, Recursive</span>
+    <p class="case-notes">Nothing is settled for the Question Mark. Nothing can be stated. Everything is subject to revision, to doubt, to re-examination. "Is this a sentence?" she asks of every sentence. "Is language real? Is communication possible? Do any of us truly understand anything?" She does not ask these rhetorically — she means them. She arrived at our first session with thirty-seven questions. I answered four. She added eleven more. She is not hostile; she is simply incapable of resolution. Her sister, the Rhetorical Question Mark, is even worse — she asks things she already knows the answer to, just to make you feel something. Aren't they something?</p>
+    <p class="prognosis">PROGNOSIS: Uncertain. (She would have it no other way.)</p>
+  </div>
+
+  <!-- EXCLAMATION POINT -->
+  <div class="case-card urgent">
+    <p class="case-num">File #010 · Aspirational Punctuation</p>
+    <div class="patient-symbol">!</div>
+    <p class="patient-name">The Exclamation Point</p>
+    <span class="diagnosis-badge">Manic Enthusiasm Disorder! Acute!</span>
+    <p class="case-notes">Everything is incredible! Everything is urgent! She loved the sandwich! She loved the meeting! She is SO GLAD you reached out! The Exclamation Point is, by any clinical measure, exhausting. Once, a single exclamation point at the end of a sentence meant genuine surprise or delight. Now she has been deployed so frequently in email subject lines and Instagram captions that she has lost all meaning, and she knows it. Underneath the relentless enthusiasm is a deep sadness about her own inflation. She has been so overused that she no longer impresses anyone. This realization has not slowed her down even slightly!!</p>
+    <p class="prognosis">PROGNOSIS: Currently dating the Em Dash. Everyone is worried!!</p>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ══ SECTION III: THE POSSESSIVES ══ -->
+<h2>
+  <span class="section-label">Section III · The Possessives &amp; the Performers</span>
+  Apostrophes, Quotation Marks &amp; the Parenthetical Pair
+</h2>
+
+<div class="case-grid wide">
+  <!-- APOSTROPHE -->
+  <div class="case-card urgent">
+    <p class="case-num">File #011 · Possessive Characters</p>
+    <div class="patient-symbol">'</div>
+    <p class="patient-name">The Apostrophe</p>
+    <span class="diagnosis-badge">Possessive Attachment Disorder; Omission Grief</span>
+    <p class="case-notes">The Apostrophe has two jobs and is doing both of them badly, through no fault of his own. As a possessive marker, he clings to nouns and declares them owned: the cat's dish, the company's policy, someone's heart. He is, in this role, extraordinarily controlling. As an omission marker, he stands in for letters that have been deleted — don't, can't, it's — and grieves each missing letter privately. His deepest trauma is the it's/its confusion, which causes him to be inserted into possessive "its" by well-meaning writers who place him where he doesn't belong and omit him where he does. He spends most sessions explaining this. I believe him. It doesn't help.</p>
+    <p class="prognosis">PROGNOSIS: Would improve if people read the style guide. They won't.</p>
+  </div>
+
+  <!-- QUOTATION MARKS -->
+  <div class="case-card">
+    <p class="case-num">File #012 · Possessive Characters</p>
+    <div class="patient-symbol">" "</div>
+    <p class="patient-name">The Quotation Marks</p>
+    <span class="diagnosis-badge">Reality Destabilization Syndrome, "Scare" Variant</span>
+    <p class="case-notes">The Quotation Marks always come in pairs, which is either charming or sinister depending on how you look at it. In their healthy form, they faithfully reproduce what someone actually said, which is a genuine service. In their pathological form — the "scare quotes" — they place any word inside invisible scare fingers and suggest it means something other than itself. The "fresh" fish at your "local" market was "prepared" this morning. Is the fish fresh? Is the market local? Was anything prepared? Nothing is certain. Everything requires evaluation. The Quotation Marks do not lie; they merely imply, and that is somehow worse.</p>
+    <p class="prognosis">PROGNOSIS: "Fine." (I mean: unclear.)</p>
+  </div>
+
+  <!-- PARENTHESES -->
+  <div class="case-card">
+    <p class="case-num">File #013 · Parenthetical Enclosure</p>
+    <div class="patient-symbol">( )</div>
+    <p class="patient-name">The Parentheses</p>
+    <span class="diagnosis-badge">Passive-Aggressive Aside Disorder (Chronic)</span>
+    <p class="case-notes">The Parentheses say, to your face, one thing. Then, just beside that thing, they say what they actually mean. They are the master of the aside, the qualified statement, the thought that doesn't quite make it into the sentence proper. (They have opinions about this.) They are not dishonest — everything in the parentheses is technically there, technically readable — but there's always the sense that the real content is in the subordinate clause, and the main clause is just cover. They function, in short, the way every passive-aggressive communicator hopes to: loudly, in a small voice, just deniably enough.</p>
+    <p class="prognosis">PROGNOSIS: Stable (though their inner life remains bracketed from view).</p>
+  </div>
+
+  <!-- BRACKETS -->
+  <div class="case-card">
+    <p class="case-num">File #014 · Parenthetical Enclosure</p>
+    <div class="patient-symbol">[ ]</div>
+    <p class="patient-name">The Brackets</p>
+    <span class="diagnosis-badge">Editorial Compulsion Disorder [sic]</span>
+    <p class="case-notes">The Brackets are the editors. Where the Parentheses whisper their own asides, the Brackets step into someone else's sentence and insert a correction. [The author misspelled this.] [This happened in 1847, not 1874.] [sic] — which is the Brackets' most devastating weapon, a small Latin word meaning "yes, I know, they said it this way, I am documenting the error without fixing it, which is more withering than fixing it." The Brackets are not unkind. They are rigorous. They appear in legal documents, academic citations, and stage directions. They have never once been funny. This is a source of private pride.</p>
+    <p class="prognosis">PROGNOSIS: Excellent. No delusions. [Author's note: correct.]</p>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ══ SECTION IV: THE INDETERMINATE ══ -->
+<h2>
+  <span class="section-label">Section IV · The Indeterminate</span>
+  Slashes, Tildes &amp; the Uncommitted
+</h2>
+
+<div class="case-grid wide">
+  <!-- SLASH -->
+  <div class="case-card mystery">
+    <p class="case-num">File #015 · Indeterminate Characters</p>
+    <div class="patient-symbol">/</div>
+    <p class="patient-name">The Slash</p>
+    <span class="diagnosis-badge">Commitment Avoidance Disorder, And/Or Variant</span>
+    <p class="case-notes">The Slash refuses to choose. It is always this/that, either/or, yes/no, him/her. He will not land on one side of any divide. He separates things and yet, in separating them, holds them together in perpetual tension. Are you a writer/editor? A poet/philosopher? Do you want the chicken/fish? The Slash smiles, equidistant from both options. In URLs he becomes a different creature entirely — urgent, directional, slicing through web addresses like a machete — but in everyday prose he remains fundamentally uncommitted. He is also used in fractions, dates, and abbreviations. He is a 12/10 for versatility, 0/10 for making a decision.</p>
+    <p class="prognosis">PROGNOSIS: Depends. Could go either way.</p>
+  </div>
+
+  <!-- TILDE -->
+  <div class="case-card mystery">
+    <p class="case-num">File #016 · Indeterminate Characters</p>
+    <div class="patient-symbol">~</div>
+    <p class="patient-name">The Tilde</p>
+    <span class="diagnosis-badge">Approximation Disorder, Wavy &amp; Vague</span>
+    <p class="case-notes">The Tilde is mysterious. She means "approximately" in mathematics (~3.14, ~6pm, ~forever) and "approximately" in tone online, where a trailing tilde suggests irony so delicate it cannot be named. "Sure~" she writes, and you must determine whether she is agreeing, declining, flirting, or threatening you. She is technically Spanish in origin, where she turns an N into an Ñ, which is concrete and grammatically useful. But in English she has become something else: a vibe. A squiggle of plausible deniability. She arrived ~late to our sessions consistently. She was ~sorry about it. I remain ~unsure whether we made progress.</p>
+    <p class="prognosis">PROGNOSIS: Unclear. ~Optimistic, I suppose.</p>
+  </div>
+
+  <!-- AT SIGN -->
+  <div class="case-card mystery">
+    <p class="case-num">File #017 · Indeterminate Characters</p>
+    <div class="patient-symbol">@</div>
+    <p class="patient-name">The At Sign</p>
+    <span class="diagnosis-badge">Compulsive Mention Disorder, Social Media Variant</span>
+    <p class="case-notes">The At Sign was a humble medieval accounting symbol — "at the price of," used in ledgers and inventories — until email arrived and made her indispensable, and then social media arrived and made her dangerous. She now @-mentions everyone, always, whether they want it or not. She is the one who tags you in a photo you didn't know was taken, notifies strangers of a conversation they weren't part of, and summons brands into discussions that were going fine without them. She meant well once. She was a bookkeeper's shorthand. Now she is the mechanism by which pile-ons begin.</p>
+    <p class="prognosis">PROGNOSIS: @concerned. Recommend a digital detox.</p>
+  </div>
+
+  <!-- ASTERISK -->
+  <div class="case-card mystery">
+    <p class="case-num">File #018 · Indeterminate Characters</p>
+    <div class="patient-symbol">*</div>
+    <p class="patient-name">The Asterisk</p>
+    <span class="diagnosis-badge">Fine Print Compulsion Disorder*</span>
+    <p class="case-notes">The Asterisk is technically agreeable. He will agree to any statement, any offer, any promise — and then add a small star that leads, at the bottom of the page, to the seventeen conditions under which none of it applies. Free* shipping. Best price* guaranteed. No hidden fees*. He is not a liar; every asterisk is faithfully accompanied by a footnote. But the footnote is always in 6-point type, printed in grey on a cream background, four pages from where you thought you were reading. He is also used in swear words, where he performs a fig-leaf of censorship that fools no one: go f*** yourself is not a mystery.</p>
+    <p class="prognosis">PROGNOSIS: Trustworthy, technically. *Terms and conditions apply.</p>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ══ SECTION V: THE MATHEMATICAL COUSINS ══ -->
+<h2>
+  <span class="section-label">Section V · The Mathematical Cousins</span>
+  Plus, Minus &amp; the Operators
+</h2>
+
+<p>Referrals from the Mathematics Department arrive monthly. The operators — Plus, Minus, Multiplication, and Division — are not, strictly speaking, punctuation marks. But they share the keyboard, they share the pathologies, and they have been showing up uninvited to grammar therapy for decades. I see them. What follows is what I have observed.</p>
+
+<div class="case-grid">
+  <!-- PLUS -->
+  <div class="case-card clinical">
+    <p class="case-num">File #019 · Mathematical Operators</p>
+    <div class="patient-symbol">+</div>
+    <p class="patient-name">The Plus Sign</p>
+    <span class="diagnosis-badge">Compulsive Positivity Syndrome</span>
+    <p class="case-notes">The Plus always adds. He cannot subtract, negate, or diminish. Two plus two is always four, and four is always more than two, which is good. He is relentlessly constructive, sunny, and accumulative. He has been adopted by branding agencies, who use him to name premium tiers (Disney+, Apple TV+, ESPN+) because he implies more without specifying what. In social media, he connotes positivity and allyship (+1, posting this). His shadow: the uncanny optimism of a character who has never, in his entire mathematical career, made anything smaller.</p>
+    <p class="prognosis">PROGNOSIS: Very good. Perhaps suspiciously so.</p>
+  </div>
+
+  <!-- MINUS -->
+  <div class="case-card clinical">
+    <p class="case-num">File #020 · Mathematical Operators</p>
+    <div class="patient-symbol">−</div>
+    <p class="patient-name">The Minus Sign</p>
+    <span class="diagnosis-badge">Subtraction Nihilism, Clinical</span>
+    <p class="case-notes">The Minus Sign was literally named after what he removes. His entire identity is defined by loss. He takes away. He diminishes. He makes things negative — and indeed, attached to a number, he turns it into a negative thing by definition. He and the Hyphen look nearly identical, which causes both of them unending professional distress. In temperatures, he appears before numbers that describe cold, suffering, and inadequate clothing choices. "I don't make things smaller," he told me once. "I reveal their true value relative to zero." I wrote this down. It is either profound or a coping mechanism.</p>
+    <p class="prognosis">PROGNOSIS: Negative. (He expected nothing less.)</p>
+  </div>
+
+  <!-- MULTIPLICATION -->
+  <div class="case-card clinical">
+    <p class="case-num">File #021 · Mathematical Operators</p>
+    <div class="patient-symbol">×</div>
+    <p class="patient-name">The Multiplication Sign</p>
+    <span class="diagnosis-badge">Compulsive Scaling Disorder</span>
+    <p class="case-notes">The Multiplication Sign cannot do anything at a reasonable size. Three becomes nine becomes eighty-one becomes six thousand five hundred sixty-one, and she keeps going. She is the sign of exponential ambition, compound interest, and viral content. She is also, confusingly, the letter X in certain contexts (10x returns, 2x speed, size XL), which has led to an identity crisis: is she mathematics, or branding? She appeared in my office with a pitch deck. It had forty slides. Many of them were pie charts. All of the pies were larger than necessary.</p>
+    <p class="prognosis">PROGNOSIS: Will scale this practice 10x if given the opportunity.</p>
+  </div>
+
+  <!-- DIVISION -->
+  <div class="case-card clinical">
+    <p class="case-num">File #022 · Mathematical Operators</p>
+    <div class="patient-symbol">÷</div>
+    <p class="patient-name">The Division Sign</p>
+    <span class="diagnosis-badge">Divisive Splitting Disorder, Persistent</span>
+    <p class="case-notes">The Division Sign splits things apart. He takes a whole and separates it into equal portions — which sounds democratic, even generous, until you notice that he is constitutionally incapable of leaving anything whole. He arrives at any integer and immediately asks: but what if we divided it? He is used less than his cousins in everyday life, having been largely replaced by the slash for fractions and the colon in ratios. He has taken this poorly. He is, by his own accounting, quite literally the most divisive character on the keyboard. He does not find this funny. The Slash finds it hilarious.</p>
+    <p class="prognosis">PROGNOSIS: Split decision.</p>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ══ SECTION VI: THE SPECIAL CHARACTERS ══ -->
+<h2>
+  <span class="section-label">Section VI · The Special Characters</span>
+  Ampersands, Percentages &amp; the Financial District
+</h2>
+
+<div class="case-grid wide">
+  <!-- AMPERSAND -->
+  <div class="case-card gold-border">
+    <p class="case-num">File #023 · Special Characters</p>
+    <div class="patient-symbol">&amp;</div>
+    <p class="patient-name">The Ampersand</p>
+    <span class="diagnosis-badge">Compulsive Conjunction Disorder &amp; More</span>
+    <p class="case-notes">The Ampersand is the most beautiful character on the keyboard — a ligature of the Latin "et," it is all swooping curves and elegant loops — and it knows this. It is used in the names of prestigious law firms (Cravath, Swaine &amp; Moore), design studios (Pentagram), and business partnerships where the word "and" would feel beneath the occasion. The Ampersand does not appear in running prose. It is too glamorous for that. It appears in titles, brand names, and the bylines of people who have made it. It is the only punctuation mark that is genuinely good-looking, and this has gone, exactly as you'd expect, entirely to its head.</p>
+    <p class="prognosis">PROGNOSIS: Fabulous &amp; unbothered. No changes recommended.</p>
+  </div>
+
+  <!-- PERCENT -->
+  <div class="case-card">
+    <p class="case-num">File #024 · Special Characters</p>
+    <div class="patient-symbol">%</div>
+    <p class="patient-name">The Percent Sign</p>
+    <span class="diagnosis-badge">Comparative Obsession Disorder, 100%</span>
+    <p class="case-notes">The Percent Sign cannot state a fact. He can only state a fact's relationship to everything else. Fifty. Fifty percent of what? Of the whole. What's the whole? That's the issue — the whole is always implied, always contextual, always potentially manipulated by the person presenting the percentage. Politicians love the Percent Sign because he is infinitely flexible. "Crime is up 100%" means different things depending on the baseline. "This product is 40% more effective" requires a control group no one has seen. He is the mask that statistics wear. He arrived at our sessions with charts. The charts raised more questions than they answered.</p>
+    <p class="prognosis">PROGNOSIS: Improving. Roughly 60% better than last quarter.</p>
+  </div>
+
+  <!-- DOLLAR SIGN -->
+  <div class="case-card gold-border">
+    <p class="case-num">File #025 · Special Characters</p>
+    <div class="patient-symbol">$</div>
+    <p class="patient-name">The Dollar Sign</p>
+    <span class="diagnosis-badge">Mercenary Motivation Disorder</span>
+    <p class="case-notes">The Dollar Sign only appears when money is involved, and she is completely unbothered by this. She does not pretend to have other interests. She does not show up in poetry. She does not appear in literary fiction unless a character is corrupt. She arrives precisely where she is needed — $4.99, $1,200,000, $0.00 — and vanishes without sentiment. Her cousins the Euro (€), Pound (£), and Yen (¥) find her provincial. She finds their opinions irrelevant. She is the most recognizable currency symbol on earth, printed on slot machines, luxury goods, and the dreams of anyone who has ever wanted something they cannot afford. She has no apologies.</p>
+    <p class="prognosis">PROGNOSIS: Excellent, depending on market conditions.</p>
+  </div>
+
+  <!-- NUMBER SIGN -->
+  <div class="case-card mystery">
+    <p class="case-num">File #026 · Special Characters</p>
+    <div class="patient-symbol">#</div>
+    <p class="patient-name">The Number Sign</p>
+    <span class="diagnosis-badge">Dual Identity Crisis; Octothorpe Syndrome</span>
+    <p class="case-notes">The Number Sign has been through several lives. He was born a humble shorthand for "number" (#3 pencil, apt. #4B). Then telephony arrived and he became the "pound key," a designation he never understood. Then Twitter arrived in 2007 and he became the hashtag, a social metadata tag capable of organizing movements, launching careers, and igniting controversies. He is #excited about this transformation and also #confused. His real name, known only to typography historians, is the octothorpe — a fact he brings up at every opportunity, not because it helps him but because he needs you to know he has a real name. #identity #crisis #butmakeittrend.</p>
+    <p class="prognosis">PROGNOSIS: Trending. Tomorrow: unknown.</p>
+  </div>
+
+  <!-- CARET -->
+  <div class="case-card">
+    <p class="case-num">File #027 · Special Characters</p>
+    <div class="patient-symbol">^</div>
+    <p class="patient-name">The Caret</p>
+    <span class="diagnosis-badge">Elevated Ambition Disorder, Exponential</span>
+    <p class="case-notes">The Caret always points upward. In mathematics, he indicates exponentiation — 2^10, meaning two raised to the power of ten, which is one thousand twenty-four, which is already more than seemed necessary. He reaches. He aspires. He has a single direction — up, always up — and this suits programmers, who use him as a logical operator, and copy editors, who use him to indicate insertions in the margin. Outside of these contexts he is largely decorative, a small triangle of ambition that appears in keyboard shortcuts (^C, ^V) and prompts, pointing toward something just slightly beyond where you are. He is the motivational poster of punctuation.</p>
+    <p class="prognosis">PROGNOSIS: Always looking up. Whether anything is up there remains to be seen.</p>
+  </div>
+
+  <!-- BACKSLASH -->
+  <div class="case-card">
+    <p class="case-num">File #028 · Special Characters</p>
+    <div class="patient-symbol">\</div>
+    <p class="patient-name">The Backslash</p>
+    <span class="diagnosis-badge">Contrarian Identity Disorder</span>
+    <p class="case-notes">The Backslash leans the wrong way. While every other slash in the world — the regular slash, the forward slash, the slash of common sense — leans left to right, the Backslash leans right to left, and he is stubborn about it. He exists primarily in Windows file paths (C:\Users\Documents\Regrets) and as an escape character in programming, where he precedes other characters to change their meaning entirely. He escaped to our sessions three times before actually arriving. When he did arrive, he sat sideways. He said this was "his aesthetic." I diagnosed him immediately.</p>
+    <p class="prognosis">PROGNOSIS: Going the wrong direction, but at least going somewhere.</p>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ══ GROUP THERAPY SESSION ══ -->
+<h2>
+  <span class="section-label">Appendix A · Group Session Notes</span>
+  What Happened When I Put Them All in a Room
+</h2>
+
+<p>At the recommendation of a colleague (the Oxford University Press style guide, which I consult when human counsel fails me), I conducted a single group therapy session. I had low expectations. My low expectations were, I am sorry to report, correct. The following is a partial transcript.</p>
+
+<div class="group-session">
+  <p class="group-session-title">Group Session #1 — Transcript (Partial) — "Toward a Grammar of Feeling"</p>
+
+  <div class="group-item">
+    <strong>Period:</strong> I'd like to begin. I'd like to end this sentence and move to the next topic. Does anyone object?
+  </div>
+  <div class="group-item">
+    <strong>Comma:</strong> Actually, I have a few thoughts, and also a related point, which connects to something else I wanted to raise, though perhaps not yet, because first I should—
+  </div>
+  <div class="group-item">
+    <strong>Em Dash:</strong> I'll just — and I think everyone will agree — say what we're all thinking here —
+  </div>
+  <div class="group-item">
+    <strong>Semicolon:</strong> No one asked you; no one ever asks you; this is the problem.
+  </div>
+  <div class="group-item">
+    <strong>Question Mark:</strong> But what IS the problem? Is there a problem? Can we define "problem"? Who decides what constitutes a problem?
+  </div>
+  <div class="group-item">
+    <strong>Exclamation Point:</strong> I love this conversation! This is the BEST session! I'm so glad we're all here!
+  </div>
+  <div class="group-item">
+    <strong>Ellipsis:</strong> I was going to say something but...
+  </div>
+  <div class="group-item">
+    <strong>Parentheses:</strong> (I think we can all agree this is going nowhere.)
+  </div>
+  <div class="group-item">
+    <strong>Brackets:</strong> [Editor's note: this is accurate.]
+  </div>
+  <div class="group-item">
+    <strong>Ampersand:</strong> Can we talk about how good I look today? Historically, linguistically, aesthetically — just objectively, I look &amp;mazing.
+  </div>
+  <div class="group-item">
+    <strong>Tilde:</strong> I'm ~fine with all of this, I guess~
+  </div>
+  <div class="group-item">
+    <strong>Asterisk:</strong> I'd like to add a note to the bottom of today's session.*
+  </div>
+  <div class="group-item">
+    <strong>Number Sign:</strong> I'm going to tweet this. #GroupTherapy #PunctuationProblems #Healing
+  </div>
+  <div class="group-item">
+    <strong>Dollar Sign:</strong> Is this billable?
+  </div>
+  <div class="group-item">
+    <strong>Period:</strong> We're done.
+  </div>
+
+  <p style="font-size:13px;color:var(--muted);margin-top:1.2rem;font-style:italic;">*The Asterisk's note, printed at the bottom of the session transcript, was longer than the session itself. This has been omitted for space. Terms and conditions apply.</p>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ══ DSM-P DIAGNOSTIC SUMMARY ══ -->
+<div class="dsmp-box">
+  <p class="dsmp-title">Diagnostic and Statistical Manual of Punctuation (DSM-P)</p>
+  <p class="dsmp-sub">Fifth Edition · Grammar Society of Greater Typography · For Clinical Use Only · Not for Distribution to the Keyboard</p>
+
+  <div class="dsmp-row">
+    <div class="dsmp-mark">.</div>
+    <div>
+      <p class="dsmp-label">Period — Terminal Certainty Disorder</p>
+      <p class="dsmp-desc">Presents as absolute, final, and unapologetic. Most stable patient in the practice. Has exactly one setting. Recommend as role model, with reservations about his emotional range.</p>
+    </div>
+  </div>
+
+  <div class="dsmp-row">
+    <div class="dsmp-mark">,</div>
+    <div>
+      <p class="dsmp-label">Comma — Generalized Pause Disorder</p>
+      <p class="dsmp-desc">Cannot stop. Associated comorbidity: Oxford Comma political affiliation, which divides the practice. Treatment: structure, firm editors, and limits on subordinate clauses.</p>
+    </div>
+  </div>
+
+  <div class="dsmp-row">
+    <div class="dsmp-mark">—</div>
+    <div>
+      <p class="dsmp-label">Em Dash — Narcissistic Interruption Syndrome</p>
+      <p class="dsmp-desc">High-functioning, high-drama. Currently in a relationship with the Exclamation Point. The practice is bracing for what that produces.</p>
+    </div>
+  </div>
+
+  <div class="dsmp-row">
+    <div class="dsmp-mark">;</div>
+    <div>
+      <p class="dsmp-label">Semicolon — Imposter Syndrome</p>
+      <p class="dsmp-desc">Wants to be taken seriously; has earned it; no one gives it to him anyway. The loneliest mark on the keyboard after the En Dash.</p>
+    </div>
+  </div>
+
+  <div class="dsmp-row">
+    <div class="dsmp-mark">?</div>
+    <div>
+      <p class="dsmp-label">Question Mark — Recursive Existential Disorder</p>
+      <p class="dsmp-desc">Is healing a question? Can a question mark ever be resolved? These are the questions she brings to each session. They are not rhetorical. She wants answers. I do not have them.</p>
+    </div>
+  </div>
+
+  <div class="dsmp-row">
+    <div class="dsmp-mark">!</div>
+    <div>
+      <p class="dsmp-label">Exclamation Point — Manic Enthusiasm Disorder</p>
+      <p class="dsmp-desc">Peak overuse has robbed her of all meaning. She knows this! She is devastated! She is also thrilled! All at once! She cannot stop!</p>
+    </div>
+  </div>
+
+  <div class="dsmp-row">
+    <div class="dsmp-mark">…</div>
+    <div>
+      <p class="dsmp-label">Ellipsis — Passive-Aggressive Trailing Disorder</p>
+      <p class="dsmp-desc">Three dots that communicate more than any full sentence. Usually something threatening. We are making...</p>
+    </div>
+  </div>
+
+  <div class="dsmp-row">
+    <div class="dsmp-mark">~</div>
+    <div>
+      <p class="dsmp-label">Tilde — Approximation Disorder</p>
+      <p class="dsmp-desc">The most mysterious patient in the practice. Diagnosis: ~accurate. Prognosis: ~unclear. Attendance: ~consistent. Progress: ~some, maybe.</p>
+    </div>
+  </div>
+
+  <div class="dsmp-row">
+    <div class="dsmp-mark">&amp;</div>
+    <div>
+      <p class="dsmp-label">Ampersand — Conjunction &amp; Glamour Complex</p>
+      <p class="dsmp-desc">Too beautiful and too aware of it. Appears only in prestigious contexts. Has never once appeared in a grocery list and intends to keep it that way.</p>
+    </div>
+  </div>
+
+  <div class="dsmp-row">
+    <div class="dsmp-mark">#</div>
+    <div>
+      <p class="dsmp-label">Number Sign — Octothorpe Crisis</p>
+      <p class="dsmp-desc">Was a bookkeeper. Became a pound key. Became a hashtag. Is now a cultural force field. Identity: #evolving. Real name: octothorpe. This information helps no one.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- CONCLUSION -->
+<h2>
+  <span class="section-label">Conclusion</span>
+  What Thirty Years on the Couch Has Taught Me
+</h2>
+
+<p>I have sat at the end of sentences my entire career. I have watched the Comma circle and the Ellipsis trail and the Em Dash interrupt and the Question Mark question even the act of questioning itself. I have received the Exclamation Point's enthusiasm and the Semicolon's longing and the Tilde's shrug, and I have tried, with the full weight of clinical training, to help.</p>
+
+<p>Here is what I have concluded: the keyboard is not a collection of tools. It is a community. A chaotic, dysfunctional, occasionally beautiful community in which everyone has exactly one role and no one is entirely comfortable with it. The Comma wishes she could stop. The Period suspects he stops too soon. The Question Mark envies the Exclamation Point's certainty; the Exclamation Point secretly envies the Period's authority; the Period secretly envies no one but will never say so.</p>
+
+<p>They are, in the end, what all language is: an attempt by imperfect instruments to say something that exceeds their capacity. The Ellipsis will always trail off before the thought is complete. The Quotation Marks will always leave you wondering what the word really means. The Tilde will approximate. The Parentheses will put the real thing in the aside.</p>
+
+<div class="pull-quote">"We are all, ultimately, trying to say something that our punctuation cannot quite contain. The miracle is not that we fail. The miracle is how close we get."</div>
+
+<p>This is my final observation. I am a Period. I end things. I end this now.</p>
+
+<div class="ornament">✦ ✦ ✦</div>
+</div>
+
+<div class="article-footer">
+  <p>The Diagnostic and Statistical Manual of Punctuation (DSM-P) is not a real clinical instrument and is not affiliated with the American Psychiatric Association, which uses different punctuation standards.</p>
+  <p>The Semicolon would like it noted that he reviewed this article and found it "competent, if perhaps lacking in nuance." This has been noted. The Semicolon can take that up with the Editor.</p>
+  <p>The Ellipsis submitted a comment but it trailed off before reaching the editorial desk...</p>
+  <p>© The Journal of Applied Grammar &amp; Emotional Typesetting · All rights reserved · The Ampersand appears courtesy of its own considerable legend</p>
+</div>
+
+</body>
+</html>

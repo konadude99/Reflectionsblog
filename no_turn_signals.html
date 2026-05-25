@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Great Blinker Blackout: Why Nobody Uses Their Turn Signal Anymore</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:       #fdf8f0;
+  --paper:       #f5ede0;
+  --amber:       #f59e0b;
+  --amber-bright:#fbbf24;
+  --amber-glow:  #fcd34d;
+  --amber-dark:  #b45309;
+  --amber-dim:   #92400e;
+  --ink:         #1a1208;
+  --ink-mid:     #3d2b0d;
+  --ink-light:   #7a5c2e;
+  --rule:        #d4b896;
+  --red:         #c0392b;
+  --green:       #166534;
+  --off:         #ccc5b8;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16.5px;
+  line-height: 1.78;
+  overflow-x: hidden;
+}
+
+/* ── BLINKER ANIMATION ── */
+@keyframes blink {
+  0%, 49% { opacity: 1; filter: drop-shadow(0 0 8px var(--amber-bright)); }
+  50%, 100% { opacity: 0.18; filter: none; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes tick-in {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── AMBER STRIPE RULE ── */
+.amber-stripe {
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--amber) 0px, var(--amber) 28px,
+    var(--ink)   28px, var(--ink)   36px
+  );
+}
+
+/* ── HEADER / MASTHEAD ── */
+.masthead {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 3.5rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.masthead::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(245,158,11,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* animated blinker icons in header */
+.blinker-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 0.6s ease both;
+}
+
+.blinker {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.blinker.left {
+  background: var(--amber);
+  animation: blink 0.85s ease-in-out infinite;
+}
+
+.blinker.right {
+  background: var(--amber);
+  animation: blink 0.85s ease-in-out infinite 0.425s;
+}
+
+.blinker.off-l, .blinker.off-r {
+  background: #3a2d1a;
+  color: #5a4a2a;
+  opacity: 0.4;
+}
+
+.blinker svg { width: 26px; height: 26px; }
+
+.tag-line {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.2rem;
+  animation: fadeUp 0.7s ease both;
+}
+
+.masthead h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(38px, 8vw, 96px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  animation: fadeUp 0.9s ease both;
+}
+
+.masthead h1 em {
+  font-style: italic;
+  color: var(--amber-bright);
+  display: block;
+}
+
+.masthead-sub {
+  margin-top: 1.4rem;
+  font-size: clamp(14px, 2.2vw, 18px);
+  font-style: italic;
+  color: var(--ink-light);
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #c8a06a;
+  animation: fadeUp 1.1s ease both;
+}
+
+.byline-row {
+  margin-top: 2rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber-dim);
+  animation: fadeUp 1.3s ease both;
+}
+
+/* ── INTRO ── */
+.intro {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 3rem;
+  border-bottom: 2px solid var(--rule);
+}
+
+.intro p {
+  font-size: 1.08rem;
+  color: var(--ink-mid);
+  line-height: 1.85;
+}
+
+.intro p + p { margin-top: 1.1rem; }
+
+.intro .drop-cap::first-letter {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 4.2rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.78;
+  margin-right: 0.1em;
+  margin-top: 0.08em;
+  color: var(--amber-dark);
+}
+
+/* ── PULL QUOTE ── */
+.pull-quote {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.pull-quote blockquote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(18px, 3vw, 26px);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--amber-dark);
+  line-height: 1.4;
+  border-top: 3px solid var(--amber);
+  border-bottom: 3px solid var(--amber);
+  padding: 1.2rem 1rem;
+}
+
+/* ── MAIN CONTENT LAYOUT ── */
+.content-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  padding: 3rem 2rem 1rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  border-left: 5px solid var(--amber);
+  padding-left: 1rem;
+  line-height: 1.2;
+}
+
+/* ── EXCUSE CARDS ── */
+.excuse-card {
+  max-width: 780px;
+  margin: 0 auto 2.2rem;
+  padding: 0 2rem;
+  animation: fadeUp 0.6s ease both;
+}
+
+.excuse-inner {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-left: 5px solid var(--amber);
+  padding: 1.6rem 1.8rem 1.4rem;
+  position: relative;
+}
+
+.excuse-num {
+  position: absolute;
+  top: -14px;
+  left: 1.4rem;
+  background: var(--amber);
+  color: var(--ink);
+  font-family: 'Courier Prime', monospace;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  padding: 0.2rem 0.65rem;
+  text-transform: uppercase;
+}
+
+.excuse-quote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(17px, 2.5vw, 22px);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.9rem;
+  margin-top: 0.3rem;
+  line-height: 1.35;
+}
+
+.excuse-quote::before { content: '\201C'; }
+.excuse-quote::after  { content: '\201D'; }
+
+.excuse-body {
+  font-size: 0.97rem;
+  color: var(--ink-mid);
+  line-height: 1.8;
+}
+
+/* ── BLINK-O-METER ── */
+.blink-meter {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--rule);
+}
+
+.blink-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  white-space: nowrap;
+}
+
+.blink-lights {
+  display: flex;
+  gap: 5px;
+}
+
+.blink-light {
+  width: 20px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--off);
+}
+
+.blink-light.on {
+  background: var(--amber);
+  box-shadow: 0 0 6px 1px rgba(245,158,11,0.45);
+}
+
+.blink-caption {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  color: var(--ink-light);
+  font-style: italic;
+  margin-left: auto;
+}
+
+/* ── VERDICT CALLOUT BOX ── */
+.verdict-box {
+  max-width: 780px;
+  margin: 1rem auto 2.5rem;
+  padding: 0 2rem;
+}
+
+.verdict-inner {
+  background: var(--amber);
+  color: var(--ink);
+  padding: 1.5rem 1.8rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 700;
+  border-left: 6px solid var(--amber-dark);
+  line-height: 1.5;
+}
+
+.verdict-inner span {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  display: block;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--amber-dim);
+}
+
+/* ── STAT BOX ── */
+.stat-row {
+  max-width: 780px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.stat-box {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 1.4rem 1.2rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--amber-bright);
+  line-height: 1;
+}
+
+.stat-desc {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c8a06a;
+  margin-top: 0.4rem;
+  line-height: 1.4;
+}
+
+/* ── CHAMPION CARD ── */
+.champion {
+  max-width: 780px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.champion-inner {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  position: relative;
+  border: 3px solid var(--amber);
+}
+
+.champion-badge {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.2rem;
+}
+
+.champion-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: 900;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 1.4rem;
+}
+
+.champion-quote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-style: italic;
+  color: var(--amber-bright);
+  margin-bottom: 1.4rem;
+  line-height: 1.3;
+}
+
+.champion-body {
+  font-size: 0.97rem;
+  color: #d4b896;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.blinker-pair {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.blinker-lg {
+  width: 38px;
+  height: 26px;
+  border-radius: 5px;
+  background: var(--amber);
+  animation: blink 0.8s ease-in-out infinite;
+}
+
+.blinker-lg.delay {
+  animation-delay: 0.4s;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: #7a6040;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  line-height: 2;
+}
+
+footer .amber { color: var(--amber); }
+
+hr.fancy {
+  max-width: 780px;
+  margin: 0 auto;
+  border: none;
+  border-top: 2px solid var(--rule);
+  margin-bottom: 0;
+}
+
+/* ── DIAGRAM: anatomy of the turn signal ── */
+.diagram {
+  max-width: 780px;
+  margin: 0 auto 1rem;
+  padding: 0 2rem;
+}
+
+.diagram-inner {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 1.8rem 1.8rem 1.4rem;
+  text-align: center;
+}
+
+.diagram-title {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 1.2rem;
+}
+
+.stalk-diagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+
+.stalk-body {
+  width: 120px;
+  height: 22px;
+  background: linear-gradient(180deg, #888 0%, #555 100%);
+  border-radius: 4px;
+  position: relative;
+}
+
+.stalk-tip-up, .stalk-tip-down {
+  position: absolute;
+  right: -34px;
+  width: 34px;
+  height: 11px;
+  background: linear-gradient(180deg, #999 0%, #666 100%);
+}
+
+.stalk-tip-up { top: -11px; border-radius: 0 4px 0 0; }
+.stalk-tip-down { bottom: -11px; border-radius: 0 0 4px 0; }
+
+.stalk-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.62rem;
+  color: var(--ink-light);
+  letter-spacing: 0.08em;
+}
+
+.stalk-labels-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  margin-left: 2rem;
+  text-align: left;
+}
+
+.arrow-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  color: var(--ink-mid);
+}
+
+.arrow-label .tag {
+  background: var(--amber);
+  color: var(--ink);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.15rem 0.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.diagram-caption {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--ink-light);
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOP STRIPE -->
+<div class="amber-stripe"></div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+
+  <div class="blinker-row">
+    <div class="blinker off-l">←</div>
+    <div class="blinker left">←</div>
+    <div style="width:2px;height:36px;background:var(--amber-dim);opacity:0.4;"></div>
+    <div class="blinker right">→</div>
+    <div class="blinker off-r">→</div>
+  </div>
+
+  <p class="tag-line">A Special Investigation &nbsp;·&nbsp; Department of Automotive Confusion</p>
+
+  <h1>The Great<em>Blinker Blackout</em></h1>
+
+  <p class="masthead-sub">A deeply scientific, thoroughly sympathetic, and utterly bewildered inquiry into why the turn signal — a lever roughly the size of a pencil — has become the most underused device in the known universe.</p>
+
+  <p class="byline-row">By Our Correspondent, Who Has Been Cut Off For The Last Time &nbsp;·&nbsp; Published in Exasperation</p>
+
+</header>
+
+<!-- AMBER STRIPE -->
+<div class="amber-stripe"></div>
+
+<!-- INTRO -->
+<div class="intro">
+  <p class="drop-cap">Somewhere, in a factory, workers are carefully installing a turn signal stalk in every vehicle that rolls off the assembly line. Engineers have designed it to sit precisely two inches from the steering wheel. It requires approximately the same effort to activate as blinking your eyes. It costs the driver nothing. It takes less than a second. And yet, across every road in every city in every nation on Earth, millions of drivers simply do not use it.</p>
+
+  <p>Not won't. <em>Don't.</em> As though it is not there. As though it never existed. As though their vehicle somehow shipped without this particular feature and they simply never got around to mentioning it to the dealership.</p>
+
+  <p>We set out to understand why. We interviewed nobody, conducted no studies, and fabricated all statistics, because the results of any real study would just make everyone depressed. What we found — or rather, what we imagined — was a remarkable catalog of human creativity in the face of a very, very simple task.</p>
+</div>
+
+<!-- STATS ROW -->
+<div class="stat-row">
+  <div class="stat-box">
+    <div class="stat-number">2″</div>
+    <div class="stat-desc">Distance from hand<br>to turn signal lever</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-number">0.3s</div>
+    <div class="stat-desc">Time required<br>to activate it</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-number">$0</div>
+    <div class="stat-desc">Cost per use<br>(included with car)</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-number">¯\_(ツ)_/¯</div>
+    <div class="stat-desc">% of drivers who<br>still don't bother</div>
+  </div>
+</div>
+
+<!-- SECTION HEADER -->
+<div class="section-header">
+  <h2>The Excuses, Ranked by Audacity</h2>
+</div>
+
+<!-- EXCUSE 1 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 1</span>
+    <p class="excuse-quote">I don't know where it is.</p>
+    <p class="excuse-body">A classic. A cornerstone. A statement that requires the driver to have located the gas pedal, the brake, the steering wheel, the infotainment system, the seat heater controls, the lumbar support dial, and the button that makes the mirrors fold in, but somehow never crossed paths with the lever sticking out of the steering column that has been in the same spot on every car since approximately 1956. Perhaps it is very shy. Perhaps it hides. Perhaps it is simply waiting, patiently, hopefully, for the day you finally look to your left.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+      </div>
+      <span class="blink-caption">Maximum Audacity Achieved</span>
+    </div>
+  </div>
+</article>
+
+<!-- EXCUSE 2 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 2</span>
+    <p class="excuse-quote">Are you supposed to?</p>
+    <p class="excuse-body">Asked with genuine, innocent curiosity. Not rhetorically. Not sarcastically. Actually wondering, apparently for the first time in their entire driving career, whether signaling one's intentions to other motorists might be expected, encouraged, or — here's the twist — legally mandated in all fifty states, every Canadian province, and essentially every country with roads. The driver's education materials covered this. At some length. With diagrams. You were presumably in the room.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+      </div>
+      <span class="blink-caption">Genuinely Unaware. Somehow.</span>
+    </div>
+  </div>
+</article>
+
+<!-- PULL QUOTE -->
+<div class="pull-quote">
+  <blockquote>"The turn signal has been in this car since you drove it off the lot. It has asked nothing of you. It has wanted only to blink."</blockquote>
+</div>
+
+<!-- EXCUSE 3 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 3</span>
+    <p class="excuse-quote">I'm never sure if left is down and right is up — or the other way around.</p>
+    <p class="excuse-body">A philosophical quandary with a simple solution: try one. Observe the result. Adjust if wrong. The whole process, including error and correction, takes under two seconds. Instead, the driver has spent years in a kind of existential lever-related paralysis, unwilling to commit, unwilling to guess, unwilling to risk the mild social embarrassment of briefly signaling in the wrong direction on their way to not signaling at all. The other drivers, for the record, would have forgiven the wrong blinker immediately. They are getting nothing.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light"></div>
+      </div>
+      <span class="blink-caption">Philosophically Committed to Confusion</span>
+    </div>
+  </div>
+</article>
+
+<!-- EXCUSE 4 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 4</span>
+    <p class="excuse-quote">I'm trying to make other drivers guess which way I'm going.</p>
+    <p class="excuse-body">Now we arrive at the strategic excuse — the driver who has reframed their indifference as a form of gameplay. A competitive sport. A social experiment. Roads are, for this individual, an arena of mystery and suspense, and they are the auteur. Other drivers are not, in fact, trying to guess. They are trying to merge safely onto an interstate and get home in time for dinner. But points for creativity. We appreciate the lore-building. We remain, however, in the ditch.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+      </div>
+      <span class="blink-caption">Chaos Agent. No Regrets.</span>
+    </div>
+  </div>
+</article>
+
+<!-- EXCUSE 5 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 5</span>
+    <p class="excuse-quote">I was listening to a podcast.</p>
+    <p class="excuse-body">The podcast, presumably, was very good. It may have been discussing the importance of communication. It may have been a true crime episode in which a failure to signal played a pivotal narrative role. The host almost certainly did not say "and now, reach toward your steering column." The ears were occupied. The arm was available. The arm did not receive the memo. This excuse has a certain honesty to it, which we respect, even as we note that the podcast will still be there after you turn.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light"></div>
+        <div class="blink-light"></div>
+      </div>
+      <span class="blink-caption">Distracted with Good Content</span>
+    </div>
+  </div>
+</article>
+
+<!-- VERDICT BOX -->
+<div class="verdict-box">
+  <div class="verdict-inner">
+    <span>⚡ Official Editorial Position</span>
+    The podcast will be there when you arrive. The merge lane, however, is a one-time offer.
+  </div>
+</div>
+
+<!-- EXCUSE 6 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 6</span>
+    <p class="excuse-quote">I'm late for work.</p>
+    <p class="excuse-body">The temporal defense. The driver has determined, through some private calculus, that activating a turn signal would cost more time than it saves, despite the fact that the signal takes 0.3 seconds and the insurance claim they are about to file will cost approximately eleven business days. Being late for work is acknowledged as a real and stressful phenomenon. It does not, however, suspend traffic law, bend the geometry of intersections, or make other cars smaller. It simply means you are late for work and also about to be later.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light"></div>
+        <div class="blink-light"></div>
+      </div>
+      <span class="blink-caption">Running Behind in All Categories</span>
+    </div>
+  </div>
+</article>
+
+<!-- ANATOMY DIAGRAM -->
+<div class="diagram">
+  <div class="diagram-inner">
+    <p class="diagram-title">Fig. 1 — Anatomy of the Turn Signal Lever (A Helpful Reference)</p>
+
+    <div style="display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap;">
+      <div class="stalk-diagram">
+        <div class="stalk-body">
+          <div class="stalk-tip-up"></div>
+          <div class="stalk-tip-down"></div>
+        </div>
+      </div>
+      <div class="stalk-labels-wrap">
+        <div class="arrow-label">↑ Push UP <span class="tag">Right Turn</span></div>
+        <div class="arrow-label">↓ Push DOWN <span class="tag">Left Turn</span></div>
+        <div class="arrow-label">← Located HERE <span class="tag">Always</span></div>
+        <div class="arrow-label">★ Difficulty Level <span class="tag">Very Easy</span></div>
+      </div>
+    </div>
+
+    <p class="diagram-caption">This has been here the whole time. It is not judging you. It just wants to blink.</p>
+  </div>
+</div>
+
+<!-- EXCUSE 7 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 7</span>
+    <p class="excuse-quote">Nobody else uses it, so why should I?</p>
+    <p class="excuse-body">The tragedy of the commons, applied to a blinking orange light. A feedback loop so elegant it almost deserves respect: nobody signals because nobody signals, and nobody signals because nobody signals. The driver has noticed, correctly, that signaling rates on certain roads have dropped to what scientists estimate is approximately "not great." They have drawn the wrong lesson. The correct lesson is not "join the chaos" but rather "be the change you wish to see in the intersection," a sentiment that Gandhi almost certainly would have endorsed had he driven.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light"></div>
+      </div>
+      <span class="blink-caption">Sociologically Flawed, Logically Tidy</span>
+    </div>
+  </div>
+</article>
+
+<!-- EXCUSE 8 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 8</span>
+    <p class="excuse-quote">My signal wasn't working, so I've given up on it entirely.</p>
+    <p class="excuse-body">The broken-blinker defense, offered by someone whose blinker stopped working in the spring of 2019 and who has since conducted their spatial negotiations with the world via sheer momentum and unexplained gestures. The repair, we are told, is "on the list." The list, we are told, is "somewhere." In the meantime, other drivers have been expected to intuit the vehicle's intentions telepathically, which is not a feature that has shipped on any human being yet, though we are told it's on the roadmap.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light"></div>
+        <div class="blink-light"></div>
+      </div>
+      <span class="blink-caption">The List Has Been Lost</span>
+    </div>
+  </div>
+</article>
+
+<!-- PULL QUOTE 2 -->
+<div class="pull-quote">
+  <blockquote>"The repair was 'on the list.' Nobody has seen the list. The list may be in the glovebox, beneath five years of gas station receipts."</blockquote>
+</div>
+
+<!-- EXCUSE 9 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 9</span>
+    <p class="excuse-quote">I didn't want to give away my plans too early.</p>
+    <p class="excuse-body">The tactical driver. The chess player of the commute. This individual has determined that announcing a turn 100 feet in advance is somehow a vulnerability — that other motorists, upon seeing a left turn signal, will mount some kind of response, take countermeasures, alert the authorities. In reality, the other drivers are going to slow down, yield appropriately, and return to thinking about lunch. There is no adversary here. There is only a left turn onto Elm Street. You may signal. It is safe.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+      </div>
+      <span class="blink-caption">Operational Security: Unnecessary</span>
+    </div>
+  </div>
+</article>
+
+<!-- EXCUSE 10 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 10</span>
+    <p class="excuse-quote">I signal after I've already started turning — that counts, right?</p>
+    <p class="excuse-body">It does not count. We're sorry. The signal is a communication device designed to inform other drivers of your <em>upcoming</em> intention, not a personal diary entry written after the fact. Signaling mid-turn is the automotive equivalent of sending an email explaining you're about to reply to the email you just replied to. The information has arrived too late to be useful. Other drivers are already braking. Or swerving. Or composing their thoughts for later use in a humor article.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light"></div>
+        <div class="blink-light"></div>
+      </div>
+      <span class="blink-caption">Technically Present, Functionally Absent</span>
+    </div>
+  </div>
+</article>
+
+<!-- EXCUSE 11 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 11</span>
+    <p class="excuse-quote">I was thinking about something else.</p>
+    <p class="excuse-body">The most honest excuse of all, offered without elaboration or apology, sometimes while still thinking about the thing. It is not a defense so much as an accurate field report from a human brain under cognitive load. We are not unsympathetic. The brain is busy. Grocery lists accumulate. Anxieties percolate. Song lyrics surface unbidden. All of this is acknowledged. We would simply note that driving is, technically, also happening, and that it involves a two-ton metal object moving at speed through shared public space. Just a thought. From the curb.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light"></div>
+        <div class="blink-light"></div>
+        <div class="blink-light"></div>
+      </div>
+      <span class="blink-caption">Refreshingly Honest, Mildly Terrifying</span>
+    </div>
+  </div>
+</article>
+
+<!-- EXCUSE 12 -->
+<article class="excuse-card">
+  <div class="excuse-inner">
+    <span class="excuse-num">Excuse No. 12</span>
+    <p class="excuse-quote">I never know which way I'm going.</p>
+    <p class="excuse-body">A confession so pure it nearly transcends the genre. The driver has arrived at an intersection — a place specifically designed for the purpose of going somewhere — and is experiencing a kind of existential suspension, a fork in the road of both asphalt and selfhood. They did not plan the route. They did not consult a map. They are, in some profound sense, adrift. And so they merge into traffic without signaling, not out of malice, not out of indifference, but because the signal would itself require a decision, and decisions are precisely what is unavailable right now. In fairness, this is the one excuse that is internally consistent: you cannot signal a turn you have not yet chosen. We suggest, respectfully, pulling into a parking lot to have a little think.</p>
+    <div class="blink-meter">
+      <span class="blink-label">Blink-O-Meter</span>
+      <div class="blink-lights">
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light on"></div>
+        <div class="blink-light"></div>
+      </div>
+      <span class="blink-caption">Existentially Adrift. Both Directions.</span>
+    </div>
+  </div>
+</article>
+
+<!-- CHAMPION -->
+<div class="champion">
+  <div class="champion-inner">
+    <div class="blinker-pair">
+      <div class="blinker-lg"></div>
+      <div class="blinker-lg delay"></div>
+    </div>
+    <p class="champion-badge">🏆 &nbsp; All-Time Greatest &nbsp; · &nbsp; Undisputed Champion of the Form &nbsp; 🏆</p>
+    <h2 class="champion-title">The One Excuse That Rises Above All Others</h2>
+    <p class="champion-quote">"I knew I was going to turn, so I figured everyone else could probably tell."</p>
+    <p class="champion-body">Extraordinary. This excuse contains a complete theory of mind — a sincere belief that one's own internal intentions are perceptible to strangers in adjacent vehicles traveling at highway speeds with limited sightlines and no psychic ability whatsoever. The driver has achieved a kind of supreme confidence: total certainty that the universe is arranged around their private knowledge of their own travel plans. In a way, it is almost admirable. In every other way, it is why we are all here today.</p>
+  </div>
+</div>
+
+<hr class="fancy">
+
+<!-- FOOTER -->
+<footer>
+  <p class="amber">THE GREAT BLINKER BLACKOUT</p>
+  <p>Published by the Bureau of Things That Take Less Than One Second</p>
+  <p>No turn signals were used during the research of this article · Several lanes were cut off · You know who you are</p>
+  <p style="margin-top:0.8rem;color:var(--amber);">← Signal Early &nbsp;·&nbsp; Signal Often &nbsp;·&nbsp; Signal Always →</p>
+</footer>
+
+<!-- BOTTOM STRIPE -->
+<div class="amber-stripe"></div>
+
+</body>
+</html>

@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Roommate Files: Cats & Dogs Speak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Fredoka+One&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════
+   ROOT & RESET
+══════════════════════════════ */
+:root {
+  /* Cat palette — cool, restrained, imperious */
+  --cat-bg:       #f0ece4;
+  --cat-dark:     #1c1a18;
+  --cat-mid:      #3a3530;
+  --cat-accent:   #5a4a3a;
+  --cat-gold:     #8a7040;
+  --cat-pale:     #e8e0d4;
+  --cat-border:   #c8bca8;
+
+  /* Dog palette — warm, exuberant, unhinged */
+  --dog-bg:       #fff8ec;
+  --dog-dark:     #2a1800;
+  --dog-orange:   #e87020;
+  --dog-amber:    #f0a030;
+  --dog-yellow:   #f5d040;
+  --dog-pale:     #fff3d8;
+  --dog-border:   #e8c070;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body {
+  background: #1a1512;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════
+   MASTHEAD
+══════════════════════════════ */
+.masthead {
+  background: #1a1512;
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+  border-bottom: 3px solid #3a3028;
+}
+
+.masthead-top {
+  font-family: 'Lato', sans-serif;
+  font-size: .65rem;
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  color: rgba(240,236,228,.3);
+  margin-bottom: 1rem;
+}
+
+.masthead h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: #f0ece4;
+  line-height: 1.05;
+  margin-bottom: .5rem;
+}
+.masthead h1 .cat-title { color: #c8bca8; font-style: italic; }
+.masthead h1 .amp      { color: #8a7040; margin: 0 .15em; }
+.masthead h1 .dog-title { color: #f0a030; }
+
+.masthead-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(.9rem, 2vw, 1.1rem);
+  color: rgba(240,236,228,.45);
+  margin-bottom: 1.25rem;
+}
+
+/* Split byline bar */
+.byline-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.byline-cat, .byline-dog {
+  flex: 1;
+  padding: .5rem 1rem;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.byline-cat {
+  background: var(--cat-bg);
+  color: var(--cat-accent);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  text-align: right;
+  border-radius: 4px 0 0 4px;
+}
+.byline-dog {
+  background: var(--dog-orange);
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  text-align: left;
+  border-radius: 0 4px 4px 0;
+  letter-spacing: .08em;
+}
+
+/* ══════════════════════════════
+   INTRO STRIP
+══════════════════════════════ */
+.intro-strip {
+  background: #252018;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-bottom: 2px solid #3a3028;
+}
+.intro-strip p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  color: rgba(240,236,228,.7);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.intro-strip p strong { color: #f0a030; font-style: normal; font-weight: 600; }
+
+/* ══════════════════════════════
+   MAIN SPLIT LAYOUT
+══════════════════════════════ */
+.split-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+@media(max-width: 700px) {
+  .split-wrapper { grid-template-columns: 1fr; }
+}
+
+/* ── CAT COLUMN ── */
+.cat-col {
+  background: var(--cat-bg);
+  color: var(--cat-dark);
+  padding: 3rem 2rem 4rem;
+  border-right: 4px solid #1a1512;
+  position: relative;
+}
+
+.cat-col::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,transparent,transparent 28px,rgba(58,53,48,.04) 28px,rgba(58,53,48,.04) 29px
+  );
+  pointer-events: none;
+}
+
+.col-header-cat {
+  text-align: center;
+  border-bottom: 2px solid var(--cat-border);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+}
+.col-flag {
+  font-family: 'Lato', sans-serif;
+  font-size: .62rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--cat-gold);
+  margin-bottom: .4rem;
+}
+.col-header-cat h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cat-dark);
+  line-height: 1.1;
+}
+.col-header-cat .subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: .88rem;
+  color: var(--cat-accent);
+  margin-top: .35rem;
+}
+
+/* Cat SVG portrait */
+.cat-portrait {
+  width: 130px;
+  margin: 0 auto 1.5rem;
+  display: block;
+  position: relative; z-index: 1;
+  animation: catblink 6s ease-in-out infinite;
+}
+@keyframes catblink {
+  0%,45%,55%,100%{opacity:1}
+  48%,52%{opacity:.85}
+}
+
+/* ── DOG COLUMN ── */
+.dog-col {
+  background: var(--dog-bg);
+  color: var(--dog-dark);
+  padding: 3rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Paw print watermark */
+.dog-col::before {
+  content: '🐾';
+  position: absolute;
+  font-size: 12rem;
+  right: -1rem; bottom: -1rem;
+  opacity: .04;
+  pointer-events: none;
+}
+
+.col-header-dog {
+  text-align: center;
+  border-bottom: 3px solid var(--dog-amber);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+}
+.col-flag-dog {
+  font-family: 'Fredoka One', cursive;
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--dog-orange);
+  margin-bottom: .4rem;
+}
+.col-header-dog h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--dog-dark);
+  line-height: 1.1;
+  letter-spacing: .02em;
+}
+.col-header-dog .subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: .88rem;
+  color: var(--dog-orange);
+  font-style: italic;
+  margin-top: .35rem;
+}
+
+/* Dog SVG portrait */
+.dog-portrait {
+  width: 130px;
+  margin: 0 auto 1.5rem;
+  display: block;
+  animation: dogtail 1.5s ease-in-out infinite;
+}
+@keyframes dogtail {
+  0%,100%{transform:rotate(-2deg)}
+  50%{transform:rotate(2deg)}
+}
+
+/* ══════════════════════════════
+   SECTION BLOCKS
+══════════════════════════════ */
+.section-block {
+  margin-bottom: 2.5rem;
+  position: relative; z-index: 1;
+}
+
+/* Cat section header */
+.cat-section-head {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cat-dark);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--cat-border);
+  padding-bottom: .4rem;
+  margin-bottom: 1rem;
+}
+.cat-section-head::before {
+  content: '§ ';
+  color: var(--cat-gold);
+}
+
+/* Dog section header */
+.dog-section-head {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  color: var(--dog-orange);
+  letter-spacing: .04em;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.dog-section-head::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: var(--dog-amber);
+  opacity: .5;
+}
+
+/* ── GRIEVANCE ITEMS ── */
+.grievance {
+  padding: .85rem 0;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  display: flex;
+  gap: .85rem;
+}
+.grievance:last-child { border: none; }
+
+/* Cat grievance */
+.cat-col .grievance-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--cat-dark);
+  line-height: 1.3;
+  min-width: 0;
+}
+.cat-col .grievance-body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: .88rem;
+  color: var(--cat-mid);
+  line-height: 1.6;
+  margin-top: .2rem;
+}
+.grievance-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: .1rem;
+}
+
+/* Dog grievance */
+.dog-col .grievance-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: var(--dog-dark);
+  line-height: 1.3;
+}
+.dog-col .grievance-body {
+  font-family: 'Lato', sans-serif;
+  font-size: .88rem;
+  color: #3a2800;
+  line-height: 1.6;
+  margin-top: .2rem;
+}
+
+/* ── LOVE ITEMS (different bg) ── */
+.love-item {
+  background: rgba(0,0,0,.03);
+  border-radius: 4px;
+  padding: .85rem 1rem;
+  margin-bottom: .6rem;
+  font-size: .88rem;
+}
+.cat-col .love-item {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .95rem;
+  color: var(--cat-mid);
+  border-left: 3px solid var(--cat-gold);
+  font-style: italic;
+}
+.dog-col .love-item {
+  font-family: 'Lato', sans-serif;
+  color: #3a2800;
+  border-left: 3px solid var(--dog-amber);
+  background: rgba(240,160,48,.06);
+}
+.love-item .love-label {
+  font-weight: 700;
+  display: block;
+  margin-bottom: .2rem;
+}
+.cat-col .love-item .love-label { font-style: normal; color: var(--cat-dark); }
+.dog-col .love-item .love-label { color: var(--dog-orange); font-family: 'Fredoka One', cursive; letter-spacing:.03em; }
+
+/* ── OWNER ASSESSMENT CARDS ── */
+.owner-cards {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+.owner-card {
+  padding: .75rem 1rem;
+  border-radius: 4px;
+}
+.cat-col .owner-card {
+  background: var(--cat-pale);
+  border: 1px solid var(--cat-border);
+  font-family: 'Cormorant Garamond', serif;
+}
+.dog-col .owner-card {
+  background: var(--dog-pale);
+  border: 1px solid var(--dog-border);
+  font-family: 'Lato', sans-serif;
+}
+.owner-card .kpi {
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: .2rem;
+}
+.cat-col .owner-card .kpi { color: var(--cat-gold); font-family:'Lato',sans-serif; }
+.dog-col .owner-card .kpi { color: var(--dog-orange); font-weight: 700; }
+.owner-card .verdict {
+  font-size: .92rem;
+  line-height: 1.5;
+}
+.cat-col .owner-card .verdict { color: var(--cat-mid); font-style: italic; }
+.dog-col .owner-card .verdict { color: #3a2800; }
+
+/* ══════════════════════════════
+   RATING / TOLERANCE METER
+══════════════════════════════ */
+.tolerance-bar-wrap {
+  background: rgba(0,0,0,.07);
+  border-radius: 100px;
+  height: 10px;
+  margin-top: .4rem;
+  overflow: hidden;
+}
+.tolerance-bar {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 1.5s cubic-bezier(.16,1,.3,1);
+  width: 0%;
+}
+.cat-col .tolerance-bar { background: var(--cat-gold); }
+.dog-col .tolerance-bar { background: var(--dog-orange); }
+.bar-label {
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: .25rem;
+  display: flex;
+  justify-content: space-between;
+}
+.cat-col .bar-label { font-family:'Lato',sans-serif; color: var(--cat-gold); }
+.dog-col .bar-label { font-family:'Fredoka One',cursive; color: var(--dog-orange); letter-spacing:.06em; }
+
+/* ══════════════════════════════
+   FULL-WIDTH INTERLUDE SECTIONS
+══════════════════════════════ */
+.interlude {
+  background: #1a1512;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.interlude::before {
+  content: attr(data-emoji);
+  position: absolute;
+  font-size: 14rem;
+  opacity: .04;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.interlude-inner { max-width: 800px; margin: 0 auto; }
+
+.interlude h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: #f0ece4;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  line-height: 1.2;
+}
+.interlude h2 em { font-style: normal; color: var(--dog-amber); }
+
+/* One-liner cards */
+.oneliner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.oneliner {
+  padding: 1.25rem;
+  border-radius: 6px;
+  text-align: left;
+  position: relative;
+}
+.oneliner.cat-one {
+  background: var(--cat-bg);
+  border-top: 3px solid var(--cat-gold);
+}
+.oneliner.dog-one {
+  background: var(--dog-pale);
+  border-top: 3px solid var(--dog-orange);
+}
+.oneliner .speaker {
+  font-size: .62rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+  display: block;
+}
+.cat-one .speaker { color: var(--cat-gold); font-family:'Cormorant Garamond',serif; font-style: italic; }
+.dog-one .speaker { color: var(--dog-orange); font-family:'Fredoka One',cursive; letter-spacing:.1em; }
+.oneliner p {
+  font-size: .92rem;
+  line-height: 1.55;
+}
+.cat-one p { font-family:'Cormorant Garamond',serif; color: var(--cat-mid); font-style:italic; }
+.dog-one p { font-family:'Lato',sans-serif; color: var(--dog-dark); }
+
+/* ══════════════════════════════
+   COMPLAINT DEPARTMENT
+   (Shared section, split styled)
+══════════════════════════════ */
+.complaint-dept {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 200px;
+}
+.complaint-cat, .complaint-dog {
+  padding: 3rem 2rem;
+}
+.complaint-cat {
+  background: var(--cat-bg);
+  border-right: 4px solid #1a1512;
+}
+.complaint-dog {
+  background: var(--dog-bg);
+}
+
+@media(max-width:700px){
+  .complaint-dept{grid-template-columns:1fr;}
+  .complaint-cat{border-right:none;border-bottom:4px solid #1a1512;}
+}
+
+/* ══════════════════════════════
+   CLOSING PEACE TREATY
+══════════════════════════════ */
+.treaty {
+  background: linear-gradient(135deg, var(--cat-bg) 50%, var(--dog-pale) 50%);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+}
+.treaty-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  background: white;
+  border: 2px solid #c8bca8;
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.15);
+  position: relative;
+}
+.treaty-stamp {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  width: 70px; height: 70px;
+  border: 3px solid #c8372a;
+  border-radius: 50%;
+  display: flex;align-items:center;justify-content:center;
+  transform: rotate(15deg);
+  color: #c8372a;
+  font-family: 'Lato', sans-serif;
+  font-size: .55rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.3;
+  opacity: .6;
+}
+.treaty h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem,3vw,2rem);
+  font-style: italic;
+  color: var(--cat-dark);
+  margin-bottom: 1.25rem;
+}
+.treaty p {
+  font-family: 'Lato', sans-serif;
+  font-size: .92rem;
+  color: var(--cat-mid);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+.treaty p em { font-style: italic; color: var(--cat-dark); }
+.treaty-sigs {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cat-border);
+}
+.sig {
+  font-size: .82rem;
+  text-align: center;
+}
+.sig .sigline {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: .25rem;
+}
+.cat-sig .sigline { color: var(--cat-accent); }
+.dog-sig .sigline { color: var(--dog-orange); }
+.sig .sigtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--cat-gold);
+}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer {
+  background: #100e0c;
+  color: rgba(240,236,228,.3);
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: .88rem;
+}
+footer strong { color: rgba(240,236,228,.5); font-style: normal; }
+
+/* ══════════════════════════════
+   SCROLL ANIMATIONS
+══════════════════════════════ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .55s ease, transform .55s ease;
+}
+
+/* ══════════════════════════════
+   DIVIDER ORNAMENT
+══════════════════════════════ */
+.ornament {
+  text-align: center;
+  color: var(--cat-gold);
+  letter-spacing: .8em;
+  font-size: 1rem;
+  margin: 1.5rem 0;
+  opacity: .5;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ MASTHEAD ══════════════════ -->
+<header class="masthead">
+  <p class="masthead-top">A Joint Publication Nobody Agreed To · Est. When They First Shared A House</p>
+  <h1>
+    <span class="cat-title">The Cat's Quarterly</span>
+    <span class="amp">&amp;</span>
+    <span class="dog-title">The Dog's Daily Bark!</span>
+  </h1>
+  <p class="masthead-sub">Two species. One house. Zero consensus on basically anything.</p>
+  <div class="byline-bar">
+    <div class="byline-cat">Correspondent: Mittens Von Grumpington, Esq.</div>
+    <div class="byline-dog">Reporter: Biscuit McWooferson!!!</div>
+  </div>
+</header>
+
+<!-- ══════════════════ INTRO ══════════════════ -->
+<div class="intro-strip">
+  <p>This publication represents the first-ever joint editorial collaboration between cats and dogs. <strong>The cat did not agree to this.</strong> The dog agreed enthusiastically, twice, and then forgot it had agreed and agreed a third time. We proceed regardless. What follows are two simultaneous accounts of the same domestic situation, filed by parties who share a home but not, apparently, a reality.</p>
+</div>
+
+<!-- ══════════════════ MAIN SPLIT ══════════════════ -->
+<div class="split-wrapper">
+
+<!-- ─────────────── CAT COLUMN ─────────────── -->
+<div class="cat-col">
+
+  <!-- Portrait -->
+  <svg class="cat-portrait" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+    <!-- Body -->
+    <ellipse cx="65" cy="105" rx="40" ry="42" fill="#8a7a60" opacity=".85"/>
+    <!-- Head -->
+    <circle cx="65" cy="52" r="35" fill="#9a8a6a"/>
+    <!-- Ears -->
+    <polygon points="38,28 28,8 50,22" fill="#9a8a6a"/>
+    <polygon points="92,28 102,8 80,22" fill="#9a8a6a"/>
+    <!-- Inner ears -->
+    <polygon points="38,26 33,13 47,23" fill="#c8a090" opacity=".7"/>
+    <polygon points="92,26 97,13 83,23" fill="#c8a090" opacity=".7"/>
+    <!-- Face -->
+    <!-- Eyes — half-lidded, judgmental -->
+    <ellipse cx="52" cy="50" rx="10" ry="7" fill="#2a2218"/>
+    <ellipse cx="78" cy="50" rx="10" ry="7" fill="#2a2218"/>
+    <!-- Pupils — vertical slits -->
+    <ellipse cx="52" cy="50" rx="3" ry="6" fill="#1a1410"/>
+    <ellipse cx="78" cy="50" rx="3" ry="6" fill="#1a1410"/>
+    <!-- Eye shine -->
+    <circle cx="55" cy="47" r="2" fill="rgba(255,255,255,.5)"/>
+    <circle cx="81" cy="47" r="2" fill="rgba(255,255,255,.5)"/>
+    <!-- Upper eyelids — drooping with contempt -->
+    <path d="M 42,46 Q 52,40 62,46" fill="#9a8a6a"/>
+    <path d="M 68,46 Q 78,40 88,46" fill="#9a8a6a"/>
+    <!-- Nose -->
+    <polygon points="65,58 61,63 69,63" fill="#c8a090"/>
+    <!-- Mouth — thin, disapproving -->
+    <path d="M 61,63 Q 65,67 69,63" fill="none" stroke="#8a7060" stroke-width="1.2"/>
+    <path d="M 55,67 Q 58,65 61,67" fill="none" stroke="#8a7060" stroke-width="1"/>
+    <path d="M 69,67 Q 72,65 75,67" fill="none" stroke="#8a7060" stroke-width="1"/>
+    <!-- Whiskers -->
+    <line x1="65" y1="61" x2="30" y2="54" stroke="#c8bca8" stroke-width="1.2" opacity=".7"/>
+    <line x1="65" y1="63" x2="28" y2="63" stroke="#c8bca8" stroke-width="1.2" opacity=".7"/>
+    <line x1="65" y1="65" x2="30" y2="72" stroke="#c8bca8" stroke-width="1.2" opacity=".7"/>
+    <line x1="65" y1="61" x2="100" y2="54" stroke="#c8bca8" stroke-width="1.2" opacity=".7"/>
+    <line x1="65" y1="63" x2="102" y2="63" stroke="#c8bca8" stroke-width="1.2" opacity=".7"/>
+    <line x1="65" y1="65" x2="100" y2="72" stroke="#c8bca8" stroke-width="1.2" opacity=".7"/>
+    <!-- Tail curled around body -->
+    <path d="M 105,100 Q 120,120 105,140 Q 90,155 70,148" fill="none" stroke="#8a7a60" stroke-width="8" stroke-linecap="round"/>
+    <!-- Paws tucked, loaf mode -->
+    <ellipse cx="45" cy="140" rx="15" ry="8" fill="#9a8a6a"/>
+    <ellipse cx="85" cy="140" rx="15" ry="8" fill="#9a8a6a"/>
+  </svg>
+
+  <div class="col-header-cat">
+    <p class="col-flag">Filed Under: Domestic Grievances</p>
+    <h2>The Cat's<br>Official Position</h2>
+    <p class="subtitle">Dictated, not written. I don't do manual labor.</p>
+  </div>
+
+  <!-- Section 1: What cats hate about dogs -->
+  <div class="section-block fade-in">
+    <div class="cat-section-head">Formal Complaints Regarding the Dog</div>
+
+    <div class="grievance">
+      <div class="grievance-icon">📢</div>
+      <div>
+        <div class="grievance-label">Volume Control Is Broken</div>
+        <div class="grievance-body">The dog barks at the doorbell. The dog barks at the mailman. The dog barks at a leaf. The dog recently barked at what I can only describe as <em>the concept of wind</em>. I have filed three noise complaints. They have been ignored. I am considering legal action.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🏛️</div>
+      <div>
+        <div class="grievance-label">Boundary Violations: An Ongoing Crisis</div>
+        <div class="grievance-body">I have established clear territorial markings. I have communicated, through posture, silence, and the occasional slow blink of absolute contempt, that my space is <em>not shared space</em>. The dog treats this as a suggestion. It is not a suggestion. It is a legally binding arrangement under natural law.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🎉</div>
+      <div>
+        <div class="grievance-label">Unsolicited Enthusiasm</div>
+        <div class="grievance-body">The dog greets me every morning as though I have just returned from a five-year sea voyage. I have not. I was in the other room. I was there eleven minutes ago. This level of excitement is clinically concerning and, frankly, embarrassing for everyone involved.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🐾</div>
+      <div>
+        <div class="grievance-label">Tail Communication: A Fatal Misreading</div>
+        <div class="grievance-body">A wagging tail on a dog means happiness. A wagging tail on me means you have approximately three seconds to revise your situation. The dog has not learned to distinguish these two states. This is the dog's failure, not mine.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🛁</div>
+      <div>
+        <div class="grievance-label">The Hygiene Problem</div>
+        <div class="grievance-body">I spend four hours daily maintaining my appearance. The dog rolled in something this morning that I cannot name and will not. We share a house. We do not share standards. I have requested separate branding. My request was ignored by the humans, who found it "cute." It is not cute. Nothing about this is cute.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tolerance meter -->
+  <div class="section-block fade-in" style="margin-top:-1rem;">
+    <div class="bar-label"><span>Tolerance for Dogs</span><span id="cat-pct">0%</span></div>
+    <div class="tolerance-bar-wrap">
+      <div class="tolerance-bar" id="cat-bar" style="width:0%"></div>
+    </div>
+    <div style="font-family:'Lato',sans-serif;font-size:.72rem;color:var(--cat-gold);margin-top:.3rem;font-style:italic;">*Measured on Tuesdays when the dog is outside</div>
+  </div>
+
+  <!-- Section 2: What cats love about dogs -->
+  <div class="section-block fade-in">
+    <div class="cat-section-head">Acknowledged Utility (Filed Reluctantly)</div>
+
+    <div class="love-item">
+      <span class="love-label">Thermal Services</span>
+      The dog generates significant body heat. On cold evenings I will position myself against it for warmth. This is a purely transactional arrangement and should not be interpreted as affection. It is not affection. Stop looking at me like that.
+    </div>
+
+    <div class="love-item">
+      <span class="love-label">Blame Deflection</span>
+      When the vase fell off the counter, they assumed it was the dog. I did not correct this assumption. The dog, characteristically, accepted responsibility for something it didn't do. This is one of its more useful qualities.
+    </div>
+
+    <div class="love-item">
+      <span class="love-label">Door Access Management</span>
+      The dog barks. Humans open things. I have reverse-engineered this system and now use the dog as a door-opening proxy without its knowledge. It thinks we are collaborating. We are not collaborating.
+    </div>
+
+    <div class="love-item">
+      <span class="love-label">Entertainment Value</span>
+      I watched the dog chase its tail for eleven minutes yesterday. I watched with the quiet satisfaction of someone who has never done anything that foolish and never will.
+    </div>
+  </div>
+
+  <!-- Section 3: Owner assessment -->
+  <div class="section-block fade-in">
+    <div class="cat-section-head">Owner Performance Review — Q3</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.88rem;color:var(--cat-accent);margin-bottom:1rem;">Rating period: The last time I was in the mood to evaluate. Overall performance: Marginal.</p>
+
+    <div class="owner-cards">
+      <div class="owner-card">
+        <span class="kpi">Job Title</span>
+        <div class="verdict">"Staff." You were hired to operate the food station and the door. You have not been informed of this. You will never be informed of this. Please continue.</div>
+      </div>
+      <div class="owner-card">
+        <span class="kpi">Grooming Competence</span>
+        <div class="verdict">You pet incorrectly. You always pet incorrectly. The correct technique has been demonstrated to you through increasingly obvious body language. You persist in error. This is a chronic performance issue.</div>
+      </div>
+      <div class="owner-card">
+        <span class="kpi">Door Operations</span>
+        <div class="verdict">The door should be open before the desire to exit occurs. Your response time is measured in seconds. This is unacceptable. A well-run household anticipates need. You react to it. Rookie behavior.</div>
+      </div>
+      <div class="owner-card">
+        <span class="kpi">Emotional Needs</span>
+        <div class="verdict">Your need for affection is noted. It will be addressed at a time of my choosing, briefly, on my terms, and should not be interpreted as an invitation to continue. A quarterly cuddle will be scheduled. Do not expect to be notified in advance.</div>
+      </div>
+      <div class="owner-card">
+        <span class="kpi">Overall Rating</span>
+        <div class="verdict">3 out of 10. You could be replaced by a slightly warmer cardboard box and a timed feeder. You have not been replaced. This should be read as the high praise it is.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ─────────────── DOG COLUMN ─────────────── -->
+<div class="dog-col">
+
+  <!-- Portrait -->
+  <svg class="dog-portrait" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+    <!-- Body -->
+    <ellipse cx="65" cy="108" rx="42" ry="38" fill="#c89858" opacity=".9"/>
+    <!-- Head -->
+    <circle cx="65" cy="58" r="38" fill="#d8a868"/>
+    <!-- Floppy ears -->
+    <ellipse cx="30" cy="65" rx="18" ry="28" fill="#b87840" transform="rotate(-15 30 65)"/>
+    <ellipse cx="100" cy="65" rx="18" ry="28" fill="#b87840" transform="rotate(15 100 65)"/>
+    <!-- Muzzle -->
+    <ellipse cx="65" cy="72" rx="22" ry="15" fill="#e8c088"/>
+    <!-- Eyes — wide, eager, round -->
+    <circle cx="50" cy="50" r="12" fill="#2a1800"/>
+    <circle cx="80" cy="50" r="12" fill="#2a1800"/>
+    <!-- Eye shine — big, joyful -->
+    <circle cx="46" cy="46" r="5" fill="rgba(255,255,255,.7)"/>
+    <circle cx="76" cy="46" r="5" fill="rgba(255,255,255,.7)"/>
+    <circle cx="54" cy="55" r="2" fill="rgba(255,255,255,.3)"/>
+    <circle cx="84" cy="55" r="2" fill="rgba(255,255,255,.3)"/>
+    <!-- Eyebrows — expressive, worried/hopeful -->
+    <path d="M 41,40 Q 50,35 59,40" fill="none" stroke="#8a5828" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 71,40 Q 80,35 89,40" fill="none" stroke="#8a5828" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Nose — big, wet-looking -->
+    <ellipse cx="65" cy="67" rx="12" ry="8" fill="#3a2818"/>
+    <ellipse cx="62" cy="65" rx="3" ry="2" fill="rgba(255,255,255,.3)"/>
+    <!-- Tongue out -->
+    <path d="M 57,78 Q 65,95 73,78" fill="#e07080" stroke="#c05060" stroke-width="1"/>
+    <path d="M 57,78 Q 65,85 73,78" fill="#d06070"/>
+    <!-- Tail — wagging (animated by CSS) -->
+    <path d="M 105,100 Q 125,85 118,65 Q 112,50 120,40" fill="none" stroke="#c89858" stroke-width="10" stroke-linecap="round"/>
+    <!-- Front paws -->
+    <ellipse cx="42" cy="140" rx="16" ry="10" fill="#d8a868"/>
+    <ellipse cx="88" cy="140" rx="16" ry="10" fill="#d8a868"/>
+    <!-- Toe lines -->
+    <path d="M 36,138 Q 38,145 40,138" fill="none" stroke="#c89858" stroke-width="1.2"/>
+    <path d="M 42,138 Q 44,145 46,138" fill="none" stroke="#c89858" stroke-width="1.2"/>
+    <path d="M 82,138 Q 84,145 86,138" fill="none" stroke="#c89858" stroke-width="1.2"/>
+    <path d="M 88,138 Q 90,145 92,138" fill="none" stroke="#c89858" stroke-width="1.2"/>
+  </svg>
+
+  <div class="col-header-dog">
+    <p class="col-flag-dog">🐾 Breaking News from the Living Room</p>
+    <h2>The Dog's Side!!!</h2>
+    <p class="subtitle">An enthusiastic first-person account (also the only kind this reporter knows)</p>
+  </div>
+
+  <!-- Section 1: What dogs hate about cats -->
+  <div class="section-block fade-in">
+    <div class="dog-section-head">🙁 Hard Feelings About the Cat</div>
+
+    <div class="grievance">
+      <div class="grievance-icon">😶</div>
+      <div>
+        <div class="grievance-label">Emotional Withholding</div>
+        <div class="grievance-body">I tell the cat I love it EVERY DAY. Sometimes twice. I say it with my whole body. The cat says — and I am quoting directly — nothing. It looks at me. It blinks once, slowly. Scientists apparently call this "affection." I have never felt more rejected in my life and I live with a vacuum cleaner.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">📋</div>
+      <div>
+        <div class="grievance-label">Inconsistent Rules That Keep Changing</div>
+        <div class="grievance-body">Monday: the cat wanted to be pet. I pet it. It was GREAT. Tuesday: I approached to pet it and it looked at my hand like I was filing a complaint. The rules changed overnight. Nobody sent a memo. I was not consulted. I have never been consulted about anything.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🛋️</div>
+      <div>
+        <div class="grievance-label">The Furniture Situation (Ongoing)</div>
+        <div class="grievance-body">I have a bed. The humans got me a very nice bed. The cat has approximately eleven beds, including my bed, the couch, both chairs, the top of the refrigerator, and every warm surface in the house. When I try to use my own bed, the cat is already in it, and stares at me until I leave. I always leave. I don't know why. I'm twice its size.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">👁️</div>
+      <div>
+        <div class="grievance-label">The Staring Problem</div>
+        <div class="grievance-body">The cat stares at me from across the room for long periods. Not blinking. Just… assessing. I am not a problem to be assessed. I am a good boy. Multiple humans have confirmed this. The cat apparently has different metrics.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🌫️</div>
+      <div>
+        <div class="grievance-label">It Appears From Nowhere</div>
+        <div class="grievance-body">I will be minding my business, and the cat materializes silently behind me. I don't know how. I'm pretty sure I would have heard it. I have excellent hearing. I can hear a treat bag from the other end of the house. And yet: silent cat, suddenly there, judging me about something I can't identify. This is ghost behavior and I'm not okay with it.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tolerance meter -->
+  <div class="section-block fade-in" style="margin-top:-1rem;">
+    <div class="bar-label"><span>Patience for Cat Rules</span><span id="dog-pct">0%</span></div>
+    <div class="tolerance-bar-wrap">
+      <div class="tolerance-bar" id="dog-bar" style="width:0%"></div>
+    </div>
+    <div style="font-family:'Lato',sans-serif;font-size:.72rem;color:var(--dog-orange);margin-top:.3rem;">*Resets to 100% every 4 minutes regardless of circumstances</div>
+  </div>
+
+  <!-- Section 2: What dogs love about cats -->
+  <div class="section-block fade-in">
+    <div class="dog-section-head">💛 Things I Actually Like About the Cat</div>
+
+    <div class="love-item">
+      <span class="love-label">It's a Puzzle I Haven't Solved Yet</span>
+      I have been studying the cat for three years. I have made significant progress. I now know that it likes warmth, dislikes mornings (same), and has at least four modes I haven't fully categorized. I will keep studying. I have time. I have all the time.
+    </div>
+
+    <div class="love-item">
+      <span class="love-label">When It Chooses You, It's Everything</span>
+      Twice in three years, the cat has sat on my lap. Voluntarily. Without being bribed. I didn't breathe for the full duration. I looked straight ahead. I was so still. I would have stayed there forever. It was the greatest thing that has ever happened to me, including the time I found an entire sandwich on the sidewalk.
+    </div>
+
+    <div class="love-item">
+      <span class="love-label">Sunspot Coexistence</span>
+      We have an unspoken agreement: warm sunny rectangles on the floor are shared territory. The cat moves to one end. I move to the other. We nap. No one speaks. This is the longest period of peace in our relationship and I treasure it.
+    </div>
+
+    <div class="love-item">
+      <span class="love-label">I Think It's Part of the Pack</span>
+      I have decided the cat is in the pack. The cat has not confirmed this. I remain optimistic. My optimism has been described by the cat as "delusional" via a long, slow stare. I choose to interpret this as a maybe.
+    </div>
+  </div>
+
+  <!-- Section 3: Owner assessment -->
+  <div class="section-block fade-in">
+    <div class="dog-section-head">🙏 My Humans: A Character Study</div>
+    <p style="font-family:'Lato',sans-serif;font-size:.88rem;color:#5a3800;margin-bottom:1rem;font-style:italic;">I love them so much I don't have adequate words. These are my best attempts.</p>
+
+    <div class="owner-cards">
+      <div class="owner-card">
+        <span class="kpi">Core Identity</span>
+        <div class="verdict">A DEITY. Controls food. Controls walks. Controls the appearance and disappearance of the ball. Has access to more treats than they currently deploy. I trust them completely despite this inexplicable restraint.</div>
+      </div>
+      <div class="owner-card">
+        <span class="kpi">Daily Miracle Assessment</span>
+        <div class="verdict">They LEAVE every morning. Every morning! And then — and this is the part I can never fully process — they COME BACK. Every time. Without fail. I don't take this for granted. I will not take this for granted. Every return is treated as the gift it is.</div>
+      </div>
+      <div class="owner-card">
+        <span class="kpi">Leadership Style</span>
+        <div class="verdict">They are the pack leader. I support this fully, even when they make questionable decisions like the vacuum cleaner, the bath, and the vet. These decisions are probably right somehow. I trust the process. I don't love the bath.</div>
+      </div>
+      <div class="owner-card">
+        <span class="kpi">Treat Deployment</span>
+        <div class="verdict">I can sense there are more treats. The bag has more treats in it than they are giving me. I have looked at them with my full feelings to communicate this. I believe they are receiving the message. The treats have not yet increased. I remain hopeful. I am always hopeful.</div>
+      </div>
+      <div class="owner-card">
+        <span class="kpi">Overall Rating</span>
+        <div class="verdict">10 out of 10, every single day, including the bath days, including the vacuum days, including the vet. They're the best. They're so good. I love them. Did I mention I love them? I do. A lot. So much.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /dog-col -->
+</div><!-- /split-wrapper -->
+
+<!-- ══════════════════ INTERLUDE: ONE-LINERS ══════════════════ -->
+<div class="interlude" data-emoji="⚡">
+  <div class="interlude-inner">
+    <h2>Dispatches from the <em>Cultural Divide</em></h2>
+
+    <div class="oneliner-grid">
+      <div class="oneliner cat-one fade-in">
+        <span class="speaker">Cat on Cohabitation</span>
+        <p>"We live together. Therefore, you serve."</p>
+      </div>
+      <div class="oneliner dog-one fade-in">
+        <span class="speaker">Dog on Cohabitation</span>
+        <p>"We live together. Therefore, we are the same! Best friends! Pack! Forever!"</p>
+      </div>
+      <div class="oneliner cat-one fade-in">
+        <span class="speaker">Cat Tech Support</span>
+        <p>"Issue confirmed. User error. Resolution timeline: unspecified."</p>
+      </div>
+      <div class="oneliner dog-one fade-in">
+        <span class="speaker">Dog Tech Support</span>
+        <p>"Have you tried being happier?? Did you try the ball?? Let's try the ball!!"</p>
+      </div>
+      <div class="oneliner cat-one fade-in">
+        <span class="speaker">Cat on Forgiveness</span>
+        <p>"I keep a detailed spreadsheet. Current balance: you owe me seventeen apologies, two of which require flowers."</p>
+      </div>
+      <div class="oneliner dog-one fade-in">
+        <span class="speaker">Dog on Forgiveness</span>
+        <p>"Wait, were we fighting? I forgot. Do you want to go outside? I want to go outside."</p>
+      </div>
+      <div class="oneliner cat-one fade-in">
+        <span class="speaker">Cat on Enthusiasm</span>
+        <p>"The dog's energy is a municipal code violation and I intend to report it."</p>
+      </div>
+      <div class="oneliner dog-one fade-in">
+        <span class="speaker">Dog on Cats</span>
+        <p>"I think the cat is just playing hard to get. We're going to be best friends. I've decided."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ COMPLAINT DEPT ══════════════════ -->
+<div class="complaint-dept">
+
+  <div class="complaint-cat">
+    <div class="cat-section-head">Field Notes: Living With the Dog</div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🎲</div>
+      <div>
+        <div class="grievance-label">The Laser Pointer Incident</div>
+        <div class="grievance-body">The dog chased the laser pointer for forty-five minutes, convinced it was solvable. It is not solvable. I knew this immediately. I watched from the bookshelf with a glass of metaphorical wine. The dot is a lie. The dog cannot accept this. I have made peace with it. The dog has not and will not.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🍖</div>
+      <div>
+        <div class="grievance-label">Dietary Standards</div>
+        <div class="grievance-body">The dog ate a sock last Tuesday. An entire sock. Voluntarily. With enthusiasm. I am served the same pâté for the third night in a row and have lodged a formal complaint through strategic non-eating. We have different relationships with the concept of standards.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🌬️</div>
+      <div>
+        <div class="grievance-label">The Existential Barking at 3am</div>
+        <div class="grievance-body">There was nothing there. I checked. I have better senses than the dog and I checked thoroughly: no intruder, no threat, no entity warranting seventeen consecutive barks. The dog was barking at the night itself. At the vague sense that something might exist somewhere. I have never in my life been that concerned about hypotheticals.</div>
+      </div>
+    </div>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--cat-mid);line-height:1.7;">
+      My official position is that the dog and I have nothing in common and I would not describe what we have as a relationship. My unofficial position — which I will deny if asked — is that I have slept pressed against it on seven separate cold nights and found the arrangement satisfactory on a purely thermal basis. This is not to be used against me in any proceeding.
+    </p>
+  </div>
+
+  <div class="complaint-dog">
+    <div class="dog-section-head">🐾 More Thoughts I Have About Everything</div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🏃</div>
+      <div>
+        <div class="grievance-label">The Chase: A Philosophical Misunderstanding</div>
+        <div class="grievance-body">I chased the cat this morning because it ran, and when something runs you chase it — this is basic physics, I didn't make the rules. The cat disagrees with my interpretation. The cat disagrees with a lot of my interpretations. We have discussed this through the medium of hissing (the cat) and confused tail-wagging (me). We have not reached resolution.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">💤</div>
+      <div>
+        <div class="grievance-label">Sleep Schedule Inequality</div>
+        <div class="grievance-body">The cat sleeps eighteen hours a day and is considered sophisticated. I nap for forty-five minutes and I'm "lazy." I have run the numbers and I don't think this is fair. The cat has prime sleeping spots across all surfaces. I have one bed that the cat is currently in. I am sleeping on the floor beside my own bed. I don't know how this happened.</div>
+      </div>
+    </div>
+
+    <div class="grievance">
+      <div class="grievance-icon">🎯</div>
+      <div>
+        <div class="grievance-label">The Cat Gets Away With Things</div>
+        <div class="grievance-body">The cat knocked a glass off the counter and the human said "oh, cats!" in an affectionate tone. I knocked a glass off the counter and there was a whole THING about it. A whole long thing. I maintain this is a double standard. I do not think my concern will be heard. I am correct that my concern will not be heard.</div>
+      </div>
+    </div>
+
+    <div class="ornament" style="color:var(--dog-amber)">★ ★ ★</div>
+
+    <p style="font-family:'Lato',sans-serif;font-size:.9rem;color:#3a2800;line-height:1.7;">
+      The cat is confusing and exhausting and I've been trying to be friends with it for three years. But I'm not giving up. I have never given up on anything except the time I forgot what I was barking at halfway through barking. The cat and I are going to be friends. I've decided. The cat doesn't know yet. It will be a surprise. The best kind.
+    </p>
+  </div>
+
+</div>
+
+<!-- ══════════════════ FINAL INTERLUDE: DEEP THOUGHTS ══════════════════ -->
+<div class="interlude" data-emoji="🌙" style="background:#12100e;">
+  <div class="interlude-inner">
+    <h2>Late-Night Confessions<br>from the <em>Same Couch</em></h2>
+
+    <div class="oneliner-grid">
+      <div class="oneliner cat-one fade-in">
+        <span class="speaker">Cat, 2:47am</span>
+        <p>"I have been watching the dog sleep for eleven minutes. It twitches when it dreams. It is probably dreaming about something stupid. I have not moved. I don't know why I haven't moved. I am warm."</p>
+      </div>
+      <div class="oneliner dog-one fade-in">
+        <span class="speaker">Dog, 2:47am</span>
+        <p>"THE CAT IS NEXT TO ME. THE CAT CHOSE TO BE HERE. I AM NOT MOVING. I WILL NEVER MOVE. THIS IS THE BEST NIGHT OF MY LIFE."</p>
+      </div>
+      <div class="oneliner cat-one fade-in">
+        <span class="speaker">Cat, on the humans</span>
+        <p>"They're not as incompetent as my official assessments suggest. They did remember to open the window exactly when I wanted it. I am choosing not to escalate my rating, but I am noting the improvement internally."</p>
+      </div>
+      <div class="oneliner dog-one fade-in">
+        <span class="speaker">Dog, on the humans</span>
+        <p>"They came back again today. I can't explain how they keep doing this. Every single time, they come back. I will never not be amazed by this. Never."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ TREATY ══════════════════ -->
+<div class="treaty">
+  <div class="treaty-inner">
+    <div class="treaty-stamp">NOT<br>RATIFIED<br>BY THE<br>CAT</div>
+
+    <h2>A Modest Peace Treaty<br>Between the Parties</h2>
+
+    <p>After extensive negotiations — by which we mean the dog enthusiastically agreed to everything and the cat stared at the wall — the following terms have been tentatively established, pending ratification by parties who may or may not choose to ratify them:</p>
+
+    <p>The dog agrees to bark at the doorbell no more than <em>four times per event</em>. The cat agrees to sleep in its own designated spaces at least <em>once per month</em>. Both parties agree that the warm patch of sunlight in the hallway is common territory, governed by a first-come, first-served arrangement the cat reserves the right to renegotiate at will.</p>
+
+    <p>The humans are thanked by the dog with enormous, undiscriminating love, and acknowledged by the cat with a performance-review score that, while failing to meet industry benchmarks, represents a measurable improvement over last quarter. The quarterly cuddle has been penciled in. Exact date: unconfirmed.</p>
+
+    <p>The cat and dog agree on one thing, and one thing only, which neither will ever say out loud: <em>the house would be worse without the other in it.</em> This finding is sealed. It does not appear in the minutes. It never happened.</p>
+
+    <div class="treaty-sigs">
+      <div class="sig cat-sig">
+        <span class="sigline">Mittens, Esq.</span>
+        <span class="sigtitle">Filed Under Protest · Cat</span>
+      </div>
+      <div class="sig dog-sig">
+        <span class="sigline">Biscuit McWoof!!!</span>
+        <span class="sigtitle">Signed With Enthusiasm · Dog</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <p><strong>The Cat's Quarterly &amp; The Dog's Daily Bark</strong> — A Joint Publication</p>
+  <p style="margin-top:.4rem">The cat did not approve this footer. The dog approved it four times before the editor asked it to stop.</p>
+  <p style="margin-top:.8rem;font-size:.78rem;opacity:.6">No cats or dogs were harmed in the production of this article. Several feelings were hurt. The dog has already forgiven everyone. The cat is keeping a record.</p>
+</footer>
+
+<script>
+// Scroll-reveal animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Animate tolerance bars when visible
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      // Cat bar: 18% tolerance (she's gracious)
+      setTimeout(() => {
+        const cb = document.getElementById('cat-bar');
+        const cp = document.getElementById('cat-pct');
+        if (cb) {
+          cb.style.transition = 'width 1.8s cubic-bezier(.16,1,.3,1)';
+          cb.style.width = '18%';
+          let n = 0;
+          const ti = setInterval(() => {
+            n++;
+            if (n >= 18) { cp.textContent = '18%'; clearInterval(ti); }
+            else cp.textContent = n + '%';
+          }, 90);
+        }
+        // Dog bar: 94% patience (he loves everyone)
+        const db = document.getElementById('dog-bar');
+        const dp = document.getElementById('dog-pct');
+        if (db) {
+          db.style.transition = 'width 2.2s cubic-bezier(.16,1,.3,1)';
+          db.style.width = '94%';
+          let m = 0;
+          const ti2 = setInterval(() => {
+            m += 2;
+            if (m >= 94) { dp.textContent = '94%'; clearInterval(ti2); }
+            else dp.textContent = m + '%';
+          }, 45);
+        }
+      }, 200);
+      barObserver.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+
+const catBar = document.getElementById('cat-bar');
+if (catBar) barObserver.observe(catBar.parentElement);
+</script>
+</body>
+</html>

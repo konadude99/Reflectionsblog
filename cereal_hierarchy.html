@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Secret Social Hierarchy of Breakfast Cereals</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Bricolage+Grotesque:wght@300;400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --milk:       #FFFDF5;
+    --bowl:       #1C1A2E;
+    --corn:       #F5C842;
+    --lucky:      #3DAA5C;
+    --grape:      #6B3FA0;
+    --granola:    #C27C3A;
+    --frosted:    #3A9ECC;
+    --cocoa:      #5C3317;
+    --raisin:     #8B4F8B;
+    --captain:    #E8432B;
+    --honey:      #F0A500;
+    --ink:        #1C1A2E;
+    --muted:      #7A6E8A;
+    --border:     #E0D8F0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--milk);
+    color: var(--ink);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--bowl);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-circles span {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.12;
+    animation: float 10s ease-in-out infinite alternate;
+  }
+  .hero-bg-circles span:nth-child(1) { width:500px;height:500px;background:var(--corn);top:-100px;left:-120px;animation-delay:0s; }
+  .hero-bg-circles span:nth-child(2) { width:350px;height:350px;background:var(--lucky);bottom:-60px;right:-80px;animation-delay:2s; }
+  .hero-bg-circles span:nth-child(3) { width:200px;height:200px;background:var(--frosted);top:40%;left:60%;animation-delay:4s; }
+  .hero-bg-circles span:nth-child(4) { width:150px;height:150px;background:var(--captain);top:20%;right:15%;animation-delay:1.5s; }
+
+  @keyframes float {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(-30px) scale(1.08); }
+  }
+
+  .kicker {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--corn);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(38px, 7vw, 88px);
+    font-weight: 900;
+    line-height: 1.0;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--corn);
+  }
+
+  .hero-deck {
+    font-size: clamp(16px, 2vw, 20px);
+    color: rgba(255,255,255,0.65);
+    max-width: 600px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2.5rem;
+  }
+
+  .byline {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-bowl-svg {
+    position: relative;
+    z-index: 1;
+    margin: 3rem auto 0;
+    animation: bob 4s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
+  }
+
+  /* ─── CONTENT WRAPPER ─── */
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  /* ─── INTRO ─── */
+  .intro-block {
+    margin: 4rem 0 3rem;
+    text-align: center;
+  }
+
+  .intro-block p {
+    font-size: clamp(17px, 2.2vw, 21px);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  .divider {
+    text-align: center;
+    margin: 2.5rem 0;
+    font-size: 22px;
+    letter-spacing: 0.4em;
+    color: var(--border);
+  }
+
+  /* ─── CEREAL CARD ─── */
+  .cereal-card {
+    border-radius: 20px;
+    padding: 2.5rem 2.5rem 2rem;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .cereal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  }
+
+  .card-granola  { background: linear-gradient(135deg, #FFF8ED 0%, #FDEFD8 100%); border-color: #E8C080; }
+  .card-lucky    { background: linear-gradient(135deg, #EDFFF4 0%, #D0F5E0 100%); border-color: #7AD0A0; }
+  .card-grape    { background: linear-gradient(135deg, #F5EEFF 0%, #E8D8FF 100%); border-color: #B090D8; }
+  .card-frosted  { background: linear-gradient(135deg, #EAF7FF 0%, #D0ECFF 100%); border-color: #80C4E8; }
+  .card-cocoa    { background: linear-gradient(135deg, #FFF3ED 0%, #FFE4D0 100%); border-color: #D0906A; }
+  .card-captain  { background: linear-gradient(135deg, #FFF0EE 0%, #FFE0DA 100%); border-color: #F08070; }
+  .card-raisin   { background: linear-gradient(135deg, #F8EEFF 0%, #EDD8FF 100%); border-color: #C090D8; }
+  .card-honey    { background: linear-gradient(135deg, #FFFAED 0%, #FFF0C8 100%); border-color: #E8C050; }
+  .card-corn     { background: linear-gradient(135deg, #FFFCED 0%, #FFF8D0 100%); border-color: #E0C840; }
+  .card-special  { background: linear-gradient(135deg, #F0FFF8 0%, #D8F5E8 100%); border-color: #70C8A0; }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .card-illustration {
+    flex-shrink: 0;
+  }
+
+  .card-title-block {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .social-rank {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .card-title-block h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+  }
+
+  .card-tagline {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--muted);
+    font-family: 'Fraunces', serif;
+  }
+
+  .card-body {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #3A3050;
+  }
+
+  .card-body p { margin-bottom: 1rem; }
+  .card-body p:last-child { margin-bottom: 0; }
+
+  .rap-sheet {
+    background: rgba(255,255,255,0.65);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-top: 1.25rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    border-left: 3px solid currentColor;
+  }
+
+  .rap-sheet-label {
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+  }
+
+  .rap-sheet ul { list-style: none; padding: 0; }
+  .rap-sheet ul li::before { content: "▸  "; opacity: 0.6; }
+
+  /* ─── STATUS BADGES ─── */
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 0;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    background: rgba(0,0,0,0.07);
+    color: inherit;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    text-align: center;
+    margin: 5rem 0 2rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-header p {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+    font-style: italic;
+  }
+
+  /* ─── HIERARCHY CHART ─── */
+  .hierarchy-chart {
+    background: var(--bowl);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    margin: 4rem 0;
+    color: white;
+    text-align: center;
+  }
+
+  .hierarchy-chart h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--corn);
+    margin-bottom: 2rem;
+  }
+
+  .hierarchy-tier {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+    align-items: center;
+  }
+
+  .tier-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+
+  .tier-item {
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .tier-1 .tier-item { background: var(--corn); color: var(--bowl); }
+  .tier-2 .tier-item { background: rgba(255,255,255,0.15); color: white; }
+  .tier-3 .tier-item { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+  .tier-4 .tier-item { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.45); }
+
+  .tier-arrow {
+    color: rgba(255,255,255,0.2);
+    font-size: 18px;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  /* ─── CLOSING ─── */
+  .closing {
+    background: var(--bowl);
+    color: white;
+    border-radius: 24px;
+    padding: 3.5rem 3rem;
+    margin: 4rem 0;
+    text-align: center;
+  }
+
+  .closing h3 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .closing p {
+    color: rgba(255,255,255,0.7);
+    max-width: 540px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .closing p + p { margin-top: 1rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ─── PULL QUOTE ─── */
+  .pull-quote {
+    border-left: 4px solid var(--corn);
+    padding: 1rem 1.5rem;
+    margin: 2.5rem 0;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── ANIMATE IN ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 600px) {
+    .card-header { flex-direction: column; align-items: center; text-align: center; }
+    .cereal-card { padding: 1.75rem 1.25rem; }
+    .closing { padding: 2.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<header class="hero">
+  <div class="hero-bg-circles">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <p class="kicker">An Investigative Report &nbsp;•&nbsp; Pantry Sociology</p>
+  <h1>The Secret Social Hierarchy<br>of <em>Breakfast Cereals</em></h1>
+  <p class="hero-deck">
+    An unflinching exposé of who's really running your cupboard, 
+    who's on parole, and who thinks a single Wikipedia edit 
+    makes them an intellectual.
+  </p>
+  <p class="byline">By The Bureau of Grain Intelligence &nbsp;|&nbsp; Filed at 7:43 a.m.</p>
+
+  <!-- Hero SVG: a bowl of cereal looking regal -->
+  <div class="hero-bowl-svg">
+    <svg width="260" height="180" viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bowl shadow -->
+      <ellipse cx="130" cy="168" rx="90" ry="10" fill="rgba(0,0,0,0.3)"/>
+      <!-- Bowl body -->
+      <ellipse cx="130" cy="120" rx="100" ry="48" fill="#2A2845"/>
+      <ellipse cx="130" cy="108" rx="100" ry="38" fill="#3A3660"/>
+      <!-- Milk surface -->
+      <ellipse cx="130" cy="105" rx="92" ry="32" fill="#F5F0E8"/>
+      <!-- Colorful cereal pieces floating -->
+      <!-- Lucky charm star -->
+      <polygon points="130,78 133,88 143,88 135,94 138,104 130,98 122,104 125,94 117,88 127,88" fill="#F5C842" opacity="0.9"/>
+      <!-- Cocoa puff -->
+      <circle cx="95" cy="95" r="9" fill="#7B4520"/>
+      <circle cx="95" cy="95" r="6" fill="#9B5C30"/>
+      <!-- Frosted flake shape -->
+      <polygon points="155,82 162,92 155,102 148,92" fill="#3A9ECC" opacity="0.9"/>
+      <polygon points="150,87 165,87" stroke="#fff" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <polygon points="155,82 155,102" stroke="#fff" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <!-- Lucky charm heart -->
+      <path d="M115,88 Q115,84 119,84 Q123,84 123,88 Q123,92 115,97 Q107,92 107,88 Q107,84 111,84 Q115,84 115,88Z" fill="#E8432B" opacity="0.85"/>
+      <!-- Granola cluster -->
+      <circle cx="158" cy="110" r="7" fill="#C27C3A"/>
+      <circle cx="165" cy="107" r="5" fill="#A86030"/>
+      <circle cx="162" cy="115" r="4" fill="#D49050"/>
+      <!-- Corn flake wavy shape -->
+      <path d="M100,112 Q108,105 116,112 Q108,119 100,112Z" fill="#F0B820"/>
+      <!-- Crown on top -->
+      <g transform="translate(108, 52)">
+        <polygon points="22,0 22,20 0,20 0,0 5,10 11,2 17,10" fill="#F5C842" opacity="0.95"/>
+        <rect x="0" y="20" width="22" height="4" fill="#E8B010" rx="2"/>
+      </g>
+      <!-- Bowl rim -->
+      <ellipse cx="130" cy="74" rx="100" ry="18" fill="none" stroke="#4A4870" stroke-width="3"/>
+      <!-- Bowl base -->
+      <rect x="100" y="148" width="60" height="12" rx="6" fill="#2A2845"/>
+      <rect x="90" y="156" width="80" height="8" rx="4" fill="#222040"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ═══════════════════════ CONTENT ═══════════════════════ -->
+<main class="content">
+
+  <div class="intro-block fade-in">
+    <p>Every morning, millions of Americans open their cabinets and choose a cereal without understanding the profound sociological implications of that choice. We have sent correspondents into the darkest corners of the pantry shelf. What they found will unsettle you, amuse you, and make you deeply suspicious of Grape-Nuts.</p>
+  </div>
+
+  <div class="divider">⬥ ⬦ ⬥</div>
+
+  <!-- ─── HIERARCHY CHART ─── -->
+  <div class="hierarchy-chart fade-in">
+    <h3>The Official Cereal Class Structure</h3>
+    <div class="hierarchy-tier tier-1">
+      <div class="tier-label">Landed Gentry</div>
+      <span class="tier-item">Grape-Nuts</span>
+      <span class="tier-item">Raisin Bran</span>
+    </div>
+    <div class="tier-arrow">▼</div>
+    <div class="hierarchy-tier tier-2">
+      <div class="tier-label">The Academic Class</div>
+      <span class="tier-item">Granola</span>
+      <span class="tier-item">Special K</span>
+      <span class="tier-item">Muesli</span>
+    </div>
+    <div class="tier-arrow">▼</div>
+    <div class="hierarchy-tier tier-3">
+      <div class="tier-label">Respectable Working Class</div>
+      <span class="tier-item">Corn Flakes</span>
+      <span class="tier-item">Cheerios</span>
+      <span class="tier-item">Honey Bunches of Oats</span>
+      <span class="tier-item">Frosted Mini-Wheats</span>
+    </div>
+    <div class="tier-arrow">▼</div>
+    <div class="hierarchy-tier tier-4">
+      <div class="tier-label">On Parole / Under Investigation</div>
+      <span class="tier-item">Lucky Charms</span>
+      <span class="tier-item">Cap'n Crunch</span>
+      <span class="tier-item">Cocoa Puffs</span>
+      <span class="tier-item">Froot Loops</span>
+    </div>
+  </div>
+
+  <div class="section-header fade-in">
+    <h2>The Full Dossiers</h2>
+    <p>Classified files on every major player in the cereal power structure.</p>
+  </div>
+
+  <!-- ─── GRANOLA ─── -->
+  <article class="cereal-card card-granola fade-in">
+    <div class="card-header">
+      <div class="card-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Mortar board / graduation hat -->
+          <rect x="30" y="38" width="40" height="6" rx="2" fill="#8B5A2B"/>
+          <polygon points="50,22 75,38 50,46 25,38" fill="#6B4020"/>
+          <line x1="72" y1="38" x2="72" y2="55" stroke="#6B4020" stroke-width="2"/>
+          <circle cx="72" cy="57" r="4" fill="#F5C842"/>
+          <!-- Granola cluster body -->
+          <circle cx="38" cy="70" r="13" fill="#C27C3A"/>
+          <circle cx="52" cy="68" r="10" fill="#A86030"/>
+          <circle cx="44" cy="78" r="8" fill="#D49050"/>
+          <circle cx="60" cy="74" r="9" fill="#B07040"/>
+          <!-- Oat bits -->
+          <circle cx="36" cy="66" r="3" fill="#E8B060"/>
+          <circle cx="50" cy="62" r="3" fill="#E8B060"/>
+          <circle cx="58" cy="70" r="2.5" fill="#E8B060"/>
+          <circle cx="42" cy="82" r="2.5" fill="#E8B060"/>
+          <!-- Reading glasses on the cluster -->
+          <circle cx="40" cy="70" r="5" fill="none" stroke="#5A3820" stroke-width="1.5"/>
+          <circle cx="52" cy="70" r="5" fill="none" stroke="#5A3820" stroke-width="1.5"/>
+          <line x1="45" y1="70" x2="47" y2="70" stroke="#5A3820" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="card-title-block">
+        <div class="social-rank">Tier II &nbsp;•&nbsp; The Academic Class</div>
+        <h2 style="color:#8B4A10;">Granola</h2>
+        <p class="card-tagline">"Did I mention I went to grad school?"</p>
+        <div class="badge-row">
+          <span class="badge">ABD (All But Dissertation)</span>
+          <span class="badge">Reusable Tote Owner</span>
+          <span class="badge">Podcast Host, Unpublished</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Granola did not, technically, finish its dissertation. This is a topic you should avoid at brunch, at farmers' markets, and especially in the bulk foods aisle, where Granola will trap you for forty-five minutes explaining why "the academy failed it." The thesis was on Foucauldian power structures in pre-industrial grain harvesting. The committee "just wasn't ready."</p>
+      <p>Granola has a strong opinion about your coffee, your news source, your yoga mat brand, and the particular species of blueberry you chose to mix with it. All opinions are delivered with the serene confidence of someone who once audited a philosophy seminar and retained nothing except the smug.</p>
+      <p>Notably, Granola refers to itself as a "craft" cereal and will correct you if you call it "just trail mix." It is not just trail mix. It went to grad school.</p>
+    </div>
+    <div class="rap-sheet" style="color:#8B4A10;">
+      <div class="rap-sheet-label">Known Associations &amp; Activities</div>
+      <ul>
+        <li>Has a Substack about "conscious snacking" (12 subscribers, all from the dissertation cohort)</li>
+        <li>Once argued with a barista about oat milk for 22 consecutive minutes</li>
+        <li>Quotes David Foster Wallace ironically but also sincerely</li>
+        <li>Insists on being called "Artisanal Granola" in formal settings</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ─── LUCKY CHARMS ─── -->
+  <article class="cereal-card card-lucky fade-in">
+    <div class="card-header">
+      <div class="card-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Wanted poster vibes - little mug shot frame -->
+          <rect x="20" y="15" width="60" height="70" rx="4" fill="#fff" stroke="#2A8A50" stroke-width="2.5"/>
+          <!-- Mug shot label -->
+          <rect x="20" y="75" width="60" height="10" rx="0" fill="#2A8A50"/>
+          <text x="50" y="83" text-anchor="middle" font-family="monospace" font-size="7" fill="white">BOOKING #47B</text>
+          <!-- Lucky charms character: a green hat with marshmallow shapes -->
+          <path d="M38,50 Q38,25 50,25 Q62,25 62,50Z" fill="#228B42"/>
+          <rect x="33" y="50" width="34" height="8" rx="3" fill="#1A6A30"/>
+          <rect x="41" y="42" width="18" height="5" rx="2" fill="#F5C842"/>
+          <!-- Marshmallow shapes floating -->
+          <!-- Star -->
+          <polygon points="50,32 52,38 58,38 53,42 55,48 50,44 45,48 47,42 42,38 48,38" fill="#F5C842" transform="scale(0.6) translate(33,18)"/>
+          <!-- Heart -->
+          <path d="M76,30 Q76,27 79,27 Q82,27 82,30 Q82,33 76,37 Q70,33 70,30 Q70,27 73,27 Q76,27 76,30Z" fill="#E8432B" opacity="0.9"/>
+          <!-- Rainbow arc -->
+          <path d="M22,72 Q50,45 78,72" fill="none" stroke="#E8432B" stroke-width="2" opacity="0.4"/>
+          <path d="M25,72 Q50,50 75,72" fill="none" stroke="#F5C842" stroke-width="2" opacity="0.4"/>
+          <path d="M28,72 Q50,55 72,72" fill="none" stroke="#3DAA5C" stroke-width="2" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="card-title-block">
+        <div class="social-rank">Tier IV &nbsp;•&nbsp; Currently on Parole</div>
+        <h2 style="color:#1A7A40;">Lucky Charms</h2>
+        <p class="card-tagline">"The marshmallows are purely decorative. I am not buying."</p>
+        <div class="badge-row">
+          <span class="badge">3 Prior Offenses</span>
+          <span class="badge">Charm Trafficking</span>
+          <span class="badge">Magically Delicious (disputed)</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Lucky Charms has a record. We're not going to say what it is exactly, because Lucky Charms' lawyer (a very small and excitable Leprechaun named Gerald) has sent us a strongly worded cease-and-desist. What we <em>can</em> say is that the marshmallow-to-oat ratio discrepancy of 2019 "just happened," the rainbow was not a getaway device, and the horseshoe was entirely coincidental.</p>
+      <p>Lucky Charms operates in what law enforcement calls "the charm economy" — a shadow market of shooting stars, blue moons, and red balloons whose street value fluctuates wildly among the under-8 demographic. The FBI has opened a file. The file is shaped like a clover.</p>
+      <p>Lucky Charms is currently completing 200 hours of community service, which involves appearing in cereal commercials. This is, somehow, part of the plea deal.</p>
+    </div>
+    <div class="rap-sheet" style="color:#1A7A40;">
+      <div class="rap-sheet-label">Criminal Rap Sheet</div>
+      <ul>
+        <li>Count 1: Grand larceny of children's attention spans (2009–present)</li>
+        <li>Count 2: Operating a marshmallow distribution ring without a license</li>
+        <li>Count 3: False advertising — nobody has ever proven it is lucky</li>
+        <li>Currently on parole; must check in with Snap, Crackle, and Pop weekly</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ─── GRAPE-NUTS ─── -->
+  <article class="cereal-card card-grape fade-in">
+    <div class="card-header">
+      <div class="card-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Property deed / house -->
+          <rect x="22" y="20" width="56" height="65" rx="4" fill="#EDE0FF" stroke="#7B50C0" stroke-width="2"/>
+          <polygon points="50,10 22,28 78,28" fill="#7B50C0"/>
+          <!-- Windows -->
+          <rect x="30" y="40" width="14" height="14" rx="2" fill="#B090E0"/>
+          <rect x="56" y="40" width="14" height="14" rx="2" fill="#B090E0"/>
+          <!-- Door -->
+          <rect x="40" y="62" width="20" height="23" rx="2" fill="#6B3FA0"/>
+          <circle cx="57" cy="74" r="2" fill="#F5C842"/>
+          <!-- "SOLD" stamp diagonal -->
+          <g transform="translate(50,50) rotate(-20)">
+            <rect x="-18" y="-8" width="36" height="16" rx="3" fill="#E8432B" opacity="0.85"/>
+            <text x="0" y="5" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="white">SOLD</text>
+          </g>
+          <!-- Little grape-nut pebbles -->
+          <circle cx="18" cy="85" r="4" fill="#7B50C0"/>
+          <circle cx="27" cy="88" r="3.5" fill="#6B3FA0"/>
+          <circle cx="73" cy="85" r="4" fill="#7B50C0"/>
+          <circle cx="82" cy="88" r="3.5" fill="#6B3FA0"/>
+        </svg>
+      </div>
+      <div class="card-title-block">
+        <div class="social-rank">Tier I &nbsp;•&nbsp; Landed Gentry</div>
+        <h2 style="color:#5A2FA0;">Grape-Nuts</h2>
+        <p class="card-tagline">"The property is in a trust. Several trusts."</p>
+        <div class="badge-row">
+          <span class="badge">Landlord</span>
+          <span class="badge">Contains No Grapes</span>
+          <span class="badge">Contains No Nuts</span>
+          <span class="badge">Old Money</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Grape-Nuts owns property. Not just a little property. Grape-Nuts owns the building that Corn Flakes lives in, three vacation homes in New England, a timeshare it pretends not to have, and a worrying amount of farmland in states it has never visited. Grape-Nuts does not explain how it acquired these assets. This is considered rude to ask.</p>
+      <p>The name "Grape-Nuts" contains neither grapes nor nuts, which is exactly the kind of mystifying brand opacity that old money families have relied on for generations. Grape-Nuts did not get rich by being understood. It got rich by being confusing and reliable and vaguely associated with health in the 1890s when the bar for "health food" was "contains no active cholera."</p>
+      <p>Grape-Nuts has strong opinions about estate planning, compound interest, and "the kind of people" who eat cereal with added sugar. It will not elaborate on who those people are. It doesn't have to.</p>
+    </div>
+    <div class="rap-sheet" style="color:#5A2FA0;">
+      <div class="rap-sheet-label">Holdings &amp; Interests</div>
+      <ul>
+        <li>Fourteen rental units; raises rent annually "due to market conditions"</li>
+        <li>Founding member of the Pantry Shelf Homeowners Association</li>
+        <li>Has sent 3 strongly worded letters to Froot Loops about the noise</li>
+        <li>Net worth: unknowable, which is exactly how Grape-Nuts likes it</li>
+      </ul>
+    </div>
+  </article>
+
+  <div class="pull-quote fade-in">
+    "Cap'n Crunch is not, legally speaking, a captain. The maritime authority has been notified. No one has done anything about it."
+  </div>
+
+  <!-- ─── CAP'N CRUNCH ─── -->
+  <article class="cereal-card card-captain fade-in">
+    <div class="card-header">
+      <div class="card-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Captain hat -->
+          <rect x="28" y="45" width="44" height="10" rx="5" fill="#1A3A8A"/>
+          <path d="M35,45 Q50,20 65,45Z" fill="#1A3A8A"/>
+          <!-- Hat badge -->
+          <rect x="44" y="26" width="12" height="8" rx="2" fill="#F5C842"/>
+          <circle cx="50" cy="30" r="3" fill="#1A3A8A"/>
+          <!-- Monocle / eye situation -->
+          <circle cx="42" cy="62" r="7" fill="none" stroke="#F5C842" stroke-width="2"/>
+          <circle cx="42" cy="62" r="3" fill="#1A3A8A"/>
+          <line x1="49" y1="62" x2="53" y2="62" stroke="#F5C842" stroke-width="1.5"/>
+          <circle cx="58" cy="62" r="7" fill="none" stroke="#1A3A8A" stroke-width="1.5"/>
+          <circle cx="58" cy="62" r="3" fill="#1A3A8A"/>
+          <!-- Mustache -->
+          <path d="M40,72 Q50,68 60,72" fill="none" stroke="#F5C842" stroke-width="3" stroke-linecap="round"/>
+          <!-- Rank indicator: crossed out captain's bars -->
+          <line x1="70" y1="30" x2="85" y2="45" stroke="#E8432B" stroke-width="3"/>
+          <line x1="85" y1="30" x2="70" y2="45" stroke="#E8432B" stroke-width="3"/>
+          <text x="77" y="55" text-anchor="middle" font-family="monospace" font-size="8" fill="#E8432B">FAKE</text>
+          <!-- Cereal pieces -->
+          <rect x="15" y="78" width="12" height="12" rx="3" fill="#E8A020" transform="rotate(15,21,84)"/>
+          <rect x="73" y="78" width="12" height="12" rx="3" fill="#E8A020" transform="rotate(-10,79,84)"/>
+        </svg>
+      </div>
+      <div class="card-title-block">
+        <div class="social-rank">Tier IV &nbsp;•&nbsp; Suspected Fraud</div>
+        <h2 style="color:#C03020;">Cap'n Crunch</h2>
+        <p class="card-tagline">"I am absolutely a captain. Please don't look that up."</p>
+        <div class="badge-row">
+          <span class="badge">Rank Disputed</span>
+          <span class="badge">Roof of Mouth Hazard</span>
+          <span class="badge">Crunch Berries (Unexplained)</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Cap'n Crunch is not a captain. The U.S. Navy has confirmed this. The U.S. Coast Guard has confirmed this. The International Maritime Organization has confirmed this. Cap'n Crunch's response to all confirmation is to simply point to the hat, which does have a lot of gold on it, so people just... go along with it.</p>
+      <p>Cap'n Crunch is, however, a first-rate grifter. The cereal has spent decades convincing the American public that lacerating the roof of their mouth is simply the price of deliciousness, rather than what it technically is, which is a design failure. Crunch berries have never been explained. They are not a berry. They are not a crunch. They are simply There, and we have all agreed to accept them.</p>
+      <p>Naval authorities suspect Cap'n Crunch's actual rank is closer to "Ensign," but nobody wants to get into it at breakfast.</p>
+    </div>
+    <div class="rap-sheet" style="color:#C03020;">
+      <div class="rap-sheet-label">Violations on Record</div>
+      <ul>
+        <li>Impersonating a naval officer (ongoing, since 1963)</li>
+        <li>Intentional roof-of-mouth destruction — Class B misdemeanor</li>
+        <li>"Oops! All Berries" edition viewed as a confession; case pending</li>
+        <li>The ship is not real. We are choosing not to press charges on the ship.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ─── FROSTED FLAKES ─── -->
+  <article class="cereal-card card-frosted fade-in">
+    <div class="card-header">
+      <div class="card-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tiger head (Tony) made of geometric shapes -->
+          <!-- Orange body/head -->
+          <circle cx="50" cy="55" r="32" fill="#F5841A"/>
+          <!-- Ear left -->
+          <polygon points="22,30 32,18 38,35" fill="#F5841A"/>
+          <polygon points="26,30 32,22 36,33" fill="#FFB060"/>
+          <!-- Ear right -->
+          <polygon points="78,30 68,18 62,35" fill="#F5841A"/>
+          <polygon points="74,30 68,22 64,33" fill="#FFB060"/>
+          <!-- Face -->
+          <circle cx="50" cy="52" r="22" fill="#FFD09A"/>
+          <!-- Eyes -->
+          <circle cx="42" cy="46" r="5" fill="white"/>
+          <circle cx="58" cy="46" r="5" fill="white"/>
+          <circle cx="43" cy="47" r="3" fill="#1A3A8A"/>
+          <circle cx="59" cy="47" r="3" fill="#1A3A8A"/>
+          <!-- Stripes -->
+          <path d="M22,45 Q28,50 22,55" fill="none" stroke="#C05000" stroke-width="2.5"/>
+          <path d="M78,45 Q72,50 78,55" fill="none" stroke="#C05000" stroke-width="2.5"/>
+          <!-- Nose -->
+          <ellipse cx="50" cy="57" rx="4" ry="3" fill="#C05000"/>
+          <!-- Mouth / smile -->
+          <path d="M43,63 Q50,69 57,63" fill="none" stroke="#C05000" stroke-width="2" stroke-linecap="round"/>
+          <!-- Whiskers -->
+          <line x1="30" y1="58" x2="44" y2="59" stroke="#8B5A20" stroke-width="1" opacity="0.7"/>
+          <line x1="30" y1="63" x2="44" y2="62" stroke="#8B5A20" stroke-width="1" opacity="0.7"/>
+          <line x1="56" y1="59" x2="70" y2="58" stroke="#8B5A20" stroke-width="1" opacity="0.7"/>
+          <line x1="56" y1="62" x2="70" y2="63" stroke="#8B5A20" stroke-width="1" opacity="0.7"/>
+          <!-- Life coach badge -->
+          <rect x="38" y="15" width="24" height="10" rx="5" fill="#F5C842"/>
+          <text x="50" y="23" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#5A3A00">COACH</text>
+        </svg>
+      </div>
+      <div class="card-title-block">
+        <div class="social-rank">Tier III &nbsp;•&nbsp; Respectable / Motivational Speaker</div>
+        <h2 style="color:#1A5A9A;">Frosted Flakes</h2>
+        <p class="card-tagline">"THEY'RE GRRR-EAT! (Tony is contractually obligated to say this.)"</p>
+        <div class="badge-row">
+          <span class="badge">Life Coach Adjacent</span>
+          <span class="badge">Corn Flakes in a Suit</span>
+          <span class="badge">Tony Has a Tiger Problem</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Frosted Flakes is, at its core, a Corn Flake that made different choices. Specifically, the choice to coat itself in sugar and hire a tiger named Tony to provide around-the-clock motivational support. This is, when you think about it, either the smartest business decision in cereal history or a cry for help. Possibly both.</p>
+      <p>Tony the Tiger is not doing great. He's been enthusiastic about everything for over seventy years. Everything is GRRR-EAT. Rain? GRRR-EAT. Mondays? GRRR-EAT. Existential malaise? GRRR-EAT. His therapist (a golden retriever named Dr. Biscuit) is very concerned.</p>
+      <p>Frosted Flakes positions itself as aspirational — athletic kids, soccer goals, optimism — while being legally distinct from "health food" by a margin of about 37 grams of sugar per serving. Tony has been asked not to look at the nutrition label.</p>
+    </div>
+    <div class="rap-sheet" style="color:#1A5A9A;">
+      <div class="rap-sheet-label">Tony's Incident Log</div>
+      <ul>
+        <li>Said "GRRR-EAT" 847,000 times in 2024 alone; may be a cry for help</li>
+        <li>Once tried to unionize; the bowl said no</li>
+        <li>Holds the world record for "most aggressively positive entity in the grocery aisle"</li>
+        <li>Has never, in 70 years, been asked how HE is doing</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ─── COCOA PUFFS ─── -->
+  <article class="cereal-card card-cocoa fade-in">
+    <div class="card-header">
+      <div class="card-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cuckoo bird (Sonny) in distress -->
+          <!-- Body -->
+          <ellipse cx="50" cy="65" rx="18" ry="20" fill="#8B4513"/>
+          <!-- Wings up in chaos -->
+          <path d="M32,58 Q20,40 28,50" fill="#7B3A10" stroke="#5A2A08" stroke-width="1"/>
+          <path d="M68,58 Q80,40 72,50" fill="#7B3A10" stroke="#5A2A08" stroke-width="1"/>
+          <!-- Head -->
+          <circle cx="50" cy="42" r="15" fill="#9B5523"/>
+          <!-- Crest/tuft on head - spiraling in mania -->
+          <path d="M50,27 Q45,18 50,15 Q55,12 52,20" fill="#C07030" stroke="#8B4010" stroke-width="1"/>
+          <path d="M50,27 Q55,16 58,17 Q62,18 56,23" fill="#C07030" stroke="#8B4010" stroke-width="1"/>
+          <!-- Spiral eyes (going crazy) -->
+          <circle cx="44" cy="40" r="6" fill="white"/>
+          <path d="M44,40 Q42,38 44,36 Q46,34 46,38 Q46,40 44,40Z" fill="#5A2A08" opacity="0.8"/>
+          <circle cx="56" cy="40" r="6" fill="white"/>
+          <path d="M56,40 Q54,38 56,36 Q58,34 58,38 Q58,40 56,40Z" fill="#5A2A08" opacity="0.8"/>
+          <!-- Beak open -->
+          <path d="M47,48 Q50,52 53,48" fill="#E8A020"/>
+          <!-- Floating cocoa puffs -->
+          <circle cx="18" cy="30" r="6" fill="#7B4520" opacity="0.9"/>
+          <circle cx="28" cy="20" r="5" fill="#9B5530" opacity="0.85"/>
+          <circle cx="72" cy="20" r="6" fill="#7B4520" opacity="0.9"/>
+          <circle cx="82" cy="30" r="5" fill="#9B5530" opacity="0.85"/>
+          <!-- Cuckoo exclamation -->
+          <text x="50" y="92" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#8B4513">CUCKOO!!!</text>
+        </svg>
+      </div>
+      <div class="card-title-block">
+        <div class="social-rank">Tier IV &nbsp;•&nbsp; Clinical Case Study</div>
+        <h2 style="color:#7B3A10;">Cocoa Puffs</h2>
+        <p class="card-tagline">"I am FINE. Sonny is FINE. Everything is FINE. CUCKOO."</p>
+        <div class="badge-row">
+          <span class="badge">Self-Admitted Addict</span>
+          <span class="badge">Voluntary Cuckoo</span>
+          <span class="badge">Intervention Pending</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Cocoa Puffs is unique among cereals in that it is the only brand that has publicly, proudly, and legally confessed to an addiction problem in its own advertising for sixty years. Sonny the Cuckoo Bird goes cuckoo <em>for</em> Cocoa Puffs. This is in the slogan. The company has done this on purpose.</p>
+      <p>Multiple interventions have been staged. Sonny returns to the Cocoa Puffs every single time. His family (a collection of sensible whole-grain cereals) has set boundaries. The boundaries have not worked. Sonny will not be contained. Sonny is, in a clinical sense, the most honest mascot in food advertising history, because at least he admits what he is.</p>
+      <p>On the social hierarchy, Cocoa Puffs occupies a complicated position: simultaneously sympathetic (it's honest!) and alarming (it's <em>so</em> honest). Grape-Nuts has written to the HOA about it. Granola wrote a lengthy thread about the "systemic pathologizing of sugar dependency." Nobody read past the first paragraph.</p>
+    </div>
+    <div class="rap-sheet" style="color:#7B3A10;">
+      <div class="rap-sheet-label">Intervention Notes</div>
+      <ul>
+        <li>Intervention #1 (1963): Failed. Sonny ate Cocoa Puffs during the intervention.</li>
+        <li>Intervention #2–47: See above</li>
+        <li>Has attended "Going Nuts for Oats" support group; relapsed at the parking lot vending machine</li>
+        <li>Is somehow doing fine; this baffles medical science</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ─── RAISIN BRAN ─── -->
+  <article class="cereal-card card-raisin fade-in">
+    <div class="card-header">
+      <div class="card-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Two suns (the two scoops!) -->
+          <!-- Sun 1 -->
+          <circle cx="35" cy="40" r="14" fill="#F5C842" opacity="0.95"/>
+          <g opacity="0.8">
+            <line x1="35" y1="22" x2="35" y2="16" stroke="#F5C842" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="35" y1="58" x2="35" y2="64" stroke="#F5C842" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="17" y1="40" x2="11" y2="40" stroke="#F5C842" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="53" y1="40" x2="59" y2="40" stroke="#F5C842" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="22" y1="27" x2="18" y2="23" stroke="#F5C842" stroke-width="2" stroke-linecap="round"/>
+            <line x1="48" y1="53" x2="52" y2="57" stroke="#F5C842" stroke-width="2" stroke-linecap="round"/>
+            <line x1="48" y1="27" x2="52" y2="23" stroke="#F5C842" stroke-width="2" stroke-linecap="round"/>
+            <line x1="22" y1="53" x2="18" y2="57" stroke="#F5C842" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <!-- Grumpy face on sun 1 -->
+          <line x1="29" y1="36" x2="33" y2="38" stroke="#8B6000" stroke-width="2" stroke-linecap="round"/>
+          <line x1="37" y1="38" x2="41" y2="36" stroke="#8B6000" stroke-width="2" stroke-linecap="round"/>
+          <path d="M29,45 Q35,42 41,45" fill="none" stroke="#8B6000" stroke-width="2" stroke-linecap="round"/>
+          <!-- Sun 2 -->
+          <circle cx="65" cy="40" r="14" fill="#F0A500" opacity="0.95"/>
+          <g opacity="0.8">
+            <line x1="65" y1="22" x2="65" y2="16" stroke="#F0A500" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="65" y1="58" x2="65" y2="64" stroke="#F0A500" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="47" y1="40" x2="41" y2="40" stroke="#F0A500" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="83" y1="40" x2="89" y2="40" stroke="#F0A500" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+          <!-- Also grumpy face on sun 2 -->
+          <line x1="59" y1="36" x2="63" y2="38" stroke="#8B5000" stroke-width="2" stroke-linecap="round"/>
+          <line x1="67" y1="38" x2="71" y2="36" stroke="#8B5000" stroke-width="2" stroke-linecap="round"/>
+          <path d="M59,45 Q65,42 71,45" fill="none" stroke="#8B5000" stroke-width="2" stroke-linecap="round"/>
+          <!-- Raisins at bottom -->
+          <circle cx="30" cy="80" r="7" fill="#6B2A8B" opacity="0.9"/>
+          <circle cx="45" cy="83" r="6" fill="#5A2078" opacity="0.9"/>
+          <circle cx="60" cy="80" r="7" fill="#6B2A8B" opacity="0.9"/>
+          <circle cx="73" cy="83" r="6" fill="#5A2078" opacity="0.9"/>
+          <text x="50" y="95" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#6B2A8B" font-weight="bold">TWO SCOOPS™</text>
+        </svg>
+      </div>
+      <div class="card-title-block">
+        <div class="social-rank">Tier I &nbsp;•&nbsp; Landed Gentry (Grumpy Branch)</div>
+        <h2 style="color:#5A2A8A;">Raisin Bran</h2>
+        <p class="card-tagline">"TWO SCOOPS. I said TWO SCOOPS. Write it down."</p>
+        <div class="badge-row">
+          <span class="badge">Two Scoops (Non-Negotiable)</span>
+          <span class="badge">Fiber Oligarch</span>
+          <span class="badge">Both Suns Are Frowning</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Raisin Bran has two suns on its box. Both suns are frowning. This is either the most honest piece of branding in American commercial history or a profound cry for help from whichever graphic designer was assigned to this account in 1926 and never recovered.</p>
+      <p>Raisin Bran does not ask for your affection. It does not offer charm, magically delicious marshmallows, or a friendly tiger. It offers TWO SCOOPS of raisins and the implicit threat that if you do not eat your fiber, consequences will follow. What consequences? Raisin Bran will not say. It doesn't need to. The two frowning suns are enough.</p>
+      <p>In the cereal hierarchy, Raisin Bran sits near the top through sheer gravitas and the implied virtue of regularity. Doctors mention it approvingly. This is Raisin Bran's entire personality. It has no others.</p>
+    </div>
+    <div class="rap-sheet" style="color:#5A2A8A;">
+      <div class="rap-sheet-label">Property of Raisin Bran, LLC</div>
+      <ul>
+        <li>Has counted the raisins in every box since 1926; results classified</li>
+        <li>Filed a lawsuit against a competitor for claiming 1.5 scoops (settled out of court)</li>
+        <li>The suns have not smiled since the Carter administration; reason unknown</li>
+        <li>Grape-Nuts considers Raisin Bran "new money"; Raisin Bran is livid</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ─── HONEY BUNCHES OF OATS ─── -->
+  <article class="cereal-card card-honey fade-in">
+    <div class="card-header">
+      <div class="card-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- A friendly "everyman" cereal -->
+          <!-- Honeycomb background hexagons -->
+          <polygon points="50,10 62,17 62,31 50,38 38,31 38,17" fill="#F5C842" opacity="0.3"/>
+          <polygon points="28,24 40,31 40,45 28,52 16,45 16,31" fill="#F5C842" opacity="0.2"/>
+          <polygon points="72,24 84,31 84,45 72,52 60,45 60,31" fill="#F5C842" opacity="0.2"/>
+          <!-- Big smiling cereal person -->
+          <circle cx="50" cy="55" r="28" fill="#F0A500"/>
+          <circle cx="50" cy="52" r="22" fill="#F5C842"/>
+          <!-- Happy normal face -->
+          <circle cx="42" cy="47" r="4" fill="#5A3A00"/>
+          <circle cx="58" cy="47" r="4" fill="#5A3A00"/>
+          <!-- Normal smile — not manic, not grumpy. Just nice. -->
+          <path d="M40,60 Q50,68 60,60" fill="none" stroke="#5A3A00" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Oat clusters on the body -->
+          <circle cx="36" cy="66" r="5" fill="#C07820"/>
+          <circle cx="42" cy="72" r="4" fill="#A86010"/>
+          <circle cx="64" cy="66" r="5" fill="#C07820"/>
+          <circle cx="58" cy="72" r="4" fill="#A86010"/>
+          <!-- Friendly wave arm -->
+          <path d="M78,50 Q88,38 84,30" fill="none" stroke="#F0A500" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="83" cy="28" r="5" fill="#F0A500"/>
+          <!-- Regular guy hat -->
+          <rect x="35" y="20" width="30" height="5" rx="2.5" fill="#A86010"/>
+          <rect x="40" y="11" width="20" height="12" rx="3" fill="#C07820"/>
+        </svg>
+      </div>
+      <div class="card-title-block">
+        <div class="social-rank">Tier III &nbsp;•&nbsp; Salt of the Earth</div>
+        <h2 style="color:#A06010;">Honey Bunches of Oats</h2>
+        <p class="card-tagline">"Just happy to be here, honestly."</p>
+        <div class="badge-row">
+          <span class="badge">Actually Nice</span>
+          <span class="badge">No Agenda</span>
+          <span class="badge">Everyone's Second Favorite</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Honey Bunches of Oats is the only cereal in the hierarchy without a criminal record, a trust fund, an unfinished dissertation, an addiction, or a grandiose mascot. It is simply nice. It has little honey clusters. They are crunchy. It is good with milk, good without milk, good as a snack, good as dinner when you are too tired to cook. No judgment.</p>
+      <p>In a class system defined by pretension, criminality, and old money resentment, Honey Bunches of Oats floats through with calm, cheerful indifference to the drama. Granola has tried to recruit it into the Academic Class. Lucky Charms once attempted to involve it in a scheme. Grape-Nuts has sent three invitations to the HOA. Honey Bunches of Oats has politely declined all of them and gone back to being reliably pleasant.</p>
+      <p>It is, in a word, fine. Wonderfully, beautifully, uncomplicated fine. In a world of screaming cereals, fine is underrated.</p>
+    </div>
+    <div class="rap-sheet" style="color:#A06010;">
+      <div class="rap-sheet-label">Record &amp; Reputation</div>
+      <ul>
+        <li>Zero criminal offenses; verified by three background checks</li>
+        <li>Has been everyone's backup cereal at least once; considers this an honor</li>
+        <li>Once referred to as "the Switzerland of the cereal aisle" — not offended</li>
+        <li>Has a good relationship with both Cheerios AND Special K, which is remarkable</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ─── CORN FLAKES ─── -->
+  <article class="cereal-card card-corn fade-in">
+    <div class="card-header">
+      <div class="card-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- The OG. A rooster. Very serious. -->
+          <!-- Rooster body -->
+          <ellipse cx="50" cy="70" rx="20" ry="22" fill="#E8A820"/>
+          <!-- Tail feathers -->
+          <path d="M70,65 Q85,55 80,45 Q75,55 72,58Z" fill="#C08010"/>
+          <path d="M68,70 Q85,68 82,58 Q76,65 72,67Z" fill="#D09820"/>
+          <!-- Wing -->
+          <path d="M30,65 Q20,55 25,45 Q30,55 35,60Z" fill="#C08010"/>
+          <!-- Neck and head -->
+          <ellipse cx="42" cy="48" rx="13" ry="16" fill="#E8A820"/>
+          <!-- Comb -->
+          <path d="M35,32 Q33,22 37,20 Q40,25 39,30Z" fill="#E8432B"/>
+          <path d="M39,30 Q37,20 41,18 Q44,23 43,28Z" fill="#E8432B"/>
+          <path d="M43,28 Q41,18 45,16 Q48,21 47,26Z" fill="#E8432B"/>
+          <!-- Wattle -->
+          <path d="M38,46 Q34,50 36,55 Q40,52 40,48Z" fill="#E8432B"/>
+          <!-- Eye -->
+          <circle cx="44" cy="42" r="4" fill="white"/>
+          <circle cx="45" cy="42" r="2.5" fill="#1A1A1A"/>
+          <!-- Beak -->
+          <path d="M35,48 Q30,50 33,53 Q37,52 37,49Z" fill="#E8C020"/>
+          <!-- Original. Since 1906. text -->
+          <rect x="10" y="88" width="80" height="10" rx="3" fill="#C08010"/>
+          <text x="50" y="96" text-anchor="middle" font-family="serif" font-size="7.5" fill="white" font-weight="bold">ORIGINAL · SINCE 1906</text>
+        </svg>
+      </div>
+      <div class="card-title-block">
+        <div class="social-rank">Tier III &nbsp;•&nbsp; The Stoic Ancestor</div>
+        <h2 style="color:#8A6200;">Corn Flakes</h2>
+        <p class="card-tagline">"I was here first. All of this is my fault."</p>
+        <div class="badge-row">
+          <span class="badge">Since 1906</span>
+          <span class="badge">The Original</span>
+          <span class="badge">Deep Regret</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Corn Flakes invented breakfast cereal, and it has had complicated feelings about it ever since. It is 1906. John Harvey Kellogg is very confident. Corn Flakes is born into a world that does not yet have Lucky Charms, Cap'n Crunch, or Froot Loops. It could not have known. No one could have known.</p>
+      <p>Corn Flakes now watches the cereal aisle — the sugar, the mascots, the marshmallows, the fake captains — with the weary resignation of a Founding Father who has read the comments section. "I did not intend for all of this," says the rooster on the box, silently, with his eyes. "I simply wanted people to eat something in the morning."</p>
+      <p>In the hierarchy, Corn Flakes holds a position of ancestral respect. It is not flashy. It does not advertise. The rooster has been through things. The rooster has seen things. Leave the rooster alone.</p>
+    </div>
+    <div class="rap-sheet" style="color:#8A6200;">
+      <div class="rap-sheet-label">Historical Record</div>
+      <ul>
+        <li>Responsible, indirectly, for all of this. Has not forgiven itself.</li>
+        <li>Once tried to get Froot Loops expelled from the shelf; failed</li>
+        <li>The rooster does not have a name; this is intentional and says everything</li>
+        <li>Holds a grudge against Frosted Flakes: "It's just me, but worse" (accurate)</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ─── SPECIAL K ─── -->
+  <article class="cereal-card card-special fade-in">
+    <div class="card-header">
+      <div class="card-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Special K: HR energy, wellness culture -->
+          <!-- Person with measuring tape (the diet culture cereal) -->
+          <!-- Body - trim figure -->
+          <rect x="40" y="50" width="20" height="35" rx="8" fill="#3DAA5C"/>
+          <!-- Head -->
+          <circle cx="50" cy="38" r="14" fill="#F0C080"/>
+          <!-- Hair -->
+          <path d="M36,34 Q36,22 50,20 Q64,22 64,34 Q60,25 50,24 Q40,25 36,34Z" fill="#8B5A20"/>
+          <!-- Smile - very confident -->
+          <path d="M44,42 Q50,48 56,42" fill="none" stroke="#8B5A20" stroke-width="2" stroke-linecap="round"/>
+          <!-- Eyes - knowing -->
+          <circle cx="45" cy="36" r="3" fill="#5A3A00"/>
+          <circle cx="55" cy="36" r="3" fill="#5A3A00"/>
+          <!-- Measuring tape around waist -->
+          <path d="M30,65 Q50,58 70,65" fill="none" stroke="#E8432B" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="28" y="63" width="8" height="5" rx="1" fill="#E8432B"/>
+          <!-- Clipboard with "Challenge" -->
+          <rect x="60" y="50" width="24" height="30" rx="3" fill="white" stroke="#3DAA5C" stroke-width="1.5"/>
+          <rect x="65" y="47" width="14" height="5" rx="2" fill="#3DAA5C"/>
+          <line x1="63" y1="60" x2="81" y2="60" stroke="#3DAA5C" stroke-width="1"/>
+          <line x1="63" y1="65" x2="81" y2="65" stroke="#3DAA5C" stroke-width="1"/>
+          <line x1="63" y1="70" x2="81" y2="70" stroke="#3DAA5C" stroke-width="1"/>
+          <text x="72" y="58" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#3DAA5C" font-weight="bold">CHAL</text>
+          <text x="72" y="54" text-anchor="middle" font-family="sans-serif" font-size="5" fill="#3DAA5C">LENGE</text>
+        </svg>
+      </div>
+      <div class="card-title-block">
+        <div class="social-rank">Tier II &nbsp;•&nbsp; Wellness Industrial Complex</div>
+        <h2 style="color:#1A8A50;">Special K</h2>
+        <p class="card-tagline">"Have you heard about the Two-Week Challenge?"</p>
+        <div class="badge-row">
+          <span class="badge">Diet Culture Ambassador</span>
+          <span class="badge">Very Confident About Your Body</span>
+          <span class="badge">Kellogg's Corporate Favorite</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>Special K will not stop talking about the Two-Week Challenge. What is the Two-Week Challenge? Nobody fully knows. It is something about replacing meals with Special K. It will, allegedly, change your life. Special K is very excited about it. Special K has been excited about it since 1955. The challenge has never ended. There is no finish line. There is only Special K, forever, believing in you in a slightly unsettling way.</p>
+      <p>In the social hierarchy, Special K occupies a position of smooth corporate confidence. It went to Kellogg's Business School (this is a real place; Special K finds it extremely validating). It believes in "wellness," "intentions," and "the journey," which are words that cost nothing and yet somehow command a premium price per box.</p>
+      <p>Special K is the cereal that your company's wellness initiative recommends. This should tell you everything you need to know about both Special K and your company's wellness initiative.</p>
+    </div>
+    <div class="rap-sheet" style="color:#1A8A50;">
+      <div class="rap-sheet-label">Wellness File</div>
+      <ul>
+        <li>Has issued 14 "Two-Week Challenges" since 1955; outcomes unverified</li>
+        <li>Tried to relaunch as "Special K Protein" — panel of nutritionists unimpressed</li>
+        <li>Refers to breakfast as "an opportunity for intentional nourishment"</li>
+        <li>Has never once said what makes it special; relies on the K to carry the weight</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- ─── CLOSING ─── -->
+  <div class="closing fade-in">
+    <h3>And So the Bowl Turns</h3>
+    <p>The cereal aisle is, at its heart, a microcosm of human civilization: landed gentry hoarding fiber and real estate, a charismatic criminal with marshmallow charm, anxious academics with unfinished theses, and one cheerful, uncomplicated cereal who just wants everyone to get along and has good clusters.</p>
+    <p>Every morning, you open the cabinet and choose your allegiance. Choose wisely. Or don't. The frowning suns of Raisin Bran are watching. They are always watching.</p>
+    <p style="margin-top:2rem; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.4);">No cereals were harmed in the making of this article.<br>Lucky Charms's lawyer has been notified regardless.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© The Bureau of Grain Intelligence &nbsp;·&nbsp; Published at 7:43 a.m. &nbsp;·&nbsp; Consumed before the milk made it soggy</p>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

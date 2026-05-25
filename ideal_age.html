@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ideal Age: A Completely Unscientific Investigation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ember:      #2C1000;
+    --tangerine:  #C25A10;
+    --saffron:    #E07828;
+    --papaya:     #FEF4EA;
+    --linen:      #FDF7F0;
+    --gold:       #E8C22A;
+    --teal:       #1A8878;
+    --plum:       #7A1875;
+    --ink:        #1A0A00;
+    --mid:        #8B4A18;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--linen);
+    color: var(--ember);
+    font-family: 'Spectral', serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* grain */
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    pointer-events:none; z-index:9999; opacity:0.3;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ember);
+    padding: 5rem 2rem 4.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* decorative sunburst behind hero */
+  .hero::before {
+    content:'';
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    width: 700px; height:700px;
+    background: repeating-conic-gradient(
+      rgba(232,194,42,0.07) 0deg 10deg,
+      transparent 10deg 20deg
+    );
+    border-radius:50%;
+    pointer-events:none;
+  }
+
+  .hero-rule {
+    display:flex; align-items:center; justify-content:center;
+    gap:1rem; margin-bottom:2rem;
+    animation: fadeDown 0.8s ease both;
+  }
+  .hero-rule span {
+    font-family:'Space Mono', monospace;
+    font-size:0.6rem; letter-spacing:0.4em;
+    text-transform:uppercase; color:var(--gold); opacity:0.75;
+  }
+  .hero-rule::before, .hero-rule::after {
+    content:''; flex:1; max-width:80px;
+    height:1px; background:rgba(232,194,42,0.3);
+  }
+
+  .hero h1 {
+    font-family:'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 7.5rem);
+    font-weight:900;
+    line-height:1.0;
+    color:#fff;
+    letter-spacing:-0.02em;
+    margin-bottom:1rem;
+    animation: fadeDown 0.9s 0.15s ease both;
+  }
+  .hero h1 em {
+    color:var(--saffron);
+    font-style:italic;
+  }
+
+  .hero-sub {
+    font-family:'Spectral', serif;
+    font-style:italic;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color:rgba(255,255,255,0.65);
+    max-width:560px; margin:0 auto 2.5rem;
+    animation: fadeDown 1s 0.3s ease both;
+  }
+
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:0.5rem;
+    background:rgba(232,194,42,0.15);
+    border:1px solid rgba(232,194,42,0.35);
+    border-radius:2rem;
+    padding:0.4rem 1.2rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.65rem; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--gold);
+    animation: fadeDown 1s 0.45s ease both;
+  }
+
+  /* ── INTRO STRIP ── */
+  .intro-strip {
+    background:var(--saffron);
+    padding:1.5rem 2rem;
+    text-align:center;
+  }
+  .intro-strip p {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:clamp(1.1rem,2vw,1.5rem);
+    color:#fff;
+    max-width:780px; margin:0 auto;
+    letter-spacing:0.01em;
+  }
+
+  /* ── LAYOUT ── */
+  .content {
+    max-width:780px;
+    margin:0 auto;
+    padding:3rem 2rem 6rem;
+  }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    border-left: 5px solid var(--saffron);
+    margin:2.5rem 0;
+    padding:1rem 0 1rem 1.8rem;
+  }
+  .pullquote p {
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:clamp(1.25rem,2.5vw,1.65rem);
+    color:var(--tangerine);
+    line-height:1.45;
+  }
+  .pullquote cite {
+    display:block;
+    margin-top:0.6rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--mid);
+    font-style:normal;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  h2 {
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.6rem,3.5vw,2.4rem);
+    font-weight:700;
+    color:var(--ember);
+    margin:3.5rem 0 1rem;
+    line-height:1.2;
+  }
+  h2 .num {
+    display:inline-block;
+    font-family:'Space Mono', monospace;
+    font-size:0.65rem; letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--saffron);
+    vertical-align:top;
+    margin-top:0.4rem;
+    margin-right:0.5rem;
+  }
+
+  p { margin-bottom:1.2rem; font-size:1.05rem; }
+
+  /* ── AGE CARDS ── */
+  .age-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:1.25rem;
+    margin:2.5rem 0;
+  }
+
+  .age-card {
+    background:#fff;
+    border:1px solid rgba(194,90,16,0.15);
+    border-radius:4px;
+    padding:1.5rem 1.4rem;
+    position:relative;
+    box-shadow:0 2px 12px rgba(44,16,0,0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .age-card:hover {
+    transform:translateY(-3px);
+    box-shadow:0 8px 24px rgba(44,16,0,0.12);
+  }
+  .age-card .age-num {
+    font-family:'Playfair Display', serif;
+    font-size:3.2rem;
+    font-weight:900;
+    color:var(--saffron);
+    line-height:1;
+    margin-bottom:0.3rem;
+    opacity:0.9;
+  }
+  .age-card .age-label {
+    font-family:'Space Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--mid);
+    margin-bottom:0.8rem;
+  }
+  .age-card p {
+    font-size:0.92rem;
+    color:var(--ember);
+    line-height:1.6;
+    margin:0;
+  }
+  .age-card .perks {
+    margin-top:0.8rem;
+    font-size:0.85rem;
+    color:var(--teal);
+    font-style:italic;
+  }
+  .age-card .perks::before { content:'✓ '; }
+  .age-card .downside {
+    margin-top:0.3rem;
+    font-size:0.85rem;
+    color:var(--plum);
+    font-style:italic;
+  }
+  .age-card .downside::before { content:'✗ '; }
+
+  /* winner card */
+  .age-card.winner {
+    background:var(--ember);
+    border-color:var(--saffron);
+  }
+  .age-card.winner .age-num { color:var(--gold); }
+  .age-card.winner .age-label { color:rgba(232,194,42,0.7); }
+  .age-card.winner p { color:rgba(255,255,255,0.85); }
+  .age-card.winner .perks { color:#7eded6; }
+  .age-card.winner .downside { color:#e8a0e8; }
+  .winner-crown {
+    position:absolute; top:-12px; right:16px;
+    font-size:1.4rem;
+  }
+
+  /* ── STAT BOX ── */
+  .stat-row {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap:1rem;
+    margin:2.5rem 0;
+    text-align:center;
+  }
+  .stat-box {
+    background:var(--papaya);
+    border:1px solid rgba(194,90,16,0.2);
+    border-radius:4px;
+    padding:1.5rem 1rem;
+  }
+  .stat-box .big {
+    font-family:'Playfair Display', serif;
+    font-size:3rem;
+    font-weight:900;
+    color:var(--tangerine);
+    line-height:1;
+    display:block;
+  }
+  .stat-box .label {
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--mid);
+    margin-top:0.4rem;
+    display:block;
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    background:var(--papaya);
+    border:1px solid rgba(194,90,16,0.2);
+    border-radius:4px;
+    padding:1.8rem 2rem;
+    margin:2.5rem 0;
+    position:relative;
+  }
+  .callout-label {
+    position:absolute; top:-0.65rem; left:1.5rem;
+    background:var(--saffron);
+    color:#fff;
+    font-family:'Space Mono', monospace;
+    font-size:0.6rem; letter-spacing:0.25em;
+    text-transform:uppercase;
+    padding:0.2rem 0.8rem;
+    border-radius:2px;
+  }
+  .callout p { margin:0; font-size:1rem; }
+  .callout ul {
+    margin:0.6rem 0 0 1.2rem;
+    font-size:0.97rem;
+  }
+  .callout li { margin-bottom:0.4rem; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display:flex; align-items:center; gap:1rem;
+    margin:3rem 0;
+  }
+  .divider::before, .divider::after {
+    content:''; flex:1; height:1px;
+    background:rgba(194,90,16,0.2);
+  }
+  .divider span {
+    font-size:1.2rem; color:var(--saffron);
+  }
+
+  /* ── THE LADDER ── */
+  .ladder {
+    display:flex; flex-direction:column; gap:0;
+    margin:2rem 0;
+    border:1px solid rgba(194,90,16,0.2);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .ladder-row {
+    display:flex; align-items:stretch;
+    border-bottom:1px solid rgba(194,90,16,0.12);
+  }
+  .ladder-row:last-child { border-bottom:none; }
+  .ladder-age {
+    min-width:72px;
+    background:var(--ember);
+    color:var(--gold);
+    font-family:'Playfair Display', serif;
+    font-size:1.5rem;
+    font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    padding:1rem;
+    flex-shrink:0;
+  }
+  .ladder-content {
+    padding:1rem 1.4rem;
+    background:#fff;
+    flex:1;
+  }
+  .ladder-content strong {
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--tangerine);
+    display:block;
+    margin-bottom:0.3rem;
+  }
+  .ladder-content p {
+    font-size:0.93rem;
+    margin:0;
+    color:var(--ember);
+    line-height:1.55;
+  }
+  .ladder-row:nth-child(even) .ladder-content { background:var(--papaya); }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--ember);
+    color:rgba(255,255,255,0.5);
+    text-align:center;
+    padding:2.5rem 1rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+  }
+  footer strong { color:var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity:0; transform:translateY(-16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── INLINE HIGHLIGHTS ── */
+  mark {
+    background:rgba(232,194,42,0.3);
+    padding:0 3px;
+    border-radius:2px;
+    color:inherit;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-rule"><span>A Scientific-ish Investigation</span></div>
+  <h1>The <em>Ideal</em> Age</h1>
+  <p class="hero-sub">What age would you be forever — and what does that say about you, your metabolism, and your increasingly complicated relationship with your knees?</p>
+  <span class="hero-badge">🎂 Eternal Youth, Statistically Speaking</span>
+</header>
+
+<!-- ── INTRO STRIP ── -->
+<div class="intro-strip">
+  <p>"I'd go back to 35 — old enough to know better, young enough to still pretend I don't."</p>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<main class="content">
+
+  <p>Humanity has always had a complicated relationship with age. We spend our childhoods desperately trying to seem older, our twenties pretending to be wiser than we are, our forties insisting we feel thirty-five, and our eighties telling anyone who will listen that sixty was actually pretty great. Somewhere in all that confusion, researchers thought to ask a simple question: <strong>If you could freeze time and stay one age forever, what would it be?</strong></p>
+
+  <p>The answers, it turns out, are both deeply revealing and quietly hilarious. Because the "ideal age" says less about what age is actually wonderful and more about what we think we're missing — which is almost always whatever we don't currently have.</p>
+
+  <div class="pullquote">
+    <p>"The cruelest trick of human biology is that wisdom and metabolism never peak at the same time."</p>
+    <cite>— Everyone, eventually</cite>
+  </div>
+
+  <h2><span class="num">01 //</span> What the Numbers Actually Say</h2>
+
+  <p>Researchers — bless their survey-writing hearts — have actually gone and asked people this question at scale. And the answer keeps coming back with suspicious precision: <mark>36</mark>. A YouGov UK analysis found that when people were asked their ideal age, the average answer hovered right around 36. A U.S. poll found similar results, with many Americans nominating 36 as the age they'd like to be frozen at forever.</p>
+
+  <p>But here's where it gets philosophically interesting: when people were asked about <em>specific</em> things rather than one all-purpose ideal age, the number split apart like a badly made soufflé. People associated <strong>age 29</strong> with peak physical health and <strong>age 51</strong> with peak wisdom. So apparently what everyone actually wants is to be simultaneously 29 and 51 — which is not a thing that exists, but which explains why 36 is the statistical compromise we've all quietly agreed upon.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <span class="big">36</span>
+      <span class="label">The "Golden Number"<br>Most Common Ideal Age</span>
+    </div>
+    <div class="stat-box">
+      <span class="big">29</span>
+      <span class="label">Peak Physical<br>Health (Per Survey)</span>
+    </div>
+    <div class="stat-box">
+      <span class="big">51</span>
+      <span class="label">Peak Wisdom<br>(Per Survey)</span>
+    </div>
+    <div class="stat-box">
+      <span class="big">40%</span>
+      <span class="label">Americans Who Would <em>Not</em><br>Return to Their Twenties</span>
+    </div>
+  </div>
+
+  <p>That last statistic deserves a moment of appreciation. Four in ten Americans — when given the hypothetical golden ticket to revisit their carefree, metabolism-gifted twenties — said: <em>no thank you.</em> Which suggests that the twenties, despite their abs and optimism, involved enough anxiety, poverty, and catastrophically bad decision-making that a significant chunk of us would rather just keep being old, actually.</p>
+
+  <div class="divider"><span>⟡</span></div>
+
+  <h2><span class="num">02 //</span> A Tour Through the Ages People Pick (and Why)</h2>
+
+  <p>Let's take a stroll through the ages people nominate, and what those choices reveal about them:</p>
+
+  <div class="age-grid">
+
+    <div class="age-card">
+      <div class="age-num">6</div>
+      <div class="age-label">The Outlier Pick</div>
+      <p>Someone's little cousin said this in a survey. Pros: naps are encouraged, someone else does your laundry, and your only job is to not eat anything off the ground. Cons: no car, no wine, and adults inexplicably think your feelings aren't valid.</p>
+      <div class="perks">Snacks provided. Always.</div>
+      <div class="downside">Bedtime: 7:30pm. Non-negotiable.</div>
+    </div>
+
+    <div class="age-card">
+      <div class="age-num">21</div>
+      <div class="age-label">The Obvious Choice</div>
+      <p>Freshly legal, technically an adult, but still possessing the recovery speed of a golden retriever puppy. You can stay out all night and not feel it for three days — which is to say, you don't feel it <em>at all.</em> The metabolism of a furnace. The wisdom of a fortune cookie.</p>
+      <div class="perks">Can rent a car in 4 years. Exciting times ahead.</div>
+      <div class="downside">Everything you're confident about is wrong.</div>
+    </div>
+
+    <div class="age-card">
+      <div class="age-num">25</div>
+      <div class="age-label">The Practical Pick</div>
+      <p>The age at which you can finally rent a car without paying a surcharge, which is genuinely exciting if you've been 24 with weekend plans. The prefrontal cortex is allegedly finished developing. Your back still works. You have opinions but are no longer <em>insufferable</em> about them.</p>
+      <div class="perks">Can legally rent a car. Life complete.</div>
+      <div class="downside">Everyone still asks what your "plan" is.</div>
+    </div>
+
+    <div class="age-card winner">
+      <div class="winner-crown">👑</div>
+      <div class="age-num">36</div>
+      <div class="age-label">The Statistical Winner</div>
+      <p>The consensus champion. Old enough to have made your big mistakes and learned from most of them. Young enough that your body hasn't started sending passive-aggressive complaint letters. Confident. Established. Still invited to things.</p>
+      <div class="perks">Hangovers manageable with hydration.</div>
+      <div class="downside">No one asks for your ID anymore. Ever.</div>
+    </div>
+
+    <div class="age-card">
+      <div class="age-num">42</div>
+      <div class="age-label">The Sleeper Hit</div>
+      <p>A surprisingly popular choice among people who've actually been 42. The career is humming. The children, if any, can now operate a microwave independently. You've stopped apologizing for your taste in music. You know exactly one thing deeply well and have made peace with the rest.</p>
+      <div class="perks">People respect you without you asking.</div>
+      <div class="downside">New ache every Tuesday. Source unknown.</div>
+    </div>
+
+    <div class="age-card">
+      <div class="age-num">55</div>
+      <div class="age-label">The Wisdom Pick</div>
+      <p>Chosen by people who say things like "I've earned these gray hairs." The senior discount is approaching on the horizon like a beautiful sunrise. You have officially stopped caring what strangers think of you, which turns out to be <em>enormously liberating</em>. Your advice is now solicited rather than merely tolerated.</p>
+      <div class="perks">AARP membership imminent. Discounts beckon.</div>
+      <div class="downside">Explaining your cultural references constantly.</div>
+    </div>
+
+  </div>
+
+  <div class="divider"><span>⟡</span></div>
+
+  <h2><span class="num">03 //</span> The Ages Nobody Picks (and Why That's Telling)</h2>
+
+  <p>Almost as interesting as the ages people <em>want</em> to be is the list of ages they'd pay good money to skip entirely. Note how conspicuously absent certain decades are from people's dream scenarios:</p>
+
+  <div class="ladder">
+    <div class="ladder-row">
+      <div class="ladder-age">13</div>
+      <div class="ladder-content">
+        <strong>Universally Avoided</strong>
+        <p>No one — not one person in any survey anywhere — has ever said "I wish I could be thirteen forever." Thirteen is when your body declares war on you, your parents suddenly become unbearable, and your entire emotional life is one long, sustained note of mortification. We have all silently agreed to never speak of thirteen again.</p>
+      </div>
+    </div>
+    <div class="ladder-row">
+      <div class="ladder-age">17</div>
+      <div class="ladder-content">
+        <strong>The Almost-Adult Purgatory</strong>
+        <p>Old enough to feel deeply the injustice of every rule, too young to do anything about it. Seventeen is peak confidence meeting minimum competence. You know everything. You are wrong about most of it. The music you listen to will define you for decades despite your best efforts.</p>
+      </div>
+    </div>
+    <div class="ladder-row">
+      <div class="ladder-age">23</div>
+      <div class="ladder-content">
+        <strong>The Quarter-Life Crisis Zone</strong>
+        <p>Everyone told you graduating would feel like liberation. It feels more like being pushed off a cliff and asked to learn aerodynamics on the way down. You have a degree, approximately no money, and three group chats full of friends also pretending to be fine.</p>
+      </div>
+    </div>
+    <div class="ladder-row">
+      <div class="ladder-age">47</div>
+      <div class="ladder-content">
+        <strong>The Invisible Age</strong>
+        <p>Nobody picks 47 as their ideal age because 47 is not aspirational — it's transitional. You're too experienced to be young and too young to have the gravitas of older age. It's the waiting room of life decades. Perfectly fine. Completely unromantic.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"><span>⟡</span></div>
+
+  <h2><span class="num">04 //</span> What Your Ideal Age Says About You</h2>
+
+  <p>Psychologists will tell you that your ideal age is essentially a map of your current complaints. We're not wishing for an age so much as wishing for the <em>things</em> we associate with it. Let's decode:</p>
+
+  <div class="callout">
+    <span class="callout-label">The Decoder Ring</span>
+    <ul>
+      <li><strong>You picked your early 20s:</strong> You are either currently very tired, or you miss when your choices felt consequence-free. Also you miss your metabolism specifically and personally.</li>
+      <li><strong>You picked 35–38:</strong> You are a sensible person who has correctly identified the sweet spot between energy and competence. You probably own good kitchen knives and actually use them.</li>
+      <li><strong>You picked your 50s:</strong> You have made peace with yourself in a way that younger people find either admirable or suspicious. You sleep well. You do not apologize for going to bed at 10pm.</li>
+      <li><strong>You picked your current age:</strong> You are either very content or deeply in denial. Either way, keep going — it's working.</li>
+      <li><strong>You refused to answer:</strong> You are a philosopher, a contrarian, or someone who just got a birthday reminder notification and is having feelings about it.</li>
+    </ul>
+  </div>
+
+  <div class="divider"><span>⟡</span></div>
+
+  <h2><span class="num">05 //</span> The Cruel Irony at the Heart of It All</h2>
+
+  <p>Here is the fundamental problem with ideal ages, stated as gently as possible: <mark>you can never have the things you want from different ages at the same time.</mark> This is not a design flaw so much as the central joke of human existence, and it runs as follows:</p>
+
+  <div class="pullquote">
+    <p>"At 22, you have the metabolism. At 45, you have the wisdom. At 36, you have just enough of both to notice you're losing the first and haven't quite reached the second."</p>
+    <cite>— The Human Condition, Summarized</cite>
+  </div>
+
+  <p>When you're young, you have energy but no money. When you have money, you have less energy. When you have both, you discover that sleep deprivation is actually cumulative and that your knees have opinions now. When your knees finally quiet down, you've entered the phase where people describe you as "sprightly," which is a word that nobody under 70 has ever taken as a compliment.</p>
+
+  <p>The 36-year-olds who want to stay 36 forever don't know yet that 46-year-olds will look back at 36 as a golden era of physical vitality. And those 46-year-olds will be baffled to learn that 56-year-olds consider the mid-forties to have been practically youth. Age is, in this way, always slightly better in retrospect.</p>
+
+  <div class="callout">
+    <span class="callout-label">The Perks at Each Age That Nobody Tells You About</span>
+    <ul>
+      <li><strong>Your 20s:</strong> The blessed ignorance of not yet knowing how tired you'll eventually be.</li>
+      <li><strong>Your 30s:</strong> You've stopped going to parties you don't want to attend and discovered this is allowed.</li>
+      <li><strong>Your 40s:</strong> You have officially stopped performing enjoyment of things you don't enjoy. It's a superpower.</li>
+      <li><strong>Your 50s:</strong> People stop asking you to explain yourself. You are simply a known quantity and everyone has adjusted.</li>
+      <li><strong>Your 60s:</strong> You have retired, or nearly retired, and discovered that weekdays are a gift you've been giving away to employers for decades.</li>
+      <li><strong>Your 70s+:</strong> You have outlasted several trends, three or four technological revolutions, and the certainty of numerous people who said you wouldn't. There is quiet power in this.</li>
+    </ul>
+  </div>
+
+  <div class="divider"><span>⟡</span></div>
+
+  <h2><span class="num">06 //</span> The Verdict: 36 Wins, Nobody is Surprised</h2>
+
+  <p>In the end, surveys consistently crown <strong>36</strong> as the statistical ideal — and honestly, it's hard to argue with the math. At 36 you're established enough to have a sense of yourself, young enough that your body is still broadly on your side, and experienced enough to have stopped making the specific flavor of terrible decisions that defined your twenties.</p>
+
+  <p>You can have a conversation with a plumber without feeling like a child pretending to be a homeowner. You know which friends are actually friends. You have a signature dish that isn't pasta with jarred sauce. You've identified at least two things you're genuinely good at and have stopped lying about the rest.</p>
+
+  <p>But here's the secret that the data quietly whispers: the actual best age is whichever one lets you sleep enough, laugh often, and stop comparing yourself to some younger, less-wrinkled version of yourself who was, frankly, just as confused — only louder about it.</p>
+
+  <div class="pullquote">
+    <p>"The ideal age is the one where you finally realize you've been fine this whole time."</p>
+    <cite>— Wisdom, Arriving Fashionably Late as Always</cite>
+  </div>
+
+  <p style="margin-top:2rem; font-style:italic; color:var(--mid);">Age surveyed: everyone. Age satisfied with the results: approximately 36. Age at which you'll reread this and feel personally called out: yours.</p>
+
+</main>
+
+<footer>
+  <strong>The Ideal Age — A Whimsical Investigation</strong><br><br>
+  Based on YouGov UK &amp; U.S. survey data, Pew Research findings, and the universal human experience of wishing things were slightly different than they are.<br>
+  No actual ages were harmed in the making of this article.
+</footer>
+
+</body>
+</html>

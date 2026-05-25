@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Worst Meals Ever Served at Someone Else's Dinner Party</title>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:    #0D2B18;
+    --fern:      #1C6E3D;
+    --fern-lt:   #38A063;
+    --meadow:    #EDF7F1;
+    --parchment: #F5FAF4;
+    --gold:      #E8C22A;
+    --amber:     #D4770A;
+    --rust:      #B83030;
+    --sage:      #5A8A68;
+    --white:     #FFFFFF;
+    --ink:       #172217;
+    --ltgreen:   #C2E5CF;
+    --midgreen:  #5DBF82;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(165deg, var(--forest) 0%, #153d22 40%, var(--fern) 80%, var(--fern-lt) 100%);
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(232,194,42,0.10) 0%, transparent 70%);
+    bottom: -80px; left: 50%;
+    transform: translateX(-50%);
+    animation: glow 6s ease-in-out infinite alternate;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(93,191,130,0.08) 0%, transparent 70%);
+    top: 30px; right: 5%;
+    animation: glow 9s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes glow {
+    from { transform: translateX(-50%) scale(0.95); opacity: 0.6; }
+    to   { transform: translateX(-50%) scale(1.15); opacity: 1; }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes steam {
+    0%   { transform: translateY(0) scaleX(1);   opacity: 0.8; }
+    50%  { transform: translateY(-18px) scaleX(1.3); opacity: 0.4; }
+    100% { transform: translateY(-32px) scaleX(0.8); opacity: 0; }
+  }
+  @keyframes bob {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-10px); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s ease both;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pot-emoji {
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    display: block;
+    margin-bottom: 1rem;
+    animation: bob 3s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-family: 'Righteous', cursive;
+    font-size: clamp(2.3rem, 5.5vw, 5rem);
+    line-height: 1.05;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+    position: relative;
+    z-index: 2;
+  }
+  .hero h1 span { color: var(--gold); }
+
+  .hero-sub {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.60);
+    max-width: 580px;
+    margin: 1.2rem auto 2.2rem;
+    line-height: 1.7;
+    animation: fadeUp 0.9s 0.2s ease both;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    animation: fadeUp 1s 0.3s ease both;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-chip {
+    background: rgba(255,255,255,0.09);
+    border: 1px solid rgba(255,255,255,0.20);
+    color: rgba(255,255,255,0.80);
+    font-size: 0.67rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 2px;
+    font-family: 'Special Elite', cursive;
+  }
+
+  /* ── INTRO ── */
+  .intro-wrap {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 4.5rem 2rem 1rem;
+    text-align: center;
+  }
+  .intro-wrap p {
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.85;
+  }
+  .intro-wrap p em { color: var(--fern); font-style: italic; }
+  .intro-wrap p strong { color: var(--rust); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 960px;
+    margin: 3.5rem auto 2rem;
+    padding: 0 2rem;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--ltgreen); }
+  .divider-label {
+    font-family: 'Righteous', cursive;
+    font-size: 0.64rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--fern);
+    white-space: nowrap;
+  }
+
+  /* ── COURSE CARDS ── */
+  .course-grid {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .course {
+    background: var(--white);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 28px rgba(13,43,24,0.10);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .course:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(13,43,24,0.15);
+  }
+
+  .course-left {
+    background: linear-gradient(160deg, var(--forest) 0%, var(--fern) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.2rem;
+    text-align: center;
+    gap: 0.8rem;
+  }
+  .course-left.c-amber  { background: linear-gradient(160deg, #5c2e00 0%, var(--amber) 100%); }
+  .course-left.c-rust   { background: linear-gradient(160deg, #4a0f0f 0%, var(--rust) 100%); }
+  .course-left.c-sage   { background: linear-gradient(160deg, #1d3325 0%, var(--sage) 100%); }
+  .course-left.c-gold   { background: linear-gradient(160deg, #3d3000 0%, #b8900a 100%); }
+  .course-left.c-purple { background: linear-gradient(160deg, #2a0a3a 0%, #7b3fa0 100%); }
+  .course-left.c-navy   { background: linear-gradient(160deg, #0a0f2a 0%, #1e3a7b 100%); }
+
+  .course-emoji {
+    font-size: 2.8rem;
+  }
+  .course-number {
+    font-family: 'Righteous', cursive;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+  .course-label {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .course-host {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.75rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    margin-top: 0.4rem;
+  }
+
+  .course-right {
+    padding: 2rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .course-title {
+    font-family: 'Righteous', cursive;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--forest);
+    line-height: 1.2;
+  }
+  .course-menu-item {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--fern);
+    border-left: 3px solid var(--ltgreen);
+    padding-left: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+  .course-body {
+    font-size: 0.97rem;
+    color: var(--ink);
+    line-height: 1.75;
+  }
+  .course-body em  { color: var(--fern); font-style: italic; font-weight: 700; }
+  .course-body strong { color: var(--rust); font-weight: 700; }
+
+  .course-verdict {
+    margin-top: 0.5rem;
+    padding: 0.7rem 1rem;
+    background: var(--meadow);
+    border-left: 3px solid var(--fern-lt);
+    font-family: 'Special Elite', cursive;
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    color: var(--fern);
+  }
+
+  .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+  .rating-label {
+    font-family: 'Righteous', cursive;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+  .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.1rem; }
+  .stars.sad { color: var(--rust); }
+
+  /* ── PULLQUOTE ── */
+  .pullquote-wrap {
+    max-width: 780px;
+    margin: 1rem auto 0;
+    padding: 0 2rem;
+  }
+  .pullquote {
+    background: var(--forest);
+    color: var(--white);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .pullquote::before {
+    content: '"';
+    position: absolute;
+    font-family: 'Righteous', cursive;
+    font-size: 14rem;
+    color: rgba(255,255,255,0.05);
+    top: -2rem;
+    left: -0.5rem;
+    line-height: 1;
+  }
+  .pullquote p {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    position: relative;
+    letter-spacing: 0.04em;
+  }
+  .pullquote p em { color: var(--gold); font-style: normal; }
+  .pullquote-attr {
+    margin-top: 1.2rem;
+    font-family: 'Righteous', cursive;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    position: relative;
+  }
+
+  /* ── SURVIVAL GUIDE ── */
+  .survival-wrap {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+  .survival-box {
+    background: var(--white);
+    border: 1px solid var(--ltgreen);
+    box-shadow: 0 4px 20px rgba(13,43,24,0.07);
+  }
+  .survival-header {
+    background: linear-gradient(135deg, var(--forest), var(--fern));
+    padding: 1.5rem 2rem;
+  }
+  .survival-header h2 {
+    font-family: 'Righteous', cursive;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+  .survival-header p {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    margin-top: 0.3rem;
+  }
+  .survival-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0;
+  }
+  .survival-item {
+    padding: 1.4rem 1.5rem;
+    border-right: 1px solid var(--ltgreen);
+    border-bottom: 1px solid var(--ltgreen);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .survival-item:nth-child(3n) { border-right: none; }
+  .si-icon { font-size: 1.6rem; }
+  .si-title {
+    font-family: 'Righteous', cursive;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--forest);
+  }
+  .si-note {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: linear-gradient(160deg, var(--forest) 0%, var(--fern) 65%, var(--fern-lt) 100%);
+    padding: 5.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before {
+    content: '🍽️';
+    position: absolute;
+    font-size: 18rem;
+    opacity: 0.04;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .closing h2 {
+    font-family: 'Righteous', cursive;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 1.2rem;
+    position: relative;
+  }
+  .closing h2 span { color: var(--gold); }
+  .closing p {
+    font-family: 'Special Elite', cursive;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.68);
+    max-width: 560px;
+    margin: 0 auto 2rem;
+    line-height: 1.75;
+    position: relative;
+    letter-spacing: 0.04em;
+  }
+  .closing-rule {
+    font-family: 'Righteous', cursive;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    position: relative;
+  }
+
+  footer {
+    background: var(--forest);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-family: 'Special Elite', cursive;
+    font-size: 0.67rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.30);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .course {
+      grid-template-columns: 1fr;
+    }
+    .course-left {
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+    }
+    .course-emoji { font-size: 2rem; }
+    .pullquote { padding: 2rem 1.5rem; }
+    .survival-item:nth-child(3n) { border-right: 1px solid var(--ltgreen); }
+    .survival-item { border-right: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-eyebrow">🍽️ An Investigative Dining Report &middot; First-Hand Accounts</div>
+  <span class="pot-emoji">🥘</span>
+  <h1>The <span>Worst Meals</span> Ever Served<br>at Someone Else's Dinner Party</h1>
+  <p class="hero-sub">A field guide to culinary catastrophes, accidental experiments, and the brave souls who ate every last bite and said "this is wonderful, thank you."</p>
+  <div class="hero-chips">
+    <span class="hero-chip">🏠 Someone Else's Kitchen</span>
+    <span class="hero-chip">🍷 Wine: Mandatory</span>
+    <span class="hero-chip">😬 Exit: Blocked</span>
+    <span class="hero-chip">🙂 Face: Straight</span>
+  </div>
+</header>
+
+<!-- INTRO -->
+<div class="intro-wrap">
+  <p>There is a sacred, unspoken contract at every dinner party: the host feeds you, and you <em>pretend to enjoy it.</em> You will not wince. You will not check the expiry date. You will not ask what the grey bits are. You will simply <strong>eat the grey bits</strong>, compliment the chef, and spend the car ride home processing what just happened to you. The following accounts are real. The names have been changed. The meals, unfortunately, cannot be undone.</p>
+</div>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-label">🍴 Documented Incidents &mdash; From the Field</span>
+  <div class="divider-line"></div>
+</div>
+
+<!-- COURSE CARDS -->
+<div class="course-grid">
+
+  <!-- 1 -->
+  <div class="course">
+    <div class="course-left">
+      <div class="course-emoji">🐠</div>
+      <div class="course-number">Incident No. 01</div>
+      <div class="course-label">The Main Event</div>
+      <div class="course-host">Host: Patricia, 58, Returned from Tuscany</div>
+    </div>
+    <div class="course-right">
+      <div class="course-title">The Unsolicited Anchovy Surprise</div>
+      <div class="course-menu-item">🐟 "A Light Summer Pasta" &middot; Hand-Written Menu Card &middot; Patricia's Words, Not Yours</div>
+      <div class="course-body">
+        You are invited to a dinner party by Rob and his wife, Patricia, who have just returned from a cooking class in Tuscany. Patricia announces, with great confidence, that the experience changed her life. She now cooks with anchovies. You count at least thirty-six of them arranged atop a dish she describes, on the evening's hand-written menu card, as <em>"a light summer pasta."</em> The pasta was not light. It was a dense, briny experience that tasted like the Mediterranean Sea had been invited to dinner and simply refused to leave.
+        <br><br>
+        The wine was bland and grassy, something Patricia just discovered from an Iowa vineyard that used to be a hog farm. And yes, that is exactly what it tasted like. You wanted to hold your nose when you sipped but settled for simply not breathing. You made this work for an entire glass.
+        <br><br>
+        When a guest across the table gently mentioned he had a fish allergy, Patricia looked genuinely confused. <em>"Oh,"</em> she said, studying the dish with great care, <em>"but these are Italian anchovies."</em> She gave him a second portion of bread. <strong>The bread was smothered in anchovy paste.</strong> He ate it. You watched him eat it. Nobody said anything. This is civilization.
+      </div>
+      <div class="course-verdict">→ Seven guests visited the bathroom at separate intervals. Nobody discussed this. The drive home was very quiet.</div>
+      <div class="rating-row">
+        <span class="rating-label">Survival Rating:</span>
+        <span class="stars sad">★★☆☆☆</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="course">
+    <div class="course-left c-amber">
+      <div class="course-emoji">🥩</div>
+      <div class="course-number">Incident No. 02</div>
+      <div class="course-label">The Entrée</div>
+      <div class="course-host">Host: Derek, 44, Self-Described Pitmaster</div>
+    </div>
+    <div class="course-right">
+      <div class="course-title">Derek's Eleven-Hour Brisket (Only Eight Hours Ready)</div>
+      <div class="course-menu-item">🔥 Smoked Brisket &middot; "Just Needs a Few More Minutes" — Derek, at 6pm, 7pm, and 8:30pm</div>
+      <div class="course-body">
+        Dinner is at six o'clock. Derek told you this himself, confirmed it twice, and sent a reminder text. You arrive at Derek's at five-fifty with a bottle of wine and a reasonable appetite. Derek is at the smoker, wearing a custom apron that reads <em>GRILL SERGEANT</em>, and he tells you with great serenity that the brisket just needs a few more minutes.
+        <br><br>
+        By seven-thirty you have consumed two glasses of wine on a stomach that contains only a small bowl of mixed nuts Derek put out "to tide you over." The nuts are gone. You have started eating the decorative crackers that were clearly not meant to be eaten. At eight-fifteen, Derek emerges from the yard with the brisket. <strong>It requires a knife that is not available.</strong> Derek owns only steak knives and one decorative ceremonial sword purchased at a Renaissance fair, which is now — in genuine desperation — being carried to the table and seriously considered.
+        <br><br>
+        The outside is coal-black. The inside is, according to a guest's meat thermometer app, <em>"an optimist."</em> Derek describes it as "rustic." You agree it is rustic. You have two bites. Derek has thirds and tells you how long it smoked.
+      </div>
+      <div class="course-verdict">→ Three guests order pizza on their phones under the table. Derek never knows. The pizza arrives at 9:45 and is eaten in separate cars.</div>
+      <div class="rating-row">
+        <span class="rating-label">Survival Rating:</span>
+        <span class="stars sad">★☆☆☆☆</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="course">
+    <div class="course-left c-sage">
+      <div class="course-emoji">🥗</div>
+      <div class="course-number">Incident No. 03</div>
+      <div class="course-label">The Wellness Course</div>
+      <div class="course-host">Host: Marguerite, 36, "On a Journey"</div>
+    </div>
+    <div class="course-right">
+      <div class="course-title">The Raw Cleanse Dinner Party (You Were Not Warned)</div>
+      <div class="course-menu-item">🌿 Enzyme-Active Zucchini Ribbons &middot; Spiralized Intentions &middot; Cashew "Cheese" &middot; The Dressing Had Feelings</div>
+      <div class="course-body">
+        Marguerite invited you to a "nourishing gathering." This is not the same as a dinner party and you did not know that yet. You arrive expecting something warm. Something cooked. Something that has at some point in its recent history made contact with heat. What you receive instead is <em>a series of vegetables that have simply declined to be cooked.</em>
+        <br><br>
+        The centerpiece is a "rawsagna" — lasagna sheets made of thinly sliced courgette, layered with cashew paste and something Marguerite calls "activated tomato essence." You ask what that means. She explains that it is a tomato that has been <strong>left in the presence of crystals for several hours.</strong> You nod as though this is information you can use. There is also a dehydrated cracker that tastes of nothing but <em>the memory of bread</em> — a rumor of carbohydrate, a ghost of something that was once filling.
+        <br><br>
+        A small child at the table quietly eats an entire paper napkin. He seems to be the most satisfied person in the room. You watch him with something close to envy.
+      </div>
+      <div class="course-verdict">→ Two guests stop at a drive-through on the way home and do not speak of the rawsagna again, though they think about it often, and not fondly.</div>
+      <div class="rating-row">
+        <span class="rating-label">Survival Rating:</span>
+        <span class="stars">★★★☆☆</span>
+        <span style="font-size:0.7rem; color:#888; font-style:italic;">(points for creativity)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="course">
+    <div class="course-left c-rust">
+      <div class="course-emoji">🍲</div>
+      <div class="course-number">Incident No. 04</div>
+      <div class="course-label">The Experimental Course</div>
+      <div class="course-host">Host: Todd &amp; Renee, 51 &amp; 49, "Into Fermentation Now"</div>
+    </div>
+    <div class="course-right">
+      <div class="course-title">The Fermentation Phase Dinner</div>
+      <div class="course-menu-item">🫙 Everything from a Jar &middot; The Garage Contains More Jars &middot; "This One's From March" — Todd, Gesturing at a Jar</div>
+      <div class="course-body">
+        You step into Todd and Renee's house and the smell hits you before the hello does. It is the smell of a very committed science fair. Todd and Renee discovered fermentation the previous spring, and by December they have fermented, by your conservative estimate, <em>everything they own.</em> Dinner opens with a shot glass of homemade kombucha that Todd describes as "aggressively matured" and which tastes like vinegar has enrolled in a philosophy degree and emerged changed.
+        <br><br>
+        The main course is a kimchi stew made with kimchi that Todd has been developing since March. He says <em>"well-developed"</em> with the quiet pride of a man who believes in what he has made. You take a bite. You make the face you have been practicing since Patricia's anchovy pasta — the face that says "this is complex" rather than "what is happening in my mouth." <strong>It is a close call.</strong>
+        <br><br>
+        For dessert there is a jun tea. Nobody at the table knows what jun tea is. Nobody asks. You all drink it in silence, eyes forward, the way soldiers drink things in situations they did not choose.
+      </div>
+      <div class="course-verdict">→ Four guests report vigorous digestive activity the following morning. Todd says this is "the probiotics working." He is not wrong. He is also not helpful.</div>
+      <div class="rating-row">
+        <span class="rating-label">Survival Rating:</span>
+        <span class="stars">★★☆☆☆</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="course">
+    <div class="course-left c-navy">
+      <div class="course-emoji">📱</div>
+      <div class="course-number">Incident No. 05</div>
+      <div class="course-label">The Algorithm Course</div>
+      <div class="course-host">Host: Brandon, 29, "This Is Exactly How They Made It"</div>
+    </div>
+    <div class="course-right">
+      <div class="course-title">The "I Saw This on TikTok" Dinner</div>
+      <div class="course-menu-item">📲 Butter Board · Pasta Cooked in Energy Drink · Pickle Cupcakes · Smoked Cocktail · Smoke Alarm: Also Smoked</div>
+      <div class="course-body">
+        Brandon texts you the week before to say dinner is going to be "next level." You appreciate his enthusiasm. You arrive to find a charcuterie board that has been replaced by an enormous slab of butter onto which Brandon has pressed herbs, garlic, and — inexplicably — several gummy bears. You are told to <em>"just drag your bread through it."</em> You do. The gummy bears do not improve.
+        <br><br>
+        The main course is pasta that Brandon has cooked directly in energy drink because, he explains, <em>"the sugar caramelizes and it's actually kind of insane."</em> It is insane. It is <strong>neon orange and vibrating slightly.</strong> You eat it with the expression of someone completing a sponsored challenge. The smoked cocktail arrives next — a glass dome is lifted to release what Brandon describes as "artisanal hickory smoke" and which the smoke alarm describes as a four-alarm emergency. You evacuate briefly. The neighbors come to their windows.
+        <br><br>
+        The pickle cupcakes arrive after the alarm is silenced. Brandon watches your face carefully as you bite in, hoping for a reaction. You give him one. You feel that he has earned it.
+      </div>
+      <div class="course-verdict">→ The meal has no cuisine, only algorithm. You rate Brandon four stars anyway because he genuinely tried and the butter board, once you removed the gummy bears, was actually fine.</div>
+      <div class="rating-row">
+        <span class="rating-label">Survival Rating:</span>
+        <span class="stars">★★★☆☆</span>
+        <span style="font-size:0.7rem; color:#888; font-style:italic;">(the smoke alarm was a highlight)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="course">
+    <div class="course-left c-purple">
+      <div class="course-emoji">🪙</div>
+      <div class="course-number">Incident No. 06</div>
+      <div class="course-label">The Luxury Experience</div>
+      <div class="course-host">Host: Genevieve, 43, "Fine Dining Background"</div>
+    </div>
+    <div class="course-right">
+      <div class="course-title">The Gourmet Tiny Plate Disaster</div>
+      <div class="course-menu-item">🍽️ Seven Courses · Four Calories · One Microgreen · Tweezers Visible at All Times</div>
+      <div class="course-body">
+        Genevieve has a fine dining background. She mentions this three times before you sit down, twice during the amuse-bouche, and once while presenting the third course, which is a single scallop the size of a coat button resting on a smear of parsnip foam the color of defeat. You photograph it because <em>there is nothing else to do with it.</em>
+        <br><br>
+        The fourth course is a beet purée, three lentils, one quail egg, and a microgreen — placed, you watch this happen in real time, with actual tweezers. Genevieve calls it <em>"abundance reimagined."</em> You nod. You take a bite. The bite is finished. <strong>There is nothing left on the plate.</strong> The plate is enormous. The food occupied approximately four percent of it. You consider licking the parsnip foam but decide against it on the grounds that Genevieve is watching.
+        <br><br>
+        By the sixth course you are calculating whether the sum of all courses thus far exceeds a medium bag of crisps. It does not. You smile at everything. You call it "refined." You stop at a petrol station on the way home and eat an entire Cornish pasty standing up in the car park, and it is the best thing you have consumed all evening.
+      </div>
+      <div class="course-verdict">→ You leave hungry, impressed, and faintly resentful. You text a friend: "it was incredible. I ate nothing." Both of these things are true.</div>
+      <div class="rating-row">
+        <span class="rating-label">Survival Rating:</span>
+        <span class="stars sad">★★☆☆☆</span>
+        <span style="font-size:0.7rem; color:#888; font-style:italic;">(the tweezers were a nice touch)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="course">
+    <div class="course-left c-gold">
+      <div class="course-emoji">🍮</div>
+      <div class="course-number">Incident No. 07</div>
+      <div class="course-label">The Grand Finale</div>
+      <div class="course-host">Host: Claudette, 67, "She Tried"</div>
+    </div>
+    <div class="course-right">
+      <div class="course-title">The Collapsed Trifle Incident</div>
+      <div class="course-menu-item">🍓 Traditional English Trifle &middot; "Nothing to Worry About" — Claudette, Immediately Before Dessert</div>
+      <div class="course-body">
+        Claudette has spent the entire evening managing a dinner that, while earnest, has not gone entirely to plan. The soup was lukewarm. The chicken was pink in a way that generated private conversation. The pavlova meant for the third course arrived during the second and was quietly removed. You have been very supportive. You are tired.
+        <br><br>
+        Then Claudette appears from the kitchen carrying something with both hands and with the focused expression of a woman delivering a reliquary. She sets it on the table and announces it is a Traditional English Trifle from her grandmother's recipe. You look at it. <em>It has structurally compromised itself at some point in the last hour.</em> The sponge has absorbed the sherry so completely it has ceased to exist as a solid object. The custard and cream have reached a diplomatic arrangement that suits neither of them individually. The hundreds-and-thousands on top have rearranged themselves into <strong>a pattern that one guest describes as a Rorschach test and another describes as a cry for help.</strong>
+        <br><br>
+        Claudette serves it with a soup ladle. This turns out to be the correct tool. You take a bite. Then another. You realize, with genuine surprise, that it is absolutely, outrageously delicious. Everyone has seconds. Someone has thirds. Claudette receives a standing ovation she does not fully understand but accepts with great dignity.
+      </div>
+      <div class="course-verdict">→ The only unambiguous triumph of the evening. Chaos, it turns out, makes an excellent trifle. You ask for the recipe. Claudette says she will write it down. She never does.</div>
+      <div class="rating-row">
+        <span class="rating-label">Survival Rating:</span>
+        <span class="stars">★★★★★</span>
+        <span style="font-size:0.7rem; color:#888; font-style:italic;">(for the trifle, not the experience)</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /course-grid -->
+
+<!-- PULLQUOTE -->
+<div class="pullquote-wrap">
+  <div class="pullquote">
+    <p>"You will smile. You will say <em>'this is so interesting.'</em> You will ask for the recipe with your mouth while your eyes say something else entirely. You will eat the butter board gummy bears. You will drink the jun tea. You will finish the neon pasta. This is the social contract. This is civilization. <em>The grey bits are just part of belonging."</em></p>
+    <div class="pullquote-attr">— Unspoken Rule No. 1, The Dinner Guest's Code of Conduct</div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="divider" style="margin-top: 3.5rem;">
+  <div class="divider-line"></div>
+  <span class="divider-label">🌿 Official Survivor's Field Guide</span>
+  <div class="divider-line"></div>
+</div>
+
+<!-- SURVIVAL GUIDE -->
+<div class="survival-wrap">
+  <div class="survival-box">
+    <div class="survival-header">
+      <h2>🛡️ The Dinner Guest's Emergency Survival Kit</h2>
+      <p>// Compiled from years of hard-won diplomatic dining experience //</p>
+    </div>
+    <div class="survival-grid">
+      <div class="survival-item">
+        <div class="si-icon">🍫</div>
+        <div class="si-title">Emergency Chocolate</div>
+        <div class="si-note">Keep two squares in your jacket pocket at all times. The body needs something familiar after an anchovy encounter.</div>
+      </div>
+      <div class="survival-item">
+        <div class="si-icon">😌</div>
+        <div class="si-title">The Neutral Face</div>
+        <div class="si-note">Practice in the mirror. The face that says "this is complex" without the face that says "what IS this." A crucial distinction that takes years to master.</div>
+      </div>
+      <div class="survival-item">
+        <div class="si-icon">🍷</div>
+        <div class="si-title">Strategic Wine Use</div>
+        <div class="si-note">A sip between every bite buys you 4–6 seconds to process what just happened without your expression betraying you. Even Iowa hog farm wine is useful here.</div>
+      </div>
+      <div class="survival-item">
+        <div class="si-icon">💬</div>
+        <div class="si-title">The Redirecting Question</div>
+        <div class="si-note">"How long have you been experimenting with this?" buys the host five minutes of talking and you five minutes of not eating. Use it wisely and only once per course.</div>
+      </div>
+      <div class="survival-item">
+        <div class="si-icon">📱</div>
+        <div class="si-title">The Decoy Scroll</div>
+        <div class="si-note">To quietly text your partner under the table: "there are anchovies in the bread." Two words. They will understand immediately. They will text back a single emoji. The correct one.</div>
+      </div>
+      <div class="survival-item">
+        <div class="si-icon">🚗</div>
+        <div class="si-title">The Pre-Arranged Exit</div>
+        <div class="si-note">Always have somewhere to be at 9:30. Not a lie, exactly. More of a nutritional contingency plan. The drive-through is open until midnight. The Cornish pasty is always warm.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<section class="closing">
+  <h2>Go Forth.<br><span>Eat Bravely.</span></h2>
+  <p>Somewhere tonight, a Derek is standing at a smoker telling himself it just needs a few more minutes. A Marguerite is activating her tomatoes with crystals. A Todd is opening a jar from March. A Brandon is lifting a smoke dome over a cocktail while his neighbors watch from the garden. And somewhere, a Claudette is carrying something glorious and structurally unsound from the kitchen with both hands, and it will be wonderful. Say yes to all of it. Say yes and eat the grey bits and ask for the recipe. This is how we love each other.</p>
+  <div class="closing-rule">🍽️ &nbsp; No Guest Left Behind &nbsp; 🍽️</div>
+</section>
+
+<footer>
+  The Dinner Guest's Field Report &nbsp;&middot;&nbsp; First Edition &nbsp;&middot;&nbsp; Incidents: Verified &nbsp;&middot;&nbsp; Anchovies: Still In The Bread &nbsp;&middot;&nbsp; Derek's Brisket: Still Not Ready
+</footer>
+
+</body>
+</html>

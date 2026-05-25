@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Your Drink Says About You</title>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #F5EDD6;
+    --amber:     #C8832A;
+    --dark-amber:#8B4F0A;
+    --ink:       #1E1409;
+    --cream:     #FBF5E6;
+    --sage:      #5C7A5C;
+    --burgundy:  #6B1E2E;
+    --slate:     #3D4F5C;
+    --gold:      #D4A017;
+    --pale:      #FAF3E4;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Lora', serif;
+    line-height: 1.75;
+    position: relative;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events:none;
+    z-index:1000;
+    opacity:0.35;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--ink);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-border {
+    position: absolute;
+    inset: 18px;
+    border: 1.5px solid rgba(212,160,23,0.35);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  .hero-border::before {
+    content:'';
+    position:absolute;
+    inset:6px;
+    border: 1px solid rgba(212,160,23,0.15);
+    border-radius:1px;
+  }
+
+  .hero-label {
+    font-family:'DM Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    color: var(--gold);
+    margin-bottom:1.8rem;
+    opacity:0.8;
+    animation: fadeIn 1s ease both;
+  }
+
+  .hero h1 {
+    font-family:'Abril Fatface', cursive;
+    font-size: clamp(3.2rem, 9vw, 8rem);
+    line-height:1;
+    color: var(--parchment);
+    margin-bottom:0.4rem;
+    animation: fadeIn 1s 0.1s ease both;
+    letter-spacing:-0.01em;
+  }
+
+  .hero h1 span { color: var(--amber); }
+
+  .hero-tagline {
+    font-family:'Lora', serif;
+    font-style:italic;
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    color: rgba(245,237,214,0.6);
+    margin: 1.2rem auto 0;
+    max-width: 520px;
+    animation: fadeIn 1s 0.2s ease both;
+  }
+
+  .hero-drinks {
+    display:flex;
+    justify-content:center;
+    gap:1.8rem;
+    margin-top:3rem;
+    flex-wrap:wrap;
+    animation: fadeIn 1s 0.35s ease both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* Inline SVG drink icons */
+  .drink-icon {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.5rem;
+    color:rgba(245,237,214,0.45);
+    font-family:'DM Mono', monospace;
+    font-size:0.6rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    transition: color 0.2s;
+  }
+  .drink-icon:hover { color: var(--gold); }
+  .drink-icon svg { transition: transform 0.3s; }
+  .drink-icon:hover svg { transform: translateY(-4px) rotate(-3deg); }
+
+  /* ─── INTRO ─── */
+  .intro {
+    max-width:680px;
+    margin:5rem auto;
+    padding:0 2rem;
+    text-align:center;
+  }
+  .intro p { font-size:1.1rem; margin-bottom:1rem; color:#2e1f0c; }
+  .intro .kicker {
+    font-family:'Abril Fatface', cursive;
+    font-size:2.2rem;
+    color:var(--amber);
+    display:block;
+    margin:1.5rem 0;
+    line-height:1.2;
+  }
+  .intro .note {
+    display:inline-block;
+    background:var(--ink);
+    color:var(--parchment);
+    font-family:'DM Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    padding:0.5rem 1.2rem;
+    border-radius:2px;
+    margin-top:1rem;
+    text-transform:uppercase;
+  }
+
+  /* ─── SECTION DIVIDER ─── */
+  .section-divider {
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    max-width:860px;
+    margin:4rem auto 0;
+    padding:0 2rem;
+  }
+  .section-divider::before, .section-divider::after {
+    content:'';
+    flex:1;
+    height:1px;
+    background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    opacity:0.4;
+  }
+  .section-divider-text {
+    font-family:'Abril Fatface', cursive;
+    font-size:1.6rem;
+    color:var(--amber);
+    white-space:nowrap;
+  }
+
+  /* ─── DRINK CATEGORY ─── */
+  .category {
+    max-width:900px;
+    margin:0 auto;
+    padding:3rem 2rem;
+  }
+
+  .category-header {
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:1.5rem;
+    align-items:center;
+    margin-bottom:2rem;
+    padding-bottom:1.5rem;
+    border-bottom:2px solid var(--amber);
+    opacity:0.9;
+  }
+
+  .cat-icon-wrap {
+    width:80px; height:80px;
+    background:var(--ink);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    border:2px solid var(--amber);
+  }
+
+  .cat-title {
+    font-family:'Abril Fatface', cursive;
+    font-size:clamp(2rem,5vw,3.2rem);
+    color:var(--ink);
+    line-height:1;
+    margin-bottom:0.3rem;
+  }
+  .cat-motto {
+    font-style:italic;
+    font-size:1rem;
+    color:var(--amber);
+    font-weight:600;
+  }
+
+  /* ─── SUBSPECIES CARDS ─── */
+  .subspecies-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap:1.5rem;
+    margin-top:1.5rem;
+  }
+
+  .sub-card {
+    background:var(--cream);
+    border:1px solid rgba(200,131,42,0.25);
+    border-radius:4px;
+    padding:1.8rem 1.6rem;
+    position:relative;
+    overflow:hidden;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .sub-card:hover {
+    transform:translateY(-4px);
+    box-shadow: 0 12px 40px rgba(30,20,9,0.1);
+  }
+  .sub-card::before {
+    content:'';
+    position:absolute;
+    top:0; left:0;
+    width:4px; height:100%;
+    background:var(--amber);
+  }
+
+  .sub-card.burgundy::before { background: var(--burgundy); }
+  .sub-card.sage::before     { background: var(--sage); }
+  .sub-card.slate::before    { background: var(--slate); }
+  .sub-card.gold::before     { background: var(--gold); }
+
+  .sub-title {
+    font-family:'Abril Fatface', cursive;
+    font-size:1.25rem;
+    color:var(--ink);
+    margin-bottom:0.8rem;
+    line-height:1.2;
+  }
+
+  .sub-body { font-size:0.9rem; color:#3a2a14; }
+  .sub-body p { margin-bottom:0.6rem; }
+  .sub-body em { color:var(--dark-amber); font-style:italic; }
+
+  .tag-row {
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.35rem;
+    margin:0.7rem 0;
+  }
+  .tag {
+    font-family:'DM Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.05em;
+    background:var(--ink);
+    color:var(--parchment);
+    padding:0.2rem 0.55rem;
+    border-radius:2px;
+    text-transform:uppercase;
+  }
+  .tag.light {
+    background:transparent;
+    color:var(--dark-amber);
+    border:1px solid var(--amber);
+  }
+
+  .verdict {
+    font-family:'DM Mono', monospace;
+    font-size:0.72rem;
+    font-style:italic;
+    color:var(--amber);
+    border-top:1px dashed rgba(200,131,42,0.35);
+    padding-top:0.8rem;
+    margin-top:0.8rem;
+    letter-spacing:0.02em;
+  }
+
+  /* ─── FULL-WIDTH CALLOUT ─── */
+  .callout-strip {
+    background:var(--ink);
+    color:var(--parchment);
+    padding:3.5rem 2rem;
+    text-align:center;
+    margin:4rem 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .callout-strip::before {
+    content:'🥃';
+    position:absolute;
+    font-size:10rem;
+    opacity:0.05;
+    right:4%;
+    top:50%;
+    transform:translateY(-50%);
+  }
+  .callout-strip h3 {
+    font-family:'Abril Fatface', cursive;
+    font-size:clamp(1.5rem,4vw,2.8rem);
+    color:var(--gold);
+    margin-bottom:1rem;
+  }
+  .callout-strip p {
+    font-style:italic;
+    max-width:580px;
+    margin:0 auto;
+    opacity:0.8;
+    font-size:1.05rem;
+  }
+
+  /* ─── PERSONALITY MATRIX ─── */
+  .matrix {
+    max-width:860px;
+    margin:0 auto;
+    padding:2rem 2rem 4rem;
+  }
+  .matrix-title {
+    font-family:'Abril Fatface', cursive;
+    font-size:2rem;
+    color:var(--ink);
+    text-align:center;
+    margin-bottom:0.4rem;
+  }
+  .matrix-sub {
+    text-align:center;
+    font-style:italic;
+    color:#888;
+    margin-bottom:2.5rem;
+    font-size:0.9rem;
+  }
+
+  .matrix-grid {
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:rgba(200,131,42,0.25);
+    border:1px solid rgba(200,131,42,0.25);
+  }
+
+  .matrix-cell {
+    background:var(--cream);
+    padding:1.4rem 1.6rem;
+    display:flex;
+    align-items:flex-start;
+    gap:1rem;
+  }
+  .matrix-cell:nth-child(odd) { background:#FBF6E8; }
+
+  .mc-emoji { font-size:1.8rem; flex-shrink:0; }
+  .mc-drink {
+    font-family:'Abril Fatface', cursive;
+    font-size:1.05rem;
+    color:var(--amber);
+    display:block;
+    line-height:1.1;
+    margin-bottom:0.3rem;
+  }
+  .mc-says {
+    font-size:0.85rem;
+    color:#3a2a14;
+    font-style:italic;
+  }
+
+  /* ─── CLOSING ─── */
+  .closing {
+    background: linear-gradient(135deg, var(--dark-amber) 0%, var(--ink) 60%);
+    color:var(--parchment);
+    text-align:center;
+    padding:5rem 2rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .closing::before {
+    content:'';
+    position:absolute;
+    width:500px; height:500px;
+    border-radius:50%;
+    background:rgba(212,160,23,0.07);
+    top:-150px; left:-150px;
+  }
+  .closing h2 {
+    font-family:'Abril Fatface', cursive;
+    font-size:clamp(2rem,5vw,3.5rem);
+    color:var(--gold);
+    margin-bottom:1.5rem;
+  }
+  .closing p {
+    max-width:620px;
+    margin:0 auto 1rem;
+    opacity:0.8;
+    font-size:1.05rem;
+  }
+  .closing .final-line {
+    font-family:'DM Mono', monospace;
+    font-size:0.8rem;
+    letter-spacing:0.15em;
+    opacity:0.45;
+    margin-top:3rem;
+    text-transform:uppercase;
+  }
+
+  @media(max-width:600px) {
+    .category-header { grid-template-columns:1fr; }
+    .cat-icon-wrap { display:none; }
+    .matrix-grid { grid-template-columns:1fr; }
+    .subspecies-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="hero-border"></div>
+  <p class="hero-label">A Highly Unscientific Investigation · Est. Tonight</p>
+  <h1>What Your<br><span>Drink</span><br>Says About You</h1>
+  <p class="hero-tagline">Because nobody orders a cocktail. They make a <em>statement.</em></p>
+
+  <!-- SVG Drink Icons -->
+  <div class="hero-drinks">
+
+    <!-- Beer -->
+    <div class="drink-icon">
+      <svg width="38" height="52" viewBox="0 0 38 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="16" width="24" height="30" rx="3" fill="#C8832A" opacity="0.8"/>
+        <rect x="6" y="8" width="24" height="10" rx="2" fill="#FBF5E6" opacity="0.9"/>
+        <rect x="30" y="22" width="7" height="14" rx="3.5" fill="#C8832A" opacity="0.6"/>
+        <rect x="9" y="20" width="4" height="22" rx="2" fill="#FAF3E4" opacity="0.25"/>
+      </svg>
+      <span>Beer</span>
+    </div>
+
+    <!-- Wine glass -->
+    <div class="drink-icon">
+      <svg width="32" height="56" viewBox="0 0 32 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4 Q4 26 16 28 Q28 26 28 4 Z" fill="#6B1E2E" opacity="0.75"/>
+        <rect x="14" y="28" width="4" height="16" rx="2" fill="#C8832A" opacity="0.7"/>
+        <rect x="8" y="44" width="16" height="3" rx="1.5" fill="#C8832A" opacity="0.6"/>
+        <ellipse cx="16" cy="18" rx="8" ry="4" fill="#8B2346" opacity="0.4"/>
+      </svg>
+      <span>Wine</span>
+    </div>
+
+    <!-- Martini -->
+    <div class="drink-icon">
+      <svg width="42" height="52" viewBox="0 0 42 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 6 L21 28 L38 6 Z" fill="#3D4F5C" opacity="0.75"/>
+        <path d="M10 6 L21 21 L32 6 Z" fill="#FAF3E4" opacity="0.2"/>
+        <rect x="19" y="28" width="4" height="16" rx="2" fill="#C8832A" opacity="0.7"/>
+        <rect x="12" y="44" width="18" height="3" rx="1.5" fill="#C8832A" opacity="0.6"/>
+        <circle cx="21" cy="24" r="3" fill="#5C7A5C" opacity="0.9"/>
+      </svg>
+      <span>Martini</span>
+    </div>
+
+    <!-- Margarita -->
+    <div class="drink-icon">
+      <svg width="44" height="52" viewBox="0 0 44 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5 L22 27 L39 5 Z" fill="#5C7A5C" opacity="0.75"/>
+        <path d="M12 5 L22 20 L32 5 Z" fill="#FAF3E4" opacity="0.2"/>
+        <rect x="20" y="27" width="4" height="16" rx="2" fill="#C8832A" opacity="0.7"/>
+        <rect x="13" y="43" width="18" height="4" rx="2" fill="#D4A017" opacity="0.85"/>
+        <rect x="11" y="42" width="22" height="2" rx="1" fill="#FAF3E4" opacity="0.5"/>
+      </svg>
+      <span>Margarita</span>
+    </div>
+
+    <!-- Whiskey -->
+    <div class="drink-icon">
+      <svg width="30" height="52" viewBox="0 0 30 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="16" width="24" height="30" rx="2" fill="#8B4F0A" opacity="0.8"/>
+        <rect x="3" y="16" width="24" height="12" rx="2" fill="#C8832A" opacity="0.6"/>
+        <rect x="3" y="10" width="24" height="8" rx="2" fill="#FAF3E4" opacity="0.15"/>
+        <rect x="6" y="20" width="5" height="22" rx="2.5" fill="#FAF3E4" opacity="0.12"/>
+      </svg>
+      <span>Whiskey</span>
+    </div>
+
+    <!-- Champagne -->
+    <div class="drink-icon">
+      <svg width="26" height="58" viewBox="0 0 26 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="13" cy="10" rx="8" ry="3" fill="#FAF3E4" opacity="0.3"/>
+        <path d="M5 8 Q5 36 13 40 Q21 36 21 8 Z" fill="#D4A017" opacity="0.65"/>
+        <rect x="11" y="40" width="4" height="12" rx="2" fill="#C8832A" opacity="0.7"/>
+        <rect x="7" y="52" width="12" height="3" rx="1.5" fill="#C8832A" opacity="0.6"/>
+        <circle cx="8" cy="20" r="1.2" fill="white" opacity="0.5"/>
+        <circle cx="15" cy="28" r="1" fill="white" opacity="0.4"/>
+        <circle cx="11" cy="34" r="0.8" fill="white" opacity="0.35"/>
+      </svg>
+      <span>Champagne</span>
+    </div>
+
+    <!-- Umbrella -->
+    <div class="drink-icon">
+      <svg width="44" height="52" viewBox="0 0 44 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="20" height="32" rx="3" fill="#3D4F5C" opacity="0.7"/>
+        <rect x="10" y="10" width="20" height="14" rx="3" fill="#5C7A5C" opacity="0.7"/>
+        <rect x="13" y="42" width="14" height="3" rx="1.5" fill="#C8832A" opacity="0.6"/>
+        <!-- umbrella stick -->
+        <line x1="30" y1="16" x2="38" y2="8" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- umbrella top -->
+        <path d="M32 10 Q37 5 42 10 Q37 8 32 10Z" fill="#D4A017" opacity="0.8"/>
+        <rect x="13" y="14" width="3" height="24" rx="1.5" fill="#FAF3E4" opacity="0.15"/>
+      </svg>
+      <span>Umbrella</span>
+    </div>
+
+  </div>
+</header>
+
+<!-- ═══ INTRO ═══ -->
+<section class="intro">
+  <p>Human beings like to believe they choose alcoholic beverages based on flavor notes, body, finish, or <em>"mouthfeel."</em></p>
+  <span class="kicker">This is nonsense.</span>
+  <p>People choose drinks because they are secretly trying to communicate something to the world: sophistication, ruggedness, emotional instability, or <em>"I just wanted the happy hour special."</em></p>
+  <p>Every beverage carries a personality profile. Sometimes aspirational. Sometimes alarmingly accurate. Let us examine the species in their natural habitat.</p>
+  <span class="note">⚗ Peer-Unreviewed Research · Handle With Ice</span>
+</section>
+
+
+<!-- ═══ BEER ═══ -->
+<div class="section-divider"><span class="section-divider-text">🍺 Beer</span></div>
+<section class="category">
+  <div class="category-header">
+    <div class="cat-icon-wrap">
+      <svg width="38" height="48" viewBox="0 0 38 52" fill="none"><rect x="6" y="16" width="24" height="30" rx="3" fill="#C8832A" opacity="0.9"/><rect x="6" y="8" width="24" height="10" rx="2" fill="#FBF5E6" opacity="0.9"/><rect x="30" y="22" width="7" height="14" rx="3.5" fill="#C8832A" opacity="0.6"/><rect x="9" y="20" width="4" height="22" rx="2" fill="#FAF3E4" opacity="0.25"/></svg>
+    </div>
+    <div>
+      <h2 class="cat-title">Beer Drinkers</h2>
+      <p class="cat-motto">"I'm low maintenance. Unless my team loses."</p>
+    </div>
+  </div>
+
+  <div class="subspecies-grid">
+    <div class="sub-card">
+      <h3 class="sub-title">Domestic Light Beer Guy</h3>
+      <div class="sub-body">
+        <p>Owns at least one folding chair, several opinions about grilling, and a cooler that weighs more than a Honda Civic.</p>
+        <div class="tag-row">
+          <span class="tag">Fantasy Football</span>
+          <span class="tag">Smoker Temp</span>
+          <span class="tag">Lawn Stripes</span>
+        </div>
+        <p>Believes every problem can be solved by <em>"letting it breathe"</em> or <em>"turning it off and back on."</em></p>
+      </div>
+      <p class="verdict">→ The most reliable man at any tailgate.</p>
+    </div>
+
+    <div class="sub-card burgundy">
+      <h3 class="sub-title">Craft Beer Person</h3>
+      <div class="sub-body">
+        <p>Will not say: <em>"This is a beer."</em> Will say: <em>"It's a small-batch barrel-aged imperial porter with notes of cedar, coffee, and emotional complexity."</em></p>
+        <p>Treats breweries the way birdwatchers treat rare owls.</p>
+        <div class="tag-row">
+          <span class="tag">Beard</span>
+          <span class="tag">Rescue Dog</span>
+          <span class="tag">Fermentation Feelings</span>
+        </div>
+      </div>
+      <p class="verdict">→ The more undrinkable the beer, the prouder they become.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ WINE ═══ -->
+<div class="section-divider"><span class="section-divider-text">🍷 Wine</span></div>
+<section class="category">
+  <div class="category-header">
+    <div class="cat-icon-wrap">
+      <svg width="32" height="56" viewBox="0 0 32 56" fill="none"><path d="M4 4 Q4 26 16 28 Q28 26 28 4 Z" fill="#6B1E2E" opacity="0.85"/><rect x="14" y="28" width="4" height="16" rx="2" fill="#C8832A" opacity="0.8"/><rect x="8" y="44" width="16" height="3" rx="1.5" fill="#C8832A" opacity="0.7"/><ellipse cx="16" cy="18" rx="8" ry="4" fill="#8B2346" opacity="0.4"/></svg>
+    </div>
+    <div>
+      <h2 class="cat-title">Wine Drinkers</h2>
+      <p class="cat-motto">"I'd like to discuss tannins while avoiding my real problems."</p>
+    </div>
+  </div>
+
+  <div class="subspecies-grid">
+    <div class="sub-card burgundy">
+      <h3 class="sub-title">Red Wine Drinkers</h3>
+      <div class="sub-body">
+        <p>Like to swirl glasses thoughtfully while saying <em>"Interesting"</em> — even when drinking a $12 bottle purchased beside a gas station cheese display.</p>
+        <div class="tag-row">
+          <span class="tag">Literary</span>
+          <span class="tag">Vaguely European</span>
+          <span class="tag">Unfinished Hardcovers</span>
+        </div>
+        <p>May own at least one scarf that serves no meteorological purpose.</p>
+      </div>
+      <p class="verdict">→ The candle is always lit. The book is never finished.</p>
+    </div>
+
+    <div class="sub-card sage">
+      <h3 class="sub-title">White Wine Drinkers</h3>
+      <div class="sub-body">
+        <p>Fun. Social. Slightly chaotic. One bad week away from announcing: <em>"You know what? Let's go to Greece."</em></p>
+        <div class="tag-row">
+          <span class="tag">Brunch</span>
+          <span class="tag">Patios</span>
+          <span class="tag">"I Normally Never Do This"</span>
+        </div>
+      </div>
+      <p class="verdict">→ Greece is booked by Thursday.</p>
+    </div>
+
+    <div class="sub-card gold">
+      <h3 class="sub-title">Fruity Wine Drinkers</h3>
+      <div class="sub-body">
+        <p>Not here for "notes of oak." They want <em>peach mango raspberry happiness</em> in a glass the size of a goldfish bowl.</p>
+        <p>Often say: "I don't really like the taste of alcohol." And yet somehow consume enough sangria to briefly forget geometry.</p>
+        <div class="tag-row">
+          <span class="tag">Vacation Optimists</span>
+          <span class="tag">Karaoke</span>
+          <span class="tag">Decorative Sun Hats</span>
+        </div>
+      </div>
+      <p class="verdict">→ The only people genuinely having fun.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ MARTINI ═══ -->
+<div class="section-divider"><span class="section-divider-text">🍸 Martini</span></div>
+<section class="category">
+  <div class="category-header">
+    <div class="cat-icon-wrap">
+      <svg width="42" height="52" viewBox="0 0 42 52" fill="none"><path d="M4 6 L21 28 L38 6 Z" fill="#3D4F5C" opacity="0.85"/><rect x="19" y="28" width="4" height="16" rx="2" fill="#C8832A" opacity="0.8"/><rect x="12" y="44" width="18" height="3" rx="1.5" fill="#C8832A" opacity="0.7"/><circle cx="21" cy="24" r="3" fill="#5C7A5C" opacity="0.9"/></svg>
+    </div>
+    <div>
+      <h2 class="cat-title">Martini Drinkers</h2>
+      <p class="cat-motto">"Please notice that I am mysterious."</p>
+    </div>
+  </div>
+  <p style="font-size:1rem; color:#3a2a14; margin-bottom:1.5rem; font-style:italic;">Martini drinkers desperately want to appear sophisticated. Sometimes they succeed. Sometimes they are just freezing in a rooftop bar pretending olives are dinner.</p>
+
+  <div class="subspecies-grid">
+    <div class="sub-card slate">
+      <h3 class="sub-title">Dirty Martini People</h3>
+      <div class="sub-body">
+        <p>Operate with the energy of someone who sends strongly worded emails and has corrected a waiter's pronunciation before.</p>
+        <div class="tag-row">
+          <span class="tag">Expensive Pens</span>
+          <span class="tag">Jazz Maximalist</span>
+          <span class="tag">80% Posture</span>
+        </div>
+        <p>Believes vermouth is for amateurs.</p>
+      </div>
+      <p class="verdict">→ Confidence is not a personality, but they're making it work.</p>
+    </div>
+
+    <div class="sub-card">
+      <h3 class="sub-title">Espresso Martini People</h3>
+      <div class="sub-body">
+        <p>Want to party, stay awake, and possibly reorganize their life at 11:30 PM.</p>
+        <p>This drink says: <em>"I would like both chaos and productivity simultaneously."</em></p>
+        <div class="tag-row">
+          <span class="tag">Dramatic Angles</span>
+          <span class="tag">Frequently Photographed</span>
+        </div>
+      </div>
+      <p class="verdict">→ The life plan written at midnight has never once been executed.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CALLOUT ═══ -->
+<div class="callout-strip">
+  <h3>Scientific Interlude</h3>
+  <p>No one quietly does tequila shots. Tequila shots are <em>announced like military operations.</em> Suddenly strangers become best friends, volume increases 300%, and someone starts yelling "WOOOOOO!" There is always one participant who immediately regrets everything while still holding the lime.</p>
+</div>
+
+
+<!-- ═══ GIN ═══ -->
+<div class="section-divider"><span class="section-divider-text">🌿 Gin &amp; Tonic</span></div>
+<section class="category">
+  <div class="category-header">
+    <div class="cat-icon-wrap"><span style="font-size:2rem;">🌿</span></div>
+    <div>
+      <h2 class="cat-title">Gin &amp; Tonic Drinkers</h2>
+      <p class="cat-motto">"I enjoy botanical complexity and saying the word botanical."</p>
+    </div>
+  </div>
+  <div class="sub-card sage" style="max-width:560px;">
+    <div class="sub-body">
+      <p>Gin drinkers often seem like retired spies, amateur gardeners, or people who suddenly became very interested in cucumber slices.</p>
+      <div class="tag-row">
+        <span class="tag">Old Hotels</span>
+        <span class="tag">Rainy Weather</span>
+        <span class="tag">Acquired Tastes</span>
+      </div>
+      <p><em>"It's an acquired taste"</em> is historically what people say about beverages resembling scented pine needles.</p>
+    </div>
+    <p class="verdict">→ Sophisticated. Slightly damp. Perfect.</p>
+  </div>
+</section>
+
+
+<!-- ═══ MARGARITA ═══ -->
+<div class="section-divider"><span class="section-divider-text">🍹 Margarita</span></div>
+<section class="category">
+  <div class="category-header">
+    <div class="cat-icon-wrap"><span style="font-size:2rem;">🍹</span></div>
+    <div>
+      <h2 class="cat-title">Margarita Drinkers</h2>
+      <p class="cat-motto">"Tonight has potential."</p>
+    </div>
+  </div>
+  <div class="sub-card gold" style="max-width:620px;">
+    <div class="sub-body">
+      <p>Margarita people are optimistic. <em>Dangerously</em> optimistic.</p>
+      <p>The first margarita says: <em>"Relax."</em> The second says: <em>"Text your ex."</em> Frozen margarita drinkers especially believe consequences are future-people problems.</p>
+      <div class="tag-row">
+        <span class="tag">Beach People</span>
+        <span class="tag">Extroverts</span>
+        <span class="tag">Accountants Briefly Escaping Captivity</span>
+      </div>
+    </div>
+    <p class="verdict">→ The lime wedge is doing a lot of emotional labor here.</p>
+  </div>
+</section>
+
+
+<!-- ═══ UMBRELLA ═══ -->
+<div class="section-divider"><span class="section-divider-text">☂️ Umbrella Cocktails</span></div>
+<section class="category">
+  <div class="category-header">
+    <div class="cat-icon-wrap"><span style="font-size:2rem;">☀️</span></div>
+    <div>
+      <h2 class="cat-title">Umbrella Cocktail Drinkers</h2>
+      <p class="cat-motto">"I came here to vacation emotionally."</p>
+    </div>
+  </div>
+  <div class="sub-card" style="max-width:620px;">
+    <div class="sub-body">
+      <p>These majestic beverages contain fruit, rum, sugar, tiny umbrellas, and approximately six weeks of recommended calories.</p>
+      <p>Umbrella cocktail drinkers have rejected seriousness entirely. They are living their truth.</p>
+      <div class="tag-row">
+        <span class="tag">Sunsets</span>
+        <span class="tag">Pool Bars</span>
+        <span class="tag">$24 Per Round</span>
+      </div>
+    </div>
+    <p class="verdict">→ No one holding a neon-blue beverage in a pineapple is thinking about quarterly earnings.</p>
+  </div>
+</section>
+
+
+<!-- ═══ WHISKEY ═══ -->
+<div class="section-divider"><span class="section-divider-text">🥃 Whiskey</span></div>
+<section class="category">
+  <div class="category-header">
+    <div class="cat-icon-wrap">
+      <svg width="30" height="52" viewBox="0 0 30 52" fill="none"><rect x="3" y="16" width="24" height="30" rx="2" fill="#8B4F0A" opacity="0.9"/><rect x="3" y="16" width="24" height="12" rx="2" fill="#C8832A" opacity="0.7"/><rect x="6" y="20" width="5" height="22" rx="2.5" fill="#FAF3E4" opacity="0.15"/></svg>
+    </div>
+    <div>
+      <h2 class="cat-title">Whiskey Drinkers</h2>
+      <p class="cat-motto">"I have stories."</p>
+    </div>
+  </div>
+
+  <div class="subspecies-grid">
+    <div class="sub-card">
+      <h3 class="sub-title">Bourbon Drinkers</h3>
+      <div class="sub-body">
+        <p>Want to discuss barrels, smoke, regional differences, and possibly the Civil War. Can stare thoughtfully into middle distance for concerning lengths of time.</p>
+        <div class="tag-row">
+          <span class="tag">"You Can Taste The Char"</span>
+        </div>
+      </div>
+      <p class="verdict">→ Deeply sincere. Occasionally exhausting.</p>
+    </div>
+
+    <div class="sub-card burgundy">
+      <h3 class="sub-title">Scotch Drinkers</h3>
+      <div class="sub-body">
+        <p>Either deeply knowledgeable, or pretending with Olympic-level commitment. Will describe flavors using words no beverage should contain:</p>
+        <div class="tag-row">
+          <span class="tag">Peat</span>
+          <span class="tag">Iodine</span>
+          <span class="tag">Campfire</span>
+          <span class="tag">Wet Stone</span>
+          <span class="tag">Old Shipyard</span>
+        </div>
+        <p>And yet somehow they love it.</p>
+      </div>
+      <p class="verdict">→ Flavor profile: commitment issues disguised as connoisseurship.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ VODKA & OTHERS ═══ -->
+<div class="section-divider"><span class="section-divider-text">🫧 Vodka · Seltzer · Champagne</span></div>
+<section class="category">
+  <div class="subspecies-grid">
+    <div class="sub-card slate">
+      <h3 class="sub-title">Vodka Drinkers</h3>
+      <p class="cat-motto" style="font-size:0.85rem; margin-bottom:0.8rem;">"I'd prefer not to taste what's happening."</p>
+      <div class="sub-body">
+        <p>Vodka's defining personality trait is adaptability. It mixes with juice, soda, energy drinks, and questionable decisions.</p>
+        <div class="tag-row">
+          <span class="tag">Practical Minimalists</span>
+          <span class="tag">Nightclub Adventurers</span>
+          <span class="tag">Wedding Survivors</span>
+        </div>
+      </div>
+      <p class="verdict">→ The chameleon of the bar. No personality required.</p>
+    </div>
+
+    <div class="sub-card sage">
+      <h3 class="sub-title">Hard Seltzer Drinkers</h3>
+      <p class="cat-motto" style="font-size:0.85rem; margin-bottom:0.8rem;">"I would like alcohol to resemble sparkling optimism."</p>
+      <div class="sub-body">
+        <p>Often seem outdoorsy, lightly sunburned, and emotionally sponsored by paddleboards. Enjoy beverages that whisper <em>"Maybe this is healthy?"</em></p>
+        <p>Even though it absolutely is not.</p>
+      </div>
+      <p class="verdict">→ The athletic wear of cocktails.</p>
+    </div>
+
+    <div class="sub-card gold">
+      <h3 class="sub-title">Champagne Drinkers</h3>
+      <p class="cat-motto" style="font-size:0.85rem; margin-bottom:0.8rem;">"This moment deserves bubbles."</p>
+      <div class="sub-body">
+        <p>Believe ordinary events can become occasions. Opening champagne instantly transforms a promotion, a Tuesday, or successfully assembling IKEA furniture into <em>a triumph for civilization itself.</em></p>
+      </div>
+      <p class="verdict">→ Fueled by celebration and denial. Mostly denial.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SUMMARY MATRIX ═══ -->
+<section class="matrix">
+  <h2 class="matrix-title">The Definitive Personality Matrix</h2>
+  <p class="matrix-sub">Peer-unreviewed. Disturbingly accurate.</p>
+
+  <div class="matrix-grid">
+    <div class="matrix-cell">
+      <span class="mc-emoji">🍺</span>
+      <div><span class="mc-drink">Beer</span><span class="mc-says">"Relax. Unless something's wrong with the grill."</span></div>
+    </div>
+    <div class="matrix-cell">
+      <span class="mc-emoji">🍷</span>
+      <div><span class="mc-drink">Wine</span><span class="mc-says">"Discuss. At length. With a scarf."</span></div>
+    </div>
+    <div class="matrix-cell">
+      <span class="mc-emoji">🍸</span>
+      <div><span class="mc-drink">Martini</span><span class="mc-says">"Observe me carefully. I am a narrative."</span></div>
+    </div>
+    <div class="matrix-cell">
+      <span class="mc-emoji">🌿</span>
+      <div><span class="mc-drink">Gin & Tonic</span><span class="mc-says">"Botanical. Did I mention botanical?"</span></div>
+    </div>
+    <div class="matrix-cell">
+      <span class="mc-emoji">🍹</span>
+      <div><span class="mc-drink">Margarita</span><span class="mc-says">"Tonight has potential. The lime agrees."</span></div>
+    </div>
+    <div class="matrix-cell">
+      <span class="mc-emoji">☂️</span>
+      <div><span class="mc-drink">Umbrella Cocktail</span><span class="mc-says">"I've left reality voluntarily. Do not disturb."</span></div>
+    </div>
+    <div class="matrix-cell">
+      <span class="mc-emoji">🥃</span>
+      <div><span class="mc-drink">Whiskey</span><span class="mc-says">"I have stories. You will hear them. Sit down."</span></div>
+    </div>
+    <div class="matrix-cell">
+      <span class="mc-emoji">🥂</span>
+      <div><span class="mc-drink">Champagne</span><span class="mc-says">"Tuesday is an occasion if you believe hard enough."</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CLOSING ═══ -->
+<footer class="closing">
+  <h2>The Beauty of the Bar</h2>
+  <p>The drink becomes part beverage, part identity — a tiny, carbonated flag planted in the soil of who you'd like to be.</p>
+  <p>And somewhere, in every crowded bar on Earth, a man explaining whiskey flavor profiles to trapped strangers is proving all stereotypes correct.</p>
+  <p class="final-line">A Highly Unscientific Guide · All Findings Are Final · No Refunds · Drink Responsibly</p>
+</footer>
+
+</body>
+</html>

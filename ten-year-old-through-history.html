@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Every 10-Year-Old Knew: 1906–2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Oswald:wght@400;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=VT323&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #1a1208;
+  --sepia:  #f5edd8;
+  --rust:   #b84a1a;
+  --gold:   #c8922a;
+  --navy:   #1c2e4a;
+  --sage:   #4a6a40;
+  --slate:  #3a4a5a;
+  --neon:   #00ff88;
+  --pixel:  #4488ff;
+  --hot:    #ff2d78;
+  --cream:  #fdfaf2;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body {
+  background: #1a1208;
+  color: #f5edd8;
+  font-family: 'Merriweather', Georgia, serif;
+  overflow-x: hidden;
+}
+
+/* ── PROGRESS BAR ── */
+#prog {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, #b84a1a, #c8922a, #00ff88);
+  z-index: 1000; transition: width .1s;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: #f5edd8;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem 5rem;
+  overflow: hidden;
+  border-bottom: 8px solid #1a1208;
+}
+
+/* Aged paper texture lines */
+.hero::before {
+  content:'';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg,transparent,transparent 32px,rgba(26,18,8,.04) 32px,rgba(26,18,8,.04) 33px);
+  pointer-events: none;
+}
+
+/* Decorative corner ornaments */
+.corner { position: absolute; font-size: 3rem; color: #b84a1a; opacity: .25; line-height:1; }
+.corner.tl { top:1rem; left:1rem; }
+.corner.tr { top:1rem; right:1rem; transform:scaleX(-1); }
+.corner.bl { bottom:1rem; left:1rem; transform:scaleY(-1); }
+.corner.br { bottom:1rem; right:1rem; transform:scale(-1); }
+
+.hero-kicker {
+  font-family: 'Oswald', sans-serif;
+  font-size: .75rem; letter-spacing: .35em; text-transform: uppercase;
+  color: #b84a1a; margin-bottom: 1.25rem;
+}
+
+.hero h1 {
+  font-family: 'Rye', serif;
+  font-size: clamp(2.2rem, 7vw, 5.5rem);
+  color: #1a1208; line-height: 1.05; margin-bottom: .75rem;
+  text-shadow: 3px 3px 0 rgba(184,74,26,.15);
+}
+.hero h1 span { color: #b84a1a; }
+
+.hero-sub {
+  font-family: 'Merriweather', serif;
+  font-style: italic;
+  font-size: clamp(.95rem,2.5vw,1.25rem);
+  color: #5a4030; max-width: 640px; margin: 0 auto 2.5rem;
+  line-height: 1.65;
+}
+
+/* Hero timeline illustration */
+.hero-illo { width: min(680px,90vw); margin: 0 auto; }
+
+.scroll-hint {
+  position: absolute; bottom: 1.5rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: .7rem; letter-spacing: .3em; text-transform: uppercase;
+  color: #b84a1a; animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* ── DECADE SECTIONS ── */
+.decade {
+  position: relative;
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+/* Each decade gets its own era palette */
+.era-1906 { background: #2a1f14; }
+.era-1916 { background: #1c2218; }
+.era-1926 { background: #1a1f28; }
+.era-1936 { background: #251818; }
+.era-1946 { background: #1a2218; }
+.era-1956 { background: #1a1a2e; }
+.era-1966 { background: #20100a; }
+.era-1976 { background: #1a0a18; }
+.era-1986 { background: #0a0a1a; }
+.era-1996 { background: #0a100a; }
+.era-2006 { background: #08101a; }
+.era-2016 { background: #100818; }
+.era-2026 { background: #060a10; }
+
+.decade-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative; z-index: 1;
+}
+
+/* ── YEAR BADGE ── */
+.year-badge {
+  display: inline-flex; align-items: center; gap: .75rem;
+  margin-bottom: 1.5rem;
+}
+.year-num {
+  font-family: 'Rye', serif;
+  font-size: clamp(3rem,8vw,6rem);
+  line-height: 1;
+}
+.year-line { flex: 1; height: 3px; }
+
+/* era-specific accents */
+.era-1906 .year-num { color: #d4a060; }
+.era-1906 .year-line { background: #d4a060; }
+.era-1916 .year-num { color: #8aaa60; }
+.era-1916 .year-line { background: #8aaa60; }
+.era-1926 .year-num { color: #60a0c8; }
+.era-1926 .year-line { background: #60a0c8; }
+.era-1936 .year-num { color: #c87060; }
+.era-1936 .year-line { background: #c87060; }
+.era-1946 .year-num { color: #60c880; }
+.era-1946 .year-line { background: #60c880; }
+.era-1956 .year-num { color: #c060c8; }
+.era-1956 .year-line { background: #c060c8; }
+.era-1966 .year-num { color: #e85020; }
+.era-1966 .year-line { background: #e85020; }
+.era-1976 .year-num { color: #d870a0; }
+.era-1976 .year-line { background: #d870a0; }
+.era-1986 .year-num { color: #4488ff; }
+.era-1986 .year-line { background: #4488ff; }
+.era-1996 .year-num { color: #00dd44; }
+.era-1996 .year-line { background: #00dd44; }
+.era-2006 .year-num { color: #ff6600; }
+.era-2006 .year-line { background: #ff6600; }
+.era-2016 .year-num { color: #00eedd; }
+.era-2016 .year-line { background: #00eedd; }
+.era-2026 .year-num { color: #aa66ff; }
+.era-2026 .year-line { background: #aa66ff; }
+
+/* ── ERA LABEL ── */
+.era-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: .7rem; letter-spacing: .3em; text-transform: uppercase;
+  margin-bottom: .5rem; opacity: .6;
+}
+
+/* ── DECADE TITLE ── */
+.decade-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.4rem,4vw,2.4rem);
+  font-weight: 700; line-height: 1.15;
+  margin-bottom: 1.25rem;
+  color: #f5edd8;
+}
+
+/* ── INTRO PARAGRAPH ── */
+.decade-intro {
+  font-size: .98rem; line-height: 1.8;
+  color: rgba(245,237,216,.8);
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+.decade-intro em { font-style: italic; }
+.decade-intro strong { font-weight: 700; color: #f5edd8; }
+
+/* ── SKILL CARDS ── */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 1rem; margin-bottom: 2rem;
+}
+.skill-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px;
+  padding: 1.25rem;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+  opacity: 0; transform: translateY(20px);
+}
+.skill-card.visible {
+  opacity: 1; transform: translateY(0);
+  transition: opacity .5s ease, transform .5s ease, border-color .2s, box-shadow .2s;
+}
+.skill-card:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(255,255,255,.3);
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+}
+.skill-icon { font-size: 1.8rem; margin-bottom: .5rem; display: block; }
+.skill-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1rem; font-weight: 600;
+  color: #f5edd8; margin-bottom: .3rem; letter-spacing: .04em;
+}
+.skill-desc {
+  font-size: .82rem; line-height: 1.55;
+  color: rgba(245,237,216,.6);
+}
+
+/* era-specific card borders */
+.era-1906 .skill-card { border-top: 3px solid #d4a060; }
+.era-1916 .skill-card { border-top: 3px solid #8aaa60; }
+.era-1926 .skill-card { border-top: 3px solid #60a0c8; }
+.era-1936 .skill-card { border-top: 3px solid #c87060; }
+.era-1946 .skill-card { border-top: 3px solid #60c880; }
+.era-1956 .skill-card { border-top: 3px solid #c060c8; }
+.era-1966 .skill-card { border-top: 3px solid #e85020; }
+.era-1976 .skill-card { border-top: 3px solid #d870a0; }
+.era-1986 .skill-card { border-top: 3px solid #4488ff; }
+.era-1996 .skill-card { border-top: 3px solid #00dd44; }
+.era-2006 .skill-card { border-top: 3px solid #ff6600; }
+.era-2016 .skill-card { border-top: 3px solid #00eedd; }
+.era-2026 .skill-card { border-top: 3px solid #aa66ff; }
+
+/* ── FUNNY QUOTE ── */
+.funny-line {
+  border-left: 4px solid rgba(255,255,255,.2);
+  padding: .75rem 1.25rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  font-size: .95rem;
+  color: rgba(245,237,216,.65);
+  line-height: 1.65;
+}
+
+/* ── ERA ILLUSTRATION ── */
+.era-illo {
+  float: right; width: 160px; margin: 0 0 1.5rem 2rem;
+  opacity: .85;
+}
+@media(max-width:560px) { .era-illo { float:none; width:100px; margin:0 auto 1.5rem; display:block; } }
+
+/* ── DECADE DIVIDER ── */
+.decade-divider {
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+}
+
+/* ── CLOSING ── */
+.closing {
+  background: #f5edd8;
+  color: #1a1208;
+  padding: 6rem 1.5rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.closing::before {
+  content:'';
+  position: absolute; inset:0;
+  background: repeating-linear-gradient(0deg,transparent,transparent 32px,rgba(26,18,8,.03) 32px,rgba(26,18,8,.03) 33px);
+}
+.closing-inner { max-width: 700px; margin: 0 auto; position: relative; z-index:1; }
+.closing h2 {
+  font-family: 'Rye', serif;
+  font-size: clamp(1.8rem,5vw,3rem);
+  color: #b84a1a; margin-bottom: 1.25rem; line-height: 1.15;
+}
+.closing p { font-size: .98rem; line-height: 1.85; color: #3a2818; margin-bottom: 1rem; }
+.closing p strong { color: #b84a1a; }
+.closing p em { color: #1a1208; font-style:italic; }
+
+/* ── THEN vs NOW compare strip ── */
+.compare-strip {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-size: .9rem;
+}
+.then-col { text-align: right; color: #d4a060; }
+.now-col  { text-align: left;  color: #00eedd; }
+.vs { font-family:'Oswald',sans-serif; font-size:1.4rem; opacity:.4; flex-shrink:0; }
+.compare-strip span { display:block; }
+.compare-label {
+  font-family:'Oswald',sans-serif; font-size:.6rem; letter-spacing:.2em;
+  text-transform:uppercase; opacity:.45; margin-bottom:.25rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #100a06;
+  color: rgba(245,237,216,.35);
+  text-align: center;
+  padding: 3rem 1.5rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: .78rem; letter-spacing: .08em;
+  border-top: 3px solid rgba(184,74,26,.4);
+}
+footer .ft-title {
+  font-family: 'Rye', serif;
+  font-size: 1.4rem; color: rgba(245,237,216,.6);
+  margin-bottom: .5rem; letter-spacing:.05em;
+}
+
+/* ── SPECIAL: 1986 pixel effect ── */
+.era-1986 .year-num { font-family: 'VT323', monospace; font-size: clamp(4rem,10vw,8rem); }
+.era-1986 .decade-title { font-family: 'VT323', monospace; font-size: clamp(1.8rem,5vw,3rem); letter-spacing:.1em; }
+
+/* ── SPECIAL: 2026 neon effect ── */
+.era-2026 .year-num {
+  text-shadow: 0 0 20px #aa66ff, 0 0 40px rgba(170,102,255,.4);
+  animation: neonpulse 3s ease-in-out infinite alternate;
+}
+@keyframes neonpulse {
+  from { text-shadow: 0 0 20px #aa66ff, 0 0 40px rgba(170,102,255,.4); }
+  to   { text-shadow: 0 0 30px #aa66ff, 0 0 60px rgba(170,102,255,.6), 0 0 80px rgba(170,102,255,.2); }
+}
+
+/* ── BIG YEAR BACKGROUND WATERMARK ── */
+.decade::after {
+  content: attr(data-year);
+  position: absolute;
+  right: -0.5rem; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Rye', serif;
+  font-size: clamp(6rem,18vw,14rem);
+  color: rgba(255,255,255,.025);
+  pointer-events: none;
+  line-height: 1;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+/* ── SKILL RATING DOTS ── */
+.skill-rating { display:flex; gap:3px; margin-top:.4rem; }
+.dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,.15);
+}
+.dot.filled { background: rgba(255,255,255,.6); }
+
+@media(max-width:600px){
+  .skills { grid-template-columns: 1fr 1fr; }
+  .compare-strip { grid-template-columns: 1fr; text-align:center; }
+  .then-col, .now-col { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="corner tl">❧</div>
+  <div class="corner tr">❧</div>
+  <div class="corner bl">❧</div>
+  <div class="corner br">❧</div>
+
+  <p class="hero-kicker">A Century of Childhood · 1906 — 2026</p>
+
+  <h1>What Every<br><span>10-Year-Old</span><br>Knew</h1>
+
+  <p class="hero-sub">A whimsical, completely unfair, and historically fascinating tour through 120 years of childhood skills — from milking cows and memorizing Morse code to building Minecraft cities and explaining TikTok to confused adults.</p>
+
+  <!-- Hero SVG: timeline of silhouetted children across eras -->
+  <div class="hero-illo">
+    <svg viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Timeline line -->
+      <line x1="30" y1="130" x2="650" y2="130" stroke="#b84a1a" stroke-width="2"/>
+      <!-- Decade ticks -->
+      <g stroke="#b84a1a" stroke-width="1.5" opacity="0.5">
+        <line x1="80"  y1="125" x2="80"  y2="135"/>
+        <line x1="130" y1="125" x2="130" y2="135"/>
+        <line x1="180" y1="125" x2="180" y2="135"/>
+        <line x1="230" y1="125" x2="230" y2="135"/>
+        <line x1="280" y1="125" x2="280" y2="135"/>
+        <line x1="330" y1="125" x2="330" y2="135"/>
+        <line x1="380" y1="125" x2="380" y2="135"/>
+        <line x1="430" y1="125" x2="430" y2="135"/>
+        <line x1="480" y1="125" x2="480" y2="135"/>
+        <line x1="530" y1="125" x2="530" y2="135"/>
+        <line x1="580" y1="125" x2="580" y2="135"/>
+        <line x1="630" y1="125" x2="630" y2="135"/>
+      </g>
+      <!-- Year labels -->
+      <g font-family="serif" font-size="8" fill="#b84a1a" text-anchor="middle" opacity="0.7">
+        <text x="80"  y="148">1906</text>
+        <text x="180" y="148">1926</text>
+        <text x="280" y="148">1946</text>
+        <text x="380" y="148">1966</text>
+        <text x="480" y="148">1986</text>
+        <text x="580" y="148">2006</text>
+        <text x="635" y="148">2026</text>
+      </g>
+
+      <!-- Child 1906: overalls, bucket -->
+      <g transform="translate(80,80)" fill="#d4a060">
+        <ellipse cx="0" cy="-38" rx="9" ry="9"/>
+        <rect x="-7" y="-29" width="14" height="22" rx="3"/>
+        <line x1="-7" y1="-8" x2="-12" y2="12" stroke="#d4a060" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7" y1="-8" x2="12" y2="12" stroke="#d4a060" stroke-width="3" stroke-linecap="round"/>
+        <text x="10" y="-30" font-size="12">🪣</text>
+      </g>
+
+      <!-- Child 1926: dress/suspenders, book -->
+      <g transform="translate(180,80)" fill="#60a0c8">
+        <ellipse cx="0" cy="-38" rx="9" ry="9"/>
+        <rect x="-7" y="-29" width="14" height="22" rx="3"/>
+        <line x1="-7" y1="-8" x2="-12" y2="12" stroke="#60a0c8" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7" y1="-8" x2="12" y2="12" stroke="#60a0c8" stroke-width="3" stroke-linecap="round"/>
+        <text x="8" y="-28" font-size="12">📻</text>
+      </g>
+
+      <!-- Child 1946: typical postwar kid -->
+      <g transform="translate(280,80)" fill="#60c880">
+        <ellipse cx="0" cy="-38" rx="9" ry="9"/>
+        <rect x="-7" y="-29" width="14" height="22" rx="3"/>
+        <line x1="-7" y1="-8" x2="-12" y2="12" stroke="#60c880" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7" y1="-8" x2="12" y2="12" stroke="#60c880" stroke-width="3" stroke-linecap="round"/>
+        <text x="8" y="-28" font-size="12">⚾</text>
+      </g>
+
+      <!-- Child 1966: mod era -->
+      <g transform="translate(380,80)" fill="#e85020">
+        <ellipse cx="0" cy="-38" rx="9" ry="9"/>
+        <rect x="-7" y="-29" width="14" height="22" rx="3"/>
+        <line x1="-7" y1="-8" x2="-12" y2="12" stroke="#e85020" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7" y1="-8" x2="12" y2="12" stroke="#e85020" stroke-width="3" stroke-linecap="round"/>
+        <text x="8" y="-28" font-size="12">🎸</text>
+      </g>
+
+      <!-- Child 1986: joystick -->
+      <g transform="translate(480,80)" fill="#4488ff">
+        <ellipse cx="0" cy="-38" rx="9" ry="9"/>
+        <rect x="-7" y="-29" width="14" height="22" rx="3"/>
+        <line x1="-7" y1="-8" x2="-12" y2="12" stroke="#4488ff" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7" y1="-8" x2="12" y2="12" stroke="#4488ff" stroke-width="3" stroke-linecap="round"/>
+        <text x="8" y="-28" font-size="12">🕹️</text>
+      </g>
+
+      <!-- Child 2006: phone -->
+      <g transform="translate(580,80)" fill="#ff6600">
+        <ellipse cx="0" cy="-38" rx="9" ry="9"/>
+        <rect x="-7" y="-29" width="14" height="22" rx="3"/>
+        <line x1="-7" y1="-8" x2="-12" y2="12" stroke="#ff6600" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7" y1="-8" x2="12" y2="12" stroke="#ff6600" stroke-width="3" stroke-linecap="round"/>
+        <text x="8" y="-28" font-size="12">📱</text>
+      </g>
+
+      <!-- Child 2026: robot -->
+      <g transform="translate(635,80)" fill="#aa66ff">
+        <ellipse cx="0" cy="-38" rx="9" ry="9"/>
+        <rect x="-7" y="-29" width="14" height="22" rx="3"/>
+        <line x1="-7" y1="-8" x2="-12" y2="12" stroke="#aa66ff" stroke-width="3" stroke-linecap="round"/>
+        <line x1="7" y1="-8" x2="12" y2="12" stroke="#aa66ff" stroke-width="3" stroke-linecap="round"/>
+        <text x="8" y="-28" font-size="12">🤖</text>
+      </g>
+
+      <!-- Arrow at end -->
+      <polygon points="655,130 648,126 648,134" fill="#b84a1a"/>
+    </svg>
+  </div>
+
+  <p class="scroll-hint">↓ scroll through time ↓</p>
+</section>
+
+<!-- ══════════════════════════════════
+     DECADE: 1906
+══════════════════════════════════ -->
+<section class="decade era-1906" data-year="1906">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Farmhouse silhouette -->
+      <polygon points="20,90 65,40 110,90" fill="#d4a060" opacity=".25"/>
+      <rect x="30" y="90" width="70" height="55" fill="#d4a060" opacity=".2"/>
+      <!-- Bucket -->
+      <rect x="55" y="110" width="20" height="16" rx="2" fill="#d4a060" opacity=".5"/>
+      <ellipse cx="65" cy="110" rx="10" ry="3" fill="#d4a060" opacity=".4"/>
+      <!-- Handle -->
+      <path d="M 55,110 Q 50,100 55,95 Q 75,95 75,110" fill="none" stroke="#d4a060" stroke-width="1.5" opacity=".5"/>
+      <!-- Cow silhouette -->
+      <ellipse cx="40" cy="135" rx="18" ry="10" fill="#d4a060" opacity=".2"/>
+      <circle cx="30" cy="126" r="7" fill="#d4a060" opacity=".2"/>
+      <!-- Wheat stalks -->
+      <g stroke="#d4a060" stroke-width="1.2" opacity=".35">
+        <line x1="95" y1="145" x2="95" y2="115"/><ellipse cx="95" cy="112" rx="3" ry="5"/>
+        <line x1="102" y1="145" x2="100" y2="118"/><ellipse cx="100" cy="115" rx="3" ry="5"/>
+        <line x1="108" y1="145" x2="105" y2="120"/><ellipse cx="105" cy="117" rx="3" ry="5"/>
+      </g>
+      <!-- Sun rising -->
+      <circle cx="65" cy="30" r="15" fill="#d4a060" opacity=".18"/>
+      <g stroke="#d4a060" stroke-width="1" opacity=".18">
+        <line x1="65" y1="10" x2="65" y2="5"/>
+        <line x1="80" y1="17" x2="84" y2="13"/>
+        <line x1="85" y1="30" x2="90" y2="30"/>
+        <line x1="50" y1="17" x2="46" y2="13"/>
+        <line x1="45" y1="30" x2="40" y2="30"/>
+      </g>
+    </svg>
+
+    <p class="era-label" style="color:#d4a060">The Edwardian Age</p>
+    <div class="year-badge">
+      <div class="year-num">1906</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Could Run a Farm<br>and Probably Already Was</h2>
+
+    <p class="decade-intro">In 1906, approximately <strong>60% of American children</strong> lived on farms. A ten-year-old wasn't a child in the modern sense — they were a small, underpaid farmhand with homework. Before school (which started at a brisk walk away, usually across fields), they'd already milked a cow, fed the chickens, and quite possibly made a decision about a pig. The "childhood" portion of the day was largely squeezed between chores, more chores, and falling asleep while technically still doing chores.</p>
+
+    <div class="funny-line">"When I was ten, I already knew how to harness a horse, split wood, and deliver a calf. I also knew that complaining about it was not an option." — Basically every grandfather ever.</div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">🐄</span>
+        <div class="skill-title">Animal Husbandry</div>
+        <div class="skill-desc">Milk a cow by hand, identify which chicken was "off," determine which pig would not be attending Christmas. Essential survival skills for most American children.</div>
+        <div class="skill-rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🪓</span>
+        <div class="skill-title">Wood Splitting & Fire-Building</div>
+        <div class="skill-desc">Not as a fun outdoor activity. As the way the house stays warm and the food gets cooked. Before breakfast, every day, without being asked.</div>
+        <div class="skill-rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">✍️</span>
+        <div class="skill-title">Copperplate Cursive</div>
+        <div class="skill-desc">The Palmer Method was mandatory. Your penmanship was a moral matter. Sloppy handwriting suggested weak character. Children practiced loops for hours.</div>
+        <div class="skill-rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🌾</span>
+        <div class="skill-title">Crop Knowledge</div>
+        <div class="skill-desc">Which seeds go in when. What bad soil looks like. How to tell if wheat is ready. Not trivia — this was knowing whether the family eats this winter.</div>
+        <div class="skill-rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🧵</span>
+        <div class="skill-title">Mending & Basic Sewing</div>
+        <div class="skill-desc">A torn sock gets mended, not replaced. New clothes arrive once a year if you're lucky. A 10-year-old could darn, patch, and reattach buttons without thinking about it.</div>
+        <div class="skill-rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📐</span>
+        <div class="skill-title">Mental Arithmetic</div>
+        <div class="skill-desc">No calculators. No phones. The price of feed, the count of bushels, the change from a dollar — all computed in your head, and you'd better be right.</div>
+        <div class="skill-rating"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 1916 -->
+<section class="decade era-1916" data-year="1916">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- WWI era: factory, war garden -->
+      <rect x="20" y="80" width="60" height="65" fill="#8aaa60" opacity=".18"/>
+      <rect x="65" y="55" width="10" height="30" fill="#8aaa60" opacity=".15"/>
+      <rect x="50" y="60" width="8" height="25" fill="#8aaa60" opacity=".12"/>
+      <!-- Smoke puffs -->
+      <circle cx="70" cy="50" r="8" fill="#8aaa60" opacity=".08"/>
+      <circle cx="78" cy="43" r="6" fill="#8aaa60" opacity=".06"/>
+      <!-- Victory garden plants -->
+      <g stroke="#8aaa60" stroke-width="1.5" fill="none" opacity=".3">
+        <path d="M 90,145 Q 90,130 95,120"/>
+        <ellipse cx="93" cy="118" rx="7" ry="5" fill="#8aaa60" stroke="none"/>
+        <path d="M 100,145 Q 100,133 105,123"/>
+        <ellipse cx="103" cy="121" rx="6" ry="4" fill="#8aaa60" stroke="none"/>
+        <path d="M 110,145 Q 110,135 115,126"/>
+        <ellipse cx="113" cy="124" rx="5" ry="4" fill="#8aaa60" stroke="none"/>
+      </g>
+      <!-- Flag -->
+      <line x1="20" y1="145" x2="20" y2="95" stroke="#8aaa60" stroke-width="1.5" opacity=".4"/>
+      <rect x="20" y="95" width="20" height="13" fill="#8aaa60" opacity=".3"/>
+    </svg>
+
+    <p class="era-label" style="color:#8aaa60">The Great War Era</p>
+    <div class="year-badge">
+      <div class="year-num">1916</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Grew the Food<br>While Dad Was Overseas</h2>
+
+    <p class="decade-intro">By 1916, World War I was consuming fathers and older brothers, and the home front needed everyone. Ten-year-olds were growing <strong>Victory Gardens</strong>, learning to preserve food in jars (a matter of survival, not Pinterest), and delivering messages on foot because the telephone was a novelty and telegrams cost money. They also knew — probably better than most adults today — the exact difference between a <em>turnip</em> and a <em>rutabaga</em>, because this knowledge could save the family dinner.</p>
+
+    <div class="funny-line">A 1916 ten-year-old could butcher a chicken for Sunday supper. A 2016 ten-year-old cannot locate Sunday supper on a menu without photos.</div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">🫙</span>
+        <div class="skill-title">Food Preservation</div>
+        <div class="skill-desc">Canning, pickling, drying. If you didn't put food up in summer, you didn't eat in winter. A ten-year-old could safely process a batch of green beans or jam without supervision.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🌿</span>
+        <div class="skill-title">Victory Garden Management</div>
+        <div class="skill-desc">With food rationed and men away, children actually ran vegetable plots. They knew planting schedules, companion planting, and how to keep aphids off the tomatoes.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📬</span>
+        <div class="skill-title">Message Running & Errand Logic</div>
+        <div class="skill-desc">The original human router. Delivered messages, picked up goods from multiple shops in efficient order, and remembered everything because writing it down was optional.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🧼</span>
+        <div class="skill-title">Soap and Candle Making</div>
+        <div class="skill-desc">Still common enough that a child might help render lard and lye into soap bars. Ugly. Effective. Your hands smelled of it all week.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📰</span>
+        <div class="skill-title">Reading a Newspaper Properly</div>
+        <div class="skill-desc">Not skimming. Reading — understanding the war dispatches, the casualty lists, the rationing announcements. Ten-year-olds were expected to follow events seriously.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎵</span>
+        <div class="skill-title">Parlour Music</div>
+        <div class="skill-desc">Piano, fiddle, or singing — the household entertainment before radio. Children played for family gatherings, and practice was not optional. Three hymns minimum.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 1926 -->
+<section class="decade era-1926" data-year="1926">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Radio set -->
+      <rect x="30" y="90" width="70" height="45" rx="4" fill="#60a0c8" opacity=".2"/>
+      <ellipse cx="65" cy="90" rx="20" ry="6" fill="#60a0c8" opacity=".15"/>
+      <!-- Dials -->
+      <circle cx="50" cy="107" r="8" fill="#60a0c8" opacity=".25"/>
+      <circle cx="50" cy="107" r="5" fill="#60a0c8" opacity=".2"/>
+      <circle cx="80" cy="107" r="8" fill="#60a0c8" opacity=".25"/>
+      <!-- Speaker mesh -->
+      <rect x="55" y="98" width="18" height="18" rx="2" fill="none" stroke="#60a0c8" stroke-width="1" opacity=".3"/>
+      <g stroke="#60a0c8" stroke-width=".5" opacity=".2">
+        <line x1="57" y1="101" x2="71" y2="101"/>
+        <line x1="57" y1="105" x2="71" y2="105"/>
+        <line x1="57" y1="109" x2="71" y2="109"/>
+        <line x1="57" y1="113" x2="71" y2="113"/>
+      </g>
+      <!-- Radio waves -->
+      <g stroke="#60a0c8" fill="none" opacity=".2">
+        <path d="M 100,75 Q 115,90 100,105" stroke-width="1.5"/>
+        <path d="M 106,68 Q 126,90 106,112" stroke-width="1.5"/>
+        <path d="M 30,75 Q 15,90 30,105" stroke-width="1.5"/>
+        <path d="M 24,68 Q 4,90 24,112" stroke-width="1.5"/>
+      </g>
+      <!-- Flapper silhouette hint -->
+      <ellipse cx="65" cy="45" rx="10" ry="10" fill="#60a0c8" opacity=".15"/>
+      <path d="M 57,55 Q 55,75 65,80 Q 75,75 73,55 Z" fill="#60a0c8" opacity=".1"/>
+    </svg>
+
+    <p class="era-label" style="color:#60a0c8">The Roaring Twenties</p>
+    <div class="year-badge">
+      <div class="year-num">1926</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Tuned the Radio<br>and Did the Charleston in the Kitchen</h2>
+
+    <p class="decade-intro">The 1920s brought electricity to cities, the automobile to the middle class, and — most critically to a ten-year-old — <strong>the radio</strong>. For the first time, children could access entertainment that nobody had pre-approved. Jazz music drifted in from New York and Chicago. Baseball games were announced live. A ten-year-old in 1926 knew how to operate, tune, and troubleshoot a crystal radio set, and considered this essentially the coolest skill a person could possess.</p>
+
+    <div class="funny-line">A 1926 ten-year-old had memorized every baseball statistic, could Charlston passably, and knew Prohibition was nonsense because they'd seen the speakeasy on Third Street. They said nothing about it.</div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">📻</span>
+        <div class="skill-title">Radio Operation & Tuning</div>
+        <div class="skill-desc">Crystal radio sets required real skill — finding the signal, adjusting the cat's whisker, fighting interference. A child who could coax a clear signal was a household hero.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🚗</span>
+        <div class="skill-title">Basic Auto Mechanics</div>
+        <div class="skill-desc">Cars broke down constantly. A ten-year-old could hand Father the right wrench, understood what a spark plug was, and could crank-start a Model T in a pinch.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">⚾</span>
+        <div class="skill-title">Box Scores & Sports Statistics</div>
+        <div class="skill-desc">Could read a newspaper box score, knew every player's batting average, and could argue Babe Ruth's stats with the authority of a small, opinionated professor.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">💃</span>
+        <div class="skill-title">Social Dancing</div>
+        <div class="skill-desc">The Charleston, the Foxtrot. Dancing wasn't optional — it was the social currency at every party, school event, and church social. You learned or you stood against the wall.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🧮</span>
+        <div class="skill-title">Double-Entry Bookkeeping</div>
+        <div class="skill-desc">Many children helped maintain the family shop's ledger by age 10. Arithmetic wasn't abstract — it was the margin between profit and ruin, and you learned to respect it.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎭</span>
+        <div class="skill-title">Elocution & Recitation</div>
+        <div class="skill-desc">Memorizing and dramatically performing poems and speeches before an audience was a standard school skill. "The boy stood on the burning deck" — delivered with feeling.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 1936 -->
+<section class="decade era-1936" data-year="1936">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Dust bowl / Depression: empty bowl, tin cup -->
+      <rect x="20" y="100" width="90" height="50" fill="#c87060" opacity=".06"/>
+      <!-- Dust clouds -->
+      <ellipse cx="65" cy="80" rx="40" ry="20" fill="#c87060" opacity=".08"/>
+      <ellipse cx="45" cy="70" rx="25" ry="15" fill="#c87060" opacity=".06"/>
+      <ellipse cx="90" cy="75" rx="22" ry="12" fill="#c87060" opacity=".06"/>
+      <!-- Tin can/cup -->
+      <rect x="52" y="120" width="24" height="20" rx="2" fill="#c87060" opacity=".2"/>
+      <ellipse cx="64" cy="120" rx="12" ry="3" fill="#c87060" opacity=".2"/>
+      <!-- Breadline suggestion: silhouettes -->
+      <g fill="#c87060" opacity=".15">
+        <ellipse cx="30" cy="112" rx="6" ry="6"/>
+        <rect x="26" y="118" width="8" height="22" rx="2"/>
+        <ellipse cx="44" cy="114" rx="5" ry="5"/>
+        <rect x="40" y="119" width="7" height="20" rx="2"/>
+        <ellipse cx="56" cy="113" rx="5" ry="5"/>
+        <rect x="52" y="118" width="7" height="21" rx="2"/>
+      </g>
+      <!-- FDR on radio -->
+      <rect x="80" y="105" width="35" height="25" rx="3" fill="#c87060" opacity=".18"/>
+      <text x="97" y="121" font-family="serif" font-size="8" fill="#c87060" text-anchor="middle" opacity=".4">FDR</text>
+    </svg>
+
+    <p class="era-label" style="color:#c87060">The Great Depression</p>
+    <div class="year-badge">
+      <div class="year-num">1936</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Knew Exactly<br>How Little Was in the Tin</h2>
+
+    <p class="decade-intro">Grew up during the Depression — one of the toughest generations of childhoods in American history. In 1936, a ten-year-old understood the value of a meal in a way that would be difficult to explain to any child born after 1950. They knew how to make something from nothing: flour-sack clothes, games with sticks, entertainment from a battery-powered radio shared between three families on the block. They were experts at the skills of <strong>creative scarcity</strong> — the lost art of making do.</p>
+
+    <div class="funny-line">A 1936 ten-year-old could stretch a pot of soup to feed eight people, recite FDR's Fireside Chats from memory, and had absolutely zero patience for waste. They still don't. Check their refrigerator — nothing gets thrown out.</div>
+
+    <div class="compare-strip">
+      <div class="then-col"><span class="compare-label">1936 kid's toy</span><span>A stick. And a smaller stick for comparison.</span></div>
+      <div class="vs">VS</div>
+      <div class="now-col"><span class="compare-label">2026 kid's toy</span><span>A $500 device running 60fps at 4K resolution.</span></div>
+    </div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">♻️</span>
+        <div class="skill-title">Radical Repurposing</div>
+        <div class="skill-desc">Flour sacks became shirts. Worn tires became shoe soles. Tin cans became cups. Nothing was thrown away without first asking if it could be something else.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🪙</span>
+        <div class="skill-title">Depression-Era Budgeting</div>
+        <div class="skill-desc">Every coin was accounted for. A ten-year-old could stretch a meal's ingredients across multiple days and understand instinctively why this mattered.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎙️</span>
+        <div class="skill-title">Radio Listening (Deeply)</div>
+        <div class="skill-desc">One radio in the neighborhood, shared. Children listened to FDR's Fireside Chats, Jack Benny, and Lone Ranger serials — and remembered every word. No rewind.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🤝</span>
+        <div class="skill-title">Barter & Trade</div>
+        <div class="skill-desc">Cash was scarce, so goods were exchanged. A ten-year-old understood the relative value of two dozen eggs vs. a pound of flour, and negotiated seriously.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🌿</span>
+        <div class="skill-title">Foraging & Wild Foods</div>
+        <div class="skill-desc">Dandelion greens, wild berries, hickory nuts. Kids in rural areas knew which plants were edible and how to prepare them — not as wilderness survival but as dinner.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎭</span>
+        <div class="skill-title">Making Your Own Fun</div>
+        <div class="skill-desc">No purchased entertainment. Marbles, mumbletypeg, kick-the-can, elaborate games invented from nothing. The imagination was the only device with unlimited battery.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 1946 -->
+<section class="decade era-1946" data-year="1946">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Postwar optimism: baseball, bike, TV box -->
+      <circle cx="65" cy="55" r="18" fill="#60c880" opacity=".15"/>
+      <path d="M 50,55 Q 65,35 80,55 Q 65,75 50,55 Z" fill="none" stroke="#60c880" stroke-width="1" opacity=".3"/>
+      <!-- Baseball stitching -->
+      <path d="M 58,48 Q 62,52 58,58" fill="none" stroke="#60c880" stroke-width="1.5" opacity=".25"/>
+      <path d="M 72,48 Q 68,52 72,58" fill="none" stroke="#60c880" stroke-width="1.5" opacity=".25"/>
+      <!-- Bike wheels -->
+      <circle cx="40" cy="130" r="20" fill="none" stroke="#60c880" stroke-width="2" opacity=".25"/>
+      <circle cx="90" cy="130" r="20" fill="none" stroke="#60c880" stroke-width="2" opacity=".25"/>
+      <circle cx="40" cy="130" r="3" fill="#60c880" opacity=".3"/>
+      <circle cx="90" cy="130" r="3" fill="#60c880" opacity=".3"/>
+      <!-- Frame -->
+      <g stroke="#60c880" stroke-width="2" fill="none" opacity=".25">
+        <line x1="40" y1="130" x2="65" y2="105"/>
+        <line x1="90" y1="130" x2="65" y2="105"/>
+        <line x1="65" y1="105" x2="50" y2="115"/>
+        <line x1="50" y1="115" x2="40" y2="130"/>
+      </g>
+    </svg>
+
+    <p class="era-label" style="color:#60c880">Postwar Boom</p>
+    <div class="year-badge">
+      <div class="year-num">1946</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Roamed Free,<br>Built Things, and Came Home at Dark</h2>
+
+    <p class="decade-intro">The war was over. Dad was home. Suburbia was being built with astonishing speed, and with it came a new kind of childhood: <strong>free-range, unsupervised, and genuinely dangerous in delightful ways.</strong> A ten-year-old in 1946 left the house in the morning and returned — possibly with blood on their knee — at dinner. In between, they organized their own games, built their own forts, settled their own disputes, and generally operated as a small society of people who had never heard the word "playdate."</p>
+
+    <div class="funny-line">A 1946 ten-year-old could build a go-kart from salvaged parts, navigate home from three miles away using only the sun, and had almost certainly broken at least one bone that nobody went to the doctor about.</div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">🚲</span>
+        <div class="skill-title">Bicycle Maintenance</div>
+        <div class="skill-desc">Fix a flat, adjust brakes, oil a chain. The bike was freedom, and keeping it running was a serious responsibility. Taking it to a shop was not an option that occurred to anyone.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🏡</span>
+        <div class="skill-title">Fort Architecture</div>
+        <div class="skill-desc">Multi-room tree forts, underground clubhouses, elaborate systems of salvaged lumber. Engineering without an engineer, construction without a permit, and inspection by nobody.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">⚾</span>
+        <div class="skill-title">Sandlot Sports Self-Organization</div>
+        <div class="skill-desc">No adults, no uniforms, no refs. Kids chose teams, set rules, resolved disputes, and played for hours. The social skills this required were, frankly, remarkable.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🔧</span>
+        <div class="skill-title">Basic Construction & Repair</div>
+        <div class="skill-desc">Hammering, sawing, basic plumbing assistance. Boys especially were expected to hand tools, help with repairs, and understand how a house basically worked.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📺</span>
+        <div class="skill-title">Early TV Literacy</div>
+        <div class="skill-desc">By 1946-50, TV was arriving. A ten-year-old could adjust the rabbit ears, explain why the picture went snowy, and had strong opinions about Howdy Doody.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🗺️</span>
+        <div class="skill-title">Navigating Without Help</div>
+        <div class="skill-desc">Three miles from home, no phone, no map, no worry. Landmarks, sun position, and the general knowledge of the neighborhood got you home. Always.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 1956 -->
+<section class="decade era-1956" data-year="1956">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Atomic age + TV + Elvis vibes -->
+      <!-- TV set -->
+      <rect x="25" y="85" width="80" height="55" rx="6" fill="#c060c8" opacity=".15"/>
+      <rect x="32" y="92" width="55" height="38" rx="3" fill="#c060c8" opacity=".12"/>
+      <!-- Screen glow -->
+      <ellipse cx="59" cy="111" rx="22" ry="15" fill="#c060c8" opacity=".08"/>
+      <!-- Antenna -->
+      <line x1="59" y1="85" x2="45" y2="65" stroke="#c060c8" stroke-width="1.5" opacity=".3"/>
+      <line x1="59" y1="85" x2="73" y2="65" stroke="#c060c8" stroke-width="1.5" opacity=".3"/>
+      <!-- Atom symbol -->
+      <circle cx="100" cy="50" r="5" fill="#c060c8" opacity=".25"/>
+      <ellipse cx="100" cy="50" rx="18" ry="8" fill="none" stroke="#c060c8" stroke-width="1" opacity=".2" transform="rotate(0 100 50)"/>
+      <ellipse cx="100" cy="50" rx="18" ry="8" fill="none" stroke="#c060c8" stroke-width="1" opacity=".2" transform="rotate(60 100 50)"/>
+      <ellipse cx="100" cy="50" rx="18" ry="8" fill="none" stroke="#c060c8" stroke-width="1" opacity=".2" transform="rotate(120 100 50)"/>
+      <!-- 45 record -->
+      <circle cx="35" cy="50" r="18" fill="#c060c8" opacity=".12"/>
+      <circle cx="35" cy="50" r="5" fill="#c060c8" opacity=".2"/>
+      <circle cx="35" cy="50" r="2" fill="none" stroke="#c060c8" stroke-width="1" opacity=".3"/>
+    </svg>
+
+    <p class="era-label" style="color:#c060c8">The Atomic Fifties</p>
+    <div class="year-badge">
+      <div class="year-num">1956</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Knew Every<br>Elvis Lyric and Did Duck-and-Cover</h2>
+
+    <p class="decade-intro">The fifties were a study in contradiction for a child: <strong>relentless optimism and nuclear anxiety, all in the same week.</strong> Your teacher taught you to duck under your desk in the event of atomic attack (which, everyone privately agreed, would help exactly no one). Meanwhile, television was rewriting childhood entirely — suddenly there was something to watch, and watching it together was the new family activity. A ten-year-old in 1956 could tell you the plot of every I Love Lucy episode, had a strong opinion about Elvis, and could do a paper route blindfolded.</p>
+
+    <div class="funny-line">A 1956 ten-year-old had memorized "Hound Dog," understood the offside rule in football, and had a very specific plan for surviving nuclear war that began with "get under the desk" and became increasingly vague thereafter.</div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">📰</span>
+        <div class="skill-title">Paper Route Logistics</div>
+        <div class="skill-desc">Up at 5am, fold, rubber-band, deliver 80+ papers across a half-mile route in rain, snow, or darkness — then collect money door-to-door on Fridays. A masterclass in small business.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎵</span>
+        <div class="skill-title">45rpm Record Operation</div>
+        <div class="skill-desc">The yellow plastic insert, the needle placement, keeping your older sibling's records unscratched — a complex ritual for listening to Elvis without getting killed.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📺</span>
+        <div class="skill-title">TV Rabbit Ear Mastery</div>
+        <div class="skill-desc">Standing completely still, arm extended at 38°, holding the antenna in the exact position that produced a non-snowy picture. The family's human tripod.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🧠</span>
+        <div class="skill-title">Encyclopaedia Research</div>
+        <div class="skill-desc">The family encyclopaedia set — probably Britannica or World Book — was the research tool. You knew which volume had which letter and how to use the index. No shortcuts.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🚘</span>
+        <div class="skill-title">Car Culture Knowledge</div>
+        <div class="skill-desc">Every ten-year-old boy could identify any car by silhouette, knew the horsepower of each model, and had strong opinions about whether fins were improving or getting ridiculous.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🧹</span>
+        <div class="skill-title">Full Household Chores</div>
+        <div class="skill-desc">Vacuuming, dishes, yard work, laundry assistance. Chores weren't negotiated — they were assigned and completed. Allowance was not guaranteed. Character was assumed to be the reward.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 1966 -->
+<section class="decade era-1966" data-year="1966">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Space age + mod + Vietnam protest -->
+      <!-- Rocket -->
+      <path d="M 65,20 Q 72,40 72,80 L 65,90 L 58,80 Q 58,40 65,20 Z" fill="#e85020" opacity=".2"/>
+      <polygon points="58,80 52,95 65,88 78,95 72,80" fill="#e85020" opacity=".15"/>
+      <!-- Moon -->
+      <circle cx="105" cy="30" r="18" fill="#e85020" opacity=".1"/>
+      <circle cx="112" cy="26" r="14" fill="#2a1818" opacity=".7"/>
+      <!-- Peace symbol suggestion -->
+      <circle cx="28" cy="125" r="18" fill="none" stroke="#e85020" stroke-width="1.5" opacity=".3"/>
+      <line x1="28" y1="107" x2="28" y2="143" stroke="#e85020" stroke-width="1.5" opacity=".3"/>
+      <line x1="28" y1="125" x2="14" y2="138" stroke="#e85020" stroke-width="1.5" opacity=".3"/>
+      <line x1="28" y1="125" x2="42" y2="138" stroke="#e85020" stroke-width="1.5" opacity=".3"/>
+      <!-- Transistor radio -->
+      <rect x="85" y="100" width="35" height="50" rx="3" fill="#e85020" opacity=".15"/>
+      <rect x="89" y="104" width="27" height="18" rx="2" fill="#e85020" opacity=".1"/>
+      <circle cx="95" cy="130" r="5" fill="#e85020" opacity=".2"/>
+      <circle cx="110" cy="130" r="5" fill="#e85020" opacity=".2"/>
+    </svg>
+
+    <p class="era-label" style="color:#e85020">The Space Age Sixties</p>
+    <div class="year-badge">
+      <div class="year-num">1966</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Was Going to<br>Be an Astronaut and Meant It</h2>
+
+    <p class="decade-intro">In 1966, the space race was at full throttle, and every child fully expected to visit the moon personally within the next fifteen years. This was not naive — it felt <em>inevitable</em>. The cultural atmosphere was electric: the Beatles on the transistor radio, Gemini missions on black-and-white TV, and a peculiar national optimism that anything was achievable if you applied enough math. Ten-year-olds were the first generation who grew up expecting technology to solve everything. The first in history to be <strong>wrong about that in a specific, Saturn-V-shaped way.</strong></p>
+
+    <div class="funny-line">A 1966 ten-year-old could name every Mercury and Gemini astronaut, every Beatle's real name, and was deeply, personally offended by the cancellation of Lost in Space. These feelings have never fully resolved.</div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">🚀</span>
+        <div class="skill-title">Space Mission Knowledge</div>
+        <div class="skill-desc">Every astronaut, every mission, the differences between Mercury, Gemini, and Apollo. This was not trivia — this was the most important thing happening on Earth and children took it seriously.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📻</span>
+        <div class="skill-title">Transistor Radio Literacy</div>
+        <div class="skill-desc">The pocket radio was the first truly personal entertainment device. A ten-year-old knew every top-40 station, could identify songs in three notes, and owned their musical taste completely.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🧪</span>
+        <div class="skill-title">Model Rocketry & Chemistry Sets</div>
+        <div class="skill-desc">Estes rockets launched from fields. Chemistry sets with actual chemicals. Experiments that occasionally produced smoke. Safety culture was aspirational rather than enforced.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎸</span>
+        <div class="skill-title">Pop Music Obsession</div>
+        <div class="skill-desc">The Beatles, The Stones, Motown. A ten-year-old in 1966 was navigating the most exciting music moment in American history and had very strong opinions about which Beatle was best.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🗞️</span>
+        <div class="skill-title">Understanding the News (Grimly)</div>
+        <div class="skill-desc">Vietnam. Civil Rights. Assassinations. Sixties children processed world events at a level unusual for their age. History was happening loudly, and they were watching.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎨</span>
+        <div class="skill-title">Hobby Crafts & Model Building</div>
+        <div class="skill-desc">Airfix model kits, paint-by-numbers, stamp collecting. The concept of absorbing yourself in a solitary analog project for four hours straight. A lost civilization.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 1976 -->
+<section class="decade era-1976" data-year="1976">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Disco + skateboard + bicentennial -->
+      <!-- Disco ball -->
+      <circle cx="65" cy="40" r="22" fill="#d870a0" opacity=".12"/>
+      <g stroke="#d870a0" stroke-width=".8" opacity=".25">
+        <line x1="43" y1="40" x2="87" y2="40"/><line x1="43" y1="32" x2="87" y2="32"/>
+        <line x1="43" y1="48" x2="87" y2="48"/>
+        <line x1="65" y1="18" x2="65" y2="62"/>
+        <line x1="50" y1="20" x2="50" y2="60"/><line x1="80" y1="20" x2="80" y2="60"/>
+      </g>
+      <line x1="65" y1="62" x2="65" y2="75" stroke="#d870a0" stroke-width="1.5" opacity=".3"/>
+      <!-- Skateboard -->
+      <rect x="25" y="130" width="60" height="10" rx="5" fill="#d870a0" opacity=".2"/>
+      <circle cx="35" cy="142" r="5" fill="#d870a0" opacity=".25"/>
+      <circle cx="75" cy="142" r="5" fill="#d870a0" opacity=".25"/>
+      <!-- Star Wars (1977) suggestion -->
+      <polygon points="95,90 98,100 108,100 100,106 103,116 95,110 87,116 90,106 82,100 92,100" fill="#d870a0" opacity=".2"/>
+      <!-- Pet rock (1975 ended but cultural residue) -->
+      <ellipse cx="110" cy="140" rx="12" ry="10" fill="#d870a0" opacity=".1"/>
+    </svg>
+
+    <p class="era-label" style="color:#d870a0">The Bicentennial Seventies</p>
+    <div class="year-badge">
+      <div class="year-num">1976</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Skateboarded<br>Without Pads and Survived Star Wars</h2>
+
+    <p class="decade-intro">1976 was America's Bicentennial, and children celebrated by largely ignoring it in favor of <strong>skateboarding, Dungeons & Dragons, and waiting for Star Wars to come out</strong> (one more year). This was the decade of unsupervised outdoor freedom reaching its absolute peak — children genuinely roamed in packs without adult contact for entire days, and this was considered fine. The decade also brought the Pet Rock, which suggests the nation's sense of humor was in excellent shape.</p>
+
+    <div class="funny-line">A 1976 ten-year-old could ollie off a curb, understood the difference between a paladin and a ranger, had a Pet Rock they took very seriously for approximately ten days, and could explain to you in great detail why Star Wars was going to be amazing — nine months before it came out.</div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">🛹</span>
+        <div class="skill-title">Skateboarding</div>
+        <div class="skill-desc">Without helmets, pads, or instruction videos. You learned by falling. Repeatedly. The falling was considered part of the learning, not a design flaw requiring a lawsuit.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎲</span>
+        <div class="skill-title">Dungeons & Dragons</div>
+        <div class="skill-desc">D&D launched in 1974 and by 1976 a ten-year-old could run a multi-session campaign, calculate THAC0, and explain to their alarmed parents that no, it was not Satanic.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎞️</span>
+        <div class="skill-title">Movie Obsession & Memorization</div>
+        <div class="skill-desc">Jaws (1975), Rocky (1976). Every scene memorized. Movies were events — you saw them in theaters multiple times, then waited years for any chance to see them again.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎶</span>
+        <div class="skill-title">Making Mix Tapes from Radio</div>
+        <div class="skill-desc">Finger on the Record button, listening for the exact moment your song started, trying not to catch the DJ's voice. An art form requiring patience, reflexes, and tape.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🌳</span>
+        <div class="skill-title">Unsupervised Wilderness Competence</div>
+        <div class="skill-desc">Woods, creeks, construction sites, abandoned lots. Ten-year-olds assessed their own risk, made their own decisions, and turned up for dinner. Usually.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🕹️</span>
+        <div class="skill-title">Early Arcade Gaming</div>
+        <div class="skill-desc">Pong. Space Invaders. Atari arriving at home. The earliest generation of video game literacy — understanding that you could control something on a screen was still new and wonderful.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 1986 -->
+<section class="decade era-1986" data-year="1986">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- 80s computer, cassette, NES -->
+      <rect x="20" y="60" width="70" height="50" rx="4" fill="#4488ff" opacity=".18"/>
+      <rect x="28" y="68" width="54" height="34" rx="2" fill="#4488ff" opacity=".12"/>
+      <!-- Cursor blink -->
+      <rect x="32" y="72" width="2" height="12" fill="#4488ff" opacity=".5"/>
+      <!-- Floppy disk -->
+      <rect x="75" y="80" width="20" height="20" rx="2" fill="#4488ff" opacity=".2"/>
+      <rect x="80" y="82" width="10" height="6" rx="1" fill="#4488ff" opacity=".3"/>
+      <rect x="81" y="95" width="8" height="3" rx="1" fill="#4488ff" opacity=".25"/>
+      <!-- NES controller suggestion -->
+      <rect x="20" y="125" width="50" height="25" rx="4" fill="#4488ff" opacity=".15"/>
+      <rect x="25" y="130" width="10" height="10" rx="1" fill="#4488ff" opacity=".2"/>
+      <circle cx="55" cy="135" r="5" fill="#4488ff" opacity=".25"/>
+      <circle cx="65" cy="135" r="5" fill="#4488ff" opacity=".25"/>
+      <!-- Cassette tape -->
+      <rect x="85" y="125" width="35" height="24" rx="3" fill="#4488ff" opacity=".15"/>
+      <circle cx="95" cy="137" r="6" fill="none" stroke="#4488ff" stroke-width="1" opacity=".3"/>
+      <circle cx="110" cy="137" r="6" fill="none" stroke="#4488ff" stroke-width="1" opacity=".3"/>
+    </svg>
+
+    <p class="era-label" style="color:#4488ff">The Digital Dawn</p>
+    <div class="year-badge">
+      <div class="year-num">1986</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title" style="font-family:'VT323',monospace;letter-spacing:.08em;">THE TEN-YEAR-OLD WHO TYPED<br>BASIC INTO A COMPUTER AND<br>SAVED IT TO A FLOPPY DISK_</h2>
+
+    <p class="decade-intro">The personal computer arrived in homes, and the first generation of truly digital children was born. They typed <strong>10 PRINT "HELLO"; 20 GOTO 10</strong> into Apple IIs in school computer labs and felt like hackers. They also had the NES, which introduced a level of game complexity that required actual strategy. Meanwhile, the Walkman meant music was finally personal — no more negotiating with siblings over the record player. A ten-year-old in 1986 lived simultaneously in two worlds: the analog one that had always existed, and the digital one just flickering to life.</p>
+
+    <div class="funny-line">A 1986 ten-year-old could type a BASIC program, rewind a VHS tape before returning it, defeat the original Legend of Zelda without a walkthrough, and explain to their father what a floppy disk was. The father nodded slowly. He understood almost none of it.</div>
+
+    <div class="compare-strip">
+      <div class="then-col"><span class="compare-label">1986 storage</span><span>360KB floppy disk. Treated like a precious artifact.</span></div>
+      <div class="vs">VS</div>
+      <div class="now-col"><span class="compare-label">2026 storage</span><span>2TB phone. Mostly TikTok drafts and screenshots.</span></div>
+    </div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">💾</span>
+        <div class="skill-title">BASIC Programming</div>
+        <div class="skill-desc">Apple II BASIC. Writing your name in a loop. Making the cursor blink. This was it — the beginning of everything. A ten-year-old who could do this felt genuinely powerful.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🕹️</span>
+        <div class="skill-title">Console Gaming Mastery</div>
+        <div class="skill-desc">NES, Atari 7800, Commodore 64. Gaming that required memorization, pattern recognition, and persistence. No save states. No tutorials. Figure it out or quit forever.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📼</span>
+        <div class="skill-title">VHS Operation & Etiquette</div>
+        <div class="skill-desc">Be kind, rewind. Knowing which speed recorded how long. The art of hitting record during a movie broadcast and hoping the tape didn't run out before the ending.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎧</span>
+        <div class="skill-title">Walkman Management</div>
+        <div class="skill-desc">Which side of the tape you were on. When batteries were dying (the pitch drop). The complex social question of whether to offer one earbud and to whom.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📞</span>
+        <div class="skill-title">Telephone Protocol</div>
+        <div class="skill-desc">"Hello, may I speak to [friend]?" — and if their parent answered, the formal pleasantries required. The social choreography of the family phone line was precise.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🗺️</span>
+        <div class="skill-title">Paper Map Reading</div>
+        <div class="skill-desc">The folded road atlas in the glove box. Tracking the route with your finger. Understanding scale. Knowing which highway connects where. Pre-GPS navigation was a real skill.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 1996 -->
+<section class="decade era-1996" data-year="1996">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- 90s: dial-up modem, Tamagotchi, AOL -->
+      <!-- Modem/computer -->
+      <rect x="20" y="55" width="70" height="55" rx="4" fill="#00dd44" opacity=".15"/>
+      <rect x="28" y="65" width="54" height="34" rx="2" fill="#00dd44" opacity=".1"/>
+      <!-- Loading bar (dial up) -->
+      <rect x="32" y="88" width="40" height="6" rx="1" fill="#00dd44" opacity=".15"/>
+      <rect x="32" y="88" width="15" height="6" rx="1" fill="#00dd44" opacity=".4"/>
+      <!-- Modem lights -->
+      <circle cx="80" cy="75" r="2" fill="#00dd44" opacity=".6"/>
+      <circle cx="80" cy="83" r="2" fill="#00dd44" opacity=".3"/>
+      <circle cx="80" cy="91" r="2" fill="#00dd44" opacity=".6"/>
+      <!-- Tamagotchi -->
+      <ellipse cx="100" cy="110" rx="18" ry="22" fill="#00dd44" opacity=".12"/>
+      <ellipse cx="100" cy="105" rx="10" ry="10" fill="#00dd44" opacity=".1"/>
+      <!-- Tamagotchi creature dots -->
+      <circle cx="97" cy="102" r="1.5" fill="#00dd44" opacity=".4"/>
+      <circle cx="103" cy="102" r="1.5" fill="#00dd44" opacity=".4"/>
+      <path d="M 96,107 Q 100,111 104,107" fill="none" stroke="#00dd44" stroke-width="1" opacity=".4"/>
+      <!-- AIM buddy icon suggestion -->
+      <text x="25" y="145" font-family="monospace" font-size="9" fill="#00dd44" opacity=".3">:-)</text>
+      <text x="45" y="145" font-family="monospace" font-size="9" fill="#00dd44" opacity=".3">A/S/L?</text>
+    </svg>
+
+    <p class="era-label" style="color:#00dd44">The Internet Arrives</p>
+    <div class="year-badge">
+      <div class="year-num">1996</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Waited 45 Minutes<br>for One JPEG to Load and Was Fine With It</h2>
+
+    <p class="decade-intro">The internet came home, and it sounded like a robot having a breakdown. Dial-up modems connected at 28.8 kbps — the speed of geological processes — and a ten-year-old in 1996 would sit and watch a single image load <em>one pixel row at a time</em>, and this was genuinely exciting. They had a Tamagotchi (which they kept alive with the intensity of new parents), an AOL screen name with exactly the right amount of random numbers in it, and could type faster than most adults using only their thumbs on a keyboard. The world was changing fast and they were changing with it.</p>
+
+    <div class="funny-line">"You've got mail!" — three words that made a 1996 ten-year-old drop everything and sprint to the computer, then discover it was a forward from Grandma about angels. Disappointment managed. Tamagotchi checked. Hunger: 3 hearts.</div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">🐣</span>
+        <div class="skill-title">Tamagotchi Management</div>
+        <div class="skill-desc">Feeding, cleaning, sleeping schedules. The first widely distributed experience of digital responsibility. Children took this seriously. The Tamagotchi dying was a genuine emotional event.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">💬</span>
+        <div class="skill-title">AIM / Online Chat Etiquette</div>
+        <div class="skill-desc">The away message as literary form. The buddy list as social map. The art of the screen name. Internet communication had its own rules and children mastered them before adults noticed.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎮</span>
+        <div class="skill-title">CD-ROM Gaming</div>
+        <div class="skill-desc">Myst. Oregon Trail. Where in the World Is Carmen Sandiego. Games that required reading, problem-solving, and navigating menus. The educational game was peak 90s.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📀</span>
+        <div class="skill-title">CD Care & Handling</div>
+        <div class="skill-desc">Never touch the shiny side. Wipe from center outward. Understanding that a scratch could corrupt everything. The physical media era required physical responsibility.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🌐</span>
+        <div class="skill-title">Basic Web Navigation</div>
+        <div class="skill-desc">Typing a URL in Netscape. Understanding that "www" was required. Knowing what a search engine was before Google. The early internet was navigated, not searched.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">☎️</span>
+        <div class="skill-title">Not Tying Up the Phone Line</div>
+        <div class="skill-desc">Dial-up and the landline competed for the same wire. A ten-year-old managed this social complexity with the authority of a small telecommunications regulator.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 2006 -->
+<section class="decade era-2006" data-year="2006">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- 2006: iPod, YouTube, MySpace era -->
+      <!-- iPod -->
+      <rect x="48" y="20" width="34" height="60" rx="8" fill="#ff6600" opacity=".18"/>
+      <rect x="54" y="28" width="22" height="28" rx="2" fill="#ff6600" opacity=".12"/>
+      <circle cx="65" cy="66" r="10" fill="none" stroke="#ff6600" stroke-width="1.5" opacity=".3"/>
+      <circle cx="65" cy="66" r="4" fill="#ff6600" opacity=".2"/>
+      <!-- YouTube play button suggestion -->
+      <rect x="20" y="100" width="60" height="40" rx="4" fill="#ff6600" opacity=".12"/>
+      <polygon points="45,112 45,128 60,120" fill="#ff6600" opacity=".25"/>
+      <!-- Social network node dots -->
+      <circle cx="105" cy="50" r="5" fill="#ff6600" opacity=".3"/>
+      <circle cx="118" cy="65" r="4" fill="#ff6600" opacity=".2"/>
+      <circle cx="110" cy="80" r="5" fill="#ff6600" opacity=".25"/>
+      <circle cx="98" cy="70" r="3" fill="#ff6600" opacity=".2"/>
+      <line x1="105" y1="50" x2="118" y2="65" stroke="#ff6600" stroke-width="1" opacity=".2"/>
+      <line x1="118" y1="65" x2="110" y2="80" stroke="#ff6600" stroke-width="1" opacity=".2"/>
+      <line x1="110" y1="80" x2="98" y2="70" stroke="#ff6600" stroke-width="1" opacity=".2"/>
+      <line x1="98" y1="70" x2="105" y2="50" stroke="#ff6600" stroke-width="1" opacity=".2"/>
+    </svg>
+
+    <p class="era-label" style="color:#ff6600">The Social Media Dawn</p>
+    <div class="year-badge">
+      <div class="year-num">2006</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Had a MySpace Page<br>With an Autoplay Song Nobody Asked For</h2>
+
+    <p class="decade-intro">2006 was the last year of relatively innocent internet childhoods — right before smartphones changed everything forever. A ten-year-old had an iPod Nano they treated like a religious artifact, a growing awareness of YouTube (launched 2005), and possibly a MySpace page with a carefully selected song that would blast at full volume when any visitor arrived. They texted on a flip phone by pressing the number buttons multiple times — 7-7-7 for S, 2-2-2 for C — with the speed and accuracy of a telegraph operator. This was considered <strong>completely normal.</strong></p>
+
+    <div class="funny-line">A 2006 ten-year-old could customize their MySpace page with HTML they'd copied from a tutorial, had a "Top 8" that was a source of significant social anxiety, and could T9-text 40 words per minute without looking down. They also had an iPod with 500 songs on it and felt profoundly wealthy.</div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">🎵</span>
+        <div class="skill-title">iPod/iTunes Library Management</div>
+        <div class="skill-desc">Ripping CDs. Creating playlists. The careful curation of 1000 songs. Organizing by genre, mood, activity. The first generation of personal algorithmic music taste.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📱</span>
+        <div class="skill-title">T9 Texting at Speed</div>
+        <div class="skill-desc">Multi-tap texting on a numeric keypad, at competitive speeds, with predictive text turned on or off based on preference. A fine motor skill now completely extinct.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🌐</span>
+        <div class="skill-title">Basic HTML / MySpace Customization</div>
+        <div class="skill-desc">Copy-pasting CSS to change profile colors. Embedding music. Adding glitter GIFs. The entry point to web development for an entire generation, accidentally.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎮</span>
+        <div class="skill-title">Console Gaming Strategy</div>
+        <div class="skill-desc">PS2, GameCube, early Xbox 360. Games with complex narratives and online multiplayer arriving. A ten-year-old navigated virtual worlds with the confidence of a city planner.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📺</span>
+        <div class="skill-title">YouTube Discovery</div>
+        <div class="skill-desc">Finding and sharing videos — "Charlie Bit My Finger" was peak 2007 culture. Understanding that anyone could post video online was genuinely mind-expanding.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🔍</span>
+        <div class="skill-title">Google-Fu</div>
+        <div class="skill-desc">Effective searching. Knowing to add "-" to exclude terms, using quotes for exact phrases. The early internet rewarded those who could search precisely.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 2016 -->
+<section class="decade era-2016" data-year="2016">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- 2016: Minecraft, smartphone, Snapchat -->
+      <!-- Minecraft cube -->
+      <rect x="60" y="20" width="40" height="40" fill="#00eedd" opacity=".12"/>
+      <polygon points="60,20 80,10 100,20 80,30" fill="#00eedd" opacity=".18"/>
+      <polygon points="100,20 100,60 80,70 80,30" fill="#00eedd" opacity=".08"/>
+      <!-- Grass top -->
+      <polygon points="60,20 80,10 100,20 80,30" fill="#00eedd" opacity=".1"/>
+      <!-- Creeper face dots -->
+      <rect x="68" y="32" width="6" height="6" fill="#00eedd" opacity=".3"/>
+      <rect x="80" y="32" width="6" height="6" fill="#00eedd" opacity=".3"/>
+      <rect x="72" y="40" width="10" height="4" fill="#00eedd" opacity=".25"/>
+      <rect x="68" y="44" width="4" height="4" fill="#00eedd" opacity=".25"/>
+      <rect x="82" y="44" width="4" height="4" fill="#00eedd" opacity=".25"/>
+      <!-- Smartphone -->
+      <rect x="18" y="70" width="28" height="52" rx="4" fill="#00eedd" opacity=".15"/>
+      <rect x="22" y="76" width="20" height="36" rx="2" fill="#00eedd" opacity=".1"/>
+      <circle cx="32" cy="117" r="3" fill="#00eedd" opacity=".2"/>
+      <!-- Snapchat ghost hint -->
+      <path d="M 85,100 Q 85,85 95,85 Q 105,85 105,100 Q 105,112 95,115 Q 85,112 85,100 Z" fill="#00eedd" opacity=".12"/>
+    </svg>
+
+    <p class="era-label" style="color:#00eedd">The App Generation</p>
+    <div class="year-badge">
+      <div class="year-num">2016</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Built an Entire City<br>in Minecraft and Runs a YouTube Channel</h2>
+
+    <p class="decade-intro">By 2016, the smartphone had been in a ten-year-old's life since they were three, which meant they had <em>always known touchscreens</em> and found a laptop keyboard slightly confusing and old-fashioned. They had Minecraft cities of extraordinary ambition — elaborate redstone circuits, multi-building districts, transportation networks. They were also the first generation for whom creating online content felt natural: <strong>recording, editing, and posting video was something you just did</strong>, in the same way a previous generation just drew pictures.</p>
+
+    <div class="funny-line">A 2016 ten-year-old could edit a YouTube video, build a working calculator in Minecraft using redstone logic gates, navigate Snapchat's features faster than any adult alive, and explain to their parents with gentle, patient condescension how to fix their phone settings. Every time.</div>
+
+    <div class="compare-strip">
+      <div class="then-col"><span class="compare-label">1956 kid's entertainment</span><span>One TV channel. Watch it or don't.</span></div>
+      <div class="vs">VS</div>
+      <div class="now-col"><span class="compare-label">2016 kid's entertainment</span><span>Infinite content. Nothing to watch.</span></div>
+    </div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">⛏️</span>
+        <div class="skill-title">Minecraft World-Building</div>
+        <div class="skill-desc">Architecture, resource management, redstone engineering, server navigation. A ten-year-old's Minecraft world was often more structurally ambitious than most adults' actual renovation plans.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎥</span>
+        <div class="skill-title">Basic Video Editing</div>
+        <div class="skill-desc">iMovie, basic YouTube production. Recording, trimming, adding music, uploading. A ten-year-old treated content creation as a normal creative outlet, not a career.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📲</span>
+        <div class="skill-title">Multi-Platform Social Navigation</div>
+        <div class="skill-desc">Instagram, Snapchat, YouTube, each with different cultures, norms, and audiences. Managing a presence across platforms — even a small one — required genuine social intelligence.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎮</span>
+        <div class="skill-title">Fortnite / Roblox Mastery</div>
+        <div class="skill-desc">Not just playing — understanding the mechanics, the meta, the economy (V-Bucks, Robux), the social hierarchy. Gaming had become its own complete social world.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📱</span>
+        <div class="skill-title">Touchscreen as Primary Interface</div>
+        <div class="skill-desc">Born into touchscreens, a 2016 ten-year-old navigated apps, settings, and interfaces instinctively — then had to consciously learn how a mouse worked in school.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🧩</span>
+        <div class="skill-title">Troubleshooting Family Tech</div>
+        <div class="skill-desc">The de facto family IT department. Fixing the WiFi, setting up the streaming box, explaining why the printer doesn't work. A thankless but essential role.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="decade-divider"></div>
+
+<!-- 2026 -->
+<section class="decade era-2026" data-year="2026">
+  <div class="decade-inner">
+
+    <svg class="era-illo" viewBox="0 0 130 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- 2026: AI, robotics, TikTok, climate awareness -->
+      <!-- AI brain/circuit -->
+      <circle cx="65" cy="55" r="28" fill="none" stroke="#aa66ff" stroke-width="1.5" opacity=".25"/>
+      <circle cx="65" cy="55" r="18" fill="#aa66ff" opacity=".08"/>
+      <!-- Circuit paths -->
+      <g stroke="#aa66ff" stroke-width="1" opacity=".3" fill="none">
+        <path d="M 37,55 Q 30,55 25,48"/>
+        <path d="M 37,55 Q 30,60 25,68"/>
+        <path d="M 93,55 Q 100,55 105,48"/>
+        <path d="M 93,55 Q 100,60 105,68"/>
+        <path d="M 65,27 Q 65,18 58,12"/>
+        <path d="M 65,27 Q 65,18 72,12"/>
+        <path d="M 65,83 Q 65,95 65,105"/>
+      </g>
+      <!-- Neural dots -->
+      <g fill="#aa66ff" opacity=".5">
+        <circle cx="25" cy="48" r="3"/><circle cx="25" cy="68" r="3"/>
+        <circle cx="105" cy="48" r="3"/><circle cx="105" cy="68" r="3"/>
+        <circle cx="58" cy="12" r="3"/><circle cx="72" cy="12" r="3"/>
+        <circle cx="65" cy="105" r="3"/>
+      </g>
+      <!-- TikTok music note -->
+      <text x="10" y="125" font-family="serif" font-size="28" fill="#aa66ff" opacity=".2">♪</text>
+      <!-- Solar panel suggestion -->
+      <rect x="82" y="120" width="35" height="25" rx="2" fill="#aa66ff" opacity=".1"/>
+      <g stroke="#aa66ff" stroke-width=".8" opacity=".2">
+        <line x1="82" y1="128" x2="117" y2="128"/><line x1="82" y1="136" x2="117" y2="136"/>
+        <line x1="93" y1="120" x2="93" y2="145"/><line x1="104" y1="120" x2="104" y2="145"/>
+      </g>
+    </svg>
+
+    <p class="era-label" style="color:#aa66ff">The AI Age</p>
+    <div class="year-badge">
+      <div class="year-num">2026</div>
+      <div class="year-line"></div>
+    </div>
+    <h2 class="decade-title">The Ten-Year-Old Who Uses AI<br>as Naturally as a Pencil</h2>
+
+    <p class="decade-intro">A ten-year-old in 2026 has never known a world without smartphones, streaming, or touchscreens. They are growing up with <strong>AI assistants as a basic tool</strong> — using them for homework, creative projects, and answering questions the way a previous generation used Google, and a generation before that used an encyclopaedia. They make TikToks with the unselfconscious fluency of someone for whom the camera has always existed. They are also, quietly, more aware of climate and global systems than any previous childhood generation — because the world has been explaining its predicament to them since they could watch YouTube.</p>
+
+    <div class="funny-line">A 2026 ten-year-old can prompt an AI, edit video on a phone in three minutes, build in Roblox with code they wrote themselves, explain carbon footprints clearly, and look at you with the gentle pity of someone who watched you try to screenshot something using entirely the wrong gesture.</div>
+
+    <div class="compare-strip">
+      <div class="then-col"><span class="compare-label">1906 ten-year-old</span><span>Could operate a farm, harness a horse, and preserve food for winter.</span></div>
+      <div class="vs">VS</div>
+      <div class="now-col"><span class="compare-label">2026 ten-year-old</span><span>Can prompt an AI, edit video, code in Scratch, and explain the metaverse.</span></div>
+    </div>
+
+    <div class="skills">
+      <div class="skill-card">
+        <span class="skill-icon">🤖</span>
+        <div class="skill-title">AI Prompting & Literacy</div>
+        <div class="skill-desc">Knowing how to ask an AI a useful question — with context, constraints, and iteration. A skill that didn't exist five years ago and is now as natural as using a search engine.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎵</span>
+        <div class="skill-title">TikTok Creation & Trend Literacy</div>
+        <div class="skill-desc">Knowing the audio, the format, the timing, the sound. Making a TikTok that performs requires genuine cultural intelligence — reading the room at algorithmic speed.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🌍</span>
+        <div class="skill-title">Climate & Systems Thinking</div>
+        <div class="skill-desc">Carbon footprints, renewable energy, food systems. Not as abstract environmental concepts but as real frameworks for thinking about daily choices. A fundamentally different worldview.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">💻</span>
+        <div class="skill-title">Coding Basics (Scratch / Python)</div>
+        <div class="skill-desc">Scratch from age 7, Python beginning at 9-10. A ten-year-old who codes today is not unusual — it's expected. Programming literacy is joining reading literacy as a baseline skill.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🧠</span>
+        <div class="skill-title">Information Verification</div>
+        <div class="skill-desc">A skill previous generations didn't need: figuring out if something is true. Identifying AI-generated images, checking sources, recognizing misinformation. The new critical thinking.</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📱</span>
+        <div class="skill-title">Multi-Device Fluency</div>
+        <div class="skill-desc">Phone, tablet, laptop, smart TV, game console, smart speaker — each with different interfaces, each used naturally. A 2026 ten-year-old manages more devices than a 1986 office.</div>
+      </div>
+    </div>
+
+    <div class="funny-line" style="margin-top:2rem">What they cannot do, and probably should learn: read a paper map, write in cursive, explain what a fax machine is, operate a rotary dial, or start a fire without a YouTube tutorial. The circle of life continues. 🔄</div>
+  </div>
+</section>
+
+<!-- ══════════════ CLOSING ══════════════ -->
+<section class="closing">
+  <div class="closing-inner">
+
+    <!-- Closing illustration: all silhouettes together -->
+    <svg viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;margin:0 auto 2.5rem;display:block;">
+      <!-- Ground line -->
+      <line x1="20" y1="110" x2="480" y2="110" stroke="#b84a1a" stroke-width="1.5" opacity="0.3"/>
+      <!-- A child from each era, simple silhouettes -->
+      <g fill="#b84a1a">
+        <!-- 1906 -->
+        <ellipse cx="45" cy="72" rx="8" ry="8" opacity=".4"/>
+        <rect x="39" y="80" width="12" height="18" rx="2" opacity=".3"/>
+        <line x1="39" y1="88" x2="30" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".3"/>
+        <line x1="51" y1="88" x2="60" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".3"/>
+        <text x="38" y="118" font-family="serif" font-size="7" fill="#b84a1a" opacity=".4">1906</text>
+
+        <!-- 1926 -->
+        <ellipse cx="105" cy="72" rx="8" ry="8" opacity=".45"/>
+        <rect x="99" y="80" width="12" height="18" rx="2" opacity=".35"/>
+        <line x1="99" y1="88" x2="90" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".35"/>
+        <line x1="111" y1="88" x2="120" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".35"/>
+        <text x="98" y="118" font-family="serif" font-size="7" fill="#b84a1a" opacity=".4">1926</text>
+
+        <!-- 1946 -->
+        <ellipse cx="165" cy="72" rx="8" ry="8" opacity=".5"/>
+        <rect x="159" y="80" width="12" height="18" rx="2" opacity=".4"/>
+        <line x1="159" y1="88" x2="150" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".4"/>
+        <line x1="171" y1="88" x2="180" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".4"/>
+        <text x="158" y="118" font-family="serif" font-size="7" fill="#b84a1a" opacity=".4">1946</text>
+
+        <!-- 1966 -->
+        <ellipse cx="225" cy="72" rx="8" ry="8" opacity=".55"/>
+        <rect x="219" y="80" width="12" height="18" rx="2" opacity=".45"/>
+        <line x1="219" y1="88" x2="210" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".45"/>
+        <line x1="231" y1="88" x2="240" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".45"/>
+        <text x="218" y="118" font-family="serif" font-size="7" fill="#b84a1a" opacity=".4">1966</text>
+
+        <!-- 1986 -->
+        <ellipse cx="285" cy="72" rx="8" ry="8" opacity=".6"/>
+        <rect x="279" y="80" width="12" height="18" rx="2" opacity=".5"/>
+        <line x1="279" y1="88" x2="270" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".5"/>
+        <line x1="291" y1="88" x2="300" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".5"/>
+        <text x="278" y="118" font-family="serif" font-size="7" fill="#b84a1a" opacity=".4">1986</text>
+
+        <!-- 2006 -->
+        <ellipse cx="345" cy="72" rx="8" ry="8" opacity=".65"/>
+        <rect x="339" y="80" width="12" height="18" rx="2" opacity=".55"/>
+        <line x1="339" y1="88" x2="330" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".55"/>
+        <line x1="351" y1="88" x2="360" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".55"/>
+        <text x="338" y="118" font-family="serif" font-size="7" fill="#b84a1a" opacity=".4">2006</text>
+
+        <!-- 2026 -->
+        <ellipse cx="405" cy="72" rx="8" ry="8" opacity=".8"/>
+        <rect x="399" y="80" width="12" height="18" rx="2" opacity=".7"/>
+        <line x1="399" y1="88" x2="390" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".7"/>
+        <line x1="411" y1="88" x2="420" y2="98" stroke="#b84a1a" stroke-width="2" opacity=".7"/>
+        <text x="398" y="118" font-family="serif" font-size="7" fill="#b84a1a" opacity=".5">2026</text>
+
+        <!-- Arrow into future -->
+        <polygon points="460,110 448,105 448,115" fill="#b84a1a" opacity=".3"/>
+        <line x1="420" y1="110" x2="460" y2="110" stroke="#b84a1a" stroke-width="1.5" opacity=".3" stroke-dasharray="4,3"/>
+        <text x="463" y="113" font-family="serif" font-size="7" fill="#b84a1a" opacity=".3">?</text>
+      </g>
+    </svg>
+
+    <h2>Same Kid. Different Century.<br>Same Look of Utter Confidence.</h2>
+
+    <p>What's remarkable about this tour through 120 years of childhood is not how different the skills are — though they are remarkably, entertainingly different — but how constant the underlying thing is. <strong>Every ten-year-old, in every era, was an expert in the world they were actually living in.</strong> They knew the tools, the rules, the culture, the technology. They could do things adults found baffling. They explained things with patient condescension to the people who were supposed to be teaching them.</p>
+
+    <p>The 1906 ten-year-old who could milk a cow and split wood before breakfast would find the 2026 ten-year-old's skills as bewildering as a foreign language. And the 2026 ten-year-old, handed a pail and pointed toward a cow, would produce an expression of pure philosophical despair.</p>
+
+    <p><em>Neither of them is wrong. Both of them are entirely competent in the world they actually inhabit. And both of them, given fifteen minutes of instruction, would probably figure out the other's job — because ten-year-olds have always been, at their core, surprisingly capable people who are very annoyed that nobody seems to realize this.</em></p>
+
+    <p style="margin-top:2rem;font-style:italic;color:#5a4030;font-size:.9rem">The cows, for what it's worth, have remained equally unimpressed throughout.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-title">What Every 10-Year-Old Knew · 1906–2026</div>
+  <p style="margin-top:.4rem">A century of changing childhood skills, zero conclusions, infinite admiration for children everywhere.</p>
+  <p style="margin-top:1rem;font-size:.65rem;opacity:.4">Sources: Library of Congress Children's Lives records · DPLA Children & Youth in History · Reader's Digest Handwriting History · Behavioral research on childhood freedom · The collective memory of basically everyone's grandparent · Living in 2026 and watching a ten-year-old use a phone.</p>
+</footer>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('prog').style.width = pct + '%';
+});
+
+// Animate skill cards on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const cards = entry.target.querySelectorAll('.skill-card');
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('visible'), i * 80);
+      });
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.decade').forEach(d => observer.observe(d));
+</script>
+</body>
+</html>

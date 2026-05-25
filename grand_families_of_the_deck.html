@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Grand Families of the Deck: A Society Portrait</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #1a1208;
+    --cream:      #faf6ee;
+    --parchment:  #f0e8d4;
+    --manila:     #e8dfc0;
+    --muted:      #7a6a52;
+    --border:     #d0bfa0;
+    --card-bg:    #fffdf7;
+
+    /* Suit colors */
+    --spade:      #1e2638;
+    --spade-lt:   #eaedf2;
+    --heart:      #b01020;
+    --heart-lt:   #fdeef0;
+    --diamond:    #9a6800;
+    --diamond-lt: #fdf6e4;
+    --club:       #1a4a28;
+    --club-lt:    #e8f2ec;
+
+    --red:        #b01020;
+    --gold:       #9a7010;
+    --rust:       #b03010;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    text-align: center;
+    padding: 3.5rem 1rem 2rem;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  .masthead::before {
+    content: '♠  ♥  ♦  ♣';
+    font-size: 22px;
+    display: block;
+    letter-spacing: 1.2em;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, var(--spade) 0%, var(--heart) 33%, var(--diamond) 66%, var(--club) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .pub-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 5.5vw, 70px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .deck {
+    font-size: 17px;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+  .byline {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 0.5px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  /* ── BODY ── */
+  .article-body { padding-top: 2.5rem; }
+  p { margin-bottom: 1.4rem; font-weight: 300; }
+  .dropcap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.2em;
+    font-weight: 700;
+    float: left;
+    line-height: 0.78;
+    margin: 0.08em 0.1em 0 0;
+    color: var(--red);
+  }
+
+  /* ── SECTION HEADINGS ── */
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    margin: 4rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+  h2 .section-label {
+    font-family: 'DM Mono', monospace;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--red);
+    display: block;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    border-left: 4px solid var(--red);
+    margin: 2.5rem 0 2.5rem 1.5rem;
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    color: var(--red);
+    line-height: 1.45;
+  }
+
+  /* ── RANK CARD GRID ── */
+  .rank-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.2rem;
+    margin: 2.2rem 0;
+  }
+  .rank-grid.thirds {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  /* ── RANK CARD ── */
+  .rank-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.3rem 1.4rem 1.2rem;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+  .rank-card:hover { box-shadow: 0 4px 20px rgba(26,18,8,0.1); }
+
+  /* Top border by rank group */
+  .rank-card.royalty   { border-top: 3px solid var(--gold); }
+  .rank-card.high-num  { border-top: 3px solid var(--rust); }
+  .rank-card.mid-num   { border-top: 3px solid var(--muted); }
+  .rank-card.low-num   { border-top: 3px solid #a0b0c0; }
+  .rank-card.ace       { border-top: 3px solid var(--ink); border: 2px solid var(--ink); }
+  .rank-card.joker-card { border-top: 3px solid #6a2a8a; border: 1px dashed #8a4aaa; }
+
+  .rank-pip {
+    font-size: 56px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    color: var(--ink);
+  }
+  .rank-card.royalty .rank-pip  { color: var(--gold); }
+  .rank-card.high-num .rank-pip { color: var(--rust); }
+  .rank-card.mid-num .rank-pip  { color: #6a7a4a; }
+  .rank-card.low-num .rank-pip  { color: #8090a0; }
+  .rank-card.ace .rank-pip      { color: var(--ink); font-size: 64px; }
+  .rank-card.joker-card .rank-pip { color: #6a2a8a; }
+
+  .rank-file {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .rank-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+  }
+
+  .rank-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.05em;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-bottom: 0.7rem;
+    line-height: 1.6;
+  }
+  .rank-card.royalty .rank-badge  { background: #fdf8e8; color: var(--gold); border: 1px solid rgba(154,112,16,0.25); }
+  .rank-card.high-num .rank-badge { background: #fdeee8; color: var(--rust); border: 1px solid rgba(176,48,16,0.2); }
+  .rank-card.mid-num .rank-badge  { background: #f4f4ec; color: #5a6a3a; border: 1px solid rgba(90,100,60,0.2); }
+  .rank-card.low-num .rank-badge  { background: #edf0f4; color: #506070; border: 1px solid rgba(80,96,112,0.2); }
+  .rank-card.ace .rank-badge      { background: var(--ink); color: var(--cream); border: none; }
+  .rank-card.joker-card .rank-badge { background: #f4eefa; color: #6a2a8a; border: 1px solid rgba(106,42,138,0.25); }
+
+  .rank-notes {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 0.7rem;
+  }
+
+  .rank-verdict {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--club);
+    padding-top: 0.6rem;
+    border-top: 0.5px solid var(--border);
+    line-height: 1.5;
+  }
+  .rank-card.royalty .rank-verdict  { color: var(--gold); }
+  .rank-card.high-num .rank-verdict { color: var(--rust); }
+  .rank-card.joker-card .rank-verdict { color: #6a2a8a; }
+
+  /* ── FEATURED ROYAL PROFILE ── */
+  .royal-profile {
+    background: var(--parchment);
+    border: 1.5px solid var(--border);
+    border-left: 5px solid var(--gold);
+    border-radius: 4px;
+    padding: 1.8rem 2rem;
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .royal-pip {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    text-align: center;
+  }
+  .royal-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 0.25rem;
+  }
+  .royal-notes {
+    font-size: 15.5px;
+    font-weight: 300;
+    color: #3a3020;
+    line-height: 1.65;
+  }
+  .royal-verdict {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    color: var(--gold);
+    padding-top: 0.8rem;
+    margin-top: 0.8rem;
+    border-top: 0.5px solid var(--border);
+    line-height: 1.5;
+  }
+
+  /* ── SUIT FAMILY PORTRAIT ── */
+  .suit-portrait {
+    border-radius: 5px;
+    padding: 2rem 2.2rem;
+    margin: 2.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .suit-portrait::before {
+    content: attr(data-symbol);
+    position: absolute;
+    right: -0.5rem;
+    top: -1rem;
+    font-size: 160px;
+    opacity: 0.06;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .suit-portrait.spades   { background: var(--spade-lt); border: 1.5px solid #b0b8cc; border-left: 5px solid var(--spade); }
+  .suit-portrait.hearts   { background: var(--heart-lt); border: 1.5px solid #e0b0b8; border-left: 5px solid var(--heart); }
+  .suit-portrait.diamonds { background: var(--diamond-lt); border: 1.5px solid #d8c090; border-left: 5px solid var(--diamond); }
+  .suit-portrait.clubs    { background: var(--club-lt); border: 1.5px solid #a0c0a8; border-left: 5px solid var(--club); }
+
+  .suit-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .suit-portrait.spades .suit-name   { color: var(--spade); }
+  .suit-portrait.hearts .suit-name   { color: var(--heart); }
+  .suit-portrait.diamonds .suit-name { color: var(--diamond); }
+  .suit-portrait.clubs .suit-name    { color: var(--club); }
+
+  .suit-tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .suit-portrait.spades .suit-tagline   { color: #6070a0; }
+  .suit-portrait.hearts .suit-tagline   { color: #c06070; }
+  .suit-portrait.diamonds .suit-tagline { color: #c09020; }
+  .suit-portrait.clubs .suit-tagline    { color: #408050; }
+
+  .suit-body {
+    font-size: 15.5px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #2a2018;
+    position: relative;
+    z-index: 1;
+  }
+
+  .suit-verdict {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    margin-top: 1.2rem;
+    padding-top: 0.8rem;
+    border-top: 0.5px solid var(--border);
+    line-height: 1.6;
+  }
+  .suit-portrait.spades .suit-verdict   { color: var(--spade); }
+  .suit-portrait.hearts .suit-verdict   { color: var(--heart); }
+  .suit-portrait.diamonds .suit-verdict { color: var(--diamond); }
+  .suit-portrait.clubs .suit-verdict    { color: var(--club); }
+
+  /* ── QUEEN OF SPADES SPECIAL ── */
+  .queen-of-spades {
+    background: var(--spade);
+    border-radius: 5px;
+    padding: 2rem 2.2rem;
+    margin: 2.5rem 0;
+    color: #d0d8e8;
+    position: relative;
+    overflow: hidden;
+  }
+  .queen-of-spades::before {
+    content: '♠';
+    position: absolute;
+    right: -1rem;
+    top: -2rem;
+    font-size: 200px;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .queen-of-spades .qs-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8090b8;
+    margin-bottom: 0.6rem;
+  }
+  .queen-of-spades .qs-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    font-style: italic;
+    color: #e8eef8;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+  .queen-of-spades .qs-body {
+    font-size: 15.5px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #b8c4d8;
+    position: relative;
+    z-index: 1;
+  }
+  .queen-of-spades .qs-verdict {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    color: #8090b8;
+    margin-top: 1.2rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    line-height: 1.6;
+  }
+
+  /* ── FAMILY REUNION SCENE ── */
+  .reunion-box {
+    background: var(--manila);
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem 2.2rem;
+    margin: 3rem 0;
+    font-size: 15.5px;
+  }
+  .reunion-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.6rem;
+  }
+  .reunion-item {
+    margin-bottom: 0.9rem;
+    padding-left: 1.2rem;
+    border-left: 3px solid var(--border);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .reunion-item.spade-line { border-left-color: var(--spade); }
+  .reunion-item.heart-line { border-left-color: var(--heart); }
+  .reunion-item.diamond-line { border-left-color: var(--diamond); }
+  .reunion-item.club-line { border-left-color: var(--club); }
+  .reunion-item strong { font-weight: 600; }
+
+  /* ── ORNAMENT ── */
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    margin: 3rem 0;
+    letter-spacing: 1em;
+    font-size: 14px;
+  }
+
+  /* ── FOOTER ── */
+  .article-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    line-height: 2;
+    text-align: center;
+  }
+
+  @media (max-width: 620px) {
+    .royal-profile { grid-template-columns: 1fr; }
+    .royal-pip { font-size: 60px; }
+    .rank-grid { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 36px; }
+  }
+  @media (max-width: 420px) {
+    .rank-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ MASTHEAD ══ -->
+<div class="masthead">
+  <p class="pub-name">The Royal Gazette of the Grand Deck &nbsp;·&nbsp; Society &amp; Family Correspondence &nbsp;·&nbsp; For General Circulation</p>
+  <h1>The Grand Families<br>of the Deck</h1>
+  <p class="deck">A society portrait of fifty-two of the most complicated, competitive, glamorous, troubled, and occasionally unhinged personalities in the history of the card table</p>
+  <p class="byline">By Our Society Correspondent &nbsp;·&nbsp; With Notes from the Shuffling Room &nbsp;·&nbsp; Family trees available upon request</p>
+</div>
+
+<!-- ══ BODY ══ -->
+<div class="article-body">
+
+<p class="dropcap">Every family has its drama. The card families — Spade, Heart, Diamond, and Club — have more than most. Fifty-two characters, four clans, thirteen ranks, and an unspoken social hierarchy so rigid that entire civilizations have been built on its logic. They have been dealt, cut, trumped, thrown across tables in anger, and clutched in trembling hands by people who needed them desperately to be something other than what they were. They have never, in five centuries of playing card history, entirely cooperated.</p>
+
+<p>What follows is a society portrait. It is the result of extensive research, several uncomfortable dinner parties, and one memorable game of Hearts in which the Queen of Spades did something that the other three suits are still discussing. The families have been interviewed — or rather, have been watched, because the Spades do not grant interviews and the Clubs will not stop talking long enough for anything so formal — and their characters recorded here for the benefit of future players, gamblers, and anyone who has ever stared at a bad hand and wondered what kind of card has the nerve to be a Two.</p>
+
+<div class="pull-quote">"In any family, rank is everything. In the deck, rank is the only thing — until the Joker arrives, at which point rank is suddenly, gloriously, nothing at all."</div>
+
+<!-- ══ THE ROYALS ══ -->
+<h2>
+  <span class="section-label">Chapter I · The Royal Court</span>
+  Kings, Queens &amp; Jacks: The Face Card Dynasty
+</h2>
+
+<p>At the top of the deck sit the face cards — the Kings, Queens, and Jacks who peer out from their portraits with expressions that have not changed in five hundred years. They were painted once, in the early days of the French deck, and declared done. This suits them perfectly. They do not believe in change.</p>
+
+<!-- KING -->
+<div class="royal-profile">
+  <div class="royal-pip">K</div>
+  <div>
+    <p class="royal-name">The King — Lord of the Castle (Contingent on Aces)</p>
+    <span class="rank-badge" style="background:#fdf8e8;color:var(--gold);border:1px solid rgba(154,112,16,0.25);font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:0.05em;padding:2px 7px;border-radius:2px;display:inline-block;margin-bottom:0.8rem;">Rank: 13 · Apparent · Title: Technically Absolute</span>
+    <p class="royal-notes">The King presents himself as the pinnacle of the deck. Plump, proud, bearded in the classic rendering, he sits at the top of the numerical order with the satisfaction of a man who has never had to prove anything — because in most games, he doesn't need to. He is the highest-scoring court card. He is, by every visible measure, in charge.</p>
+    <p class="royal-notes">He is not, however, in charge. He knows this. The Queen knows this. The Jack knows this. The Ace, from its mysterious position at the bottom or the top of the deck depending on the game, has always known this. The King's authority exists precisely as long as no one calls an Ace high — which, in games like Blackjack, Poker, and most of what matters, they always do.</p>
+    <p class="royal-notes">He is, in short, a middle manager with a crown. Respected at his level. Subject to override from above. He handles this with the dignity of a man who has convinced himself that the override never quite counts. His hobby is looking imperious. He is very good at it.</p>
+    <p class="royal-verdict">FAMILY ROLE: The patriarch who believes he runs the household. Does not run the household.</p>
+  </div>
+</div>
+
+<!-- QUEEN -->
+<div class="royal-profile" style="border-left-color:var(--heart);">
+  <div class="royal-pip" style="color:var(--heart);">Q</div>
+  <div>
+    <p class="royal-name">The Queen — The Actual Ruler (Who Pretends Not to Be)</p>
+    <span class="rank-badge" style="background:var(--heart-lt);color:var(--heart);border:1px solid rgba(176,16,32,0.2);font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:0.05em;padding:2px 7px;border-radius:2px;display:inline-block;margin-bottom:0.8rem;">Rank: 12 · Official · Effective Rank: Considerably Higher</span>
+    <p class="royal-notes">Make no mistake: the Queen runs the deck. Not the King, who is largely decorative and knows it. Not the Ace, who runs hot and cold. The Queen is the one the other cards organize their strategies around, the one that, when she appears in Hearts or Spades, changes the entire emotional tenor of the room. The King's presence is noted. The Queen's presence is <em>felt</em>.</p>
+    <p class="royal-notes">She has mastered the art of apparent deference. She stands beside her King in the portrait, slightly smaller in the rendering, and allows the casual observer to assume he is in charge. Then the game begins. In Hearts, the Queen of Spades is worth thirteen points of misery — she is, without question, the most powerful and feared single card in the deck. In Poker, a pair of Queens reliably beats a pair of Kings, because the Queen appears twice. In Blackjack, she takes ten points with the calm confidence of someone accustomed to taking what she likes.</p>
+    <p class="royal-notes">She is not power-hungry. She simply <em>is</em> power, and has learned that the less obvious she makes it, the more effectively she can wield it. The King does not find this threatening. He has found it comforting. This is, possibly, the real trick.</p>
+    <p class="royal-verdict">FAMILY ROLE: The one who actually decides everything, while publicly crediting the King's excellent leadership.</p>
+  </div>
+</div>
+
+<!-- JACK -->
+<div class="royal-profile" style="border-left-color:var(--rust);">
+  <div class="royal-pip" style="color:var(--rust);">J</div>
+  <div>
+    <p class="royal-name">The Jack — Lesser Royalty, Considerable Ambition</p>
+    <span class="rank-badge" style="background:#fdeee8;color:var(--rust);border:1px solid rgba(176,48,16,0.2);font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:0.05em;padding:2px 7px;border-radius:2px;display:inline-block;margin-bottom:0.8rem;">Rank: 11 · Knave · Also Known As: The Operator</span>
+    <p class="royal-notes">The Jack is the youngest of the royals, the knave of old card traditions, and he has never quite forgiven the deck for his position. One step below the Queen, two below the King, he occupies the rank of someone who attended all the right parties and still didn't get the promotion. He is handsome in his portrait — he is, some argue, the most dashing of the three face cards — and he has used this handsomeness as a career strategy for centuries.</p>
+    <p class="royal-notes">He is the conniver. Not maliciously — he bears no one genuine ill will — but opportunistically, in the way of younger siblings who have learned that direct channels are blocked and that the side door is almost always open. He will not challenge the King directly. He will, however, align himself with whichever higher card seems most likely to win in the current game, and position himself to be the decisive factor in the outcome. He calls this "adaptability." The Queen calls it something else, but not to his face, because she understands him better than anyone and finds him, if not exactly trustworthy, at least usefully predictable.</p>
+    <p class="royal-notes">He is, in many games, the trump enabler — the card that completes a flush, fills a straight, or appears at precisely the moment someone needed an eleven-point face card and not a twelve. He is comfortable being "precisely what was needed." He has built an entire personality around it.</p>
+    <p class="royal-verdict">FAMILY ROLE: The younger sibling who swears he's not scheming while absolutely scheming.</p>
+  </div>
+</div>
+
+<div class="ornament">♠ &nbsp; ♥ &nbsp; ♦ &nbsp; ♣</div>
+
+<!-- ══ THE NUMBER CARDS ══ -->
+<h2>
+  <span class="section-label">Chapter II · The Number Cards</span>
+  Ten Through Two: The Rank and File
+</h2>
+
+<p>Below the court, the numbered cards do the actual work of the deck. They are dealt in greater quantities, appear in more hands, and do more of the mathematical heavy lifting than the royals ever have. They are rewarded for this with precisely zero prestige, a portrait that is just their number, and a seat at the table that is always, somehow, slightly too close to the Twos.</p>
+
+<div class="rank-grid">
+
+  <!-- TEN -->
+  <div class="rank-card high-num">
+    <p class="rank-file">Rank 10 · High Numerals</p>
+    <div class="rank-pip">10</div>
+    <p class="rank-name">The Ten</p>
+    <span class="rank-badge">The Resentful Firstborn</span>
+    <p class="rank-notes">The Ten is the highest number card in the deck and does not let the lower numbers forget it. In Blackjack, worth as much as a face card. In most point systems, the top scorer of the numerals. She lords over the Nines, Eights, and everyone below with the imperious confidence of a firstborn child who has always received the most attention and considers this her natural right.</p>
+    <p class="rank-notes">Her wound, however, runs deep: she is not a face card. She does not have a portrait. She is just a number. The King, Queen, and Jack look <em>down</em> at her — three-valued royals who outrank her on the basis of nothing more than having a painted face — and she has never, not once in five centuries, gotten over this.</p>
+    <p class="rank-verdict">VERDICT: Highest of the commoners. Lowest of the aristocracy. Manages neither category gracefully.</p>
+  </div>
+
+  <!-- NINE -->
+  <div class="rank-card high-num">
+    <p class="rank-file">Rank 9 · High Numerals</p>
+    <div class="rank-pip">9</div>
+    <p class="rank-name">The Nine</p>
+    <span class="rank-badge">Dressed to the Nines</span>
+    <p class="rank-notes">The Nine is acutely, painfully aware that he is not a Ten. He has chosen to respond to this awareness the only way a card of his particular sensitivity can: by dressing impeccably. "Dressed to the nines" is not a coincidence. The Nine's wardrobe is extraordinary. His pips are perfectly kerned. His corners are crisp. He arrives at every game looking as though he expects to be photographed.</p>
+    <p class="rank-notes">This is compensation, and everyone at the table can see it. The Nine cannot. He believes his presentation is the story. The story is, in fact, his proximity to the Ten, which he cannot close, and his distance from the Eight, which he maintains obsessively, because to be confused with the Eight would be a catastrophe from which he might never recover.</p>
+    <p class="rank-verdict">VERDICT: Impeccably presented. Existentially insecure. Do not mention the Ten in his presence.</p>
+  </div>
+
+  <!-- EIGHT -->
+  <div class="rank-card mid-num">
+    <p class="rank-file">Rank 8 · Middle Numerals</p>
+    <div class="rank-pip">8</div>
+    <p class="rank-name">The Eight</p>
+    <span class="rank-badge">The Wild Child · Officially Crazy</span>
+    <p class="rank-notes">The Eight is genuinely unhinged, and she is having the time of her life. Too far from the Ten to feel its pull, too far from the Two to feel its despair, she occupies a numerical middle distance from which the social hierarchy appears, correctly, as a complete absurdity. She has responded to this clarity by deciding that the rules are optional.</p>
+    <p class="rank-notes">In the game of Crazy Eights — named after her, which she considers her greatest achievement — she is a wild card. She can change the suit. She can redirect the game. She makes things weird just because she can, and then she watches what happens with the serene satisfaction of someone who has genuinely stopped caring about the outcome. The other cards find her alarming. She considers "alarming" a compliment. In card magic, she is the crowd favorite. No one knows why she does the things she does. Possibly she doesn't either.</p>
+    <p class="rank-verdict">VERDICT: Feral in the best possible sense. Unpredictably wonderful. Do not play against her if you have plans later.</p>
+  </div>
+
+  <!-- SEVEN -->
+  <div class="rank-card mid-num">
+    <p class="rank-file">Rank 7 · Middle Numerals</p>
+    <div class="rank-pip">7</div>
+    <p class="rank-name">The Seven</p>
+    <span class="rank-badge">Lucky · Carefree · Annoyingly Fine</span>
+    <p class="rank-notes">The Seven is lucky, and he knows it, and it hasn't gone to his head in the least, which is somehow the most annoying thing about him. Lucky number seven. Seven wonders, seven deadly sins, seven days of the week — he is embedded in the cultural mythology of fortune so deeply that he doesn't need to work for it. Good things simply happen around him.</p>
+    <p class="rank-notes">He is just above the midpoint of the numerical order, which means he has none of the Six's middle-child grievances and none of the Eight's compensatory chaos. He is, in the argot of family dynamics, simply <em>fine</em>. He didn't create this situation. He is benefitting from it. He smiles about this in a way that makes the Nines furious and the Sixes wistful. At the slot machines, he appears in triplicate and causes celebration. He considers this a normal Tuesday.</p>
+    <p class="rank-verdict">VERDICT: Inexplicably lucky, effortlessly carefree, impossible to resent successfully.</p>
+  </div>
+
+  <!-- SIX -->
+  <div class="rank-card mid-num">
+    <p class="rank-file">Rank 6 · Middle Numerals</p>
+    <div class="rank-pip">6</div>
+    <p class="rank-name">The Six</p>
+    <span class="rank-badge">Classic Middle Child</span>
+    <p class="rank-notes">The Six is the textbook middle child of the deck. Not high enough to matter, not low enough to be coddled. The Ten lording above. The Two trembling below. The Seven is lucky. The Eight is thrillingly unhinged. The Six is just... there. Reliable. Present. Contributing to the total when asked and retreating when not. She has spent years trying to find her personality and has concluded that "steady" is the best she can do. The other cards tell her this is a strength. She knows they mean it as consolation.</p>
+    <p class="rank-notes">She often appears in straights — 4-5-6-7-8 — where she is the pivotal interior card that no one notices, which is an exact metaphor for her life. She has made peace with this. Ask her again in a few years.</p>
+    <p class="rank-verdict">VERDICT: The glue. Unappreciated, indispensable, vaguely resigned. Therapy recommended.</p>
+  </div>
+
+  <!-- FIVE -->
+  <div class="rank-card mid-num">
+    <p class="rank-file">Rank 5 · Lower Middle</p>
+    <div class="rank-pip">5</div>
+    <p class="rank-name">The Five</p>
+    <span class="rank-badge">Playfully Unbothered</span>
+    <p class="rank-notes">The Five has simply decided not to care about status, and the decision appears to be genuine. He is the only card in this part of the deck who cannot be described as troubled, envious, chaotic, or resigned. He is playful. He is carefree. He appears in children's card games and high-stakes poker with equal equanimity, winning some, losing some, finding both outcomes interesting. He is, by temperament, a five-petaled flower — balanced, open, rotating slightly in the wind without going anywhere particular.</p>
+    <p class="rank-notes">The Nines suspect he's hiding something. The Tens are offended by him. The Eights find him, uniquely among all the numerical cards, genuinely easy to be around. This tells you everything you need to know about the Five.</p>
+    <p class="rank-verdict">VERDICT: Not trying to win anything other than the moment. Often succeeds at exactly this.</p>
+  </div>
+
+  <!-- FOUR -->
+  <div class="rank-card low-num">
+    <p class="rank-file">Rank 4 · Lower Numerals</p>
+    <div class="rank-pip">4</div>
+    <p class="rank-name">The Four</p>
+    <span class="rank-badge">Lost · Uncertain · Quietly Adrift</span>
+    <p class="rank-notes">The Four does not know what she is. She knows she is not a face card. She is not special like the Ace. She is not lucky like the Seven or wild like the Eight. She is too low to be significant and too high to be the lowest. She has tried identifying with the Three — too young. She has tried aspiring toward the Five — too settled. The Four occupies a numerical purgatory and has responded by developing a very thorough system of hobbies that she hopes will define her instead.</p>
+    <p class="rank-notes">She is, in structural terms, perfectly suited for foundations: four corners of a square, four legs on a table, four seasons. This stability is real, and occasionally someone points it out. She appreciates this but suspects they're just being kind. She continues her hobbies. She has recently taken up astronomy. The sky, at least, is very large, and in very large spaces, a Four is not especially small.</p>
+    <p class="rank-verdict">VERDICT: More stable than she knows. Working on knowing it. It's taking a while.</p>
+  </div>
+
+  <!-- THREE -->
+  <div class="rank-card low-num">
+    <p class="rank-file">Rank 3 · Lower Numerals</p>
+    <div class="rank-pip">3</div>
+    <p class="rank-name">The Three</p>
+    <span class="rank-badge">Too Young to Know Better</span>
+    <p class="rank-notes">The Three is a child. Not metaphorically — temperamentally. He eats with his hands. He has sticky fingers in the literal and figurative sense. He has not yet understood the hierarchy because no one has been able to hold his attention long enough to explain it. He loves dogs. He will attempt to pet any dog at any time, including during games when this causes significant disruption. He finds card shuffling hilarious. He falls asleep during anything longer than Go Fish.</p>
+    <p class="rank-notes">He is not unintelligent. He is simply pre-strategic. The world has not yet impressed upon him that cards are serious, that games have stakes, that rank is everything. He suspects, from what he can tell, that everyone else is making a big fuss about something that is probably fine. He is, in a way that the higher cards have entirely forgotten how to be, utterly free.</p>
+    <p class="rank-verdict">VERDICT: Joyful, oblivious, destructive at card tables. Give him the dogs and let him be.</p>
+  </div>
+
+  <!-- TWO -->
+  <div class="rank-card low-num">
+    <p class="rank-file">Rank 2 · Bottom of the Order</p>
+    <div class="rank-pip">2</div>
+    <p class="rank-name">The Two</p>
+    <span class="rank-badge">Afraid She Doesn't Matter</span>
+    <p class="rank-notes">The Two is, by every numerical measure, the lowest of the number cards. She is painfully aware of this. She does not bring it up, which means she thinks about it constantly. She watches the Tens lording and the Nines dressing and the Eights careening and the Sevens glowing, and she wonders — quietly, to herself, in the dark middle of a shuffled deck — whether she matters.</p>
+    <p class="rank-notes">She does, of course. In Poker's Razz variant, the Two is the best card you can hold. In certain games, Twos are wild. In War, she beats only the Ace — if the Ace is playing low — which is a confusing power structure but technically counts. But she doesn't know any of this yet. She is still trying to understand the game, still reading the rules from the bottom up, still wondering if she'll ever be something other than the first card discarded and the last one anyone wants to find in their hand.</p>
+    <p class="rank-notes">She will not stay at the bottom forever. Most players know this. She has not quite believed it yet.</p>
+    <p class="rank-verdict">VERDICT: Lower than she deserves, stronger than she knows, waiting for a game that will show her the truth about herself.</p>
+  </div>
+
+</div>
+
+<div class="ornament">♠ &nbsp; ♥ &nbsp; ♦ &nbsp; ♣</div>
+
+<!-- ══ THE ACE ══ -->
+<h2>
+  <span class="section-label">Chapter III · The Singular</span>
+  The Ace: One and Eleven, Everything and Nothing
+</h2>
+
+<p>The Ace requires its own chapter. All the other ranks accept their number and live inside it. The Ace refuses to be contained by any single value and has organized its entire personality around this refusal.</p>
+
+<div class="rank-card ace" style="max-width:600px;margin:0 auto 2.5rem;">
+  <p class="rank-file">Rank 1 or 14 · Contingent · Subject to Change Without Notice</p>
+  <div class="rank-pip" style="font-size:72px;">A</div>
+  <p class="rank-name">The Ace</p>
+  <span class="rank-badge">Mercurial · Mysterious · Indeterminate by Choice</span>
+  <p class="rank-notes" style="font-size:15.5px;line-height:1.7;">The Ace may be counted as one. The Ace may be counted as eleven. In some games, she ranks below the Two; in others, above the King. She has decided that this ambiguity is not a problem to be solved but a power to be exercised, and she is correct. She is the only card in the deck that can be whatever the game requires her to be — the lowest or the highest, the humble opener or the devastating close — and she makes this decision herself, at the moment of her choosing, based on criteria she has never shared with anyone.</p>
+  <p class="rank-notes" style="font-size:15.5px;line-height:1.7;">The King resents this. The King has one value, one rank, one position in the hierarchy, and in Blackjack, the Ace can count as eleven to the King's ten, meaning she is worth more than the highest royalty in the deck on a purely numerical basis. She does not gloat about this. Gloating would reduce the mystery. The mystery is the entire point.</p>
+  <p class="rank-notes" style="font-size:15.5px;line-height:1.7;">She is the first card in the deck and sometimes the last. She has a pip that occupies the whole face — one massive symbol, centered, declaratory, requiring no elaboration. She does not need four of herself to prove a point. One is enough. One, when it is the Ace, is always enough.</p>
+  <p class="rank-verdict" style="font-size:10.5px;">VERDICT: The most dangerous card at the table. She knows exactly what she is worth. She is simply not going to tell you in advance.</p>
+</div>
+
+<div class="ornament">♠ &nbsp; ♥ &nbsp; ♦ &nbsp; ♣</div>
+
+<!-- ══ THE JOKERS ══ -->
+<h2>
+  <span class="section-label">Chapter IV · The Uninvited</span>
+  The Jokers: They Weren't on the Guest List
+</h2>
+
+<p>And then — without warning, as always — the Jokers arrive.</p>
+
+<div class="rank-card joker-card" style="max-width:620px;margin:0 auto 2.5rem;">
+  <p class="rank-file">Rank: N/A · Wild · Supplemental · Impossible to Ignore</p>
+  <div class="rank-pip" style="font-size:52px;">🃏</div>
+  <p class="rank-name">The Jokers</p>
+  <span class="rank-badge">The Gadfly Aunts and Uncles Who Change Everything</span>
+  <p class="rank-notes" style="font-size:15.5px;line-height:1.7;">There are two Jokers in the standard deck — one printed more ornately than the other, though neither will explain why. They were added to the deck in the 1860s for the American game of Euchre, where they functioned as wild cards, and they have been disrupting family dynamics ever since. They are not part of the numbered hierarchy. They have no suit. They answer to no rank. They are, in the truest sense, outside the system, and they have made this their entire personality.</p>
+  <p class="rank-notes" style="font-size:15.5px;line-height:1.7;">They are the gadfly aunts and uncles of the deck — the ones who drop in without warning at Christmas, rearrange the seating chart, tell the children things their parents would rather they didn't know, and then leave before the dishes are done, having somehow made the gathering both more alive and significantly harder to manage. The King tries to have them removed. They cannot be removed if the game calls for them. The game, more often than anyone is comfortable with, calls for them.</p>
+  <p class="rank-notes" style="font-size:15.5px;line-height:1.7;">In games where they are wild, they can be anything — any suit, any rank, any value the holder requires. This is power that makes even the Ace look predictable. The Ace is unpredictable within a structure. The Joker is unpredictable outside any structure, which is a different and more unsettling thing entirely. They laugh about this. Their portrait has them in motley, grinning. The grin has never changed. They knew something, in 1865, that the rest of the deck is still catching up to.</p>
+  <p class="rank-verdict" style="font-size:10.5px;">VERDICT: Cannot be ranked. Cannot be managed. Can, if the game is right, beat absolutely everyone. Arrive without luggage and leave without explanation.</p>
+</div>
+
+<div class="ornament">♠ &nbsp; ♥ &nbsp; ♦ &nbsp; ♣</div>
+
+<!-- ══ THE FOUR FAMILIES ══ -->
+<h2>
+  <span class="section-label">Chapter V · The Family Portraits</span>
+  The Four Great Suits &amp; Their Particular Natures
+</h2>
+
+<p>The ranks describe who a card is within the hierarchy. The suits describe <em>where they come from</em> — the family culture, the ancestral personality, the particular flavor of dysfunction that gets passed down through thirteen generations of the same symbol. Every Ten is a Ten, but the Ten of Spades and the Ten of Hearts are not the same card, and never have been, and will tell you so if you give them the opportunity.</p>
+
+<!-- SPADES -->
+<div class="suit-portrait spades" data-symbol="♠">
+  <p class="suit-tagline">♠ &nbsp; The House of Spades &nbsp; ♠</p>
+  <p class="suit-name">The Spades</p>
+  <p class="suit-body">The Spades are dark, and they know it, and they have leaned into it with the commitment of a family that decided, generations ago, that reputation management was for the weaker suits. They are the gothic wing of the deck — their symbol is a stylized sword or a shovel depending on your etymology, and they have chosen to identify with the sword. Obviously they have chosen to identify with the sword.</p>
+  <p class="suit-body" style="margin-top:0.9rem;">They are not evil, precisely. They are <em>threatening</em>, which is a different and more sustainable position. The King of Spades carries himself like a man who has buried several inconvenient truths in the garden and has no plans to retrieve them. The Jack of Spades is the most conniving of all four Jacks — if the Jack archetype is already the schemer of the court, the Spade version is the schemer's schemer, the one the other Jacks hire when they need something done with deniability. The Ten of Spades is the most resentful Ten: it has the darkness of the suit on top of the Ten's general grievances, which is a lot for one card to carry.</p>
+  <p class="suit-body" style="margin-top:0.9rem;">In many games, Spades are the trump suit — they outrank all others, which means the lowly Two of Spades can beat the Ace of Hearts, the King of Diamonds, and anyone else who thought their high-value card was safe. The Spades deliver this news without apology. They have never once apologized for anything.</p>
+  <p class="suit-verdict">FAMILY MOTTO: "We are not the villain of this story. We are simply the part of this story you would prefer not to examine too closely."</p>
+</div>
+
+<!-- QUEEN OF SPADES SPECIAL -->
+<div class="queen-of-spades">
+  <p class="qs-label">♠ &nbsp; Special Report &nbsp; · &nbsp; Filed Separately &nbsp; · &nbsp; Handle With Care &nbsp; ♠</p>
+  <p class="qs-title">The Queen of Spades:<br>What She Is, Exactly, Remains Under Investigation</p>
+  <p class="qs-body">She is the most feared card in the deck. In Hearts, she is worth thirteen penalty points — the entire game is organized around not receiving her. Players will sacrifice good hands, high cards, and tactical advantage specifically to ensure that the Queen of Spades ends up in someone else's trick. She is not merely a bad card to hold. She is a card that the game itself has designated as dangerous, and has structured entire systems of play to avoid.</p>
+  <p class="qs-body" style="margin-top:0.9rem;">She is, in Russian literary tradition, a figure of doom and mystery — Pushkin wrote about her, and the opera followed, and in both she represents fate itself: inexorable, cold, arriving precisely when least wanted. She is the reason the phrase "the lady in black" has the connotations it has in card culture. She is the reason careful players count cards.</p>
+  <p class="qs-body" style="margin-top:0.9rem;">Is she a witch? This is a question the other three Queens refuse to answer directly, which is itself an answer. What can be documented: she changes the outcome of games in ways that defy probability. She appears in the hands of people who claim they had no reason to be holding her. She is cold to the touch in a way that may be metaphorical and may not. The diamonds in her portrait catch light differently than the diamonds in the other Spade portraits. Her eyes in the classic Bicycle deck design are looking at something just to the left of wherever you are standing.</p>
+  <p class="qs-body" style="margin-top:0.9rem;">No formal determination has been made. She has retained counsel. The counsel is the Jack of Spades, which tells you something.</p>
+  <p class="qs-verdict">STATUS: Queen. Spades. Thirteen points. Possibly supernatural. Under no circumstances attempt to "shoot the moon" without her explicit cooperation.</p>
+</div>
+
+<!-- HEARTS -->
+<div class="suit-portrait hearts" data-symbol="♥">
+  <p class="suit-tagline">♥ &nbsp; The House of Hearts &nbsp; ♥</p>
+  <p class="suit-name">The Hearts</p>
+  <p class="suit-body">The Hearts are beloved, and they know it, and there is perhaps a fine line between being beloved and being insufferable about being beloved, and the Hearts walk that line with varying success depending on the card. They are passionate, caring, loud about their feelings, and constitutionally unable to do anything without making it emotionally resonant. They always wear red. They have always worn red. They will discuss why they wear red at length if you let them.</p>
+  <p class="suit-body" style="margin-top:0.9rem;">They are the family everyone loves to have around until they have been around for too long, at which point their emotional availability tips over into emotional <em>demand</em>. The King of Hearts — known in some decks as "the suicide king" due to an archaic rendering in which his sword appears to point at his own head — is genuinely kind, more so than any other King, but has a flair for dramatic gestures that the other suits find exhausting. The Queen of Hearts, by contrast, is warmth itself: generous, proud, genuinely caring, and not even slightly the villain of Alice's Wonderland, which was a terrible misrepresentation she has never forgiven Carroll for.</p>
+  <p class="suit-body" style="margin-top:0.9rem;">The game of Hearts, confusingly, is a game you win by <em>avoiding</em> Hearts — each one is a penalty point. The family is aware of this. They choose not to dwell on it.</p>
+  <p class="suit-verdict">FAMILY MOTTO: "We feel everything, share all of it, and would like to know how that makes you feel."</p>
+</div>
+
+<!-- DIAMONDS -->
+<div class="suit-portrait diamonds" data-symbol="♦">
+  <p class="suit-tagline">♦ &nbsp; The House of Diamonds &nbsp; ♦</p>
+  <p class="suit-name">The Diamonds</p>
+  <p class="suit-body">The Diamonds are the nouveau riche of the deck, and they would very much like you to know about their wealth, their success, their jewels — particularly their jewels — and their recent renovation of the east wing, which was done by the most expensive contractor available, as one does. Their symbol is a gem, and they have taken this literally for their entire existence. Every Diamond card arrives at the table with the energy of someone who has just come from somewhere nicer than wherever they currently are.</p>
+  <p class="suit-body" style="margin-top:0.9rem;">The King of Diamonds is the only King in the standard Bicycle deck depicted in profile, clutching an orb rather than a sword, which says something about where his priorities lie. The Queen of Diamonds is the most bejeweled of the Queens — a double portrait, always, as befits someone who requires multiple perspectives to fully appreciate. The Jack of Diamonds is, in the family tradition, the most mercantile of the Jacks: where the Jack of Spades schemes politically and the Jack of Hearts schemes romantically, the Jack of Diamonds schemes financially, which is technically legal in most jurisdictions.</p>
+  <p class="suit-body" style="margin-top:0.9rem;">Their anxiety, hidden beneath the furs and the jewelry and the studied confidence, is that they could lose it all. Old money — the Spades' particular inheritance of dark authority — is never lost. New money can evaporate in a bad market, a bad hand, a bad decision by the King of Diamonds, who has historically made several. They strut. Underneath the strut is a spreadsheet, and the spreadsheet does not always look encouraging.</p>
+  <p class="suit-verdict">FAMILY MOTTO: "We worked very hard for all of this. (Please admire it. Please keep admiring it. Please don't stop.)"</p>
+</div>
+
+<!-- CLUBS -->
+<div class="suit-portrait clubs" data-symbol="♣">
+  <p class="suit-tagline">♣ &nbsp; The House of Clubs &nbsp; ♣</p>
+  <p class="suit-name">The Clubs</p>
+  <p class="suit-body">The Clubs want to be friends. They want to be your friend. They want to be everyone's friend. Their suit symbol — the trefoil, the three-leaf clover, possibly derived from the German "acorns" of early playing card tradition — suggests something rooted and earthy and communal, and that is precisely what the Clubs are: rooted, communal, and perpetually in the middle of a social event that they have organized, catered, and are now narrating in real time to everyone present whether or not those people are listening.</p>
+  <p class="suit-body" style="margin-top:0.9rem;">They are gregarious in the way of people who have identified gregariousness as their primary asset and are going to work it to full capacity. The King of Clubs is the most sociable King — less imperious than the King of Spades, less emotional than the King of Hearts, less financially distracted than the King of Diamonds. He simply wants the game to go well, wants everyone to enjoy themselves, and will keep the conversation going even through the long silences that other, less committed hosts would let remain silent.</p>
+  <p class="suit-body" style="margin-top:0.9rem;">Their flaw — and they would be the first to acknowledge it, warmly, at length, with examples — is that they do not know when to stop talking. The Clubs can talk through a hand, through a pause, through an awkward moment, through the end of a party, through the cleanup, and into the parking lot. They mean well. They always mean well. But meaning well and knowing when you have said enough are different skills, and the Clubs have mastered exactly one of them.</p>
+  <p class="suit-verdict">FAMILY MOTTO: "Come in, sit down, let us tell you about ourselves — and also, what can we tell you about yourself? Have you eaten? Let us get you something. Did we mention we've been thinking about starting a book club?"</p>
+</div>
+
+<div class="ornament">♠ &nbsp; ♥ &nbsp; ♦ &nbsp; ♣</div>
+
+<!-- ══ FAMILY REUNION ══ -->
+<h2>
+  <span class="section-label">Appendix A · Field Notes</span>
+  What Happens When You Put Them All on the Table
+</h2>
+
+<p>A deck of cards is, in the end, a family reunion in a box. They spend most of their time shuffled together in an order that means nothing, waiting for someone to deal them into significance. When the deal comes, each finds its place — briefly, tensely, with all the drama of people who have spent their whole lives rehearsing for exactly this moment and are still somehow surprised when it arrives.</p>
+
+<div class="reunion-box">
+  <p class="reunion-title">Observed at the Table — Selected Incidents, Recorded Without Judgment</p>
+
+  <div class="reunion-item spade-line">
+    <strong>The Queen of Spades</strong> was passed three times before she landed in someone's hand, at which point that person put her face down on the table and said nothing for six minutes. She did not appear troubled by this. She is never troubled.
+  </div>
+  <div class="reunion-item heart-line">
+    <strong>The King of Hearts</strong> tried to comfort the person holding the Queen of Spades. He was in a different hand. He attempted this anyway. It was appreciated and also unhelpful.
+  </div>
+  <div class="reunion-item diamond-line">
+    <strong>The Jack of Diamonds</strong> formed a coalition with the Nine of Clubs and the Three of Hearts for reasons that were never entirely clear, but which appeared to involve avoiding the Eight of Spades. The Eight of Spades was not participating in any coalition. She was operating independently. She found this funnier than anyone else at the table.
+  </div>
+  <div class="reunion-item club-line">
+    <strong>The Ten of Clubs</strong> spent the hand reminding the lower number cards of their relative position in the hierarchy. The Two of Clubs listened quietly and said nothing. She then won the round, in the specific game where Twos are wild, and still said nothing. Sometimes the table delivers its own verdict.
+  </div>
+  <div class="reunion-item spade-line">
+    <strong>The Ace of Spades</strong> — the highest Ace in the most powerful suit — appeared in the final trick and ended the game. She was, as she always is, the last card anyone saw, and therefore the card everyone remembered. She walked away from the table without looking back. This was, somehow, exactly right.
+  </div>
+  <div class="reunion-item" style="border-left-color:#6a2a8a;">
+    <strong>The Jokers</strong> were in the box. This particular game did not call for them. They waited, patient as disaster, for a game that would.
+  </div>
+</div>
+
+<div class="ornament">♠ &nbsp; ♥ &nbsp; ♦ &nbsp; ♣</div>
+
+<!-- CONCLUSION -->
+<h2>
+  <span class="section-label">Conclusion</span>
+  What the Deck, in the End, Is About
+</h2>
+
+<p>A standard deck of playing cards contains fifty-two cards and two Jokers, representing — if you follow one tradition — the fifty-two weeks of the year, the four seasons, the thirteen lunar months. The numbers of each suit add to ninety-one, which multiplied by four gives three hundred sixty-four. Add the Joker, and you have three hundred sixty-five: a year.</p>
+
+<p>This may be coincidence. It may not. The deck may be a calendar, a cosmology, a social hierarchy, a family portrait, a character study, and a game, all simultaneously. It has been all of these things at different tables for different people, and it has never — not once, across five hundred years — been definitively explained.</p>
+
+<p>The Kings are proud and not quite in charge. The Queens are in charge and politely deny it. The Jacks are angling. The Tens are resentful. The Nines are overdressed. The Eights are delightful and terrifying. The Sevens are lucky without trying. The Sixes are holding it all together. The Fives don't care what anyone thinks. The Fours are searching. The Threes are eating something with their hands. The Twos are afraid, and braver for it, and don't know yet that some games were made for them.</p>
+
+<p>And the Ace — the Ace is watching all of it, from her ambiguous position at the top or the bottom or wherever she has decided to be today, counting herself as one or eleven as the moment requires, and she is, if you look at her long enough, almost certainly smiling.</p>
+
+<p>The deck is not fifty-four separate characters. It is one thing: the story of everyone who has ever had to play the hand they were dealt. Which is, of course, everyone. Which is why we keep shuffling.</p>
+
+<div class="ornament">♠ &nbsp; ♥ &nbsp; ♦ &nbsp; ♣</div>
+</div>
+
+<div class="article-footer">
+  <p>The Queen of Spades has reviewed this article and has made no comment. Her silence has been interpreted as approval. Her silence has also been interpreted as the precursor to thirteen penalty points. Proceed accordingly.</p>
+  <p>The Clubs would like to organize a follow-up discussion. The Jokers have already RSVP'd for an event they were not invited to. The Two of Diamonds is still thinking about whether she deserves to come.</p>
+  <p>No Aces were asked to explain themselves. They would not have answered anyway.</p>
+  <p>© The Royal Gazette of the Grand Deck &nbsp;·&nbsp; All fifty-two suits reserved &nbsp;·&nbsp; Jokers excluded from warranty &nbsp;·&nbsp; Shuffle before dealing</p>
+</div>
+
+</body>
+</html>

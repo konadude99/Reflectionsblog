@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The State of American Healthcare — May 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --ink: #1a1410;
+    --paper: #faf7f2;
+    --rule: #c8b89a;
+    --accent: #c0392b;
+    --accent2: #2c5f8a;
+    --mid: #6b5b4e;
+    --light: #e8e0d4;
+    --chart1: #c0392b;
+    --chart2: #2c5f8a;
+    --chart3: #27ae60;
+    --chart4: #f39c12;
+    --chart5: #8e44ad;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 17px;
+  }
+
+  .masthead {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 3rem 2rem 2.5rem;
+    border-bottom: 4px solid var(--accent);
+  }
+
+  .masthead .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rule);
+    margin-bottom: 1rem;
+  }
+
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .masthead .deck {
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+
+  .masthead .byline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: var(--rule);
+    text-transform: uppercase;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .lede {
+    font-size: 1.22rem;
+    font-style: italic;
+    color: var(--mid);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 1.8rem;
+    margin: 3rem 0 2.5rem;
+    line-height: 1.7;
+    background: rgba(192,57,43,0.04);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 3rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--rule);
+    color: var(--ink);
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 2rem 0 0.6rem;
+    color: var(--accent2);
+  }
+
+  p { margin-bottom: 1.2rem; }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  .section-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── CHARTS ── */
+  .chart-wrap {
+    background: white;
+    border: 1px solid var(--light);
+    border-radius: 2px;
+    padding: 1.5rem 1.8rem 1.2rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .chart-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--ink);
+  }
+
+  .chart-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--mid);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Bar chart */
+  .bar-chart { display: flex; flex-direction: column; gap: 0.6rem; }
+  .bar-row { display: flex; align-items: center; gap: 0.8rem; }
+  .bar-label {
+    font-size: 0.82rem;
+    min-width: 160px;
+    text-align: right;
+    color: var(--mid);
+    font-family: 'Source Serif 4', serif;
+    line-height: 1.3;
+  }
+  .bar-track {
+    flex: 1;
+    height: 22px;
+    background: var(--light);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.8s ease;
+  }
+  .bar-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+    min-width: 50px;
+    color: var(--ink);
+  }
+
+  /* Horizontal grouped bars */
+  .grouped-bars { display: flex; flex-direction: column; gap: 1.2rem; }
+  .group-row { display: flex; flex-direction: column; gap: 0.3rem; }
+  .group-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  /* Timeline / trend chart using SVG */
+  .svg-wrap { width: 100%; overflow-x: auto; }
+
+  /* Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin: 2rem 0;
+    background: white;
+    border: 1px solid var(--light);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .data-table caption {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: left;
+    padding: 1rem 1.2rem 0.4rem;
+    color: var(--ink);
+    caption-side: top;
+  }
+  .data-table .table-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--mid);
+    padding: 0 1.2rem 0.8rem;
+    display: block;
+    letter-spacing: 0.04em;
+  }
+  .data-table th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.7rem 1rem;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .data-table td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--light);
+    vertical-align: top;
+    line-height: 1.4;
+  }
+  .data-table tr:nth-child(even) td { background: #f8f4ef; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table .good { color: #27ae60; font-weight: 600; }
+  .data-table .bad  { color: var(--accent); font-weight: 600; }
+  .data-table .mid-val { color: var(--chart4); font-weight: 600; }
+
+  /* Stat callouts */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .stat-box {
+    background: white;
+    border: 1px solid var(--light);
+    border-top: 3px solid var(--accent);
+    padding: 1.2rem 1.2rem 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .stat-box.blue { border-top-color: var(--accent2); }
+  .stat-box.green { border-top-color: #27ae60; }
+  .stat-box.amber { border-top-color: var(--chart4); }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    color: var(--ink);
+  }
+  .stat-desc {
+    font-size: 0.82rem;
+    color: var(--mid);
+    line-height: 1.4;
+  }
+
+  /* Pull quote */
+  .pull {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    font-weight: 700;
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding: 1.5rem 0;
+    margin: 2.5rem 0;
+    color: var(--ink);
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .source-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--mid);
+    letter-spacing: 0.04em;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--light);
+  }
+
+  footer {
+    background: var(--ink);
+    color: var(--rule);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  hr.section-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 3rem 0;
+  }
+
+  @media (max-width: 600px) {
+    .bar-label { min-width: 100px; font-size: 0.74rem; }
+    .stat-num { font-size: 1.8rem; }
+    body { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="kicker">Health Policy Report · May 2026</p>
+  <h1>The State of American Healthcare</h1>
+  <p class="deck">A system under pressure — from Capitol Hill cuts to vanishing maternity wards, the coverage landscape is shifting beneath millions of Americans' feet.</p>
+  <p class="byline">Updated with 2026 Data &nbsp;|&nbsp; Sources: KFF · CBO · RAND · Commonwealth Fund · AHA · AAMC</p>
+</div>
+
+<div class="container">
+
+  <div class="lede">
+    American healthcare in May 2026 is not merely unequal — it is actively contracting. The fragile coverage gains of the pandemic era are unraveling: enhanced ACA subsidies have expired, Medicaid faces its largest cuts in history, rural maternity wards are closing at record pace, and a budget law signed on Independence Day 2025 promises to remove millions more from the insured rolls within a decade. The system still produces world-class medicine. The question is who can reach it.
+  </div>
+
+  <!-- KEY STATS -->
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">27M+</div>
+      <div class="stat-desc">Americans without health insurance (2024 baseline, rising in 2026)</div>
+    </div>
+    <div class="stat-box blue">
+      <div class="stat-num">8.7%</div>
+      <div class="stat-desc">Projected national uninsured rate for calendar year 2026 (CMS actuary)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">114%</div>
+      <div class="stat-desc">Average premium increase for ACA marketplace enrollees after subsidy expiration</div>
+    </div>
+    <div class="stat-box amber">
+      <div class="stat-num">$911B</div>
+      <div class="stat-desc">Federal Medicaid spending cut over 10 years under the One Big Beautiful Bill Act</div>
+    </div>
+    <div class="stat-box green">
+      <div class="stat-num">23.1M</div>
+      <div class="stat-desc">ACA marketplace enrollees for 2026 — down 4.9% from the 2025 record</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">41%</div>
+      <div class="stat-desc">Share of rural hospitals still offering labor &amp; delivery services</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <span class="section-number">Section 1</span>
+  <h2>Health Insurance: Gains Reversed, New Pressures Mounting</h2>
+
+  <p>For most of the 2020s, the headline story of American health insurance was progress. Medicaid expansion spread to 41 states (including D.C.). Pandemic-era policies swelled rolls to historic highs. ACA marketplace enrollment hit a record <strong>24.3 million</strong> in 2025. But 2026 marks a decisive pivot — and not in the right direction.</p>
+
+  <p><strong>The subsidy cliff has returned.</strong> The enhanced premium tax credits first enacted under the American Rescue Plan Act (2021) and extended by the Inflation Reduction Act (2022) expired at the end of 2025. Congress did not renew them. The result: average out-of-pocket ACA marketplace premiums jumped from <strong>$113/month in 2025 to $178/month in 2026</strong> — a 57% increase in what enrollees pay directly. For the roughly 8 million who were auto-renewed without actively re-selecting a plan, the shock is landing gradually, and a significant share are expected to drop coverage when the grace period ends.</p>
+
+  <p>For middle-income households earning just above 400% of the federal poverty level — roughly $58,000 for an individual — the "subsidy cliff" has returned with particular brutality. A couple in their late 50s earning $85,000 in West Virginia, for instance, could see their lowest-cost plan jump from affordable to more than half their annual income.</p>
+
+  <!-- CHART: Premium comparison -->
+  <div class="chart-wrap">
+    <div class="chart-title">ACA Marketplace: Monthly Premiums Paid by Enrollees, 2022–2026</div>
+    <div class="chart-sub">AVERAGE OUT-OF-POCKET MONTHLY PREMIUM (SUBSIDIZED ENROLLEES) · SOURCE: CMS / KFF</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">2022</div>
+        <div class="bar-track"><div class="bar-fill" style="width:27%;background:var(--chart2)"></div></div>
+        <div class="bar-val">$77/mo</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">2023</div>
+        <div class="bar-track"><div class="bar-fill" style="width:32%;background:var(--chart2)"></div></div>
+        <div class="bar-val">$89/mo</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">2024</div>
+        <div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--chart2)"></div></div>
+        <div class="bar-val">$111/mo</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">2025 (w/ enhanced subsidies)</div>
+        <div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--chart2)"></div></div>
+        <div class="bar-val">$113/mo</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">2026 (subsidies expired)</div>
+        <div class="bar-track"><div class="bar-fill" style="width:63%;background:var(--chart1)"></div></div>
+        <div class="bar-val" style="color:var(--accent)"><strong>$178/mo ▲</strong></div>
+      </div>
+    </div>
+    <p class="source-note">Source: CMS Open Enrollment Data; KFF analysis of premium tax credit expiration, 2026</p>
+  </div>
+
+  <p>Enrollment data confirms the pullback. <strong>23.1 million</strong> people enrolled in marketplace plans for 2026 — down 4.9% from the prior year's record. CMS attributed over 1.5 million of the drop to fraud prevention efforts that had been paused since COVID; the rest reflects genuine unaffordability-driven exits. The share of enrollees receiving any subsidy fell from 92% in 2025 to 87% in 2026.</p>
+
+  <p>Meanwhile, the <strong>One Big Beautiful Bill Act (OBBBA)</strong>, signed into law July 4, 2025, has begun reshaping Medicaid — the program covering roughly 79 million low-income Americans. Its provisions include work requirements (80 hours/month for non-disabled adults, beginning December 2026), six-month rather than annual eligibility redeterminations (beginning 2027), new co-pays up to $35 per service for expansion enrollees, and limits on the provider taxes states use to draw down federal matching funds. The Congressional Budget Office estimates these changes will cause <strong>10 million Americans to lose Medicaid coverage by 2034</strong>, with 2 million losing coverage in 2026 alone.</p>
+
+  <!-- CHART: Insurance coverage breakdown -->
+  <div class="chart-wrap">
+    <div class="chart-title">Where Americans Get Their Health Insurance (2024 baseline)</div>
+    <div class="chart-sub">COVERAGE SOURCE AS SHARE OF TOTAL POPULATION · SOURCE: KFF / U.S. CENSUS BUREAU</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Employer-sponsored</div>
+        <div class="bar-track"><div class="bar-fill" style="width:54%;background:var(--chart2)"></div></div>
+        <div class="bar-val">~49%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Medicaid / CHIP</div>
+        <div class="bar-track"><div class="bar-fill" style="width:44%;background:var(--chart3)"></div></div>
+        <div class="bar-val">~20%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Medicare</div>
+        <div class="bar-track"><div class="bar-fill" style="width:33%;background:var(--chart4)"></div></div>
+        <div class="bar-val">~15%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">ACA Marketplace / direct</div>
+        <div class="bar-track"><div class="bar-fill" style="width:13%;background:var(--chart5)"></div></div>
+        <div class="bar-val">~6%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Military / VA</div>
+        <div class="bar-track"><div class="bar-fill" style="width:3%;background:var(--mid)"></div></div>
+        <div class="bar-val">&lt;2%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label" style="color:var(--accent)">Uninsured</div>
+        <div class="bar-track"><div class="bar-fill" style="width:21%;background:var(--chart1)"></div></div>
+        <div class="bar-val" style="color:var(--accent)">~9.8%</div>
+      </div>
+    </div>
+    <p class="source-note">Note: Percentages exceed 100% due to dual coverage. CMS actuary projects uninsured rate rising to 8.7% for calendar year 2026.</p>
+  </div>
+
+  <p>Texas continues to lead the nation in uninsured residents, with <strong>16.7% of its population</strong> lacking coverage — and 21.6% of working-age adults. The state accounts for 42% of the national "coverage gap": the approximately 1.4 million Americans in non-expansion states who earn too much for traditional Medicaid but too little for marketplace subsidies. Oklahoma (11.5%), Georgia (12%), and Florida (10.9%) face similar pressures.</p>
+
+  <!-- SECTION 2 -->
+  <span class="section-number">Section 2</span>
+  <h2>The One Big Beautiful Bill Act: A Structural Inflection Point</h2>
+
+  <p>No single piece of legislation has reshaped American healthcare policy since the ACA quite like the OBBBA, signed July 4, 2025. It represents <strong>the largest federal rollback of Medicaid in the program's history</strong>, cutting $911 billion in federal Medicaid spending over ten years according to CBO estimates.</p>
+
+  <p>RAND Health's analysis estimates that <strong>state Medicaid budgets will collectively lose $665 billion over the 2025–2034 period</strong> — with general fund spending reductions of $86 billion on top of that. The states facing the steepest relative cuts include Arizona, Iowa, and Nevada (projected reductions exceeding 15% of Medicaid budgets), largely because of caps on the provider tax financing mechanisms those states relied upon most heavily.</p>
+
+  <div class="pull">
+    "The OBBB cuts over $1 trillion from health programs — the largest rollback of federal support for healthcare in American history."
+    <br><span style="font-size:0.75rem;font-style:normal;font-weight:400;color:var(--mid)">— Center for Medicare Advocacy, July 2025</span>
+  </div>
+
+  <p>As partial mitigation, the law created a <strong>$50 billion Rural Health Transformation Program</strong> ($10 billion per year, 2026–2030). But KFF analysis shows this offsets only a fraction of the damage: the rural health fund front-loads money before most cuts take effect, nearly two-thirds of the ten-year Medicaid reductions occur after fiscal year 2030, and CMS stipulated no more than 15% of funds may go directly to hospitals or patient care. KFF estimates rural Medicaid spending will still fall by <strong>$137 billion over ten years</strong>, with rural hospitals' Medicaid revenue dropping as much as 9.6% on average and uncompensated care rising 35.4%.</p>
+
+  <p>Medicare is also affected, though less directly. The OBBBA increases the federal deficit sufficiently to trigger automatic PAYGO cuts — the CBO estimates a <strong>$45 billion Medicare reduction in 2026</strong>, growing to $75 billion annually by 2034. It also narrows Medicare eligibility for lawfully present non-citizen immigrants and exempts orphan drugs from the drug-price negotiation authority granted by the Inflation Reduction Act, limiting one of Medicare's few cost-control tools.</p>
+
+  <!-- KEY PROVISIONS TABLE -->
+  <table class="data-table">
+    <caption>Key OBBBA Healthcare Provisions &amp; Implementation Timeline</caption>
+    <span class="table-sub">SOURCE: AMA, CBO, RAND HEALTH, CENTER FOR MEDICARE ADVOCACY · "ONE BIG BEAUTIFUL BILL ACT," P.L. 119-21 (JULY 4, 2025)</span>
+    <thead>
+      <tr>
+        <th>Provision</th>
+        <th>When Takes Effect</th>
+        <th>Estimated Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Medicaid work requirements (80 hrs/month for non-disabled adults 19–64)</td>
+        <td>Dec. 2026</td>
+        <td class="bad">Millions at risk of disenrollment due to paperwork failures</td>
+      </tr>
+      <tr>
+        <td>Eligibility redeterminations every 6 months (vs. 12)</td>
+        <td>Jan. 2027</td>
+        <td class="bad">Higher churn; eligible people lose coverage in gaps</td>
+      </tr>
+      <tr>
+        <td>Cost-sharing up to $35/service for Medicaid expansion enrollees</td>
+        <td>2027</td>
+        <td class="bad">Deters care for low-income, chronically ill patients</td>
+      </tr>
+      <tr>
+        <td>Cap on state provider taxes used to draw federal matching funds</td>
+        <td>FY 2026</td>
+        <td class="bad">Forces state Medicaid cuts; accelerates hospital closures</td>
+      </tr>
+      <tr>
+        <td>Elimination of enhanced Medicaid expansion incentive for new states</td>
+        <td>Jan. 2026</td>
+        <td class="bad">9 non-expansion states now less likely to ever expand</td>
+      </tr>
+      <tr>
+        <td>Rural Health Transformation Program ($10B/yr)</td>
+        <td>FY 2026–2030</td>
+        <td class="mid-val">Partial mitigation; front-loaded before cuts materialize</td>
+      </tr>
+      <tr>
+        <td>Orphan drug carve-out from Medicare price negotiation</td>
+        <td>2026</td>
+        <td class="bad">Limits drug cost control for some highest-cost medications</td>
+      </tr>
+      <tr>
+        <td>Medicare eligibility restricted for non-citizen immigrants</td>
+        <td>Immediate (2025)</td>
+        <td class="bad">Removes coverage for lawfully present workers who paid into system</td>
+      </tr>
+      <tr>
+        <td>2.5% physician payment conversion factor update (Medicare)</td>
+        <td>2026 (one year only)</td>
+        <td class="mid-val">Temporary fix; no permanent inflation-adjusted payment solution</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 3 -->
+  <span class="section-number">Section 3</span>
+  <h2>Rural America: A Healthcare System in Retreat</h2>
+
+  <p>The rural healthcare crisis, long simmering, is now visibly accelerating. As of mid-2026, <strong>6,100 hospitals operate in the United States</strong> — down from 6,146 just five years earlier. The shrinkage is concentrated in rural areas. According to Public Citizen's analysis, <strong>446 hospitals are at heightened risk</strong> from Medicaid cuts, defined by a Medicaid payer mix over 20% combined with negative profit margins. The Center for Healthcare Quality and Payment Reform (CHQPR) finds that <strong>734 rural hospitals</strong> — roughly one in three — are currently operating in the red, with 323 facing imminent closure risk within two to three years.</p>
+
+  <p>The maternity care crisis is the sharpest visible symptom. Since 2020, <strong>116 rural labor and delivery units have closed</strong>. In 2025 alone, 27 rural hospitals closed or announced closures of their L&amp;D services — the second-highest single-year total on record. Only <strong>41% of rural hospitals</strong> now provide maternity services at all. In roughly a third of all U.S. counties, there is not a single obstetric provider or birthing facility. Rural pregnant women must travel an average of 30 minutes to reach a hospital with L&amp;D services; in more remote communities, the drive exceeds 50 minutes.</p>
+
+  <!-- CHART: Rural hospital L&D closures -->
+  <div class="chart-wrap">
+    <div class="chart-title">Rural Labor &amp; Delivery Unit Closures by Year, 2020–2025</div>
+    <div class="chart-sub">NUMBER OF RURAL HOSPITAL L&amp;D UNIT CLOSURES (COMPLETED OR ANNOUNCED) · SOURCE: CHQPR, 2025</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">2020</div>
+        <div class="bar-track"><div class="bar-fill" style="width:22%;background:var(--chart2)"></div></div>
+        <div class="bar-val">~11</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">2021</div>
+        <div class="bar-track"><div class="bar-fill" style="width:26%;background:var(--chart2)"></div></div>
+        <div class="bar-val">~13</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">2022</div>
+        <div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--chart2)"></div></div>
+        <div class="bar-val">~15</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">2023</div>
+        <div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--chart1)"></div></div>
+        <div class="bar-val">34</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">2024</div>
+        <div class="bar-track"><div class="bar-fill" style="width:42%;background:var(--chart4)"></div></div>
+        <div class="bar-val">21</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">2025</div>
+        <div class="bar-track"><div class="bar-fill" style="width:54%;background:var(--chart1)"></div></div>
+        <div class="bar-val" style="color:var(--accent)">27 ▲</div>
+      </div>
+    </div>
+    <p class="source-note">116 total rural L&amp;D closures since end of 2020. Only 41% of rural hospitals now offer maternity services (down from ~50% in 2018). Source: CHQPR November 2025 report.</p>
+  </div>
+
+  <p>Real-world consequences are appearing rapidly. In November 2025, St. Mary's Sacred Heart in rural Georgia cited "physician recruitment challenges, increasing outmigration for labor and delivery services, and recent Congressional cuts to Medicaid" as reasons for ending maternal health services. In January 2026, Greene County General Hospital in Indiana ended obstetrics. Trinity Health System, which operates 92 hospitals, announced a 10.5% reduction in revenue cycle staff, noting that "recent and future government funding policy changes" could lower its annual revenue by <strong>$1.5 billion</strong>.</p>
+
+  <!-- SECTION 4 -->
+  <span class="section-number">Section 4</span>
+  <h2>Physician Workforce: Maldistribution Over Shortage</h2>
+
+  <p>The U.S. does not simply have too few doctors — it has the wrong doctors in the wrong places. The 2026 Main Residency Match was the largest in history, with <strong>41,482 positions filled</strong>. Primary care offered more than 20,700 positions. Yet as the AAMC's workforce models project, the nation faces a physician shortfall of <strong>13,500 to 86,000 by 2036</strong>, concentrated in primary care (20,200–40,400 physicians short) and surgical specialties.</p>
+
+  <!-- SPECIALTY TABLE -->
+  <table class="data-table">
+    <caption>Specialist Availability by Specialty &amp; Access Challenge</caption>
+    <span class="table-sub">AS OF 2026 · SOURCE: AAMC, HRSA, CHQPR, SPECIALTY SOCIETY WORKFORCE DATA</span>
+    <thead>
+      <tr>
+        <th>Specialty</th>
+        <th>Access Status</th>
+        <th>Key Pressure Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Primary Care</strong></td>
+        <td class="bad">Severe Shortage</td>
+        <td>8,160+ primary care HPSAs; ~17,000 practitioners needed to clear designations</td>
+      </tr>
+      <tr>
+        <td><strong>Psychiatry / Behavioral Health</strong></td>
+        <td class="bad">Crisis Level</td>
+        <td>Majority of counties have few or no psychiatrists; insurance acceptance rates low</td>
+      </tr>
+      <tr>
+        <td><strong>OB-GYN / Maternal-Fetal</strong></td>
+        <td class="bad">Severe Rural Shortage</td>
+        <td>59% of rural hospitals have no L&amp;D; abortion policy driving recruitment away in some states</td>
+      </tr>
+      <tr>
+        <td><strong>Geriatrics</strong></td>
+        <td class="bad">Critical Gap</td>
+        <td>Far too few for aging population; specialty remains severely underpaid</td>
+      </tr>
+      <tr>
+        <td><strong>Neurology</strong></td>
+        <td class="bad">Growing Shortage</td>
+        <td>Demand rising with dementia, Parkinson's, stroke care; rural access extremely limited</td>
+      </tr>
+      <tr>
+        <td><strong>Endocrinology</strong></td>
+        <td class="mid-val">Moderate Shortage</td>
+        <td>Diabetes epidemic intensifying demand; wait times often months in non-metro areas</td>
+      </tr>
+      <tr>
+        <td><strong>Rheumatology</strong></td>
+        <td class="mid-val">Moderate Shortage</td>
+        <td>Critical for autoimmune disease; concentrated in academic centers</td>
+      </tr>
+      <tr>
+        <td><strong>Oncology</strong></td>
+        <td class="mid-val">Metro-Concentrated</td>
+        <td>Available in urban centers; rural patients often travel 2+ hours for cancer care</td>
+      </tr>
+      <tr>
+        <td><strong>Cardiology</strong></td>
+        <td class="mid-val">Metro-Concentrated</td>
+        <td>Interventional and structural cardiology concentrated in tertiary centers</td>
+      </tr>
+      <tr>
+        <td><strong>Emergency Medicine</strong></td>
+        <td class="good">Growing (but Strained)</td>
+        <td>Match numbers growing; rural EDs still chronically understaffed</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The structural driver behind all specialty shortages is the same: physicians choose locations based on income, quality of life, and professional opportunity — not community need. Urban areas with academic medical centers continue to attract the bulk of specialists. Rural and low-income communities are left competing for a shrinking residual supply, often at a significant wage disadvantage.</p>
+
+  <p>There are now <strong>8,160 designated primary care Health Professional Shortage Areas (HPSAs)</strong> in the United States. To eliminate those designations, HRSA estimates nearly 17,000 additional practitioners would be needed. The U.S. is projected to lack <strong>3.2 million total healthcare workers by 2026</strong>, according to some workforce models — a figure that encompasses nurses, allied health, mental health workers, and support staff as much as physicians.</p>
+
+  <!-- SECTION 5 -->
+  <span class="section-number">Section 5</span>
+  <h2>State-by-State: A Nation of Fifty Systems</h2>
+
+  <p>The variation in healthcare access across states is not marginal — it is foundational. The table below summarizes the broad landscape using the key determinants of coverage and access.</p>
+
+  <!-- STATE TABLE -->
+  <table class="data-table">
+    <caption>State Healthcare Access: Comparative Snapshot</caption>
+    <span class="table-sub">BASED ON KFF STATE HEALTH FACTS, AHA DATA, COMMONWEALTH FUND STATE SCORECARDS · 2025–2026</span>
+    <thead>
+      <tr>
+        <th>State / Region</th>
+        <th>Medicaid Expansion?</th>
+        <th>Uninsured Rate</th>
+        <th>Access Tier</th>
+        <th>Key Challenges</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Massachusetts</strong></td>
+        <td class="good">Yes</td>
+        <td class="good">~3%</td>
+        <td class="good">Top</td>
+        <td>Cost of living; provider burnout in high-demand system</td>
+      </tr>
+      <tr>
+        <td><strong>Minnesota</strong></td>
+        <td class="good">Yes</td>
+        <td class="good">~4%</td>
+        <td class="good">Top</td>
+        <td>Rural northern counties; some specialist wait times</td>
+      </tr>
+      <tr>
+        <td><strong>Vermont / Hawaii / Connecticut</strong></td>
+        <td class="good">Yes</td>
+        <td class="good">3–5%</td>
+        <td class="good">Top</td>
+        <td>Small population; generally strong but limited specialty capacity</td>
+      </tr>
+      <tr>
+        <td><strong>Colorado / Washington / Maryland</strong></td>
+        <td class="good">Yes</td>
+        <td class="good">5–7%</td>
+        <td class="good">Strong</td>
+        <td>Rural pockets; geographic access gaps outside metro areas</td>
+      </tr>
+      <tr>
+        <td><strong>New York / California / Illinois</strong></td>
+        <td class="good">Yes</td>
+        <td class="mid-val">6–8%</td>
+        <td class="mid-val">Strong / Uneven</td>
+        <td>Deep urban-rural divide within states; significant safety-net stress</td>
+      </tr>
+      <tr>
+        <td><strong>North Carolina / Virginia</strong></td>
+        <td class="good">Yes (NC: 2023)</td>
+        <td class="mid-val">8–10%</td>
+        <td class="mid-val">Improving</td>
+        <td>Recent expansion still ramping; Appalachian rural access gaps</td>
+      </tr>
+      <tr>
+        <td><strong>Texas</strong></td>
+        <td class="bad">No</td>
+        <td class="bad">16.7%</td>
+        <td class="bad">Poor</td>
+        <td>Largest uninsured population; 42% of national coverage gap; world-class urban hospitals alongside vast rural deserts</td>
+      </tr>
+      <tr>
+        <td><strong>Florida / Georgia / Oklahoma</strong></td>
+        <td class="bad">No</td>
+        <td class="bad">11–13%</td>
+        <td class="bad">Poor</td>
+        <td>Large coverage gaps; OBBBA effects compounding non-expansion disadvantage</td>
+      </tr>
+      <tr>
+        <td><strong>Mississippi / Alabama / Arkansas</strong></td>
+        <td class="bad">No</td>
+        <td class="bad">11–14%</td>
+        <td class="bad">Poor</td>
+        <td>Highest maternal mortality; worst rural hospital closure risk; poverty compounds access barriers</td>
+      </tr>
+      <tr>
+        <td><strong>Wyoming / Dakotas / Montana</strong></td>
+        <td class="bad">Mixed</td>
+        <td class="mid-val">9–11%</td>
+        <td class="bad">Fragile</td>
+        <td>Geographic isolation; extreme specialist scarcity; Native American communities underserved</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 6 -->
+  <span class="section-number">Section 6</span>
+  <h2>Medicare, Medicare Advantage, and the Aging Country</h2>
+
+  <p>Medicare now covers more than <strong>66 million Americans</strong>. Medicare Advantage (MA) — the privately administered alternative to traditional Medicare — has grown to cover a majority of Medicare beneficiaries, driven by extra benefits, cap on out-of-pocket costs, and aggressive marketing. But MA programs have faced sustained scrutiny over prior authorization denials, aggressive diagnostic coding that inflates payments, and narrow networks that restrict access.</p>
+
+  <p>The OBBBA accelerates Medicare's fiscal pressures through PAYGO mechanisms. If automatic sequestration cuts are triggered and not waived by Congress, Medicare faces reductions of <strong>$45 billion in 2026 rising to $75 billion annually by 2034</strong>. The Medicare Hospital Insurance Trust Fund's insolvency timeline has also been moved forward by the deficit expansion the law entails.</p>
+
+  <p>The deeper structural challenge remains unchanged: America is aging rapidly. By 2034, the number of Americans over 65 will be <strong>77 million</strong>, up from 58 million in 2022. Chronic disease burden, dementia prevalence, and long-term care needs are all rising — against a backdrop of severe geriatrician shortages, nursing home staffing crises, and home health worker scarcity. The math is unforgiving, and no current federal policy addresses it at scale.</p>
+
+  <h3>Medicare Drug Pricing: A Partial Victory, Partially Reversed</h3>
+  <p>The Inflation Reduction Act's landmark drug-price negotiation authority took effect in 2026, with the first negotiated prices now covering 10 selected Medicare drugs — the first time Medicare has ever directly negotiated drug prices in its 60-year history. Early negotiations have produced meaningful savings on some high-cost medications for diabetes and cardiovascular disease. But the OBBBA's carve-out of orphan drugs limits the program's reach, and drug companies have filed multiple legal challenges to the negotiation framework that remain unresolved in the courts.</p>
+
+  <!-- SECTION 7 -->
+  <span class="section-number">Section 7</span>
+  <h2>The Cost of American Healthcare: World-Leading Spending, Middling Outcomes</h2>
+
+  <p>The United States spends <strong>17.2% of GDP on healthcare</strong> — by far the highest among wealthy nations, roughly twice the OECD average. Yet on most population health metrics, U.S. outcomes are mediocre relative to peer nations: higher maternal mortality, lower life expectancy, worse chronic disease control, and worse infant mortality than comparably wealthy countries.</p>
+
+  <!-- CHART: International comparison -->
+  <div class="chart-wrap">
+    <div class="chart-title">Healthcare Spending vs. Life Expectancy: U.S. vs. Peers (2024)</div>
+    <div class="chart-sub">PER CAPITA SPENDING (USD) vs. LIFE EXPECTANCY (YEARS) · SOURCE: OECD HEALTH STATISTICS 2024</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">🇺🇸 United States</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:100%;background:linear-gradient(90deg,var(--chart1) 0%,var(--chart1) 100%)"></div>
+        </div>
+        <div class="bar-val" style="color:var(--accent)">$13,500 · 76.4 yrs</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">🇩🇪 Germany</div>
+        <div class="bar-track"><div class="bar-fill" style="width:47%;background:var(--chart2)"></div></div>
+        <div class="bar-val">$6,900 · 81.0 yrs</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">🇬🇧 United Kingdom</div>
+        <div class="bar-track"><div class="bar-fill" style="width:34%;background:var(--chart2)"></div></div>
+        <div class="bar-val">$5,400 · 81.3 yrs</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">🇨🇦 Canada</div>
+        <div class="bar-track"><div class="bar-fill" style="width:38%;background:var(--chart2)"></div></div>
+        <div class="bar-val">$5,900 · 82.0 yrs</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">🇫🇷 France</div>
+        <div class="bar-track"><div class="bar-fill" style="width:36%;background:var(--chart2)"></div></div>
+        <div class="bar-val">$5,700 · 82.5 yrs</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">🇯🇵 Japan</div>
+        <div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--chart3)"></div></div>
+        <div class="bar-val">$4,800 · 84.3 yrs</div>
+      </div>
+    </div>
+    <p class="source-note">The U.S. spends 2–3× peer nations per capita yet has the lowest life expectancy among this group. Note: U.S. figure based on CMS National Health Expenditure projections. Peer figures from OECD Health Statistics 2024.</p>
+  </div>
+
+  <p>The cost structure of American healthcare is driven by administrative complexity (estimated at 25–35% of total spending), provider price variation, pharmaceutical pricing, and the fee-for-service model's incentive toward volume rather than value. Telehealth remains one of the system's genuine bright spots — pandemic-era regulatory flexibilities have largely been preserved, expanding access particularly in behavioral health, chronic disease management, and rural primary care.</p>
+
+  <!-- SECTION 8 -->
+  <span class="section-number">Section 8</span>
+  <h2>The Bottom Line: May 2026</h2>
+
+  <p>American healthcare in the spring of 2026 sits at an inflection point more severe than any since the ACA's passage in 2010 — but this time, the movement is in the opposite direction.</p>
+
+  <p>The coverage gains of the past five years are being systematically unwound: enhanced subsidies have expired, Medicaid faces historic cuts, rural hospitals are closing at an accelerating pace, and a law with trillion-dollar consequences for low-income Americans was signed into law before most of its effects have been felt. Meanwhile, the physician workforce maldistribution, specialty bottlenecks, and maternity care deserts continue to deepen.</p>
+
+  <p>The American healthcare paradox — world-class medicine alongside vast gaps in access — has not been resolved. It has widened. And the structural forces driving that widening are, for the most part, now law.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">10M</div>
+      <div class="stat-desc">Projected to lose Medicaid coverage by 2034 under OBBBA (CBO)</div>
+    </div>
+    <div class="stat-box blue">
+      <div class="stat-num">338</div>
+      <div class="stat-desc">Rural hospitals at immediate risk of closure, conversion, or service reduction (UNC, 2025)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">$665B</div>
+      <div class="stat-desc">Projected reduction in state Medicaid budgets over 2025–2034 (RAND)</div>
+    </div>
+    <div class="stat-box amber">
+      <div class="stat-num">38%</div>
+      <div class="stat-desc">Americans in 2026 facing medical debt problems — including many who are insured</div>
+    </div>
+  </div>
+
+  <p>The political debate about what to do with American healthcare will continue. But the factual landscape is clearer than the debate suggests: the system spends more than any peer nation, covers fewer people proportionally, delivers uneven outcomes, and is now, in 2026, actively reducing the coverage it does provide.</p>
+
+  <p>That is the state of American healthcare in May 2026.</p>
+
+  <hr class="section-rule">
+  <p style="font-size:0.8rem;color:var(--mid);font-style:italic;padding-bottom:2rem">
+    <strong>Sources:</strong> Kaiser Family Foundation (KFF) State Health Facts and ACA analyses; Congressional Budget Office; RAND Health State-Level Medicaid Impact Report (2026); Commonwealth Fund Rural Hospital Analysis (Feb. 2026); Center for Healthcare Quality and Payment Reform (Nov. 2025); American Hospital Association Fast Facts 2026; American Medical Association OBBBA analysis; Center for Medicare Advocacy; Urban Institute; Public Citizen; AAMC Physician Workforce Projections; CMS Office of the Actuary; AJMC; Johns Hopkins Bloomberg School of Public Health; HFMA; OECD Health Statistics 2024. All data reflects most recent available as of May 2026.
+  </p>
+
+</div>
+
+<footer>
+  The State of American Healthcare · May 2026 &nbsp;|&nbsp; Data-driven analysis for public understanding
+</footer>
+
+</body>
+</html>

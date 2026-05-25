@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A History of Hiccup Cures (and the Dignity You'll Lose Trying Them)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1208;
+    --cream: #faf6ee;
+    --parchment: #f0e8d4;
+    --rust: #c0390f;
+    --gold: #b8860b;
+    --muted: #7a6a52;
+    --border: #d4c4a0;
+    --card-bg: #fffdf7;
+    --dli-green: #2d6a2d;
+    --dli-yellow: #b8860b;
+    --dli-orange: #c0500f;
+    --dli-red: #a0200a;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  /* HEADER */
+  .masthead {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .publication-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(32px, 5vw, 60px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .deck {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 540px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.55;
+  }
+
+  .byline {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 0.5px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  /* BODY TEXT */
+  .article-body {
+    padding-top: 2.5rem;
+  }
+
+  p {
+    margin-bottom: 1.4rem;
+    font-weight: 300;
+  }
+
+  .dropcap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.2em;
+    font-weight: 700;
+    float: left;
+    line-height: 0.78;
+    margin: 0.08em 0.1em 0 0;
+    color: var(--rust);
+  }
+
+  /* SECTION HEADINGS */
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    margin: 3.5rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  h2 .section-num {
+    font-family: 'DM Mono', monospace;
+    font-style: normal;
+    font-size: 12px;
+    color: var(--rust);
+    display: block;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-left: 4px solid var(--rust);
+    margin: 2.5rem 0 2.5rem 1.5rem;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--rust);
+    line-height: 1.4;
+  }
+
+  /* REMEDY CARDS */
+  .remedy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .remedy-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.1rem 1.2rem;
+    position: relative;
+  }
+
+  .remedy-card .r-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+
+  .remedy-card .r-body {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 0.6rem;
+    font-weight: 300;
+  }
+
+  .dli-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  .dli-1, .dli-2 { background: #e8f5e8; color: var(--dli-green); }
+  .dli-3, .dli-4 { background: #fdf5d0; color: var(--dli-yellow); }
+  .dli-5, .dli-6 { background: #fde8d8; color: var(--dli-orange); }
+  .dli-7, .dli-8 { background: #fdddd0; color: #8b3000; }
+  .dli-9 { background: #fdd0c8; color: var(--dli-red); }
+  .dli-10 { background: var(--dli-red); color: #fff; }
+
+  /* THE BIG DLI SCALE */
+  .dli-scale {
+    background: var(--parchment);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 2rem;
+    margin: 3rem 0;
+  }
+
+  .dli-scale-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    color: var(--ink);
+  }
+
+  .dli-scale-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-align: center;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .dli-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .dli-row:last-child { border-bottom: none; }
+
+  .dli-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    min-width: 36px;
+    text-align: center;
+    line-height: 1;
+    padding-top: 3px;
+  }
+
+  .dli-1-num, .dli-2-num { color: var(--dli-green); }
+  .dli-3-num, .dli-4-num { color: #8b7000; }
+  .dli-5-num, .dli-6-num { color: var(--dli-orange); }
+  .dli-7-num, .dli-8-num { color: #8b3000; }
+  .dli-9-num { color: var(--dli-red); }
+  .dli-10-num { color: var(--dli-red); }
+
+  .dli-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+  }
+
+  .dli-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  .dli-examples {
+    margin-top: 0.35rem;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    color: var(--rust);
+  }
+
+  /* SIDEBAR BOX */
+  .sidebar-box {
+    float: right;
+    width: 240px;
+    margin: 0 0 1.5rem 2rem;
+    background: var(--parchment);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--rust);
+    padding: 1.1rem 1.2rem;
+    font-size: 13.5px;
+  }
+
+  .sidebar-box .sb-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--rust);
+  }
+
+  .sidebar-box p {
+    font-size: 13px;
+    margin-bottom: 0.7rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* CHARLES BOX */
+  .charles-box {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 2rem 2.2rem;
+    margin: 3rem 0;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .charles-box::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: var(--rust);
+    position: absolute;
+    top: -20px;
+    left: 16px;
+    line-height: 1;
+    opacity: 0.6;
+  }
+
+  .charles-box .cb-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.8rem;
+  }
+
+  .charles-box .cb-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.45;
+    color: #ede0cc;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .charles-box .cb-attr {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* DIVIDER */
+  .ornament {
+    text-align: center;
+    color: var(--border);
+    font-size: 22px;
+    margin: 2.5rem 0;
+    letter-spacing: 0.5em;
+  }
+
+  /* FOOTER */
+  .article-footer {
+    border-top: 2px solid var(--ink);
+    padding-top: 1.5rem;
+    margin-top: 4rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-align: center;
+    line-height: 2;
+  }
+
+  /* ANIMATED HICCUP COUNTER */
+  .hiccup-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: var(--parchment);
+    border: 1px solid var(--border);
+    padding: 1.2rem 1.5rem;
+    border-radius: 4px;
+    margin: 2rem 0;
+    font-family: 'DM Mono', monospace;
+  }
+  .hiccup-counter .counter-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .hiccup-counter .counter-num {
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--rust);
+    animation: hic 1.4s ease-in-out infinite;
+  }
+  @keyframes hic {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  .hiccup-counter .counter-unit {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* SECTION TAG */
+  .tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 1px solid var(--rust);
+    color: var(--rust);
+    padding: 2px 8px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 8px;
+    position: relative;
+    top: -2px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .sidebar-box { float: none; width: 100%; margin: 0 0 1.5rem; }
+    .remedy-grid { grid-template-columns: 1fr; }
+    .charles-box::before { font-size: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="publication-name">The Journal of Involuntary Convulsions &amp; Human Folly &nbsp;·&nbsp; Vol. MMXXVI</p>
+  <h1>*HIC* — A Grand History<br>of Hiccup Cures</h1>
+  <p class="deck">From ancient elves and shotguns to rectal massage and nine grains of rice: humanity's longest-running battle against its most embarrassing reflex, ranked by the dignity you will sacrifice.</p>
+  <p class="byline">By the Editors &nbsp;·&nbsp; Illustrated by Desperation &nbsp;·&nbsp; Peer-reviewed by Nobody</p>
+</div>
+
+<div class="article-body">
+
+<p class="dropcap">Somewhere right now, a perfectly reasonable adult is bent at the waist, sipping water from the wrong side of a glass while their coworkers stare. Somewhere else, someone is swallowing nine individual grains of raw rice — one at a time, with great seriousness — while a friend counts aloud. And in a hospital, at some point in the last century, a physician wearing a white coat and an expression of professional composure performed a <em>rectal massage</em> to cure hiccups.</p>
+
+<p>This is what hiccups do to people. They are, objectively speaking, nothing. A minor diaphragm spasm lasting three to five minutes. An involuntary twitch of the body's least impressive muscle. And yet, across six thousand years of recorded human civilization, we have responded to them with the full arsenal of our ingenuity, our superstition, our folk wisdom, our firearms, and our willingness to do absolutely anything to make the sound stop.</p>
+
+<p>What follows is a curated tour of humanity's finest hiccup remedies — ranked, at last, on the only scale that matters: the <strong>Dignity Loss Index™</strong>, calibrated from 1 (you could do this in a board meeting) to 10 (you move towns afterward).</p>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- CHARLES OSBORNE -->
+<div class="charles-box">
+  <p class="cb-label">Case File No. 001 · The Man Who Hiccuped for 68 Years</p>
+  <p class="cb-quote">"I don't know what it would be like not to have them. I get so sore jerking all the time."</p>
+  <p class="cb-attr">— Charles Osborne, Iowa, ca. 1982 · Hiccuped approx. 430 million times · Still lost to hiccups</p>
+</div>
+
+<p>Before we proceed to the cures, a moment of silence for Charles Osborne of Anthon, Iowa, who in 1922 dropped a 350-pound hog and burst a blood vessel in his brain stem — the precise vessel, it turns out, that tells your body to stop hiccupping. He hiccuped nonstop for 68 years. His friends literally fired shotguns behind him to try to scare them away. It didn't work. He received 4,000 letters of home remedies from sympathetic strangers. None worked. His hiccups stopped mysteriously in 1990, and he died a year later, presumably in blissful silence.</p>
+
+<div class="hiccup-counter">
+  <span class="counter-label">Charles's Estimated Lifetime Total</span>
+  <span class="counter-num">430,000,000</span>
+  <span class="counter-unit">hiccups</span>
+</div>
+
+<p>Charles is our patron saint. He is why we write this article. He is proof that hiccups, in sufficient quantity, become an <em>identity</em>. He appears in the Guinness Book of World Records, made appearances on Johnny Carson and Ripley's Believe It or Not, and somehow still managed to get married twice and father eight children. The hiccup closed no doors for Charles Osborne. But still — <em>68 years</em>. We owe it to him to at least understand the cures people tried.</p>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- PART I: ANCIENT WORLD -->
+<h2><span class="section-num">Chapter I · Ancient Wisdom</span>
+The Old World's Best Guesses</h2>
+
+<div class="sidebar-box">
+  <p class="sb-title">A Brief Etymology</p>
+  <p>The Old English word for hiccup was <em>ælfsogoða</em> — literally "elf hiccup." Because hiccups were caused by elves. Or demons. The distinction was considered academic.</p>
+  <p>The medical term is <em>singultus</em>, from the Latin for "the act of catching one's breath while sobbing." Which, honestly, describes the whole experience quite well.</p>
+</div>
+
+<p>The Ancient Greeks believed hiccups were a sign that someone, somewhere, was complaining about you. The cure, logically, was to figure out who it was. This makes hiccups the world's earliest form of social anxiety monitoring, and the Greeks perhaps the earliest inventors of the stress-induced hiccup feedback loop.</p>
+
+<p>The Ancient Romans, to their credit, were comparatively sensible: hold your breath and pinch your nose. This actually has a physiological basis. But the Romans also recommended sneezing, vomiting, and pulling on your own tongue, so let's not give them too much credit.</p>
+
+<p>In 10th-century England, hiccups were considered the work of elves and demons — and the cure was accordingly dramatic. One documented remedy required you to prepare a salve of herbs, draw a cross on yourself, and sing a religious verse in Latin. For those who didn't know Latin (understandable), there was a backup: spit on your right index finger, draw a cross on the toe of your <em>left</em> shoe, and recite the Lord's Prayer <em>backward</em>. This is a cure that requires more preparation than most IKEA furniture, and has roughly similar odds of success.</p>
+
+<div class="remedy-grid">
+  <div class="remedy-card">
+    <p class="r-title">Latin Exorcism Protocol</p>
+    <p class="r-body">Herbs, crosses, sacred verse in Latin. Backup: spit on finger, cross on left shoe toe, Lord's Prayer backward. Anglo-Saxon England, ca. 950 CE.</p>
+    <span class="dli-badge dli-6">DLI: 6 — Committed</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Guess Who Dislikes You</p>
+    <p class="r-body">Think of everyone who might be gossiping about you until the hiccups stop. Ancient Greek folk method. Doubles as anxiety treatment.</p>
+    <span class="dli-badge dli-2">DLI: 2 — Invisible</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Name Your Future Spouse</p>
+    <p class="r-body">Hold breath, list potential partners. Stop at the name that stops the hiccup. That's the one. European folk tradition. No refunds.</p>
+    <span class="dli-badge dli-4">DLI: 4 — Suspicious</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Startle via Frightening Mask</p>
+    <p class="r-body">Some traditions prescribed terrifying children with masks to cure their hiccups. Efficient. Villainous. Possibly formative.</p>
+    <span class="dli-badge dli-7">DLI: 7 — Memorable</span>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- PART II: FOLK WISDOM -->
+<h2><span class="section-num">Chapter II · World Folk Remedies</span>
+Grandmother Knows Best (She Doesn't)</h2>
+
+<p>Across cultures, the folk remedy tradition for hiccups follows a remarkably consistent philosophy: identify the least dignified possible action and perform it with complete sincerity. From rural Philippines to the steppes of Central Asia, grandmothers have looked at a hiccuping grandchild and thought: <em>yes, I know exactly what to do, and it will be humiliating.</em></p>
+
+<div class="pull-quote">
+  "In Hungary, hiccups mean you're being gossiped about. In Russia, they mean someone misses you. In ancient Greece, someone was complaining. The real lesson: hiccups have always been somebody else's fault."
+</div>
+
+<p>In the Philippines, the cure is to tear a small square of paper towel, wet it, and apply it — wet side down — directly to your forehead. This is meant to look like a medical patch and presumably confuses the body into thinking something more serious is happening. No paper towel? Wet a piece of thread with saliva and apply that instead. The effect is the same. So is the look on your coworker's face.</p>
+
+<p>In parts of Latin America and Central Europe, a red string tied around the head or finger is the traditional remedy. No mechanism is offered. Vibes only. Dignity loss is minimal, but you do have to explain the string.</p>
+
+<p>In the Sinti tradition (Romani people of Central Europe), you tie a key to a red string, wear it around your neck, and throw the key over your left shoulder. This costs you both a string and a key, and it is unclear what happens if the key lands on someone.</p>
+
+<div class="remedy-grid">
+  <div class="remedy-card">
+    <p class="r-title">Wet Paper on Forehead</p>
+    <p class="r-body">Filipino tradition. Wet paper towel applied directly to forehead. Theoretically alarms your nervous system. Actually alarms passersby.</p>
+    <span class="dli-badge dli-5">DLI: 5 — Eyebrow-Raising</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Red String & Key Toss</p>
+    <p class="r-body">Sinti cure. Red string, key, left shoulder. Costs: one key. Risk: hitting a bystander. Gain: plausible deniability.</p>
+    <span class="dli-badge dli-4">DLI: 4 — Slightly Odd</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Guess Who Misses You</p>
+    <p class="r-body">Russian tradition: list names until hiccups stop. The name that works is the person thinking of you. A surprisingly emotional hiccup cure.</p>
+    <span class="dli-badge dli-2">DLI: 2 — Actually Touching</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Make a Wish Each Hiccup</p>
+    <p class="r-body">Reframe every spasm as an opportunity. By the time hiccups stop you'll have 47 wishes pending. None involving hiccups, ideally.</p>
+    <span class="dli-badge dli-1">DLI: 1 — Optional Optimism</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Think of Someone Who Dislikes You</p>
+    <p class="r-body">Emotional discomfort as therapeutic modality. The hiccup is, possibly, the less unpleasant experience.</p>
+    <span class="dli-badge dli-2">DLI: 2 — Psychologically Risky</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Imagine a Green Cow in a Blue Field</p>
+    <p class="r-body">Documented in an old medical reference as a legitimate suggestion. No further comment available.</p>
+    <span class="dli-badge dli-3">DLI: 3 — Internally Chaotic</span>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- PART III: STARTLE METHODS -->
+<h2><span class="section-num">Chapter III · The Startle Arts</span>
+Weaponizing Friendship Since Antiquity</h2>
+
+<p>A significant branch of hiccup medicine is devoted to the proposition that if you frighten something hard enough, it will stop doing what it's doing. This theory is sound for bears, reasonable for toddlers, and entirely unverified for hiccups — but that has never dampened anyone's enthusiasm for trying.</p>
+
+<p>The mildest version is the classic jump scare: a trusted friend hides around a corner and shouts "BOO!" at you. The effectiveness varies. The resentment is reliable. The research supporting this method consists entirely of your aunt insisting it works on children.</p>
+
+<p>A more committed version, historically documented with a straight face in medical literature, involves <em>firing a gun nearby</em>. Charles Osborne's friend tried this — both barrels of a shotgun, directly behind him. Charles reported being "scared some" but the hiccups were entirely unbothered. The gun, it turns out, was more traumatized than the hiccup.</p>
+
+<div class="pull-quote">
+  "There are documented cases of people being told their cow had died, their house was burning, or their spouse had run off — all in service of curing a five-minute hiccup. Medicine, occasionally, is just lying."
+</div>
+
+<p>The most psychologically baroque startle method involves delivering sudden bad news — fabricated for medicinal purposes. "Your cow died!" was a documented rural remedy. The logic is that a sufficiently alarming lie will reset the nervous system so completely that the hiccup simply forgets to continue. Whether the patient ever forgave the deliverer of the fake news is not recorded.</p>
+
+<div class="remedy-grid">
+  <div class="remedy-card">
+    <p class="r-title">Classic Jump Scare</p>
+    <p class="r-body">A friend hides, shouts, slams a door. Requires a willing participant and moderate trust in the friendship's ability to survive this.</p>
+    <span class="dli-badge dli-5">DLI: 5 — Conspiracy Required</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Shotgun Discharge (Adjacent)</p>
+    <p class="r-body">Historically attempted. Documented. Does not work. Also creates entirely new problems. Not recommended in apartments.</p>
+    <span class="dli-badge dli-10">DLI: 10 — Move Towns</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Fake Tragic News Delivery</p>
+    <p class="r-body">"Your cow died." A medicinal lie, deployed with conviction. Works on the hiccup approximately never. Works on the friendship: similar odds.</p>
+    <span class="dli-badge dli-7">DLI: 7 — Legally Questionable</span>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- PART IV: CONTORTION -->
+<h2><span class="section-num">Chapter IV · Contortion &amp; Inversion</span>
+Failed Yoga as Medical Practice</h2>
+
+<p>Another rich vein of hiccup folklore operates on the principle that the body, when sufficiently confused about which way is up, will stop hiccupping out of sheer disorientation. The drinking-upside-down method requires you to bend forward at the waist and sip from the far side of a glass, a maneuver that looks like a failed yoga pose and has roughly the same cure rate.</p>
+
+<p>A more ambitious variant requires hanging your head off the edge of a bed or chair, dangling upside down in a posture that is equal parts faith and fluid dynamics, and drinking water while gravity actively works against you. This adds a meaningful risk of dignity loss and a moderate risk of water in the sinuses.</p>
+
+<div class="remedy-grid">
+  <div class="remedy-card">
+    <p class="r-title">Drink Upside Down</p>
+    <p class="r-body">Bend at waist, sip from far side of glass. Looks wrong. Feels wrong. Requires conviction. May require a spotter.</p>
+    <span class="dli-badge dli-6">DLI: 6 — Visually Committed</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Dangle Off Furniture</p>
+    <p class="r-body">Head off the bed, drinking water from below. Adds cardiovascular interest. The furniture's confidence in you is your own business.</p>
+    <span class="dli-badge dli-7">DLI: 7 — Structural Risk</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Stand on Your Head</p>
+    <p class="r-body">Complete inversion. No water required. Requires either a yoga background or youth. Acceptable in a gym class. Catastrophic in an office.</p>
+    <span class="dli-badge dli-8">DLI: 8 — Only in Private</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Knees to Chest + Breath Hold</p>
+    <p class="r-body">Somewhere between fetal position and hostage negotiation. This one actually has a physiological basis. Small consolation at a work luncheon.</p>
+    <span class="dli-badge dli-5">DLI: 5 — Context-Dependent</span>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- PART V: SWALLOWING STRANGE THINGS -->
+<h2><span class="section-num">Chapter V · The Oral Tradition</span>
+Things You Were Told to Swallow</h2>
+
+<p>Perhaps the most voluminous category of hiccup cures involves putting things in your mouth that your mouth did not ask for. Sugar, vinegar, peanut butter, stale bread, lemon juice, cinnamon oil on a sugar cube (from an 1834 Farmers' Almanac, where they knew how to live): humanity has offered up its entire pantry in the hope that something in there might surprise the diaphragm into submission.</p>
+
+<div class="sidebar-box">
+  <p class="sb-title">1834 Farmers' Almanac Cure</p>
+  <p>Place four drops of cinnamon oil on a lump of sugar. Hold in mouth until the sugar — or the hiccup — dissolves. This is either medicine or a colonial-era candy innovation. Possibly both.</p>
+</div>
+
+<p>The sugar spoon is actually among the more defensible options: it stimulates the vagus nerve through the sweetness response. The peanut butter approach works on a different principle — the sheer thickness of the substance forces a series of deliberate swallows, which may interrupt the hiccup rhythm. Whether it works is unclear. Whether you look ridiculous eating peanut butter with a spoon as a medical intervention is not.</p>
+
+<p>Nine grains of raw rice, swallowed one at a time. This is a real documented remedy. The genius of it is that it requires such sustained, deliberate concentration that you may simply forget you had hiccups. The dignity cost is not the swallowing — it's the counting.</p>
+
+<div class="remedy-grid">
+  <div class="remedy-card">
+    <p class="r-title">Spoonful of Dry Sugar</p>
+    <p class="r-body">Semi-legitimate vagus nerve stimulation. Can be done discreetly. Face may betray you.</p>
+    <span class="dli-badge dli-3">DLI: 3 — Defensible</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Teaspoon of Vinegar</p>
+    <p class="r-body">Acid shock to the system. Works on the principle of "give the body something more urgent to worry about." Face: involuntary. Audible reaction: likely.</p>
+    <span class="dli-badge dli-4">DLI: 4 — Loud</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Peanut Butter, Medicinal Dose</p>
+    <p class="r-body">A heaping spoonful, eaten deliberately, as therapy. The look on your face while this is happening is permanent in the witnesses' memory.</p>
+    <span class="dli-badge dli-5">DLI: 5 — Memorable</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Nine Grains of Raw Rice</p>
+    <p class="r-body">One. At. A. Time. With. Great. Seriousness. The cure may be that bystanders are now too concerned about you to notice the hiccups.</p>
+    <span class="dli-badge dli-7">DLI: 7 — Intervention Territory</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Stale Bread, Slowly</p>
+    <p class="r-body">Medieval logic: distract the body with a more tedious task. The hiccup, bored, may simply leave. You are left holding stale bread.</p>
+    <span class="dli-badge dli-3">DLI: 3 — Plausibly Normal</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Drink from All Four Corners</p>
+    <p class="r-body">Geometry-based healing. Four sips, four cardinal points of the glass. No one has ever explained why. No one ever will.</p>
+    <span class="dli-badge dli-5">DLI: 5 — Spiritually Confusing</span>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- PART VI: MEDICAL -->
+<h2><span class="section-num">Chapter VI · Medical Science</span>
+Where Dignity Goes to Die</h2>
+
+<p>We must, eventually, discuss The Procedure. In 2006, a paper in the <em>Annals of Emergency Medicine</em> documented cases in which persistent hiccups were cured by digital rectal massage — stimulation of the vagus nerve via the, ah, posterior approach. It worked. It is, by every measure of modern medicine, a <em>legitimate treatment</em>. It is also an experience that redefines your relationship with both your physician and the concept of the hiccup.</p>
+
+<p>History's medical canon has also suggested, with straight-faced professionalism: sneezing, vomiting, pulling the tongue, pressure on the eyeball, chloroform (briefly), sexual intercourse (one assumes this was self-reported as effective), and tickling the back of the throat with a feather. The feather approach is the gentlest of these, and yet it somehow still feels like the beginning of a situation you'd rather not explain.</p>
+
+<p>One physician treating Charles Osborne reportedly placed him on a combination of carbon monoxide and oxygen. This theoretically worked. Unfortunately, it also would have killed him, a side effect considered "significant" by the medical establishment.</p>
+
+<div class="remedy-grid">
+  <div class="remedy-card">
+    <p class="r-title">Digital Rectal Massage</p>
+    <p class="r-body">Clinically valid. Vagus nerve stimulation via the path less traveled. If it works, you still have to process what just happened.</p>
+    <span class="dli-badge dli-10">DLI: 10 — New City</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Tickle Back of Throat (Feather)</p>
+    <p class="r-body">Activates gag reflex. Historical. Requires access to a feather and a complete absence of self-consciousness.</p>
+    <span class="dli-badge dli-8">DLI: 8 — Pre-Victorian Cosplay</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Eyeball Pressure</p>
+    <p class="r-body">Applying gentle pressure to the eyeball to stimulate the vagus nerve. "Gentle" is doing a lot of work in that sentence.</p>
+    <span class="dli-badge dli-7">DLI: 7 — Trust Required</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Sexual Intercourse (as prescribed)</p>
+    <p class="r-body">Documented in medical literature. Mechanism: vagal stimulation. Dignity loss: variable. Prescription: presumably awkward to write.</p>
+    <span class="dli-badge dli-9">DLI: 9 — Conversation Ender</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Chloroform (1800s Merck Manual)</p>
+    <p class="r-body">The first Merck Manual listed chloroform as a hiccup treatment. It can also cause fatal cardiac arrest. The hiccup does stop, technically.</p>
+    <span class="dli-badge dli-10">DLI: 10 — Permanent</span>
+  </div>
+  <div class="remedy-card">
+    <p class="r-title">Vomiting (as prescribed)</p>
+    <p class="r-body">Induced emesis as a hiccup interruption strategy. Recommended by serious physicians. One problem solved; one created.</p>
+    <span class="dli-badge dli-9">DLI: 9 — The Treatment Is Worse</span>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- THE SCALE -->
+<div class="dli-scale">
+  <p class="dli-scale-title">The Official Hiccup Cure Dignity Loss Index™</p>
+  <p class="dli-scale-sub">A Calibrated Scale · Patent Pending · Not Peer-Reviewed · Morally Certain</p>
+
+  <div class="dli-row">
+    <div class="dli-num dli-1-num">1</div>
+    <div>
+      <p class="dli-label">Socially Invisible</p>
+      <p class="dli-desc">You could do this in a Zoom call with your camera on and no one would notice. This is basically just sitting there.</p>
+      <p class="dli-examples">↳ Holding your breath · Thinking calming thoughts · Wishing upon each hiccup</p>
+    </div>
+  </div>
+
+  <div class="dli-row">
+    <div class="dli-num dli-2-num">2</div>
+    <div>
+      <p class="dli-label">Possibly Noticed</p>
+      <p class="dli-desc">Someone might glance over. You can recover with a shrug. "Just something I do," you'll say, and it'll hold.</p>
+      <p class="dli-examples">↳ Quiet sip of water · Guessing who's thinking of you · Blaming allergies for your face</p>
+    </div>
+  </div>
+
+  <div class="dli-row">
+    <div class="dli-num dli-3-num">3</div>
+    <div>
+      <p class="dli-label">Mildly Suspicious</p>
+      <p class="dli-desc">You're doing something. The room has registered it. You can still save this with mild confidence.</p>
+      <p class="dli-examples">↳ Spoonful of dry sugar · Stale bread, ceremonially eaten · Imagining a green cow in a blue field</p>
+    </div>
+  </div>
+
+  <div class="dli-row">
+    <div class="dli-num dli-4-num">4</div>
+    <div>
+      <p class="dli-label">Someone Will Ask</p>
+      <p class="dli-desc">"You okay?" Yes. Thank you. It's medicinal. I'm naming potential spouses, please give me a moment.</p>
+      <p class="dli-examples">↳ Lemon juice (face betrayal) · Red string on finger · Breath-hold spouse naming</p>
+    </div>
+  </div>
+
+  <div class="dli-row">
+    <div class="dli-num dli-5-num">5</div>
+    <div>
+      <p class="dli-label">Eyebrow-Raising Territory</p>
+      <p class="dli-desc">You've committed. People are invested. You're now "doing something" and must see it through or look worse.</p>
+      <p class="dli-examples">↳ Drinking upside down · Peanut butter as therapy · Knees to chest in public · Drinking from four corners</p>
+    </div>
+  </div>
+
+  <div class="dli-row">
+    <div class="dli-num dli-6-num">6</div>
+    <div>
+      <p class="dli-label">Public Commitment</p>
+      <p class="dli-desc">You are now "the person doing that thing." Bystanders are silently rooting for it to work so this can end.</p>
+      <p class="dli-examples">↳ Drinking upside down from furniture · Anglo-Saxon exorcism protocol · Ears plugged, straw deployed</p>
+    </div>
+  </div>
+
+  <div class="dli-row">
+    <div class="dli-num dli-7-num">7</div>
+    <div>
+      <p class="dli-label">Spectacle Mode</p>
+      <p class="dli-desc">This is now an event. Bystanders have phones out. You will be "that story" at dinner parties for years.</p>
+      <p class="dli-examples">↳ Nine grains of rice, counted aloud · Diaphragm pressed by a colleague · Fake bad news, coordinated</p>
+    </div>
+  </div>
+
+  <div class="dli-row">
+    <div class="dli-num dli-8-num">8</div>
+    <div>
+      <p class="dli-label">Reputation Damage Likely</p>
+      <p class="dli-desc">Even if it works, people will remember this about you. "Oh, that's Dave. He stood on his head at the company picnic."</p>
+      <p class="dli-examples">↳ Standing on head · Feather down the throat · Head dangling off bed with water</p>
+    </div>
+  </div>
+
+  <div class="dli-row">
+    <div class="dli-num dli-9-num">9</div>
+    <div>
+      <p class="dli-label">You Are Now a Story</p>
+      <p class="dli-desc">The event has separated from you. It lives on its own now, passed between people at parties you weren't invited to.</p>
+      <p class="dli-examples">↳ Repeated staged scares (team effort) · Sexual intercourse (prescribed) · Induced vomiting (clinical)</p>
+    </div>
+  </div>
+
+  <div class="dli-row">
+    <div class="dli-num dli-10-num">10</div>
+    <div>
+      <p class="dli-label">Move to a New City</p>
+      <p class="dli-desc">Scientifically defensible. Socially catastrophic. You've crossed a threshold that human friendship cannot unsee.</p>
+      <p class="dli-examples">↳ Rectal massage · Shotgun discharge (attempted cure) · Chloroform (attempted, briefly) · Carbon monoxide + oxygen (discontinued)</p>
+    </div>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- CONCLUSION -->
+<h2><span class="section-num">Conclusion</span>
+What We Know, What We Don't, and Why It Doesn't Matter</h2>
+
+<p>Here is what science currently understands about hiccups: the diaphragm spasms involuntarily, the glottis snaps shut, and a sound is produced. Why? Unknown. What stops it? Also unknown, but probably vagus nerve stimulation, CO₂ balance, or something interrupting the neural loop. What definitely doesn't stop it? Most of what we've tried.</p>
+
+<p>And yet — across six millennia, in every culture, in every language, in the physician's consulting room and the grandmother's kitchen and the terrified face of a 10th-century Anglo-Saxon performing an elf exorcism — the human response to the hiccup has been magnificent in its absurdity and touching in its sincerity. We have tried <em>everything</em>. We have sacrificed dignity, shotgun shells, nine grains of rice, one key on a red string, and the therapeutic goodwill of our closest friends. We have bent upside down, held our breath, pressed our eyeballs, swallowed peanut butter, and, yes — in the name of medicine, with documented clinical outcomes — we have gone places that dignity cannot follow.</p>
+
+<p>Charles Osborne hiccuped 430 million times and no one ever found the cure. His hiccups stopped on their own, one February morning in 1990, for no reason anyone has ever understood. He died the following year, at 97, finally at rest.</p>
+
+<p>The next time you hiccup, hold your breath and sip some water. It'll probably go away in three minutes. But if it doesn't — and you find yourself reaching for the rice — count carefully. And know that you are in very good, very undignified company.</p>
+
+<div class="ornament">✦ ✦ ✦</div>
+</div>
+
+<div class="article-footer">
+  <p>The Dignity Loss Index™ is not a medical instrument and is not intended to diagnose, treat, cure, or prevent any condition, including hiccups.</p>
+  <p>Charles Osborne · 1894–1991 · Hiccuped 430,000,000 times · Never found a cure · Married twice · Eight children · Did not let it stop him.</p>
+  <p>© The Journal of Involuntary Convulsions &amp; Human Folly · All rights reserved · No elves were harmed</p>
+</div>
+
+</body>
+</html>

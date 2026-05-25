@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Your Car Really Thinks About Your Driving</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400;1,700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:   #0D0D0D;
+    --white:   #F4F1EB;
+    --yellow:  #F5C400;
+    --orange:  #E8520A;
+    --red:     #C41230;
+    --gray:    #2A2A2A;
+    --midgray: #555;
+    --ltgray:  #D0CCC4;
+    --paper:   #EDEAE0;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--black);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HALFTONE TEXTURE ── */
+  body::after {
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.055) 1px, transparent 1px);
+    background-size: 6px 6px;
+    pointer-events:none;
+    z-index:999;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-tape {
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.45rem 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .hero-tape-inner {
+    display: inline-block;
+    animation: ticker 28s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .hero-main {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    padding: 3.5rem 4rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--yellow);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+
+  .hero h1 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    line-height: 0.92;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 .accent { color: var(--yellow); }
+  .hero h1 .red    { color: var(--orange); }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(244,241,235,0.55);
+    margin-top: 1.4rem;
+    font-style: italic;
+    font-weight: 300;
+    max-width: 480px;
+  }
+
+  /* SVG Dashboard Gauge */
+  .hero-gauge { flex-shrink: 0; }
+
+  /* Warning light strip */
+  .warning-strip {
+    background: var(--gray);
+    padding: 1rem 4rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .wlight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ltgray);
+    opacity: 0.6;
+  }
+  .wlight.active { opacity: 1; color: var(--yellow); animation: blink 1.8s ease-in-out infinite; }
+  .wlight.red    { color: var(--orange); }
+  .wdot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+  @keyframes blink {
+    0%,100% { opacity:1; } 50% { opacity:0.3; }
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    max-width: 760px;
+    margin: 4.5rem auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  .intro p {
+    font-size: 1.25rem;
+    margin-bottom: 0.9rem;
+    font-weight: 400;
+    color: #1a1a1a;
+  }
+  .intro .big {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--black);
+    display: block;
+    margin: 1.2rem 0;
+  }
+  .intro .big span { color: var(--orange); }
+  .intro .stamp {
+    display: inline-block;
+    border: 3px solid var(--red);
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    transform: rotate(-2deg);
+    margin-top: 1rem;
+  }
+
+  /* ── SECTION DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    max-width: 1000px;
+    margin: 3.5rem auto 0;
+    padding: 0 2rem;
+  }
+  .div-line { flex:1; height: 3px; background: var(--black); }
+  .div-diamond {
+    width: 12px; height: 12px;
+    background: var(--yellow);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    margin: 0 10px;
+  }
+
+  /* ── COMPLAINT CARD ── */
+  .complaints {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 0;
+  }
+
+  .card {
+    border: 2px solid var(--black);
+    background: var(--white);
+    padding: 2rem 1.8rem;
+    position: relative;
+    margin: -1px; /* collapse borders */
+    transition: transform 0.15s ease, z-index 0s;
+    cursor: default;
+  }
+  .card:hover {
+    transform: scale(1.02) translateY(-2px);
+    z-index: 10;
+    box-shadow: 6px 6px 0 var(--black);
+  }
+
+  .card.yellow-bg { background: var(--yellow); }
+  .card.black-bg  { background: var(--black); color: var(--white); }
+  .card.orange-bg { background: var(--orange); color: var(--white); }
+
+  .card-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--midgray);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .card.black-bg .card-num,
+  .card.orange-bg .card-num { color: rgba(255,255,255,0.5); }
+  .card.yellow-bg .card-num { color: rgba(0,0,0,0.45); }
+
+  .card-complaint {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+    text-transform: uppercase;
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+    color: var(--black);
+  }
+  .card.black-bg .card-complaint { color: var(--yellow); }
+  .card.orange-bg .card-complaint { color: var(--white); }
+  .card.yellow-bg .card-complaint { color: var(--black); }
+
+  .card-source {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.68rem;
+    font-style: italic;
+    color: var(--orange);
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+  }
+  .card.black-bg .card-source  { color: var(--yellow); opacity:0.7; }
+  .card.orange-bg .card-source { color: rgba(255,255,255,0.7); }
+  .card.yellow-bg .card-source { color: var(--gray); }
+
+  .card-body {
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: #222;
+  }
+  .card.black-bg .card-body  { color: rgba(244,241,235,0.82); }
+  .card.orange-bg .card-body { color: rgba(255,255,255,0.9); }
+
+  .card-body em {
+    font-family: 'Courier Prime', monospace;
+    font-style: italic;
+    font-weight: 700;
+  }
+  .card.yellow-bg .card-body em { color: var(--orange); }
+  .card.black-bg  .card-body em { color: var(--yellow); }
+  .card.orange-bg .card-body em { color: var(--white); }
+
+  .tag-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.9rem 0 0.5rem;
+  }
+  .tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border: 1.5px solid currentColor;
+    border-radius: 1px;
+  }
+  .card .tag { color: var(--black); }
+  .card.black-bg .tag  { color: var(--yellow); }
+  .card.orange-bg .tag { color: var(--white); border-color: rgba(255,255,255,0.6); }
+  .card.yellow-bg .tag { color: var(--black); }
+
+  .verdict-bar {
+    margin-top: 1.1rem;
+    padding-top: 0.9rem;
+    border-top: 2px dashed rgba(0,0,0,0.18);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+  .card.black-bg .verdict-bar  { border-color: rgba(255,255,255,0.18); color: rgba(244,241,235,0.6); }
+  .card.orange-bg .verdict-bar { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.75); }
+  .card.yellow-bg .verdict-bar { color: var(--gray); }
+
+  /* ── FULL-WIDTH CALLOUT ── */
+  .callout {
+    background: var(--black);
+    color: var(--white);
+    padding: 4rem 2rem;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .callout::before {
+    content: '⚠';
+    position: absolute;
+    font-size: 18rem;
+    opacity: 0.04;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    line-height: 1;
+  }
+  .callout-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+  .callout h2 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    text-transform: uppercase;
+    color: var(--yellow);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+  .callout p {
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+    opacity: 0.8;
+    line-height: 1.7;
+  }
+  .callout p strong { color: var(--yellow); font-style: normal; font-weight: 700; }
+
+  /* ── SEVERITY METER ── */
+  .meter-section {
+    max-width: 860px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+  }
+  .meter-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+  .meter-sub {
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--midgray);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .meter-row {
+    display: grid;
+    grid-template-columns: 220px 1fr 60px;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+  }
+  .meter-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: right;
+  }
+  .meter-track {
+    background: var(--ltgray);
+    height: 18px;
+    border: 2px solid var(--black);
+    position: relative;
+  }
+  .meter-fill {
+    height: 100%;
+    background: var(--black);
+    position: relative;
+    transition: width 0.4s ease;
+  }
+  .meter-fill.warn { background: var(--yellow); }
+  .meter-fill.crit { background: var(--orange); }
+  .meter-fill.max  {
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--red),
+      var(--red) 6px,
+      var(--black) 6px,
+      var(--black) 12px
+    );
+  }
+  .meter-val {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  /* ── FINAL SECTION ── */
+  .closing {
+    background: var(--yellow);
+    padding: 5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 3px solid var(--black);
+    pointer-events: none;
+  }
+  .closing::after {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid var(--black);
+    pointer-events: none;
+  }
+  .closing-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+  .closing h2 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    text-transform: uppercase;
+    line-height: 0.95;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+  }
+  .closing p {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+    color: #1a1a1a;
+  }
+  .closing .final {
+    font-family: 'Courier Prime', monospace;
+    font-style: italic;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    font-weight: 400;
+    opacity: 0.7;
+  }
+  .closing .mostly {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    display: block;
+    color: var(--orange);
+    margin: 0.5rem 0;
+  }
+
+  footer {
+    background: var(--black);
+    color: rgba(244,241,235,0.35);
+    text-align: center;
+    padding: 1.5rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 680px) {
+    .hero-main { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+    .hero-gauge { display: none; }
+    .warning-strip { padding: 1rem 1.5rem; }
+    .complaints { grid-template-columns: 1fr; }
+    .meter-row { grid-template-columns: 140px 1fr 48px; }
+    .meter-label { font-size: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <!-- Ticker tape -->
+  <div class="hero-tape">
+    <span class="hero-tape-inner">
+      WARNING: Your vehicle has opinions &nbsp;⬥&nbsp; CHECK ENGINE FEELING &nbsp;⬥&nbsp; MERGE FAILURE DETECTED &nbsp;⬥&nbsp; GAS LIGHT IS NOT A GAME &nbsp;⬥&nbsp; POTHOLE MEMORY INTACT &nbsp;⬥&nbsp; TURN SIGNAL IS FREE &nbsp;⬥&nbsp; YOUR CAR KNOWS EVERYTHING &nbsp;⬥&nbsp; WARNING: Your vehicle has opinions &nbsp;⬥&nbsp; CHECK ENGINE FEELING &nbsp;⬥&nbsp; MERGE FAILURE DETECTED &nbsp;⬥&nbsp; GAS LIGHT IS NOT A GAME &nbsp;⬥&nbsp; POTHOLE MEMORY INTACT &nbsp;⬥&nbsp; TURN SIGNAL IS FREE &nbsp;⬥&nbsp; YOUR CAR KNOWS EVERYTHING &nbsp;⬥&nbsp;
+    </span>
+  </div>
+
+  <div class="hero-main">
+    <div>
+      <p class="hero-label">// Investigative Report from the Vehicle Community //</p>
+      <h1>
+        What Your <span class="accent">Car</span><br>
+        <span class="red">Really</span> Thinks<br>
+        About Your<br>Driving
+      </h1>
+      <p class="hero-sub">For decades, humans have believed they own cars. This is <em>adorable.</em></p>
+    </div>
+
+    <!-- Dashboard gauge SVG -->
+    <div class="hero-gauge">
+      <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer ring -->
+        <circle cx="100" cy="100" r="92" fill="none" stroke="#333" stroke-width="4"/>
+        <circle cx="100" cy="100" r="85" fill="#1a1a1a"/>
+        <!-- Tick marks -->
+        <g stroke="#555" stroke-width="1.5">
+          <line x1="100" y1="18" x2="100" y2="30" transform="rotate(-120 100 100)"/>
+          <line x1="100" y1="18" x2="100" y2="25" transform="rotate(-90 100 100)"/>
+          <line x1="100" y1="18" x2="100" y2="30" transform="rotate(-60 100 100)"/>
+          <line x1="100" y1="18" x2="100" y2="25" transform="rotate(-30 100 100)"/>
+          <line x1="100" y1="18" x2="100" y2="30" transform="rotate(0 100 100)"/>
+          <line x1="100" y1="18" x2="100" y2="25" transform="rotate(30 100 100)"/>
+          <line x1="100" y1="18" x2="100" y2="30" transform="rotate(60 100 100)"/>
+          <line x1="100" y1="18" x2="100" y2="25" transform="rotate(90 100 100)"/>
+          <line x1="100" y1="18" x2="100" y2="30" transform="rotate(120 100 100)"/>
+        </g>
+        <!-- Red zone arc -->
+        <path d="M 170 100 A 70 70 0 0 0 135 30" fill="none" stroke="#C41230" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+        <!-- Speed labels -->
+        <text x="34" y="130" fill="#888" font-size="9" font-family="Courier Prime, monospace">0</text>
+        <text x="155" y="130" fill="#C41230" font-size="9" font-family="Courier Prime, monospace">∞</text>
+        <text x="90" y="42" fill="#888" font-size="9" font-family="Courier Prime, monospace">60</text>
+        <!-- Needle pointing to "too fast" -->
+        <line x1="100" y1="100" x2="152" y2="48" stroke="#F5C400" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="100" cy="100" r="6" fill="#F5C400"/>
+        <circle cx="100" cy="100" r="3" fill="#1a1a1a"/>
+        <!-- Center label -->
+        <text x="100" y="148" fill="#F4F1EB" font-size="10" font-family="Barlow Condensed, sans-serif" text-anchor="middle" font-weight="700" letter-spacing="2">YOUR SPEED</text>
+        <text x="100" y="162" fill="#E8520A" font-size="14" font-family="Barlow Condensed, sans-serif" text-anchor="middle" font-weight="900">TOO MUCH</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Warning light row -->
+  <div class="warning-strip">
+    <div class="wlight active"><div class="wdot"></div> Check Engine Feeling</div>
+    <div class="wlight active red"><div class="wdot"></div> Merge Anxiety</div>
+    <div class="wlight"><div class="wdot"></div> Tire Patience</div>
+    <div class="wlight active"><div class="wdot"></div> Pothole Memory Full</div>
+    <div class="wlight"><div class="wdot"></div> Interior Dignity</div>
+    <div class="wlight active red"><div class="wdot"></div> Signal Not Used</div>
+    <div class="wlight"><div class="wdot"></div> Brake Pad Hope</div>
+    <div class="wlight active"><div class="wdot"></div> Fuel: Just Vibes</div>
+  </div>
+</header>
+
+
+<!-- ══ INTRO ══ -->
+<section class="intro">
+  <p>Cars are fully aware they are the responsible party in the relationship.</p>
+  <span class="big">They know <span>everything.</span></span>
+  <p>Your habits. Your mistakes. Your weird fast-food parking-lot rituals. And exactly how long you ignore dashboard warning lights before panic-Googling them.</p>
+  <div class="stamp">⚠ Peer-Unreviewed — Painfully Accurate</div>
+</section>
+
+
+<!-- ══ COMPLAINT CARDS ══ -->
+<div class="divider"><div class="div-line"></div><div class="div-diamond"></div><span style="font-family:'Barlow Condensed';font-weight:900;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;padding:0 12px;white-space:nowrap;">Filed Grievances</span><div class="div-diamond"></div><div class="div-line"></div></div>
+
+<div class="complaints">
+
+  <!-- 1 Merging -->
+  <div class="card black-bg">
+    <div class="card-num">Complaint #001 · Highway Division</div>
+    <h2 class="card-complaint">"You Know I Can't Teleport, Right?"</h2>
+    <div class="card-source">— Your Car During Merging</div>
+    <div class="card-body">
+      <p>You wait until the final possible nanosecond to merge onto the interstate. Every day. You approach highway traffic at the speed of an anxious turtle while muttering <em>"come on… come on…"</em></p>
+      <p style="margin-top:0.7rem;">Meanwhile the car is thinking: <em>"I have given you 280 horsepower and modern engineering. Why are we entering traffic like a hesitant canoe?"</em></p>
+      <div class="tag-strip">
+        <span class="tag">280 HP Ignored</span>
+        <span class="tag">Canoe Energy</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ The gap was right there. It is now 4 miles behind you.</div>
+  </div>
+
+  <!-- 2 Pothole -->
+  <div class="card yellow-bg">
+    <div class="card-num">Complaint #002 · Suspension Dept.</div>
+    <h2 class="card-complaint">"Ah Yes. Another Pothole."</h2>
+    <div class="card-source">— Your Suspension System</div>
+    <div class="card-body">
+      <p>Cars remember every pothole. Every single one. You may forget the crater you hit outside the grocery store in February. Your suspension does not.</p>
+      <p style="margin-top:0.7rem;">It remembers. It discusses it with the tires at night.</p>
+      <p style="margin-top:0.7rem;">Your car especially resents that you clearly <em>saw</em> the pothole, had ample room to avoid it, and hit it anyway — with the precision of a fighter pilot.</p>
+      <div class="tag-strip">
+        <span class="tag">Zero Excuse</span>
+        <span class="tag">Perfect Aim</span>
+        <span class="tag">Fighter Pilot Energy</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ "Perhaps next we drive directly into a mailbox."</div>
+  </div>
+
+  <!-- 3 Gas Light -->
+  <div class="card orange-bg">
+    <div class="card-num">Complaint #003 · Fuel Tank Office</div>
+    <h2 class="card-complaint">"The Gas Light Is Not a Fun Challenge."</h2>
+    <div class="card-source">— Your Fuel Tank</div>
+    <div class="card-body">
+      <p>Some drivers refill at half a tank. Others treat the low-fuel warning like a <em>motivational suggestion.</em></p>
+      <p style="margin-top:0.7rem;">Your car watches in horror as you continue driving 12 miles to work, 9 miles to Target, 4 miles for tacos, and somehow another 17 miles <em>"just to see."</em></p>
+      <div class="tag-strip">
+        <span class="tag">Fumes</span>
+        <span class="tag">Prayer</span>
+        <span class="tag">Tacos Worth It?</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ The fuel gauge is no longer informational. It's emotional.</div>
+  </div>
+
+  <!-- 4 Rain / NASCAR -->
+  <div class="card">
+    <div class="card-num">Complaint #004 · Tire Division</div>
+    <h2 class="card-complaint">"We Are Not in NASCAR."</h2>
+    <div class="card-source">— Your Tires During Rain</div>
+    <div class="card-body">
+      <p>Rain begins. Visibility disappears. Roads resemble reflective soup. And somehow you decide: <em>"This seems like a good time to go 84."</em></p>
+      <p style="margin-top:0.7rem;">Meanwhile your tires are hydroplaning toward existential reflection.</p>
+      <div class="tag-strip">
+        <span class="tag">Wet Roads</span>
+        <span class="tag">84 mph</span>
+        <span class="tag">Tires Weeping</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ The tires did not consent to this.</div>
+  </div>
+
+  <!-- 5 Engine Sound -->
+  <div class="card black-bg">
+    <div class="card-num">Complaint #005 · Engine Collective</div>
+    <h2 class="card-complaint">"Oh, Now You Hear That Sound."</h2>
+    <div class="card-source">— The Entire Engine</div>
+    <div class="card-body">
+      <p>For months your car has been producing grinding, squealing, knocking, wheezing — or a noise best described as <em>"angry dishwasher full of bolts."</em></p>
+      <p style="margin-top:0.7rem;">You ignored all of it. Then one morning: <em>"Huh. That doesn't sound good."</em></p>
+      <p style="margin-top:0.7rem;">The car is stunned by this breakthrough.</p>
+      <div class="tag-strip">
+        <span class="tag">Months Ignored</span>
+        <span class="tag">Dishwasher Bolts</span>
+        <span class="tag">Breakthrough</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ The mechanic already knew. The car already knew. You were last.</div>
+  </div>
+
+  <!-- 6 Parking -->
+  <div class="card yellow-bg">
+    <div class="card-num">Complaint #006 · Neighboring Vehicles</div>
+    <h2 class="card-complaint">"You Absolutely Could Have Parked Better."</h2>
+    <div class="card-source">— Nearby Vehicles</div>
+    <div class="card-body">
+      <p>Your car knows when you park badly. It knows when you straighten three times, give up, and leave the vehicle diagonally like <em>a fleeing bank robber.</em></p>
+      <p style="margin-top:0.7rem;">Others pull six inches from another vehicle, over the line, or directly onto the curb with the confidence of medieval siege equipment.</p>
+      <div class="tag-strip">
+        <span class="tag">Diagonal</span>
+        <span class="tag">Three Attempts</span>
+        <span class="tag">Medieval Confidence</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ Compact cars everywhere whisper: "He thinks he nailed it."</div>
+  </div>
+
+  <!-- 7 Drive-Thru -->
+  <div class="card">
+    <div class="card-num">Complaint #007 · Interior Upholstery</div>
+    <h2 class="card-complaint">"Why Are We Here Again?"</h2>
+    <div class="card-source">— Your Car in the Drive-Thru</div>
+    <div class="card-body">
+      <p>Cars know your order patterns. They know the <em>"rough week"</em> milkshake stops, the secret taco runs, and the suspicious number of French fries discovered beneath the seats.</p>
+      <p style="margin-top:0.7rem;">Your car's interior has become an archaeological dig of receipts, crumbs, mystery napkins, and <em>one fossilized french fry from 2019.</em></p>
+      <div class="tag-strip">
+        <span class="tag">Crumbs</span>
+        <span class="tag">Mystery Napkins</span>
+        <span class="tag">2019 Fry</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ The upholstery has filed a formal complaint with the seats.</div>
+  </div>
+
+  <!-- 8 Turn Signal -->
+  <div class="card orange-bg">
+    <div class="card-num">Complaint #008 · Society at Large</div>
+    <h2 class="card-complaint">"The Turn Signal Is Free."</h2>
+    <div class="card-source">— Society</div>
+    <div class="card-body">
+      <p>The technology is right there. One finger. A tiny click. Instead, some drivers change lanes using only <em>mystery and aggression.</em></p>
+      <p style="margin-top:0.7rem;">Other cars interpret these maneuvers the way gazelles interpret nearby lions.</p>
+      <div class="tag-strip">
+        <span class="tag">One Finger</span>
+        <span class="tag">Free of Charge</span>
+        <span class="tag">Gazelle Protocol</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ This is not a mystery novel. Signal.</div>
+  </div>
+
+  <!-- 9 Braking -->
+  <div class="card black-bg">
+    <div class="card-num">Complaint #009 · Brake Pad Association</div>
+    <h2 class="card-complaint">"You Don't Need to Brake for Every Emotional Event."</h2>
+    <div class="card-source">— Your Brake Pads</div>
+    <div class="card-body">
+      <p>Some people drive with smooth precision. Others brake like they just <em>saw a ghost cross the highway.</em></p>
+      <p style="margin-top:0.7rem;">Your car especially fears drivers who accelerate hard, immediately brake, then repeat this pattern every 40 feet.</p>
+      <div class="tag-strip">
+        <span class="tag">Ghost Detected</span>
+        <span class="tag">40 Feet</span>
+        <span class="tag">Astronaut Passengers</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ Passengers are subtly bracing like astronauts during reentry.</div>
+  </div>
+
+  <!-- 10 Car Wash -->
+  <div class="card">
+    <div class="card-num">Complaint #010 · Paint Job Dept.</div>
+    <h2 class="card-complaint">"I Saw What Happened at the Car Wash."</h2>
+    <div class="card-source">— Your Paint Job</div>
+    <div class="card-body">
+      <p>Your car enters thinking: <em>"Perhaps today is maintenance day."</em> Then suddenly giant spinning noodles attack, water cannons fire from all directions, and soap slaps the windshield with <em>biblical intensity.</em></p>
+      <p style="margin-top:0.7rem;">The entire experience feels like an industrial squid encounter.</p>
+      <div class="tag-strip">
+        <span class="tag">Spinning Noodles</span>
+        <span class="tag">Biblical Soap</span>
+        <span class="tag">Industrial Squid</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ Your car emerged cleaner and more traumatized.</div>
+  </div>
+
+  <!-- 11 Interior Cabin -->
+  <div class="card yellow-bg">
+    <div class="card-num">Complaint #011 · Interior Cabin</div>
+    <h2 class="card-complaint">"You Talk to Yourself A Lot."</h2>
+    <div class="card-source">— The Interior Cabin</div>
+    <div class="card-body">
+      <p>Cars hear everything. <em>Everything.</em></p>
+      <p style="margin-top:0.7rem;">Your car knows your road rage vocabulary, your off-key singing, your fake arguments replayed aloud, and your deeply ambitious plans made while driving at night.</p>
+      <p style="margin-top:0.7rem;">The steering wheel has heard TED Talks, therapy sessions, and karaoke disasters.</p>
+      <div class="tag-strip">
+        <span class="tag">Road Rage Vocab</span>
+        <span class="tag">Karaoke Disaster</span>
+        <span class="tag">Ambitious Plans</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ Your car knows your true self. And frankly, it's concerned.</div>
+  </div>
+
+  <!-- 12 Stoplight Racing -->
+  <div class="card orange-bg">
+    <div class="card-num">Complaint #012 · The Guy Behind You</div>
+    <h2 class="card-complaint">"This Isn't a Race."</h2>
+    <div class="card-source">— The Guy Behind You at the Stoplight</div>
+    <div class="card-body">
+      <p>The light turns green. The car ahead accelerates normally. But one driver launches forward with such violence that <em>nearby coffee achieves orbit.</em></p>
+      <p style="margin-top:0.7rem;">For what purpose? Everyone meets at the next red light anyway.</p>
+      <div class="tag-strip">
+        <span class="tag">Coffee: Orbital</span>
+        <span class="tag">Next Light: Same</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ Your car is embarrassed on your behalf.</div>
+  </div>
+
+  <!-- 13 Speed Bumps -->
+  <div class="card black-bg">
+    <div class="card-num">Complaint #013 · Shock Absorber Dept.</div>
+    <h2 class="card-complaint">"Oh Good. A Speed Bump at 37 MPH."</h2>
+    <div class="card-source">— Your Shock Absorbers</div>
+    <div class="card-body">
+      <p>Speed bumps are not merely decorative. Some drivers approach cautiously. Others attack speed bumps like <em>military maneuvers, physics experiments, or revenge missions</em> against their own suspension.</p>
+      <p style="margin-top:0.7rem;">Your car survives these encounters the way shopping carts survive tornadoes.</p>
+      <div class="tag-strip">
+        <span class="tag">37 MPH</span>
+        <span class="tag">Revenge Mission</span>
+        <span class="tag">Shopping Cart Mode</span>
+      </div>
+    </div>
+    <div class="verdict-bar">→ The suspension has started keeping a journal.</div>
+  </div>
+
+</div><!-- end .complaints -->
+
+
+<!-- ══ CALLOUT ══ -->
+<div class="callout">
+  <div class="callout-inner">
+    <h2>Breaking: Interior Cabin Issues Statement</h2>
+    <p>"We have recorded your road rage vocabulary, your off-key singing, your fake arguments rehearsed at 65 mph, and your <strong>deeply ambitious 11pm life plans</strong> that are, frankly, never going to happen. The steering wheel has heard things. It cannot unhear them. We are all concerned."</p>
+  </div>
+</div>
+
+
+<!-- ══ SEVERITY METER ══ -->
+<section class="meter-section">
+  <h2 class="meter-title">Official Grievance Severity Index</h2>
+  <p class="meter-sub">// As measured by the Vehicle Community Research Bureau //</p>
+
+  <div class="meter-row">
+    <div class="meter-label">Ignoring Sounds</div>
+    <div class="meter-track"><div class="meter-fill max" style="width:95%"></div></div>
+    <div class="meter-val">95%</div>
+  </div>
+  <div class="meter-row">
+    <div class="meter-label">No Turn Signal</div>
+    <div class="meter-track"><div class="meter-fill max" style="width:100%"></div></div>
+    <div class="meter-val">100%</div>
+  </div>
+  <div class="meter-row">
+    <div class="meter-label">Gas Light Gambling</div>
+    <div class="meter-track"><div class="meter-fill crit" style="width:88%"></div></div>
+    <div class="meter-val">88%</div>
+  </div>
+  <div class="meter-row">
+    <div class="meter-label">Speed Bump @ 37mph</div>
+    <div class="meter-track"><div class="meter-fill crit" style="width:82%"></div></div>
+    <div class="meter-val">82%</div>
+  </div>
+  <div class="meter-row">
+    <div class="meter-label">Diagonal Parking</div>
+    <div class="meter-track"><div class="meter-fill warn" style="width:74%"></div></div>
+    <div class="meter-val">74%</div>
+  </div>
+  <div class="meter-row">
+    <div class="meter-label">Rain + 84 mph</div>
+    <div class="meter-track"><div class="meter-fill crit" style="width:91%"></div></div>
+    <div class="meter-val">91%</div>
+  </div>
+  <div class="meter-row">
+    <div class="meter-label">Hesitant Merging</div>
+    <div class="meter-track"><div class="meter-fill warn" style="width:67%"></div></div>
+    <div class="meter-val">67%</div>
+  </div>
+  <div class="meter-row">
+    <div class="meter-label">Interior Karaoke</div>
+    <div class="meter-track"><div class="meter-fill" style="width:38%"></div></div>
+    <div class="meter-val">38%</div>
+  </div>
+  <p style="font-family:'Courier Prime',monospace;font-size:0.68rem;color:var(--midgray);text-align:right;margin-top:0.8rem;font-style:italic;">⬛ critical &nbsp; 🟧 warning &nbsp; ⬜ tolerated &nbsp; ▓▓ unforgivable</p>
+</section>
+
+
+<!-- ══ CLOSING ══ -->
+<section class="closing">
+  <div class="closing-inner">
+    <h2>And Despite Everything…</h2>
+    <p>Cars spend years quietly observing humanity — our impatience, our snack habits, our inability to merge, and our irrational confidence in parallel parking.</p>
+    <p>And despite everything, they still start every morning.</p>
+    <span class="mostly">Mostly.</span>
+    <p class="final">Unless they've finally decided: <em>"You know what? Walk."</em></p>
+  </div>
+</section>
+
+<footer>
+  What Your Car Really Thinks &nbsp;·&nbsp; An Investigative Report from the Vehicle Community &nbsp;·&nbsp; All findings are the car's opinion, not the manufacturer's &nbsp;·&nbsp; Signal your turns
+</footer>
+
+</body>
+</html>

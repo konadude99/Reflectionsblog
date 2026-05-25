@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Field Guide to the Modern Doctor's Office</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:    #F9F5EE;
+    --ink:      #1E1E1E;
+    --teal:     #3A7D74;
+    --teal-lt:  #E4F0EE;
+    --coral:    #D4614A;
+    --coral-lt: #FAEAE6;
+    --gold:     #C89A2E;
+    --gold-lt:  #FBF3DC;
+    --muted:    #7A7166;
+    --border:   #DDD8CC;
+    --white:    #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-cross {
+    position: absolute;
+    font-size: 9rem;
+    opacity: 0.04;
+    user-select: none;
+    animation: float 7s ease-in-out infinite alternate;
+  }
+  .hero-bg-cross:nth-child(1) { top: 8%;  left: 5%;  font-size: 6rem; animation-delay: 0s; }
+  .hero-bg-cross:nth-child(2) { top: 15%; right: 8%; font-size: 11rem; animation-delay: 1.5s; }
+  .hero-bg-cross:nth-child(3) { bottom: 12%; left: 12%; font-size: 8rem; animation-delay: 0.8s; }
+  .hero-bg-cross:nth-child(4) { bottom: 20%; right: 5%; font-size: 5rem; animation-delay: 2s; }
+
+  @keyframes float {
+    from { transform: translateY(0) rotate(0deg); }
+    to   { transform: translateY(-18px) rotate(8deg); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    max-width: 820px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s ease both;
+  }
+
+  .hero h1 em {
+    color: var(--coral);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 540px;
+    margin-top: 1.6rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.65s ease both;
+  }
+
+  .hero-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--teal);
+    margin: 2.2rem auto 0;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.85s ease both;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    animation: fadeUp 1s 1.2s ease both, pulse 2s 2s ease-in-out infinite;
+    opacity: 0;
+  }
+  @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:.6} }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    max-width: 680px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .intro p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .intro p strong {
+    color: var(--ink);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── SECTION GRID ── */
+  .article-body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  /* ── INCIDENT CARD ── */
+  .incident {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 3.5rem;
+    background: var(--white);
+    transition: box-shadow 0.3s ease;
+  }
+  .incident:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+  .incident.flip { direction: rtl; }
+  .incident.flip > * { direction: ltr; }
+
+  .incident-illo {
+    background: var(--teal-lt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    min-height: 280px;
+  }
+  .incident.coral-bg .incident-illo  { background: var(--coral-lt); }
+  .incident.gold-bg  .incident-illo  { background: var(--gold-lt); }
+
+  .incident-illo svg {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+  }
+
+  .incident-text {
+    padding: 2.2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .incident-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+  .incident.coral-bg .incident-num { color: var(--coral); }
+  .incident.gold-bg  .incident-num { color: var(--gold); }
+
+  .incident-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+
+  .incident-body {
+    font-size: 0.93rem;
+    color: #444;
+    line-height: 1.72;
+  }
+
+  .verdict {
+    margin-top: 1.1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  .verdict span { color: var(--teal); }
+  .incident.coral-bg .verdict span { color: var(--coral); }
+  .incident.gold-bg  .verdict span  { color: var(--gold); }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    text-align: center;
+    padding: 4rem 2rem;
+    margin: 1rem 0 2rem;
+  }
+  .pull-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-style: italic;
+    color: var(--teal);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.45;
+  }
+  .pull-quote cite {
+    display: block;
+    margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    font-style: normal;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 2.5rem 0;
+    color: var(--border);
+    font-size: 1.2rem;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    text-align: center;
+    padding: 3rem 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+  }
+  footer span { color: var(--coral); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .incident { grid-template-columns: 1fr; }
+    .incident.flip { direction: ltr; }
+    .incident-illo { min-height: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-bg-cross">✚</div>
+  <div class="hero-bg-cross">✚</div>
+  <div class="hero-bg-cross">✚</div>
+  <div class="hero-bg-cross">✚</div>
+  <p class="hero-eyebrow">A Rigorous Clinical Investigation</p>
+  <h1>A Field Guide to the <em>Modern</em> Doctor's Office</h1>
+  <p class="hero-sub">Sixteen documented absurdities, from the waiting room to the referral maze, with notes from the field.</p>
+  <div class="hero-rule"></div>
+  <p class="hero-scroll">▾ &nbsp; Scroll to begin suffering</p>
+</section>
+
+<!-- ═══════════════════ INTRO ═══════════════════ -->
+<div class="intro">
+  <p>You went in for something minor. You left <strong>confused about your medications, unsure of your blood pressure, and vaguely insulted by a paper gown.</strong> This happens to everyone. This is that story.</p>
+</div>
+
+<!-- ═══════════════════ INCIDENTS ═══════════════════ -->
+<main class="article-body">
+
+<!-- 1. THE KIOSK -->
+<article class="incident coral-bg">
+  <div class="incident-illo">
+    <!-- Frozen check-in tablet on wobbly stand -->
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- Stand pole (wobbly) -->
+      <path d="M110 230 Q105 180 112 140" stroke="#c9806a" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <!-- Base (tilted) -->
+      <ellipse cx="110" cy="232" rx="38" ry="8" fill="#d4614a" opacity=".35"/>
+      <!-- Tablet frame -->
+      <rect x="62" y="45" width="96" height="122" rx="8" fill="#2c2c2c"/>
+      <!-- Screen -->
+      <rect x="68" y="51" width="84" height="110" rx="4" fill="#1a4a45"/>
+      <!-- Frozen loading spinner -->
+      <circle cx="110" cy="96" r="22" stroke="#3a7d74" stroke-width="3" fill="none" stroke-dasharray="12 6" opacity=".6"/>
+      <circle cx="110" cy="96" r="22" stroke="#f9f5ee" stroke-width="2" fill="none" stroke-dasharray="4 30" opacity=".8"/>
+      <!-- "Error" text lines -->
+      <rect x="82" y="130" width="56" height="6" rx="3" fill="#d4614a" opacity=".8"/>
+      <rect x="90" y="142" width="40" height="4" rx="2" fill="#ffffff" opacity=".25"/>
+      <!-- "Please restart" tiny label -->
+      <text x="110" y="160" text-anchor="middle" font-family="monospace" font-size="6" fill="#ffffff" opacity=".4">PLEASE RESTART</text>
+      <!-- Home button -->
+      <circle cx="110" cy="176" r="6" stroke="#555" stroke-width="1.5" fill="none"/>
+      <!-- Finger poking the screen helplessly -->
+      <path d="M155 82 Q165 78 168 90 Q165 94 158 92 L155 82Z" fill="#c9806a" opacity=".8"/>
+      <path d="M158 90 L148 100" stroke="#c9806a" stroke-width="3" stroke-linecap="round"/>
+      <!-- Sweat drop -->
+      <path d="M170 75 Q172 70 175 75 Q175 80 170 80 Z" fill="#3a7d74" opacity=".6"/>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 01 · Front Desk</p>
+    <h2 class="incident-title">The Check-In Kiosk That Defeats Everyone</h2>
+    <p class="incident-body">The office has replaced the receptionist with a touchscreen tablet on a wobbly stand. It takes four taps to confirm your name, asks you to sign with your finger — producing a signature that looks like a seismograph reading from a 7.2 earthquake — then freezes on the insurance screen. The receptionist, three feet away, watches you struggle for ninety seconds before saying: <em>"Yeah, sometimes you just have to restart it."</em></p>
+    <div class="verdict"><span>→</span> The machine will not remember this. You will.</div>
+  </div>
+</article>
+
+<!-- 2. WAITING ROOM ECOSYSTEM -->
+<article class="incident flip">
+  <div class="incident-illo">
+    <!-- Four waiting room archetypes -->
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bench -->
+      <rect x="10" y="175" width="200" height="12" rx="4" fill="#c8b89a" opacity=".5"/>
+      <rect x="20" y="187" width="8" height="28" rx="2" fill="#c8b89a" opacity=".4"/>
+      <rect x="192" y="187" width="8" height="28" rx="2" fill="#c8b89a" opacity=".4"/>
+
+      <!-- Person 1: Cougher (left) -->
+      <circle cx="38" cy="140" r="16" fill="#d4614a" opacity=".25"/>
+      <circle cx="38" cy="140" r="12" fill="#d4614a" opacity=".5"/>
+      <!-- cough clouds -->
+      <ellipse cx="58" cy="135" rx="7" ry="5" fill="#d4614a" opacity=".2"/>
+      <ellipse cx="68" cy="132" rx="5" ry="4" fill="#d4614a" opacity=".12"/>
+      <ellipse cx="56" cy="143" rx="6" ry="4" fill="#d4614a" opacity=".15"/>
+      <!-- sitting body -->
+      <rect x="30" y="152" width="16" height="24" rx="5" fill="#d4614a" opacity=".4"/>
+      <line x1="30" y1="164" x2="18" y2="175" stroke="#d4614a" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+      <line x1="46" y1="164" x2="58" y2="175" stroke="#d4614a" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+      <text x="38" y="230" text-anchor="middle" font-family="monospace" font-size="6" fill="#7a7166">The Cougher</text>
+
+      <!-- Person 2: Takeout eater -->
+      <circle cx="90" cy="138" r="12" fill="#c89a2e" opacity=".6"/>
+      <rect x="82" y="150" width="16" height="25" rx="5" fill="#c89a2e" opacity=".45"/>
+      <!-- takeout box -->
+      <rect x="76" y="143" width="22" height="15" rx="2" fill="#f9f5ee" stroke="#c89a2e" stroke-width="1.5"/>
+      <path d="M76 148 L98 148" stroke="#c89a2e" stroke-width="1" opacity=".5"/>
+      <!-- steam -->
+      <path d="M83 143 Q80 138 83 134" stroke="#c89a2e" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".5"/>
+      <path d="M89 143 Q86 137 89 133" stroke="#c89a2e" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".5"/>
+      <line x1="82" y1="175" x2="72" y2="175" stroke="#c89a2e" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+      <line x1="98" y1="175" x2="108" y2="175" stroke="#c89a2e" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+      <text x="90" y="230" text-anchor="middle" font-family="monospace" font-size="6" fill="#7a7166">The Eater</text>
+
+      <!-- Person 3: Zenmaster (slightly slumped, eyes closed) -->
+      <circle cx="145" cy="139" r="12" fill="#3a7d74" opacity=".5"/>
+      <!-- closed eyes -->
+      <path d="M140 138 Q142 136 145 138" stroke="#1e1e1e" stroke-width="1.5" fill="none" opacity=".7"/>
+      <path d="M146 138 Q148 136 151 138" stroke="#1e1e1e" stroke-width="1.5" fill="none" opacity=".7"/>
+      <rect x="137" y="151" width="16" height="25" rx="5" fill="#3a7d74" opacity=".4"/>
+      <!-- tiny ZZZ -->
+      <text x="160" y="130" font-family="serif" font-size="9" fill="#3a7d74" opacity=".6" font-style="italic">z</text>
+      <text x="165" y="124" font-family="serif" font-size="7" fill="#3a7d74" opacity=".4" font-style="italic">z</text>
+      <line x1="137" y1="175" x2="127" y2="175" stroke="#3a7d74" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+      <line x1="153" y1="175" x2="163" y2="175" stroke="#3a7d74" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+      <text x="145" y="230" text-anchor="middle" font-family="monospace" font-size="6" fill="#7a7166">The Zen One</text>
+
+      <!-- Person 4: YOU (upright, nervous) -->
+      <circle cx="196" cy="136" r="12" fill="#7a7166" opacity=".4"/>
+      <!-- wide eyes -->
+      <circle cx="192" cy="135" r="2.5" fill="#1e1e1e" opacity=".7"/>
+      <circle cx="199" cy="135" r="2.5" fill="#1e1e1e" opacity=".7"/>
+      <circle cx="192.8" cy="134.2" r="0.8" fill="white"/>
+      <circle cx="199.8" cy="134.2" r="0.8" fill="white"/>
+      <rect x="188" y="148" width="16" height="25" rx="5" fill="#7a7166" opacity=".35"/>
+      <line x1="188" y1="175" x2="178" y2="175" stroke="#7a7166" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+      <line x1="204" y1="175" x2="214" y2="175" stroke="#7a7166" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+      <!-- phone in hand -->
+      <rect x="204" y="155" width="10" height="15" rx="2" fill="#1e1e1e" opacity=".4"/>
+      <text x="196" y="230" text-anchor="middle" font-family="monospace" font-size="6" fill="#7a7166">You</text>
+
+      <!-- clock on wall -->
+      <circle cx="110" cy="30" r="18" stroke="#ddd8cc" stroke-width="2" fill="white"/>
+      <circle cx="110" cy="30" r="2" fill="#1e1e1e"/>
+      <!-- hands: stuck at long wait -->
+      <line x1="110" y1="30" x2="110" y2="16" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round"/>
+      <line x1="110" y1="30" x2="122" y2="34" stroke="#d4614a" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 02 · The Waiting Room</p>
+    <h2 class="incident-title">The Waiting Room Ecosystem</h2>
+    <p class="incident-body">There are exactly four kinds of people in any waiting room at any time: (1) the person coughing without covering their mouth, whom everyone else watches with cold fury; (2) the person who brought full takeout and is eating it loudly; (3) the individual who has been there so long they appear to have achieved a kind of Zen acceptance of mortality; and (4) you, who arrived three minutes early and will wait forty-seven minutes.</p>
+    <div class="verdict"><span>→</span> The clock has been wrong since 2019. No one will fix it.</div>
+  </div>
+</article>
+
+<!-- pull quote 1 -->
+<div class="pull-quote">
+  <blockquote>"Is your address still the same?" She will ask this, and then hand you a form to write it down anyway.</blockquote>
+  <cite>— Field observation, every waiting room, 2001–present</cite>
+</div>
+
+<!-- 3. FORMS -->
+<article class="incident gold-bg">
+  <div class="incident-illo">
+    <!-- Clipboard with endless forms -->
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- clipboard board -->
+      <rect x="40" y="30" width="140" height="185" rx="5" fill="#f9f5ee" stroke="#c89a2e" stroke-width="2"/>
+      <!-- clip -->
+      <rect x="85" y="18" width="50" height="22" rx="4" fill="#c89a2e"/>
+      <rect x="95" y="12" width="30" height="14" rx="3" fill="#c89a2e" opacity=".7"/>
+      <!-- form lines -->
+      <text x="55" y="62" font-family="monospace" font-size="7.5" fill="#7a7166">NAME: _______________</text>
+      <text x="55" y="78" font-family="monospace" font-size="7.5" fill="#7a7166">ADDRESS: _____________</text>
+      <text x="55" y="94" font-family="monospace" font-size="7.5" fill="#7a7166">STILL SAME?: __ YES __ NO</text>
+      <text x="55" y="110" font-family="monospace" font-size="7.5" fill="#7a7166">PHONE: _______________</text>
+      <text x="55" y="126" font-family="monospace" font-size="7.5" fill="#7a7166">ALSO STILL SAME?: ____</text>
+      <text x="55" y="142" font-family="monospace" font-size="7.5" fill="#7a7166">EMERG. CONTACT: ______</text>
+      <text x="55" y="158" font-family="monospace" font-size="7.5" fill="#7a7166">SAME AS LAST TIME?: __</text>
+      <!-- photocopy artifact: slight diagonal smudge -->
+      <rect x="40" y="165" width="140" height="2" fill="#c89a2e" opacity=".08"/>
+      <text x="55" y="175" font-family="monospace" font-size="7.5" fill="#c89a2e" opacity=".6">SAME AS BEFORE THAT?:</text>
+      <text x="55" y="191" font-family="monospace" font-size="7.5" fill="#7a7166">SIGNATURE: ___________</text>
+      <!-- A small pen -->
+      <rect x="162" y="185" width="5" height="30" rx="2" fill="#c89a2e" transform="rotate(-30 162 185)"/>
+      <polygon points="160,212 165,212 162,220" fill="#1e1e1e" transform="rotate(-30 162 185)" opacity=".7"/>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 03 · Reception Desk</p>
+    <h2 class="incident-title">"Is Your Address Still…?"</h2>
+    <p class="incident-body">The receptionist asks if your address is still the same. You confirm it is. She asks if your phone number is still the same. You confirm it is. She asks if your emergency contact is still the same. You confirm it is. She then hands you a clipboard and asks you to fill out all of this information again, by hand, on a form that appears to be a photocopy of a photocopy of something originating in the Clinton administration.</p>
+    <div class="verdict"><span>→</span> This form will be scanned and filed where no human shall find it.</div>
+  </div>
+</article>
+
+<!-- 4. BLOOD PRESSURE -->
+<article class="incident flip">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- Arm -->
+      <path d="M70 80 Q60 120 65 180 Q85 190 120 188 Q155 186 155 160 Q158 120 145 80" fill="#f5d5c0" stroke="#c9806a" stroke-width="1.5"/>
+      <!-- Cuff -->
+      <rect x="68" y="115" width="82" height="48" rx="6" fill="#3a7d74" opacity=".75"/>
+      <rect x="72" y="120" width="74" height="38" rx="4" fill="#2e6b63" opacity=".5"/>
+      <!-- Velcro texture lines -->
+      <line x1="72" y1="126" x2="146" y2="126" stroke="#4a9d94" stroke-width="0.8" opacity=".4"/>
+      <line x1="72" y1="130" x2="146" y2="130" stroke="#4a9d94" stroke-width="0.8" opacity=".4"/>
+      <line x1="72" y1="134" x2="146" y2="134" stroke="#4a9d94" stroke-width="0.8" opacity=".4"/>
+      <!-- tube -->
+      <path d="M150 138 Q175 135 180 110 Q182 90 192 85" stroke="#3a7d74" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- gauge -->
+      <circle cx="192" cy="75" r="22" fill="white" stroke="#3a7d74" stroke-width="2"/>
+      <circle cx="192" cy="75" r="18" fill="white" stroke="#ddd8cc" stroke-width="1"/>
+      <!-- gauge arc -->
+      <path d="M178 85 A18 18 0 1 1 206 85" stroke="#ddd8cc" stroke-width="2" fill="none"/>
+      <!-- colored zones -->
+      <path d="M178 85 A18 18 0 0 1 188 60" stroke="#3a7d74" stroke-width="3" fill="none"/>
+      <path d="M188 60 A18 18 0 0 1 206 85" stroke="#d4614a" stroke-width="3" fill="none"/>
+      <!-- needle pointing HIGH -->
+      <line x1="192" y1="75" x2="204" y2="66" stroke="#d4614a" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="192" cy="75" r="3" fill="#1e1e1e"/>
+      <!-- number readout -->
+      <rect x="78" y="124" width="62" height="22" rx="3" fill="#1a1a1a"/>
+      <text x="109" y="139" text-anchor="middle" font-family="monospace" font-size="13" fill="#3a7d74" font-weight="bold">142/91</text>
+      <!-- "?" thought bubble above arm -->
+      <circle cx="58" cy="60" r="12" fill="white" stroke="#ddd8cc" stroke-width="1.5"/>
+      <text x="58" y="65" text-anchor="middle" font-family="serif" font-size="16" fill="#7a7166">?</text>
+      <circle cx="66" cy="76" r="4" fill="white" stroke="#ddd8cc" stroke-width="1"/>
+      <circle cx="72" cy="86" r="2.5" fill="white" stroke="#ddd8cc" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 04 · Examination Room</p>
+    <h2 class="incident-title">The Blood Pressure Cuff Situation</h2>
+    <p class="incident-body">A nurse wraps the cuff around your arm, pumps it to a pressure suggesting she's checking a truck tire, and you both stare at the wall in companionable silence while your hand turns the color of a beet. She announces a number. You have no idea if it's good or alarming. She writes it down without any expression whatsoever. You spend the next ten minutes secretly googling what your number means and then googling what the google results mean.</p>
+    <div class="verdict"><span>→</span> It was "a little elevated." This will not be explained further.</div>
+  </div>
+</article>
+
+<!-- 5. PAIN SCALE -->
+<article class="incident coral-bg">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- Pain scale poster on wall -->
+      <rect x="28" y="20" width="164" height="80" rx="4" fill="white" stroke="#ddd8cc" stroke-width="1.5"/>
+      <text x="110" y="36" text-anchor="middle" font-family="monospace" font-size="7" fill="#7a7166" letter-spacing="1">RATE YOUR PAIN  1 – 10</text>
+      <!-- faces row -->
+      <!-- face 1 happy -->
+      <circle cx="45" cy="58" r="10" fill="#c8e6c9"/>
+      <path d="M40 60 Q45 64 50 60" stroke="#2e7d32" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <circle cx="42" cy="55" r="1.2" fill="#2e7d32"/>
+      <circle cx="48" cy="55" r="1.2" fill="#2e7d32"/>
+      <!-- face 5 neutral -->
+      <circle cx="110" cy="58" r="10" fill="#fff9c4"/>
+      <line x1="106" y1="61" x2="114" y2="61" stroke="#f9a825" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="107" cy="55" r="1.2" fill="#f9a825"/>
+      <circle cx="113" cy="55" r="1.2" fill="#f9a825"/>
+      <!-- face 10 crying/screaming -->
+      <circle cx="175" cy="58" r="10" fill="#ffcdd2"/>
+      <path d="M170 62 Q175 57 180 62" stroke="#c62828" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <circle cx="172" cy="55" r="1.5" fill="#c62828"/>
+      <circle cx="178" cy="55" r="1.5" fill="#c62828"/>
+      <!-- tears -->
+      <path d="M171 59 Q170 63 171 66" stroke="#90caf9" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M179 59 Q180 63 179 66" stroke="#90caf9" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- numbers -->
+      <text x="45" y="80" text-anchor="middle" font-family="monospace" font-size="8" fill="#7a7166">1</text>
+      <text x="110" y="80" text-anchor="middle" font-family="monospace" font-size="8" fill="#7a7166">5</text>
+      <text x="175" y="80" text-anchor="middle" font-family="monospace" font-size="8" fill="#7a7166">10</text>
+
+      <!-- Person pondering below -->
+      <circle cx="110" cy="140" r="22" fill="#f9f5ee" stroke="#c9806a" stroke-width="1.5"/>
+      <!-- Furrowed brow of deep thought -->
+      <path d="M99 132 Q104 129 108 132" stroke="#c9806a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <path d="M112 132 Q116 129 121 132" stroke="#c9806a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <circle cx="104" cy="137" r="2" fill="#c9806a"/>
+      <circle cx="116" cy="137" r="2" fill="#c9806a"/>
+      <!-- mouth: uncertain squiggle -->
+      <path d="M103 147 Q107 144 110 147 Q113 150 117 147" stroke="#c9806a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <!-- thought dots to scale -->
+      <circle cx="130" cy="127" r="3" fill="#ddd8cc"/>
+      <circle cx="138" cy="120" r="4" fill="#ddd8cc"/>
+      <circle cx="148" cy="112" r="5.5" fill="#ddd8cc"/>
+      <!-- in thought bubble: "5?" -->
+      <text x="148" y="115" text-anchor="middle" font-family="serif" font-size="9" fill="#7a7166" font-style="italic">5?</text>
+      <!-- body below -->
+      <rect x="95" y="162" width="30" height="38" rx="8" fill="#f9f5ee" stroke="#c9806a" stroke-width="1.2"/>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 05 · Consultation</p>
+    <h2 class="incident-title">"On a Scale of One to Ten…"</h2>
+    <p class="incident-body">The doctor asks you to rate your pain from one to ten. This sounds simple. It is not. Is a seven too dramatic? Is a four an insult to your own suffering? What's a ten — being crushed by a glacier? You settle on <em>"maybe a five?"</em> with a question mark on the end of it, as if asking permission. The doctor writes it down without comment. You immediately wonder if you should have said six.</p>
+    <div class="verdict"><span>→</span> You will choose a different number next time. It won't matter.</div>
+  </div>
+</article>
+
+<!-- 6. THE GOOGLE DIAGNOSIS -->
+<article class="incident flip">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- phone -->
+      <rect x="70" y="25" width="80" height="150" rx="12" fill="#1e1e1e"/>
+      <rect x="75" y="32" width="70" height="136" rx="8" fill="#f0f4f8"/>
+      <!-- screen: google search results escalating -->
+      <rect x="78" y="35" width="64" height="12" rx="3" fill="#3a7d74" opacity=".7"/>
+      <text x="110" y="44" text-anchor="middle" font-family="monospace" font-size="5.5" fill="white">left shoulder ache</text>
+      <!-- result 1: benign -->
+      <text x="80" y="58" font-family="monospace" font-size="5" fill="#3a7d74">1. Pulled muscle</text>
+      <rect x="80" y="61" width="40" height="1.5" fill="#ddd8cc"/>
+      <!-- result 2 -->
+      <text x="80" y="70" font-family="monospace" font-size="5" fill="#c89a2e">2. Herniated disc</text>
+      <rect x="80" y="73" width="40" height="1.5" fill="#ddd8cc"/>
+      <!-- result 3 -->
+      <text x="80" y="82" font-family="monospace" font-size="5" fill="#c89a2e">3. Kidney issue</text>
+      <rect x="80" y="85" width="40" height="1.5" fill="#ddd8cc"/>
+      <!-- result 4 escalating -->
+      <text x="80" y="94" font-family="monospace" font-size="5" fill="#d4614a">4. Gallbladder</text>
+      <rect x="80" y="97" width="40" height="1.5" fill="#ddd8cc"/>
+      <!-- result 5 scary -->
+      <text x="80" y="106" font-family="monospace" font-size="4.5" fill="#d4614a">5. Rare autoimmune</text>
+      <text x="80" y="112" font-family="monospace" font-size="4" fill="#d4614a" opacity=".7">   (Uzbekistan)</text>
+      <rect x="80" y="115" width="40" height="1.5" fill="#ddd8cc"/>
+      <!-- result 6: horrifying -->
+      <text x="80" y="124" font-family="monospace" font-size="5" fill="#7a1e1e" font-weight="bold">6. ████████</text>
+      <text x="80" y="131" font-family="monospace" font-size="4" fill="#7a1e1e" opacity=".6">   (page 4)</text>
+      <!-- divider before actual answer -->
+      <rect x="78" y="138" width="64" height="1" fill="#ddd8cc"/>
+      <text x="110" y="148" text-anchor="middle" font-family="monospace" font-size="4.5" fill="#3a7d74">Doctor: "You've been</text>
+      <text x="110" y="156" text-anchor="middle" font-family="monospace" font-size="4.5" fill="#3a7d74">sitting weird."</text>
+      <!-- clock: 2 AM -->
+      <circle cx="110" cy="16" r="6" fill="white" stroke="#ddd8cc" stroke-width="1"/>
+      <text x="110" y="19" text-anchor="middle" font-family="monospace" font-size="5" fill="#7a7166">2AM</text>
+      <!-- a small ghost/horror emoji flair -->
+      <text x="158" y="95" font-size="22" opacity=".15">☠</text>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 06 · 2 A.M. Research</p>
+    <h2 class="incident-title">The Symptom You Googled at 2 A.M.</h2>
+    <p class="incident-body">You've had a weird ache under your left shoulder blade for three weeks. Google has diagnosed you, in order, with: a pulled muscle, a herniated disc, a kidney issue, gallbladder disease, a rare autoimmune condition found primarily in Uzbekistan, and — on page four — something unspeakable. You arrive ready to write your will. The doctor presses on it once and says, <em>"You've been sitting weird."</em> That's it. That's the whole appointment.</p>
+    <div class="verdict"><span>→</span> Stop googling symptoms. You won't stop googling symptoms.</div>
+  </div>
+</article>
+
+<div class="divider">✚</div>
+
+<!-- 7. THE GOWN -->
+<article class="incident gold-bg">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- exam table with crinkle paper -->
+      <rect x="20" y="185" width="180" height="30" rx="4" fill="#ddd8cc"/>
+      <rect x="20" y="175" width="180" height="15" rx="3" fill="#f9f5ee" stroke="#c89a2e" stroke-width="1"/>
+      <!-- crinkle lines on table paper -->
+      <path d="M30 180 Q50 177 70 180 Q90 183 110 179 Q130 175 150 180 Q170 184 190 180" stroke="#c89a2e" stroke-width="0.8" fill="none" opacity=".4"/>
+      <!-- The gown: tiny, pathetic, paper texture -->
+      <path d="M90 60 L130 60 L140 175 L80 175 Z" fill="#e8e0d0" stroke="#c89a2e" stroke-width="1.5" opacity=".9"/>
+      <!-- neck hole -->
+      <path d="M98 60 Q110 50 122 60" fill="#f9f5ee" stroke="#c89a2e" stroke-width="1"/>
+      <!-- the "opening in back" - gap lines -->
+      <line x1="110" y1="80" x2="110" y2="170" stroke="#c89a2e" stroke-dasharray="4 3" stroke-width="1.2" opacity=".5"/>
+      <!-- "front?" "back?" arrows of confusion -->
+      <text x="72" y="105" font-family="monospace" font-size="7" fill="#c89a2e" opacity=".8">front?</text>
+      <text x="135" y="115" font-family="monospace" font-size="7" fill="#c89a2e" opacity=".8">back?</text>
+      <path d="M95 103 L108 108" stroke="#c89a2e" stroke-width="1" opacity=".5" marker-end="url(#arr)"/>
+      <path d="M133 113 L120 118" stroke="#c89a2e" stroke-width="1" opacity=".5"/>
+      <!-- "OPENING" label with arrow pointing nowhere helpful -->
+      <text x="148" y="145" font-family="monospace" font-size="6" fill="#7a7166">opening</text>
+      <text x="148" y="153" font-family="monospace" font-size="6" fill="#7a7166">"in back"</text>
+      <path d="M146 148 Q135 150 125 148" stroke="#7a7166" stroke-width="1" fill="none" opacity=".5"/>
+      <!-- size indicator: comically small -->
+      <line x1="80" y1="60" x2="80" y2="175" stroke="#ddd8cc" stroke-width="0.8" stroke-dasharray="2 2"/>
+      <text x="62" y="118" font-family="monospace" font-size="5.5" fill="#7a7166" transform="rotate(-90 62 118)">one size</text>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 07 · Examination Room</p>
+    <h2 class="incident-title">The Gown</h2>
+    <p class="incident-body">You're handed a paper gown and told to "put it on with the opening in the back." There is no further instruction. The gown is approximately the size of a cocktail napkin. You arrange it around yourself as best you can, sit on the crinkly paper of the examination table, and spend eleven minutes alone in the room feeling profoundly vulnerable and slightly cold, wondering if "the back" means your back or the back of the room.</p>
+    <div class="verdict"><span>→</span> Either way you have chosen incorrectly. The nurse will not say so.</div>
+  </div>
+</article>
+
+<!-- 8. MEDICATION REVIEW -->
+<article class="incident flip">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- prescription bottles scattered -->
+      <!-- bottle 1 (you remember this one) -->
+      <rect x="30" y="90" width="36" height="65" rx="6" fill="#3a7d74" opacity=".7"/>
+      <rect x="30" y="90" width="36" height="18" rx="5" fill="#2e6b63"/>
+      <rect x="33" y="115" width="30" height="32" rx="2" fill="white" opacity=".6"/>
+      <text x="48" y="125" text-anchor="middle" font-family="monospace" font-size="4.5" fill="#1e1e1e">METFORM</text>
+      <text x="48" y="132" text-anchor="middle" font-family="monospace" font-size="4" fill="#7a7166">500mg</text>
+      <text x="48" y="139" text-anchor="middle" font-family="monospace" font-size="3.5" fill="#7a7166">YOU KNOW</text>
+      <text x="48" y="145" text-anchor="middle" font-family="monospace" font-size="3.5" fill="#3a7d74">ABOUT THIS</text>
+      <!-- bottle 2 (also remembered) -->
+      <rect x="82" y="100" width="36" height="58" rx="6" fill="#c89a2e" opacity=".75"/>
+      <rect x="82" y="100" width="36" height="16" rx="5" fill="#b08825"/>
+      <rect x="85" y="122" width="30" height="28" rx="2" fill="white" opacity=".6"/>
+      <text x="100" y="132" text-anchor="middle" font-family="monospace" font-size="4.5" fill="#1e1e1e">LISINOP</text>
+      <text x="100" y="139" text-anchor="middle" font-family="monospace" font-size="4" fill="#7a7166">10mg</text>
+      <text x="100" y="146" text-anchor="middle" font-family="monospace" font-size="3.5" fill="#3a7d74">ALSO KNEW</text>
+      <!-- bottle 3 (surprise!) -->
+      <rect x="134" y="85" width="36" height="70" rx="6" fill="#d4614a" opacity=".65"/>
+      <rect x="134" y="85" width="36" height="18" rx="5" fill="#b84a1a"/>
+      <rect x="137" y="110" width="30" height="36" rx="2" fill="white" opacity=".6"/>
+      <text x="152" y="120" text-anchor="middle" font-family="monospace" font-size="4.5" fill="#1e1e1e">MYSTERY</text>
+      <text x="152" y="127" text-anchor="middle" font-family="monospace" font-size="3.5" fill="#d4614a">???mg</text>
+      <text x="152" y="134" text-anchor="middle" font-family="monospace" font-size="3.5" fill="#d4614a">SURPRISE!</text>
+      <text x="152" y="141" text-anchor="middle" font-family="monospace" font-size="3" fill="#7a7166">WHEN DID</text>
+      <text x="152" y="147" text-anchor="middle" font-family="monospace" font-size="3" fill="#7a7166">THIS HAPPEN</text>
+      <!-- thought bubble from surprise bottle -->
+      <circle cx="182" cy="68" r="16" fill="#faeae6" stroke="#d4614a" stroke-width="1"/>
+      <text x="182" y="65" text-anchor="middle" font-family="serif" font-size="18" fill="#d4614a">?!</text>
+      <circle cx="170" cy="83" r="4" fill="#faeae6" stroke="#d4614a" stroke-width="1"/>
+      <circle cx="162" cy="90" r="2.5" fill="#faeae6" stroke="#d4614a" stroke-width="1"/>
+      <!-- pills scattered on the floor -->
+      <ellipse cx="55" cy="178" rx="6" ry="4" fill="#3a7d74" opacity=".3" transform="rotate(-20 55 178)"/>
+      <ellipse cx="110" cy="182" rx="6" ry="4" fill="#c89a2e" opacity=".3" transform="rotate(15 110 182)"/>
+      <ellipse cx="165" cy="176" rx="6" ry="4" fill="#d4614a" opacity=".3" transform="rotate(-35 165 176)"/>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 08 · Medication Review</p>
+    <h2 class="incident-title">The Medication Review</h2>
+    <p class="incident-body">"Are you taking any medications?" You list the two you actually remember. The doctor pulls up your chart, which apparently knows about four more. You didn't know you were on one of them. You're not sure when that happened. Nobody seems troubled by this. Everyone moves on. You make a mental note to look into it, which you will absolutely forget in the parking lot.</p>
+    <div class="verdict"><span>→</span> The chart knows things about you that you do not know about yourself.</div>
+  </div>
+</article>
+
+<!-- pull quote 2 -->
+<div class="pull-quote">
+  <blockquote>"Is that a five, or a five-with-a-question-mark? Because I wrote five but I should have said six, and now it's in my chart forever."</blockquote>
+  <cite>— Interior monologue, every patient, forever</cite>
+</div>
+
+<!-- 9. THE LIST -->
+<article class="incident coral-bg">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- big clipboard with a five-page list -->
+      <rect x="42" y="22" width="136" height="185" rx="5" fill="#f9f5ee" stroke="#c9806a" stroke-width="2"/>
+      <!-- clip -->
+      <rect x="85" y="12" width="50" height="20" rx="4" fill="#c9806a"/>
+      <rect x="95" y="6" width="30" height="14" rx="3" fill="#c9806a" opacity=".7"/>
+      <!-- Page count tab -->
+      <rect x="160" y="35" width="22" height="14" rx="2" fill="#d4614a" opacity=".8"/>
+      <text x="171" y="45" text-anchor="middle" font-family="monospace" font-size="6.5" fill="white">5 pgs</text>
+      <!-- List items - densely packed -->
+      <text x="52" y="48" font-family="monospace" font-size="5.2" fill="#7a7166">1. ✓ fatigue when standing</text>
+      <text x="52" y="57" font-family="monospace" font-size="5.2" fill="#7a7166">2. ✓ right elbow clicks</text>
+      <text x="52" y="66" font-family="monospace" font-size="5.2" fill="#7a7166">3. ✓ dreams about teeth</text>
+      <text x="52" y="75" font-family="monospace" font-size="5.2" fill="#7a7166">4. ✓ left pinky goes numb</text>
+      <text x="52" y="84" font-family="monospace" font-size="5.2" fill="#7a7166">5. ✓ smell: weird sometimes</text>
+      <text x="52" y="93" font-family="monospace" font-size="5.2" fill="#7a7166">6. ✓ sneezing when full</text>
+      <text x="52" y="102" font-family="monospace" font-size="5.2" fill="#7a7166">7. ✓ eye twitches (Tuesdays)</text>
+      <text x="52" y="111" font-family="monospace" font-size="5.2" fill="#7a7166">8. ✓ occasional regret (gen.)</text>
+      <text x="52" y="120" font-family="monospace" font-size="5.2" fill="#7a7166">9. ✓ right toe: independent</text>
+      <text x="52" y="129" font-family="monospace" font-size="5.2" fill="#7a7166">10. ✓ ears ring in silence</text>
+      <text x="52" y="138" font-family="monospace" font-size="5.2" fill="#7a7166">11. ✓ hair: seems less</text>
+      <text x="52" y="147" font-family="monospace" font-size="5.2" fill="#7a7166">12. ✓ joints: weather-based?</text>
+      <text x="52" y="156" font-family="monospace" font-size="5.2" fill="#7a7166">13. ✓ heartburn: most meals</text>
+      <text x="52" y="165" font-family="monospace" font-size="5.2" fill="#7a7166">14. ✓ one eyebrow: higher</text>
+      <!-- "34 items total" stamp -->
+      <rect x="52" y="173" width="116" height="22" rx="3" fill="#d4614a" opacity=".12"/>
+      <text x="110" y="183" text-anchor="middle" font-family="DM Mono, monospace" font-size="6" fill="#d4614a" letter-spacing=".05em">34 ITEMS TOTAL · 12 MIN APPT</text>
+      <text x="110" y="191" text-anchor="middle" font-family="DM Mono, monospace" font-size="5.5" fill="#d4614a" opacity=".7">LAMINATED · CROSS-REFERENCED</text>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 09 · The Patient With a Plan</p>
+    <h2 class="incident-title">The Person Who Brings a List</h2>
+    <p class="incident-body">There's always one person in the waiting room clutching a handwritten list of questions for their doctor. Five pages. Laminated. Cross-referenced. They have been preparing for this appointment the way other people prepare for a doctoral dissertation defense. The doctor will have twelve minutes with them. The list has thirty-four items.</p>
+    <div class="verdict"><span>→</span> They will get through six. They will return next week with the rest.</div>
+  </div>
+</article>
+
+<!-- 10/11: ENERGY DRINK DIAGNOSIS (was #11) -->
+<article class="incident flip">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- Heart with palpitation lines -->
+      <path d="M110 185 Q60 155 60 120 Q60 95 80 90 Q95 87 110 105 Q125 87 140 90 Q160 95 160 120 Q160 155 110 185Z" fill="#faeae6" stroke="#d4614a" stroke-width="2.5"/>
+      <!-- EKG line across heart -->
+      <path d="M65 130 L80 130 L88 108 L96 152 L104 120 L108 138 L112 115 L116 138 L120 130 L155 130" stroke="#d4614a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Energy drink can next to heart -->
+      <rect x="148" y="60" width="38" height="75" rx="6" fill="#c0e040" opacity=".85"/>
+      <rect x="148" y="60" width="38" height="14" rx="5" fill="#a0c020"/>
+      <rect x="148" y="121" width="38" height="14" rx="5" fill="#a0c020"/>
+      <!-- lightning bolt on can -->
+      <path d="M164 77 L158 93 L166 93 L159 110 L172 90 L164 90 L170 77 Z" fill="#1e1e1e" opacity=".5"/>
+      <text x="167" y="118" text-anchor="middle" font-family="monospace" font-size="5" fill="#1e1e1e" opacity=".5">×3/day</text>
+      <!-- Arrow from can to heart -->
+      <path d="M148 100 Q135 105 128 120" stroke="#c89a2e" stroke-width="2" fill="none" stroke-dasharray="4 3"/>
+      <polygon points="128,120 122,115 132,113" fill="#c89a2e"/>
+      <!-- Doctor silhouette with closed laptop -->
+      <circle cx="50" cy="55" r="14" fill="#3a7d74" opacity=".6"/>
+      <rect x="36" y="68" width="28" height="32" rx="6" fill="#3a7d74" opacity=".4"/>
+      <!-- laptop closed -->
+      <rect x="25" y="100" width="50" height="5" rx="2" fill="#1e1e1e" opacity=".4"/>
+      <rect x="27" y="86" width="46" height="18" rx="3" fill="#1e1e1e" opacity=".3"/>
+      <!-- speech bubble "Stop drinking those" -->
+      <rect x="68" y="40" width="95" height="24" rx="6" fill="white" stroke="#3a7d74" stroke-width="1.5"/>
+      <path d="M68 50 L58 60 L73 54" fill="white" stroke="#3a7d74" stroke-width="1.5"/>
+      <text x="115" y="50" text-anchor="middle" font-family="monospace" font-size="6.5" fill="#3a7d74">"Stop drinking those."</text>
+      <text x="115" y="60" text-anchor="middle" font-family="monospace" font-size="6" fill="#7a7166">— closes laptop —</text>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 10 · The Terrifying Symptom</p>
+    <h2 class="incident-title">The Frightening Symptom with the Humiliating Explanation</h2>
+    <p class="incident-body">You've been experiencing heart palpitations. Irregular, alarming, enough to make you clutch your chest at your desk. You describe this gravely. The doctor asks what you've been drinking. You mention the new energy drink you've been having — the big one, three a day because they're on sale. The doctor closes her laptop. <em>"Stop drinking those."</em> You go home cured.</p>
+    <div class="verdict"><span>→</span> The cure cost nothing. The dignity cost everything.</div>
+  </div>
+</article>
+
+<!-- 12. TABLE PAPER -->
+<article class="incident gold-bg">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- exam table -->
+      <rect x="15" y="170" width="190" height="40" rx="5" fill="#d4c9b0"/>
+      <rect x="15" y="158" width="190" height="18" rx="4" fill="#ece4d0" stroke="#c89a2e" stroke-width="1.2"/>
+      <!-- paper roll at end of table -->
+      <rect x="175" y="148" width="30" height="30" rx="2" fill="#f9f5ee" stroke="#ddd8cc" stroke-width="1"/>
+      <ellipse cx="190" cy="152" rx="10" ry="8" fill="#ddd8cc" opacity=".5"/>
+      <!-- the crinkled, destroyed paper on table -->
+      <!-- base paper -->
+      <rect x="20" y="160" width="160" height="14" fill="#f9f5ee" opacity=".8"/>
+      <!-- crinkle waves - many of them -->
+      <path d="M20 162 Q32 159 44 163 Q56 167 68 162 Q80 157 92 162 Q104 167 116 162 Q128 157 140 162 Q152 167 164 162 Q172 159 180 162" stroke="#c89a2e" stroke-width="1" fill="none" opacity=".5"/>
+      <path d="M20 166 Q35 163 50 167 Q65 171 80 166 Q95 161 110 166 Q125 171 140 166 Q155 161 170 166 Q176 164 180 166" stroke="#c89a2e" stroke-width="0.8" fill="none" opacity=".4"/>
+      <!-- crumple at patient sit spot -->
+      <path d="M70 160 Q85 155 100 160 Q115 165 130 158 Q120 162 100 168 Q80 164 70 160Z" fill="#e8dfc5" opacity=".6"/>
+      <!-- sound waves radiating from table = crinkle noise -->
+      <path d="M100 140 Q90 135 80 138" stroke="#c89a2e" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".5"/>
+      <path d="M100 133 Q85 126 72 130" stroke="#c89a2e" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".35"/>
+      <path d="M100 126 Q81 118 67 123" stroke="#c89a2e" stroke-width="1" fill="none" stroke-linecap="round" opacity=".2"/>
+      <path d="M100 140 Q112 134 122 138" stroke="#c89a2e" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".5"/>
+      <path d="M100 133 Q116 126 130 130" stroke="#c89a2e" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".35"/>
+      <!-- person sitting - just legs + gown hem -->
+      <rect x="82" y="108" width="36" height="55" rx="6" fill="#e8dfc5" stroke="#c89a2e" stroke-width="1" opacity=".7"/>
+      <!-- legs dangling -->
+      <rect x="87" y="160" width="10" height="40" rx="5" fill="#f5d5c0"/>
+      <rect x="113" y="160" width="10" height="40" rx="5" fill="#f5d5c0"/>
+      <!-- socks -->
+      <ellipse cx="92" cy="200" rx="8" ry="5" fill="#3a7d74" opacity=".5"/>
+      <ellipse cx="118" cy="200" rx="8" ry="5" fill="#3a7d74" opacity=".5"/>
+      <!-- CRINKLE text label -->
+      <text x="52" y="128" font-family="monospace" font-size="6.5" fill="#c89a2e" opacity=".7" transform="rotate(-8 52 128)">CRINKLE</text>
+      <text x="122" y="122" font-family="monospace" font-size="6.5" fill="#c89a2e" opacity=".7" transform="rotate(6 122 122)">CRINKLE</text>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 11 · Examination Room</p>
+    <h2 class="incident-title">The Examination Table Paper</h2>
+    <p class="incident-body">Every slight shift of position produces the sound of a thousand crackling potato chip bags. The doctor tries to ask you a thoughtful question. You move an inch. The table screams. You both pretend this isn't happening. By the end of the appointment, you have given the paper the texture of a used origami crane.</p>
+    <div class="verdict"><span>→</span> The paper will be replaced in approximately seven seconds. It took you twelve minutes to destroy it.</div>
+  </div>
+</article>
+
+<!-- 13. THE FELLOW -->
+<article class="incident flip">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- Room corner suggestion -->
+      <line x1="30" y1="20" x2="30" y2="220" stroke="#ddd8cc" stroke-width="1.5" opacity=".6"/>
+      <line x1="30" y1="220" x2="200" y2="220" stroke="#ddd8cc" stroke-width="1.5" opacity=".6"/>
+      <!-- Sink -->
+      <rect x="15" y="160" width="40" height="30" rx="3" fill="#f9f5ee" stroke="#ddd8cc" stroke-width="1.5"/>
+      <ellipse cx="35" cy="165" rx="12" ry="5" fill="#ddd8cc" opacity=".5"/>
+      <!-- The mysterious observer: white coat, clipboard, says nothing -->
+      <circle cx="55" cy="90" r="22" fill="#f9f5ee" stroke="#3a7d74" stroke-width="1.5"/>
+      <!-- face: keen, silent, observing -->
+      <circle cx="48" cy="86" r="2.5" fill="#1e1e1e"/>
+      <circle cx="62" cy="86" r="2.5" fill="#1e1e1e"/>
+      <!-- raised eyebrow of intense interest -->
+      <path d="M44 80 Q48 77 52 80" stroke="#1e1e1e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M58 78 Q62 76 66 79" stroke="#1e1e1e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <!-- neutral mouth -->
+      <line x1="50" y1="96" x2="60" y2="96" stroke="#7a7166" stroke-width="1.2" stroke-linecap="round"/>
+      <!-- white coat -->
+      <path d="M33 112 L20 200 L90 200 L77 112 Z" fill="white" stroke="#ddd8cc" stroke-width="1.5"/>
+      <!-- lapels -->
+      <path d="M33 112 L45 130 L55 112" fill="white" stroke="#ddd8cc" stroke-width="1"/>
+      <path d="M77 112 L65 130 L55 112" fill="white" stroke="#ddd8cc" stroke-width="1"/>
+      <!-- pocket -->
+      <rect x="36" y="155" width="18" height="22" rx="2" fill="#f9f5ee" stroke="#ddd8cc" stroke-width="1"/>
+      <!-- stethoscope hint -->
+      <path d="M58 125 Q70 130 72 140 Q74 150 68 155" stroke="#3a7d74" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- clipboard with one note -->
+      <rect x="75" y="115" width="42" height="55" rx="3" fill="#f9f5ee" stroke="#c89a2e" stroke-width="1.2"/>
+      <rect x="85" y="108" width="22" height="12" rx="2" fill="#c89a2e"/>
+      <!-- one single line written -->
+      <line x1="80" y1="135" x2="112" y2="135" stroke="#7a7166" stroke-width="1.5" opacity=".4"/>
+      <!-- the rest: blank -->
+      <line x1="80" y1="145" x2="112" y2="145" stroke="#ddd8cc" stroke-width="1" opacity=".3"/>
+      <line x1="80" y1="155" x2="112" y2="155" stroke="#ddd8cc" stroke-width="1" opacity=".3"/>
+      <!-- "???" above clipboard - patient's POV -->
+      <text x="140" y="95" font-family="serif" font-size="26" fill="#3a7d74" opacity=".2">???</text>
+      <!-- NAME TAG: blank -->
+      <rect x="40" y="138" width="30" height="12" rx="2" fill="#f9f5ee" stroke="#ddd8cc" stroke-width="1"/>
+      <text x="55" y="147" text-anchor="middle" font-family="monospace" font-size="5" fill="#ddd8cc">____________</text>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 12 · The Mysterious Third Party</p>
+    <h2 class="incident-title">The Fellow in the Corner</h2>
+    <p class="incident-body">At some point a second person enters — young, wearing a white coat, standing quietly near the sink. Nobody explains who they are. You assume they're a medical student or resident. They observe everything with keen interest. They take one note, say nothing, and leave. The doctor doesn't mention them afterward. You never find out their name.</p>
+    <div class="verdict"><span>→</span> You are in their notes. They are not in yours.</div>
+  </div>
+</article>
+
+<div class="divider">✚</div>
+
+<!-- 14. VACCINES -->
+<article class="incident coral-bg">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- Vaccine record card, mostly blank -->
+      <rect x="30" y="40" width="160" height="100" rx="5" fill="#fffde7" stroke="#c89a2e" stroke-width="1.5"/>
+      <text x="110" y="58" text-anchor="middle" font-family="monospace" font-size="7" fill="#7a7166" letter-spacing=".05em">IMMUNIZATION RECORD</text>
+      <line x1="35" y1="63" x2="185" y2="63" stroke="#ddd8cc" stroke-width="1"/>
+      <!-- vaccine rows -->
+      <text x="38" y="76" font-family="monospace" font-size="6" fill="#7a7166">TETANUS:</text>
+      <text x="100" y="76" font-family="monospace" font-size="6" fill="#c89a2e">4 yrs ago? 6? maybe?</text>
+      <text x="38" y="89" font-family="monospace" font-size="6" fill="#7a7166">FLU:</text>
+      <text x="100" y="89" font-family="monospace" font-size="6" fill="#c89a2e">or was that shingles</text>
+      <text x="38" y="102" font-family="monospace" font-size="6" fill="#7a7166">SHINGLES:</text>
+      <text x="100" y="102" font-family="monospace" font-size="6" fill="#d4614a">??  (too young?)</text>
+      <text x="38" y="115" font-family="monospace" font-size="6" fill="#7a7166">COVID:</text>
+      <text x="100" y="115" font-family="monospace" font-size="6" fill="#3a7d74">yes (which one?)</text>
+      <text x="38" y="128" font-family="monospace" font-size="6" fill="#7a7166">OTHER:</text>
+      <text x="100" y="128" font-family="monospace" font-size="6" fill="#ddd8cc">______________</text>
+
+      <!-- Sore arm illustration -->
+      <path d="M90 170 Q78 155 80 170 Q82 190 110 200 Q138 210 155 195 Q170 180 162 170 Q155 155 145 170" fill="#f5d5c0" stroke="#c9806a" stroke-width="1.5"/>
+      <!-- sore spot with red dot and radiating lines -->
+      <circle cx="118" cy="178" r="6" fill="#d4614a" opacity=".4"/>
+      <circle cx="118" cy="178" r="3" fill="#d4614a" opacity=".7"/>
+      <line x1="118" y1="168" x2="118" y2="163" stroke="#d4614a" stroke-width="1.2" opacity=".5"/>
+      <line x1="128" y1="172" x2="132" y2="168" stroke="#d4614a" stroke-width="1.2" opacity=".5"/>
+      <line x1="108" y1="172" x2="104" y2="168" stroke="#d4614a" stroke-width="1.2" opacity=".5"/>
+      <text x="118" y="220" text-anchor="middle" font-family="monospace" font-size="6" fill="#7a7166">one of these made it sore</text>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 13 · The Records Problem</p>
+    <h2 class="incident-title">"Are You Up to Date on Your Vaccines?"</h2>
+    <p class="incident-body">A simple question. And yet — are you? You think you had a tetanus shot maybe four years ago, or possibly six, or was that the flu shot? Was the flu shot the one that made your arm sore for a week or was that the shingles vaccine your doctor recommended even though you thought that was for people twenty years older than you? You give the extremely confident answer: <em>"I think so?"</em></p>
+    <div class="verdict"><span>→</span> You are not up to date. You will get one today. Your arm will be sore. You will forget why.</div>
+  </div>
+</article>
+
+<!-- 15. THE REFERRAL MAZE -->
+<article class="incident flip">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- Phone on hold -->
+      <rect x="80" y="170" width="60" height="32" rx="6" fill="#1e1e1e"/>
+      <rect x="83" y="173" width="54" height="26" rx="4" fill="#3a7d74" opacity=".7"/>
+      <!-- "ON HOLD" screen -->
+      <text x="110" y="183" text-anchor="middle" font-family="monospace" font-size="6.5" fill="white">ON HOLD</text>
+      <text x="110" y="193" text-anchor="middle" font-family="monospace" font-size="6" fill="#c0e040">17:32</text>
+      <!-- music note -->
+      <text x="130" y="165" font-size="12" fill="#c89a2e" opacity=".4">♪</text>
+      <text x="72" y="162" font-size="10" fill="#c89a2e" opacity=".3">♫</text>
+
+      <!-- maze / bureaucratic flowchart -->
+      <!-- boxes -->
+      <rect x="88" y="30" width="44" height="20" rx="3" fill="#3a7d74" opacity=".6"/>
+      <text x="110" y="44" text-anchor="middle" font-family="monospace" font-size="5.5" fill="white">REFERRAL SENT</text>
+      <!-- arrow down -->
+      <line x1="110" y1="50" x2="110" y2="62" stroke="#ddd8cc" stroke-width="1.5"/>
+      <polygon points="110,65 106,60 114,60" fill="#ddd8cc"/>
+
+      <rect x="72" y="65" width="76" height="20" rx="3" fill="#c89a2e" opacity=".5"/>
+      <text x="110" y="79" text-anchor="middle" font-family="monospace" font-size="5.5" fill="white">STILL PROCESSING...</text>
+      <!-- arrow splits -->
+      <line x1="110" y1="85" x2="110" y2="97" stroke="#ddd8cc" stroke-width="1.5"/>
+      <polygon points="110,100 106,95 114,95" fill="#ddd8cc"/>
+
+      <rect x="50" y="100" width="55" height="20" rx="3" fill="#d4614a" opacity=".5"/>
+      <text x="77" y="113" text-anchor="middle" font-family="monospace" font-size="5" fill="white">DID YOU CALL US?</text>
+      <rect x="115" y="100" width="55" height="20" rx="3" fill="#d4614a" opacity=".5"/>
+      <text x="142" y="113" text-anchor="middle" font-family="monospace" font-size="5" fill="white">DID THEY SEND IT?</text>
+      <!-- arrows both going to next row -->
+      <line x1="77" y1="120" x2="77" y2="132" stroke="#ddd8cc" stroke-width="1"/>
+      <line x1="142" y1="120" x2="142" y2="132" stroke="#ddd8cc" stroke-width="1"/>
+
+      <rect x="42" y="132" width="55" height="20" rx="3" fill="#7a7166" opacity=".4"/>
+      <text x="69" y="145" text-anchor="middle" font-family="monospace" font-size="4.8" fill="white">YES, THEY DID.</text>
+      <rect x="123" y="132" width="55" height="20" rx="3" fill="#7a7166" opacity=".4"/>
+      <text x="150" y="145" text-anchor="middle" font-family="monospace" font-size="4.8" fill="white">WE'LL CALL YOU.</text>
+      <!-- converge to phone -->
+      <line x1="69" y1="152" x2="100" y2="170" stroke="#ddd8cc" stroke-width="1"/>
+      <line x1="150" y1="152" x2="120" y2="170" stroke="#ddd8cc" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 14 · The Specialist Pipeline</p>
+    <h2 class="incident-title">The Referral Paperwork</h2>
+    <p class="incident-body">The doctor determines you need to see a specialist. She sends a referral. You will now enter a secondary waiting period of between one and eleven weeks, during which you will call the specialist's office twice, be told they're "still processing," call your doctor's office to confirm they sent it, be told they did, call the specialist again, be put on hold for seventeen minutes, and eventually receive an appointment for a date that is technically still within the same calendar year.</p>
+    <div class="verdict"><span>→</span> The appointment is in October. It is currently May.</div>
+  </div>
+</article>
+
+<!-- 16. AGING DIAGNOSIS -->
+<article class="incident coral-bg">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- Doctor at desk, gesturing vaguely -->
+      <circle cx="75" cy="80" r="22" fill="#3a7d74" opacity=".5"/>
+      <!-- white coat suggestion -->
+      <path d="M53 102 L38 195 L112 195 L97 102 Z" fill="white" stroke="#ddd8cc" stroke-width="1.5"/>
+      <!-- face: wise, slightly apologetic -->
+      <circle cx="69" cy="76" r="2.5" fill="#1e1e1e" opacity=".7"/>
+      <circle cx="81" cy="76" r="2.5" fill="#1e1e1e" opacity=".7"/>
+      <!-- slight sympathetic eyebrows -->
+      <path d="M65 70 Q69 67 73 70" stroke="#1e1e1e" stroke-width="1.5" fill="none"/>
+      <path d="M77 70 Q81 68 85 70" stroke="#1e1e1e" stroke-width="1.5" fill="none"/>
+      <!-- mouth: gentle, delivering bad news nicely -->
+      <path d="M70 86 Q75 90 80 86" stroke="#1e1e1e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- gesture hand -->
+      <path d="M97 105 Q115 100 120 112 Q118 120 110 118" fill="#f5d5c0" stroke="#c9806a" stroke-width="1.2"/>
+      <!-- stethoscope -->
+      <path d="M85 105 Q100 115 102 128 Q104 140 96 145" stroke="#1e1e1e" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/>
+      <circle cx="94" cy="148" r="5" fill="#1e1e1e" opacity=".3"/>
+
+      <!-- The Dreaded Phrase in a speech bubble -->
+      <rect x="108" y="50" width="100" height="50" rx="8" fill="white" stroke="#d4614a" stroke-width="1.5"/>
+      <path d="M108 68 L98 80 L112 74" fill="white" stroke="#d4614a" stroke-width="1.5"/>
+      <text x="158" y="68" text-anchor="middle" font-family="serif" font-size="8" fill="#d4614a" font-style="italic">"Well, as we</text>
+      <text x="158" y="80" text-anchor="middle" font-family="serif" font-size="8" fill="#d4614a" font-style="italic">get older..."</text>
+      <text x="158" y="92" text-anchor="middle" font-family="monospace" font-size="6" fill="#7a7166">[sentence trails off]</text>
+
+      <!-- calendar showing the passage of time -->
+      <rect x="130" y="130" width="72" height="62" rx="4" fill="#f9f5ee" stroke="#ddd8cc" stroke-width="1"/>
+      <rect x="130" y="130" width="72" height="16" rx="3" fill="#d4614a" opacity=".6"/>
+      <text x="166" y="142" text-anchor="middle" font-family="monospace" font-size="7" fill="white">TIME PASSES</text>
+      <!-- X'd out days -->
+      <text x="140" y="158" font-family="monospace" font-size="7" fill="#ddd8cc">✕ ✕ ✕ ✕ ✕</text>
+      <text x="140" y="168" font-family="monospace" font-size="7" fill="#ddd8cc">✕ ✕ ✕ ✕ ✕</text>
+      <text x="140" y="178" font-family="monospace" font-size="7" fill="#ddd8cc">✕ ✕ ✕ ✕ ✕</text>
+      <text x="140" y="185" font-family="monospace" font-size="5.5" fill="#c89a2e" opacity=".7">forever</text>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 15 · The Inevitable</p>
+    <h2 class="incident-title">The Diagnosis That Is Simply "Aging"</h2>
+    <p class="incident-body">You describe a symptom — a creak, a twinge, a mysterious stiffness that wasn't there before. The doctor listens attentively. Examines you. Considers. Then delivers the most unsatisfying verdict in the English language: <em>"Well, as we get older…"</em> The sentence doesn't need to finish. You both know where it's going. You nod. You pay your copay. You go home and research supplements, none of which will help, which is fine.</p>
+    <div class="verdict"><span>→</span> You will take the supplements for six weeks, then forget to reorder them. Nothing will change either way.</div>
+  </div>
+</article>
+
+<!-- 17. THE FOLLOW-UP CALL -->
+<article class="incident flip">
+  <div class="incident-illo">
+    <svg viewBox="0 0 220 240" xmlns="http://www.w3.org/2000/svg">
+      <!-- conference room table -->
+      <ellipse cx="110" cy="185" rx="90" ry="28" fill="#ddd8cc" opacity=".5"/>
+      <!-- people at meeting - simplified heads -->
+      <circle cx="45"  cy="162" r="10" fill="#7a7166" opacity=".4"/>
+      <circle cx="75"  cy="155" r="10" fill="#7a7166" opacity=".4"/>
+      <circle cx="145" cy="155" r="10" fill="#7a7166" opacity=".4"/>
+      <circle cx="175" cy="162" r="10" fill="#7a7166" opacity=".4"/>
+      <!-- "you" in meeting - panicked -->
+      <circle cx="110" cy="152" r="13" fill="#d4614a" opacity=".35"/>
+      <circle cx="110" cy="152" r="10" fill="#d4614a" opacity=".6"/>
+      <circle cx="106" cy="150" r="2" fill="#1e1e1e"/>
+      <circle cx="114" cy="150" r="2" fill="#1e1e1e"/>
+      <!-- wide eyes -->
+      <circle cx="106.6" cy="149.3" r="0.7" fill="white"/>
+      <circle cx="114.6" cy="149.3" r="0.7" fill="white"/>
+      <!-- nervous mouth -->
+      <path d="M107 156 Q110 154 113 156" stroke="#1e1e1e" stroke-width="1.2" fill="none"/>
+
+      <!-- phone ringing above "you" -->
+      <rect x="96" y="90" width="28" height="48" rx="5" fill="#1e1e1e"/>
+      <rect x="99" y="93" width="22" height="38" rx="3" fill="#f9f5ee"/>
+      <!-- calling screen -->
+      <rect x="100" y="94" width="20" height="10" rx="2" fill="#3a7d74" opacity=".7"/>
+      <text x="110" y="100" text-anchor="middle" font-family="monospace" font-size="4" fill="white">UNKNOWN</text>
+      <text x="110" y="107" text-anchor="middle" font-family="monospace" font-size="4" fill="#7a7166">(555) 000-</text>
+      <text x="110" y="113" text-anchor="middle" font-family="monospace" font-size="4" fill="#7a7166">DOCTOR</text>
+      <!-- green answer button glow -->
+      <circle cx="110" cy="126" r="7" fill="#4caf50" opacity=".7"/>
+      <text x="110" y="129" text-anchor="middle" font-size="8" fill="white">📞</text>
+
+      <!-- vibration lines around phone -->
+      <path d="M88 100 Q84 110 88 120" stroke="#d4614a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".6"/>
+      <path d="M83 97 Q77 110 83 123" stroke="#d4614a" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".4"/>
+      <path d="M132 100 Q136 110 132 120" stroke="#d4614a" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".6"/>
+      <path d="M137 97 Q143 110 137 123" stroke="#d4614a" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".4"/>
+
+      <!-- "12 DAYS LATER" caption -->
+      <rect x="42" y="30" width="136" height="24" rx="4" fill="#1e1e1e" opacity=".85"/>
+      <text x="110" y="46" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="#c89a2e" letter-spacing=".05em">12 DAYS LATER</text>
+
+      <!-- nurse verdict bubble: "Everything's normal!" -->
+      <rect x="25" y="58" width="170" height="24" rx="5" fill="#3a7d74" opacity=".85"/>
+      <text x="110" y="74" text-anchor="middle" font-family="monospace" font-size="6.5" fill="white">"Everything's normal! Have a nice day."</text>
+    </svg>
+  </div>
+  <div class="incident-text">
+    <p class="incident-num">Incident № 16 · The Results</p>
+    <h2 class="incident-title">The Follow-Up Call That Arrives at the Worst Possible Moment</h2>
+    <p class="incident-body">The office says they'll "call with your results in a few days." Twelve days later, you're in the middle of a tense work meeting when your phone rings from an unknown number. You step out in a mild panic. It's the nurse. Everything is normal. She says "have a nice day" and hangs up. You stand in the hallway for a moment, then go back in and try to remember what the meeting was about.</p>
+    <div class="verdict"><span>→</span> It was about Q3 projections. You will never remember your contribution. Normal.</div>
+  </div>
+</article>
+
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <p>A Field Guide to the Modern Doctor's Office &nbsp;·&nbsp; <span>All findings clinically documented</span> &nbsp;·&nbsp; Pay your copay on the way out</p>
+</footer>
+
+</body>
+</html>
