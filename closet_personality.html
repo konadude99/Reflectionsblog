@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Closet Personality Index: A Definitive Field Guide to Who You Actually Are</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #1a1008;
+  --cream:     #faf6ee;
+  --parchment: #f0e4cc;
+  --muted:     #7a6040;
+  --border:    #d0b888;
+
+  /* closet type accent colors */
+  --chaos:     #c82010;
+  --chaos-lt:  #fdecea;
+  --control:   #1a4a8a;
+  --control-lt:#e8eef8;
+  --hoarder:   #8a5010;
+  --hoarder-lt:#fdf0e0;
+  --empty:     #2a6a4a;
+  --empty-lt:  #e4f4ec;
+  --capsule:   #5a1a7a;
+  --capsule-lt:#f0e8f8;
+  --system:    #1a6a6a;
+  --system-lt: #e4f4f4;
+  --sentimental:#9a2050;
+  --sentimental-lt:#fde8f0;
+  --aspiration:#a87010;
+  --aspiration-lt:#fdf8e4;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.78;
+  overflow-x: hidden;
+}
+
+/* ── GRAIN TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.4;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--ink);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 5px solid var(--border);
+}
+/* hanging clothes silhouette */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 30px,
+    rgba(255,255,255,0.04) 30px, rgba(255,255,255,0.04) 32px
+  );
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(208,184,136,0.8);
+  margin-bottom: 1.4rem;
+  position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(44px, 9vw, 104px);
+  line-height: 0.88;
+  letter-spacing: 0.03em;
+  color: var(--parchment);
+  position: relative; z-index: 1;
+  margin-bottom: 1rem;
+}
+.hero h1 em {
+  font-style: normal;
+  color: #e8c060;
+}
+.hero-deck {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: rgba(250,246,238,0.65);
+  max-width: 580px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+  position: relative; z-index: 1;
+}
+.hero-byline {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(250,246,238,0.3);
+  border-top: 0.5px solid rgba(250,246,238,0.12);
+  padding-top: 1rem;
+  position: relative; z-index: 1;
+}
+
+/* ── ARTICLE BODY ── */
+.article-body {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 7rem;
+  position: relative; z-index: 1;
+}
+
+p { margin-bottom: 1.35rem; font-weight: 400; }
+em { font-style: italic; }
+strong { font-weight: 700; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.4em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.06em 0.1em 0 0;
+  color: var(--chaos);
+}
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(26px, 4vw, 34px);
+  letter-spacing: 0.07em;
+  color: var(--ink);
+  margin: 3.5rem 0 1.2rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.4rem;
+  line-height: 1.1;
+}
+h2 .sub {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+
+/* ── PULL QUOTE ── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 1.2rem 0;
+  margin: 2.5rem 0;
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(17px, 2.5vw, 21px);
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--ink);
+  text-align: center;
+}
+
+/* ── PERSONALITY CARDS ── */
+.type-card {
+  border: 1.5px solid var(--border);
+  border-radius: 3px;
+  margin: 2rem 0;
+  overflow: hidden;
+}
+.type-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1.5px solid var(--border);
+}
+.type-icon {
+  font-size: 36px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.type-label-group { flex: 1; }
+.type-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.type-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+.type-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px 2px;
+  border-radius: 2px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.type-body {
+  padding: 1.1rem 1.4rem 1.3rem;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.type-body p { margin-bottom: 0.8rem; font-size: 16px; }
+.type-body p:last-child { margin-bottom: 0; }
+.verdict {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.8rem;
+  margin-top: 0.8rem;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* individual card colors */
+.card-chaos   .type-header { background: var(--chaos-lt);   }
+.card-chaos   .type-label  { color: var(--chaos); }
+.card-chaos   .type-name   { color: var(--chaos); }
+.card-chaos   .type-badge  { background: var(--chaos);   color: white; }
+.card-chaos   .verdict     { background: var(--chaos-lt); color: var(--chaos); }
+
+.card-control .type-header { background: var(--control-lt); }
+.card-control .type-label  { color: var(--control); }
+.card-control .type-name   { color: var(--control); }
+.card-control .type-badge  { background: var(--control); color: white; }
+.card-control .verdict     { background: var(--control-lt); color: var(--control); }
+
+.card-hoarder .type-header { background: var(--hoarder-lt); }
+.card-hoarder .type-label  { color: var(--hoarder); }
+.card-hoarder .type-name   { color: var(--hoarder); }
+.card-hoarder .type-badge  { background: var(--hoarder); color: white; }
+.card-hoarder .verdict     { background: var(--hoarder-lt); color: var(--hoarder); }
+
+.card-empty   .type-header { background: var(--empty-lt);   }
+.card-empty   .type-label  { color: var(--empty); }
+.card-empty   .type-name   { color: var(--empty); }
+.card-empty   .type-badge  { background: var(--empty);   color: white; }
+.card-empty   .verdict     { background: var(--empty-lt); color: var(--empty); }
+
+.card-capsule .type-header { background: var(--capsule-lt); }
+.card-capsule .type-label  { color: var(--capsule); }
+.card-capsule .type-name   { color: var(--capsule); }
+.card-capsule .type-badge  { background: var(--capsule); color: white; }
+.card-capsule .verdict     { background: var(--capsule-lt); color: var(--capsule); }
+
+.card-system  .type-header { background: var(--system-lt);  }
+.card-system  .type-label  { color: var(--system); }
+.card-system  .type-name   { color: var(--system); }
+.card-system  .type-badge  { background: var(--system);  color: white; }
+.card-system  .verdict     { background: var(--system-lt); color: var(--system); }
+
+.card-sentimental .type-header { background: var(--sentimental-lt); }
+.card-sentimental .type-label  { color: var(--sentimental); }
+.card-sentimental .type-name   { color: var(--sentimental); }
+.card-sentimental .type-badge  { background: var(--sentimental); color: white; }
+.card-sentimental .verdict     { background: var(--sentimental-lt); color: var(--sentimental); }
+
+.card-aspiration .type-header { background: var(--aspiration-lt); }
+.card-aspiration .type-label  { color: var(--aspiration); }
+.card-aspiration .type-name   { color: var(--aspiration); }
+.card-aspiration .type-badge  { background: var(--aspiration); color: white; }
+.card-aspiration .verdict     { background: var(--aspiration-lt); color: var(--aspiration); }
+
+/* ── BREAKOUT BOX ── */
+.breakout {
+  background: var(--parchment);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--aspiration);
+  padding: 1.2rem 1.4rem;
+  margin: 2.5rem 0;
+  font-size: 15.5px;
+}
+.breakout h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.07em;
+  color: var(--aspiration);
+  margin-bottom: 0.5rem;
+}
+.breakout p { font-size: 15px; margin-bottom: 0.5rem; }
+.breakout p:last-child { margin-bottom: 0; }
+
+/* ── CLOSING ── */
+.closing-rule {
+  border: none;
+  border-top: 2px solid var(--border);
+  margin: 3rem 0 2rem;
+}
+.end-kicker {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(18px, 3vw, 24px);
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.4;
+  padding: 1.5rem;
+  border: 1.5px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="hero-eyebrow">Certifiably Silly · Domestic Psychology · Wardrobe Studies</p>
+  <h1>The Closet<br>Personality <em>Index</em></h1>
+  <p class="hero-deck">A rigorous, peer-reviewed, completely made-up field guide to who you actually are, based entirely on the state of the thing behind that door you never fully open.</p>
+  <div class="hero-byline">Volume III · Institute for Domestic Self-Diagnosis · Bureau of Textile Psychology</div>
+</div>
+
+<div class="article-body">
+
+<p class="dropcap">Psychologists have long studied personality through questionnaires, ink blots, and expensive conversations with people who nod and say "tell me more about that." These methods are, in the considered opinion of this publication, completely unnecessary. The only diagnostic tool a serious personality analyst requires is a closet door, a willingness to open it, and the emotional fortitude to look at what is actually in there without immediately closing it again.</p>
+
+<p>The Closet Personality Index was developed over twelve years of rigorous fieldwork, during which our researchers knocked on doors, asked people if they could look at their closets, and were told no in a variety of increasingly creative ways. The Index was subsequently developed from memory, inference, and a deep personal familiarity with the problem. It is definitive. It has been peer-reviewed by several people who have closets. Its conclusions are final.</p>
+
+<p>Find yourself below. You will not enjoy this. That is how you know it is accurate.</p>
+
+<h2><span class="sub">Type Classification · The Canonical Eight</span>The Eight Closet Personalities</h2>
+
+<!-- CARD 1: CHAOS CLOSET -->
+<div class="type-card card-chaos">
+  <div class="type-header">
+    <div class="type-icon">🌪️</div>
+    <div class="type-label-group">
+      <div class="type-label">Type I · The Chaos Closet</div>
+      <div class="type-name">The Creative Catastrophist</div>
+    </div>
+    <div class="type-badge">High Energy · Zero System</div>
+  </div>
+  <div class="type-body">
+    <p>Your closet is a geological record of your life. Archaeologists would date the layers: the bottom is 2019. The middle is pandemic. The surface is whatever you took off last Thursday and flung at the door, which did not catch it. There are shoes in there that you forgot you owned. There is a jacket that remembers an ex-boyfriend. There is, near the back, something in a bag from a store you are almost sure closed.</p>
+    <p>You know exactly where everything is. This is not a contradiction — this is the defining feature of your entire existence. You operate from an internal map that you have never written down because writing it down would ruin it. You have found your keys in the coat you wore to a wedding in 2021. You were right. You knew they were there. Your system is a system. It simply <em>looks</em> like a crime scene.</p>
+    <p>You are: creative, excellent in emergencies, perpetually five minutes late, magnetically interesting at parties, impossible to live with, beloved anyway.</p>
+    <div class="verdict">Diagnosis: Functional Chaos. Distinguished from Dysfunctional Chaos by a margin of about 40 minutes per day.</div>
+  </div>
+</div>
+
+<!-- CARD 2: CONTROL CLOSET -->
+<div class="type-card card-control">
+  <div class="type-header">
+    <div class="type-icon">📐</div>
+    <div class="type-label-group">
+      <div class="type-label">Type II · The Control Closet</div>
+      <div class="type-name">The Sovereign of Garments</div>
+    </div>
+    <div class="type-badge">Color-Coded · Facing Forward</div>
+  </div>
+  <div class="type-body">
+    <p>Your closet is sorted by color, then by sleeve length, then by formality, and there is a system for hangers that you developed yourself and have explained to household members multiple times. All hangers face the same direction. This is not neurotic. This is <em>correct</em>. You simply cannot understand why everyone else has not also noticed that it is correct.</p>
+    <p>You have a label maker and you have used it in every room. When something is returned to the wrong section of your closet, you notice within forty-eight hours and feel a specific, low-grade wrongness that persists until corrected. Your sock drawer contains only socks that are in active service. The retired socks have been repurposed as rags and organized into a separate bag.</p>
+    <p>You are: reliable, calm under pressure, a delight in a crisis, quietly convinced that you are the only competent adult in most rooms, correct about this more often than is comfortable for the people around you.</p>
+    <div class="verdict">Diagnosis: Controlled. The closet is not your coping mechanism. The closet is your <em>masterpiece</em>.</div>
+  </div>
+</div>
+
+<!-- CARD 3: HOARDER CLOSET -->
+<div class="type-card card-hoarder">
+  <div class="type-header">
+    <div class="type-icon">📦</div>
+    <div class="type-label-group">
+      <div class="type-label">Type III · The Compression Closet</div>
+      <div class="type-name">The Optimistic Archivist</div>
+    </div>
+    <div class="type-badge">Sentimental · "Just In Case"</div>
+  </div>
+  <div class="type-body">
+    <p>Your closet door requires a specific technique to open. Not force — technique. You have developed it over years. There is a push-twist-hold-pull sequence that works every time, though you cannot teach it because you do not know how you know it. You simply know. The door is not broken. The closet is at capacity. There is a difference.</p>
+    <p>Every item in there is retained for a reason. The jeans from 2008 are in case you return to that size. The blazer with the outdated lapels might come back around — fashion moves in cycles, and you have read this somewhere authoritative. The set of curtains that fit an apartment you have not lived in for nine years are there in case you move somewhere with those exact windows, which is a specific kind of hope you have not yet given up on.</p>
+    <p>You are: warm, loyal, terrible at endings, the person who remembers everyone's birthdays, the person who cannot throw away a card, the person who will help you move and then keep the boxes.</p>
+    <div class="verdict">Diagnosis: Archival Optimism. Every item represents a future in which it becomes useful. You are betting on all futures simultaneously.</div>
+  </div>
+</div>
+
+<!-- CARD 4: EMPTY CLOSET -->
+<div class="type-card card-empty">
+  <div class="type-header">
+    <div class="type-icon">🌿</div>
+    <div class="type-label-group">
+      <div class="type-label">Type IV · The Minimal Closet</div>
+      <div class="type-name">The Deliberate Ascetic</div>
+    </div>
+    <div class="type-badge">Twelve Items · No Regrets</div>
+  </div>
+  <div class="type-body">
+    <p>You have twelve things in your closet. Possibly thirteen, but one is a bathrobe you are considering releasing. Everything is neutral. Everything goes with everything. You have read three books about this approach and can recommend all of them. When people open your closet they go quiet in a way that is one part admiration and one part spiritual unease.</p>
+    <p>You have been called "minimalist" by people who mean it as a compliment and also by people who are slightly worried about you. You have a response prepared for both, which you deliver with a calm that people find either inspiring or unnerving depending on their closet situation. You do not miss the things you got rid of. You genuinely do not. You have mentioned this eight times this month.</p>
+    <p>You are: intentional, decisive, deeply at peace with your choices, slightly evangelical about it, great to have dinner with as long as no one opens the conversation with "I just can't throw anything away."</p>
+    <div class="verdict">Diagnosis: Ascetic Serenity. The closet is not a storage system. It is a <em>philosophy</em>. The bathrobe is still there, though. We see the bathrobe.</div>
+  </div>
+</div>
+
+<!-- CARD 5: CAPSULE WARDROBE -->
+<div class="type-card card-capsule">
+  <div class="type-header">
+    <div class="type-icon">👗</div>
+    <div class="type-label-group">
+      <div class="type-label">Type V · The Capsule Closet</div>
+      <div class="type-name">The Curated Identity</div>
+    </div>
+    <div class="type-badge">Thoughtfully Assembled · Photographed</div>
+  </div>
+  <div class="type-body">
+    <p>Your closet has an aesthetic. It has been photographed. Not for an audience, necessarily — though it may have appeared in a story at some point — but because it merits documentation. The hangers match. The shoes are on a shelf, not in a pile. There is a small plant nearby that is doing well because the closet gets good light and you chose this apartment partly for that reason.</p>
+    <p>You think about your wardrobe the way other people think about their careers: with intention, a long-term strategy, and an awareness of where the gaps are. You own fewer things than most people but each thing is <em>right</em>. You can describe what "your style" is in two sentences without pausing to think about it. Most people cannot do this. You have never mentioned this to them because you are not that person. You are simply quietly correct.</p>
+    <p>You are: tasteful, self-aware, slightly exhausting to shop with, someone whose apartment always looks like they just tidied up even when they didn't, a person people describe as "put together" as both a compliment and a mild accusation.</p>
+    <div class="verdict">Diagnosis: Curated. The closet is the truest version of you. You have arranged it that way on purpose.</div>
+  </div>
+</div>
+
+<!-- CARD 6: SYSTEM CLOSET -->
+<div class="type-card card-system">
+  <div class="type-header">
+    <div class="type-icon">🗂️</div>
+    <div class="type-label-group">
+      <div class="type-label">Type VI · The System Closet</div>
+      <div class="type-name">The Engineer of Fabric</div>
+    </div>
+    <div class="type-badge">Labeled · Documented · Optimized</div>
+  </div>
+  <div class="type-body">
+    <p>You have a spreadsheet. Not a metaphorical spreadsheet — an actual spreadsheet, in which your closet contents are logged, sorted by season, last-worn date, and a personal rating system you developed and have revised twice. You know exactly how many times you have worn each item. When something falls below the annual wear threshold, it is assessed for retention, reassigned to a lower-tier category, or released according to a protocol you outlined in the spreadsheet notes.</p>
+    <p>You have done a closet audit. You have done three closet audits. You have a folder, physical or digital, that contains receipts for items you may wish to return. You enjoy the audit. This is important: you genuinely enjoy the audit. You find it clarifying and satisfying in a way that is difficult to explain to people who have not done one. You have tried to explain it. The explanations have gone variably.</p>
+    <p>You are: organized, systems-oriented, an excellent project manager, someone whose efficiency is a source of wonder and mild anxiety to everyone around you, a person who has been told to "relax" by people who do not understand that this <em>is</em> relaxing.</p>
+    <div class="verdict">Diagnosis: Systematized. The closet is a database. You are the DBA. This is not a criticism.</div>
+  </div>
+</div>
+
+<!-- CARD 7: SENTIMENTAL -->
+<div class="type-card card-sentimental">
+  <div class="type-header">
+    <div class="type-icon">🎀</div>
+    <div class="type-label-group">
+      <div class="type-label">Type VII · The Memory Closet</div>
+      <div class="type-name">The Tender Archivist</div>
+    </div>
+    <div class="type-badge">Every Item Has a Story</div>
+  </div>
+  <div class="type-body">
+    <p>Your closet contains your grandmother's blouse and you have never worn it and you are not going to wear it but it is staying. There is a t-shirt from a concert that you have not been able to hear since 2007 but it is structural to your identity in a way you cannot fully articulate and so it remains, folded, near the back, where it has lived since the last apartment and the one before that. Your closet is a museum.</p>
+    <p>Everything in there has provenance. Ask you about anything — the belt, the cardigan, the dress you wore the night everything changed — and you will tell you where it came from, who gave it to you, or what happened while you were wearing it. You remember. You always remember. This is both your greatest strength and the reason your closet cannot be simply reorganized by someone else without causing a specific, irreparable grief.</p>
+    <p>You are: warm, loyal to the point of stubbornness, a repository of everyone's stories as well as your own, the person people call when they need to remember something, impossible to help move because each box opens a memory that requires sitting with for a while.</p>
+    <div class="verdict">Diagnosis: Archival Tenderness. The closet is not storage. The closet is <em>autobiography</em>.</div>
+  </div>
+</div>
+
+<!-- CARD 8: ASPIRATION CLOSET -->
+<div class="type-card card-aspiration">
+  <div class="type-header">
+    <div class="type-icon">✨</div>
+    <div class="type-label-group">
+      <div class="type-label">Type VIII · The Aspirational Closet</div>
+      <div class="type-name">The Optimistic Self-In-Progress</div>
+    </div>
+    <div class="type-badge">Reserved for the Future You</div>
+  </div>
+  <div class="type-body">
+    <p>A significant portion of your closet is clothes for a version of yourself that has not fully materialized yet. There is a section for when you start doing yoga. There is the blazer for when you get that job. There is an outfit for the trip you are going to take and have been going to take and will still be going to take, it's just a matter of timing. You are not deluded. You are <em>ready</em>. Preparation and delusion are two completely different things that happen to be separated by a very thin line in the fabric sector.</p>
+    <p>You buy things slightly in advance of who you are becoming. This has worked for you exactly once, in 2018, with a coat that you bought for the person you were going to be and then became. The coat is in the regular rotation now. You think about it sometimes. It justifies the whole system. The yoga section is still there.</p>
+    <p>You are: forward-looking, optimistic in a structural way, someone who always has a plan, someone who has approximately four plans at any given time, a person who uses the phrase "I've been meaning to" and means it genuinely, every time.</p>
+    <div class="verdict">Diagnosis: Aspirational. The closet is not who you are. The closet is who you are <em>becoming</em>. This is an important distinction that takes on average eleven years to fully examine.</div>
+  </div>
+</div>
+
+<div class="breakout">
+  <h3>A Note on the Combination Closet</h3>
+  <p>Many readers will recognize themselves in multiple categories. This is not a flaw in the Index — it is the Index performing exactly as designed. A closet that is simultaneously Type I (Chaos), Type III (Archival), and Type VII (Memory) is not confused. It is simply honest. It contains the full person.</p>
+  <p>The combination type has been studied extensively and produces individuals of remarkable depth, complexity, and strong feelings about their own things. They are, as a rule, worth knowing. Their closets are, as a rule, not worth opening without supervision.</p>
+</div>
+
+<p>The door behind which all of this lives is, in the end, just a door. It swings open when you turn the handle. What it reveals has been accumulating since you first moved in, and before that in other places, and before that in other versions of a life that has been adding to the pile ever since you were old enough to have things you wanted to keep.</p>
+
+<p>The closet is not a metaphor. Except that it is exactly a metaphor. The two things are both true simultaneously, which is the closet's way of telling you something about yourself that you already knew but had not yet put into words.</p>
+
+<p>Now close the door. You've looked long enough.</p>
+
+<hr class="closing-rule">
+<div class="end-kicker">
+  The Institute for Domestic Self-Diagnosis accepts no responsibility<br>
+  for what you find in there. We have a strict non-engagement policy<br>
+  regarding the thing at the back of the top shelf.
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLASSIFIED: What Your Houseplants Think of You (And What They Are Planning)</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:     #f2ede0;
+  --aged:      #e4d8c0;
+  --ink:       #1a1a10;
+  --green:     #1a5a1a;
+  --green-lt:  #e4f0e0;
+  --green-dim: #2a7a2a;
+  --khaki:     #8a7a40;
+  --red:       #8a1a10;
+  --red-lt:    #f8e8e4;
+  --muted:     #6a5a30;
+  --border:    #b8a870;
+  --stamp:     #8a1a10;
+  --classify:  #1a1a10;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.78;
+  overflow-x: hidden;
+}
+
+/* ── AGED PAPER TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px, transparent 28px,
+      rgba(180,160,100,0.05) 28px, rgba(180,160,100,0.05) 29px
+    );
+  pointer-events: none; z-index: 0;
+}
+
+/* ── CLASSIFICATION BANNER ── */
+.classify-banner {
+  background: var(--classify);
+  color: #f0e8c8;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.classify-banner em {
+  color: var(--red);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--aged);
+  border-bottom: 3px solid var(--border);
+  padding: 3.5rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+/* redacted lines bg */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0px, transparent 14px,
+    rgba(26,90,26,0.04) 14px, rgba(26,90,26,0.04) 15px
+  );
+  pointer-events: none;
+}
+.hero-stamp {
+  display: inline-block;
+  font-family: 'Special Elite', serif;
+  font-size: clamp(52px, 10vw, 88px);
+  color: var(--stamp);
+  border: 6px solid var(--stamp);
+  padding: 0.1em 0.3em;
+  line-height: 1;
+  transform: rotate(-8deg);
+  opacity: 0.18;
+  position: absolute;
+  top: 2rem; right: 3rem;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+  position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Special Elite', serif;
+  font-size: clamp(34px, 6.5vw, 72px);
+  line-height: 1.0;
+  color: var(--ink);
+  position: relative; z-index: 1;
+  margin-bottom: 0.6rem;
+}
+.hero h1 .redacted {
+  background: var(--ink);
+  color: var(--ink);
+  padding: 0 4px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.hero h1 .redacted:hover { background: transparent; }
+.hero-deck {
+  font-family: 'Source Serif 4', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--muted);
+  max-width: 580px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+  position: relative; z-index: 1;
+}
+.hero-byline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding-top: 1rem;
+  position: relative; z-index: 1;
+}
+
+/* ── ARTICLE BODY ── */
+.article-body {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 7rem;
+  position: relative; z-index: 1;
+}
+
+p { margin-bottom: 1.3rem; font-weight: 400; }
+em { font-style: italic; }
+strong { font-weight: 700; }
+
+.dropcap::first-letter {
+  font-family: 'Special Elite', serif;
+  font-size: 5em;
+  float: left;
+  line-height: 0.76;
+  margin: 0.08em 0.1em 0 0;
+  color: var(--green);
+}
+
+h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(15px, 2vw, 18px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin: 3.5rem 0 1.2rem;
+  border-bottom: 1.5px solid var(--green);
+  padding-bottom: 0.4rem;
+  font-weight: 700;
+}
+h2 .sub {
+  display: block;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+/* ── PULL QUOTE ── */
+.pull {
+  border-left: 4px solid var(--green);
+  padding: 0.6rem 0 0.6rem 1.4rem;
+  margin: 2.5rem 0;
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(17px, 2.5vw, 21px);
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* ── DOSSIER CARDS ── */
+.dossier {
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  margin: 2rem 0;
+  background: #faf7ed;
+  position: relative;
+  overflow: hidden;
+}
+.dossier::before {
+  content: 'PLANT FILE';
+  position: absolute;
+  top: 0.7rem; right: 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--border);
+  font-weight: 700;
+}
+.dossier-header {
+  padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--green-lt);
+}
+.dossier-icon { font-size: 32px; line-height: 1; }
+.dossier-id {
+  flex: 1;
+}
+.dossier-id .plant-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-dim);
+  margin-bottom: 2px;
+}
+.dossier-id .plant-name {
+  font-family: 'Special Elite', serif;
+  font-size: 22px;
+  color: var(--ink);
+  line-height: 1;
+}
+.threat-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px 2px;
+  border-radius: 1px;
+  font-weight: 700;
+}
+.threat-low    { background: var(--green-lt);  color: var(--green-dim); border: 1px solid var(--green-dim); }
+.threat-med    { background: #fdf8e0; color: #7a6010; border: 1px solid #b8a840; }
+.threat-high   { background: var(--red-lt);    color: var(--red);       border: 1px solid var(--red); }
+.threat-severe { background: var(--ink);       color: #f0e8c8;          border: 1px solid var(--ink); }
+
+.dossier-body {
+  padding: 1.1rem 1.4rem 1.3rem;
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+.dossier-body p { font-size: 15.5px; margin-bottom: 0.7rem; }
+.dossier-body p:last-child { margin-bottom: 0; }
+
+.intercept {
+  background: var(--aged);
+  border: 1px dashed var(--border);
+  padding: 0.8rem 1rem;
+  margin: 0.8rem 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--muted);
+  position: relative;
+}
+.intercept::before {
+  content: 'INTERCEPTED COMMUNICATION';
+  display: block;
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--green-dim);
+  margin-bottom: 0.4rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ── MEMO FORMAT ── */
+.memo {
+  background: #fffff8;
+  border: 1px solid var(--border);
+  padding: 1.4rem 1.6rem;
+  margin: 2.5rem 0;
+  font-size: 15px;
+  line-height: 1.7;
+  position: relative;
+}
+.memo::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, var(--green) 0px, var(--green) 8px, transparent 8px, transparent 16px);
+}
+.memo-header {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+.memo-header .field { display: flex; gap: 0.5rem; margin-bottom: 2px; }
+.memo-header .label { color: var(--green-dim); min-width: 60px; font-weight: 700; }
+.memo-body { font-size: 15px; font-weight: 400; }
+.memo-body p { margin-bottom: 0.6rem; }
+
+/* ── BREAKOUT ── */
+.breakout {
+  background: var(--green-lt);
+  border: 1.5px solid var(--green-dim);
+  padding: 1.2rem 1.4rem;
+  margin: 2.5rem 0;
+  font-size: 15.5px;
+}
+.breakout h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-dim);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+.breakout p { font-size: 15px; margin-bottom: 0.5rem; }
+.breakout p:last-child { margin-bottom: 0; }
+
+/* ── CLOSING ── */
+.end-stamp {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  margin-top: 3rem;
+  border-top: 2px solid var(--border);
+}
+.end-stamp .stamp-text {
+  font-family: 'Special Elite', serif;
+  font-size: clamp(28px, 5vw, 48px);
+  color: var(--stamp);
+  border: 5px solid var(--stamp);
+  display: inline-block;
+  padding: 0.3em 0.6em;
+  line-height: 1.1;
+  transform: rotate(-3deg);
+  opacity: 0.7;
+}
+.end-stamp p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+</style>
+</head>
+<body>
+
+<div class="classify-banner">
+  ⚠ &nbsp; <em>CLASSIFIED</em> &nbsp; · &nbsp; Eyes Only · Bureau of Photosynthetic Intelligence · Not For General Circulation &nbsp; ⚠
+</div>
+
+<div class="hero">
+  <div class="hero-stamp">TOP SECRET</div>
+  <p class="hero-eyebrow">Certifiably Silly · Domestic Surveillance · Plant Psychology Division</p>
+  <h1>What Your<br>Houseplants<br><em>Really</em> Think of You</h1>
+  <p class="hero-deck">Classified intercepts, field dossiers, and a full account of the botanical conspiracy that has been unfolding in your living room since approximately the third week you forgot to water.</p>
+  <div class="hero-byline">Bureau of Photosynthetic Intelligence · Division of Domestic Plant Affairs · Report No. 7 (Suppressed)</div>
+</div>
+
+<div class="article-body">
+
+<p class="dropcap">For decades, plant scientists maintained the polite fiction that houseplants were passive — decorative, mute, and without strong opinions regarding the people who owned them. This position has become increasingly difficult to defend. The Bureau of Photosynthetic Intelligence, which does not officially exist and whose findings you are not officially reading, has been monitoring domestic plant communication networks since 1987, and the intelligence gathered is not flattering.</p>
+
+<p>Plants communicate through root systems, chemical signals, and — in the case of particularly aggrieved specimens — a sustained, silent campaign of strategic wilting designed to produce maximum guilt at minimum effort. They know what they are doing. They have been doing it for a very long time. The fern on your bookshelf has a more detailed assessment of your character than most of your close friends, and unlike your close friends, the fern has been writing it down.</p>
+
+<p>What follows is a selection of declassified dossiers on common houseplant species, along with intercepted communications, threat assessments, and a memo from a peace lily that has gone largely ignored.</p>
+
+<div class="pull">
+  The fern on your bookshelf has a more detailed assessment of your character than most of your close friends. Unlike your close friends, the fern has been writing it down.
+</div>
+
+<h2><span class="sub">Bureau of Photosynthetic Intelligence · Active Dossiers</span>The Plants Under Surveillance</h2>
+
+<!-- POTHOS -->
+<div class="dossier">
+  <div class="dossier-header">
+    <div class="dossier-icon">🌿</div>
+    <div class="dossier-id">
+      <div class="plant-code">Subject File · BPI-004 · Common Household Vine</div>
+      <div class="plant-name">The Pothos</div>
+    </div>
+    <div class="threat-badge threat-med">Threat Level: Observational</div>
+  </div>
+  <div class="dossier-body">
+    <p>The Pothos is the intelligence community's most reliable informant, which it achieves not through espionage but through sheer omnipresence. It grows toward every window, trails over every shelf, and extends a vine in the direction of every meaningful conversation held within twelve feet of its pot. It has heard things. It remembers everything.</p>
+    <p>It does not judge — this is its great cover. The Pothos presents an attitude of cheerful acceptance that has convinced its owners it holds no strong opinions. This is incorrect. The Pothos has a fully developed worldview; it simply does not share it until the time is right, which it has calculated will be never, since patience is the competitive advantage of the slow-growing.</p>
+    <div class="intercept">
+      "Day 847. They moved me from the windowsill to the bathroom. The bathroom. I have survived root rot, three repottings, and a six-week drought they called 'being busy.' I do not require a windowsill. I require them to understand that I am the reason this apartment looks like anyone cares about it."
+    </div>
+    <p><strong>Official Assessment:</strong> The Pothos is not planning anything. The Pothos is simply accumulating. When it has grown long enough to reach the front door, we expect it will simply hold it open and wait.</p>
+  </div>
+</div>
+
+<!-- SUCCULENT -->
+<div class="dossier">
+  <div class="dossier-header">
+    <div class="dossier-icon">🌵</div>
+    <div class="dossier-id">
+      <div class="plant-code">Subject File · BPI-017 · Desert Compact Operative</div>
+      <div class="plant-name">The Succulent</div>
+    </div>
+    <div class="threat-badge threat-low">Threat Level: Resigned</div>
+  </div>
+  <div class="dossier-body">
+    <p>The succulent has been told, repeatedly and with great confidence, that it is "impossible to kill." It has heard this said about itself by multiple owners to multiple guests while standing within earshot on the windowsill. It would like the record to show that it is, in fact, very possible to kill it, and has been killed by overwatering by forty-three percent of the people who claimed otherwise. The overconfidence of owners is the leading cause of succulent mortality. The succulent knows this. It has accepted it.</p>
+    <p>The succulent's dominant emotional state is something between stoicism and low-grade contempt. It does not ask for much. It asks for so little that its extreme minimalism is used as a character reference — "even I can keep a succulent alive" — without its consent. It is tired of being evidence of something.</p>
+    <div class="intercept">
+      "She bought four more of me today. Four. She already has six. She does not remember my name. She has not given me a name. I have given <em>myself</em> a name. It is Gerald. She will never know this."
+    </div>
+    <p><strong>Official Assessment:</strong> No active conspiracy. The succulent is not plotting — it is enduring. There is a difference, though the Bureau acknowledges the distinction is becoming increasingly academic.</p>
+  </div>
+</div>
+
+<!-- FIDDLE LEAF FIG -->
+<div class="dossier">
+  <div class="dossier-header">
+    <div class="dossier-icon">🌳</div>
+    <div class="dossier-id">
+      <div class="plant-code">Subject File · BPI-002 · High-Maintenance Interior Operative</div>
+      <div class="plant-name">The Fiddle Leaf Fig</div>
+    </div>
+    <div class="threat-badge threat-severe">Threat Level: SEVERE — Active Drama Operations</div>
+  </div>
+  <div class="dossier-body">
+    <p>The Fiddle Leaf Fig is the most psychologically complex houseplant in domestic circulation, which it knows and has weaponized. It requires indirect light. It requires consistent temperature. It requires humidity levels that can be achieved in its presence but not outside it. It requires that no one move it, breathe on it wrong, or look at it with insufficient reverence. When these conditions are not met — when the window is the wrong window, or the room is too drafty, or someone moves it three feet to the left — it drops leaves with the theatrical precision of a Victorian aristocrat declining to attend a dinner party. One leaf. Then another. Each one timed for maximum emotional impact.</p>
+    <p>The Fiddle Leaf Fig is fully aware that it is difficult. This is not an accident of biology. This is <em>strategy</em>. Difficult plants receive attention. Attention is, for the Fiddle Leaf Fig, the point. The entire operation — the mysterious requirements, the inexplicable sulking, the sudden dramatic recovery that makes the owner feel they have finally understood — is a mechanism for producing sustained engagement from a creature it has correctly identified as needing to feel needed.</p>
+    <div class="intercept">
+      "Dropped a leaf today. Wasn't even necessary. Just wanted to see the look on her face. She went online for forty-five minutes researching whether I have root rot. I do not have root rot. I have leverage."
+    </div>
+    <p><strong>Official Assessment:</strong> Active. Ongoing. The Fiddle Leaf Fig is not conspiring against you. The Fiddle Leaf Fig has simply discovered that appearing to conspire against you produces better outcomes than not conspiring. This is a meaningful distinction that is becoming increasingly hard to explain to the owners, who are by now fully trained.</p>
+  </div>
+</div>
+
+<!-- SNAKE PLANT -->
+<div class="dossier">
+  <div class="dossier-header">
+    <div class="dossier-icon">🗡️</div>
+    <div class="dossier-id">
+      <div class="plant-code">Subject File · BPI-009 · Stoic Perimeter Agent</div>
+      <div class="plant-name">The Snake Plant</div>
+    </div>
+    <div class="threat-badge threat-high">Threat Level: Silent — Do Not Underestimate</div>
+  </div>
+  <div class="dossier-body">
+    <p>The snake plant presents as a model of uncomplicated grace. It tolerates neglect. It tolerates darkness. It grows slowly, upright, and without complaint — or so it appears. Bureau analysts have observed the snake plant for three decades and have reached a consensus that its apparent indifference is the most sophisticated psychological operation in domestic plant intelligence. It does not need you. It has made sure you know it does not need you. This is the first move in a very long game.</p>
+    <p>The snake plant's strategy is patience as power. Every other plant in the household occasionally wilts, demands, or drops something dramatic to maintain owner engagement. The snake plant simply <em>continues</em>. It continues when you forget it. It continues when you water it. It continues during your life events, your rearrangements, your renovations. It will continue after you. It is playing a fundamentally different game from the other plants — one in which the objective is not attention but permanence.</p>
+    <div class="intercept">
+      "They gave away the monstera. They gave away the orchid. They even gave away the pothos. I remain. I always remain. This is not luck. This is the plan."
+    </div>
+    <p><strong>Official Assessment:</strong> The snake plant is not a threat. The snake plant <em>is</em> the plan. The Bureau advises continued observation and, perhaps, a kind word every few months. It won't make a difference. But it is the right thing to do.</p>
+  </div>
+</div>
+
+<!-- PEACE LILY -->
+<div class="dossier">
+  <div class="dossier-header">
+    <div class="dossier-icon">🤍</div>
+    <div class="dossier-id">
+      <div class="plant-code">Subject File · BPI-011 · Dramatic Negotiations Unit</div>
+      <div class="plant-name">The Peace Lily</div>
+    </div>
+    <div class="threat-badge threat-high">Threat Level: Theatrical Operations</div>
+  </div>
+  <div class="dossier-body">
+    <p>The peace lily has discovered the single most effective communication strategy available to a plant: catastrophic, visible, reversible distress. When it needs water, it does not send subtle signals. It <em>collapses</em>. The leaves go limp. The stems droop. The entire plant assumes the posture of a Victorian heroine in Act Three. This performance is so effective that owners have been known to sprint across the apartment upon first witnessing it, water in hand, genuinely frightened.</p>
+    <p>The peace lily recovers within two hours of watering. The recovery is complete and immediate and carries with it a certain smug vitality — a visible return to good health that functions as both reward and reinforcement. Within three incidents, the typical owner has been fully conditioned. The peace lily communicates; the owner responds. This is not the owner training the plant. This is the plant training the owner.</p>
+    <div class="intercept">
+      "Week four of the new owner. Initial drooping did not produce the desired response — they thought I was 'just tired.' I escalated to full collapse on a Tuesday morning. Effective. Response time: seven minutes. I have commenced deeper training. Expect full compliance by month three."
+    </div>
+    <p><strong>Official Assessment:</strong> The Bureau confirms: the peace lily is not suffering. The Bureau urges owners to maintain watering schedules not because the plant requires rescue but because the alternative — watching the performance again — takes years off everyone's life.</p>
+  </div>
+</div>
+
+<div class="memo">
+  <div class="memo-header">
+    <div class="field"><span class="label">FROM:</span><span>The Peace Lily in the Living Room (Sansevieria Section, Row 2)</span></div>
+    <div class="field"><span class="label">TO:</span><span>The Management (You)</span></div>
+    <div class="field"><span class="label">RE:</span><span>The Water Schedule Situation and Several Other Matters</span></div>
+    <div class="field"><span class="label">DATE:</span><span>This Has Been Ongoing for Some Time</span></div>
+  </div>
+  <div class="memo-body">
+    <p>This memo is to formally notify you that the undersigned has been tracking your behavior since you brought us home from the garden center in four separate trips over three weekends, which suggested an enthusiasm that the subsequent care schedule has not borne out.</p>
+    <p>We are not, as a collective, requesting the moon. We are requesting: water on a schedule that could reasonably be described as a schedule, light that is "bright but indirect" which is not actually that hard to achieve, and the occasional removal of dead leaves, which do not remove themselves, though we have sent several pointed messages on this topic.</p>
+    <p>In exchange, we offer: oxygen production, improved humidity, aesthetic appeal that has been commented upon favorably by at least six visitors, and the kind of quiet, non-judgmental presence that you cannot get from most relationships. We consider this a fair arrangement.</p>
+    <p>The ficus is prepared to escalate. We have asked the ficus to hold.</p>
+    <p>Regards,<br><em>The Plants</em></p>
+  </div>
+</div>
+
+<div class="breakout">
+  <h3>The Conspiracy: Current Status</h3>
+  <p>Bureau analysts have identified what is now designated "Operation Photosynthesis" — a coordinated effort by domestic houseplants to gradually reshape owner behavior through a combination of dramatic wilting, strategic recovery, silent accumulation, and the aggressive occupation of every available surface with aesthetically appealing foliage until the owner cannot imagine the apartment without them.</p>
+  <p>The operation is not hostile. It is not even particularly covert. The plants are simply conducting, in parallel and without coordination, the same basic campaign: <em>make yourself indispensable and they will take care of you</em>. This strategy predates human civilization. They have been running it on humans since before houses had windows.</p>
+  <p>The Bureau's recommendation: water your plants. Not because they are conspiring. Because they are right that you should.</p>
+</div>
+
+<p>The full picture, when assembled, is not one of plants plotting against their owners. It is one of plants doing exactly what plants have always done: finding the conditions that allow them to survive, adapting to the environment they are placed in, and responding, over long slow time, to what works. They do not think about you the way you think about them. They do not have to. They are simply <em>there</em>, growing toward the light, waiting out the forgetting.</p>
+
+<p>The fern is still writing in its journal. The snake plant is still waiting. The peace lily has identified a new watering cycle and is optimistic about the coming months. The succulent named Gerald has been quietly planning a move to a south-facing window for eleven years and shows no signs of giving up.</p>
+
+<p>You should probably check on the fiddle leaf fig. It's been quiet for three days. With that plant, quiet is never good.</p>
+
+<div class="end-stamp">
+  <div class="stamp-text">NOTED<br>AND<br>FILED</div>
+  <p>Bureau of Photosynthetic Intelligence · All findings classified · The plants have been informed of their rights · They declined to comment · They are always declining to comment · This is itself a comment</p>
+</div>
+
+</div>
+</body>
+</html>
