@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cartoon Calendar Convention of 1953: How the Months Got Their Names (Almost)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:ital,wght@0,300;0,400;0,700;0,800;1,400;1,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #1a1008;
+  --cream:     #fefcf4;
+  --panel:     #1a1a2a;
+  --yellow:    #ffd600;
+  --red:       #e8251a;
+  --blue:      #1a5cb8;
+  --green:     #1a8a3a;
+  --orange:    #f07820;
+  --purple:    #7a20c8;
+  --pink:      #e81878;
+  --teal:      #1a98a8;
+  --muted:     #6a5a42;
+  --border:    #d8c8a0;
+  --dot-bg:    #fdf8ec;
+  /* halftone dot color */
+  --dot:       rgba(255,214,0,0.18);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── HALFTONE TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--panel);
+  position: relative;
+  text-align: center;
+  padding: 4rem 2rem 3.5rem;
+  overflow: hidden;
+  border-bottom: 6px solid var(--yellow);
+}
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-stars span {
+  position: absolute;
+  font-size: 22px;
+  opacity: 0.12;
+  animation: twirl 8s ease-in-out infinite alternate;
+}
+.hero-stars span:nth-child(1)  { top:8%;  left:5%;  animation-delay:0s;   }
+.hero-stars span:nth-child(2)  { top:15%; left:20%; animation-delay:0.7s; font-size:14px; }
+.hero-stars span:nth-child(3)  { top:5%;  left:60%; animation-delay:1.2s; font-size:30px; }
+.hero-stars span:nth-child(4)  { top:70%; left:8%;  animation-delay:0.4s; font-size:18px; }
+.hero-stars span:nth-child(5)  { top:80%; left:75%; animation-delay:1.8s; }
+.hero-stars span:nth-child(6)  { top:55%; left:90%; animation-delay:0.9s; font-size:12px; }
+.hero-stars span:nth-child(7)  { top:30%; left:88%; animation-delay:2.2s; font-size:26px; }
+.hero-stars span:nth-child(8)  { top:40%; left:3%;  animation-delay:1.5s; font-size:16px; }
+@keyframes twirl {
+  from { transform: rotate(0deg) scale(1); }
+  to   { transform: rotate(25deg) scale(1.2); }
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 {
+  font-family: 'Bangers', Impact, sans-serif;
+  font-size: clamp(44px, 8.5vw, 96px);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--yellow);
+  text-shadow: 4px 4px 0 var(--red), 8px 8px 0 rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.2rem;
+}
+.hero h1 em {
+  font-style: normal;
+  color: #fff;
+  text-shadow: 3px 3px 0 var(--blue);
+}
+.hero-deck {
+  font-size: 17px;
+  font-style: italic;
+  color: rgba(255,255,255,0.75);
+  max-width: 620px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+.hero-byline {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  border-top: 0.5px solid rgba(255,255,255,0.15);
+  padding-top: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── ARTICLE BODY ── */
+.article-body {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+  position: relative;
+  z-index: 1;
+}
+
+p { margin-bottom: 1.3rem; font-weight: 400; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* ── SECTION HEADINGS ── */
+h2 {
+  font-family: 'Bangers', sans-serif;
+  font-size: clamp(26px, 4vw, 38px);
+  letter-spacing: 0.06em;
+  color: var(--panel);
+  margin: 3.5rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 3px solid var(--yellow);
+  line-height: 1.1;
+}
+h2 .subhead {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+
+/* ── PULL QUOTE ── */
+.pull {
+  background: var(--panel);
+  color: var(--yellow);
+  font-family: 'Bangers', sans-serif;
+  font-size: clamp(22px, 3.5vw, 30px);
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+  padding: 1.4rem 1.8rem;
+  margin: 2.5rem 0;
+  position: relative;
+  border-left: 6px solid var(--red);
+}
+.pull::before {
+  content: '"';
+  font-size: 80px;
+  line-height: 0.6;
+  position: absolute;
+  top: 1rem;
+  left: -8px;
+  color: var(--red);
+  opacity: 0.4;
+  font-family: Georgia, serif;
+}
+
+/* ── MONTH CARDS ── */
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.month-card {
+  border: 2.5px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--cream);
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.month-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.card-header {
+  padding: 0.7rem 1rem 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  border-bottom: 2px solid var(--ink);
+}
+.card-num {
+  font-family: 'Bangers', sans-serif;
+  font-size: 42px;
+  line-height: 1;
+  opacity: 0.18;
+  min-width: 44px;
+}
+.card-names {
+  flex: 1;
+}
+.card-old-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: line-through;
+  margin-bottom: 1px;
+}
+.card-new-name {
+  font-family: 'Bangers', sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+.card-emoji {
+  font-size: 28px;
+  line-height: 1;
+}
+.card-body {
+  padding: 0.9rem 1rem 1rem;
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+.card-body .proposer {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: white;
+  padding: 2px 7px 1px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.card-body .objection {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  margin-top: 0.6rem;
+  padding-top: 0.5rem;
+  line-height: 1.55;
+}
+.card-body .objection strong {
+  font-style: normal;
+  color: var(--red);
+}
+
+/* month accent colors */
+.m1  { --accent: var(--blue);   } .m1  .card-header { background: #e8f0fc; }
+.m2  { --accent: var(--pink);   } .m2  .card-header { background: #fde8f4; }
+.m3  { --accent: var(--green);  } .m3  .card-header { background: #e4f4e8; }
+.m4  { --accent: var(--orange); } .m4  .card-header { background: #fdf0e4; }
+.m5  { --accent: var(--purple); } .m5  .card-header { background: #f0e8fc; }
+.m6  { --accent: var(--red);    } .m6  .card-header { background: #fde8e8; }
+.m7  { --accent: var(--yellow); } .m7  .card-header { background: #fdfbe4; }
+.m8  { --accent: var(--teal);   } .m8  .card-header { background: #e4f8fc; }
+.m9  { --accent: var(--orange); } .m9  .card-header { background: #fdf0e4; }
+.m10 { --accent: var(--red);    } .m10 .card-header { background: #fde8e8; }
+.m11 { --accent: var(--blue);   } .m11 .card-header { background: #e8f0fc; }
+.m12 { --accent: var(--green);  } .m12 .card-header { background: #e4f4e8; }
+
+.month-card .card-new-name { color: var(--accent); }
+.month-card .card-num { color: var(--accent); opacity: 0.25; }
+.month-card .proposer { background-color: var(--accent); }
+
+/* ── SIDEBAR BREAKOUT BOX ── */
+.breakout {
+  background: var(--dot-bg);
+  border: 2px solid var(--border);
+  border-left: 5px solid var(--orange);
+  padding: 1.2rem 1.4rem;
+  margin: 2.5rem 0;
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+.breakout h3 {
+  font-family: 'Bangers', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+  color: var(--panel);
+}
+.breakout p { font-size: 15px; margin-bottom: 0.5rem; }
+.breakout p:last-child { margin-bottom: 0; }
+
+/* ── VOTE TABLE ── */
+.vote-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 14.5px;
+}
+.vote-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--panel);
+  color: var(--yellow);
+  padding: 0.5rem 0.8rem;
+  text-align: left;
+  border: 1.5px solid var(--panel);
+}
+.vote-table td {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.vote-table tr:nth-child(even) td { background: var(--dot-bg); }
+.vote-table .char { font-weight: 700; }
+.vote-table .vote { font-style: italic; color: var(--muted); }
+
+/* ── CLOSING KICKER ── */
+.kicker-close {
+  font-family: 'Bangers', sans-serif;
+  font-size: clamp(20px, 3.5vw, 28px);
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: var(--panel);
+  background: var(--yellow);
+  padding: 1.2rem 2rem;
+  margin: 4rem 0 0;
+  border: 2.5px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+  line-height: 1.3;
+}
+
+/* ── DROPCAP ── */
+.dropcap::first-letter {
+  font-family: 'Bangers', sans-serif;
+  font-size: 5.2em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.06em 0.1em 0 0;
+  color: var(--red);
+}
+
+@media (max-width: 600px) {
+  .month-grid { grid-template-columns: 1fr; }
+  .vote-table { font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-stars">
+    <span>★</span><span>✦</span><span>★</span><span>✦</span>
+    <span>★</span><span>✦</span><span>★</span><span>✦</span>
+  </div>
+  <p class="hero-eyebrow">Certifiably Silly · Calendar History · Animated Governance</p>
+  <h1>What If <em>Cartoons</em><br>Named the Months?</h1>
+  <p class="hero-deck">They convened. They argued. They voted. The results were chaotic, deeply personal, and — in the opinion of several attendees — better than what we currently have.</p>
+  <div class="hero-byline">Official Proceedings · The Cartoon Calendar Convention · Est. 1953 (According to Bugs Bunny, Who Forged the Documents)</div>
+</div>
+
+<!-- ══ ARTICLE BODY ══ -->
+<div class="article-body">
+
+<p class="dropcap">In the spring of 1953 — which, for reasons that will shortly become apparent, would have been renamed "Zoinksuary" — the animated characters of the world convened for the First and Final Cartoon Calendar Convention, a summit called to address what Bugs Bunny described as "the frankly embarrassing state of monthly nomenclature." The proceedings were chaotic, often loud, and occasionally on fire. They produced twelve proposed month names, none of which were adopted. The Romans kept their calendar. The cartoons kept their grievances. This is that story.</p>
+
+<p>The Convention had been proposed by Bugs Bunny himself, who had long maintained that the existing month names were, in his estimation, "stuffy, Latinate, and disappointingly low on gags." He had circulated a memo — forged on official-looking stationery he produced from behind his back — to every major animated character of the era. Attendance was technically optional. In practice, no one wanted to explain to Bugs why they hadn't shown up.</p>
+
+<p>The meeting was held in a cartoon cave somewhere in Arizona, which was painted to look like a tunnel and turned out to be a real tunnel, which caused no fewer than four characters to run through the wall and into a freight train. After some delay, proceedings began.</p>
+
+<div class="pull">
+  Elmer Fudd moved to rename all twelve months "Hunting Season." The motion was tabled, though only after a lengthy parliamentary argument about whether Elmer was allowed to vote since he, technically, never wins anything.
+</div>
+
+<h2><span class="subhead">The Official Record · Month by Month</span>The Twelve Proposed Names</h2>
+
+<p>What follows is the complete record of the Convention's proposed names for the twelve months, along with the character who proposed each name, the reasoning provided (such as it was), and any objections raised. The record was transcribed by Tweety Bird, who is reliably accurate but writes very small.</p>
+
+<div class="month-grid">
+
+  <div class="month-card m1">
+    <div class="card-header">
+      <div class="card-num">01</div>
+      <div class="card-names">
+        <div class="card-old-name">January</div>
+        <div class="card-new-name">Colduary</div>
+      </div>
+      <div class="card-emoji">🥶</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Bugs Bunny</span>
+      <p>"January," Bugs argued, "tells you nothing. Colduary tells you everything you need to know about this miserable month, and I for one am tired of being surprised by it." He noted that the name should be pronounced with a long "Cold" and a suffering sigh after "uary."</p>
+      <div class="objection"><strong>Objection:</strong> Elmer Fudd moved to rename it "Hunting Season, Part One." Motion lost 47–1. Elmer's vote was also lost, as he had accidentally written it on his own forehead.</div>
+    </div>
+  </div>
+
+  <div class="month-card m2">
+    <div class="card-header">
+      <div class="card-num">02</div>
+      <div class="card-names">
+        <div class="card-old-name">February</div>
+        <div class="card-new-name">Blehuary</div>
+      </div>
+      <div class="card-emoji">😑</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Eeyore</span>
+      <p>Eeyore's proposal was, at fourteen seconds, the shortest presentation of the Convention. "February," he said, "is the month where everything is still terrible but winter hasn't ended yet and Valentine's Day makes you feel worse than you already did, if that's possible, which for me it always is. I propose Blehuary. It ends in 'uary' because that is what the Calendar Committee apparently wants, and things rarely go the way I'd prefer, so." He then sat down. The room was quiet. Several characters cried.</p>
+      <div class="objection"><strong>Objection:</strong> Winnie the Pooh suggested "Hunny-uary" as an amendment. Eeyore stared at him for a long time and then looked at the floor.</div>
+    </div>
+  </div>
+
+  <div class="month-card m3">
+    <div class="card-header">
+      <div class="card-num">03</div>
+      <div class="card-names">
+        <div class="card-old-name">March</div>
+        <div class="card-new-name">Sproinger</div>
+      </div>
+      <div class="card-emoji">🌱</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Tigger</span>
+      <p>Tigger maintained that the third month of the year, when things begin waking up and bouncing back to life, deserved a name that properly conveyed the sensation. "March," he said, "sounds like something you do reluctantly to school. Sproinger sounds like what the whole world does when it realizes winter is basically over, which is the WONDERFUL thing about it!" He noted approvingly that the "-er" ending gave it a certain "bounceback quality." He then bounced three times during the proposal. The podium did not survive.</p>
+      <div class="objection"><strong>Objection:</strong> Eeyore noted that Sproinger "still sounds unnecessarily cheerful for a month that frequently snows on you without warning."</div>
+    </div>
+  </div>
+
+  <div class="month-card m4">
+    <div class="card-header">
+      <div class="card-num">04</div>
+      <div class="card-names">
+        <div class="card-old-name">April</div>
+        <div class="card-new-name">Sufferuary</div>
+      </div>
+      <div class="card-emoji">🌦️</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Sylvester the Cat</span>
+      <p>Sylvester argued that April's famous weather inconsistency — warm one day, cold the next, raining sideways, then somehow sunny at 4pm — deserved a name that expressed the appropriate emotional response. "Sufferuary," he maintained, was both accurate and elegant. "It retains the dignity of a proper month name while making absolutely clear what it does to you," he said. He had originally proposed "Sufferin' Succotash" but withdrew it after Tweety Bird pointed out the initials. "Sufferuary thuffers no thuch problem," Sylvester declared.</p>
+      <div class="objection"><strong>Objection:</strong> Tweety Bird noted that Sylvester had pronounced "suffers" and "such" incorrectly during his own correction. Sylvester chased Tweety out of the room. The vote was delayed 45 minutes.</div>
+    </div>
+  </div>
+
+  <div class="month-card m5">
+    <div class="card-header">
+      <div class="card-num">05</div>
+      <div class="card-names">
+        <div class="card-old-name">May</div>
+        <div class="card-new-name">Zoinksuary</div>
+      </div>
+      <div class="card-emoji">😱</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Shaggy Rogers</span>
+      <p>Shaggy, who arrived to the Convention late and appeared to have been running from something, explained that May deserved a name capturing the sudden realization that summer is approaching and nothing is prepared. "Like, every May I look up and go 'Zoinks, it's already May,'" he testified. "Every single year. I originally said just Zoinks, but someone on the committee said it needed a proper ending, so — Zoinksuary. It's all the same feeling but now it sounds official." Scooby-Doo endorsed the proposal with a thumbs up.</p>
+      <div class="objection"><strong>Objection:</strong> Fred Jones said the name lacked professionalism. Shaggy noted that Fred's ascot also lacked professionalism. The resulting silence lasted several minutes.</div>
+    </div>
+  </div>
+
+  <div class="month-card m6">
+    <div class="card-header">
+      <div class="card-num">06</div>
+      <div class="card-names">
+        <div class="card-old-name">June</div>
+        <div class="card-new-name">D'oh</div>
+      </div>
+      <div class="card-emoji">🌞</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Homer Simpson</span>
+      <p>Homer arrived via unauthorized time portal and immediately proposed renaming June "D'oh," explaining that it was the month when school ended, which was great, but also when he was expected to plan things with the family, which was not. "D'oh is not a name for a bad month," he clarified. "D'oh is a name for a complicated month. A month with mixed feelings. A month you didn't think through." He was briefly challenged on the grounds that all other proposed names ended in 'ary' or 'er,' at which point Homer said, "D'oh," which everyone agreed was an entirely appropriate response to being told that. He then ate four donuts during the discussion period.</p>
+      <div class="objection"><strong>Objection:</strong> Several old-guard characters objected to a "future cartoon" participating. Homer told them not to think of it as the future, just a different Tuesday.</div>
+    </div>
+  </div>
+
+  <div class="month-card m7">
+    <div class="card-header">
+      <div class="card-num">07</div>
+      <div class="card-names">
+        <div class="card-old-name">July</div>
+        <div class="card-new-name">Blastember</div>
+      </div>
+      <div class="card-emoji">🎆</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Yosemite Sam</span>
+      <p>Yosemite Sam presented his proposal in person, and then also presented it again via three gunshots fired at the ceiling, which he maintained were "part of the pitch." July, he argued, was the month of the Fourth of July, and the Fourth of July was fireworks, and fireworks were essentially the universe confirming that his approach to communication was correct all along. His original name had been "BANG BANG BANG," but the Committee had informed him it needed to end in 'er.' "FINE," he roared. "BLASTEMBER. It blasts AND it ends in 'er.' ARE YOU HAPPY?" He fired twice more. The Committee marked it as approved.</p>
+      <div class="objection"><strong>Objection:</strong> Daffy Duck noted that "Blastember" sounded like it should be September. Sam shot Daffy's hat off. Daffy noted this did not address the calendar issue.</div>
+    </div>
+  </div>
+
+  <div class="month-card m8">
+    <div class="card-header">
+      <div class="card-num">08</div>
+      <div class="card-names">
+        <div class="card-old-name">August</div>
+        <div class="card-new-name">Sweater</div>
+      </div>
+      <div class="card-emoji">🥵</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Daffy Duck</span>
+      <p>Daffy, who was still adjusting his hat, proposed "Sweater" on the grounds that August was the hottest, most miserable, most aggressively humid month on the calendar and that the name should reflect this. "You are wearing a thweater," he said, "whether you packed one or not. Becauthe it ith on you. Ath moischtüre." He had originally said "Sweatember" but was told by the Committee that the name needed to end in 'er.' Daffy stared at them and said the existing proposal, correctly formatted, was "Sweater," and that this was also funnier, which he stood by entirely.</p>
+      <div class="objection"><strong>Objection:</strong> Bugs pointed out that "Sweater" was already a word for a garment. Daffy replied that August was already a word for a person of distinguished rank, and nobody seemed bothered by that.</div>
+    </div>
+  </div>
+
+  <div class="month-card m9">
+    <div class="card-header">
+      <div class="card-num">09</div>
+      <div class="card-names">
+        <div class="card-old-name">September</div>
+        <div class="card-new-name">Mehtember</div>
+      </div>
+      <div class="card-emoji">🍂</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: SpongeBob SquarePants</span>
+      <p>SpongeBob, who also arrived via unauthorized time portal and apologized warmly for several minutes before getting to the point, proposed "Mehtember" for September on the basis that it was neither summer nor fall, neither exciting nor terrible — it was simply the month where everything was fine, which SpongeBob found somehow the most unsettling quality a month could possess. He had been told to ensure the name ended in 'er,' and he pointed out that Mehtember already did, having apparently planned ahead, which was unusual for September. "I'm ready!" he said. "But for what? That's Mehtember."</p>
+      <div class="objection"><strong>Objection:</strong> Patrick Star, who had followed SpongeBob through the portal, asked if they could name a month "Patrickember" instead. SpongeBob said that wasn't on the agenda. Patrick said he was still proud of the idea.</div>
+    </div>
+  </div>
+
+  <div class="month-card m10">
+    <div class="card-header">
+      <div class="card-num">10</div>
+      <div class="card-names">
+        <div class="card-old-name">October</div>
+        <div class="card-new-name">Spookember</div>
+      </div>
+      <div class="card-emoji">👻</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Scooby-Doo</span>
+      <p>Scooby-Doo presented his proposal for October personally, noting that it was the month of Halloween, mysteries, haunted houses, and creatures that turned out to be real estate developers in masks, and that this was essentially his whole biography. He had initially proposed "Scooby-Dooby-Doo," but upon being informed the name needed to end in 'er,' he conferred briefly with Shaggy and returned with "Spookember." "Rooky!" he said, which Shaggy translated as "Spooky" and "October" combined, and also probably perfect. Several delegates agreed this was the most logical reasoning heard all day, which said something about the overall quality of the Convention.</p>
+      <div class="objection"><strong>Objection:</strong> Shaggy noted that "Spookember" sounded like it should be September. Scooby stared at him. Shaggy immediately withdrew the objection.</div>
+    </div>
+  </div>
+
+  <div class="month-card m11">
+    <div class="card-header">
+      <div class="card-num">11</div>
+      <div class="card-names">
+        <div class="card-old-name">November</div>
+        <div class="card-new-name">Gobbluary</div>
+      </div>
+      <div class="card-emoji">🦃</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Bart Simpson</span>
+      <p>Bart arrived shortly after Homer, and immediately proposed renaming November "Gobbluary" — a name that honored Thanksgiving, sounded vaguely official, and was, in his professional assessment, "still pretty rad." He noted that it ended in 'uary' because the Committee kept going on about that, and 'gobble' because that was what turkeys said, what people did all month, and also what happened to his homework on a regular basis. He gave himself a thumbs up.</p>
+      <div class="objection"><strong>Objection:</strong> Homer objected on grounds that the name contained no reference to donuts. Bart reminded him they were naming a month. Homer asked if the month would come with food. The question was not resolved.</div>
+    </div>
+  </div>
+
+  <div class="month-card m12">
+    <div class="card-header">
+      <div class="card-num">12</div>
+      <div class="card-names">
+        <div class="card-old-name">December</div>
+        <div class="card-new-name">Holycowember</div>
+      </div>
+      <div class="card-emoji">🎄</div>
+    </div>
+    <div class="card-body">
+      <span class="proposer">Proposed by: Mickey Mouse</span>
+      <p>Mickey Mouse, who had been quietly waiting for his turn since the Convention opened and had twice been accidentally sat on by Dumbo, finally rose to propose "Holycowember" for December. He had originally said "Ho Ho Holy Cow," which he argued captured the entire emotional arc of the month: the initial Christmas joy ("Ho Ho"), the dawning realization of how much there is to do ("Holy Cow"), and the eventual warm exhaustion of year's end. When the Committee informed him the name needed to end in 'er,' Mickey cheerfully merged the whole phrase into "Holycowember," which he felt captured all the same feelings and also sounded legitimately like a month. The room gave him a standing ovation. Even Eeyore clapped, slowly, in a minor key.</p>
+      <div class="objection"><strong>Objection:</strong> Goofy noted that "Holy Cow" was also something he said, and asked if he could get partial credit for the month. Mickey, graciously, said yes.</div>
+    </div>
+  </div>
+
+</div>
+
+<h2><span class="subhead">The Vote · Official Tally</span>Why None of This Was Adopted</h2>
+
+<p>The vote on the final calendar took place at 4:47 pm, at which point the cave had been partially collapsed by Road Runner and rebuilt by Wile E. Coyote (using an Acme kit that worked perfectly on the first attempt, which everyone agreed was suspicious). The final vote on whether to submit the proposed calendar to human governments was as follows:</p>
+
+<table class="vote-table">
+  <thead>
+    <tr><th>Character</th><th>Vote</th><th>Reasoning</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="char">Bugs Bunny</td><td>Yes</td><td class="vote">"It would be funnier than what they've got."</td></tr>
+    <tr><td class="char">Daffy Duck</td><td>Yes, then No, then Yes</td><td class="vote">"I changed my mind twice and am comfortable with that."</td></tr>
+    <tr><td class="char">Eeyore</td><td>Abstained</td><td class="vote">"It probably won't matter. Nothing does, really."</td></tr>
+    <tr><td class="char">Yosemite Sam</td><td>Yes (fired three shots)</td><td class="vote">"THAT'S HOW YOU VOTE WHERE I COME FROM."</td></tr>
+    <tr><td class="char">Tigger</td><td>Yes! Yes! YES!</td><td class="vote">"Voting is the WONDERFUL thing about democracy!"</td></tr>
+    <tr><td class="char">Homer Simpson</td><td>Yes, conditionally</td><td class="vote">"Only if the month formerly known as August includes free donuts."</td></tr>
+    <tr><td class="char">Scooby-Doo</td><td>Scooby-Dooby-Doo!</td><td class="vote">Interpreted as Yes by unanimous consent of the room.</td></tr>
+    <tr><td class="char">Mickey Mouse</td><td>Yes, with a bow</td><td class="vote">"Ha-ha!"</td></tr>
+    <tr><td class="char">Elmer Fudd</td><td>Hunting Season</td><td class="vote">His ballot contained only these two words. It was not a valid vote on any of the proposed months but everyone felt bad disqualifying him.</td></tr>
+  </tbody>
+</table>
+
+<p>The calendar passed 7–0 (with one abstention and one ballot invalidated for being exclusively about hunting). It was then submitted to the International Calendar Authority in Geneva, Switzerland, which replied three weeks later with a letter that said, politely but firmly, that they were not accepting calendars from anyone, animated or otherwise, and suggested the signatories return to their regularly scheduled programming.</p>
+
+<div class="breakout">
+  <h3>The Dissenters: Characters Who Refused to Attend</h3>
+  <p><strong>Wile E. Coyote</strong> sent his regrets, explaining that he had ordered an Acme Calendar Convention Kit and was waiting for delivery. The kit arrived the day after the Convention, parachuted in from great height, and landed on him.</p>
+  <p><strong>Tom and Jerry</strong> RSVP'd yes but arrived fighting and had to be separated by the entire cave, which collapsed, which turned out to be Wile E. Coyote's fault after all.</p>
+  <p><strong>The Road Runner</strong> arrived, said "Meep meep," and left. Nobody is sure if that was a vote.</p>
+  <p><strong>Popeye</strong> submitted a written proposal to rename all twelve months after spinach. It was a single page that said "SPINACH" twelve times, each in slightly larger letters. He was thanked for his submission.</p>
+</div>
+
+<p>The Convention was formally closed at 6:00 pm by Bugs Bunny, who wrapped up proceedings by looking directly at the audience and saying, "And that's all, folks." This was considered a technically correct statement but also felt a little on the nose, even for a cartoon.</p>
+
+<p>The twelve proposed names remain, to this day, unofficial. But every Colduary, when the cold arrives unremarked upon, and every Blehuary, when things are simply bleh, and every Holycowember when you look at your to-do list and feel the whole arc of the year collapsing onto you — the spirit of the Convention lives on. It was, in the end, exactly right. It just wasn't official.</p>
+
+<p>The Romans, for their part, have never apologized.</p>
+
+<div class="kicker-close">
+  The next Convention is scheduled for whenever Bugs Bunny feels like it.<br>
+  <span style="font-size:0.72em; font-family:'DM Mono',monospace; letter-spacing:0.1em; font-weight:400; opacity:0.7;">RSVP not required. Elmer Fudd is not invited but will show up anyway.</span>
+</div>
+
+</div><!-- end article-body -->
+
+</body>
+</html>
