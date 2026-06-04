@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strange American Festivals: Twins Days Festival — Twinsburg, Ohio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:     #f4f0f8;
+  --newsprint: #e4e0ec;
+  --ink:       #120c18;
+  --plum:      #3c1c58;
+  --violet:    #6840a0;
+  --lavender:  #9068c8;
+  --gold:      #c89010;
+  --amber:     #d8a020;
+  --muted:     #584870;
+  --border:    #b8a8d0;
+  --card:      #faf8ff;
+  --coral:     #c04040;
+  --teal:      #206870;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ───── SERIES RIBBON ───── */
+.series-ribbon {
+  background: var(--plum);
+  color: #d0b8e8;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  margin: 0 -1.2rem 0;
+}
+
+/* ───── MASTHEAD ───── */
+.masthead {
+  text-align: center;
+  padding: 2.2rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(20px, 3.5vw, 34px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 0.4rem;
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(44px, 9.5vw, 104px);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--violet);
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ───── BODY LAYOUT ───── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--violet);
+}
+
+/* ───── HEADINGS ───── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--violet);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ───── PULL QUOTE ───── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--violet); }
+
+/* ───── WILCOX PROFILE ───── */
+.wilcox-box {
+  background: var(--plum);
+  color: #ddd0f0;
+  padding: 1.4rem 1.5rem 1.2rem;
+  margin: 2rem 0 2.2rem;
+}
+.wb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+  margin-bottom: 0.3rem;
+}
+.wb-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(216,160,32,0.5);
+  margin-bottom: 1rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  padding-bottom: 0.5rem;
+}
+.wb-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem 1.4rem;
+}
+.wb-fact {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: #c8b8e0;
+  line-height: 1.5;
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+.wb-fact strong {
+  font-weight: 600;
+  color: var(--amber);
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+
+/* ───── SCIENCE GRID ───── */
+.science-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin: 1.8rem 0 2.2rem;
+}
+.sg-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--teal);
+  padding: 0.9rem 1rem 0.8rem;
+}
+.sg-card.plum-top { border-top-color: var(--violet); }
+.sg-card.gold-top  { border-top-color: var(--gold); }
+.sg-card.coral-top { border-top-color: var(--coral); }
+.sg-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+.sg-inst {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.sg-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ───── T-SHIRT TICKER ───── */
+.tshirt-ticker {
+  background: var(--ink);
+  color: #e0d8f0;
+  padding: 1.2rem 1.5rem 1rem;
+  margin: 2rem 0 2.2rem;
+}
+.tt-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  color: var(--lavender);
+  margin-bottom: 0.8rem;
+  border-bottom: 0.5px solid #2a2038;
+  padding-bottom: 0.4rem;
+}
+.tt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem 1.2rem;
+}
+.tt-item {
+  font-size: 13.5px;
+  font-style: italic;
+  font-weight: 300;
+  color: #b8a8d0;
+  padding: 0.25rem 0;
+  border-bottom: 0.5px solid #1c1628;
+  line-height: 1.4;
+}
+
+/* ───── SIDEBAR ───── */
+.sidebar-box {
+  background: var(--plum);
+  color: #ddd0f0;
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.12);
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #c8b8e0;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--lavender);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-card .sc-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-card p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.sidebar-card p:last-child { margin-bottom: 0; }
+
+.sidebar-stat {
+  background: var(--violet);
+  color: #fff;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ss-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+.ss-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.45;
+  margin-top: 0.3rem;
+}
+
+/* ───── FULL-WIDTH DARK BAND ───── */
+.dark-band {
+  background: var(--plum);
+  color: #ccc0e0;
+  padding: 2.5rem 2rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.db-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+  text-align: center;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+.db-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(216,160,32,0.45);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.db-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.db-col-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+  border-bottom: 0.5px solid rgba(216,160,32,0.3);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.db-col p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #a898c0;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+
+/* ───── ORNAMENT / FOOTER ───── */
+.ornament {
+  text-align: center;
+  color: var(--violet);
+  margin: 3rem 0 2rem;
+  letter-spacing: 1em;
+  font-size: 14px;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding-top: 1rem;
+  line-height: 2;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .db-cols { grid-template-columns: 1fr; gap: 1rem; }
+  .wb-facts { grid-template-columns: 1fr; }
+  .science-grid { grid-template-columns: 1fr; }
+  .tt-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SERIES RIBBON ═══ -->
+<div class="series-ribbon">Strange American Festivals</div>
+
+<!-- ═══ MASTHEAD ═══ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span class="pub-name">The Raised Eyebrow</span>
+    <span>Twinsburg, Ohio &nbsp;·&nbsp; Annual · August</span>
+  </div>
+  <p class="kicker">Strange American Festivals</p>
+  <h1>TWINS<br><em>DAYS</em><br>FESTIVAL</h1>
+  <p class="deck">In which a town named by identical twins who married sisters, had the same number of children, contracted the same fatal disease, and died within hours of each other invites the world's twins to come see what that looks like at scale — and 20,000 people show up in matching outfits.</p>
+  <p class="byline-row">Raised Eyebrows &nbsp;·&nbsp; Festival Edition &nbsp;·&nbsp; Twinsburg, Ohio &nbsp;·&nbsp; Est. 1976</p>
+</div>
+
+<!-- ═══ TWO-COLUMN BODY ═══ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">If you were to drive through Twinsburg, Ohio, on any ordinary weekend in July, you would find a pleasant Cleveland suburb of about 20,000 people, quiet in the way suburbs are quiet, unremarkable in the way that makes suburbs useful. You would not find anything in particular to explain the name. The town looks like any other town. There is nothing especially double about it.</p>
+
+    <p>Return on the first full weekend in August, however, and you will encounter something that, in the considered opinion of everyone who has written about it, is briefly and profoundly disorienting. Everywhere you look, there are two of everyone. The same face, twice. The same height, twice. The same walk, the same laugh, the same way of holding a funnel cake — twice, side by side, in matching outfits, looking at you. Thousands of pairs. Strollers to wheelchairs, every age represented, dozens of countries, all of them walking through the same streets in coordinated plaid and polka dots and safari gear and H.G. Wells time-traveler costumes, two by two, like the ark has just docked.</p>
+
+    <p>This is the Twins Days Festival, the world's largest annual gathering of twins, and it has been happening here every August since 1976. The Guinness World Records people have certified it. The number of sets in attendance at peak has exceeded 3,000. Over 48 festivals, more than 84,000 sets of twins and multiples have come through this town. The FBI sends researchers. The NIH sends researchers. West Virginia University sends researchers. The Smithsonian has written about it. Every year the festival adopts a theme — 2024's was "Twindy 500," 2023's was "Shiver Me Twinbers" — and every year it fills a park in Ohio with more identical people than any other single event in recorded history.</p>
+
+    <p>The reason the festival is in Twinsburg at all goes back 200 years, to two brothers from Connecticut who were so alike that even their closest friends could not tell them apart.</p>
+
+    <h2><span class="cat">The Founders</span>Moses and Aaron Wilcox, 1770–1827</h2>
+
+    <p>Moses and Aaron Wilcox were born on May 11, 1770, in Killingworth, Connecticut. They were identical twins, which in that era meant something specific: no distinction could be made between them by voice, feature, or manner. They moved west together, bought over 4,000 acres of land in northeast Ohio in the early 1800s, and arrived in a settlement then called Millsville with a proposition for the existing residents. The Wilcox brothers would donate six acres at the center of town for a public square, and contribute twenty dollars toward the construction of the first school — a meaningful sum at the time — on one condition: the place must be renamed Twinsburg.</p>
+
+    <p>The residents agreed. The name changed. The money was paid. And Moses and Aaron Wilcox settled in to live out lives that were, even by the standards of twin mythology, uncannily parallel.</p>
+
+    <div class="wilcox-box">
+      <div class="wb-title">Moses & Aaron Wilcox: The Founding Parallels</div>
+      <div class="wb-sub">Killingworth, Connecticut · Twinsburg, Ohio · 1770–1827</div>
+      <div class="wb-facts">
+        <div class="wb-fact">
+          <strong>Birth</strong>
+          May 11, 1770, Killingworth, CT. Identical by every account — "feature, voice and manner" indistinguishable even to close friends.
+        </div>
+        <div class="wb-fact">
+          <strong>Migration</strong>
+          Moved together to Ohio. Purchased ~4,000 acres jointly. Established Twinsburg (formerly Millsville) in 1819 on terms they negotiated together.
+        </div>
+        <div class="wb-fact">
+          <strong>Marriage</strong>
+          Both married sisters — Mabel and Huldah Lord, who were not themselves twins. They did not marry each other's wives. This distinction is noted because it comes up.
+        </div>
+        <div class="wb-fact">
+          <strong>Children</strong>
+          Each had exactly nine children. The symmetry was apparently not planned. It simply happened.
+        </div>
+        <div class="wb-fact">
+          <strong>Business</strong>
+          Lifelong business partners. There is no record of a major dispute. This is its own kind of remarkable.
+        </div>
+        <div class="wb-fact">
+          <strong>Death</strong>
+          Contracted the same undocumented disease in 1827. Died within hours of each other. Buried in the same grave in Locust Grove Cemetery, one above the other, in the town they named.
+        </div>
+      </div>
+    </div>
+
+    <p>The Wilcox story is, in retrospect, almost too on-theme to be entirely real — two men so parallel in life that they arranged to share a grave — but it is documented, and it forms the foundation on which every subsequent doubling in Twinsburg is built. A town named for twins, by twins, holds a festival for twins every August. The whole thing has the structural logic of a fairy tale, which is perhaps why it works so well.</p>
+
+    <h2><span class="cat">The Festival</span>Thirty-Six Sets in 1976; Thousands Every August Since</h2>
+
+    <p>The first Twins Days took place in 1976, as part of Twinsburg's contribution to the American bicentennial. A small committee decided that a town named for twins should dedicate a day to twins. Thirty-six sets showed up for a flag-raising ceremony and a picnic. It was modest. It was pleasant. It was, the committee decided, worth repeating.</p>
+
+    <p>The second year brought 38 sets, a talent show, food booths, a square dance exhibition, and a bike-and-buggy parade for children. Word spread. By the late 1980s, more than 1,500 sets were arriving annually. In 1989 Guinness certified the festival as the world's largest annual gathering of twins. The record year was 1995, with 2,798 registered sets — 5,596 twins in one Ohio park. At the peak, the event was drawing more than 20,000 total attendees over the weekend.</p>
+
+    <p>The festival has also welcomed, over the decades, a visiting delegation of nine sets of twins from the Soviet Union — a detail of Cold War social history that no subsequent commentator has adequately explained — as well as twins from Australia, China, India, Mongolia, Kazakhstan, Iceland, the Democratic Republic of Congo, Israel, Romania, and virtually every other country with twins in it, which is to say every country.</p>
+
+    <div class="pull">
+      EVERYWHERE YOU LOOK,<br>THERE ARE TWO OF EVERYONE.<br><span>THE SAME FACE, TWICE.</span><br>IN MATCHING OUTFITS.
+    </div>
+
+    <h2><span class="cat">The Science</span>The Most Useful Petri Dish in American Genetics</h2>
+
+    <p>Here is where the Twins Days Festival distinguishes itself from every other entry in this series: it is not merely a celebration. It is, simultaneously, one of the most productive scientific research venues in the United States.</p>
+
+    <p>Identical twins share virtually the same genetic code. This makes them uniquely useful for studying the relative contributions of genes and environment to human traits — the nature-versus-nurture question, applied with surgical precision. Researchers cannot ethically create identical people in a lab, but they can go to Twinsburg in August and find several thousand of them, many of whom have been participating in studies for years and bring their own longitudinal data.</p>
+
+    <p>The research tent at Twins Days draws more applications than it has room for. Each year, teams from universities, government agencies, and private companies compete for space to run their studies. The twins are compensated for participation. The lines outside the tent are reliably long. Over the decades, the studies run at Twinsburg have contributed to the scientific literature on genetics, behavioral psychology, dermatology, audiology, cardiovascular health, taste perception, smell, autism, sexual orientation, and — in one particularly practical application — the limits of facial recognition and fingerprint identification technology.</p>
+
+    <div class="science-grid">
+      <div class="sg-card">
+        <div class="sg-head">Fingerprint Differentiation</div>
+        <div class="sg-inst">FBI / LAPD forensics teams</div>
+        <div class="sg-desc">Identical twins have nearly identical fingerprints — close enough to challenge standard identification systems. Researchers collect latent prints to improve forensic databases. "If you can build a system that can differentiate between identical twins," notes a WVU researcher, "it's easier to tell the difference between regular people."</div>
+      </div>
+      <div class="sg-card plum-top">
+        <div class="sg-head">Facial & Voice Recognition</div>
+        <div class="sg-inst">West Virginia University biometrics lab</div>
+        <div class="sg-desc">Hi-res photography and voice recording of twins help train AI facial and voice recognition systems that must distinguish between nearly identical faces. The festival provides the largest available sample of the most challenging test cases.</div>
+      </div>
+      <div class="sg-card gold-top">
+        <div class="sg-head">Taste & Smell Studies</div>
+        <div class="sg-inst">Monell Chemical Senses Center, Philadelphia</div>
+        <div class="sg-desc">Twins sip small cups of alcohol and taste sweet and sour compounds to test whether identical genetic codes produce identical sensory responses — and how much diverges when environments differ. Findings contribute to flavor research and neurological studies.</div>
+      </div>
+      <div class="sg-card coral-top">
+        <div class="sg-head">Genetics & Health</div>
+        <div class="sg-inst">NIH, university hospitals, medical researchers</div>
+        <div class="sg-desc">Twin studies at Twinsburg have contributed to understanding of osteoporosis, asthma, heart disease, autism, hearing loss, sun damage, and behavioral traits including shyness, risk tolerance, and religious belief. A 1995 study here helped confirm that autism is largely genetic, correcting decades of harmful misattribution to parenting.</div>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-stat">
+      <div class="ss-num">84,182</div>
+      <div class="ss-label">sets of twins & multiples<br>across 48 festivals<br>through 2024</div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Fast Facts</div>
+      <p><strong style="color:var(--amber);">Location:</strong> Twinsburg, Ohio (Summ't County, suburb of Cleveland)</p>
+      <p><strong style="color:var(--amber);">When:</strong> First full weekend of August, annually since 1976</p>
+      <p><strong style="color:var(--amber);">Record:</strong> 2,798 registered sets in 1995 — 5,596 twins in one park</p>
+      <p><strong style="color:var(--amber);">Guinness:</strong> Certified "World's Largest Annual Gathering of Twins," 1989</p>
+      <p><strong style="color:var(--amber);">Economic Impact:</strong> ~$5.4 million annually to the local economy</p>
+      <p><strong style="color:var(--amber);">The Grave:</strong> Moses and Aaron Wilcox are buried in the same grave in Locust Grove Cemetery, Twinsburg. One above the other.</div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">The Malms</div>
+      <p>At the 1991 Twins Days Festival, identical twin brothers Doug and Phil Malm from Idaho met identical twin sisters Jill and Jenna Lassen from Michigan. There was no ambiguity about pairings: Doug chose Jenna, Phil chose Jill, and "it was instant," as Phil described it. Two years later, both couples were married at Twins Days. One of the couples later had a set of identical twins of their own.</p>
+      <p>This is exactly the kind of thing that happens at this festival, and it happens regularly enough that no one who attends is particularly surprised by it anymore.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">Annual Themes</div>
+      <p>Each year the festival adopts a theme applied to the Double Take Parade and costumes. Recent selections include "Twindy 500" (2024, race cars), "Shiver Me Twinbers" (2023, pirates), "Welcome 2 the Jungle" (2022, jungle animals), and various historical and pop culture themes requiring that thousands of people agree, in pairs, on a single costume. The logistics of this agreement are not documented but are presumably straightforward.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">The Soviet Delegation</div>
+      <p>In the 1980s, nine sets of twins traveled from the Soviet Union to attend the Twins Days Festival in Twinsburg, Ohio. The Cold War was ongoing. The delegation was welcomed. No explanation of the geopolitical mechanics by which this occurred appears to be publicly available.</p>
+      <p>It happened. It is in the festival's official history. It is treated as a charming and unremarkable footnote, which is the correct approach.</p>
+    </div>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article -->
+
+<!-- ═══ T-SHIRT SECTION ═══ -->
+<div style="max-width:860px;margin:0 auto 0;">
+  <div class="tshirt-ticker">
+    <div class="tt-title">Festival T-Shirt Slogans: A Representative Sample</div>
+    <div class="tt-grid">
+      <div class="tt-item">"I'm the Original. She's the Copy."</div>
+      <div class="tt-item">"It Takes Two to Do Twinsburg"</div>
+      <div class="tt-item">"Mom Likes Me Best"</div>
+      <div class="tt-item">"I Love My Womb Mate"</div>
+      <div class="tt-item">"Thing 1" / "Thing 2"</div>
+      <div class="tt-item">"The Good Twin" / "The Evil Twin"</div>
+      <div class="tt-item">"I'm the Favorite"</div>
+      <div class="tt-item">"I'm Not Steven" / "I'm Not David"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FULL-WIDTH BAND: THE FESTIVAL ═══ -->
+<div class="dark-band">
+  <div class="db-title">The Weekend, Doubled</div>
+  <div class="db-sub">What the World's Largest Gathering of Twins Actually Looks Like</div>
+  <div class="db-cols">
+    <div class="db-col">
+      <div class="db-col-head">The Double Take Parade</div>
+      <p>Saturday morning, 9 a.m., the signature event: thousands of registered twins march from Twinsburg Township Square down Ravenna Road in coordinated outfits, floats, and themed groups reflecting the year's festival theme. The parade has drawn national television coverage. Trophies are awarded for best overall entry and best twin walking unit. The visual effect of watching it from the sidewalk — wave after wave of identical people in the same costume — is described by first-time observers consistently and with a specific word: surreal.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Contests</div>
+      <p>Twin contests run Saturday and Sunday, judged by other twins. Categories include "most alike," "least alike," and age-grouped divisions. A Royal Court is crowned each year. There is a talent show. There is a group photo taken from atop a crane — a human blanket of twins spread across a field, photographed from above. There is a golf outing, a 5K run, and a cornhole tournament. The carnival rides, food vendors, and beer garden are available to the approximately 20,000 non-twin visitors who attend as, in some sense, spectators of their own singularity.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Research Tent</div>
+      <p>The festival added its research program about twenty years in, and it is now one of the weekend's defining features. Scientists from universities, federal agencies, and private companies set up adjacent tents and invite twins to participate in studies. DNA samples, fingerprints, taste tests, voice recordings, photographs, surveys, health assessments. The lines are long. The festival organizer has said they get more research requests than they can handle every year. The twins are compensated for participation. Science has rarely had a more willing or more conveniently organized subject pool.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONCLUSION ═══ -->
+<div style="max-width:860px;margin:0 auto;">
+
+<h2><span class="cat">The Effect</span>What It Does to You, Passing Through</h2>
+
+<p>Several people who have written about Twins Days use the same word to describe the experience of walking through it as a non-twin: <em>twinless.</em> You feel it in a way you do not ordinarily feel being a single person. The normal human experience of individuality — the way you are the only version of yourself in any given room — becomes suddenly visible by contrast, in a park where everyone else comes in a matching pair. The journalist Abigail Pogrebin, who attended the festival while writing a book about her own twin, described it with precision: "I'm twinless in Twinsburg, Ohio." She found a registration line and felt odd being in it alone.</p>
+
+<p>The twins, for their part, describe the festival as something closer to a reunion than a fair — a return to a community that understands something about their lives that most people do not. Katie Barry, who has been attending since age seven, put it simply: "It's a club you can't buy your way into." The festival draws the same pairs back year after year, decade after decade, the same families aging through the same event, wearing the year's theme in matching outfits, standing in the research tent line, watching the parade from increasingly familiar spots on the sidewalk.</p>
+
+<div class="pull">
+  THE WILCOX BROTHERS<br>DIED WITHIN HOURS OF<br><span>EACH OTHER IN 1827.</span><br>THEY ARE BURIED IN<br>THE SAME GRAVE.
+</div>
+
+<p>Moses and Aaron Wilcox are still in Locust Grove Cemetery in Twinsburg, one above the other in the same grave, as they were placed in 1827. They bought a town, gave it their name, married sisters, raised nine children each, and died together of something nobody bothered to record. Two centuries later, the town holds a festival every August that has drawn over 84,000 pairs of twins from around the world, generated millions of dollars in economic impact, contributed dozens of peer-reviewed studies to the scientific literature, been certified by Guinness, and documented the fingerprints of thousands of identical people for the benefit of the FBI's biometric databases.</p>
+
+<p>Aaron and Moses would, one imagines, be pleased. Or at least — both of them would be exactly as pleased as the other, which amounts to the same thing.</p>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>Moses & Aaron Wilcox · Born May 11, 1770 · Died 1827, within hours of each other · Locust Grove Cemetery, Twinsburg, Ohio · Same grave</p>
+  <p>Twins Days Festival · Est. 1976 · First full weekend of August · Guinness World Record: Largest Annual Gathering of Twins · 84,182+ sets across 48 festivals</p>
+  <p>The Soviet delegation of nine sets of twins attended in the 1980s · The festival's official history mentions this · No further explanation is provided</p>
+  <p>© The Raised Eyebrow · Strange American Festivals Series · Non-twins are welcome · They will feel it</p>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strange American Festivals: BugFest — Raleigh, North Carolina</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:     #f2f4e8;
+  --newsprint: #e2e4d0;
+  --ink:       #141208;
+  --beetle:    #2a5c10;
+  --wing:      #5a9020;
+  --amber:     #c87800;
+  --caramel:   #a05c00;
+  --chitin:    #8c6820;
+  --muted:     #525840;
+  --border:    #b8bc90;
+  --card:      #f8faf0;
+  --scarlet:   #9c1c10;
+  --gold:      #c89010;
+  --lab:       #1c4878;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ───── SERIES RIBBON ───── */
+.series-ribbon {
+  background: var(--beetle);
+  color: #b8e090;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  margin: 0 -1.2rem 0;
+}
+
+/* ───── MASTHEAD ───── */
+.masthead {
+  text-align: center;
+  padding: 2.2rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(20px, 3.5vw, 34px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--wing);
+  margin-bottom: 0.4rem;
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(56px, 12vw, 130px);
+  line-height: 0.85;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--wing);
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ───── BODY LAYOUT ───── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--wing);
+}
+
+/* ───── HEADINGS ───── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--wing);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ───── PULL QUOTE ───── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--wing); }
+
+/* ───── MENU BOARD ───── */
+.menu-board {
+  background: var(--ink);
+  color: #e8e4d0;
+  padding: 1.5rem 1.6rem 1.3rem;
+  margin: 2rem 0 2.2rem;
+}
+.menu-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--amber);
+  margin-bottom: 0.3rem;
+}
+.menu-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(200,120,0,0.6);
+  margin-bottom: 1.1rem;
+  border-bottom: 0.5px solid #333;
+  padding-bottom: 0.6rem;
+}
+.menu-section {
+  margin-bottom: 1.1rem;
+}
+.menu-section-head {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.5rem;
+}
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1.2rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px solid #242210;
+  align-items: baseline;
+}
+.menu-item:last-child { border-bottom: none; }
+.mi-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  color: #e8e0c8;
+  line-height: 1.2;
+}
+.mi-bug {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7a7060;
+  white-space: nowrap;
+}
+.mi-desc {
+  font-size: 12.5px;
+  font-weight: 300;
+  font-style: italic;
+  color: #a09880;
+  line-height: 1.4;
+  grid-column: 1 / -1;
+  margin-top: -0.3rem;
+}
+
+/* ───── SCIENCE COMPARE ───── */
+.compare-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--lab);
+  padding: 1.2rem 1.4rem 1rem;
+  margin: 2rem 0 2.2rem;
+}
+.compare-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--lab);
+  margin-bottom: 0.8rem;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem 1rem;
+  text-align: center;
+}
+.cg-head {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+}
+.cg-item {
+  margin-bottom: 0.4rem;
+}
+.cg-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.1rem;
+}
+.cg-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.cg-val.good { color: var(--beetle); }
+.cg-val.mid  { color: var(--amber); }
+.cg-val.bad  { color: var(--scarlet); }
+.cg-unit {
+  font-family: 'Space Mono', monospace;
+  font-size: 7.5px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* ───── FEATURED BUG HISTORY ───── */
+.bug-roll {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--wing);
+  padding: 1.1rem 1.3rem 0.9rem;
+  margin: 2rem 0 2.2rem;
+}
+.bug-roll-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--beetle);
+  margin-bottom: 0.7rem;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+.bug-roll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.3rem 0.8rem;
+}
+.br-item {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--muted);
+  padding: 0.2rem 0;
+  border-bottom: 0.5px solid var(--newsprint);
+  line-height: 1.4;
+}
+.br-item em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--beetle);
+  font-size: 12px;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.04em;
+}
+
+/* ───── SIDEBAR ───── */
+.sidebar-box {
+  background: var(--beetle);
+  color: #d0e8b0;
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: #b8e088;
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.15);
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #c0d8a0;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-box2 {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--amber);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-box2 .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p:last-child { margin-bottom: 0; }
+
+.sidebar-stat {
+  background: var(--amber);
+  color: #fff;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ss-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+.ss-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.45;
+  margin-top: 0.3rem;
+}
+
+/* ───── FULL-WIDTH DARK BAND ───── */
+.dark-band {
+  background: var(--ink);
+  color: #d8d4b8;
+  padding: 2.5rem 2rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.db-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  color: #b8e088;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+.db-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(184,224,136,0.5);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.db-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.db-col-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: #b8e088;
+  border-bottom: 0.5px solid rgba(184,224,136,0.3);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.db-col p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #b0ac98;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+
+/* ───── ORNAMENT / FOOTER ───── */
+.ornament {
+  text-align: center;
+  color: var(--wing);
+  margin: 3rem 0 2rem;
+  letter-spacing: 1em;
+  font-size: 14px;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding-top: 1rem;
+  line-height: 2;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .db-cols { grid-template-columns: 1fr; gap: 1rem; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .bug-roll-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SERIES RIBBON ═══ -->
+<div class="series-ribbon">Strange American Festivals</div>
+
+<!-- ═══ MASTHEAD ═══ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span class="pub-name">The Raised Eyebrow</span>
+    <span>Raleigh, North Carolina &nbsp;·&nbsp; Annual · September</span>
+  </div>
+  <p class="kicker">Strange American Festivals</p>
+  <h1><em>BUG</em>FEST</h1>
+  <p class="deck">In which the North Carolina Museum of Natural Sciences fills four floors with live insects, live entomologists, live cockroach races, and a café serving ant enchiladas — and thirty thousand people show up, voluntarily, every September.</p>
+  <p class="byline-row">Raised Eyebrows &nbsp;·&nbsp; Festival Edition &nbsp;·&nbsp; NC Museum of Natural Sciences, Raleigh &nbsp;·&nbsp; Est. 1993</p>
+</div>
+
+<!-- ═══ TWO-COLUMN BODY ═══ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">It began with trail mix. In 1993, the North Carolina Museum of Natural Sciences was hosting a Native American festival, and someone made a buggy trail mix — bugs, the thinking went, would have been an important food source for indigenous peoples, and wouldn't a little culinary authenticity be a nice touch? The line for the trail mix, by all accounts, was extraordinary. The length of that line struck the museum's event organizers as meaningful. If this many people would queue up to eat a cricket in trail mix at a different event, how many would come to an event dedicated entirely to the proposition that insects are fascinating, important, and edible?</p>
+
+    <p>Thirty thousand, it turned out. Every September. For more than thirty years.</p>
+
+    <p>BugFest is now the largest single-day bug-themed festival in the United States, and one of the most popular events in the entire southeastern museum calendar. It is free. It fills all four floors of the museum and spills out into the surrounding downtown streets. It features over a hundred exhibits, a competitive cockroach racing event officially named the Roachingham 500, live Stag Beetle Battles, expert entomologists available for extended conversation, preserved specimens from around the world, live specimens from places that are further away than the visitors would prefer the specimens to remain, a film screening at the end of the day, and — most famously, most queued-for, most photographed — Café Insecta, where local chefs prepare actual food from actual insects and invite the public to try it.</p>
+
+    <p>The fact that this is a museum event rather than a county fair is important. The NC Museum of Natural Sciences is a serious institution, and BugFest is a serious event wearing a very good costume. It is also genuinely, unabashedly fun in a way that serious institutions do not always manage.</p>
+
+    <h2><span class="cat">The Origin of Disgust</span>Why Americans Don't Eat Insects (But Most of the World Does)</h2>
+
+    <p>Before we get to the Ant-Chilada, a brief orientation is in order.</p>
+
+    <p>Entomophagy — the practice of eating insects — is not a novelty. It is, by any reasonable measure, the global norm. Across 113 countries, insect consumption is a conventional part of the diet. Approximately two thousand species are eaten worldwide. In large parts of Africa, Asia, and Latin America, insects are not a curiosity or a dare — they are protein, reliably available, efficiently farmed, and genuinely nutritious. Cricket protein content rivals beef. A cricket requires less than two kilograms of feed to produce one kilogram of body weight, compared to ten kilograms of feed per kilogram of beef. Up to 80 percent of a cricket is edible; only 40 percent of a cow is. The environmental mathematics are not subtle.</p>
+
+    <p>The Western aversion to eating insects is, in the long view of human food history, the anomaly — a relatively recent cultural preference, not a universal biological response. BugFest knows this, and the festival is, in part, a gentle annual argument on the subject: that the disgust response Western visitors bring through the museum doors is learned, not innate, and that it is at least partially negotiable after an afternoon with a plate of Hush-Grubbies and a patient entomologist.</p>
+
+    <div class="compare-box">
+      <div class="compare-title">Feed Conversion: The Case for the Cricket</div>
+      <div class="compare-grid">
+        <div>
+          <div class="cg-head">Cricket</div>
+          <div class="cg-item">
+            <div class="cg-label">Feed per kg gained</div>
+            <div class="cg-val good">1.7<span class="cg-unit"> kg</span></div>
+          </div>
+          <div class="cg-item">
+            <div class="cg-label">Edible portion</div>
+            <div class="cg-val good">80<span class="cg-unit">%</span></div>
+          </div>
+          <div class="cg-item">
+            <div class="cg-label">Greenhouse gas</div>
+            <div class="cg-val good">Minimal</div>
+          </div>
+        </div>
+        <div>
+          <div class="cg-head">Chicken</div>
+          <div class="cg-item">
+            <div class="cg-label">Feed per kg gained</div>
+            <div class="cg-val mid">2.5<span class="cg-unit"> kg</span></div>
+          </div>
+          <div class="cg-item">
+            <div class="cg-label">Edible portion</div>
+            <div class="cg-val mid">55<span class="cg-unit">%</span></div>
+          </div>
+          <div class="cg-item">
+            <div class="cg-label">Greenhouse gas</div>
+            <div class="cg-val mid">Moderate</div>
+          </div>
+        </div>
+        <div>
+          <div class="cg-head">Beef</div>
+          <div class="cg-item">
+            <div class="cg-label">Feed per kg gained</div>
+            <div class="cg-val bad">10<span class="cg-unit"> kg</span></div>
+          </div>
+          <div class="cg-item">
+            <div class="cg-label">Edible portion</div>
+            <div class="cg-val bad">40<span class="cg-unit">%</span></div>
+          </div>
+          <div class="cg-item">
+            <div class="cg-label">Greenhouse gas</div>
+            <div class="cg-val bad">Significant</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="cat">Café Insecta</span>The Menu, Annotated</h2>
+
+    <p>The café changes its offerings each year, with local Raleigh restaurants and chefs competing to devise insect-based dishes worthy of the occasion. The approach is not shock cuisine — the aim is to make insect ingredients genuinely delicious, properly prepared, and approachable enough that first-timers will actually pick up a fork. The names help. A good name lowers the activation energy considerably.</p>
+
+    <p>The classics that have become identified with the festival over the years include the Ant-Chilada: a cheese enchilada in which toasted freeze-dried ants serve as both filling and topping, providing a nutty crunch that, according to enthusiastic repeat visitors, works considerably better than the name suggests. The Hush-Grubbie takes the hush puppy — that staple of Southern deep-fry tradition — and replaces the standard filling with wax worm grubs coated in hush-puppy batter. It has a devoted following. The Chocolate-Chirp Cookie bakes crickets directly into an otherwise standard chocolate chip cookie, providing a protein boost and a small textural surprise that reviewers describe with varying degrees of enthusiasm.</p>
+
+    <p>Other years have brought cricket curry, mealworm mac and cheese, Cricket Cobbler, Kickin' Cricket Chicken Salad, Bugnana Pudding, Sweet and Spicy Chili Worm, Meal Worm and Goat Cheese Hushpuppies, mealworm cake pops, bug-infused ice cream, and Dirt 'n' Worms Donuts. The café is free. The line for it is always long.</p>
+
+    <div class="menu-board">
+      <div class="menu-title">Café Insecta</div>
+      <div class="menu-sub">A Selection from the Festival's Culinary Archive &nbsp;·&nbsp; All dishes free to festival attendees</div>
+
+      <div class="menu-section">
+        <div class="menu-section-head">Savory</div>
+        <div class="menu-item">
+          <span class="mi-name">The Ant-Chilada</span>
+          <span class="mi-bug">Freeze-dried ants</span>
+          <span class="mi-desc">Cheese enchilada. Toasted freeze-dried ants as filling and topping. Nutty. Crunchy. Reportedly better than it sounds.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">Hush-Grubbies</span>
+          <span class="mi-bug">Wax worm grubs</span>
+          <span class="mi-desc">Wax worm grubs, hush-puppy batter, deep fried. A Southern classic, adjusted. Has a devoted following.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">Kickin' Cricket Chicken Salad</span>
+          <span class="mi-bug">Crickets</span>
+          <span class="mi-desc">Standard chicken salad elevated with cricket protein. The crickets are not the main event. They are supporting cast.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">Mealworm Mac &amp; Cheese</span>
+          <span class="mi-bug">Mealworms</span>
+          <span class="mi-desc">Comfort food. With mealworms. The comfort is negotiable. The mac and cheese is not.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">Cricket Curry</span>
+          <span class="mi-bug">Crickets</span>
+          <span class="mi-desc">Perfectly logical, given that crickets are consumed across South and Southeast Asia in exactly this kind of preparation.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">Sweet &amp; Spicy Chili Worm</span>
+          <span class="mi-bug">Mealworms</span>
+          <span class="mi-desc">Glazed. Spiced. Served with apologies to no one.</span>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <div class="menu-section-head">Sweet</div>
+        <div class="menu-item">
+          <span class="mi-name">Chocolate-Chirp Cookie</span>
+          <span class="mi-bug">Crickets</span>
+          <span class="mi-desc">Chocolate chip cookie with crickets baked in. The cricket legs in the throat are, according to one NC State student, the most memorable part.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">Bugnana Pudding</span>
+          <span class="mi-bug">Assorted</span>
+          <span class="mi-desc">Banana pudding, bug-enhanced. The banana pudding carries most of the weight. The bugs carry the conversation.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">Mealworm Cake Pops</span>
+          <span class="mi-bug">Mealworms</span>
+          <span class="mi-desc">Cake pops. On sticks. With mealworms. Small enough that the commitment feels manageable.</span>
+        </div>
+        <div class="menu-item">
+          <span class="mi-name">Dirt 'n' Worms Donut</span>
+          <span class="mi-bug">Mealworms</span>
+          <span class="mi-desc">The childhood dessert, made literal. Gummy worms replaced with actual ones. The children at BugFest are fully prepared for this.</span>
+        </div>
+      </div>
+    </div>
+
+    <h2><span class="cat">The Featured Bug</span>An Annual Appointment of Some Distinction</h2>
+
+    <p>Each year BugFest selects a Featured Bug — the arthropod of honor around which exhibits, presentations, and a substantial portion of the museum's curatorial effort are organized. The Featured Bug is treated with the seriousness due to a visiting dignitary. Entomologists present its case. Live specimens are displayed. Educational materials explain its role in the ecosystem, its biology, its relationship to humans and to the planet.</p>
+
+    <p>The selection history runs a genuinely impressive range. Cicadas. Tarantulas. Dragonflies. Stink bugs. Butterflies and moths. Scorpions. Krill — which prompted some discussion about whether krill technically counts as a bug, a question the museum resolved by noting that all bugs are arthropods, krill are arthropods, and therefore the defense rests. Previous years have brought the praying mantis, the dung beetle, the millipede, and assorted other creatures that most people have managed to avoid thinking about in any depth.</p>
+
+    <div class="bug-roll">
+      <div class="bug-roll-title">A Partial Roll of BugFest Featured Bugs</div>
+      <div class="bug-roll-grid">
+        <div class="br-item">Cicadas</div>
+        <div class="br-item">Tarantulas</div>
+        <div class="br-item">Dragonflies</div>
+        <div class="br-item">Stink Bugs</div>
+        <div class="br-item">Butterflies &amp; Moths</div>
+        <div class="br-item">Scorpions</div>
+        <div class="br-item">Krill <em>*arthropod</em></div>
+        <div class="br-item">Praying Mantis</div>
+        <div class="br-item">Dung Beetles</div>
+        <div class="br-item">Millipedes</div>
+        <div class="br-item">Cockroaches</div>
+        <div class="br-item">Spiders</div>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-stat">
+      <div class="ss-num">30,000</div>
+      <div class="ss-label">visitors per year<br>largest bug-themed festival<br>in the United States</div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Fast Facts</div>
+      <p><strong style="color:#b8e088;">Location:</strong> NC Museum of Natural Sciences, downtown Raleigh</p>
+      <p><strong style="color:#b8e088;">When:</strong> Third Saturday in September, annually since 1993</p>
+      <p><strong style="color:#b8e088;">Admission:</strong> Free. All of it. Including Café Insecta.</p>
+      <p><strong style="color:#b8e088;">Scale:</strong> 100+ exhibits, all four museum floors plus downtown streets</p>
+      <p><strong style="color:#b8e088;">Attendance:</strong> ~30,000 per year</p>
+      <p><strong style="color:#b8e088;">Origin:</strong> A line for buggy trail mix at a 1993 Native American festival that was longer than anyone expected</p>
+    </div>
+
+    <div class="sidebar-box2">
+      <div class="sb-title">The Roachingham 500</div>
+      <p>Live cockroach racing. Named, with appropriate regional pride, as a tribute to North Carolina's racing heritage. Teams of cockroaches compete in heats. Entomologists explain, for those who ask, that cockroaches do not understand they are racing and are responding to stimuli that have nothing to do with competition.</p>
+      <p>This information does not reduce the excitement of the Roachingham 500 in any meaningful way.</p>
+    </div>
+
+    <div class="sidebar-box2">
+      <div class="sb-title">Stag Beetle Battles</div>
+      <p>Male stag beetles use their oversized mandibles — which can be longer than the beetle's own body — to compete for territory and mates. BugFest stages demonstrations of this behavior. The beetles are not harmed. The crowds are transfixed. The beetles appear indifferent to the audience.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">The B-Movie</div>
+      <p>Each BugFest ends with a free evening screening of a classic creature-feature film. Past selections have included the 1957 Roger Corman production <em>Attack of the Crab Monsters</em>, in which scientists are trapped on a shrinking island with intelligent, murderous giant crabs.</p>
+      <p>The museum describes it: "Watch closely as scientists become trapped on a shrinking island with intelligent, murderous giant crabs." This is excellent programming. It has nothing to do with science outreach and everything to do with knowing your audience.</p>
+    </div>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article -->
+
+<!-- ═══ FULL-WIDTH BAND: THE FESTIVAL ═══ -->
+<div class="dark-band">
+  <div class="db-title">The Day at BugFest, Floor by Floor</div>
+  <div class="db-sub">What Thirty Thousand People Do at a Museum That Has Filled Itself with Insects</div>
+  <div class="db-cols">
+    <div class="db-col">
+      <div class="db-col-head">The Exhibits</div>
+      <p>Over a hundred exhibits spread across all four floors, organized by the featured bug but ranging freely across the arthropod world. Live specimens that visitors can handle — millipedes, hissing cockroaches, the occasional tarantula — sit alongside preserved collections and microscopy stations. Multiple university entomology departments table alongside professional scientists. The exhibits are not dumbed down. Children handle them correctly, with more comfort than most adults.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Café</div>
+      <p>Café Insecta operates throughout the day, with local chefs serving dishes that change every year. The line is a constant. The experience divides festival-goers cleanly into those who approach the Ant-Chilada with curiosity and those who approach it as a personal challenge, both of whom typically end up eating it. First-time attendees report being surprised by how good the food is. Repeat attendees report having opinions about which year had the best menu and defending those opinions vigorously.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Events</div>
+      <p>The Roachingham 500 runs heats throughout the afternoon. Stag Beetle Battles draw concentrated crowds. Scientific talks — on topics ranging from the leggiest animal on Earth (a millipede, recently discovered in Western Australia with 1,306 legs) to the acoustic properties of cicada song — run on a schedule. Live music plays outside. The day ends with the Evening Insectival, a quieter session for those who cannot bring themselves to leave, followed by the B-movie screening. The museum closes. The bugs remain.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONCLUSION ═══ -->
+<div style="max-width:860px;margin:0 auto;">
+
+<h2><span class="cat">The Point of All This</span>Thirty Thousand People and a Line for Ant Enchiladas</h2>
+
+<p>The festival coordinator Kari Wouk, who has helped run BugFest for years, has put the museum's goal with characteristic plainness: "What I like is for people to come and learn about spiders or learn about other bugs and do something, take an action to help bugs in their life. That's my favorite part: feeling that we really are making an impact, that people actually are coming in and learning about arthropods and caring about them."</p>
+
+<p>This is not the language of a curiosity show or a gross-out festival. It is the language of conservation outreach. Insects make up the vast majority of animal species on Earth. They pollinate crops, decompose organic matter, and sit at the base of most food webs. Their populations are declining, for reasons related to habitat loss, pesticide use, light pollution, and climate change, at rates that scientists find alarming. The response to this, at BugFest, is not doom and lectures. It is cockroach races and ant enchiladas and a patient entomologist who will tell you more about stag beetle mandibles than you expected to learn on a Saturday in September.</p>
+
+<div class="pull">
+  THE LINE FOR CAFÉ INSECTA<br>IS ALWAYS THE LONGEST<br><span>LINE AT THE MUSEUM.</span>
+</div>
+
+<p>The trail mix line in 1993 was the first data point. Thirty thousand annual visitors is thirty years of confirmation. People, given the right conditions — a free event, a natural setting, a genuinely entertaining program, and food that is strange enough to constitute a dare and good enough to constitute a reward — will happily spend a Saturday getting comfortable with creatures they previously crossed the street to avoid.</p>
+
+<p>The Chocolate-Chirp Cookie has cricket legs in it. The NC State student who tried one described feeling them in her throat, then described it as her favorite part of the festival. This is not a conversion story about entomophagy. It is a story about curiosity, which is what the museum has always been selling, and which, it turns out, does not require any particular courage to buy — only a willingness to stand in line, pick up a fork, and find out what happens next.</p>
+
+<p>What happens next, more often than not, is that it tastes pretty good.</p>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>BugFest &nbsp;·&nbsp; NC Museum of Natural Sciences &nbsp;·&nbsp; Downtown Raleigh &nbsp;·&nbsp; Third Saturday in September &nbsp;·&nbsp; Free admission since 1993</p>
+  <p>Café Insecta &nbsp;·&nbsp; All dishes prepared by local Raleigh chefs &nbsp;·&nbsp; Free &nbsp;·&nbsp; The line will be long &nbsp;·&nbsp; It is worth it</p>
+  <p>The Roachingham 500 &nbsp;·&nbsp; The cockroaches do not know they are racing &nbsp;·&nbsp; The audience does not care</p>
+  <p>© The Raised Eyebrow &nbsp;·&nbsp; Strange American Festivals Series &nbsp;·&nbsp; No insects were harmed in the writing of this article &nbsp;·&nbsp; Several were eaten</p>
+</div>
+
+</div>
+
+</body>
+</html>

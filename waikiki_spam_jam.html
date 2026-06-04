@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strange American Festivals: Waikiki Spam Jam — Honolulu, Hawaii</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:     #f8f0e0;
+  --newsprint: #ecddc8;
+  --ink:       #120808;
+  --ocean:     #1a4868;
+  --wave:      #2a7098;
+  --sky:       #60a8c8;
+  --spam:      #c84020;   /* the iconic Spam blue-can accent color — actually Spam's red */
+  --can:       #1e3c5a;   /* Spam can navy */
+  --gold:      #d49818;
+  --sand:      #c8a060;
+  --muted:     #5c4830;
+  --border:    #c8b090;
+  --card:      #fdf8f0;
+  --teal:      #1e7868;
+  --hibiscus:  #c82848;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ───── SERIES RIBBON ───── */
+.series-ribbon {
+  background: var(--can);
+  color: #a8c8e0;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  margin: 0 -1.2rem 0;
+}
+
+/* ───── MASTHEAD ───── */
+.masthead {
+  text-align: center;
+  padding: 2.2rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(20px, 3.5vw, 34px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--spam);
+  margin-bottom: 0.4rem;
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(48px, 10.5vw, 116px);
+  line-height: 0.86;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--spam);
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ───── BODY LAYOUT ───── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--spam);
+}
+
+/* ───── HEADINGS ───── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--spam);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ───── PULL QUOTE ───── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--spam); }
+
+/* ───── VARIETIES GRID ───── */
+.varieties-band {
+  background: var(--can);
+  color: #c8ddf0;
+  padding: 1.5rem 1.6rem 1.3rem;
+  margin: 2rem 0 2.2rem;
+}
+.vb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: #ffd060;
+  margin-bottom: 0.3rem;
+}
+.vb-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,208,96,0.5);
+  margin-bottom: 1rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  padding-bottom: 0.5rem;
+}
+.varieties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.35rem;
+}
+.v-item {
+  font-size: 13px;
+  font-weight: 300;
+  color: #b8cce0;
+  padding: 0.3rem 0.5rem;
+  background: rgba(255,255,255,0.05);
+  border-left: 2px solid var(--spam);
+  line-height: 1.35;
+}
+.v-item.hawaii { border-left-color: #ffd060; color: #ffd060; font-weight: 400; }
+.v-item.new-variety { border-left-color: #80e0a0; color: #a0e8b8; }
+
+/* ───── RECIPE CARDS ───── */
+.recipes-section {
+  margin: 2rem 0 2.2rem;
+}
+.recipe-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--spam);
+  padding: 1.1rem 1.2rem 1rem;
+  margin-bottom: 1rem;
+}
+.recipe-card.teal { border-top-color: var(--teal); }
+.recipe-card.ocean { border-top-color: var(--ocean); }
+.recipe-card.gold  { border-top-color: var(--gold); }
+.recipe-card.hibiscus { border-top-color: var(--hibiscus); }
+.rc-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  margin-bottom: 0.1rem;
+  line-height: 1.1;
+}
+.rc-type {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+.rc-ingredients {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+.rc-method {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* ───── FESTIVAL MENU PANEL ───── */
+.menu-panel {
+  background: var(--ink);
+  color: #e8dcc8;
+  padding: 1.4rem 1.5rem 1.2rem;
+  margin: 2rem 0 2.2rem;
+}
+.mp-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.mp-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(212,152,24,0.5);
+  margin-bottom: 1rem;
+  border-bottom: 0.5px solid #2a2010;
+  padding-bottom: 0.5rem;
+}
+.mp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 1.2rem;
+}
+.mp-item {
+  font-size: 13.5px;
+  font-style: italic;
+  font-weight: 300;
+  color: #c0b098;
+  padding: 0.25rem 0;
+  border-bottom: 0.5px solid #1e1808;
+  line-height: 1.4;
+}
+
+/* ───── SIDEBAR ───── */
+.sidebar-box {
+  background: var(--can);
+  color: #c0d8f0;
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: #ffd060;
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.12);
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #a8c4e0;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--spam);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-card .sc-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-card p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.sidebar-card p:last-child { margin-bottom: 0; }
+
+.sidebar-stat {
+  background: var(--spam);
+  color: #fff;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ss-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+.ss-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.45;
+  margin-top: 0.3rem;
+}
+
+/* ───── FULL-WIDTH DARK BAND ───── */
+.dark-band {
+  background: var(--ocean);
+  color: #c8ddf0;
+  padding: 2.5rem 2rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.db-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  color: #ffd060;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+.db-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,208,96,0.45);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.db-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.db-col-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: #ffd060;
+  border-bottom: 0.5px solid rgba(255,208,96,0.3);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.db-col p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #a0b8d0;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+
+/* ───── ORNAMENT / FOOTER ───── */
+.ornament {
+  text-align: center;
+  color: var(--spam);
+  margin: 3rem 0 2rem;
+  letter-spacing: 1em;
+  font-size: 14px;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding-top: 1rem;
+  line-height: 2;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .db-cols { grid-template-columns: 1fr; gap: 1rem; }
+  .mp-grid { grid-template-columns: 1fr; }
+  .varieties-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SERIES RIBBON ═══ -->
+<div class="series-ribbon">Strange American Festivals</div>
+
+<!-- ═══ MASTHEAD ═══ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span class="pub-name">The Raised Eyebrow</span>
+    <span>Honolulu, Hawaii &nbsp;·&nbsp; Annual · April/May</span>
+  </div>
+  <p class="kicker">Strange American Festivals</p>
+  <h1>WAIKIKI<br><em>SPAM</em><br>JAM</h1>
+  <p class="deck">In which Honolulu closes its most famous street to traffic every spring and fills it with Spam musubi, Spam nachos, Spam cheesecake, seven million reasons why Hawaii's relationship with canned pork is more complicated and more interesting than it looks.</p>
+  <p class="byline-row">Raised Eyebrows &nbsp;·&nbsp; Festival Edition &nbsp;·&nbsp; Kalākaua Avenue, Honolulu &nbsp;·&nbsp; Est. 2002</p>
+</div>
+
+<!-- ═══ TWO-COLUMN BODY ═══ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">Every year, residents of the state of Hawaii collectively eat approximately seven million cans of Spam. The state's population is approximately 1.4 million people. Do that division and you get roughly five cans per person per year — which sounds like a lot until you remember that Hawaii has no meaningful beef industry, relied on imported canned goods through most of the twentieth century, and spent the years between 1941 and 1945 as an active war zone where fresh protein was sometimes difficult to obtain and a can of pressed pork with a long shelf life was not merely convenient but essential.</p>
+
+    <p>The Spam did not leave when the soldiers did. It stayed, worked its way into the local cuisine, fused with Japanese and Filipino and Portuguese and Korean cooking traditions, and became something the mainland never quite managed to make it: a genuine ingredient. You can buy it at McDonald's in Hawaii. 7-Eleven Hawaii delivers fresh Spam musubi multiple times a day. Costco Hawaii stocks it by the case. Every grocery store carries every variety. It is, in the most unsentimental sense of the word, food — not ironic food, not nostalgic food, not curiosity food. Just food.</p>
+
+    <p>The Waikiki Spam Jam, which has filled Kalākaua Avenue every spring since 2002, is the annual public celebration of this fact. Kalākaua — the main drag through Waikiki, lined with hotels and restaurants — closes to car traffic, and 30,000 to 40,000 people show up to eat Spam in approximately thirty different forms prepared by some of Honolulu's better restaurants, listen to live music on three stages, browse merchandise tents, and engage in what amounts to a civic expression of affection for something the rest of the country mostly keeps behind the irony barrier.</p>
+
+    <h2><span class="cat">The History</span>How Spam Got to Hawaii, and Why It Stayed</h2>
+
+    <p>Spam was invented in 1937 by Hormel Foods in Austin, Minnesota — the name devised by a radio actor named Ken Daigneau, who won a $100 contest for it, the contest having been organized by Daigneau's brother-in-law, who happened to be a Hormel vice president. The product consisted of six ingredients: pork shoulder, ham, salt, water, potato starch, and sodium nitrite, pressed into the now-iconic rectangular can and vacuum-sealed for shelf stability.</p>
+
+    <p>When the United States entered World War II in 1941, Spam became a critical military ration — cheap, portable, imperishable, requiring no refrigeration. More than 100 million pounds of it were supplied to Allied forces. It went everywhere American soldiers went, which included Hawaii in very large quantities. Pearl Harbor became one of the largest military installations in the world almost overnight, and Spam came with the troops.</p>
+
+    <p>But the story goes somewhat deeper than soldiers sharing their rations, according to food historian Rachel Laudan. The American government, concerned about Hawaii's large population of Japanese descent, also restricted the islands' deep-sea fishing operations in the years leading up to the war. This removed a major protein source from local diets and created a genuine dependency on imported shelf-stable goods just as the war was beginning. Spam didn't merely arrive as a novelty — it arrived as a necessity, at a moment of real food scarcity, into a community that knew how to make something out of very little.</p>
+
+    <p>Japanese-Hawaiian home cooks did what Japanese cooks do with good ingredients: they thought about texture and balance. They fried slices of Spam and seasoned them with shoyu and sugar, laid them on rice, wrapped the whole thing in nori. The result — Spam musubi — is structurally identical to Japanese onigiri, which is structurally a portable meal. It was cheap, filling, portable, and delicious. It spread to every convenience store, every school lunch, every beach picnic and family gathering. It became, over decades, Hawaiian.</p>
+
+    <div class="pull">
+      SEVEN MILLION CANS A YEAR.<br>1.4 MILLION PEOPLE.<br><span>HAWAII IS NOT<br>BEING IRONIC.</span>
+    </div>
+
+    <h2><span class="cat">The Varieties</span>What Spam Has Become Since 1937</h2>
+
+    <p>The mainland often doesn't realize how far the Spam universe has expanded since the original blue can. Hormel now produces fifteen permanent varieties — the 12-pack sampler sold at Costco and specialty retailers contains one of each of the twelve core flavors, which tells you something about who the audience is. The expansion began in 1971 with Hickory Smoke and Spam with Cheese, and has continued steadily: the most recent permanent addition, Korean BBQ, launched in 2024 as the brand's twelfth permanent variety, a nod to Spam's deep integration into Korean cuisine via the Korean War and the dish known as budae jjigae (army stew). A Gochujang variety and a Bachan's Japanese Barbecue Sauce collaboration followed.</p>
+
+    <p>In Hawaii's grocery stores and at Costco, all of these are on the shelves. Teriyaki, developed specifically for the Hawaiian market, is among the most popular. The full current lineup reads as a kind of accidental world history, tracing every military deployment and immigration wave that carried Spam to a new culture that then made something of its own with it.</p>
+
+    <div class="varieties-band">
+      <div class="vb-title">The Complete Current Spam Lineup</div>
+      <div class="vb-sub">Permanent varieties as of 2026 &nbsp;·&nbsp; All stocked in Hawaii · Most available at Costco by the case</div>
+      <div class="varieties-grid">
+        <div class="v-item">Classic</div>
+        <div class="v-item">Lite</div>
+        <div class="v-item">25% Less Sodium</div>
+        <div class="v-item hawaii">Teriyaki ★ Hawaii</div>
+        <div class="v-item">Hot &amp; Spicy</div>
+        <div class="v-item">Jalapeño</div>
+        <div class="v-item">Hickory Smoke</div>
+        <div class="v-item">with Real Bacon</div>
+        <div class="v-item">Oven Roasted Turkey</div>
+        <div class="v-item">Maple Flavored</div>
+        <div class="v-item">Tocino (Filipino-style)</div>
+        <div class="v-item new-variety">Korean BBQ ✦ 2024</div>
+        <div class="v-item new-variety">Gochujang ✦ New</div>
+        <div class="v-item new-variety">Bachan's Teriyaki ✦ New</div>
+      </div>
+    </div>
+
+    <h2><span class="cat">The Recipes</span>What You Actually Do With It</h2>
+
+    <p>The festival's thirty-plus restaurant booths represent the creative outer edge of what Hawaiian chefs do with Spam — Spam nachos, Spam banh mi, Spam cheesecake. But the home kitchen tradition runs deeper and wider. These are the dishes that have been feeding Hawaii for decades, from the simplest preparation to the ones that require a little more patience.</p>
+
+    <div class="recipes-section">
+
+      <div class="recipe-card">
+        <div class="rc-name">Spam Musubi</div>
+        <div class="rc-type">The Essential · Convenience Store Staple · Found Everywhere</div>
+        <div class="rc-ingredients">Spam Classic or Teriyaki · sushi rice · nori sheets · shoyu · sugar · furikake (optional)</div>
+        <div class="rc-method">Slice Spam into ½-inch planks. Mix 2 tbsp shoyu with 1 tbsp sugar and fry Spam in the glaze until caramelized on both sides, about 2 minutes per side. Press warm sushi rice into a musubi mold (or use the empty Spam can itself, rinsed). Place a slice of glazed Spam on top of the rice block, sprinkle furikake if using, and wrap tightly with a strip of nori, pressing to seal. Eat immediately or wrap in plastic for later. The 7-Elevens of Hawaii make approximately several hundred of these before 9 a.m.</div>
+      </div>
+
+      <div class="recipe-card teal">
+        <div class="rc-name">Spam Fried Rice</div>
+        <div class="rc-type">Weeknight Staple · Day-Old Rice Required · Fifteen Minutes</div>
+        <div class="rc-ingredients">Spam Classic · day-old cooked rice · eggs · shoyu · sesame oil · green onion · frozen peas or corn (optional)</div>
+        <div class="rc-method">Dice Spam into small cubes and fry in a hot wok or skillet until edges are crisp and browned. Push to the side, scramble 2 eggs in the pan. Add cold day-old rice (fresh rice will clump) and toss everything together over high heat. Season with 2 tbsp shoyu and a drizzle of sesame oil. Finish with sliced green onion. The key is high heat and not stirring too much — you want some rice to catch and crisp on the pan. This is what Hawaiian families eat on Tuesday night.</div>
+      </div>
+
+      <div class="recipe-card ocean">
+        <div class="rc-name">Spam Loco Moco</div>
+        <div class="rc-type">Island Comfort Classic · Brown Gravy Required · Weekend Breakfast</div>
+        <div class="rc-ingredients">Spam Classic · white rice · eggs · brown gravy (from packet or scratch) · green onion</div>
+        <div class="rc-method">Slice Spam thick — about ¾ inch — and pan-fry until deeply browned on both sides. Layer in a bowl: rice first, then Spam, then a fried egg (sunny-side up, yolk intact), then ladle brown gravy over everything until it pools satisfyingly around the base. This is a traditional loco moco with Spam standing in for the hamburger patty, which is not a substitution so much as an equally valid original. The runny yolk breaks into the gravy. The gravy soaks into the rice. You will not be hungry for several hours.</div>
+      </div>
+
+      <div class="recipe-card gold">
+        <div class="rc-name">Spam Saimin</div>
+        <div class="rc-type">Hawaii's Noodle Soup · Fusion in a Bowl · Lunch</div>
+        <div class="rc-ingredients">Spam Classic · fresh saimin noodles (or ramen) · dashi or chicken broth · kamaboko (fish cake) · green onion · soft-boiled egg · nori</div>
+        <div class="rc-method">Bring broth to a simmer and season with shoyu to taste — saimin broth is lighter and slightly sweet compared to ramen. Cook noodles separately and drain. Slice Spam and either pan-fry briefly or add directly. Arrange noodles in a bowl, ladle broth over, and top with Spam slices, a slice of kamaboko, halved soft-boiled egg, nori, and green onion. Saimin is Hawaii's own noodle soup — descended from Japanese, Chinese, and Filipino influences — and Spam is its most reliable protein. Zippy's has been serving this combination since 1966.</div>
+      </div>
+
+      <div class="recipe-card hibiscus">
+        <div class="rc-name">Spam Fried Wontons</div>
+        <div class="rc-type">Festival Standard · Party Food · Crowd Pleaser</div>
+        <div class="rc-ingredients">Spam Classic · cream cheese · wonton wrappers · green onion · oil for frying · sweet chili sauce for dipping</div>
+        <div class="rc-method">Mince Spam finely and mix with softened cream cheese and sliced green onion in a ratio of roughly 2:1 Spam to cream cheese. Place a small spoonful in the center of each wonton wrapper. Fold into a triangle, pressing edges firmly, or gather corners to the center and twist. Fry in 350°F oil for about 90 seconds per side until golden. Drain and serve with sweet chili sauce. This appears on the Spam Jam festival menu every year in some variation and disappears rapidly. The cream cheese seems counterintuitive until you taste it.</div>
+      </div>
+
+    </div>
+
+    <h2><span class="cat">The Festival Menu</span>What the Chefs Do With It</h2>
+
+    <p>The home kitchen recipes above are the foundation. The festival takes them as a starting point and sees how far thirty of Honolulu's best restaurants are willing to go. The answer, consistently, is quite far.</p>
+
+    <div class="menu-panel">
+      <div class="mp-title">Selected Dishes from Spam Jam Menus Past and Present</div>
+      <div class="mp-sub">Waikiki's finest restaurants · Kalākaua Avenue · Every Spring Since 2002</div>
+      <div class="mp-grid">
+        <div class="mp-item">Spam Fried Saimin (Aloha Table)</div>
+        <div class="mp-item">Candied Spam Hula Pie (Duke's Waikiki)</div>
+        <div class="mp-item">Spam Lau Lau (Atlantis Seafood)</div>
+        <div class="mp-item">Spam Tacos (Buho Cantina)</div>
+        <div class="mp-item">Spam Crab Cakes (Eggs 'n Things)</div>
+        <div class="mp-item">Spam Chocolate Tarts (Eggs 'n Things)</div>
+        <div class="mp-item">Spam Andagi (Okinawan doughnuts)</div>
+        <div class="mp-item">Huli Huli Spam Sliders (Gordon Biersch)</div>
+        <div class="mp-item">Spam Island Beach Tacos</div>
+        <div class="mp-item">Spam Katsu Sandwich (Hula Grill)</div>
+        <div class="mp-item">Spam Nachos (Stripsteak)</div>
+        <div class="mp-item">Spam Mochi Waffles (Kokoro Cafe)</div>
+        <div class="mp-item">Spam Shaka Cones</div>
+        <div class="mp-item">Spam Kimchi Fried Rice</div>
+        <div class="mp-item">Spam Lo Mein (PF Chang's)</div>
+        <div class="mp-item">Spam Lettuce Wraps</div>
+        <div class="mp-item">Pineapple Spam Fried Rice</div>
+        <div class="mp-item">Spam Curry (Noi Thai)</div>
+        <div class="mp-item">Spam Cheeseburger & Spam Hot Dog</div>
+        <div class="mp-item">Aloha Pie with Spam & Pineapple</div>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-stat">
+      <div class="ss-num">7M</div>
+      <div class="ss-label">cans of Spam consumed<br>in Hawaii per year<br>for 1.4 million people</div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Fast Facts</div>
+      <p><strong style="color:#ffd060;">Location:</strong> Kalākaua Avenue, Waikiki, Honolulu</p>
+      <p><strong style="color:#ffd060;">When:</strong> Last weekend of April, annually since 2002</p>
+      <p><strong style="color:#ffd060;">Attendance:</strong> 30,000–40,000 per year</p>
+      <p><strong style="color:#ffd060;">Admission:</strong> Free</p>
+      <p><strong style="color:#ffd060;">Restaurants:</strong> 20–30 Waikiki restaurants serving 30+ Spam dishes</p>
+      <p><strong style="color:#ffd060;">Fundraiser for:</strong> Hawai'i Foodbank, Waikīkī Community Center, Visitor Aloha Society of Hawai'i</p>
+      <p><strong style="color:#ffd060;">Spam in Hawaii:</strong> Available in every grocery store. Every variety. By the case at Costco.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">The Musubi Problem</div>
+      <p>Spam musubi is simultaneously the simplest and most argued-about food in Hawaii. Purists insist on three ingredients: Spam, sushi rice, nori. Others add furikake, egg, pickled daikon, teriyaki glaze, or kimchi. The shape matters too — some prefer the rice on top, others on the bottom, others sandwiched around the Spam.</p>
+      <p>Every family has a version. Every convenience store has a version. Every version is correct and also slightly inferior to whatever version you grew up with.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">McDonald's Hawaii</div>
+      <p>McDonald's Hawaii serves a breakfast platter of Spam, Portuguese sausage, scrambled eggs, and rice. This is not a regional novelty or a limited-time offering. It has been on the menu for decades. It is ordered every morning by a large number of people who are not being ironic.</p>
+      <p>On the mainland, McDonald's does not serve Spam. This gap in the menu is one of the more eloquent cultural divides in the fast food industry.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Spam Globally</div>
+      <p>Hawaii is the top U.S. consumer, but Spam's reach goes further. In South Korea, Spam became embedded in cuisine through the Korean War — budae jjigae (army stew) is a direct descendant — and Spam gift sets are popular during holidays. In Guam and the Philippines, it is a pantry staple. In the UK, it never entirely left post-rationing kitchens. Over 9 billion cans have been sold since 1937.</p>
+      <p>The Teriyaki and Tocino (Filipino bacon-style) varieties were both developed specifically for Pacific markets, which is why Hawaii grocery stores have always stocked them.</p>
+    </div>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article -->
+
+<!-- ═══ FULL-WIDTH BAND: THE FESTIVAL ═══ -->
+<div class="dark-band">
+  <div class="db-title">The Spam Jam, On the Ground</div>
+  <div class="db-sub">What Thirty Thousand People Do on Kalākaua Avenue on a Saturday Night in April</div>
+  <div class="db-cols">
+    <div class="db-col">
+      <div class="db-col-head">The Food</div>
+      <p>Kalākaua Avenue closes to traffic at 4 p.m. and the food booths open. Each of the 20 to 30 participating restaurants operates a street-side stall serving two or three Spam dishes, sold for a few dollars each. The range runs from the utterly familiar (musubi, fried rice) to the festival-specific (Spam andagi, Spam chocolate tarts, Spam mochi waffles). The candied Spam hula pie from Duke's Waikiki — vanilla ice cream topped with a macadamia nut crust and candied Spam — has been a recurring standout. The crowds around the most popular booths are substantial. The event runs until 10 p.m.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Entertainment</div>
+      <p>Three stages of live music and hula performances run throughout the evening, interspersed between the food booths. The entertainment is genuinely good — not background music but headline acts by local and visiting performers. The festival ends each year with a drone show. Merchandise tents sell Spam-themed apparel, accessories, and locally crafted goods; the official festival merchandise, developed with local design company Eden in Love, is available only at the festival and online. The Spammy mascot makes an appearance, because of course it does.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Cause</div>
+      <p>The Spam Jam is a fundraiser. Donation tents collect canned goods and cash for the Hawai'i Foodbank — which distributes to food-insecure residents of the same islands where Spam has been a reliable food source for eighty years. The festival also donates to the Waikīkī Community Center and the Visitor Aloha Society of Hawaii. A street party on Waikiki's most famous avenue, headlined by a canned pork product, raising money to feed people who can't otherwise afford to eat: this is, in its way, a perfectly coherent story from beginning to end.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONCLUSION ═══ -->
+<div style="max-width:860px;margin:0 auto;">
+
+<h2><span class="cat">The Larger Point</span>What Seven Million Cans Actually Mean</h2>
+
+<p>The mainland's relationship with Spam is largely comic — the butt of a joke, a punchline for processed food, the subject of a Monty Python sketch. This is fine. The mainland is entitled to its relationship with Spam. But it does make the Waikiki Spam Jam somewhat hard to explain to people who haven't been to Hawaii, because the festival is not ironic and it is not nostalgic in the melancholy sense. It is a celebration of something that is actually, currently, genuinely loved.</p>
+
+<p>That love has complicated roots. It grew from wartime rationing, from fishing restrictions, from the ingenuity of home cooks who figured out that a slice of fried Spam and some sushi rice and a strip of nori made a perfect portable meal. It grew from the particular mix of cultures — Japanese, Filipino, Korean, Portuguese, Native Hawaiian, American military — that have shaped Hawaiian cuisine into something no other place in the world has produced. Spam musubi is not a joke. It is the result of specific historical conditions, specific culinary traditions, and fifty years of people deciding it was worth making again tomorrow.</p>
+
+<div class="pull">
+  SPAM CAME WITH THE SOLDIERS.<br>THE SOLDIERS LEFT.<br><span>THE SPAM STAYED.<br>HAWAII MADE SOMETHING OF IT.</span>
+</div>
+
+<p>The festival began in 2002 with about 5,000 attendees and has grown to 35,000 to 40,000. It is free to attend. It raises money for the food bank. It closes the main street of Waikiki for one Saturday a year and fills it with music and food and people eating something that, everywhere else in the country, sits in the back of the pantry next to the disaster supplies.</p>
+
+<p>In Hawaii, it does not sit in the back of the pantry. In Hawaii it is breakfast, lunch, and dinner. It is the 7-Eleven musubi eaten warm in the car. It is the Costco case carried out to the parking lot. It is the fourteen varieties on the grocery store shelf, including Teriyaki, which Hormel developed specifically because Hawaii asked for it. It is seven million cans a year, in a state of 1.4 million people, and not one of those cans is being consumed with a sense of irony.</p>
+
+<p>The Spam Jam is where Hawaii makes this point publicly, on the most famous street it has, to 35,000 people who already agree and a few thousand tourists who are about to.</p>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>SPAM® introduced 1937 · Hormel Foods, Austin, Minnesota · Named by Ken Daigneau for $100 · Over 9 billion cans sold worldwide</p>
+  <p>Waikiki Spam Jam · Kalākaua Avenue, Honolulu · Free admission · Fundraiser for Hawai'i Foodbank · Est. 2002 · 30,000–40,000 attendees annually</p>
+  <p>Current varieties: Classic, Lite, Less Sodium, Teriyaki, Hot & Spicy, Jalapeño, Hickory Smoke, Bacon, Turkey, Maple, Tocino, Korean BBQ, Gochujang, Bachan's Teriyaki</p>
+  <p>© The Raised Eyebrow · Strange American Festivals Series · Hawaii is not being ironic · The musubi is better than you think</p>
+</div>
+
+</div>
+
+</body>
+</html>

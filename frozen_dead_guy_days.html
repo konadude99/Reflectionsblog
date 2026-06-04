@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strange American Festivals: Frozen Dead Guy Days</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root {
+  --paper:     #eef2f7;
+  --newsprint: #dce4ef;
+  --ink:       #0e1218;
+  --blue:      #1a3a6e;
+  --ice:       #3a7bbf;
+  --frost:     #6aaad4;
+  --gold:      #c8900a;
+  --muted:     #4e5e72;
+  --border:    #aabdd4;
+  --card:      #f5f8fc;
+  --red:       #b02020;
+  --norway:    #0a4a9a;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ───── SERIES RIBBON ───── */
+.series-ribbon {
+  background: var(--norway);
+  color: #a8c8f0;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  margin: 0 -1.2rem 0;
+}
+
+/* ───── MASTHEAD ───── */
+.masthead {
+  text-align: center;
+  padding: 2.2rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(20px,3.5vw,34px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ice);
+  margin-bottom: 0.4rem;
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(44px, 9.5vw, 100px);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--ice);
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ───── BODY LAYOUT ───── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--ice);
+}
+
+/* ───── SECTION HEADINGS ───── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ice);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ───── PULL QUOTE ───── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--ice); }
+
+/* ───── TIMELINE ───── */
+.timeline {
+  margin: 2rem 0 2.5rem;
+  border-left: 3px solid var(--ice);
+  padding-left: 1.4rem;
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.9rem;
+  top: 0.42em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ice);
+  border: 2px solid var(--paper);
+  outline: 1.5px solid var(--ice);
+}
+.tl-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ice);
+  margin-bottom: 0.1rem;
+}
+.tl-event {
+  font-size: 15.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ───── SIDEBAR ───── */
+.sidebar-box {
+  background: var(--blue);
+  color: #ddeeff;
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: #a8d0f0;
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.2);
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #ccdded;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-box2 {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--ice);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-box2 .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p:last-child { margin-bottom: 0; }
+
+.sidebar-stat {
+  background: var(--ice);
+  color: #fff;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ss-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+.ss-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.4;
+  margin-top: 0.3rem;
+}
+
+/* ───── FULL-WIDTH DARK BAND ───── */
+.dark-band {
+  background: var(--blue);
+  color: #ddeeff;
+  padding: 2.5rem 2rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.db-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  color: #a8d0f0;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+.db-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(168,208,240,0.55);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.db-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.db-col-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: #a8d0f0;
+  border-bottom: 0.5px solid rgba(168,208,240,0.3);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.db-col p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #b8ccdf;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+
+/* ───── NORWAY CALLOUT ───── */
+.norway-bar {
+  background: var(--norway);
+  color: #cce0ff;
+  padding: 1rem 1.4rem;
+  margin: 2.2rem 0;
+  border-left: 5px solid #ef2b2d; /* Norwegian flag red */
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6;
+}
+.norway-bar strong {
+  font-style: normal;
+  color: #fff;
+}
+
+/* ───── ORNAMENT / FOOTER ───── */
+.ornament {
+  text-align: center;
+  color: var(--ice);
+  margin: 3rem 0 2rem;
+  letter-spacing: 1em;
+  font-size: 14px;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding-top: 1rem;
+  line-height: 2;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .db-cols { grid-template-columns: 1fr; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SERIES RIBBON ═══ -->
+<div class="series-ribbon">Strange American Festivals</div>
+
+<!-- ═══ MASTHEAD ═══ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span class="pub-name">The Raised Eyebrow</span>
+    <span>Estes Park, Colorado &nbsp;·&nbsp; Annual · March</span>
+  </div>
+  <p class="kicker">Strange American Festivals</p>
+  <h1>FROZEN<br><em>DEAD GUY</em><br>DAYS</h1>
+  <p class="deck">In which a Norwegian grandfather, a deported grandson, a cryonics shed, an overworked caretaker, and the town of Nederland, Colorado combine to produce one of the most improbable festivals in the history of American winter recreation.</p>
+  <p class="byline-row">Raised Eyebrows &nbsp;·&nbsp; Festival Edition &nbsp;·&nbsp; Estes Park, Colorado &nbsp;·&nbsp; Est. 2002</p>
+</div>
+
+<!-- ═══ TWO-COLUMN BODY ═══ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">Bredo Morstøl was born in Norway in 1900. He spent his entire life there — fishing, painting, skiing, and hiking in the mountains of his homeland. For more than thirty years he served as the director of parks and recreation in Norway's Bærum County. He was, by all available accounts, a man who enjoyed the outdoors and lived pleasantly and died in 1989 without any expectation that he would become the centerpiece of a Colorado street festival.</p>
+
+    <p>He did not anticipate his grandson.</p>
+
+    <p>Trygve Bauge was a Norwegian citizen living in Nederland, Colorado, a small mountain town about forty miles west of Denver, and he had strong opinions about what should happen to dead people. Specifically, he believed that science would eventually advance to the point where frozen corpses could be thawed and reanimated, and he saw no reason to put perfectly good dead people in the ground when they could instead be waiting in nitrogen for a future that might yet restore them.</p>
+
+    <p>When his grandfather died of a heart condition in 1989, Trygve did not hesitate. Bredo Morstøl was packed in dry ice, prepared for international travel, and shipped to the Trans Time cryonics facility in Oakland, California, where he was placed in liquid nitrogen for the next four years while Trygve finalized his plans.</p>
+
+    <p>The plans, as it turned out, were ambitious.</p>
+
+    <h2><span class="cat">The Plan</span>A Cryonics Facility in the Mountains</h2>
+
+    <p>Trygve envisioned building his own cryonics operation in Nederland — a private facility where the frozen dead could be stored indefinitely in the high, cold Colorado air, waiting for science to catch up with their families' hopes. In 1993 he had his grandfather transferred from the California facility to a shed behind his Nederland home, where Bredo was installed in a homemade crypt: a stainless steel sarcophagus packed in dry ice, enclosed in an insulated box of plywood and dense foam, in a backyard shed on a mountain hillside.</p>
+
+    <p>Trygve was not working alone. His mother, Aud Morstøl, was a fellow true believer in cryonics, and she joined him in Nederland, living in the unfinished house while the facility took shape around her. There was also, records suggest, at least one other client — a man from Chicago whose family had also signed on for the grand experiment of cold storage and eventual resurrection.</p>
+
+    <p>Then, in 1994, the plan encountered complications.</p>
+
+    <p>Trygve had been living in the United States on a tourist visa. He had been living on this tourist visa for fourteen years. The authorities, apparently arriving at this arithmetic somewhat belatedly, deported him to Norway. Aud remained, continuing to maintain the shed and its frozen occupants, until 1995 — when she was evicted from the unfinished house for a separate reason: it lacked electricity and plumbing, which Nederland required of its residential dwellings.</p>
+
+    <p>Facing eviction and return to Norway, Aud did what anyone in her position might do. She called a reporter and told him about her father in the shed.</p>
+
+    <div class="pull">
+      THE CITY PASSED A LAW<br>AGAINST KEEPING FROZEN<br><span>CORPSES IN YOUR YARD.</span><br>BREDO WAS GRANDFATHERED IN.
+    </div>
+
+    <h2><span class="cat">The Ordinance</span>Nederland Responds</h2>
+
+    <p>The story spread quickly. Nederland's city council, confronted with the discovery that a resident had been keeping a frozen Norwegian grandfather — and at least one frozen Chicagoan — in a backyard shed, did what municipal governments do when confronted with a situation for which no prior ordinance applies: they wrote one. The town passed a law prohibiting the storage of "the whole or any part of the person, body or carcass of a human being" on private property within city limits.</p>
+
+    <p>Bredo Morstøl, having been there before the law existed, was grandfathered in. The Chicago man's remains were returned to his family. Grandpa Bredo stayed.</p>
+
+    <p>With the family back in Norway and the original plan for a cryonics facility quietly abandoned, someone was going to have to actually take care of the frozen grandfather. The task eventually fell to Bo "The Iceman" Shaffer, an environmental consultant who had read about Bredo in a newspaper and found his way to Trygve Bauge through a futurist email listserv — which is, in retrospect, exactly where one would expect to find people who transport dry ice to frozen Norwegians in mountain sheds.</p>
+
+    <p>Shaffer's job was straightforward in description and arduous in practice. Every month, he and his assistants would haul 1,700 pounds of dry ice from Denver, up through mountain passes, to the shed above Nederland, where they would open the freezer box, pack in the ice, confirm Grandpa's status, and seal things back up. The temperature inside was maintained at around -60 degrees Fahrenheit. An ordinary window thermometer monitored conditions. No one had opened the sarcophagus to check its contents; it was, Shaffer noted philosophically, better not to know.</p>
+
+    <p>Shaffer also, from time to time, gave tours. Among the visitors were documentarians, journalists, curious locals, and — on at least one memorable occasion — psychics, who reported that Bredo was aware of the fuss being made on his behalf, found it amusing, and was otherwise doing fine.</p>
+
+    <div class="norway-bar">
+      <strong>What Bredo Morstøl did not know:</strong> That he would be stored in a Tuff Shed in Colorado for thirty years. That a law would be written specifically because of him. That thousands of people in elaborate costumes would race coffins in his honor every March. That his caretaker would be found through a futurist email listserv. That the psychics would say he found the whole thing amusing. He was, after all, the director of parks and recreation in Bærum County. He had skied the mountains of Norway. He had painted and fished and hiked. None of this was in the plan.
+    </div>
+
+    <h2><span class="cat">The Caretakers</span>A Job Unlike Most Jobs</h2>
+
+    <p>Shaffer eventually handed off the caretaking duties to Brad Wickham, a Nederland resident who had moved to the mountains hoping to connect with nature and start fresh, and who ended up, through a series of events that presumably seemed logical at the time, spending the better part of a decade hauling dry ice up to a shed to keep a dead Norwegian frozen.</p>
+
+    <p>Wickham took the responsibility seriously. Every other week — the schedule having been intensified from monthly — he would make the run from Denver with his load of ice, perform the necessary maintenance, and ensure that Grandpa Bredo remained at temperature. He described it as a commitment. A form of custodianship. A promise, in some sense, to a family in Norway who believed, with the specific and undimmed optimism of the cryonics faithful, that the man in the shed might one day walk out of it.</p>
+
+    <p>In 2023, after three decades in the Nederland shed, Bredo was moved. The festival had outgrown the small mountain town and relocated to Estes Park, about sixty-five miles north, where it is now held at the Events Complex and the Stanley Hotel — the hotel that inspired Stephen King's <em>The Shining</em>, because apparently the universe has a sense of occasion. Bredo now rests in a 12-foot steel tank of liquid nitrogen at -320 degrees Fahrenheit in what has become the International Cryonics Museum, where visitors can pay twenty dollars to tour the facility and stand near the container.</p>
+
+    <p>He is, as the festival literature notes, still waiting.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">1989</div>
+        <div class="tl-event">Bredo Morstøl dies of a heart condition in Norway. His grandson Trygve immediately packs him in dry ice. The adventure begins.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1990–1993</div>
+        <div class="tl-event">Bredo resides in liquid nitrogen at the Trans Time cryonics facility in Oakland, California, while Trygve builds his own facility in Nederland, Colorado.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1993</div>
+        <div class="tl-event">Bredo is transferred to a homemade plywood-and-insulation crypt in a backyard shed in Nederland. The facility has two clients: Bredo and a man from Chicago.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1994</div>
+        <div class="tl-event">Trygve is deported for overstaying his visa by fourteen years. His mother Aud continues alone.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1995</div>
+        <div class="tl-event">Aud is evicted for living without electricity or plumbing. She tells a reporter about her father in the shed. Nederland passes an ordinance against frozen corpses on private property. Bredo is grandfathered in. Tuff Shed donates a better structure.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2002</div>
+        <div class="tl-event">Nederland launches the first Frozen Dead Guy Days festival. Trygve Bauge calls it "cryonics' first Mardi Gras." He is not wrong.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2023</div>
+        <div class="tl-event">The festival outgrows Nederland and moves to Estes Park. Bredo is transferred to the Stanley Hotel's International Cryonics Museum. He is now frozen at -320°F in a 12-foot steel tank, next to a haunted hotel. The psychics maintain he is amused.</div>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-stat">
+      <div class="ss-num">−320°</div>
+      <div class="ss-label">Fahrenheit<br>Bredo's current temperature<br>at the Stanley Hotel</div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Fast Facts</div>
+      <p><strong style="color:#a8d0f0;">Location:</strong> Estes Park, Colorado (moved from Nederland in 2023)</p>
+      <p><strong style="color:#a8d0f0;">When:</strong> First full weekend of March, annually since 2002</p>
+      <p><strong style="color:#a8d0f0;">The Man:</strong> Bredo Morstøl, born 1900, died 1989, frozen ever since</p>
+      <p><strong style="color:#a8d0f0;">Current Resting Place:</strong> International Cryonics Museum, The Stanley Hotel</p>
+      <p><strong style="color:#a8d0f0;">The Ordinance:</strong> Nederland made it illegal to store frozen human remains on private property. Bredo was already there.</p>
+      <p><strong style="color:#a8d0f0;">Accolades:</strong> <em>New York Times</em> Top 10 Best Parties of Winter (alongside Mardi Gras and Rio Carnival)</p>
+    </div>
+
+    <div class="sidebar-box2">
+      <div class="sb-title">The Caretaker Problem</div>
+      <p>In 2012, the then-caretaker Bo "The Iceman" Shaffer threatened to quit after a dispute with Trygve over compensation. Trygve responded by threatening to move Bredo to Michigan.</p>
+      <p>The standoff was eventually resolved. Bredo did not go to Michigan. Wickham eventually took over. Trygve continued his advocacy for cryonics from Norway.</p>
+      <p>No one has opened the sarcophagus to verify the current status of its occupant. This is, the caretakers agree, probably for the best.</p>
+    </div>
+
+    <div class="sidebar-box2">
+      <div class="sb-title">What Bredo Knew</div>
+      <p>Trygve has said that his grandfather was aware of his interest in cryonics but did not know he himself would be frozen — though, as Trygve noted, Bredo "once expressed a gut feeling" that he wouldn't receive a traditional burial.</p>
+      <p>Whether this constitutes informed consent is a question the field of cryonics has generally chosen not to pursue aggressively.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">The Stanley Hotel</div>
+      <p>Bredo's current home — the Stanley Hotel in Estes Park — was the inspiration for the Overlook Hotel in Stephen King's <em>The Shining</em>. It is widely considered one of the most haunted hotels in the United States.</p>
+      <p>Bredo Morstøl is, objectively, the least frightening thing in the building.</p>
+    </div>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article grid -->
+
+<!-- ═══ FULL-WIDTH: THE FESTIVAL ═══ -->
+<div class="dark-band">
+  <div class="db-title">The Festival, Event by Event</div>
+  <div class="db-sub">What Three Thousand Costumed People Do in the Colorado Mountains Each March</div>
+  <div class="db-cols">
+    <div class="db-col">
+      <div class="db-col-head">The Coffin Races</div>
+      <p>Teams of six build a coffin and race it through an obstacle course, with one team member riding inside. The coffins are decorated elaborately — recent examples include Viking longships, giant sushi rolls, and a working pirate galleon. At one station, the person in the coffin must climb out and shoot a basketball through a hoop mounted inside a giant skull before the team may proceed. This is considered a competitive event.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Polar Plunge</div>
+      <p>Participants, in costume, submerge themselves voluntarily in freezing water in honor of a man who is frozen involuntarily and has been for thirty-five years. The costumes at the Polar Plunge are elaborate. Past participants have entered the water as sharks, Vikings, various deceased celebrities, and at least one person dressed as Bredo himself, which raises questions about the nature of tribute that the festival has wisely chosen not to examine.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Grandpa Look-Alike Contest</div>
+      <p>Participants compete to most closely resemble a Norwegian man who died in 1989, whose actual appearance is known primarily from a small number of photographs, and who is currently stored in a steel container at -320 degrees Fahrenheit. Judging criteria for this contest are not formally documented. Other events include snowshoe races, snow sculpture competitions, the Frostbite Fashion Show, a slow-motion parade, and the Royal Blue Ball — a formal evening event held in honor of a man who has been unable to attend since 1989.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONCLUSION ═══ -->
+<div style="max-width:860px;margin:0 auto;">
+
+<h2><span class="cat">The Larger Question</span>What Exactly Are We Celebrating Here</h2>
+
+<p>It is worth pausing to consider what Frozen Dead Guy Days actually is, beneath the coffin races and the frozen Bloody Marys and the parade of hearses. It is a festival built around a man who, as far as anyone knows, never visited Colorado, never expressed any desire to be frozen, and certainly never anticipated becoming the mascot of a March street fair in the Rocky Mountains. He was the director of parks and recreation in a Norwegian county. He liked fishing.</p>
+
+<p>What Trygve Bauge brought to the United States was not just his grandfather's body but a very specific and very human refusal to accept the permanence of death — a belief, shared by the small but tenacious community of cryonics advocates, that death is a technical problem rather than a final state. Whether that belief is touching or delusional or both at once is a matter on which reasonable people continue to disagree. The town of Nederland, for its part, initially passed a law against it. Then it threw a party.</p>
+
+<div class="pull">
+  NEDERLAND FIRST MADE IT<br>ILLEGAL. THEN MADE IT<br><span>A FESTIVAL.</span><br>THIS IS AMERICAN INGENUITY.
+</div>
+
+<p>The festival itself — which the <em>New York Times</em> has placed on its list of the top ten winter parties in the world, alongside Mardi Gras and Carnival in Rio — is, in its way, a genuinely joyful event. People come from across the country in elaborate costumes to race coffins through the mud and jump into cold water and drink cocktails named after a man they have never met. They are not, for the most part, thinking about cryonics. They are thinking about the costume contest and whether their coffin has enough structural integrity for the obstacle course.</p>
+
+<p>But Bredo is there, in some sense, through all of it — first in the Tuff Shed on the hillside above Nederland, and now in the steel tank at the Stanley Hotel, at -320 degrees, in the company of ghosts both literal and metaphorical, waiting patiently for the future that his grandson always believed was coming. The psychics say he is amused. The festival-goers, who number in the thousands, seem to agree that whatever is happening here, it is at minimum worth dressing up for.</p>
+
+<p>Trygve Bauge, calling the festival "cryonics' first Mardi Gras" from his home in Norway, was perhaps closer to the truth than he meant to be. Every Mardi Gras is a celebration that exists, at its deepest roots, in the shadow of mortality — the last indulgence before the long cold season. Frozen Dead Guy Days skips the metaphor entirely and puts a frozen grandfather right at the center of it, which is either the most honest version of the same impulse, or the strangest thing anyone has ever done in Colorado.</p>
+
+<p>Given the competition, the second option is not easily dismissed.</p>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>Bredo Morstøl · 1900–1989 · Director of Parks and Recreation, Bærum County, Norway · Frozen since 1989 · Current temperature: -320°F</p>
+  <p>The Stanley Hotel, Estes Park, Colorado · Inspiration for <em>The Shining</em> · Current home of the International Cryonics Museum</p>
+  <p>The ordinance against frozen human remains on private property in Nederland, Colorado, remains in effect. Bredo remains grandfathered in.</p>
+  <p>© The Raised Eyebrow · Strange American Festivals Series · The sarcophagus has not been opened · The psychics maintain everything is fine</p>
+</div>
+
+</div>
+
+</body>
+</html>

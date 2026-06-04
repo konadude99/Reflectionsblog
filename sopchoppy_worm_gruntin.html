@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strange American Festivals: Sopchoppy Worm Gruntin' Festival</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:    #f2f0e6;
+  --newsprint:#e4e0cc;
+  --ink:      #181510;
+  --forest:   #2a5c1e;
+  --fern:     #4a8c30;
+  --moss:     #7ab050;
+  --earth:    #8c5c20;
+  --clay:     #b07840;
+  --gold:     #c89010;
+  --muted:    #5c5840;
+  --border:   #bab090;
+  --card:     #fafaf0;
+  --river:    #3a6880;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ───── SERIES RIBBON ───── */
+.series-ribbon {
+  background: var(--forest);
+  color: #a8d090;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  margin: 0 -1.2rem 0;
+}
+
+/* ───── MASTHEAD ───── */
+.masthead {
+  text-align: center;
+  padding: 2.2rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(20px, 3.5vw, 34px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fern);
+  margin-bottom: 0.4rem;
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(40px, 8.5vw, 92px);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--fern);
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ───── BODY LAYOUT ───── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--fern);
+}
+
+/* ───── HEADINGS ───── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fern);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ───── PULL QUOTE ───── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--fern); }
+
+/* ───── GLOSSARY BOX ───── */
+.glossary {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--forest);
+  padding: 1.2rem 1.4rem 1rem;
+  margin: 2rem 0 2.2rem;
+}
+.glossary-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--forest);
+  margin-bottom: 0.8rem;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+.glos-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0.4rem 1rem;
+  margin-bottom: 0.7rem;
+  align-items: baseline;
+}
+.glos-term {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  color: var(--earth);
+}
+.glos-def {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ───── SCIENCE CALLOUT ───── */
+.science-bar {
+  background: var(--forest);
+  color: #c8e8b0;
+  padding: 1.2rem 1.4rem;
+  margin: 2.2rem 0;
+  border-left: 5px solid var(--moss);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.65;
+}
+.science-bar strong {
+  font-weight: 600;
+  color: #e0f8c0;
+}
+.science-bar .sc-source {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(200,232,176,0.6);
+  margin-top: 0.6rem;
+  display: block;
+}
+
+/* ───── SIDEBAR ───── */
+.sidebar-box {
+  background: var(--forest);
+  color: #d0eab8;
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: #a8d888;
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.15);
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #c0dca8;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-box2 {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--earth);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-box2 .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p:last-child { margin-bottom: 0; }
+
+.sidebar-stat {
+  background: var(--earth);
+  color: #fff;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ss-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+.ss-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.45;
+  margin-top: 0.3rem;
+}
+
+/* ───── FULL-WIDTH DARK BAND ───── */
+.dark-band {
+  background: var(--ink);
+  color: #d8d4c0;
+  padding: 2.5rem 2rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.db-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  color: #a8d888;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+.db-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(168,216,136,0.5);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.db-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.db-col-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: #a8d888;
+  border-bottom: 0.5px solid rgba(168,216,136,0.3);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.db-col p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #b8b4a0;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+
+/* ───── ORNAMENT / FOOTER ───── */
+.ornament {
+  text-align: center;
+  color: var(--fern);
+  margin: 3rem 0 2rem;
+  letter-spacing: 1em;
+  font-size: 14px;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding-top: 1rem;
+  line-height: 2;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .db-cols { grid-template-columns: 1fr; gap: 1rem; }
+  .glos-row { grid-template-columns: 1fr; gap: 0.1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SERIES RIBBON ═══ -->
+<div class="series-ribbon">Strange American Festivals</div>
+
+<!-- ═══ MASTHEAD ═══ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span class="pub-name">The Raised Eyebrow</span>
+    <span>Sopchoppy, Florida &nbsp;·&nbsp; Annual · April</span>
+  </div>
+  <p class="kicker">Strange American Festivals</p>
+  <h1>SOPCHOPPY<br><em>WORM</em><br>GRUNTIN'<br>FESTIVAL</h1>
+  <p class="deck">In which a tiny Florida panhandle town, a dying craft, a species of unusually large earthworm, and a Vanderbilt biologist converge every April in a celebration that is simultaneously stranger and more dignified than its name suggests.</p>
+  <p class="byline-row">Raised Eyebrows &nbsp;·&nbsp; Festival Edition &nbsp;·&nbsp; Sopchoppy, Florida &nbsp;·&nbsp; Est. 2002</p>
+</div>
+
+<!-- ═══ TWO-COLUMN BODY ═══ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">The town of Sopchoppy, Florida sits on the eastern edge of the Apalachicola National Forest in the panhandle, about forty-five minutes southwest of Tallahassee and firmly within the part of the state that tourists overlook on their way to everything else. Its population hovers around five hundred. Its downtown is compact enough to cross in a few minutes. It has an organic bakery, a microbrewery, a recording studio, a jazz store that hosts named artists and readings, and an annual festival that has made it, however improbably, one of the better-known small towns in Florida.</p>
+
+    <p>The festival is called the Worm Gruntin' Festival, and before you move on, consider that it has been covered by Charles Kuralt on CBS Sunday Morning, by Mike Rowe on the Discovery Channel's <em>Dirty Jobs</em>, and by the <em>Smithsonian</em>. Its central craft was the subject of a peer-reviewed paper in <em>PLOS ONE</em> by a Vanderbilt University biologist who enlisted the town's most famous family to help him solve a mystery that Charles Darwin had noticed and failed to explain in 1881. The Revell family, who have been worm grunting professionally for generations, were awarded Florida's Folk Heritage Award in 2010, presented by the governor at the state capitol.</p>
+
+    <p>None of which makes the name sound more dignified. But all of which suggests that something genuinely interesting is happening here, in the pine and palmetto woods above Sopchoppy, before the sun gets too high and drives the worms back down.</p>
+
+    <h2><span class="cat">The Craft</span>What Worm Grunting Actually Is</h2>
+
+    <p>Worm grunting is a method of collecting earthworms for fishing bait. It involves two tools and a technique that requires no electricity, no machinery, and no particular expense — only practice, patience, and an early morning in the right kind of forest.</p>
+
+    <p>The first tool is a stob: a wooden stake, roughly the length of a forearm, sharpened to a point and driven several inches into the ground with a mallet. The second tool is a rooping iron: a flat length of metal, traditionally fashioned from an old car leaf spring or the blade of a handsaw, used to rub vigorously across the flat top of the stob. The rubbing produces a low, resonant vibration that travels down through the stake and into the earth — a sound the locals call grunting, and which is audible to a person standing nearby as something between a groan and a hum.</p>
+
+    <p>Within minutes, earthworms begin to emerge from the soil around the stob. Not one or two — hundreds. In a productive session on good ground, an experienced grunter can collect thousands of worms in a single morning.</p>
+
+    <p>For generations, the people of Sopchoppy knew that this worked. Nobody knew why.</p>
+
+    <div class="glossary">
+      <div class="glossary-title">Field Vocabulary</div>
+      <div class="glos-row">
+        <div class="glos-term">Stob</div>
+        <div class="glos-def">The wooden stake driven into the ground. The point of contact between the grunter and the earth. Must be positioned before sunrise in good, moist soil.</div>
+      </div>
+      <div class="glos-row">
+        <div class="glos-term">Rooping Iron</div>
+        <div class="glos-def">The metal rod rubbed across the stob. Traditionally a repurposed car leaf spring or saw blade. Creates the vibration. Also called a "roop."</div>
+      </div>
+      <div class="glos-row">
+        <div class="glos-term">Grunting</div>
+        <div class="glos-def">The act itself — the rubbing of roop against stob. The resulting sound. Also used as a verb: to grunt. "Gary has been grunting since he was five."</div>
+      </div>
+      <div class="glos-row">
+        <div class="glos-term">Diplocardia mississippiensis</div>
+        <div class="glos-def">The native earthworm of the Apalachicola National Forest. Can grow to the length of a pencil. Prized for bait. The whole reason any of this exists.</div>
+      </div>
+    </div>
+
+    <h2><span class="cat">The Science</span>Darwin Noticed. Catania Solved It.</h2>
+
+    <p>In his 1881 treatise on earthworms and vegetable mould — a book that was, improbably, one of Charles Darwin's bestsellers — Darwin noted that earthworms would sometimes emerge from the ground in response to vibrations, as if fleeing some underground threat. He tried pounding on the earth himself. He got no response. He concluded, somewhat gloomily, that he was probably not doing it right, and moved on.</p>
+
+    <p>The question sat unanswered for 127 years, until Ken Catania, a biologist at Vanderbilt University, heard about the worm grunters of Sopchoppy and came down to find out what was actually happening.</p>
+
+    <p>Catania recruited Gary and Audrey Revell — Sopchoppy's most celebrated professional grunters — to demonstrate their technique in the Apalachicola National Forest while he followed behind them with geophones, recording the sub-surface vibrations the stob was producing. He planted flags wherever worms emerged. He observed that a single grunting session could drive worms to the surface within thirteen yards of the stob in every direction — a radius that, for an experienced grunter working systematically, made collecting thousands of worms in a morning entirely feasible.</p>
+
+    <p>Then he ran the critical experiment. He placed a live eastern American mole — a natural predator of <em>Diplocardia mississippiensis</em> — in a container of soil with some of the local worms and recorded the vibrations the mole produced while burrowing. When he compared those recordings to the recordings from the stob, the frequencies matched almost exactly.</p>
+
+    <div class="science-bar">
+      <strong>What the worms think is happening:</strong> A mole is coming. The vibrations produced by a rooping iron rubbed across a stob are, as far as the earthworms of the Apalachicola National Forest are concerned, acoustically indistinguishable from the digging of their primary predator. The worms surface to escape. They have been doing this for as long as moles have been hunting them — which is a very long time. The worm grunters of Sopchoppy, who have been working this technique for generations, have been inadvertently impersonating moles since before anyone knew that's what they were doing.
+      <span class="sc-source">Source: Catania, K.C. (2008). Worm grunting, fiddling, and charming — humans unknowingly mimic a predator to harvest bait. PLOS ONE.</span>
+    </div>
+
+    <p>Darwin, Catania noted in his paper, had been right about the mechanism — the worms were fleeing a perceived predator — but had simply produced the wrong vibrations when he pounded the ground. Had he tried a wooden stake and a piece of iron, the history of earthworm science might have been settled a century earlier.</p>
+
+    <p>The worm grunters of Sopchoppy, for their part, had known the technique worked for their entire lives. That it had also resolved a question left open by Charles Darwin was simply a bonus.</p>
+
+    <h2><span class="cat">The Revells</span>A Family and a Profession</h2>
+
+    <p>Gary Revell learned to grunt at the age of five, taught by his father, who learned from his. By sixth grade he had turned it into a small business, selling worms to his uncles' bait shops. When he and Audrey married in 1970 — drawn together in part, Audrey has said, because Gary knew how to make money in a lean season — she joined him in the forest, and together they built the operation into a full livelihood. Gary managed the harvest; Audrey handled the bait shop side. Their son Snap took it up as well, though worm grunting has always required a permit from the U.S. Forest Service, and the number of those permits has declined sharply over the decades.</p>
+
+    <p>At the peak of worm grunting in the Apalachicola forest — the 1960s and 1970s, when the practice was at its most widespread — hundreds of grunters worked the woods, and the trade was significant enough that the local railroad included worm transport as part of its regular business, picking up harvested worms in Sopchoppy and distributing them to fishing stores throughout Georgia. The Forest Service, growing concerned about the impact on the native worm population, stepped in and began requiring permits. At one point, Gary has said, there were 700 permit holders. Today he is among the last.</p>
+
+    <p>The Revells were awarded Florida's Folk Heritage Award in 2010. The citation recognized them as keepers of a vanishing tradition — the kind of craft that lives in muscle memory and early mornings and the particular knowledge of which ground holds the right kind of worm at the right time of year. Gary was philosophical about the decline. "People in this county raised families doing this," he has said. "It wasn't just a play thing. You had to work hard."</p>
+
+    <div class="pull">
+      HE HAS BEEN GRUNTING<br>SINCE AGE FIVE.<br><span>DARWIN COULDN'T<br>FIGURE OUT WHY IT WORKED.</span>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-stat">
+      <div class="ss-num">476</div>
+      <div class="ss-label">population of Sopchoppy<br>Worm Gruntin' Capital<br>of the World</div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Fast Facts</div>
+      <p><strong style="color:#a8d888;">Location:</strong> Sopchoppy, Florida (Wakulla County, Florida Panhandle)</p>
+      <p><strong style="color:#a8d888;">When:</strong> Second Saturday in April, annually since 2002</p>
+      <p><strong style="color:#a8d888;">Admission:</strong> $1. Free for veterans and children under 12.</p>
+      <p><strong style="color:#a8d888;">The Worm:</strong> Diplocardia mississippiensis — native to Apalachicola National Forest, can grow to pencil length, prized for bait</p>
+      <p><strong style="color:#a8d888;">The Science:</strong> Worm grunting mimics the vibrations of burrowing moles. Confirmed by peer-reviewed research, 2008.</p>
+      <p><strong style="color:#a8d888;">As Seen On:</strong> CBS Sunday Morning (Charles Kuralt), Discovery Channel's <em>Dirty Jobs</em>, <em>Smithsonian</em> magazine</p>
+    </div>
+
+    <div class="sidebar-box2">
+      <div class="sb-title">Darwin's Unfinished Business</div>
+      <p>In 1881, Charles Darwin noted in his treatise on earthworms that the creatures would emerge from soil when the ground trembled, as if fleeing a mole. He tried producing the vibrations himself by pounding the earth. The worms did not respond. He concluded he was probably doing it wrong.</p>
+      <p>He was. The answer — a wooden stob and a rooping iron — was being used in the American South at that very moment. It took until 2008 for anyone to connect the two.</p>
+    </div>
+
+    <div class="sidebar-box2">
+      <div class="sb-title">The Other Names</div>
+      <p>Worm grunting is practiced across parts of the southeastern United States and elsewhere under several names: <em>worm fiddling</em> (most common in the broader region), <em>worm charming</em> (used in parts of England and Canada, where there are competitive championships), and <em>worm snoring</em> (less common, and possibly the most evocative of the available options).</p>
+      <p>Sopchoppy has claimed the title of Worm Gruntin' Capital of the World. The competition for this title is not fierce.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">The Forest Service</div>
+      <p>Harvesting worms in the Apalachicola National Forest requires a permit. At the peak of the trade in the 1960s, there were roughly 700 permit holders working the forest.</p>
+      <p>Gary Revell is now among the last. The worms that once supported an industry still emerge every morning when the stob goes in and the roop starts moving. They simply have fewer people waiting for them.</p>
+    </div>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article -->
+
+<!-- ═══ FULL-WIDTH BAND: THE FESTIVAL ═══ -->
+<div class="dark-band">
+  <div class="db-title">The Festival, From Dawn to the Grunters' Ball</div>
+  <div class="db-sub">What Happens in Downtown Sopchoppy Every Second Saturday in April</div>
+  <div class="db-cols">
+    <div class="db-col">
+      <div class="db-col-head">The Demonstration</div>
+      <p>The day begins early — the grunting must happen before the soil warms and drives the worms deeper. Gary or Snap Revell drives the stob into the ground at Sopchoppy Depot Park and begins working the roop while a crowd watches. Within minutes, worms surface. This is presented without commentary, because no commentary improves upon a man coaxing earthworms out of the ground with a piece of old car spring, and the worms rise obligingly, as they have always risen, because they believe, incorrectly, that a mole is coming.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Contest</div>
+      <p>Children twelve and under may enter the grunting competition, in which each participant is given a stob and a roop and a patch of ground and a few minutes to see how many worms they can raise. Cups fill with worms. Some children prove more proficient than others. The scoring criteria are exactly what you would expect. Gary Revell watches the children grunt and says that one of them might be inspired to carry the tradition forward, which is the kind of hope that quietly sustains a dying craft in a small town that has built its identity around it.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Ball</div>
+      <p>The festival runs through the afternoon — 100-plus vendors, live music on a stage, a beer garden, a 5K run called the Wiggle Worm Fun Run, games, food — and ends in the evening with the Worm Grunters' Ball at Civic Brewing, which is an outdoor dance with live music and is called the Worm Grunters' Ball because Sopchoppy has committed fully to the bit. Festival T-shirts featuring the year's official worm grunting artwork are considered prizes. Past themes have included "Worms Just Wanna Have Fun" and "What a Wonderful Worm." The annual theme is announced and taken seriously.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONCLUSION ═══ -->
+<div style="max-width:860px;margin:0 auto;">
+
+<h2><span class="cat">The Larger Picture</span>A Dying Craft, a Living Festival</h2>
+
+<p>There is something that the Worm Gruntin' Festival does that the other entries in this series do not. Mike the Headless Chicken Festival celebrates something that happened once, in 1945, to one chicken, who has been dead for decades. Frozen Dead Guy Days commemorates a man being kept in storage against the odds. But the Sopchoppy festival honors a living practice — a craft that is still performed before dawn, in the actual forest, by actual people who learned it from their parents, who learned it from theirs.</p>
+
+<p>That craft is endangered. The number of permit holders has collapsed from hundreds to a handful. The bait trade that once moved worms by railroad has mostly given way to other methods. The Revells, at the time of this writing, are among the last professional worm grunters working the Apalachicola forest. When Gary says he hopes one of the children at the festival will be inspired to carry it forward, he is not speaking rhetorically.</p>
+
+<p>The festival was started in 2002 by the Sopchoppy Preservation and Improvement Association, an organization that has used the proceeds to fund the local food bank, support a wildlife rescue, and restore the old Sopchoppy Train Depot. The worm grunting is, in this sense, a means to an end — a quirky draw that brings several thousand visitors each April to a town of five hundred, and whose proceeds circle back into the community it celebrates. This is not an unusual structure for a small-town festival. What is unusual is that the thing being celebrated is both genuinely strange and genuinely worth preserving.</p>
+
+<div class="pull">
+  IT IS NOT MAGIC.<br>IT IS JUST THAT<br><span>THE WORMS THINK<br>A MOLE IS COMING.</span>
+</div>
+
+<p>Ken Catania, the Vanderbilt biologist who solved the 127-year-old mystery, published his findings in 2008. The paper noted, with the measured restraint appropriate to peer-reviewed science, that worm grunters had for generations been inadvertently mimicking a predator to harvest bait — that the whole elaborate folk practice had a precise biological explanation that happened to resolve an observation Darwin had made and abandoned. The <em>Smithsonian</em> covered it. The science journals covered it. The earthworms of Sopchoppy, rising from their burrows in the moist April soil of the Apalachicola National Forest, continued doing exactly what they have always done.</p>
+
+<p>Every second Saturday in April, Gary Revell drives the stob into the ground at nine in the morning while a crowd watches. The roop begins to move. The worms surface. Children collect them in plastic cups. The banjo music starts up from the stage, and somewhere in the background the smell of sausages and boiled peanuts hangs in the air, and the town of Sopchoppy — population 476, Worm Gruntin' Capital of the World — is, for one afternoon, exactly as famous as it deserves to be.</p>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>Gary and Audrey Revell · Florida Folk Heritage Award recipients, 2010 · Professional worm grunters, Sopchoppy, Florida · Still working the forest.</p>
+  <p>Diplocardia mississippiensis · Native earthworm · Apalachicola National Forest · Pencil-length · Prized for bait · Does not know about Darwin.</p>
+  <p>Ken Catania, Vanderbilt University · "Worm grunting, fiddling, and charming — humans unknowingly mimic a predator to harvest bait" · PLOS ONE, 2008.</p>
+  <p>© The Raised Eyebrow · Strange American Festivals Series · The worms are fine · The tradition may not be · Come to Sopchoppy in April.</p>
+</div>
+
+</div>
+
+</body>
+</html>

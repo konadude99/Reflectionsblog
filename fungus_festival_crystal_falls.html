@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strange American Festivals: FUNgus FestUVal — Crystal Falls, Michigan</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:     #f0ede0;
+  --newsprint: #dedad0;
+  --ink:       #160e06;
+  --spore:     #4a3010;
+  --cap:       #7c5020;
+  --mushroom:  #b07840;
+  --mycelium:  #8c6c3c;
+  --forest:    #2c4818;
+  --fern:      #4a7828;
+  --amber:     #c88010;
+  --muted:     #5c5038;
+  --border:    #b8a878;
+  --card:      #faf8ee;
+  --navy:      #182840;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ───── SERIES RIBBON ───── */
+.series-ribbon {
+  background: var(--spore);
+  color: #d0b888;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  margin: 0 -1.2rem 0;
+}
+
+/* ───── MASTHEAD ───── */
+.masthead {
+  text-align: center;
+  padding: 2.2rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(20px, 3.5vw, 34px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cap);
+  margin-bottom: 0.4rem;
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(42px, 9vw, 100px);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--cap);
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ───── BODY LAYOUT ───── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--cap);
+}
+
+/* ───── HEADINGS ───── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cap);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ───── PULL QUOTE ───── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--cap); }
+
+/* ───── SCALE COMPARISON ───── */
+.scale-bar {
+  background: var(--forest);
+  color: #d8e8c0;
+  padding: 1.3rem 1.5rem;
+  margin: 2rem 0 2.2rem;
+}
+.sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  color: #b8d898;
+  margin-bottom: 0.9rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.12);
+  padding-bottom: 0.4rem;
+}
+.sb-rows { display: flex; flex-direction: column; gap: 0.6rem; }
+.sb-row { display: grid; grid-template-columns: 160px 1fr auto; gap: 0.8rem; align-items: center; }
+.sb-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b0c8a0;
+  line-height: 1.3;
+}
+.sb-track {
+  height: 10px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.sb-fill {
+  height: 100%;
+  border-radius: 1px;
+}
+.fill-h { background: #8cd060; }
+.fill-w { background: #60a0d0; }
+.fill-v { background: #a0c050; }
+.fill-p { background: #d09030; }
+.sb-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #c8e0a8;
+  white-space: nowrap;
+  min-width: 70px;
+  text-align: right;
+}
+
+/* ───── TIMELINE ───── */
+.timeline {
+  margin: 2rem 0 2.5rem;
+  border-left: 3px solid var(--cap);
+  padding-left: 1.4rem;
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.9rem;
+  top: 0.42em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cap);
+  border: 2px solid var(--paper);
+  outline: 1.5px solid var(--cap);
+}
+.tl-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cap);
+  margin-bottom: 0.1rem;
+}
+.tl-event {
+  font-size: 15.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ───── FUNGI FESTIVAL DIRECTORY ───── */
+.fungi-directory {
+  background: var(--ink);
+  color: #d8d0b8;
+  padding: 2rem 2rem 1.6rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.fd-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+  text-align: center;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+.fd-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200,128,16,0.5);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.fd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1px;
+  background: #2a2018;
+  border: 1px solid #2a2018;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.fd-cell {
+  background: #1c1608;
+  padding: 1rem 1.1rem;
+}
+.fd-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  color: #e0d0b0;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+.fd-loc {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+  margin-bottom: 0.4rem;
+}
+.fd-desc {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: #a09880;
+  line-height: 1.5;
+}
+
+/* ───── SIDEBAR ───── */
+.sidebar-box {
+  background: var(--spore);
+  color: #e0c898;
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb2-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.15);
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #cfc0a0;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--mushroom);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-card .sc-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-card p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.sidebar-card p:last-child { margin-bottom: 0; }
+
+.sidebar-stat {
+  background: var(--mushroom);
+  color: #fff;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ss-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+.ss-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.45;
+  margin-top: 0.3rem;
+}
+
+/* ───── ORNAMENT / FOOTER ───── */
+.ornament {
+  text-align: center;
+  color: var(--mushroom);
+  margin: 3rem 0 2rem;
+  letter-spacing: 1em;
+  font-size: 14px;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding-top: 1rem;
+  line-height: 2;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .sb-row { grid-template-columns: 100px 1fr auto; }
+  .fd-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SERIES RIBBON ═══ -->
+<div class="series-ribbon">Strange American Festivals</div>
+
+<!-- ═══ MASTHEAD ═══ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span class="pub-name">The Raised Eyebrow</span>
+    <span>Crystal Falls, Michigan &nbsp;·&nbsp; Annual · August</span>
+  </div>
+  <p class="kicker">Strange American Festivals</p>
+  <h1>FUNgus<br><em>FestUVal</em></h1>
+  <p class="deck">In which the town of Crystal Falls, Michigan celebrates a 2,500-year-old underground fungus the size of Vatican City that was discovered by accident during Cold War submarine research and was once, briefly, the largest living organism on Earth.</p>
+  <p class="byline-row">Raised Eyebrows &nbsp;·&nbsp; Festival Edition &nbsp;·&nbsp; Crystal Falls, Michigan &nbsp;·&nbsp; Est. 1992</p>
+</div>
+
+<!-- ═══ TWO-COLUMN BODY ═══ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">In the late 1980s, the United States Department of Defense was funding a study on the possible biological effects of ELF transmitters — Extremely Low Frequency radio stations built in Michigan's Upper Peninsula to communicate with nuclear submarines lurking beneath the world's oceans. The transmitters sent signals through the earth itself, and the researchers needed to understand what the earth was doing in areas nowhere near the transmitters: control sites, used for comparison. Forest pathologist Johann Bruhn had been quietly studying one such site for years. It was located in Mastodon Township, near the small Upper Peninsula town of Crystal Falls. It was, as far as anyone knew, just a forest.</p>
+
+    <p>The forest, as it turned out, was not just a forest.</p>
+
+    <p>Bruhn had noticed something unusual about the pattern of tree death in the area — a fungal rot called Armillaria root disease was killing pines across a suspiciously large and uniform territory. He called in two colleagues from the University of Toronto: Jim Anderson, a molecular biologist, and his graduate student Myron Smith, who happened to be looking for a project. They began taking samples, doing compatibility tests, mapping the genetic signatures of what they were finding underground.</p>
+
+    <p>What they found was a single organism. One individual. Genetically identical across an area that, by their most conservative estimate, covered 37 acres of the Michigan forest floor. It weighed an estimated 100 tons. By conservative estimates, it was at least 1,500 years old. They published in <em>Nature</em> in April 1992.</p>
+
+    <p>The headline, which wrote itself, was this: scientists had found the largest living organism on Earth. And it was a mushroom. And it lived in Michigan. And the town of Crystal Falls, which had no particular claim to fame before that morning, was about to have one.</p>
+
+    <h2><span class="cat">The Science</span>What the Humongous Fungus Actually Is</h2>
+
+    <p>A quick clarification on vocabulary, since this affects everything: what most people call a mushroom — the cap-and-stem structure that appears above ground — is only the fruiting body of a fungus. The organism itself lives underground, as a vast network of filaments called mycelium, extending through the soil like wiring through a building. The mushrooms that emerge in autumn are the fungus doing the equivalent of flowering — a temporary reproductive structure, not the organism. You can see the mushrooms. You cannot see the organism.</p>
+
+    <p>The <em>Armillaria gallica</em> fungus under Mastodon Township exists primarily in the form of rhizomorphs — dense, cord-like structures wrapped in a tough black rind that move through the soil like root systems, capable of transporting nutrients over long distances. From above, the forest looks like a forest. From below, it is a single coherent entity that has been slowly spreading through the same Michigan soil since roughly the time of the Roman Empire.</p>
+
+    <p>The mushrooms that emerge from it each autumn are small, light-brown, clustered around stumps and fallen logs. They are, the mycologists note somewhat dryly, edible. They taste like honey mushrooms. The 2,500-year-old organism is, among other things, a potential food source.</p>
+
+    <div class="scale-bar">
+      <div class="sb-title">How Big Is the Humongous Fungus? A Reference Guide</div>
+      <div class="sb-rows">
+        <div class="sb-row">
+          <div class="sb-label">Humongous Fungus<br>(updated estimate)</div>
+          <div class="sb-track"><div class="sb-fill fill-h" style="width:100%"></div></div>
+          <div class="sb-val">~173 acres</div>
+        </div>
+        <div class="sb-row">
+          <div class="sb-label">Vatican City</div>
+          <div class="sb-track"><div class="sb-fill fill-v" style="width:44%"></div></div>
+          <div class="sb-val">~110 acres</div>
+        </div>
+        <div class="sb-row">
+          <div class="sb-label">Pentagon (floor area)</div>
+          <div class="sb-track"><div class="sb-fill fill-p" style="width:20%"></div></div>
+          <div class="sb-val">~34 acres</div>
+        </div>
+        <div class="sb-row">
+          <div class="sb-label">Weight vs. Blue Whale</div>
+          <div class="sb-track"><div class="sb-fill fill-w" style="width:100%"></div></div>
+          <div class="sb-val">~3 blue whales</div>
+        </div>
+      </div>
+    </div>
+
+    <p>A subsequent study published in 2018, when the original researchers returned to the site with better tools and more samples, substantially revised those initial numbers upward. The fungus wasn't 37 acres — it was closer to 173 acres. It wasn't 100 tons — it was closer to 440 tons, approximately the weight of three blue whales. It wasn't 1,500 years old — it was closer to 2,500. The forest pathologist who had spent decades studying it referred to it in retirement simply as H.F.</p>
+
+    <p>H.F. had been growing continuously in that Michigan forest since roughly the time of the ancient Greeks. It had survived the entire recorded history of the region — the oak forests, the logging booms, the replanting, the arrival of roads and towns and the US Navy's submarine communication network — as a single, unbroken, underground individual. Crystal Falls had no idea it was there.</p>
+
+    <h2><span class="cat">The Title</span>Then It Got Complicated</h2>
+
+    <p>For a brief, glorious window in 1992, Crystal Falls' fungus held the title of largest living organism on Earth, as certified by a paper in one of the world's most prestigious scientific journals. The town celebrated. A festival was launched. T-shirts were printed.</p>
+
+    <p>Then word came from Oregon.</p>
+
+    <p>An <em>Armillaria</em> fungus in the Malheur National Forest in eastern Oregon's Blue Mountains, it turned out, covered not 37 acres but 2,200 acres — nearly three and a half square miles. Its age was estimated at 8,000 years. It had been there since before Stonehenge was built. It made the Michigan fungus look, in the mycological scheme of things, fairly modest.</p>
+
+    <p>Crystal Falls was not deterred. The town noted, reasonably, that the Oregon fungus is technically a collection of disconnected clonal patches sharing the same genetic material — they are not all physically connected the way H.F. is. The Michigan fungus, defenders argue, is a single coherent individual in a way the Oregon one is not. The Oregon partisans dispute this. The mycologists have opinions. The argument has not been resolved to everyone's satisfaction.</p>
+
+    <p>The festival, meanwhile, has continued without interruption. The town's position on the matter of the championship is clear: Crystal Falls refuses to acknowledge the other candidates, and the festival proceeds on the understanding that whatever Oregon may claim, H.F. was first, H.F. is real, and H.F. is theirs.</p>
+
+    <div class="pull">
+      CRYSTAL FALLS REFUSES<br>TO ACKNOWLEDGE<br><span>THE OTHER CANDIDATES.</span>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Late 1980s</div>
+        <div class="tl-event">Johann Bruhn, studying a Cold War submarine communications control site in Mastodon Township, notices an unusual pattern of fungal tree death and begins collecting samples.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">April 1992</div>
+        <div class="tl-event">Smith, Bruhn, and Anderson publish in <em>Nature</em>. The fungus covers 37 acres, weighs 100 tons, is 1,500 years old, and is the largest living organism on Earth. Crystal Falls wakes up famous.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">August 1992</div>
+        <div class="tl-event">Crystal Falls launches its first Fungus Festival. It has run every August since.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mid-1990s</div>
+        <div class="tl-event">An <em>Armillaria</em> in Oregon's Blue Mountains is identified at 2,200 acres and estimated at 8,000 years old. Crystal Falls disputes the methodology and continues celebrating.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2018</div>
+        <div class="tl-event">Updated research revises the Michigan fungus upward: 173 acres, 440 tons, 2,500 years old. H.F. was larger and older than anyone realized. The festival continues.</div>
+      </div>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-stat">
+      <div class="ss-num">2,500</div>
+      <div class="ss-label">years old<br>the Humongous Fungus<br>revised estimate, 2018</div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb2-title">Fast Facts</div>
+      <p><strong style="color:var(--amber);">Location:</strong> Crystal Falls, Michigan (Iron County, Upper Peninsula)</p>
+      <p><strong style="color:var(--amber);">When:</strong> Annual, August</p>
+      <p><strong style="color:var(--amber);">The Organism:</strong> <em>Armillaria gallica</em>, ~173 acres, ~440 tons, ~2,500 years old</p>
+      <p><strong style="color:var(--amber);">Discovered:</strong> Accidentally, during DoD-funded Cold War submarine research</p>
+      <p><strong style="color:var(--amber);">Published:</strong> Smith, Bruhn & Anderson, <em>Nature</em>, April 1992</p>
+      <p><strong style="color:var(--amber);">Title Status:</strong> Disputed. Crystal Falls does not dispute it.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">The Oregon Situation</div>
+      <p>The <em>Armillaria solidipes</em> in Malheur National Forest, eastern Oregon covers 2,200 acres and is estimated at 8,000 years old. It is, by raw acreage, vastly larger than H.F.</p>
+      <p>Crystal Falls' counter-argument: the Oregon fungus is not physically connected — it is a collection of genetically identical patches, not a single continuous individual. H.F. is connected. H.F. is coherent. H.F. was first. The festival continues.</p>
+      <p>Malheur National Forest does not have a festival.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">The Submarine Connection</div>
+      <p>The humongous fungus was discovered because the US Navy needed control sites for a study on the biological effects of ELF transmitters used to communicate with submerged nuclear submarines. The Mastodon Township forest was one of those control sites.</p>
+      <p>Without the Cold War, there might be no Fungus Festival. This is not the strangest thing about this story, but it is close.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb2-title">The Festival Events</div>
+      <p>City-wide rummage sale (Friday), parade through downtown with prizes for best float and best mushroom costume, a 10×10 foot mushroom pizza made and served publicly, the Mr. Fungi "Beardy" Pageant, a Pie Social, horseshoe tournament, volleyball, golf, softball, and a tube float down the river.</p>
+      <p>The Mr. Fungi Beardy Pageant is a beard competition. The relationship between beard excellence and fungi excellence is not formally documented but is accepted as sufficient basis for a pageant.</p>
+    </div>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article -->
+
+<!-- ═══ FUNGI FESTIVAL DIRECTORY ═══ -->
+<div class="fungi-directory">
+  <div class="fd-title">You Asked: Are There Other Fungi Festivals?</div>
+  <div class="fd-sub">A Survey of the Nation's Mycological Calendar &nbsp;·&nbsp; America Has More Mushroom Festivals Than You Think</div>
+  <div class="fd-grid">
+
+    <div class="fd-cell">
+      <div class="fd-name">Telluride Mushroom Festival</div>
+      <div class="fd-loc">Telluride, Colorado &nbsp;·&nbsp; Est. 1981</div>
+      <div class="fd-desc">The prestige end of the mushroom festival spectrum. Expert-led forays into the San Juan Wilderness, keynotes from leading mycologists (past speakers include Paul Stamets), a Mushroom Parade where costumed attendees take over Main Street, the "Puff Ball" late-night event, and a Wild Foods Dinner. Sells out annually. Occasionally includes discussion of psilocybin research, which is not what Crystal Falls is doing.</div>
+    </div>
+
+    <div class="fd-cell">
+      <div class="fd-name">Kennett Square Mushroom Festival</div>
+      <div class="fd-loc">Kennett Square, Pennsylvania &nbsp;·&nbsp; Est. 1985</div>
+      <div class="fd-desc">The self-proclaimed Mushroom Capital of the World — this time on commercial grounds. Kennett Square's 53 family farms produce roughly 64% of America's mushroom supply, about 500 million pounds per year. The annual festival, now in its 40th year, is a massive two-day event with 229+ vendors, mushroom soup, mushroom ice cream, growing demonstrations, and a fried mushroom eating contest. On New Year's Eve, the town drops a giant mushroom instead of a ball. This is correct.</div>
+    </div>
+
+    <div class="fd-cell">
+      <div class="fd-name">Yachats Mushroom Festival</div>
+      <div class="fd-loc">Yachats, Oregon &nbsp;·&nbsp; Annual · October</div>
+      <div class="fd-desc">On the central Oregon Coast in the Siuslaw National Forest, where the terrain produces some of the most biodiverse wild mushroom populations in the country. Foraging walks led by mycologists, identification help, cooking demonstrations at local restaurants, and an art fair. The festival's promotional language includes the phrase "from fun to funky, from slippery to chunky," which is not a description Crystal Falls would use but is otherwise accurate.</div>
+    </div>
+
+    <div class="fd-cell">
+      <div class="fd-name">Mount Pisgah Mushroom Festival</div>
+      <div class="fd-loc">Eugene, Oregon &nbsp;·&nbsp; Annual · October</div>
+      <div class="fd-desc">At the Mount Pisgah Arboretum in the Willamette Valley, organized by the Cascade Mycological Society. Guided forays, expert identification tables where visitors bring specimens to be named, cultivation workshops, and cooking demonstrations. Eugene in October also happens to be an excellent time to be in Eugene in October, which helps.</div>
+    </div>
+
+    <div class="fd-cell">
+      <div class="fd-name">Mesick Mushroom Festival</div>
+      <div class="fd-loc">Mesick, Michigan &nbsp;·&nbsp; Annual · May</div>
+      <div class="fd-desc">Another Michigan entry, focused on the morel mushroom rather than the organism behind it. Held on Mother's Day weekend, when the morel season peaks in northern Michigan. Foraging competitions, a parade, and the specific Michigan joy of finding a morel under a dead elm. Entirely different from Crystal Falls — less existential, more pastoral.</div>
+    </div>
+
+    <div class="fd-cell">
+      <div class="fd-name">The Rest of the Country</div>
+      <div class="fd-loc">Across the US &nbsp;·&nbsp; Autumn through Spring</div>
+      <div class="fd-desc">Mushroom festivals now exist in at least a dozen states, from the Georgia Mushroom Festival to the Oklahoma Fungi Fest to the New York Mycological Society Fungi Fest to festivals in Alabama, Tennessee, New Mexico, and both coasts of the Pacific Northwest. The phenomenon of gathering publicly to celebrate fungi has become, somehow, a nationwide tradition. Crystal Falls got there first. Everyone else followed the mycelium.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ CONCLUSION ═══ -->
+<div style="max-width:860px;margin:0 auto;">
+
+<h2><span class="cat">The Point</span>What a Small Town Does With a Fungus</h2>
+
+<p>Crystal Falls is the county seat of Iron County, Michigan, population around eleven thousand. It sits in the Upper Peninsula, in country that was once logged heavily, then replanted, and has been gradually returning to forest ever since. It is the kind of place whose main annual event, before 1992, was the sort of thing that did not make national news.</p>
+
+<p>Then Johann Bruhn noticed the tree deaths, and Jim Anderson and Myron Smith analyzed the samples, and a single organism under the floor of Mastodon Township turned out to have been growing continuously there since before the Roman Empire fell. The paper was published in <em>Nature</em>. The town was on the news. David Letterman mentioned it. The community fell in love with the humongous fungus, and in the same year the paper appeared, the festival began.</p>
+
+<p>The filmmaker Tim Warmanen grew up in Crystal Falls and now works in post-production in Chicago. "I used to tell people I work with," he has said, "that I grew up in this small town next to this really giant mushroom." This is a very Upper Peninsula thing to say, and also a very accurate thing to say, and also the kind of local identity that most small towns would be glad to have.</p>
+
+<div class="pull">
+  IT WAS DISCOVERED DURING<br>COLD WAR SUBMARINE RESEARCH.<br><span>IT IS 2,500 YEARS OLD.</span><br>IT HAS ITS OWN FESTIVAL.
+</div>
+
+<p>The festival itself is, by the standards of this series, relatively gentle: a rummage sale, a parade, a mushroom pizza, a beard contest of obscure mycological relevance, some horseshoes, a tube float. What makes it unusual is not the festival but the fungus — an organism that has been slowly and silently spreading through the same patch of Michigan earth since the sixth century, that was discovered entirely by accident while the Navy was thinking about submarines, and that a small Upper Peninsula town has been celebrating annually for more than thirty years with appropriate civic pride and minimum philosophical inquiry into what it means to throw a festival for something that is mostly underground and has no awareness of your regard.</p>
+
+<p>H.F. was there before the oaks. Before the logging. Before the pines. Before the town. It will, in all probability, still be there long after the festival ends and the last t-shirt fades. It is 173 acres of continuous organism, 440 tons of living matter, 2,500 years of quiet growth in the dark.</p>
+
+<p>Every August in Crystal Falls, they make a ten-by-ten-foot mushroom pizza and celebrate it. This seems correct.</p>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>Armillaria gallica &nbsp;·&nbsp; Mastodon Township, Iron County, Michigan &nbsp;·&nbsp; ~173 acres &nbsp;·&nbsp; ~440 tons &nbsp;·&nbsp; ~2,500 years old &nbsp;·&nbsp; Still growing</p>
+  <p>Smith, M., Bruhn, J., Anderson, J. (1992). The fungus Armillaria bulbosa is among the largest and oldest living organisms. <em>Nature</em> 356: 428–431.</p>
+  <p>The Oregon fungus covers 2,200 acres and is ~8,000 years old. Crystal Falls notes the connectivity question and returns to its pizza.</p>
+  <p>© The Raised Eyebrow &nbsp;·&nbsp; Strange American Festivals Series &nbsp;·&nbsp; The mushrooms are edible &nbsp;·&nbsp; The organism has no opinion about the festival</p>
+</div>
+
+</div>
+
+</body>
+</html>

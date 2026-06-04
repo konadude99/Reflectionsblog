@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's in a Name? — Deeper Reflections on American County Names</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:    #f5f0e8;
+  --newsprint:#e8e0ce;
+  --ink:      #12100e;
+  --red:      #c0240c;
+  --gold:     #c8900a;
+  --blue:     #1a3a6e;
+  --muted:    #6a5f4a;
+  --border:   #c8b898;
+  --card:     #fdfaf3;
+  --green:    #1e5c2e;
+  --forest:   #2a4c1e;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  text-align: center;
+  padding: 2.5rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(22px, 4vw, 38px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(52px, 11vw, 120px);
+  line-height: 0.86;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em { font-style: normal; color: var(--red); }
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 590px;
+  margin: 0 auto 1.3rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ── BODY LAYOUT ── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 2.6rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--red);
+}
+
+/* ── SECTION HEADINGS ── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ── PULL QUOTE ── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--red); }
+
+/* ── COUNTY PROFILES ── */
+.county-entry {
+  border-left: 4px solid var(--gold);
+  padding: 0.1rem 0 0.1rem 1.3rem;
+  margin: 2rem 0 2.2rem;
+}
+.county-entry.blue-bar  { border-left-color: var(--blue); }
+.county-entry.green-bar { border-left-color: var(--green); }
+.county-entry.red-bar   { border-left-color: var(--red); }
+.ce-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 0.1rem;
+}
+.ce-state {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+.ce-body {
+  font-size: 15.5px;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.7;
+}
+.ce-body em { font-style: italic; }
+
+/* ── CATEGORY PANELS ── */
+.category-band {
+  background: var(--ink);
+  color: #d8cdb8;
+  padding: 2rem 2rem 1.6rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.band-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+.band-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200,144,10,0.5);
+  margin-bottom: 1.6rem;
+}
+.band-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.4rem;
+  max-width: 800px;
+}
+.band-col-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  border-bottom: 0.5px solid rgba(200,144,10,0.3);
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+.band-col p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #a09880;
+  line-height: 1.55;
+  margin-bottom: 0.4rem;
+}
+
+/* ── BREAKOUT BOX ── */
+.breakout {
+  background: var(--newsprint);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 1.3rem 1.5rem;
+  margin: 2.5rem 0;
+}
+.breakout h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 21px;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.6rem;
+  color: var(--ink);
+}
+.breakout p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 0.8rem;
+}
+.breakout p:last-child { margin-bottom: 0; }
+
+/* ── SIDEBAR ── */
+.sidebar-box {
+  background: var(--ink);
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid #444;
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #d0c8b0;
+  line-height: 1.55;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--red);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-card.gold-top { border-top-color: var(--gold); }
+.sidebar-card.blue-top { border-top-color: var(--blue); }
+.sc-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-card p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+.sidebar-card p:last-child { margin-bottom: 0; }
+
+.sidebar-quote {
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  padding: 0.9rem 0.3rem;
+  margin-bottom: 1.4rem;
+}
+.sidebar-quote p {
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+.sidebar-quote .attr {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-style: normal;
+  display: block;
+}
+
+/* ── ORNAMENT / FOOTER ── */
+.ornament {
+  text-align: center;
+  font-size: 18px;
+  color: var(--border);
+  margin: 2.8rem 0;
+  letter-spacing: 0.6em;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1.2rem;
+  margin-top: 3rem;
+  line-height: 1.9;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .band-cols { grid-template-columns: 1fr; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ MASTHEAD ══════════════ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span>The Raised Eyebrow</span>
+    <span class="pub-name">Deeper Reflections</span>
+    <span>Language · History · The American Map</span>
+  </div>
+  <p class="kicker">Deeper Reflections · What's in a Name?</p>
+  <h1>THE NAMES<br>WE <em>GAVE</em><br>THIS PLACE</h1>
+  <p class="deck">Three thousand American counties, each bearing a name that somebody once chose. Some honored heroes. Some described the landscape. Some were perfectly sensible in 1823 and have required explanation ever since.</p>
+  <div class="byline-row">Deeper Reflections · Language, Memory & the Accidental Comedy of American Geography</div>
+</div>
+
+<!-- ══════════════ BODY ══════════════ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">There are, at present, 3,143 counties and county-equivalents in the United States. Each one has a name. Each name was chosen by someone, at some specific moment in history, usually through a legislative act, occasionally through a vote, sometimes through the whim of a surveyor who had been out in the field too long. The name was recorded in an official document. A courthouse was built. Road signs were made. And the name, whatever it was, became the permanent address of every person born there, every deed filed there, every newspaper published there, for as long as the county existed.</p>
+
+    <p>Most county names are unremarkable. They honor presidents, governors, soldiers, or the local geography. Jackson County. Washington County. Jefferson County. There are so many of each that the postal service requires the state be specified. They are perfectly good names: respectful, forgettable, and multiplied across the American map like a particular shade of beige.</p>
+
+    <p>But some county names are different. Some are names that the people who chose them considered perfectly ordinary and that subsequent generations have found — depending on disposition — mildly unfortunate, quietly hilarious, accidentally poetic, or bewilderingly on the nose. Some sound like insults. Some sound like fairy tales. Some sound like road signs at the entrance to a region that might not want visitors. And some gave the English language words it still uses, though nobody who uses them remembers where they came from.</p>
+
+    <p>This is a reflection on those names — what they meant when they were chosen, what they mean now, and what they tell us about the particular American habit of naming things after people and then forgetting the people while keeping the names.</p>
+
+    <h2><span class="cat">The Dignitaries</span>When the Honor Outlasted the Honoree</h2>
+
+    <p>The dominant mode of American county naming has always been the honorific. You name a county after someone you wish to honor — a military hero, a political figure, a local benefactor — and the name endures. This works well enough when the honoree's name is Grant or Lincoln or Madison. It works rather differently when the honoree's name is Butts.</p>
+
+    <div class="county-entry">
+      <div class="ce-name">Butts County</div>
+      <div class="ce-state">Georgia · Est. 1825</div>
+      <div class="ce-body">Captain Samuel Butts was a Georgia officer killed in the Creek War era, and the county created in his honor in 1825 bears his name with full legislative seriousness. The Butts County courthouse conducts Butts County business. The Butts County Board of Commissioners issues Butts County proclamations. The Butts County Chamber of Commerce promotes Butts County tourism. None of these phrases sounds the way it looks. Captain Butts died in service. His memorial is permanent and inescapable and cannot be read aloud at public meetings without someone in the back row suppressing a smile. This is the most common form of county-name comedy: entirely accidental, completely unintentional, and absolutely permanent.</div>
+    </div>
+
+    <div class="county-entry blue-bar">
+      <div class="ce-name">Hooker County</div>
+      <div class="ce-state">Nebraska · Est. 1889</div>
+      <div class="ce-body">Named for Civil War General Joseph Hooker, who lent his name to several American counties and at least one persistent folk etymology about camp followers that historians have largely debunked. Hooker County, Nebraska, established in 1889 with 711 current residents, carries the honor of the general's name with the quiet dignity of a sparsely populated Sand Hills community that has heard every version of the joke. The county does not acknowledge the joke in its official materials. The joke does not require acknowledgment.</div>
+    </div>
+
+    <div class="county-entry green-bar">
+      <div class="ce-name">Glasscock County</div>
+      <div class="ce-state">Texas · Est. 1887</div>
+      <div class="ce-body">George W. Glasscock was a Texas Revolution officer and legislator of genuine distinction. He is now primarily remembered because his name is on road signs in West Texas that produce a specific, involuntary reaction in every driver passing through for the first time. The county was organized in 1893. It has never changed its name. West Texas has always had a certain resolute quality.</div>
+    </div>
+
+    <div class="county-entry red-bar">
+      <div class="ce-name">Cuming County</div>
+      <div class="ce-state">Nebraska · Est. 1855</div>
+      <div class="ce-body">Thomas B. Cuming served as acting governor of the Nebraska Territory and, by all accounts, performed his duties admirably. His memorial is a county in northeastern Nebraska whose name, in the typography of official documents and Google Maps searches, requires an additional moment of composure from anyone encountering it for the first time. The county has 8,700 residents who have made their peace with this. Outsiders have not.</div>
+    </div>
+
+    <div class="pull">
+      CAPTAIN BUTTS DIED<br>IN SERVICE TO HIS STATE.<br><span>HIS MEMORIAL IS PERMANENT,<br>INESCAPABLE, AND CANNOT BE<br>READ ALOUD WITHOUT INCIDENT.</span>
+    </div>
+
+    <h2><span class="cat">The Accidental Linguists</span>Counties That Gave Us Words</h2>
+
+    <p>The most interesting county in this survey is not one of the accidentally amusing ones. It is a county in North Carolina that accidentally gave the English language one of its most enduring words for a specific variety of empty, self-serving speech — and whose role in this linguistic history is almost entirely forgotten by the people who use the word every day.</p>
+
+    <div class="county-entry">
+      <div class="ce-name">Buncombe County</div>
+      <div class="ce-state">North Carolina · Est. 1791</div>
+      <div class="ce-body">The county was named for Edward Buncombe, a Revolutionary War officer from the area, and for thirty years the name was simply a county name. Then, in 1820, a Congressman named Felix Walker delivered a long, rambling, largely irrelevant speech during the Missouri Compromise debates. His colleagues grew restless and urged him to sit down. Walker refused, explaining that he was not speaking to Congress — he was speaking to Buncombe. Meaning he was performing for his constituents back home, not engaging in the matter at hand. The phrase caught on. "Buncombe" became shorthand for empty oratory, then corrupted to "bunkum," then shortened to "bunk." The county that gave English the word for hollow, performative speech has been full of genuine meaning ever since — and nobody connecting the word to the county knows that a Revolutionary War officer named Buncombe is behind it all.</div>
+    </div>
+
+    <div class="breakout">
+      <h3>The Word "Bunk" Has a County Birthday</h3>
+      <p>Felix Walker's 1820 speech is the documented origin of "buncombe" in its figurative sense. By the 1840s the word appeared regularly in American newspapers as slang for political nonsense. By the late 19th century it had contracted to "bunkum" and then "bunk." H.L. Mencken cited it. William Faulkner used it. It is now standard American English for any claim that sounds impressive and means nothing.</p>
+      <p>Buncombe County, North Carolina, has a population of about 275,000, a seat in the city of Asheville, and an accidental claim to one of the more useful words in the political vocabulary. Edward Buncombe, the officer for whom it was named, died in a British prison in 1778 and never spoke buncombe in his life.</p>
+    </div>
+
+    <h2><span class="cat">The Bleak and the Gothic</span>Counties That Sound Like Weather Forecasts</h2>
+
+    <p>Not all the comedy in American county names is of the involuntary-snicker variety. Some of it is quieter and stranger: the names that sound less like political honors than like descriptions of a psychological state, or a county of the soul, or the opening chapter of a novel set in a place where things do not go well.</p>
+
+    <div class="county-entry blue-bar">
+      <div class="ce-name">Bland County</div>
+      <div class="ce-state">Virginia · Est. 1861</div>
+      <div class="ce-body">Richard Bland was a respected Virginia Revolutionary-era political figure, and the county that honors him in the Virginia mountains is, by most accounts, a place of genuine rugged beauty — gorges, river valleys, and Appalachian ridgelines. None of this can fully overcome the name. Every tourism initiative Bland County has ever mounted has had to begin by addressing the name, and in doing so, tacitly acknowledge that the thing it most needs to deny is the thing the world most hears. "Bland County is anything but bland!" the tourism materials say, which is exactly what a county called Bland would have to say. The name won the argument before it started.</div>
+    </div>
+
+    <div class="county-entry red-bar">
+      <div class="ce-name">Barren County</div>
+      <div class="ce-state">Kentucky · Est. 1798</div>
+      <div class="ce-body">The name comes from the "barrens," the prairie-like treeless expanses that Kentucky settlers found in this part of the state — a landscape feature, not an insult. It is now an insult in the sense that "Barren County Tourism" is a phrase that carries its own refutation. The county has been farming, distilling, and living contentedly since 1798, untroubled by its name in the way that people who have lived with something long enough eventually stop noticing it.</div>
+    </div>
+
+    <div class="county-entry green-bar">
+      <div class="ce-name">Malheur County</div>
+      <div class="ce-state">Oregon · Est. 1887</div>
+      <div class="ce-body">"Malheur" is French for misfortune or unhappiness. The name comes from the Rivière au Malheur — the Unfortunate River — which French Canadian fur trappers named after their property or furs were stolen from their camp during an 1826 expedition. Oregon's official records preserve this origin faithfully. The county that encompasses the southeastern corner of Oregon — the high desert, the Owyhee canyons, the Snake River valley — was thus named, with bureaucratic permanence, after a specific historical bad day. Every official document issued by Malheur County is, etymologically, a document issued by the County of Misfortune.</div>
+    </div>
+
+    <p>There is a pattern here worth noticing. These names were chosen without irony. "Barren" described the landscape. "Bland" honored a statesman. "Malheur" remembered an incident. The people who named these places were not being funny, and the people who live there are not embarrassed. The comedy — or the poetry, or the melancholy — accumulates over time, as language shifts around a fixed point. The name stays. The world changes. Eventually the name means something its namers never intended.</p>
+
+    <p>This is how language always works, of course. But it works more visibly on a road sign.</p>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-box">
+      <div class="sb-title">The Numbers</div>
+      <p><strong style="color:var(--gold);">3,143</strong> counties and county-equivalents in the United States</p>
+      <p><strong style="color:var(--gold);">31</strong> states have at least one county named Washington</p>
+      <p><strong style="color:var(--gold);">64</strong> residents in Loving County, Texas (2020 Census) — the least-populated county in the country</p>
+      <p><strong style="color:var(--gold);">711</strong> residents in Hooker County, Nebraska — which has heard every joke</p>
+      <p><strong style="color:var(--gold);">496</strong> residents in Petroleum County, Montana — named like a commodity ticker</p>
+      <p><strong style="color:var(--gold);">1820</strong> — the year Felix Walker's speech gave English the word "bunk"</p>
+    </div>
+
+    <div class="sidebar-quote">
+      <p>"Speaking to Buncombe" — Congressman Felix Walker's explanation for an irrelevant speech during the Missouri Compromise debates, 1820. The phrase became "bunkum," then "bunk." The county that gave English one of its most useful political words has never gotten enough credit.</p>
+      <span class="attr">Origin of "Bunk" · Congressional Record · 1820</span>
+    </div>
+
+    <div class="sidebar-card gold-top">
+      <div class="sc-title">The Pronunciation Trap</div>
+      <p>Horry County, South Carolina — home of Myrtle Beach — is pronounced OH-ree, not the way it looks. The county's first civic lesson to visitors is damage control.</p>
+      <p>Fauquier County, Virginia — pronounced faw-KEER — was named for colonial-era Lt. Gov. Francis Fauquier. The county is genteel, historic, and responsible for derailing every out-of-town radio announcer who has tried to say it live.</p>
+      <p>Dutchess County, New York preserves a 17th-century spelling of "Duchess" from the 1683 law creating the county. It looks wrong. It is historically correct. The tension between these two facts has never been resolved.</p>
+    </div>
+
+    <div class="sidebar-card blue-top">
+      <div class="sc-title">Not What They Sound Like</div>
+      <p><strong>Bacon County, GA</strong> — Not breakfast. Named for Senator Augustus Octavius Bacon. Its official food identity is blueberries.</p>
+      <p><strong>Coffee County</strong> — Georgia, Tennessee, and Alabama each have one. All named for men named Coffee, not the drink. The origin is disappointingly uncaffeinated.</p>
+      <p><strong>Bee County, TX</strong> — Not the insect. Named for Barnard E. Bee Sr. The county's own materials explicitly note the insect has nothing to do with it.</p>
+      <p><strong>Nueces County, TX</strong> — "Nueces" means nuts in Spanish. Named for the Nueces River, for the pecan trees observed by Spanish explorers in 1689. A county named Nuts, with colonial-exploration gravitas.</p>
+    </div>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article -->
+
+<!-- ══════════════ CATEGORY BAND ══════════════ -->
+<div class="category-band">
+  <div class="band-title">Four Ways America Names Its Counties</div>
+  <div class="band-sub">A Taxonomy of the American Honorific Impulse</div>
+  <div class="band-cols">
+    <div>
+      <div class="band-col-head">The Solemn, Gone Wrong</div>
+      <p>Honors real people who served bravely, governed well, or died in service. The names were chosen with complete sincerity. What subsequent generations do with those names was not part of the plan. Butts, Hooker, Glasscock, Cuming, and Horry all belong here. The honorees were serious. The names are not.</p>
+    </div>
+    <div>
+      <div class="band-col-head">The Descriptive, Too Honest</div>
+      <p>Describes the landscape, the climate, or the conditions. Names like Barren, Bland, Malheur, Huerfano (Orphan), and Darke were accurate at the time. They remain accurate in the sense that nobody has disputed them. They have simply accumulated more meaning than they were meant to carry.</p>
+    </div>
+    <div>
+      <div class="band-col-head">The Accidentally Poetic</div>
+      <p>Names chosen for mundane geographic or linguistic reasons that now read as literature. Sweet Grass County, Montana. Crow Wing County, Minnesota. Las Animas County (the Souls), Colorado. Beaverhead County, Montana — named from Sacagawea's recognition of a landmark. These names sound like chapters in a novel nobody wrote.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ CONTINUATION ══════════════ -->
+<div style="max-width:860px;margin:0 auto;">
+
+<div class="article" style="padding-top:2rem;">
+  <div class="main-col">
+
+    <h2><span class="cat">The Tender and the Tragic</span>Two Counties at the Opposite Ends of Everything</h2>
+
+    <p>Of all the county names in this survey, the two that carry the most genuine emotional weight are perhaps the most different from each other in their comedy. One sounds like a Valentine. The other sounds like a warning. Both have real history behind them.</p>
+
+    <div class="county-entry">
+      <div class="ce-name">Loving County</div>
+      <div class="ce-state">Texas · Est. 1887 · Population: 64</div>
+      <div class="ce-body">Oliver Loving was a cattleman who helped establish the Goodnight-Loving Trail — one of the great cattle drives of the post-Civil War era — and who was mortally wounded by Comanche raiders in 1867 while his partner Charles Goodnight rode for help. Loving died of his wounds. Goodnight kept his promise and transported the body back to Texas for burial. Larry McMurtry later fictionalized the partnership in <em>Lonesome Dove</em>. The county named for Oliver Loving became the least-populated county in the United States by the 2020 Census: 64 residents. The name sounds like a Valentine sent to a nearly empty room. The reality is a frontier tragedy and the largest open sky in Texas. Both of these things are true at the same time, which is what the best names do — they hold more than one story.</div>
+    </div>
+
+    <div class="county-entry blue-bar">
+      <div class="ce-name">Dare County</div>
+      <div class="ce-state">North Carolina · Est. 1870</div>
+      <div class="ce-body">The name sounds like an imperative: come here, if you dare. It sounds like something a travel brochure would put on a poster of dangerous surf. In fact it honors Virginia Dare — the first English child born in the Americas, in the Roanoke Colony in 1587 — and the county sits on the Outer Banks, that long strand of barrier islands where the Lost Colony of Roanoke vanished without explanation sometime before 1590. Dare County, then, holds the name of a child who was born into a settlement that would disappear entirely, and the mystery of that disappearance has never been solved. The name sounds like a challenge. It turns out to be a question.</div>
+    </div>
+
+    <h2><span class="cat">What's in a Name</span>And Why It Matters That We Remember</h2>
+
+    <p>Shakespeare's Juliet asks the question rhetorically, meaning to suggest that names are arbitrary — that a rose by any other name would smell as sweet, that Romeo's name is a social accident and not an essence. She is making an argument against the feuding that keeps them apart.</p>
+
+    <p>She is, in the context of American county names, wrong.</p>
+
+    <p>The names matter because they are history made permanent and public, stamped on road signs and courthouse doors and tax forms and birth certificates, repeated in the addresses of everyone who lives within the county lines. They are the record of what someone chose to remember. Captain Butts died in the Creek War. General Hooker fought at Antietam. Felix Walker spoke to Buncombe. Oliver Loving drove cattle across the frontier until he was killed by it. Edward Buncombe died in a British prison. Virginia Dare was born on a barrier island and then, with her entire colony, was gone.</p>
+
+    <p>These are real stories. The names carry them forward, whether anyone reads the stories or not. The comedy — the involuntary snicker at Butts County, the double-take at Glasscock, the quiet absurdity of Bland County's tourism materials insisting on their own vividness — is just the friction between the seriousness of the original intention and the passage of time. The names were always serious. Time made them funny. Or poetic. Or melancholy. Or all three at once.</p>
+
+    <div class="pull">
+      THE NAMES WERE CHOSEN<br>IN PERFECT SERIOUSNESS.<br><span>TIME DID THE REST.</span>
+    </div>
+
+    <p>There is something worth sitting with in the Buncombe story specifically. A county was named for a soldier who died honorably in 1778. His name went on a map. Forty years later, a congressman invoked that map to excuse a useless speech. The word spread. English absorbed it. Today, whenever someone says "that's a bunch of bunk," they are — at a distance of two centuries and without knowing it — invoking a dead Revolutionary War officer and a long-forgotten Missouri Compromise debate, and a particular moment when a congressman decided his constituents mattered more than the truth. The chain of meaning runs all the way back. It almost always does.</p>
+
+    <p>The American map is full of these chains, if you pull on them. Bourbon County, Kentucky, was named for the French House of Bourbon in gratitude for French support during the Revolution — a bourbon that had nothing to do with whiskey. The whiskey named itself after the county later, for reasons that involve limestone water and aging barrels and marketing, and now the county and the whiskey are so intertwined that it is nearly impossible to explain one without the other. The French royalty at the beginning of the chain would not recognize the bottle at the end.</p>
+
+    <p>Yolo County, California, sounds like it was named by a generation that came of age on social media. In fact it comes from a Patwin-language word, filtered through early American settlers who heard it differently each time they wrote it down, and the modern acronym — you only live once — is pure coincidence, retrofitted onto a syllable that meant something else entirely to the people who lived there first. The county kept their word and forgot their meaning, the way place names always eventually do.</p>
+
+    <p>This is perhaps the deepest thing the funny county names have to tell us: that the American map is a palimpsest. Under every English name there is often a French name, or a Spanish one, or a word in a language that had no written form, and under that word is a landscape that was already named before any of them arrived. The Licking River got its English name from salt deposits that drew animals and people for centuries before the county was organized. The Nueces River was "nuts" in Spanish before it was an official county boundary. The Malheur was already unfortunate before anyone came to call it that. The names change. The land stays.</p>
+
+    <p>Butts County will never rename itself. Bland County will continue insisting it isn't. Loving County will continue being very nearly empty under a very large sky. Dare County sits on the Outer Banks, where the Lost Colony went, and the question in the name has never been answered.</p>
+
+    <p>Three thousand counties. Each one a name someone chose. Each name a small, permanent act of memory, wearing down into something else, carrying its history in its syllables whether anyone knows it or not.</p>
+
+    <p>What's in a name? As it turns out: a soldier, a congressman, a cattle drive, a child who vanished, a river that had a bad day, and the long, slow, unintended comedy of time.</p>
+
+  </div>
+
+  <div class="side-col">
+
+    <div class="sidebar-box">
+      <div class="sb-title">The Spanish Inheritance</div>
+      <p>Several of the most evocative county names come from Spanish, filtered through centuries of use and translation.</p>
+      <p><strong style="color:var(--gold);">Las Animas, CO</strong> — "The Souls." Connected to Spanish soldiers lost along the Purgatoire River. A name that sounds like folk-horror and is entirely historical.</p>
+      <p><strong style="color:var(--gold);">Huerfano, CO</strong> — "The Orphan." Named for Huerfano Butte, a solitary landmark rising from the plains. A mountain so isolated that Spanish speakers called it an orphan.</p>
+      <p><strong style="color:var(--gold);">Nueces, TX</strong> — "Nuts." Pecan trees observed by Alonso de León in 1689. The county named Nuts, delivered in formal Spanish with colonial seriousness.</p>
+      <p><strong style="color:var(--gold);">Conejos, CO</strong> — "Rabbits." Named for the abundance of rabbits in the area. Perfectly reasonable. Sounds like a children's book.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">Bourbon's Journey</div>
+      <p>Bourbon County, Kentucky was named in 1785 for the French House of Bourbon — a tribute to France's support during the American Revolution. The French royalty the name honored had nothing to do with whiskey.</p>
+      <p>The whiskey named itself after the county later, for reasons involving shipping routes, barrels, and limestone-filtered water. The chain runs: French monarchy → Kentucky county → American whiskey → global brand.</p>
+      <p>Louis XVI, who helped finance the American Revolution, would not recognize the bottle, but his family name is on every label.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">Sacagawea's Name</div>
+      <p>Beaverhead County, Montana takes its name from Beaverhead Rock, which Sacagawea recognized in 1805 during the Lewis and Clark Expedition. She told the Corps that her people called it the beaver's head because of its resemblance to one — and that this landmark meant they were near her homeland.</p>
+      <p>The county named for that recognition is one of the few places on the American map where a woman's navigational judgment and a specific act of homecoming are embedded in the official place name. The rock is still there. So is the name.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">The Lone County</div>
+      <p>Loving County, Texas had 64 residents in the 2020 Census, making it the least-populated county in the contiguous United States. It was named for Oliver Loving, who was mortally wounded by Comanche raiders in 1867 while driving cattle. Charles Goodnight rode for help and later kept his promise to bring the body home.</p>
+      <p>Larry McMurtry fictionalized both men in <em>Lonesome Dove</em>. The county remains. The frontier that killed Oliver Loving is still present in the emptiness of it.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>Buncombe County, NC · Named for Edward Buncombe, 1791 · Gave English "bunkum" and "bunk" via an 1820 Congressional speech · Still waiting for credit</p>
+  <p>Butts County, GA · Named for Captain Samuel Butts, 1825 · The captain died with distinction · His county has had to explain itself ever since</p>
+  <p>Loving County, TX · Population 64 · Named for Oliver Loving, 1887 · The least-populated county in the contiguous US · The sky is large</p>
+  <p>Dare County, NC · Named for Virginia Dare, 1870 · She was born in 1587 · The colony vanished · The question remains</p>
+  <p>© The Raised Eyebrow · Deeper Reflections · 3,143 counties · Each one a name · Each name a story · Most of them forgotten</p>
+</div>
+
+</div>
+</body>
+</html>

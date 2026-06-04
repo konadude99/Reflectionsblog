@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strange American Festivals: West Virginia Roadkill Cook-Off</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:     #f0ece0;
+  --newsprint: #e0d8c4;
+  --ink:       #160e08;
+  --rust:      #9c3010;
+  --ember:     #c04818;
+  --amber:     #c87c18;
+  --bark:      #5c3c18;
+  --tan:       #a07840;
+  --muted:     #5c5040;
+  --border:    #c0a878;
+  --card:      #faf6ea;
+  --mountain:  #3a5028;
+  --gold:      #c89010;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ───── SERIES RIBBON ───── */
+.series-ribbon {
+  background: var(--bark);
+  color: #e0c898;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  margin: 0 -1.2rem 0;
+}
+
+/* ───── MASTHEAD ───── */
+.masthead {
+  text-align: center;
+  padding: 2.2rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(20px, 3.5vw, 34px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 0.4rem;
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(42px, 9vw, 98px);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--rust);
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ───── BODY LAYOUT ───── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--rust);
+}
+
+/* ───── HEADINGS ───── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ember);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ───── PULL QUOTE ───── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--rust); }
+
+/* ───── DISH NAME ROSTER ───── */
+.dish-roster {
+  background: var(--ink);
+  color: #e8dcc8;
+  padding: 1.4rem 1.6rem 1.2rem;
+  margin: 2rem 0 2.2rem;
+}
+.dish-roster-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+  margin-bottom: 0.8rem;
+  border-bottom: 0.5px solid #444;
+  padding-bottom: 0.4rem;
+}
+.dish-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 1.4rem;
+}
+.dish-item {
+  font-size: 13.5px;
+  font-style: italic;
+  font-weight: 300;
+  color: #d0c8b0;
+  line-height: 1.4;
+  padding: 0.25rem 0;
+  border-bottom: 0.5px solid #2a2820;
+}
+
+/* ───── RULES CALLOUT ───── */
+.rules-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--rust);
+  padding: 1.2rem 1.4rem 1rem;
+  margin: 2rem 0 2.2rem;
+}
+.rules-box-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--rust);
+  margin-bottom: 0.8rem;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+.rule-row {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 0.3rem 0.8rem;
+  margin-bottom: 0.65rem;
+  align-items: baseline;
+}
+.rule-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: var(--ember);
+  line-height: 1;
+}
+.rule-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.rule-text em {
+  font-style: italic;
+  color: var(--bark);
+}
+
+/* ───── SIDEBAR ───── */
+.sidebar-box {
+  background: var(--bark);
+  color: #e8d8b8;
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.15);
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #d8c8a0;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-box2 {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--amber);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-box2 .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p:last-child { margin-bottom: 0; }
+
+.sidebar-stat {
+  background: var(--rust);
+  color: #fff;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ss-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+.ss-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.45;
+  margin-top: 0.3rem;
+}
+
+/* ───── FULL-WIDTH DARK BAND ───── */
+.dark-band {
+  background: var(--ink);
+  color: #d8cdb8;
+  padding: 2.5rem 2rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.db-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+  text-align: center;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+.db-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200,124,24,0.55);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.db-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.db-col-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+  border-bottom: 0.5px solid rgba(200,124,24,0.3);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.db-col p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #b8ad98;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+
+/* ───── ORNAMENT / FOOTER ───── */
+.ornament {
+  text-align: center;
+  color: var(--amber);
+  margin: 3rem 0 2rem;
+  letter-spacing: 1em;
+  font-size: 14px;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding-top: 1rem;
+  line-height: 2;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .db-cols { grid-template-columns: 1fr; gap: 1rem; }
+  .dish-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SERIES RIBBON ═══ -->
+<div class="series-ribbon">Strange American Festivals</div>
+
+<!-- ═══ MASTHEAD ═══ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span class="pub-name">The Raised Eyebrow</span>
+    <span>Marlinton, West Virginia &nbsp;·&nbsp; Annual · September</span>
+  </div>
+  <p class="kicker">Strange American Festivals</p>
+  <h1>WEST VIRGINIA<br><em>ROADKILL</em><br>COOK-OFF</h1>
+  <p class="deck">In which the town of Marlinton, West Virginia invites the world to sample Appalachian wild game cuisine under names like <em>Drunken Deer in the Headlights</em> and <em>West Virginia Turnpike Tragedy</em> — and the world, surprisingly, keeps showing up.</p>
+  <p class="byline-row">Raised Eyebrows &nbsp;·&nbsp; Festival Edition &nbsp;·&nbsp; Marlinton, West Virginia &nbsp;·&nbsp; Est. 1991</p>
+</div>
+
+<!-- ═══ TWO-COLUMN BODY ═══ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">Let us begin with the official rules, because they set the tone more efficiently than any introduction could. To compete in the West Virginia Roadkill Cook-Off, a team must prepare a dish featuring an animal "commonly found dead along the side of the road." The dish must be at least twenty-five percent wild meat — meaning it came from hunting, not a store. The protein cannot be pre-cooked. It must be pre-cleaned and pre-skinned, which represents the outer limit of what the organizers will do for you in advance.</p>
+
+    <p>The judges will evaluate each dish on taste, originality, presentation, and showmanship. Their qualifications are established in the rules with admirable directness: "All judges have been tested for cast-iron stomachs and have sworn under oath to have no vegetarian tendencies."</p>
+
+    <p>The event takes place every September in Marlinton, West Virginia — population just under one thousand — in the Appalachian highlands of Pocahontas County, where the Greenbrier River runs cold and clear and eight rivers have their headwaters, and where the mountains have been feeding people from the woods and fields for as long as anyone can remember. The cook-off began in 1991, has never stopped, draws twelve thousand visitors to a county of eight thousand residents, and has been covered by the Food Network, Andrew Zimmern's <em>Bizarre Foods</em>, the <em>Washington Post</em>, and the BBC. Eighty percent of the people who attend, the chamber of commerce has noted, come from out of state.</p>
+
+    <p>Nobody, it appears, can resist the name.</p>
+
+    <h2><span class="cat">The Place</span>Pocahontas County and the Mountains That Made It</h2>
+
+    <p>Marlinton is named for Jacob Marlin, who along with Stephen Sewell became, in 1749, the first non-native settlers west of the Allegheny Mountains. The two men built a cabin in the Greenbrier Valley. They subsequently had a religious disagreement of sufficient intensity that Sewell moved into a nearby hollowed-out sycamore tree, where he lived for the winter. A surveyor named John Lewis discovered them both the following year. It was that kind of place from the beginning.</p>
+
+    <p>Pocahontas County is large — nearly a thousand square miles — and sparsely populated, roughly eight people per square mile. It is surrounded by national forest, threaded with rivers and hiking trails, and sits at elevations high enough that the air stays cool well into what the rest of the country considers summer. The first county seat was a settlement called Huntersville, named not as a generic descriptor but because the place was, literally, where hunters gathered to trade furs, swap meat, and hear the latest news from the mountains. That was 1821. The hunting tradition that gave it its name has not particularly changed in the two centuries since.</p>
+
+    <p>What has changed is that the hunting now has a festival, and the festival has a name that makes people in other states laugh before they get on the highway to come see it. The $2 million economic impact the cook-off generates for a county of eight thousand people is not an accident. It is the accidental genius of calling something exactly what it is.</p>
+
+    <div class="pull">
+      THE RULES SPECIFY:<br>"ALL JUDGES HAVE SWORN<br><span>UNDER OATH TO HAVE<br>NO VEGETARIAN TENDENCIES."</span>
+    </div>
+
+    <h2><span class="cat">The Animals</span>A Taxonomy of Eligible Proteins</h2>
+
+    <p>The rules do not specify a complete list of eligible animals because, as the organizers appear to have concluded, the list would be impractically long. The operating principle is simpler: if it regularly turns up dead on a West Virginia highway, it qualifies. In practice this means deer, bear, wild turkey, groundhog, opossum, raccoon, squirrel, rabbit, beaver, crow, snake, snapping turtle, and — in at least one documented entry — alligator, whose presence on the roads of West Virginia is geographically puzzling but whose eligibility was apparently not challenged.</p>
+
+    <p>Competitors are encouraged to cook in any style: barbecue, fried, stewed, baked, braised. The innovation is not in what animals are used but in what is done with them. Past entries have included teriyaki-marinated black bear, fried venison wontons, snapping turtle stew, squirrel gravy over biscuits, pheasant and chukar over waffles, and at least one dish served over a bed of ramps — the wild onion native to Appalachian hollows that appears every spring and is harvested with the same matter-of-fact relationship to the local landscape that characterizes everything about this festival.</p>
+
+    <p>The dish names are a separate competition entirely, a parallel creative event running alongside the cooking itself. The names are where the genuine art lives.</p>
+
+    <div class="dish-roster">
+      <div class="dish-roster-title">A Partial Record of Dishes Submitted Over the Years</div>
+      <div class="dish-grid">
+        <div class="dish-item">Drunken Deer in the Headlights</div>
+        <div class="dish-item">West Virginia Turnpike Tragedy</div>
+        <div class="dish-item">Squashed Goose Guts</div>
+        <div class="dish-item">Kountry Kookin' Hillbilly Chili</div>
+        <div class="dish-item">Rockabilly Bear Butt Savory Stew</div>
+        <div class="dish-item">Buzzard Regurgitation with Worms</div>
+        <div class="dish-item">Get Yer-Self a Huzband Hillbilly Burgoo</div>
+        <div class="dish-item">Pothole Possum Stew</div>
+        <div class="dish-item">Fender Fried Faun in Vulture Vomit</div>
+        <div class="dish-item">Hillbilly Mardi Gras Alligator &amp; Turtle Gumbo</div>
+        <div class="dish-item">Predator Prey Chili</div>
+        <div class="dish-item">Wilderness Surprise</div>
+        <div class="dish-item">Fricasseed Wabbit Gumbo</div>
+        <div class="dish-item">Smeared Hog with Groundhog Gravy</div>
+        <div class="dish-item">Jaeger Wild mit Pilzen</div>
+        <div class="dish-item">Peter Caught-On-Tailgate Roll</div>
+      </div>
+    </div>
+
+    <p>A note on <em>Buzzard Regurgitation with Worms</em>: it was, in fact, a marinated sliced wild turkey dish with rice and noodles. The name was doing the work that presentation could not. A note on <em>Get Yer-Self a Huzband Hillbilly Burgoo</em>: it won first place. A reviewer noted the presence of what appeared to be a whisker or bristle in his sample, and concluded that the cooks who wanted to attract potential husbands perhaps knew their audience. A note on <em>Wilderness Surprise</em>: it tasted good and did not, as the reviewer had feared, produce any adverse gastrointestinal events, which, under the circumstances, counts as a success.</p>
+
+    <h2><span class="cat">The Deeper Point</span>On Stereotypes and the People Who Transcend Them</h2>
+
+    <p>The cook-off has, from its early years, carried a second purpose alongside the cooking competition. West Virginia is a state that has spent generations absorbing jokes at its expense — about poverty, about education, about the peculiarities of rural Appalachian life — and the Roadkill Cook-Off is, in part, a deliberate and cheerful act of self-determination. If the rest of the country is going to imagine West Virginians eating roadkill, the people of Pocahontas County will organize a festival around it, name the dishes with maximum comic flair, invite twelve thousand visitors to come watch, and collect a $2 million economic impact in the process.</p>
+
+    <p>This is a fairly sophisticated move dressed up in overalls and a possum joke, and it has worked with remarkable consistency for more than thirty years.</p>
+
+    <p>"It's very tongue-in-cheek," the <em>Washington Post</em> was told on one of its visits. The dishes, for their part, are not actually tongue-in-cheek at all — they are genuinely prepared wild game, the same animals that have fed mountain families in this part of the country since Jacob Marlin and Stephen Sewell were settling their theological differences in a sycamore tree. The names are jokes. The cooking is serious.</p>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-stat">
+      <div class="ss-num">1991</div>
+      <div class="ss-label">year of first cook-off<br>running every September since<br>Marlinton, WV</div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Fast Facts</div>
+      <p><strong style="color:var(--amber);">Location:</strong> Marlinton, West Virginia (Pocahontas County)</p>
+      <p><strong style="color:var(--amber);">When:</strong> Last Saturday of September, as part of the Autumn Harvest Festival</p>
+      <p><strong style="color:var(--amber);">Top Prize:</strong> $1,500 (plus $1,000 second, $750 third, $250 each for Showmanship and People's Choice)</p>
+      <p><strong style="color:var(--amber);">Economic Impact:</strong> ~$2 million annually for a county of ~8,000 residents</p>
+      <p><strong style="color:var(--amber);">Attendance:</strong> ~12,000 visitors. Roughly 80% from out of state.</p>
+      <p><strong style="color:var(--amber);">As Seen On:</strong> Food Network, Andrew Zimmern's <em>Bizarre Foods</em>, the BBC, <em>Washington Post</em></p>
+    </div>
+
+    <div class="sidebar-box2">
+      <div class="sb-title">The Judge Oath</div>
+      <p>Judges must demonstrate cast-iron stomachs and swear under oath to have no vegetarian tendencies. The decisions of the judges are final.</p>
+      <p>Competitors can, per BBC reporting, lose points if a judge encounters a piece of gravel in their dish. This is the cook-off's closest approach to a food safety standard, and it is more than adequate for the context.</p>
+    </div>
+
+    <div class="sidebar-box2">
+      <div class="sb-title">The Gravel Rule</div>
+      <p>Of all the things one might encounter in a bowl of bear stew or squirrel gravy, gravel is apparently the one the judges have decided to formalize an objection to. The line between authentic Appalachian wild game cuisine and a citation from the health department runs, it seems, directly through that piece of gravel.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Miss Roadkill</div>
+      <p>The cook-off includes a Miss Roadkill pageant, in which contestants compete for the crown and sash that signify the festival's highest non-culinary honor.</p>
+      <p>Past winners have mingled with the crowd during the tasting period, crowns and sashes sparkling, eating the same bear stew and possum burgoo as everyone else. This is the correct way to handle the title.</p>
+    </div>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article -->
+
+<!-- ═══ RULES SECTION ═══ -->
+<div style="max-width:860px;margin:0 auto;padding:0 0;">
+<div class="rules-box">
+  <div class="rules-box-title">Official Competition Rules — Selected Highlights</div>
+  <div class="rule-row">
+    <div class="rule-num">1</div>
+    <div class="rule-text">Dishes must feature an animal <em>commonly found dead along the side of the road</em>. The organizers will not provide an exhaustive list. You know what kind of animal they mean.</div>
+  </div>
+  <div class="rule-row">
+    <div class="rule-num">2</div>
+    <div class="rule-text">At least 25% of the meat must be wild — harvested through hunting, not purchased from a store. What the other 75% is, the rules leave to the cook's discretion and conscience.</div>
+  </div>
+  <div class="rule-row">
+    <div class="rule-num">3</div>
+    <div class="rule-text">Protein <em>cannot</em> be pre-cooked. It must arrive pre-cleaned and pre-skinned. Where it goes from there is your business.</div>
+  </div>
+  <div class="rule-row">
+    <div class="rule-num">4</div>
+    <div class="rule-text">Judging criteria: taste, originality, presentation, and showmanship. All judges have been tested for cast-iron stomachs and have <em>sworn under oath to have no vegetarian tendencies</em>. Their decisions are final.</div>
+  </div>
+  <div class="rule-row">
+    <div class="rule-num">5</div>
+    <div class="rule-text">Registration is free. Entry deadline is firm. <em>No late entries will be accepted.</em> The cook-off will proceed without you, and your groundhog gravy will have been for nothing.</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ FULL-WIDTH BAND: THE FESTIVAL ═══ -->
+<div class="dark-band">
+  <div class="db-title">The Day of the Cook-Off</div>
+  <div class="db-sub">What Twelve Thousand People Do in a Town of One Thousand on a September Saturday</div>
+  <div class="db-cols">
+    <div class="db-col">
+      <div class="db-col-head">The Cook-Off</div>
+      <p>Teams arrive in costume — some in full Appalachian hunting regalia, others in theme-matched outfits that correspond to their dish name. The Woodrow Wood Rats have gone with a south-of-the-border motif. The Coal Hollow Brothers have added lemon thyme to their venison with the focused attention of chefs who know exactly what they are doing. Snakes sizzle on barbecue grills. Thick brown broths bubble with black bear. Chamber of commerce officials inspect all meat for "excessive" gravel.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Tasting</div>
+      <p>For a wristband — $5 to $10 depending on the year — attendees circulate among the stalls sampling whatever they have the nerve to try. Each team feeds 1,500 to 2,000 people, which means the portions are small but the cumulative effect, across a full afternoon of bear stew, turtle gumbo, and squirrel gravy, is substantial. First-timers approach with skepticism and leave having discovered that wild game, properly prepared by people who have been cooking it since childhood, is rather good. This surprises them. It should not.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">Everything Else</div>
+      <p>The Roadkill Cook-Off is part of Marlinton's Autumn Harvest Festival, which surrounds it with mountain music, arts and craft vendors, a biscuit-baking competition, and a Miss Roadkill pageant whose winners mingle through the crowd with the unflappable dignity of people who have accepted the crown on its own terms. Children play. The hills above town have begun their turn toward autumn color. The Greenbrier River runs cold nearby. Visitors from Oklahoma, Texas, Kansas, India, and Germany photograph their plates and try to explain to someone back home what they are eating and why it is delicious.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONCLUSION ═══ -->
+<div style="max-width:860px;margin:0 auto;">
+
+<h2><span class="cat">In Conclusion</span>You Kill It, We Grill It</h2>
+
+<p>There is a festival motto, semi-official and widely quoted: <em>You kill it, we grill it.</em> It is not, strictly speaking, accurate — the rules require that the meat not come from actual road casualties, and the health code takes a dim view of carcasses with unclear provenance. But as a statement of the cook-off's spirit, it is precise. This is a festival that begins with the premise that the landscape surrounding Marlinton, West Virginia — the mountains, the forests, the rivers, the abundant wildlife that has been feeding families here for three hundred years — is not something to be embarrassed about. It is something to cook.</p>
+
+<p>The names are jokes. The cooking is not. Linda Simmons of the chamber of commerce placed second in the competition some years ago with a parboiled groundhog dish — onions, carrots, served over ramps — and she is not joking when she describes it. The Coal Hollow Brothers add lemon thyme to their venison with the focused attention of chefs who know exactly what they're doing. The woman who won first place with <em>Get Yer-Self a Huzband Hillbilly Burgoo</em> cooked for 1,500 people and won $1,200 and is probably not lying awake at night regretting any of it.</p>
+
+<div class="pull">
+  THE NAMES ARE JOKES.<br><span>THE COOKING IS NOT.</span><br>THE GRAVEL RULE IS BOTH.
+</div>
+
+<p>The festival has survived for more than thirty years on a combination of genuine culinary tradition, skillful self-mockery, and the reliable human desire to try something that sounds improbable. Eighty percent of the twelve thousand people who show up each September have driven from other states. They fill every motel and hotel in the county. They generate $2 million for an economy that needs every dollar of it. They eat bear stew and snapping turtle and groundhog over ramps and they go home with a story they will be telling for years.</p>
+
+<p>Pocahontas County had a settlement called Huntersville before it had a county seat. It has been feeding itself from these mountains since before the United States existed. The Roadkill Cook-Off is, in this light, not a novelty festival at all. It is an autumn harvest celebration in a place that has always harvested from the autumn. The name is new. The idea is as old as the mountains.</p>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>WV Roadkill Cook-Off &nbsp;·&nbsp; Marlinton, West Virginia &nbsp;·&nbsp; Pocahontas County &nbsp;·&nbsp; Est. 1991 &nbsp;·&nbsp; Last Saturday of September</p>
+  <p>All judges have been tested for cast-iron stomachs and have sworn under oath to have no vegetarian tendencies.</p>
+  <p>Jacob Marlin &nbsp;·&nbsp; First settler west of the Allegheny Mountains, 1749 &nbsp;·&nbsp; Built a cabin &nbsp;·&nbsp; Would almost certainly have entered the cook-off</p>
+  <p>© The Raised Eyebrow &nbsp;·&nbsp; Strange American Festivals Series &nbsp;·&nbsp; The gravel rule remains in effect &nbsp;·&nbsp; No animals were harmed in the writing of this article that weren't going to be eaten anyway</p>
+</div>
+
+</div>
+
+</body>
+</html>

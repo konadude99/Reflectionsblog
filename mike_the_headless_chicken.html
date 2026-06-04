@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strange American Festivals: Mike the Headless Chicken Festival</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root {
+  --paper:    #f5f0e8;
+  --newsprint:#e8e0ce;
+  --ink:      #12100e;
+  --red:      #c0240c;
+  --gold:     #c8900a;
+  --blue:     #1a3a6e;
+  --muted:    #6a5f4a;
+  --border:   #c8b898;
+  --card:     #fdfaf3;
+  --green:    #1e5c2e;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ───── SERIES RIBBON ───── */
+.series-ribbon {
+  background: var(--ink);
+  color: var(--gold);
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  margin: 0 -1.2rem 0;
+}
+
+/* ───── MASTHEAD ───── */
+.masthead {
+  text-align: center;
+  padding: 2.2rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(20px,3.5vw,34px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.4rem;
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(44px, 9.5vw, 100px);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--red);
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ───── BODY LAYOUT ───── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--red);
+}
+
+/* ───── SECTION HEADINGS ───── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ───── PULL QUOTE ───── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--red); }
+
+/* ───── TIMELINE ───── */
+.timeline {
+  margin: 2rem 0 2.5rem;
+  border-left: 3px solid var(--red);
+  padding-left: 1.4rem;
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.9rem;
+  top: 0.42em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 2px solid var(--paper);
+  outline: 1.5px solid var(--red);
+}
+.tl-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.1rem;
+}
+.tl-event {
+  font-size: 15.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ───── FESTIVAL EVENT CARDS ───── */
+.event-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin: 1.8rem 0 2.2rem;
+}
+.event-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--red);
+  padding: 0.9rem 1rem 0.8rem;
+}
+.event-card.gold-top { border-top-color: var(--gold); }
+.event-card.blue-top { border-top-color: var(--blue); }
+.event-card.green-top { border-top-color: var(--green); }
+.ec-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+  line-height: 1.15;
+}
+.ec-body {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ───── SIDEBAR ───── */
+.sidebar-box {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid #444;
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #d8d0c0;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-box2 {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-box2 .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.sidebar-box2 p:last-child { margin-bottom: 0; }
+
+.sidebar-stat {
+  background: var(--red);
+  color: var(--paper);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ss-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+.ss-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.4;
+  margin-top: 0.3rem;
+}
+
+/* ───── FULL-WIDTH DARK BAND ───── */
+.dark-band {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2.5rem 2rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.db-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+.db-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7a6a52;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.db-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.db-col-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  border-bottom: 0.5px solid #444;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.db-col p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #c8c0b0;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+
+/* ───── ORNAMENT / FOOTER ───── */
+.ornament {
+  text-align: center;
+  color: var(--gold);
+  margin: 3rem 0 2rem;
+  letter-spacing: 1em;
+  font-size: 14px;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding-top: 1rem;
+  line-height: 2;
+  text-align: center;
+}
+
+/* ───── RESPONSIVE ───── */
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .event-grid { grid-template-columns: 1fr; }
+  .db-cols { grid-template-columns: 1fr; gap: 1rem; }
+  h1 { font-size: clamp(40px, 12vw, 80px); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SERIES RIBBON ═══ -->
+<div class="series-ribbon">Strange American Festivals</div>
+
+<!-- ═══ MASTHEAD ═══ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span class="pub-name">The Raised Eyebrow</span>
+    <span>Fruita, Colorado &nbsp;·&nbsp; Annual · May</span>
+  </div>
+  <p class="kicker">Strange American Festivals</p>
+  <h1>MIKE THE<br><em>HEADLESS</em><br>CHICKEN</h1>
+  <p class="deck">In which a Colorado farming town celebrates the most improbable chicken in the history of American agriculture — and asks what it means when you simply refuse to die.</p>
+  <p class="byline-row">Raised Eyebrows &nbsp;·&nbsp; Festival Edition &nbsp;·&nbsp; Fruita, Colorado &nbsp;·&nbsp; Est. 1999</p>
+</div>
+
+<!-- ═══ TWO-COLUMN BODY ═══ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">On the morning of September 10, 1945, a Colorado farmer named Lloyd Olsen walked out to his yard with an axe, selected a five-and-a-half-month-old Wyandotte rooster, and did what farmers had done to chickens since the beginning of farming. The axe came down. The head came off. Lloyd tossed the carcass aside and went on with his work.</p>
+
+    <p>The chicken got up and walked away.</p>
+
+    <p>Not for a few frantic seconds, the way decapitated chickens sometimes do while their nervous systems sort out what has happened. Mike — for that is what the rooster's name turned out to be — walked away calmly, pecked at the ground as if looking for something to eat, and was still very much alive the next morning when Lloyd came out to find him roosting on the porch as though nothing unusual had occurred.</p>
+
+    <p>Lloyd Olsen, to his credit, did not merely stand there gaping. He got a dropper and some water, and he fed the bird.</p>
+
+    <h2><span class="cat">The Biology</span>A Question of Brain Placement</h2>
+
+    <p>Here is where the story takes a turn from farm mishap to genuine biological marvel. Most of a chicken's brain — the part that controls breathing, heart rate, digestion, balance, and the basic machinery of being alive — is located in the brain stem, which sits at the back of the skull, near the neck. The parts of the brain that make a chicken recognizably chicken-like: the clucking, the pecking at grain, the dim social awareness of other chickens — those sit higher up, in the cerebrum, which is behind the eyes.</p>
+
+    <p>When Lloyd's axe came down, it removed Mike's beak, his eyes, his cerebrum, and most of his face. It missed the jugular vein. It left one ear intact. And it left virtually the entire brain stem, along with enough of everything else, that a blood clot formed and prevented Mike from bleeding to death on the spot.</p>
+
+    <p>Mike, in other words, was alive. He simply lacked the part of the brain that would have let him know he was in trouble.</p>
+
+    <div class="pull">
+      HE HAD NO EYES, NO BEAK,<br>AND NO CEREBRUM.<br><span>HE GAINED SIX POUNDS.</span>
+    </div>
+
+    <p>Lloyd began feeding him with an eyedropper — milk and water at first, then cracked corn placed directly into the esophagus — and Mike ate, if "ate" is quite the right word. He would attempt to preen his feathers, using the stump of his neck. He would walk among the other chickens. He would attempt to crow, producing, Lloyd reported, a gurgling sound from somewhere deep in his throat. He was, by most observable measures, a functional rooster. He simply happened to have no head.</p>
+
+    <p>When Mike failed to die after several days, then a week, then two, Lloyd decided to see what the scientific community made of all this. He took the bird to the University of Utah in Salt Lake City, where researchers confirmed what Lloyd had suspected: the brain stem was largely intact, the jugular had been missed, and the blood clot had done its work. Mike the Headless Chicken was not a trick or an illusion. He was simply, improbably, alive.</p>
+
+    <h2><span class="cat">The Career</span>Miracle Mike Goes On Tour</h2>
+
+    <p>Word traveled fast. The local papers ran the story. A promoter named Hope Wade drove all the way from Utah to the Olsen farm to make Lloyd an offer. Mike, Wade proposed, could earn real money. The struggling farm family agreed, and Miracle Mike — as the promotional materials would have him — began his national tour.</p>
+
+    <p>He appeared at fairs and carnivals across the country. At the Long Beach boardwalk. In New York, Atlantic City, Los Angeles, and San Diego. Admission was twenty-five cents, and crowds gathered willingly. The Olsens brought along, for atmosphere, a jar containing what they claimed was Mike's severed head — almost certainly a stand-in, the real head having been eaten by a cat on the farm shortly after the beheading — and people stared at the jar, and then at the bird, and went home with a story they'd be telling for the rest of their lives.</p>
+
+    <p><em>Life</em> magazine ran a photo spread in October 1945, barely six weeks after the beheading. <em>Time</em> covered him as well. At the peak of Mike's popularity, Lloyd was earning the equivalent of roughly $50,000 a month in today's dollars. Mike himself was insured for $10,000, which, adjusted for inflation, approaches $120,000. He was, by any measure, a successful chicken.</p>
+
+    <p>He traveled with other sideshow acts — fire eaters, sword swallowers, the usual assembly of wonders — but he was reliably the main attraction. People who had come expecting a gimmick left convinced they had witnessed something genuinely strange. Mike would walk around his enclosure. He would poke at imaginary grain. He grew from two pounds at the time of his beheading to a healthy eight pounds during the tour, which means he was better fed as a headless celebrity than he had ever been as an ordinary rooster with all his faculties intact.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">September 10, 1945</div>
+        <div class="tl-event">Lloyd Olsen beheads Mike at the family farm in Fruita, Colorado. Mike declines to die. Lloyd gets a dropper.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">October 1945</div>
+        <div class="tl-event"><em>Life</em> magazine publishes photos of Mike mid-strut in Salt Lake City. Hate mail begins to arrive. Scientists confirm the brain stem is intact.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1945–1947</div>
+        <div class="tl-event">Mike tours America: fairs, carnivals, boardwalks. He gains six pounds. Lloyd earns the equivalent of $50,000 a month. A jar sits nearby, allegedly containing Mike's head.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">March 17, 1947</div>
+        <div class="tl-event">Mike chokes on mucus in a Phoenix motel room. The Olsens search for the syringe. It has been left at the previous night's sideshow. Mike dies, eighteen months after his beheading.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1999</div>
+        <div class="tl-event">Fruita launches the first Mike the Headless Chicken Festival. The town has found its mascot. The festival has run every May since.</div>
+      </div>
+    </div>
+
+    <h2><span class="cat">The End</span>A Phoenix Motel, a Missing Syringe</h2>
+
+    <p>Mike's death, when it finally came, had the quality of dark comedy that his life had somehow always promised. In the spring of 1947, the Olsens were on the road in the Southwest when they stopped for the night at a motel in Phoenix, Arizona. In the small hours of the morning, they woke to the sound of Mike choking — he sometimes accumulated mucus that needed to be cleared from his esophagus with a syringe, and this was, by now, a routine procedure.</p>
+
+    <p>They reached for the syringe. It was not there. They had left it at the sideshow the previous day.</p>
+
+    <p>They searched the room. They searched the car. They could not find a suitable substitute. And so Mike the Headless Chicken, who had survived being beheaded by an axe, who had toured the country for eighteen months and been featured in national magazines and earned his owner the modern equivalent of half a million dollars, died in a motel room in Phoenix of a clogged throat, with no head to speak of and no syringe to save him.</p>
+
+    <p>Lloyd, apparently embarrassed by the accidental nature of the end, told people for years that he had sold Mike to another promoter. The true story didn't fully come out for decades, finally confirmed by Mike's great-great-grandson Troy Waters, who still has Lloyd's 1946 pickup truck — a truck purchased with Mike's earnings. The truck, at least, survived.</p>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-stat">
+      <div class="ss-num">18</div>
+      <div class="ss-label">months survived<br>after decapitation</div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Fast Facts</div>
+      <p><strong style="color:var(--gold);">Location:</strong> Fruita, Colorado<br>(Mesa County, Western Slope)</p>
+      <p><strong style="color:var(--gold);">When:</strong> Third weekend of May, annually since 1999</p>
+      <p><strong style="color:var(--gold);">The Bird:</strong> Wyandotte rooster, hatched April 1945, beheaded September 10, 1945, died March 17, 1947</p>
+      <p><strong style="color:var(--gold);">What Survived:</strong> Brain stem, one ear, jugular vein (missed by the axe), blood clot</p>
+      <p><strong style="color:var(--gold);">Peak Earnings:</strong> ~$4,500/month (1945), roughly $50,000 in today's dollars</p>
+    </div>
+
+    <div class="sidebar-box2">
+      <div class="sb-title">The Science, Briefly</div>
+      <p>A chicken's cerebrum — the "thinking" brain — sits behind its eyes. The brain stem, which governs breathing and basic motor function, sits low in the skull near the neck.</p>
+      <p>Lloyd's axe removed the cerebrum and face but left the brain stem almost entirely intact. A blood clot stopped the bleeding. Mike had no awareness of his situation but all the equipment needed to continue living in it.</p>
+      <p>Researchers at the University of Utah confirmed the biology in October 1945. Mike holds the Guinness World Record for longest-surviving headless chicken.</p>
+    </div>
+
+    <div class="sidebar-box2">
+      <div class="sb-title">The Hate Mail</div>
+      <p>When <em>Life</em> magazine published photos of Mike in October 1945, a significant number of readers wrote in to condemn the Olsens for cruelty — for keeping a headless chicken alive against its will.</p>
+      <p>The philosophical dimensions of this complaint, given that Mike had neither a will nor the cranial machinery to form one, were apparently lost on the letter writers.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">The Truck</div>
+      <p>Troy Waters, Lloyd Olsen's great-grandson and current keeper of the family story, owns Lloyd's 1946 pickup truck — purchased with earnings from Mike's tour.</p>
+      <p>The truck exists. The chicken does not. Both are, in their way, monuments to a single morning in 1945 when an axe came down at the wrong angle at exactly the right moment.</p>
+    </div>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article grid -->
+
+<!-- ═══ FULL-WIDTH: THE FESTIVAL ═══ -->
+<div class="dark-band">
+  <div class="db-title">The Festival, Explained</div>
+  <div class="db-sub">What Actually Happens in Fruita Each May</div>
+  <div class="db-cols">
+    <div class="db-col">
+      <div class="db-col-head">The Competitions</div>
+      <p>The centerpiece race is the 5K Run Like a Headless Chicken, in which participants are invited to consider Mike's situation while running. There is also an egg toss, a wing-eating contest, a disc golf tournament, and Chicken Bingo — a game in which a live chicken is placed on a numbered grid and the square it relieves itself on determines the winner. This is considered a family-friendly activity.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Ceremonies</div>
+      <p>Pin the Head on the Chicken is, as advertised, Pin the Tail on the Donkey with a historical twist. There is a Chicken Cluck-Off, in which participants compete at making chicken noises, the judging criteria for which are not publicly documented. There is live music, a car show, artisan booths, and local food. It is, in every respect except the name, a normal small-town street festival.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Mascot</div>
+      <p>Fruita has a metal sculpture of Mike on the corner of Mulberry and Aspen — an artistic rendering in horseshoes and old hand tools, roughly five feet tall. A costumed Mike roams the festival grounds: orange legs, white body, and no head. Visitors from around the country and increasingly from abroad arrive each May to pay their respects to a rooster who would not have understood what respects were, even with a full head to understand things in.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONCLUSION ═══ -->
+<div style="max-width:860px;margin:0 auto;">
+
+<h2><span class="cat">The Point of All This</span>Why a Town Celebrates a Headless Chicken</h2>
+
+<p>The town of Fruita, Colorado, population around thirteen thousand, sits on the Western Slope of the Rockies in the kind of landscape that requires serious commitment to live in. It is not the sort of place that gets written about in national publications, except on the occasions when its most famous former resident comes up — and Fruita's most famous former resident has been dead since 1947 and never had a head to speak of after September 1945.</p>
+
+<p>The festival started in 1999, which means it has now been running for a quarter century. It draws visitors from around the country. It has spawned a website, merchandise, a metal statue, and a brand of local identity that other small towns, with their more conventional histories, might quietly envy. The story of Mike the Headless Chicken is, after all, genuinely extraordinary — authenticated by scientists, covered by national magazines, verified in the Guinness World Records, and confirmed by a surviving pickup truck. It is not a legend or a local exaggeration. It happened.</p>
+
+<p>What exactly are the people of Fruita celebrating when they run a 5K and eat wings and watch a chicken walk across a numbered grid? Partly a good story, certainly. Partly the particular civic pride that comes from having a weird story that belongs to no one else. But there is something else in it too — some stubborn, slightly absurd celebration of persistence that Mike, in his mindless, headless way, actually embodied. He didn't survive because he was brave or determined or possessed of an iron will. He survived because the axe missed the right parts, and because Lloyd got a dropper, and because nobody told him to stop.</p>
+
+<div class="pull">
+  THE LESSON OF MIKE,<br>IF THERE IS ONE:<br><span>SOMETIMES YOU SURVIVE<br>BY ACCIDENT.</span>
+</div>
+
+<p>The festival-goers who come to Fruita each May are not, one assumes, looking for a philosophical lesson from a long-dead headless chicken. They are looking for a 5K and some wings and a thing to tell people about when they get home. But Mike is there in the back of it — the preposterous, eyedropper-fed, sideshow-touring, motel-room-choking original — and his story, properly told, is not so much strange as it is strangely moving. He tried to crow. He walked among the other chickens. He got on with things.</p>
+
+<p>The axe missed the right parts. The rest, as they say, is history.</p>
+
+<p>And every May in Fruita, it is also a festival.</p>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>Mike the Headless Chicken · April 1945 – March 17, 1947 · Fruita, Colorado · 18 months post-beheading · Guinness World Record Holder</p>
+  <p>The Mike the Headless Chicken Festival is held annually on the third weekend of May in Fruita, Colorado.</p>
+  <p>Lloyd Olsen's 1946 pickup truck remains in the possession of the Olsen family. The syringe has not been located.</p>
+  <p>© The Raised Eyebrow · Strange American Festivals Series · All chickens depicted are either historical or fictional · No sideshow promoters were harmed</p>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strange American Festivals: Mothman Festival — Point Pleasant, West Virginia</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:     #eceae2;
+  --newsprint: #d8d6cc;
+  --ink:       #100c08;
+  --night:     #181420;
+  --dusk:      #2c2840;
+  --river:     #1e3450;
+  --red:       #c01810;
+  --ember:     #e03020;
+  --steel:     #506880;
+  --muted:     #5c5848;
+  --border:    #b0a890;
+  --card:      #f8f6ee;
+  --gold:      #c89010;
+  --silver:    #909898;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.2rem 6rem;
+}
+
+/* ───── SERIES RIBBON ───── */
+.series-ribbon {
+  background: var(--night);
+  color: #c0a0a0;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  margin: 0 -1.2rem 0;
+}
+
+/* ───── MASTHEAD ───── */
+.masthead {
+  text-align: center;
+  padding: 2.2rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+.pub-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(20px, 3.5vw, 34px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.4rem;
+}
+h1 {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: clamp(52px, 11vw, 120px);
+  line-height: 0.86;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em {
+  font-style: normal;
+  color: var(--red);
+}
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ───── BODY LAYOUT ───── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 2.5rem;
+  padding-top: 2rem;
+}
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.8em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.08em 0 0;
+  color: var(--red);
+}
+
+/* ───── HEADINGS ───── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ───── PULL QUOTE ───── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  margin: 2.2rem 0;
+  padding: 1.1rem 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+}
+.pull span { color: var(--red); }
+
+/* ───── SIGHTINGS LOG ───── */
+.sightings-log {
+  background: var(--night);
+  color: #d0c8c0;
+  padding: 1.4rem 1.5rem 1.2rem;
+  margin: 2rem 0 2.2rem;
+}
+.log-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--ember);
+  margin-bottom: 0.3rem;
+}
+.log-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(224,48,32,0.5);
+  margin-bottom: 1rem;
+  border-bottom: 0.5px solid #2a2828;
+  padding-bottom: 0.5rem;
+}
+.log-entry {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0.4rem 1rem;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 0.5px solid #201c1a;
+  align-items: baseline;
+}
+.log-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.log-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ember);
+  line-height: 1.4;
+}
+.log-desc {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: #b8b0a0;
+  line-height: 1.5;
+}
+
+/* ───── DARK CALLOUT ───── */
+.dark-callout {
+  background: var(--river);
+  color: #c8d8e8;
+  padding: 1.2rem 1.4rem;
+  margin: 2.2rem 0;
+  border-left: 5px solid var(--steel);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.65;
+}
+.dark-callout strong {
+  font-weight: 600;
+  color: #e8f0f8;
+}
+
+/* ───── SIDEBAR ───── */
+.sidebar-box {
+  background: var(--night);
+  color: #ccc0b8;
+  padding: 1.2rem 1.1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.sidebar-box .sb-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--ember);
+  margin-bottom: 0.6rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  padding-bottom: 0.4rem;
+}
+.sidebar-box p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #b8b0a4;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sidebar-box p:last-child { margin-bottom: 0; }
+
+.sidebar-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--red);
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-card .sc-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.sidebar-card p {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.sidebar-card p:last-child { margin-bottom: 0; }
+
+.sidebar-stat {
+  background: var(--red);
+  color: #fff;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ss-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+.ss-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.45;
+  margin-top: 0.3rem;
+}
+
+/* ───── FULL-WIDTH DARK BAND ───── */
+.dark-band {
+  background: var(--dusk);
+  color: #c8c0b8;
+  padding: 2.5rem 2rem;
+  margin: 3rem -1.2rem;
+  width: calc(100% + 2.4rem);
+}
+.db-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.06em;
+  color: #e8b8b0;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+.db-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(232,184,176,0.45);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.db-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.db-col-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: #e8b8b0;
+  border-bottom: 0.5px solid rgba(232,184,176,0.25);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.db-col p {
+  font-size: 13px;
+  font-weight: 300;
+  color: #a8a09c;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+
+/* ───── ORNAMENT / FOOTER ───── */
+.ornament {
+  text-align: center;
+  color: var(--red);
+  margin: 3rem 0 2rem;
+  letter-spacing: 1em;
+  font-size: 14px;
+}
+.footer {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding-top: 1rem;
+  line-height: 2;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .db-cols { grid-template-columns: 1fr; gap: 1rem; }
+  .log-entry { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SERIES RIBBON ═══ -->
+<div class="series-ribbon">Strange American Festivals</div>
+
+<!-- ═══ MASTHEAD ═══ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span class="pub-name">The Raised Eyebrow</span>
+    <span>Point Pleasant, West Virginia &nbsp;·&nbsp; Annual · September</span>
+  </div>
+  <p class="kicker">Strange American Festivals</p>
+  <h1>MOTH<em>MAN</em><br>FESTIVAL</h1>
+  <p class="deck">In which the town of Point Pleasant, West Virginia celebrates thirteen months of 1966–1967 that included a giant winged creature with red eyes, a wave of UFO sightings, a fleet of men in black, and a bridge collapse that killed 46 people — and turns all of it into a pretty good September weekend.</p>
+  <p class="byline-row">Raised Eyebrows &nbsp;·&nbsp; Festival Edition &nbsp;·&nbsp; Point Pleasant, West Virginia &nbsp;·&nbsp; Est. 2002</p>
+</div>
+
+<!-- ═══ TWO-COLUMN BODY ═══ -->
+<div class="article">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <p class="dropcap">On the night of November 15, 1966, two young couples driving near Point Pleasant, West Virginia spotted something in the darkness near the old munitions complex north of town. It was large — perhaps seven feet tall, with enormous wings folded against a body that was described as roughly man-shaped, but wrong in ways that were difficult to articulate. Its eyes were the thing witnesses could never forget: two red circles that glowed with their own light, watching the car. The creature rose and followed them at speeds the witnesses estimated at nearly a hundred miles an hour. They drove until they reached town. It left when they did. They went to the police.</p>
+
+    <p>The next day, the <em>Point Pleasant Register</em> ran the headline that would define the next thirteen months of the town's life: "Couples See Man-Sized Bird … Creature … Something."</p>
+
+    <p>That "something" had legs. Over the months that followed, more than two dozen additional sightings were reported in and around Point Pleasant — nearly all of them clustered near a stretch of abandoned World War II munitions bunkers north of town that locals had been calling the TNT Area for twenty years. UFO reports surged in the region. Residents described encounters with "men in black" — quiet, unnervingly polished figures who appeared shortly after sightings and asked probing questions. Radios and televisions behaved strangely. Animals disappeared. The town had the feeling, as one account put it, of being caught in a sustained pressure system of dread.</p>
+
+    <p>Then, on December 15, 1967, the Silver Bridge collapsed.</p>
+
+    <h2><span class="cat">The Bridge</span>December 15, 1967</h2>
+
+    <p>The Silver Bridge had connected Point Pleasant, West Virginia to Gallipolis, Ohio since 1928. It was a suspension bridge, named for its aluminum paint, and it carried the traffic of an Ohio River crossing that was used by everyone in the region who needed to get from one state to the other. On December 15, 1967, it was carrying a full load of rush-hour traffic when a single defective eyebar in the chain suspension system failed. The failure was catastrophic and almost instantaneous. The bridge, with all its vehicles, went into the river.</p>
+
+    <p>Forty-six people died. The National Transportation Safety Board later determined the cause: a stress corrosion crack in a single suspension chain component, a flaw that had been growing undetected for years. The Silver Bridge disaster became one of the deadliest bridge failures in American history, and it transformed Point Pleasant overnight from a town with a strange story into a town with a tragedy — and, in the public imagination, those two things became inseparable.</p>
+
+    <p>Because witnesses claimed to have seen the Mothman on or near the Silver Bridge on the night it collapsed. And because, after the bridge fell, the Mothman sightings stopped completely. The UFO reports vanished. The men in black disappeared. The thirteen-month episode ended as abruptly as it had begun, as if the curtain had simply dropped.</p>
+
+    <div class="sightings-log">
+      <div class="log-title">A Record of the Thirteen Months</div>
+      <div class="log-sub">Point Pleasant, West Virginia · November 1966 – December 1967</div>
+      <div class="log-entry">
+        <div class="log-date">Nov. 12, 1966</div>
+        <div class="log-desc">Gravediggers in Clendenin see a large brown figure moving between trees overhead. First recorded sighting.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">Nov. 15, 1966</div>
+        <div class="log-desc">Two couples near the TNT Area encounter a seven-foot winged figure with glowing red eyes that pursues their car at ~100 mph. The <em>Point Pleasant Register</em> runs the story the next day.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">Nov.–Dec. 1966</div>
+        <div class="log-desc">At least 26 additional sightings reported, nearly all near the TNT Area. Volunteer firefighters describe "a very large bird with large red eyes." A man named Newell Partridge reports strange patterns on his TV screen and two glowing red eyes in his yard. His dog disappears.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">1966–1967</div>
+        <div class="log-desc">Wave of UFO sightings across the region. Multiple residents describe encounters with "men in black." Disruption of televisions, radios, and police dispatch equipment is widely reported.</div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">Dec. 15, 1967</div>
+        <div class="log-desc">The Silver Bridge collapses during rush hour. Forty-six people die. Sightings of the Mothman cease entirely. The men in black are not seen again. The UFO reports stop.</div>
+      </div>
+    </div>
+
+    <h2><span class="cat">The Mythology</span>John Keel, and the Book That Changed Everything</h2>
+
+    <p>The Mothman might have remained a regional curiosity — a strange local story attached to a genuine local tragedy — if not for John Keel. Keel was a New York journalist and paranormal investigator who had already written about UFOs and had a gift for weaving disparate, inexplicable events into a compelling narrative. He came to Point Pleasant in the months after the bridge collapse, interviewed witnesses, reviewed the evidence, and began constructing a theory.</p>
+
+    <p>His 1975 book, <em>The Mothman Prophecies</em>, connected the sightings to an elaborate framework of paranormal events: the creature, the UFOs, and the men in black were all part of a single, coordinated phenomenon that Keel called "ultraterrestrials" — entities that had been interfering with human affairs since before recorded history. The bridge collapse, in Keel's reading, was either a warning that the Mothman had been trying to deliver, or a consequence of the same forces that had produced the creature. The book also connected the events to the legend of Chief Cornstalk, a Shawnee leader who was murdered in Point Pleasant in 1777 during a peace mission and who, according to local lore, had cursed the land with his dying breath.</p>
+
+    <p>The book was not a bestseller. It sold quietly for decades, passed between people who were drawn to exactly its kind of story. Then, in 2002, Hollywood made a film.</p>
+
+    <div class="dark-callout">
+      <strong>The Mothman Prophecies (2002)</strong> — Directed by Mark Pellington, starring Richard Gere as a Washington reporter named John Klein drawn to Point Pleasant by strange occurrences following his wife's death. Laura Linney plays the local sheriff. The film is atmospheric rather than explicit, heavy on dread and light on answers, and deliberately ambiguous about what the creature actually is or wants. It was released in January 2002, grossed over $55 million worldwide, and generated the renewed interest in the legend that led, in November of that same year, to the first Mothman Festival. John Keel, the author whose book inspired it, was present at the second festival in 2003 for the unveiling of the Mothman statue — the last time he would visit Point Pleasant. He died in 2009. The museum acquired his white suit from the statue unveiling and put it on display.
+    </div>
+
+    <h2><span class="cat">The TNT Area</span>Eight Thousand Acres of History and Atmosphere</h2>
+
+    <p>The setting for most of the Mothman sightings — the place that will be on the festival bus tour every September — is one of the more evocative locations in the American landscape of the strange. The West Virginia Ordnance Works was built in 1942, a wartime industrial complex six miles north of Point Pleasant that at its peak employed 3,500 workers manufacturing 500,000 pounds of TNT every day. Approximately a hundred concrete bunkers, shaped like domes and built to be invisible from the air, were sunk into the forested ground to store explosives. The facility cost $55 million to build and operated from 1942 until 1945, when the war ended and the site was quietly closed.</p>
+
+    <p>After the war, the land became a wildlife management area. The bunkers stayed. The cracked concrete, the overgrown roads, the rows of ammunition igloos half-hidden in the undergrowth — all of it remained, and became, over the following decades, the kind of landscape that generates stories. In 1983 the site was designated a federal Superfund site due to contamination from decades of chemical production. In 2010, one of the bunkers detonated after 20,000 pounds of unstable military-issue gunpowder were found inside. The area is still open to the public. The festival bus still goes there every September.</p>
+
+    <div class="pull">
+      THE SIGHTINGS STOPPED<br>THE DAY THE BRIDGE FELL.<br><span>NOBODY HAS A GOOD<br>EXPLANATION FOR THAT.</span>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDE COLUMN -->
+  <div class="side-col">
+
+    <div class="sidebar-stat">
+      <div class="ss-num">46</div>
+      <div class="ss-label">lives lost when the<br>Silver Bridge collapsed<br>December 15, 1967</div>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Fast Facts</div>
+      <p><strong style="color:var(--ember);">Location:</strong> Point Pleasant, West Virginia (Mason County)</p>
+      <p><strong style="color:var(--ember);">When:</strong> Third weekend of September, annually since 2002</p>
+      <p><strong style="color:var(--ember);">The Creature:</strong> First sighted November 1966. Winged, ~7 ft tall, red eyes. 26 documented sightings over 13 months. Stopped appearing after December 15, 1967.</p>
+      <p><strong style="color:var(--ember);">The Book:</strong> John Keel, <em>The Mothman Prophecies</em>, 1975</p>
+      <p><strong style="color:var(--ember);">The Film:</strong> <em>The Mothman Prophecies</em>, 2002, dir. Mark Pellington, starring Richard Gere</p>
+      <p><strong style="color:var(--ember);">Attendance:</strong> 10,000–20,000 annually</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">The Statue</div>
+      <p>A 12-foot stainless steel Mothman sculpture by Bob Roach of New Haven, WV was unveiled in downtown Point Pleasant in 2003 at the second Mothman Festival. John Keel himself attended the unveiling.</p>
+      <p>The statue has become, in recent years, a viral social media phenomenon — its notably muscular physique and intense expression have made it a meme staple among Gen Z travelers, drawing a new generation of visitors who arrive for the irony and leave having learned about the bridge collapse. This is not the worst outcome.</p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">What Was It?</div>
+      <p>The official explanations have included: a large sandhill crane, a great horned owl seen under unusual conditions, a misidentified heron, and a collective psychological response to social stress. None fully accounts for the reported speed, wingspan, or the consistency of the glowing red eyes across multiple independent witnesses.</p>
+      <p>The engineering explanation for the bridge collapse is thoroughly documented: a stress corrosion crack in a single eyebar. There is no evidence connecting the creature to the collapse. There is also no explanation for why the sightings stopped on December 15, 1967.</p>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sb-title">Chief Cornstalk</div>
+      <p>In 1777, Shawnee Chief Cornstalk came to Point Pleasant under a flag of truce and was murdered. According to local tradition, he cursed the land with his dying words, promising a hundred years of misfortune.</p>
+      <p>The Battle of Point Pleasant was in 1774. The Silver Bridge collapsed in 1967. Historians note that the math does not work. The town notes the math and tells the story anyway, which is the correct approach to a curse story.</p>
+    </div>
+
+  </div><!-- /side-col -->
+
+</div><!-- /article -->
+
+<!-- ═══ FULL-WIDTH BAND: THE FESTIVAL ═══ -->
+<div class="dark-band">
+  <div class="db-title">The Festival, September Weekend</div>
+  <div class="db-sub">What Point Pleasant Does With Its Most Famous Thirteen Months</div>
+  <div class="db-cols">
+    <div class="db-col">
+      <div class="db-col-head">The Street Fair</div>
+      <p>Downtown Point Pleasant fills with vendors, food trucks, and an estimated 10,000 to 20,000 visitors over the weekend. Costume contests draw participants dressed as the creature, as men in black, and as various interpretations of the figure that are not precisely canonical but are welcome. The festival occupies the same streets where the witnesses lived and worked in 1966–1967. It is, in this sense, a street fair held directly on top of the original mythology.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The Speakers & Science</div>
+      <p>Guest speakers — paranormal investigators, cryptozoologists, historians, and the occasional UFO researcher — present their findings in panel discussions that have been described as a crossover between a comic convention and a paranormal conference. This is an accurate description. The tone is not credulous, exactly, but it is not skeptical either. It occupies a specific register that takes the phenomenon seriously as a cultural event while remaining agnostic about its ultimate nature, which is probably the correct approach.</p>
+    </div>
+    <div class="db-col">
+      <div class="db-col-head">The TNT Bus Tour</div>
+      <p>The festival's most requested event: a guided bus tour to the McClintic Wildlife Management Area, formerly the West Virginia Ordnance Works, where the original sightings took place. Visitors see the concrete igloo bunkers, walk the overgrown roads, and stand in the dark between structures that were built to be invisible from above and have been slowly returning to the forest ever since. The Mothman, according to the festival literature, may or may not be present. The atmosphere, in autumn, is guaranteed.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONCLUSION ═══ -->
+<div style="max-width:860px;margin:0 auto;">
+
+<h2><span class="cat">The Larger Picture</span>What Point Pleasant Made of What Happened to It</h2>
+
+<p>Point Pleasant had no say in what happened to it in 1966 and 1967. Whatever the witnesses saw — and there were enough of them, over enough months, in enough independent encounters, that dismissing them entirely takes its own kind of faith — the community spent thirteen months in a state of sustained collective strangeness, followed by a tragedy that killed forty-six of its neighbors. The Silver Bridge collapse was real. The grief was real. The town had to figure out what to do with both the mystery and the loss.</p>
+
+<p>What happened, over the following decades, is that Point Pleasant found a way to hold both. The bridge failure has a memorial. The creature has a festival. The forty-six people who died are remembered. The two hundred-plus witnesses are taken seriously. The town has not resolved the contradiction between the engineering report and the abrupt cessation of sightings, because no one has — but it has learned to live inside the contradiction with a certain wry grace.</p>
+
+<p>The first festival was organized in November 2002, with about two thousand people attending, partly in response to the renewed interest generated by Richard Gere's film that year. By the time it moved to its current September date and settled into its current form, it was drawing ten to twenty thousand visitors annually. The Mothman Museum has John Keel's white suit from the 2003 statue unveiling. The stainless steel creature on Gunn Street has become a meme. People bring offerings of baked beans to the statue — a reference to pantry moths — and leave them at its feet.</p>
+
+<div class="pull">
+  JOHN KEEL CALLED THE ENTITY<br>AN ULTRATERRESTRIAL.<br><span>POINT PLEASANT CALLS IT<br>THE THIRD WEEKEND OF SEPTEMBER.</span>
+</div>
+
+<p>What makes the Mothman Festival different from the others in this series is that it celebrates something that was never entirely comfortable to live through. The Mike the Headless Chicken Festival is cheerfully absurd. The Frozen Dead Guy Days is cheerfully macabre. The Worm Grunting Festival is cheerfully earnest. But the Mothman story has a bridge collapse in it. It has forty-six deaths. It has a thirteen-month sequence of events that ended in genuine community trauma.</p>
+
+<p>The festival is not trying to make that comfortable. It is trying to do something harder: to hold the strangeness and the grief together, to make space for the uncertainty, and to mark the place where something happened that a small West Virginia town is still, after sixty years, trying to understand. The bus still goes to the TNT Area every September. The bunkers are still there. Whatever was in the darkness in 1966 — crane, owl, collective anxiety, or something none of the available categories quite fit — left its mark on this place, and the people who live here have decided that a festival is the right response to that.</p>
+
+<p>They are probably right.</p>
+
+<div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<div class="footer">
+  <p>Silver Bridge · Point Pleasant, West Virginia · Collapsed December 15, 1967 · 46 lives lost · Cause: stress corrosion crack in eyebar chain suspension</p>
+  <p>John Keel · <em>The Mothman Prophecies</em> · 1975 · Last visit to Point Pleasant: 2003 · Died 2009 · His white suit is in the museum</p>
+  <p><em>The Mothman Prophecies</em> · Dir. Mark Pellington · 2002 · Starring Richard Gere & Laura Linney · $55M worldwide · The festival started the same year</p>
+  <p>© The Raised Eyebrow · Strange American Festivals Series · The sightings stopped on December 15, 1967 · Nobody has a good explanation for that</p>
+</div>
+
+</div>
+
+</body>
+</html>
