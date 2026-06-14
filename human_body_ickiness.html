@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Are Disgusting: A Loving Scientific Tour of the Human Body</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #18120a;
+    --cream:      #faf6ee;
+    --parchment:  #f0e8d4;
+    --slime:      #6a8f3a;
+    --slime-lt:   #e8f0dc;
+    --slime-dim:  #4a6a22;
+    --rust:       #b83010;
+    --gold:       #9a7a10;
+    --muted:      #7a6a52;
+    --border:     #d4c4a0;
+    --bile:       #8a9a20;
+    --bile-lt:    #f4f0c8;
+    --pink:       #c8305a;
+    --card-bg:    #fffdf7;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.78;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem 7rem;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .pub-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .section-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--slime-dim);
+    padding: 3px 10px 2px;
+    margin-bottom: 1.2rem;
+  }
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(32px, 5.5vw, 64px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--slime);
+  }
+  .deck {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+  .byline {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-top: 0.5px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  /* ── BODY ── */
+  .article-body { padding-top: 2.5rem; }
+  p { margin-bottom: 1.4rem; font-weight: 300; }
+  em { font-style: italic; }
+  strong { font-weight: 600; }
+
+  .dropcap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.2em;
+    font-weight: 700;
+    float: left;
+    line-height: 0.78;
+    margin: 0.08em 0.1em 0 0;
+    color: var(--slime);
+  }
+
+  /* ── SECTION HEADINGS ── */
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 27px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    margin: 3.5rem 0 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+  h2 .label {
+    font-family: 'DM Mono', monospace;
+    font-style: normal;
+    font-size: 10px;
+    color: var(--slime-dim);
+    display: block;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull {
+    border-left: 4px solid var(--slime);
+    margin: 2.5rem 0 2.5rem 1.2rem;
+    padding: 0.4rem 0 0.4rem 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    color: var(--slime-dim);
+    line-height: 1.45;
+  }
+
+  /* ── FACT BOX ── */
+  .fact-box {
+    background: var(--bile-lt);
+    border: 1.5px solid var(--bile);
+    border-radius: 3px;
+    padding: 1.5rem 1.8rem;
+    margin: 2.5rem 0;
+  }
+  .fact-box .box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bile);
+    margin-bottom: 0.8rem;
+  }
+  .fact-box p {
+    font-size: 16px;
+    margin-bottom: 0.7rem;
+    font-weight: 300;
+  }
+  .fact-box p:last-child { margin-bottom: 0; }
+  .fact-box strong { color: var(--slime-dim); }
+
+  /* ── DATA PANEL ── */
+  .data-panel {
+    background: var(--slime-lt);
+    border: 1.5px solid var(--slime);
+    border-radius: 3px;
+    padding: 1.5rem 1.8rem;
+    margin: 2.5rem 0;
+  }
+  .data-panel .box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slime-dim);
+    margin-bottom: 1rem;
+  }
+  .data-row {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    margin-bottom: 0.6rem;
+    font-size: 16px;
+    font-weight: 300;
+    border-bottom: 0.5px solid rgba(106,143,58,0.25);
+    padding-bottom: 0.5rem;
+  }
+  .data-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .data-label { flex: 1; }
+  .data-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+    color: var(--slime-dim);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* ── HORROR BOX ── */
+  .horror-box {
+    background: var(--parchment);
+    border-top: 3px solid var(--rust);
+    border-bottom: 3px solid var(--rust);
+    padding: 1.5rem 1.8rem;
+    margin: 2.5rem 0;
+  }
+  .horror-box .box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.8rem;
+  }
+  .horror-box p {
+    font-size: 16px;
+    margin-bottom: 0.7rem;
+    font-weight: 300;
+  }
+  .horror-box p:last-child { margin-bottom: 0; }
+
+  /* ── POOP COMPOSITION ── */
+  .poop-chart {
+    margin: 2rem 0;
+    border: 1.5px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--card-bg);
+  }
+  .poop-chart-header {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+  }
+  .poop-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-bottom: 0.5px solid var(--border);
+    font-size: 15px;
+    font-weight: 300;
+  }
+  .poop-row:last-child { border-bottom: none; }
+  .poop-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--rust);
+    min-width: 60px;
+  }
+  .poop-bar-wrap {
+    flex: 1;
+    height: 10px;
+    background: var(--parchment);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .poop-bar {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--slime);
+  }
+  .poop-desc { min-width: 220px; color: var(--muted); }
+
+  /* ── RULE ── */
+  .rule {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3rem 0;
+  }
+
+  /* ── CLOSING KICKER ── */
+  .kicker {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--muted);
+    text-align: center;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    margin: 3.5rem 0 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 600px) {
+    .poop-desc { display: none; }
+    .pull { margin-left: 0; }
+    .data-row { flex-wrap: wrap; gap: 0.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="pub-name">Raised Eyebrows</div>
+  <div class="section-tag">Biology &amp; You</div>
+  <h1>You Are <em>Disgusting</em>:<br>A Loving Tour of the Human Body</h1>
+  <p class="deck">A frank, fact-based, and mildly horrifying examination of the extraordinary ecosystem you carry around every day — and call yourself.</p>
+  <div class="byline">A Scientific Investigation &nbsp;·&nbsp; Staff Report &nbsp;·&nbsp; Proceed With Caution</div>
+</div>
+
+<div class="article-body">
+
+  <p class="dropcap">Before we begin, a brief word of comfort: you are not, technically speaking, a person. You are a <em>habitat</em>. A warm, moist, nutrient-rich resort destination for trillions of organisms that moved in without asking, redecorated without your permission, and have absolutely no plans to leave. You are their New York City. Their Paris. Their Cancún. And they are thriving.</p>
+
+  <p>This is not a criticism. It is simply science. And once you understand what your body is actually up to at any given moment — what it's made of, what's living on it, what's quietly composting inside it — you will look at yourself in the mirror with an entirely new emotion. Something between wonder and existential dread. A kind of awe-flavored revulsion that, honestly, you've earned.</p>
+
+  <p>Let's start at the top.</p>
+
+  <h2><span class="label">Section I</span>Your Mouth: A Thriving Metropolis</h2>
+
+  <p>Right now, as you read this, approximately one billion bacteria are living in your mouth. One <em>billion</em>. For perspective: that is more than the entire population of every country except China and India. Your mouth, at this very moment, is more densely populated than Europe. You are, demographically speaking, a continent.</p>
+
+  <p>These bacteria are very busy. Within minutes of you brushing your teeth — congratulations on that, by the way — a species called <em>Streptococcus mutans</em> rushes in to recolonize the freshly cleaned surfaces. It builds a sticky protective shield called plaque to keep itself safe from your saliva. This is not a bug. This is not an accident. This is <em>strategy</em>. Your mouth bacteria have game plans. They hold territory. They fortify positions. They are, in all meaningful respects, running a city inside you, and you are merely the building.</p>
+
+  <div class="pull">
+    "Your mouth bacteria have game plans. They hold territory. They fortify positions. You are, in all meaningful respects, merely the building."
+  </div>
+
+  <p>And here is a fact that will permanently change how you feel about handshakes: they spread more germs than kissing. Your hands — with their millions of tiny crevices, their door-handle history, their keyboard archaeology — are far more bacterially eventful than your mouth. The next time someone at a party reaches out for a handshake, you now possess the scientific knowledge to be deeply, quietly unsettled.</p>
+
+  <h2><span class="label">Section II</span>Your Skin: The Largest Organ Is Falling Apart</h2>
+
+  <p>Your skin is your body's largest organ. It covers roughly 21 square feet and contains approximately 300 million cells. It also hosts around 1,000 species of bacteria. And it is, at this precise moment, disintegrating.</p>
+
+  <p>Every single minute, you shed between 30,000 and 40,000 dead skin cells. Every minute. Without pause. Without rest. While you sleep. While you eat. While you are reading this sentence, a small blizzard of former-you is drifting silently onto your furniture, your clothing, your keyboard, your lunch.</p>
+
+  <div class="data-panel">
+    <div class="box-label">📊 Your Body's Annual Production Report</div>
+    <div class="data-row"><span class="data-label">Sweat produced</span><span class="data-val">~60 gallons</span></div>
+    <div class="data-row"><span class="data-label">Saliva produced</span><span class="data-val">~96 gallons</span></div>
+    <div class="data-row"><span class="data-label">Urine produced</span><span class="data-val">~133 gallons</span></div>
+    <div class="data-row"><span class="data-label">Dead skin shed</span><span class="data-val">~1.5 lbs</span></div>
+    <div class="data-row"><span class="data-label">Feces produced</span><span class="data-val">~360 lbs</span></div>
+  </div>
+
+  <p>That shed skin does not simply vanish. Research from the <em>Journal of Allergy and Clinical Immunology</em> found that the dead skin flaking off human beings accounts for 69 to 88 percent of household dust. When someone tells you their house is dusty, what they are actually confessing is that they are gradually surrounded by a monument to their own former cells. Which, honestly, is a beautiful metaphor for something.</p>
+
+  <p>Your feet deserve a special mention. The average human foot contains 600 sweat glands per square centimeter — significantly more than your armpits. These glands secrete a continuous warm broth of salts, glucose, vitamins, and amino acids. To your skin bacteria, a foot is basically a four-star buffet that never closes. They are not merely present on your feet. They are <em>dining</em>.</p>
+
+  <h2><span class="label">Section III</span>You Are More Microbe Than Human (Statistically Speaking)</h2>
+
+  <p>Here is the number that changed everything when scientists first calculated it: your body contains roughly 30 trillion human cells. It also hosts approximately 39 trillion microbial cells — bacteria, fungi, and viruses living on and inside you. Which means that, in terms of sheer cell count, <em>you are not the majority.</em> You are outnumbered, on your own person, by a margin of nearly 1.3 to 1.</p>
+
+  <p>Deeper still: your microbiome contains an estimated 3.3 million genes. Your human genome contains about 22,000. Your bacterial passengers, who pay no rent and contribute nothing to the mortgage, have 150 times more genetic material than you do. They are genetically, overwhelmingly, <em>winning</em>.</p>
+
+  <div class="fact-box">
+    <div class="box-label">🔬 Fast Facts: The Inner You</div>
+    <p>Your gut alone is home to <strong>500+ species</strong> of bacteria — and that's just the ones we've named.</p>
+    <p>Each human is 99.9% genetically identical to every other human, but your microbiome can be <strong>80–90% different</strong> from the person sitting next to you. We are more microbially unique than we are humanly unique.</p>
+    <p>Your gut microbiome produces roughly <strong>90% of your body's serotonin</strong> — the chemical most associated with happiness. So your good mood, technically, is bacterial.</p>
+  </div>
+
+  <p>Scientists also now refer to the gut as "the second brain," because the 500 million neurons lining your intestinal walls form their own nervous system, communicate directly with your actual brain, and appear to influence your mood, anxiety levels, and decision-making. So the next time you act impulsively, feel inexplicably anxious, or make a decision you immediately regret, you may wish to have a quiet word with your colon.</p>
+
+  <h2><span class="label">Section IV</span>The Eyelash Situation</h2>
+
+  <p>We have been putting this section off. But you deserve to know.</p>
+
+  <p>Living in your eyelash follicles right now — and almost certainly in your eyebrows, and in the hair follicles of your face — are tiny eight-legged creatures called <em>Demodex</em> mites. They have long bodies, stubby legs, and they spend their entire lives on your face. They sleep there. They eat there. They mate there. The females, upon finding the accommodations suitable, lay their eggs there.</p>
+
+  <p>During the day, they nestle deep in your hair follicles. At night, according to scientists who have studied this far more closely than seems strictly necessary, they crawl to the surface to find partners, then return before morning. Every night. On your face. While you sleep.</p>
+
+  <div class="horror-box">
+    <div class="box-label">⚠️ Age-Related Colonization Data</div>
+    <p>Roughly <strong>20% of people under 20</strong> have Demodex mites living in their eyelashes.</p>
+    <p>By age 60, the figure rises to <strong>nearly 100%</strong> of people. The mites, it appears, like us more as we age. Whether this is loyalty or opportunism remains under investigation.</p>
+    <p>The good news: they are mostly harmless. The less good news: you now know they exist.</p>
+  </div>
+
+  <p>In fairness to the mites, they perform a service. They eat dead skin cells and oils from your follicles. They are, in the most technical sense, <em>helping</em>. This does not make thinking about them easier. But it is the kind of fact you can repeat to yourself at 3am when the knowledge becomes impossible to unknow.</p>
+
+  <h2><span class="label">Section V</span>What Poop Is, Exactly</h2>
+
+  <p>Poop is approximately 75% water. What remains — the solid 25% — is a composition that reads less like waste product and more like a guest list at an extremely eclectic party.</p>
+
+  <div class="poop-chart">
+    <div class="poop-chart-header">Composition of Human Feces (Solid Matter)</div>
+    <div class="poop-row">
+      <span class="poop-pct">~30%</span>
+      <div class="poop-bar-wrap"><div class="poop-bar" style="width:100%"></div></div>
+      <span class="poop-desc">Dead bacteria</span>
+    </div>
+    <div class="poop-row">
+      <span class="poop-pct">~30%</span>
+      <div class="poop-bar-wrap"><div class="poop-bar" style="width:100%"></div></div>
+      <span class="poop-desc">Indigestible matter (cellulose)</span>
+    </div>
+    <div class="poop-row">
+      <span class="poop-pct">10–20%</span>
+      <div class="poop-bar-wrap"><div class="poop-bar" style="width:60%"></div></div>
+      <span class="poop-desc">Cholesterol &amp; fats</span>
+    </div>
+    <div class="poop-row">
+      <span class="poop-pct">10–20%</span>
+      <div class="poop-bar-wrap"><div class="poop-bar" style="width:60%"></div></div>
+      <span class="poop-desc">Inorganic substances (calcium, iron phosphate)</span>
+    </div>
+    <div class="poop-row">
+      <span class="poop-pct">2–3%</span>
+      <div class="poop-bar-wrap"><div class="poop-bar" style="width:10%"></div></div>
+      <span class="poop-desc">Protein</span>
+    </div>
+  </div>
+
+  <p>Per gram of stool, there are approximately 100 billion bacteria — both living and recently deceased. The Milky Way galaxy contains an estimated 100 to 400 billion stars. This means that a single gram of human feces contains, bacterially speaking, a number of organisms roughly comparable to the stars in our galaxy. You are, in the most literal possible sense, expelling universes.</p>
+
+  <p>The brown color, incidentally, comes from bilirubin — a compound produced when your liver breaks down old red blood cells. So the hue of your feces is essentially a byproduct of your blood. This is beautiful if you squint and deeply unpleasant if you don't.</p>
+
+  <p>The average adult produces around 320 to 360 pounds of feces per year. Over a lifetime, this is a figure best not calculated.</p>
+
+  <h2><span class="label">Section VI</span>The Gas Economy</h2>
+
+  <p>The average healthy person produces between 0.6 and 1.8 liters of intestinal gas per day and releases it, via various exits, between 12 and 25 times. This is not a sign of dysfunction. This is your bacteria doing their jobs. The hydrogen, methane, and carbon dioxide they generate is a byproduct of their industrious consumption of your undigested food. They are, in the most charitable reading, composting on your behalf.</p>
+
+  <p>Less than 1% of this gas is odorous. However, the compounds responsible — primarily hydrogen sulfide — are detectable by the human nose at concentrations as low as half a part per <em>billion</em>. Your nose, in other words, is extraordinarily sensitive to exactly the smells it most wishes it were not. Evolution has a well-documented sense of humor.</p>
+
+  <h2><span class="label">Section VII</span>The Belly Button: Last Frontier of Science</h2>
+
+  <p>Your belly button is, microbiologically speaking, the Amazon rainforest of your body. A 2012 study published in <em>PLOS One</em> swabbed the navels of willing volunteers and discovered 2,368 species of bacteria. Of those, 1,458 were potentially <em>new to science</em>. In your belly button. Unknown species. Waiting to be named.</p>
+
+  <p>The average belly button contains roughly 67 distinct bacterial species, and belly buttons consistently contain greater bacterial diversity than the forearms, hands, and feet of the same individual — despite the fact that we wash those areas daily and largely forget the navel entirely. The belly button's achievement here is a masterclass in operating undetected.</p>
+
+  <div class="pull">
+    "In your belly button: 1,458 species potentially new to science. Your navel is, in the most literal sense, an undiscovered country."
+  </div>
+
+  <h2><span class="label">Section VIII</span>The Snot You're Swallowing</h2>
+
+  <p>You produce mucus constantly. Your body makes it in your nose, your throat, your lungs, and along the entire length of your digestive system. This mucus is not a malfunction. It traps pathogens, lubricates your airways, and protects the tender lining of everything it touches. It is, genuinely, heroic.</p>
+
+  <p>It is also something you swallow continuously, in small amounts, without thinking about it. Every time you swallow, a portion of what travels down is mucus that formed near your lungs and migrated upward. You are not sick. You are simply human. But you are, at minimum, a person who swallows a meaningful quantity of their own mucus daily, and now you cannot unknow this.</p>
+
+  <hr class="rule">
+
+  <p>None of this, it must be said, is a flaw. It is, on the contrary, an extraordinary system — a 37-trillion-cell partnership between you and your microbial tenants, in continuous negotiation, constantly producing, filtering, composting, defending, and renewing. The human body is less a machine than an ecosystem. Less a person than a planet.</p>
+
+  <p>It is also, under sufficiently close examination, quite magnificently gross.</p>
+
+  <p>Welcome to yourself. Try not to think about it too much.</p>
+
+  <div class="kicker">
+    The mites would like you to know they're very comfortable<br>and have no plans to leave.
+  </div>
+
+</div>
+</body>
+</html>

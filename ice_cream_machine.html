@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Machine That Broke America | Raised Eyebrows</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root {
+  --paper:    #FDF8F0;   /* warm vanilla cream         */
+  --newsprint:#F0E8D8;   /* slightly darker cream      */
+  --ink:      #1A1208;   /* near-black                 */
+  --red:      #DA291C;   /* McDonald's red             */
+  --gold:     #FFC72C;   /* McDonald's gold            */
+  --gold-dark:#C8970A;   /* darker gold                */
+  --steel:    #8A9AAA;   /* cold stainless machine     */
+  --steel-dk: #3A4A5A;   /* dark steel                 */
+  --muted:    #7A6A50;
+  --border:   #D8C8A8;
+  --card:     #FFFFFF;
+  --green:    #1A6A2A;   /* working / online           */
+  --broken:   #DA291C;   /* broken / offline           */
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.78;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 1.4rem 6rem;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  text-align: center;
+  padding: 2.5rem 1rem 0;
+  border-bottom: 3px double var(--ink);
+  margin-bottom: 0;
+}
+
+.pub-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.6rem;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.pub-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(22px, 4vw, 36px);
+  letter-spacing: 0.25em;
+  color: var(--ink);
+}
+
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 11vw, 114px);
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 0.4rem 0 0.5rem;
+}
+h1 em { font-style: normal; color: var(--red); }
+
+.deck {
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 620px;
+  margin: 0 auto 1.4rem;
+  line-height: 1.55;
+}
+
+.byline-row {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 0.5px solid var(--border);
+  padding: 0.7rem 0 1.2rem;
+}
+
+/* ── BODY LAYOUT ── */
+.article {
+  display: grid;
+  grid-template-columns: 1fr 230px;
+  gap: 0 2.6rem;
+  padding-top: 2rem;
+}
+
+.main-col { min-width: 0; }
+.side-col  { min-width: 0; }
+
+p { margin-bottom: 1.3rem; font-weight: 300; }
+
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.6em;
+  float: left;
+  line-height: 0.74;
+  margin: 0.07em 0.09em 0 0;
+  color: var(--red);
+}
+
+/* ── SECTION HEADINGS ── */
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  margin: 3rem 0 1.3rem;
+  line-height: 1.1;
+}
+h2 .cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 400;
+}
+
+/* ── PULL QUOTE ── */
+.pull {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 1.2rem 0;
+  margin: 2.2rem 0;
+}
+.pull p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--steel-dk);
+  line-height: 1.45;
+  margin-bottom: 0;
+}
+
+/* ── MCBROKEN STATUS PANEL ── */
+.status-panel {
+  background: var(--steel-dk);
+  color: #EEF4FA;
+  padding: 1.4rem 1.4rem 1.5rem;
+  margin: 2.5rem 0;
+  border-radius: 2px;
+  font-family: 'Space Mono', monospace;
+}
+
+.sp-header {
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  padding-bottom: 0.6rem;
+}
+
+.sp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.sp-row:last-child { border-bottom: none; }
+
+.sp-city { color: rgba(255,255,255,0.6); }
+.sp-status { font-weight: 700; letter-spacing: 0.1em; }
+.sp-status.up   { color: #4AE06A; }
+.sp-status.down { color: #FF6B6B; }
+.sp-status.unknown { color: #FFD06B; }
+
+.sp-pct {
+  font-size: 9px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+}
+
+.sp-summary {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.9;
+}
+
+.sp-big {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+/* ── REPAIR TICKET ── */
+.repair-ticket {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--gold);
+  margin: 2.5rem 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+}
+
+.rt-header {
+  background: var(--gold);
+  padding: 0.5rem 1rem;
+  font-size: 8.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rt-body {
+  padding: 0.9rem 1rem 1rem;
+}
+
+.rt-field {
+  margin-bottom: 0.65rem;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 0 0.5rem;
+  line-height: 1.5;
+}
+
+.rt-label {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-top: 1px;
+}
+
+.rt-value {
+  color: var(--ink);
+  font-size: 10.5px;
+}
+
+.rt-error {
+  background: #FFF4F4;
+  border: 1px solid #F0CCCC;
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+
+.rt-footer {
+  border-top: 1px dashed var(--border);
+  padding: 0.5rem 1rem;
+  font-size: 8.5px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  line-height: 1.9;
+}
+
+/* ── TIMELINE ── */
+.timeline {
+  margin: 2.5rem 0;
+  border-left: 3px solid var(--gold);
+  padding-left: 1.4rem;
+}
+
+.tl-entry {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0;
+}
+.tl-entry:last-child { margin-bottom: 0; }
+
+.tl-entry::before {
+  content: '';
+  position: absolute;
+  left: -1.74rem;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--paper);
+}
+
+.tl-year {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.tl-text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.tl-text strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ── DARK BAND ── */
+.dark-band {
+  background: var(--steel-dk);
+  color: #EEF2F8;
+  padding: 2.4rem 2rem 2.8rem;
+  margin: 3rem -1.4rem;
+}
+
+.db-kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.7rem;
+  opacity: 0.85;
+}
+
+.db-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 5vw, 44px);
+  letter-spacing: 0.05em;
+  line-height: 1.05;
+  margin-bottom: 1.2rem;
+  color: #FFFFFF;
+}
+
+.db-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2.5rem;
+}
+
+.db-col p {
+  font-size: 0.97rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* ── SIDEBAR ── */
+.sidebar-box {
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--red);
+  padding: 1.1rem 1rem 1.2rem;
+  margin-bottom: 2rem;
+  background: var(--card);
+}
+
+.sb-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.sb-stat {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.sb-context {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── ORNAMENT ── */
+.ornament {
+  text-align: center;
+  color: var(--border);
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.5em;
+  margin: 2.5rem 0;
+}
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 2px double var(--ink);
+  padding-top: 1.2rem;
+  margin-top: 4rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  line-height: 2.4;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .article { grid-template-columns: 1fr; }
+  .side-col { order: -1; }
+  .db-cols { grid-template-columns: 1fr; }
+  .rt-field { grid-template-columns: 1fr; }
+  .dark-band { margin: 3rem -1.4rem; padding: 2rem 1.4rem; }
+  .pub-row { flex-direction: column; gap: 0.3rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ MASTHEAD ═══════════════════════ -->
+<div class="masthead">
+  <div class="pub-row">
+    <span>Vol. XIV &nbsp;·&nbsp; Corporate Absurdity Issue</span>
+    <span class="pub-name">Raised Eyebrows</span>
+    <span>Est. Whenever &nbsp;·&nbsp; Price: One McFlurry (If Available)</span>
+  </div>
+  <p class="kicker">Fast Food · Corporate Monopoly · Right to Repair · Ice Cream</p>
+  <h1>THE <em>MACHINE</em><br>THAT BROKE<br>AMERICA</h1>
+  <p class="deck">A full investigation into the McDonald's ice cream machine — the most litigated, federally scrutinized, internet-famous dessert appliance in the history of soft serve.</p>
+  <p class="byline-row">By Our Correspondent, Who Drove to Three Locations &nbsp;·&nbsp; All Machines Were Down &nbsp;·&nbsp; McBroken Knew &nbsp;·&nbsp; McBroken Always Knows</p>
+</div>
+
+<!-- ═══════════════════════ BODY ═══════════════════════ -->
+<div class="article">
+
+<!-- ── MAIN COLUMN ── -->
+<main class="main-col">
+
+  <p class="dropcap">The sign said "Ice Cream Machine Currently Unavailable." It has always said this. It will always say this. Somewhere in America, at this exact moment, a McDonald's employee is delivering the news to a customer who already knew — who had, in fact, checked a website before driving over, just to confirm, and drove over anyway, hoping. The machine is down. The machine is always down. This is not an accident.</p>
+
+  <p>What follows is the story of a handshake deal made in 1956, a copyright law written for music piracy, a $900 million lawsuit, a 24-year-old with a laptop and a grudge against an API, two entrepreneurs from California who briefly threatened an empire, a federal agency that opened an investigation, and one persistent question that has unified Americans across every political and cultural divide: <em>why can't I get a McFlurry?</em></p>
+
+  <h2><span class="cat">Part One</span>The Machine Itself</h2>
+
+  <p>The McDonald's soft-serve machine is made by the Taylor Company, an Illinois manufacturer based in Rockton. Taylor has supplied McDonald's since 1956, when future CEO Ray Kroc made a handshake agreement with the company to provide milkshake machines as McDonald's exclusive supplier. The partnership has outlasted most American institutions. It has outlasted the Soviet Union, numerous presidential administrations, and the personal dignity of anyone who has stood at a McDonald's counter and been told, for the fourth consecutive Tuesday, that the ice cream machine is not working today.</p>
+
+  <p>The specific model at issue is the Taylor C602. It is a stainless steel cabinet roughly the size of a large filing cabinet, and it dispenses vanilla soft serve, which is then used to make cones, sundaes, and McFlurries. It is not a complicated product in the sense of what it produces. It is a machine that makes ice cream. The complexity lies entirely in what happens when it stops.</p>
+
+  <p>The C602 requires a nightly heat-cleaning cycle that can last several hours, during which no ice cream can be produced. This is standard. What is less standard is the machine's talent for displaying cryptic error codes — error messages that, iFixit identified as vague error codes that Taylor was accused of writing maliciously to increase repair sales — and then refusing to function until a certified Taylor technician arrives to interpret them. That technician is dispatched by Taylor. The technician works for Taylor. The repair is billed by Taylor. The arrangement is, from Taylor's perspective, elegant.</p>
+
+  <div class="repair-ticket">
+    <div class="rt-header">
+      <span>Taylor Company · Authorized Service Request</span>
+      <span>Ticket #88,441</span>
+    </div>
+    <div class="rt-body">
+      <div class="rt-field">
+        <span class="rt-label">Equipment</span>
+        <span class="rt-value">Taylor C602 Soft Serve Unit</span>
+      </div>
+      <div class="rt-field">
+        <span class="rt-label">Location</span>
+        <span class="rt-value">McDonald's — [Your Town] — Unit #[All of Them]</span>
+      </div>
+      <div class="rt-field">
+        <span class="rt-label">Reported Fault</span>
+        <span class="rt-value">Machine displays error. Nature of error: unspecified. Machine will not elaborate.</span>
+      </div>
+      <div class="rt-field">
+        <span class="rt-label">Repair Status</span>
+        <span class="rt-value">Awaiting certified Taylor technician. ETA: unknown.</span>
+      </div>
+      <div class="rt-error">
+        ERROR CODE: H07 · REASON: [REDACTED] · RESOLUTION: CALL TAYLOR · ESTIMATED COST: CONSIDERABLE
+      </div>
+    </div>
+    <div class="rt-footer">
+      Note: Unauthorized repair attempts void warranty. Only Taylor-certified technicians may diagnose Taylor equipment.
+      Third-party diagnostic devices are prohibited. See DMCA Section 1201 for details. Thank you for your business.
+    </div>
+  </div>
+
+  <h2><span class="cat">Part Two</span>The Handshake and the Lock</h2>
+
+  <p>For decades, the broken ice cream machine was understood as a minor, recurring annoyance — a fast food quirk, like the soft-serve swirl being slightly different every time. Machines break. Equipment fails. These things happen. Then people started looking more closely at why, exactly, a machine that makes ice cream was broken with such reliable frequency at the most systematically operated restaurant chain on earth.</p>
+
+  <p>The answer involves copyright law.</p>
+
+  <p>The Taylor Company holds a copyright on its machines' software, and that meant that if one broke, only Taylor's repair people were legally allowed to fix it — due to the Digital Millennium Copyright Act, a 1998 law that criminalizes making or using technology that circumvents the control access of copyrighted works. The DMCA was written largely to prevent music and film piracy. It applies, it turns out, equally to soft-serve machines in fast food restaurants. The law does not distinguish between bootlegging a DVD and wanting to fix your own ice cream maker. It prohibited both.</p>
+
+  <p>The practical result: when a McFlurry machine breaks, only a certified technician from Taylor is allowed to fix it, leading to long wait times. Franchisees — who are paying for the equipment, paying for the repairs, and losing revenue every hour the machine is down — have no legal recourse to fix what they own. They must wait for Taylor. Taylor charges significant fees for repairs. A startup later fixed them independently. McDonald's allegedly conspired to kill that startup.</p>
+
+  <div class="pull">
+    <p>"Taylor makes the machines. Taylor charges for the repairs. Taylor is the only one legally permitted to perform them. This is, depending on your perspective, either a sound business model or a protection racket conducted under copyright law."</p>
+  </div>
+
+  <h2><span class="cat">Part Three</span>Enter Kytch</h2>
+
+  <p>In 2019, two entrepreneurs named Melissa Nelson and Jeremy O'Sullivan noticed the problem and decided to solve it. Their solution was a small device — roughly the size of a deck of cards — that could be attached to the front panel of a Taylor soft-serve machine and connected wirelessly to a smartphone. The device monitored the machine's internal communications, showed the specific reason for the machine's breakdown, and offered remote-control options that let a manager restart the machine from home in the middle of the night. It translated Taylor's cryptic error codes into plain English. It could fix, or prevent, most common failures.</p>
+
+  <p>They called the device Kytch. By November 2020, Kytch had 500 customers and its sales were doubling every quarter. Franchisees loved it. It saved them money. It kept their machines running. It cost $100 a month and worked exactly as described. It was, by most available measures, a success.</p>
+
+  <p>Then McDonald's sent a letter.</p>
+
+  <p>McDonald's sent notices to franchisees warning them that the Kytch technology could lead to worker injuries — that the remote-control feature could make the machine start running while someone was cleaning it, endangering an employee's fingers. Kytch disputed this strenuously, noting that opening the machine's door rendered the device inoperable. The company fought back, stating that the only danger was to Taylor's own bottom line. After the McDonald's memo went out, the Kytch business dried up and the company soon shut down.</p>
+
+  <p>Kytch filed a 133-page lawsuit in Delaware federal court, claiming McDonald's stole Kytch's technology to reverse-engineer it and create their own competing product as part of an alleged multimillion-dollar "repair racket." The suit also accused McDonald's of publishing deceptive advertising claiming the Kytch device was a safety hazard. The lawsuit sought $900 million in damages.</p>
+
+  <p>That number bears repeating. Nine hundred million dollars. Over ice cream machines.</p>
+
+  <h2><span class="cat">Part Four</span>The Government Gets Involved</h2>
+
+  <p>By 2021, the broken ice cream machine had attracted the attention of the Federal Trade Commission. This is a sentence that sounds like the setup to a joke but is not a joke.</p>
+
+  <p>The FTC reached out to McDonald's restaurant franchisees in the summer of 2021, seeking information on what, exactly, was going on with the broken ice cream machine problem. The inquiry was part of a broader push by the Biden administration to examine right-to-repair restrictions across industries — the same principle that was being applied to farm equipment, medical devices, and consumer electronics. The McFlurry machine had become, in the words of one public interest attorney, "the great index case that everyone knows about and that everyone has a problem with."</p>
+
+  <p>Two years earlier, Donald Trump — who has many positions on many things — had posted a photoshopped image on social media showing himself at a McDonald's drive-thru, with a campaign promise: "WHEN I'M PRESIDENT THE MCDONALD'S ICE CREAM MACHINES WILL WORK GREAT AGAIN!" It is unclear whether this was a serious policy commitment. It is, regardless, a sentence that exists in the historical record.</p>
+
+  <p>The Biden administration, for its part, was moving through different channels. In March 2024, the FTC and the Justice Department both submitted comments to the U.S. Copyright Office recommending a change to the right-to-repair laws covering commercial food preparation equipment. The recommendation was accepted.</p>
+
+  <div class="dark-band">
+    <p class="db-kicker">October 25, 2024 · A Ruling Is Issued</p>
+    <div class="db-title">The Copyright Office Weighs In On Ice Cream</div>
+    <div class="db-cols">
+      <div>
+        <p>In October 2024, the United States Copyright Office approved an exemption to the Digital Millennium Copyright Act for bypassing copyright restrictions to allow for repair of commercial food preparation equipment, covering the Taylor ice cream machines. Franchisees could now legally fix what they owned.</p>
+        <p>The exemption came after iFixit and the nonprofit Public Knowledge petitioned the Copyright Office, reverse-engineered a Taylor machine, and found the repair, in their assessment, fairly straightforward. According to iFixit, which had looked inside a McDonald's ice cream machine, the devices contain "lots of easily replaceable parts."</p>
+      </div>
+      <div>
+        <p>"There's nothing vanilla about this victory," said Meredith Rose, senior policy counsel at Public Knowledge. "An exemption for retail-level commercial food preparation equipment will spark a flurry of third-party repair activity and enable businesses to better serve their customers."</p>
+        <p>Taylor, for its part, indicated it did not expect to change its existing maintenance practices. The machines, at the time of the ruling, were still broken at roughly 14% of locations nationwide.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="cat">Part Five</span>McBroken</h2>
+
+  <p>While lawyers filed briefs and federal agencies conducted inquiries, a 24-year-old software engineer named Rashiq Zahid did what any reasonable person would do: he built a website.</p>
+
+  <p>In 2020, amid public outcry about broken machines, a developer created the "McBroken" map — a website that uses data from the McDonald's app to give real-time confirmation on whether your local McDonald's ice cream machine is working or not. The mechanism was elegant in its simplicity: Zahid reverse-engineered McDonald's internal API and had the system automatically place an order worth a small amount, checking whether the ice cream item could actually be added to a cart. If it couldn't, the machine was down. A red dot appeared on the map. The map filled up with red dots.</p>
+
+  <p>McBroken went viral. It was, in a single webpage, a more honest communication about McDonald's ice cream availability than McDonald's had managed in decades of operations. At any given moment, McBroken reports something in the range of ten to fifteen percent of all U.S. McDonald's locations are not serving ice cream. On a bad day, in some markets, machines were down between 20 and 40 percent of the time in a single week.</p>
+
+  <p>McDonald's told reporters that its machines are up and running around 95% of the time. McBroken tells a somewhat different story. One of these sources updates in real time.</p>
+
+  <div class="status-panel">
+    <div class="sp-header">McBroken · Live Machine Status · U.S. Locations · Data via McDonald's API</div>
+
+    <div class="sp-row">
+      <span class="sp-city">New York, NY</span>
+      <span class="sp-status down">DOWN</span>
+      <span class="sp-pct">26.5% of locations unavailable</span>
+    </div>
+    <div class="sp-row">
+      <span class="sp-city">Dallas, TX</span>
+      <span class="sp-status down">DOWN</span>
+      <span class="sp-pct">19.0% of locations unavailable</span>
+    </div>
+    <div class="sp-row">
+      <span class="sp-city">Chicago, IL</span>
+      <span class="sp-status unknown">DEGRADED</span>
+      <span class="sp-pct">Cleaning cycle in progress</span>
+    </div>
+    <div class="sp-row">
+      <span class="sp-city">Los Angeles, CA</span>
+      <span class="sp-status down">DOWN</span>
+      <span class="sp-pct">Machine unavailable</span>
+    </div>
+    <div class="sp-row">
+      <span class="sp-city">Durango, CO</span>
+      <span class="sp-status down">DOWN</span>
+      <span class="sp-pct">Error code: H07. Reason: [See Taylor]</span>
+    </div>
+    <div class="sp-row">
+      <span class="sp-city">Nationwide</span>
+      <span class="sp-status down">~14.7% DOWN</span>
+      <span class="sp-pct">As of last report</span>
+    </div>
+    <div class="sp-summary">
+      <span class="sp-big">1 in 7</span>
+      McDonald's locations not currently serving ice cream · The fact that this website exists says everything · McBroken.com · Created 2020 · Still needed
+    </div>
+  </div>
+
+  <h2><span class="cat">Part Six</span>A Brief Timeline of Soft Serve Dysfunction</h2>
+
+  <div class="timeline">
+    <div class="tl-entry">
+      <div class="tl-year">1956</div>
+      <div class="tl-text"><strong>The Handshake.</strong> Ray Kroc agrees with Taylor Company to supply milkshake machines to the growing McDonald's franchise. A 70-year partnership begins. Nobody writes it down.</div>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-year">1998</div>
+      <div class="tl-text"><strong>The DMCA.</strong> Congress passes the Digital Millennium Copyright Act to combat music and film piracy. It also, incidentally, makes it illegal to repair your own commercially copyrighted equipment. Nobody is thinking about ice cream at the time.</div>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-year">2019</div>
+      <div class="tl-text"><strong>Kytch.</strong> Melissa Nelson and Jeremy O'Sullivan launch the Kytch device — a small computer that translates Taylor's error codes into plain English and allows remote machine management. Franchisees embrace it. Their machines start working. This upsets certain parties.</div>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-year">2020</div>
+      <div class="tl-text"><strong>McBroken.</strong> Software engineer Rashiq Zahid builds McBroken.com, which tracks real-time ice cream machine availability across all U.S. McDonald's locations by interrogating the McDonald's app. It goes viral immediately. It remains necessary.</div>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-year">2021</div>
+      <div class="tl-text"><strong>McDonald's kills Kytch.</strong> McDonald's sends a memo to all U.S. franchisees warning that the Kytch device poses a safety risk. Kytch disputes this. Sales collapse. The company shuts down. The machines go back to being broken.</div>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-year">2021</div>
+      <div class="tl-text"><strong>The FTC opens an investigation.</strong> The Federal Trade Commission contacts McDonald's franchisees seeking information about the ice cream machine situation. A federal agency is now formally investigating soft serve. This is real.</div>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-year">2022</div>
+      <div class="tl-text"><strong>The $900 million lawsuit.</strong> Kytch files a 133-page complaint against McDonald's and Taylor, alleging the companies stole their technology, conducted false advertising, and operated a "repair racket." The case proceeds through the courts.</div>
+    </div>
+    <div class="tl-entry">
+      <div class="tl-year">2024</div>
+      <div class="tl-text"><strong>The Copyright Office rules.</strong> The U.S. Copyright Office grants an exemption to the DMCA, giving McDonald's franchisees the legal right to repair their own ice cream machines without calling Taylor. iFixit notes the machines are full of easily replaceable parts. The machines remain broken at approximately one in seven locations.</div>
+    </div>
+  </div>
+
+  <h2><span class="cat">Conclusion</span>What This Is Actually About</h2>
+
+  <p>The broken McDonald's ice cream machine is very funny. It is also a reasonably precise illustration of how monopoly works in the modern economy — not through dramatic villainy, but through the quiet accumulation of contractual and legal arrangements that make competition structurally impossible. You cannot fix what you cannot legally open. You cannot compete with a supplier who controls both the machine and its repair. You cannot build a business serving franchisees if the franchisor can kill you with a memo.</p>
+
+  <p>The Kytch story is in many ways the most clarifying part of the whole saga. Here were two people who identified a real problem, built a real solution, made their customers genuinely happy, and were eliminated — not because their product didn't work, but because their product worked too well. The machines started working. That was the problem. Taylor makes a large chunk of its revenue from machine repairs. A functioning machine does not generate repair revenue. The incentive structure, once understood, explains the error codes.</p>
+
+  <p>None of this is to say the ice cream machine is a grand symbol of American decline or a harbinger of something darker. It is a machine that makes ice cream and frequently does not. The Copyright Office has issued an exemption. The FTC has investigated. Kytch and McDonald's have reportedly been negotiating a settlement. The situation may, in some years, improve.</p>
+
+  <p>In the meantime, McBroken.com is still running. The map is still mostly red. And somewhere in America, right now, a person is standing at a counter, having checked the website beforehand, having driven over anyway, hearing the words they already knew were coming.</p>
+
+  <p>The machine is down.</p>
+
+  <div class="ornament">· · · · ·</div>
+
+  <div class="footer">
+    Raised Eyebrows · Corporate Absurdity Division · Est. Whenever ·
+    Machines Investigated: One (1) · Federal Agencies Involved: Two (2) ·
+    Lawsuits Filed: $900 Million Worth · McBroken.com: Still Operational ·
+    McFlurries Obtained During Research: Zero (0)
+  </div>
+
+</main>
+
+<!-- ── SIDEBAR ── -->
+<aside class="side-col">
+
+  <div class="sidebar-box">
+    <span class="sb-label">The Partnership</span>
+    <div class="sb-stat">1956</div>
+    <p class="sb-context">Year Ray Kroc shook hands with the Taylor Company, beginning one of the most consequential — and most broken — business relationships in fast food history.</p>
+  </div>
+
+  <div class="sidebar-box">
+    <span class="sb-label">The Lawsuit</span>
+    <div class="sb-stat">$900M</div>
+    <p class="sb-context">Amount Kytch sued McDonald's and Taylor for — in a 133-page complaint alleging trade secret theft, false advertising, and a multimillion-dollar repair racket. Over ice cream machines.</p>
+  </div>
+
+  <div class="sidebar-box">
+    <span class="sb-label">The App</span>
+    <div class="sb-stat" style="font-size:32px; line-height:1.3;">Mc<br>Broken</div>
+    <p class="sb-context">Built in 2020 by a 24-year-old who reverse-engineered the McDonald's app. Shows real-time machine status at every U.S. location. Created as a joke. Still necessary.</p>
+  </div>
+
+  <div class="sidebar-box">
+    <span class="sb-label">Current Failure Rate</span>
+    <div class="sb-stat">~15%</div>
+    <p class="sb-context">Approximate share of U.S. McDonald's locations not serving ice cream at any given time, per McBroken. McDonald's reports 95% uptime. The gap is not small.</p>
+  </div>
+
+  <div class="sidebar-box">
+    <span class="sb-label">Taylor's Position</span>
+    <p class="sb-context" style="font-size:0.97rem; color:var(--ink);">Problems with the machines are attributable to <em>"a lack of knowledge"</em> about how to operate them, and that staff must ensure <em>"the machine is cleaned properly."</em><br><br>— Taylor Company spokesperson, to the Wall Street Journal</p>
+  </div>
+
+  <div class="sidebar-box">
+    <span class="sb-label">What the Law Said</span>
+    <p class="sb-context">The 1998 Digital Millennium Copyright Act — written to stop music piracy — made it illegal for franchisees to repair their own ice cream machines. The U.S. Copyright Office issued an exemption in October 2024. The machines remain broken at roughly one in seven locations.</p>
+  </div>
+
+</aside>
+
+</div><!-- /.article -->
+</body>
+</html>
